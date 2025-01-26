@@ -101,6 +101,7 @@
         background: rgba(0, 0, 0, 0.9);
         backdrop-filter: blur(10px);
         transition: right 0.3s ease;
+        z-index: 999; /* Ensure nav is above other content */
       }
 
       nav.active {
@@ -119,6 +120,8 @@
       width: 90%;
       max-width: 1200px;
       margin: 40px auto;
+      position: relative;
+      z-index: 1; /* Ensure content is below the nav */
     }
 
     .categories {
@@ -169,6 +172,8 @@
       text-align: center;
       padding: 20px 0;
       margin-top: 60px;
+      position: relative;
+      z-index: 1; /* Ensure footer is below the nav */
     }
 
     footer p {
