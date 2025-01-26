@@ -53,16 +53,43 @@
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
       border-radius: 10px;
-      width: 300px;
+      width: 400px; /* Adjusted width to fit Tools card */
       text-align: center;
       font-size: 1.2rem;
       color: #00ffcc;
       box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .datetime-box span {
-      display: block;
-      margin: 5px 0;
+    .datetime-box .datetime {
+      text-align: left;
+    }
+
+    .datetime-box .tools-card {
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid #00ffcc;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      font-size: 1rem;
+      box-shadow: 0 0 5px rgba(0, 255, 204, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .datetime-box .tools-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.8);
+    }
+
+    .datetime-box .tools-card a {
+      color: #00ffcc;
+      font-weight: bold;
+    }
+
+    .datetime-box .tools-card a:hover {
+      color: #ff00cc;
     }
 
     /* Hamburger Menu */
@@ -136,6 +163,11 @@
       .datetime-box {
         width: 90%;
         font-size: 1rem;
+        flex-direction: column;
+      }
+
+      .datetime-box .tools-card {
+        margin-top: 10px;
       }
     }
 
@@ -268,8 +300,14 @@
     <p>Exploring the future of creativity and innovation.</p>
     <!-- Date and Time Box -->
     <div class="datetime-box">
-      <span id="date"></span>
-      <span id="time"></span>
+      <div class="datetime">
+        <span id="date"></span>
+        <span id="time"></span>
+      </div>
+      <!-- Tools Card -->
+      <div class="tools-card">
+        <a href="https://www.rahulx.com/tools">Tools</a>
+      </div>
     </div>
   </header>
 
