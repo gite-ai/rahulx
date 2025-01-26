@@ -100,7 +100,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 80%;
+      width: 90%;
       max-width: 600px;
       background: rgba(0, 0, 0, 0.9);
       border: 1px solid #00ffcc;
@@ -108,13 +108,6 @@
       padding: 20px;
       box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
       z-index: 1000;
-    }
-
-    .popup iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-      border-radius: 8px;
     }
 
     .popup .close-btn {
@@ -134,6 +127,87 @@
     .popup .close-btn:hover {
       background: #00ffcc;
       color: #000;
+    }
+
+    /* Tool Tabs */
+    .tool-tabs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+
+    .tool-tabs button {
+      background: none;
+      border: none;
+      color: #00ffcc;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 10px;
+      transition: color 0.3s ease;
+    }
+
+    .tool-tabs button.active {
+      color: #ff00cc;
+      border-bottom: 2px solid #ff00cc;
+    }
+
+    .tool-tabs button:hover {
+      color: #ff00cc;
+    }
+
+    /* Tool Content */
+    .tool-content {
+      display: none;
+    }
+
+    .tool-content.active {
+      display: block;
+    }
+
+    /* Calculator Styles */
+    .calculator {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+    }
+
+    .calculator label {
+      display: block;
+      margin: 10px 0 5px;
+      font-size: 1.1rem;
+    }
+
+    .calculator input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #00ffcc;
+      font-size: 1rem;
+    }
+
+    .calculator button {
+      background: #00ffcc;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .calculator button:hover {
+      background: #ff00cc;
+    }
+
+    .calculator .result {
+      margin-top: 20px;
+      font-size: 1.2rem;
     }
 
     /* Overlay */
@@ -362,7 +436,7 @@
       </div>
       <!-- Tools Card -->
       <div class="tools-card" id="tools-card">
-        <a href="https://www.rahulx.com/tools" target="_blank">Tools</a>
+        <a href="#">Tools</a>
       </div>
     </div>
   </header>
@@ -371,7 +445,61 @@
   <div class="overlay" id="overlay"></div>
   <div class="popup" id="popup">
     <button class="close-btn" id="close-btn">&times;</button>
-    <iframe id="popup-iframe" src="" frameborder="0"></iframe>
+    <div class="tool-tabs">
+      <button class="tab-btn active" data-tool="bmi">BMI Calculator</button>
+      <button class="tab-btn" data-tool="tax">Tax Calculator</button>
+      <button class="tab-btn" data-tool="brokerage">Brokerage Calculator</button>
+      <button class="tab-btn" data-tool="debt">Debt Calculator</button>
+    </div>
+    <div class="tool-content active" id="bmi">
+      <div class="calculator">
+        <label for="height">Height (in cm):</label>
+        <input type="number" id="height" placeholder="Enter height">
+
+        <label for="weight">Weight (in kg):</label>
+        <input type="number" id="weight" placeholder="Enter weight">
+
+        <button onclick="calculateBMI()">Calculate BMI</button>
+
+        <div class="result" id="bmi-result"></div>
+      </div>
+    </div>
+    <div class="tool-content" id="tax">
+      <div class="calculator">
+        <label for="income">Income (in ₹):</label>
+        <input type="number" id="income" placeholder="Enter income">
+
+        <button onclick="calculateTax()">Calculate Tax</button>
+
+        <div class="result" id="tax-result"></div>
+      </div>
+    </div>
+    <div class="tool-content" id="brokerage">
+      <div class="calculator">
+        <label for="amount">Investment Amount (in ₹):</label>
+        <input type="number" id="amount" placeholder="Enter amount">
+
+        <button onclick="calculateBrokerage()">Calculate Brokerage</button>
+
+        <div class="result" id="brokerage-result"></div>
+      </div>
+    </div>
+    <div class="tool-content" id="debt">
+      <div class="calculator">
+        <label for="principal">Principal Amount (in ₹):</label>
+        <input type="number" id="principal" placeholder="Enter principal">
+
+        <label for="interest">Interest Rate (%):</label>
+        <input type="number" id="interest" placeholder="Enter interest rate">
+
+        <label for="time">Time (in years):</label>
+        <input type="number" id="time" placeholder="Enter time">
+
+        <button onclick="calculateDebt()">Calculate Debt</button>
+
+        <div class="result" id="debt-result"></div>
+      </div>
+    </div>
   </div>
 
   <!-- Navigation -->
@@ -487,11 +615,9 @@
     const popup = document.getElementById('popup');
     const overlay = document.getElementById('overlay');
     const closeBtn = document.getElementById('close-btn');
-    const popupIframe = document.getElementById('popup-iframe');
 
     toolsCard.addEventListener('click', (e) => {
       e.preventDefault(); // Prevent default link behavior
-      popupIframe.src = 'https://www.rahulx.com/tools'; // Load the Tools page in the iframe
       popup.style.display = 'block'; // Show the popup
       overlay.style.display = 'block'; // Show the overlay
     });
@@ -499,14 +625,87 @@
     closeBtn.addEventListener('click', () => {
       popup.style.display = 'none'; // Hide the popup
       overlay.style.display = 'none'; // Hide the overlay
-      popupIframe.src = ''; // Clear the iframe content
     });
 
     overlay.addEventListener('click', () => {
       popup.style.display = 'none'; // Hide the popup
       overlay.style.display = 'none'; // Hide the overlay
-      popupIframe.src = ''; // Clear the iframe content
     });
+
+    // Tool Tabs Functionality
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const toolContents = document.querySelectorAll('.tool-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons and contents
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        toolContents.forEach(content => content.classList.remove('active'));
+
+        // Add active class to the clicked button and corresponding content
+        button.classList.add('active');
+        const toolId = button.getAttribute('data-tool');
+        document.getElementById(toolId).classList.add('active');
+      });
+    });
+
+    // BMI Calculator
+    function calculateBMI() {
+      const height = parseFloat(document.getElementById('height').value) / 100; // Convert cm to m
+      const weight = parseFloat(document.getElementById('weight').value);
+
+      if (isNaN(height) || isNaN(weight) || height <= 0 || weight <= 0) {
+        document.getElementById('bmi-result').textContent = 'Please enter valid height and weight.';
+        return;
+      }
+
+      const bmi = (weight / (height * height)).toFixed(2);
+      document.getElementById('bmi-result').textContent = `Your BMI is: ${bmi}`;
+    }
+
+    // Tax Calculator
+    function calculateTax() {
+      const income = parseFloat(document.getElementById('income').value);
+
+      if (isNaN(income) || income <= 0) {
+        document.getElementById('tax-result').textContent = 'Please enter a valid income.';
+        return;
+      }
+
+      // Example tax calculation (simplified)
+      const tax = (income * 0.2).toFixed(2); // 20% tax rate
+      document.getElementById('tax-result').textContent = `Estimated Tax: ₹${tax}`;
+    }
+
+    // Brokerage Calculator
+    function calculateBrokerage() {
+      const amount = parseFloat(document.getElementById('amount').value);
+
+      if (isNaN(amount) || amount <= 0) {
+        document.getElementById('brokerage-result').textContent = 'Please enter a valid amount.';
+        return;
+      }
+
+      // Example brokerage calculation (simplified)
+      const brokerage = (amount * 0.01).toFixed(2); // 1% brokerage fee
+      document.getElementById('brokerage-result').textContent = `Brokerage Fee: ₹${brokerage}`;
+    }
+
+    // Debt Calculator
+    function calculateDebt() {
+      const principal = parseFloat(document.getElementById('principal').value);
+      const interest = parseFloat(document.getElementById('interest').value);
+      const time = parseFloat(document.getElementById('time').value);
+
+      if (isNaN(principal) || isNaN(interest) || isNaN(time) || principal <= 0 || interest <= 0 || time <= 0) {
+        document.getElementById('debt-result').textContent = 'Please enter valid values.';
+        return;
+      }
+
+      // Simple interest calculation
+      const totalDebt = principal + (principal * interest * time) / 100;
+      document.getElementById('debt-result').textContent = `Total Debt: ₹${totalDebt.toFixed(2)}`;
+    }
   </script>
 </body>
 </html>
