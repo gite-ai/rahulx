@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Rahulx.com</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      color: #00ffcc;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header */
+    header {
+      position: relative;
+      background: radial-gradient(circle, #001f3f, #000);
+      color: #00ffcc;
+      padding: 40px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      animation: glow 2s infinite alternate;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 0;
+      backdrop-filter: blur(10px);
+    }
+
+    nav a {
+      color: #00ffcc;
+      margin: 0 20px;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ff00cc;
+    }
+
+    /* Main Content */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+      position: relative;
+      z-index: 1; /* Ensure content is below the nav */
+    }
+
+    .about-content {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .about-content h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #00ffcc;
+    }
+
+    .about-content p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #00ffcc;
+      margin-bottom: 20px;
+    }
+
+    .about-content a {
+      color: #ff00cc;
+      font-weight: bold;
+    }
+
+    .about-content a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: #00ffcc;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+      position: relative;
+      z-index: 1; /* Ensure footer is below the nav */
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    footer a {
+      color: #ff00cc;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+      }
+      100% {
+        text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Sci-Fi Background */
+    .sci-fi-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle, #001f3f, #000);
+      animation: stars 10s infinite linear;
+    }
+
+    @keyframes stars {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 1000px 1000px;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Sci-Fi Background -->
+  <div class="sci-fi-bg"></div>
+
+  <!-- Header -->
+  <header>
+    <h1>About Rahulx.com</h1>
+    <p>Discover the story behind the future.</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="https://www.rahulx.com">Home</a>
+    <a href="https://www.rahulx.com/about">About</a>
+    <a href="https://www.rahulx.com/contact">Contact</a>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="about-content">
+      <h2>Who Am I?</h2>
+      <p>
+        Hi, I'm Rahul, the creator of Rahulx.com. I'm passionate about technology, innovation, and exploring the future. 
+        This website is my space to share my thoughts, projects, and discoveries with the world.
+      </p>
+      <p>
+        From coding and trading to ethics and entertainment, I believe in the power of knowledge and creativity to shape a better tomorrow. 
+        Join me on this journey as we explore the endless possibilities of the future.
+      </p>
+      <p>
+        Feel free to explore the website and discover more about my work. If you have any questions or just want to connect, 
+        don't hesitate to <a href="https://www.rahulx.com/contact">reach out</a>!
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
+  </footer>
+</body>
+</html>
