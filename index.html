@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rahulx.com - Creative Homepage</title>
+  <title>Rahulx.com - Sci-Fi Homepage</title>
   <style>
     /* General Styles */
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: 'Orbitron', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f9;
-      color: #333;
+      background: #0a0a0a;
+      color: #00ffcc;
+      overflow-x: hidden;
     }
 
     h1, h2, h3 {
@@ -25,46 +26,51 @@
 
     /* Header */
     header {
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-      color: #fff;
-      padding: 20px 0;
+      position: relative;
+      background: radial-gradient(circle, #001f3f, #000);
+      color: #00ffcc;
+      padding: 60px 0;
       text-align: center;
+      overflow: hidden;
     }
 
     header h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
+      font-size: 4rem;
+      text-transform: uppercase;
+      animation: glow 2s infinite alternate;
     }
 
     header p {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       opacity: 0.8;
+      animation: float 3s ease-in-out infinite;
     }
 
     /* Navigation */
     nav {
       display: flex;
       justify-content: center;
-      background: #333;
-      padding: 10px 0;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 0;
+      backdrop-filter: blur(10px);
     }
 
     nav a {
-      color: #fff;
-      margin: 0 15px;
-      font-size: 1.1rem;
+      color: #00ffcc;
+      margin: 0 20px;
+      font-size: 1.2rem;
       transition: color 0.3s ease;
     }
 
     nav a:hover {
-      color: #6a11cb;
+      color: #ff00cc;
     }
 
     /* Main Content */
     .container {
       width: 90%;
       max-width: 1200px;
-      margin: 20px auto;
+      margin: 40px auto;
     }
 
     .categories {
@@ -74,16 +80,17 @@
     }
 
     .category-card {
-      background: #fff;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       overflow: hidden;
+      position: relative;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .category-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
     }
 
     .category-card img {
@@ -96,24 +103,24 @@
       padding: 15px;
       font-size: 1.5rem;
       text-align: center;
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-      color: #fff;
+      background: linear-gradient(135deg, #00ffcc, #0099cc);
+      color: #000;
       margin: 0;
     }
 
     .category-card p {
       padding: 15px;
       text-align: center;
-      color: #666;
+      color: #00ffcc;
     }
 
     /* Footer */
     footer {
-      background: #333;
-      color: #fff;
+      background: #000;
+      color: #00ffcc;
       text-align: center;
       padding: 20px 0;
-      margin-top: 40px;
+      margin-top: 60px;
     }
 
     footer p {
@@ -121,20 +128,64 @@
     }
 
     footer a {
-      color: #6a11cb;
+      color: #ff00cc;
       font-weight: bold;
     }
 
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* Animations */
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+      }
+      100% {
+        text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Sci-Fi Background */
+    .sci-fi-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle, #001f3f, #000);
+      animation: stars 10s infinite linear;
+    }
+
+    @keyframes stars {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 1000px 1000px;
+      }
+    }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Sci-Fi Background -->
+  <div class="sci-fi-bg"></div>
+
   <!-- Header -->
   <header>
     <h1>Welcome to Rahulx.com</h1>
-    <p>Your destination for creativity and innovation.</p>
+    <p>Exploring the future of creativity and innovation.</p>
   </header>
 
   <!-- Navigation -->
@@ -153,29 +204,29 @@
         <!-- Category 1 -->
         <div class="category-card">
           <img src="https://via.placeholder.com/400x150" alt="Category 1">
-          <h3>Category 1</h3>
-          <p>Discover amazing content in this category.</p>
+          <h3>Technology</h3>
+          <p>Discover the latest in tech innovation.</p>
         </div>
 
         <!-- Category 2 -->
         <div class="category-card">
           <img src="https://via.placeholder.com/400x150" alt="Category 2">
-          <h3>Category 2</h3>
-          <p>Explore the latest trends and ideas.</p>
+          <h3>Space</h3>
+          <p>Explore the mysteries of the universe.</p>
         </div>
 
         <!-- Category 3 -->
         <div class="category-card">
           <img src="https://via.placeholder.com/400x150" alt="Category 3">
-          <h3>Category 3</h3>
-          <p>Learn something new every day.</p>
+          <h3>AI & Robotics</h3>
+          <p>Learn about the future of AI and robotics.</p>
         </div>
 
         <!-- Category 4 -->
         <div class="category-card">
           <img src="https://via.placeholder.com/400x150" alt="Category 4">
-          <h3>Category 4</h3>
-          <p>Get inspired and take action.</p>
+          <h3>Gaming</h3>
+          <p>Dive into the world of sci-fi gaming.</p>
         </div>
       </div>
     </section>
@@ -185,5 +236,19 @@
   <footer>
     <p>&copy; 2023 Rahulx.com. All rights reserved. | <a href="#">Privacy Policy</a></p>
   </footer>
+
+  <!-- JavaScript for Interactive Effects -->
+  <script>
+    // Add glowing effect to category cards on hover
+    const cards = document.querySelectorAll('.category-card');
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.boxShadow = '0 0 30px rgba(0, 255, 204, 0.8)';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.boxShadow = '0 0 20px rgba(0, 255, 204, 0.6)';
+      });
+    });
+  </script>
 </body>
 </html>
