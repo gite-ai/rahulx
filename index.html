@@ -46,6 +46,25 @@
       animation: float 3s ease-in-out infinite;
     }
 
+    /* Date and Time Box */
+    .datetime-box {
+      margin: 20px auto;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+      font-size: 1.2rem;
+      color: #00ffcc;
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+    }
+
+    .datetime-box span {
+      display: block;
+      margin: 5px 0;
+    }
+
     /* Hamburger Menu */
     .menu-icon {
       display: none;
@@ -112,6 +131,11 @@
         margin: 15px 0;
         padding: 10px 20px;
         border-bottom: 1px solid rgba(0, 255, 204, 0.2);
+      }
+
+      .datetime-box {
+        width: 90%;
+        font-size: 1rem;
       }
     }
 
@@ -242,6 +266,11 @@
   <header>
     <h1>Welcome to Rahulx.com</h1>
     <p>Exploring the future of creativity and innovation.</p>
+    <!-- Date and Time Box -->
+    <div class="datetime-box">
+      <span id="date"></span>
+      <span id="time"></span>
+    </div>
   </header>
 
   <!-- Navigation -->
@@ -255,7 +284,7 @@
     <!-- Categories Section -->
     <section>
       <div class="categories">
-	          <!-- Category 1 -->
+        <!-- Category 1 -->
         <a href="https://www.rahulx.com/technology" class="category-card">
           <img src="https://th.bing.com/th/id/OIP.NrYbs9hurY9_2X3bSyAaZgAAAA?rs=1&pid=ImgDetMain" alt="Technology">
           <h3>Technology</h3>
@@ -318,7 +347,7 @@
     <p>&copy; 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
   </footer>
 
-  <!-- JavaScript for Hamburger Menu and Interactive Effects -->
+  <!-- JavaScript for Hamburger Menu, Interactive Effects, and Date/Time -->
   <script>
     // Hamburger Menu Toggle
     const menuIcon = document.getElementById('menu-icon');
@@ -338,6 +367,19 @@
         card.style.boxShadow = '0 0 20px rgba(0, 255, 204, 0.6)';
       });
     });
+
+    // Date and Time Function
+    function updateDateTime() {
+      const now = new Date();
+      const date = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      const time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      document.getElementById('date').textContent = date;
+      document.getElementById('time').textContent = time;
+    }
+
+    // Update date and time every second
+    setInterval(updateDateTime, 1000);
+    updateDateTime(); // Initial call to display date and time immediately
   </script>
 </body>
 </html>
