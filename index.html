@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rahulx.com - Sci-Fi Tools Hub</title>
+  <title>Rahulx.com - Sci-Fi Homepage</title>
   <style>
     /* General Styles */
     body {
@@ -53,7 +53,7 @@
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
       border-radius: 10px;
-      width: 400px;
+      width: 400px; /* Adjusted width to fit Tools card */
       text-align: center;
       font-size: 1.2rem;
       color: #00ffcc;
@@ -134,7 +134,6 @@
       display: flex;
       justify-content: space-around;
       margin-bottom: 20px;
-      flex-wrap: wrap;
     }
 
     .tool-tabs button {
@@ -180,8 +179,7 @@
       font-size: 1.1rem;
     }
 
-    .calculator input,
-    .calculator select {
+    .calculator input {
       width: 100%;
       padding: 10px;
       margin-bottom: 20px;
@@ -279,7 +277,7 @@
         background: rgba(0, 0, 0, 0.9);
         backdrop-filter: blur(10px);
         transition: right 0.3s ease;
-        z-index: 999;
+        z-index: 999; /* Ensure nav is above other content */
       }
 
       nav.active {
@@ -303,6 +301,56 @@
       }
     }
 
+    /* Main Content */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+      position: relative;
+      z-index: 1; /* Ensure content is below the nav */
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .category-card {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .category-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .category-card h3 {
+      padding: 15px;
+      font-size: 1.5rem;
+      text-align: center;
+      background: linear-gradient(135deg, #00ffcc, #0099cc);
+      color: #000;
+      margin: 0;
+    }
+
+    .category-card p {
+      padding: 15px;
+      text-align: center;
+      color: #00ffcc;
+    }
+
     /* Footer */
     footer {
       background: #000;
@@ -311,7 +359,7 @@
       padding: 20px 0;
       margin-top: 60px;
       position: relative;
-      z-index: 1;
+      z-index: 1; /* Ensure footer is below the nav */
     }
 
     footer p {
@@ -379,7 +427,7 @@
   <!-- Header -->
   <header>
     <h1>Welcome to Rahulx.com</h1>
-    <p>Your hub for futuristic tools and utilities.</p>
+    <p>Exploring the future of creativity and innovation.</p>
     <!-- Date and Time Box -->
     <div class="datetime-box">
       <div class="datetime">
@@ -400,11 +448,8 @@
     <div class="tool-tabs">
       <button class="tab-btn active" data-tool="bmi">BMI Calculator</button>
       <button class="tab-btn" data-tool="tax">Tax Calculator</button>
-      <button class="tab-btn" data-tool="currency">Currency Converter</button>
-      <button class="tab-btn" data-tool="unit">Unit Converter</button>
       <button class="tab-btn" data-tool="brokerage">Brokerage Calculator</button>
       <button class="tab-btn" data-tool="debt">Debt Calculator</button>
-      <button class="tab-btn" data-tool="age">Age Calculator</button>
     </div>
     <div class="tool-content active" id="bmi">
       <div class="calculator">
@@ -427,58 +472,6 @@
         <button onclick="calculateTax()">Calculate Tax</button>
 
         <div class="result" id="tax-result"></div>
-      </div>
-    </div>
-    <div class="tool-content" id="currency">
-      <div class="calculator">
-        <label for="amount">Amount:</label>
-        <input type="number" id="amount" placeholder="Enter amount">
-
-        <label for="from">From:</label>
-        <select id="from">
-          <option value="USD">USD</option>
-          <option value="EUR">EUR</option>
-          <option value="INR">INR</option>
-          <option value="GBP">GBP</option>
-        </select>
-
-        <label for="to">To:</label>
-        <select id="to">
-          <option value="USD">USD</option>
-          <option value="EUR">EUR</option>
-          <option value="INR">INR</option>
-          <option value="GBP">GBP</option>
-        </select>
-
-        <button onclick="convertCurrency()">Convert</button>
-
-        <div class="result" id="currency-result"></div>
-      </div>
-    </div>
-    <div class="tool-content" id="unit">
-      <div class="calculator">
-        <label for="value">Value:</label>
-        <input type="number" id="value" placeholder="Enter value">
-
-        <label for="unit-from">From:</label>
-        <select id="unit-from">
-          <option value="cm">Centimeters (cm)</option>
-          <option value="m">Meters (m)</option>
-          <option value="km">Kilometers (km)</option>
-          <option value="in">Inches (in)</option>
-        </select>
-
-        <label for="unit-to">To:</label>
-        <select id="unit-to">
-          <option value="cm">Centimeters (cm)</option>
-          <option value="m">Meters (m)</option>
-          <option value="km">Kilometers (km)</option>
-          <option value="in">Inches (in)</option>
-        </select>
-
-        <button onclick="convertUnit()">Convert</button>
-
-        <div class="result" id="unit-result"></div>
       </div>
     </div>
     <div class="tool-content" id="brokerage">
@@ -507,16 +500,6 @@
         <div class="result" id="debt-result"></div>
       </div>
     </div>
-    <div class="tool-content" id="age">
-      <div class="calculator">
-        <label for="dob">Date of Birth:</label>
-        <input type="date" id="dob">
-
-        <button onclick="calculateAge()">Calculate Age</button>
-
-        <div class="result" id="age-result"></div>
-      </div>
-    </div>
   </div>
 
   <!-- Navigation -->
@@ -525,12 +508,75 @@
     <a href="https://www.x.com/gite_ai">Contact</a>
   </nav>
 
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Categories Section -->
+    <section>
+      <div class="categories">
+        <!-- Category 1 -->
+        <a href="https://www.rahulx.com/technology" class="category-card">
+          <img src="https://th.bing.com/th/id/OIP.NrYbs9hurY9_2X3bSyAaZgAAAA?rs=1&pid=ImgDetMain" alt="Technology">
+          <h3>Technology</h3>
+          <p>Discover the latest in tech innovation.</p>
+        </a>
+
+        <!-- Category 2 -->
+        <a href="https://www.rahulx.com/space" class="category-card">
+          <img src="https://th.bing.com/th/id/OIP.OzIU63vh40vLhZQi76XjsQHaHa?rs=1&pid=ImgDetMain" alt="Space">
+          <h3>Space</h3>
+          <p>Explore the mysteries of the universe.</p>
+        </a>
+
+        <!-- Category 3 -->
+        <a href="https://www.rahulx.com/ai-robotics" class="category-card">
+          <img src="https://th.bing.com/th/id/OIP.fz0A6p1CQ49T6pAK4tGbxgAAAA?w=247&h=180&c=7&r=0&o=5&dpr=1.4&pid=1.7" alt="AI & Robotics">
+          <h3>AI & Robotics</h3>
+          <p>Learn about the future of AI and robotics.</p>
+        </a>
+
+        <!-- Category 4 -->
+        <a href="https://www.rahulx.com/gaming" class="category-card">
+          <img src="https://th.bing.com/th/id/OIP.CHnQNmfOWK5QfMBEGQZNTAHaE8?rs=1&pid=ImgDetMain" alt="Gaming">
+          <h3>Gaming</h3>
+          <p>Dive into the world of sci-fi gaming.</p>
+        </a>
+        <!-- Category 5 -->
+        <a href="https://www.rahulx.com/ethics" class="category-card">
+          <img src="https://i0.wp.com/manypossibilities.net/wp-content/uploads/2014/03/paradox-300x175.jpg?resize=300%2C175" alt="Ethics">
+          <h3>Ethics</h3>
+          <p>Explore the moral principles that guide our actions.</p>
+        </a>
+
+        <!-- Category 6 -->
+        <a href="https://www.rahulx.com/trading" class="category-card">
+          <img src="https://www.quantifiedstrategies.com/wp-content/uploads/2022/10/image-31.png" alt="Trading">
+          <h3>Trading</h3>
+          <p>Learn about the world of trading and investments.</p>
+        </a>
+
+        <!-- Category 7 -->
+        <a href="https://www.rahulx.com/coding" class="category-card">
+          <img src="https://c1.wallpaperflare.com/preview/183/501/299/code-coding-programming-css.jpg" alt="Coding">
+          <h3>Coding</h3>
+          <p>Dive into the art and science of programming.</p>
+        </a>
+
+        <!-- Category 8 -->
+        <a href="https://www.rahulx.com/netflix" class="category-card">
+          <img src="https://th.bing.com/th/id/OIP.rRpx98P6up5JkHNfnWMyLwHaDt?rs=1&pid=ImgDetMain" alt="Netflix">
+          <h3>Netflix</h3>
+          <p>Discover the best shows and movies on Netflix.</p>
+        </a>
+      </div>
+    </section>
+  </div>
+
   <!-- Footer -->
   <footer>
     <p>&copy; 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
   </footer>
 
-  <!-- JavaScript -->
+  <!-- JavaScript for Hamburger Menu, Interactive Effects, Date/Time, and Popup -->
   <script>
     // Hamburger Menu Toggle
     const menuIcon = document.getElementById('menu-icon');
@@ -538,6 +584,17 @@
 
     menuIcon.addEventListener('click', () => {
       nav.classList.toggle('active');
+    });
+
+    // Add glowing effect to category cards on hover
+    const cards = document.querySelectorAll('.category-card');
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.boxShadow = '0 0 30px rgba(0, 255, 204, 0.8)';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.boxShadow = '0 0 20px rgba(0, 255, 204, 0.6)';
+      });
     });
 
     // Date and Time Function
@@ -551,7 +608,7 @@
 
     // Update date and time every second
     setInterval(updateDateTime, 1000);
-    updateDateTime();
+    updateDateTime(); // Initial call to display date and time immediately
 
     // Popup Window Functionality
     const toolsCard = document.getElementById('tools-card');
@@ -559,4 +616,96 @@
     const overlay = document.getElementById('overlay');
     const closeBtn = document.getElementById('close-btn');
 
-   
+    toolsCard.addEventListener('click', (e) => {
+      e.preventDefault(); // Prevent default link behavior
+      popup.style.display = 'block'; // Show the popup
+      overlay.style.display = 'block'; // Show the overlay
+    });
+
+    closeBtn.addEventListener('click', () => {
+      popup.style.display = 'none'; // Hide the popup
+      overlay.style.display = 'none'; // Hide the overlay
+    });
+
+    overlay.addEventListener('click', () => {
+      popup.style.display = 'none'; // Hide the popup
+      overlay.style.display = 'none'; // Hide the overlay
+    });
+
+    // Tool Tabs Functionality
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const toolContents = document.querySelectorAll('.tool-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons and contents
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        toolContents.forEach(content => content.classList.remove('active'));
+
+        // Add active class to the clicked button and corresponding content
+        button.classList.add('active');
+        const toolId = button.getAttribute('data-tool');
+        document.getElementById(toolId).classList.add('active');
+      });
+    });
+
+    // BMI Calculator
+    function calculateBMI() {
+      const height = parseFloat(document.getElementById('height').value) / 100; // Convert cm to m
+      const weight = parseFloat(document.getElementById('weight').value);
+
+      if (isNaN(height) || isNaN(weight) || height <= 0 || weight <= 0) {
+        document.getElementById('bmi-result').textContent = 'Please enter valid height and weight.';
+        return;
+      }
+
+      const bmi = (weight / (height * height)).toFixed(2);
+      document.getElementById('bmi-result').textContent = `Your BMI is: ${bmi}`;
+    }
+
+    // Tax Calculator
+    function calculateTax() {
+      const income = parseFloat(document.getElementById('income').value);
+
+      if (isNaN(income) || income <= 0) {
+        document.getElementById('tax-result').textContent = 'Please enter a valid income.';
+        return;
+      }
+
+      // Example tax calculation (simplified)
+      const tax = (income * 0.2).toFixed(2); // 20% tax rate
+      document.getElementById('tax-result').textContent = `Estimated Tax: ₹${tax}`;
+    }
+
+    // Brokerage Calculator
+    function calculateBrokerage() {
+      const amount = parseFloat(document.getElementById('amount').value);
+
+      if (isNaN(amount) || amount <= 0) {
+        document.getElementById('brokerage-result').textContent = 'Please enter a valid amount.';
+        return;
+      }
+
+      // Example brokerage calculation (simplified)
+      const brokerage = (amount * 0.01).toFixed(2); // 1% brokerage fee
+      document.getElementById('brokerage-result').textContent = `Brokerage Fee: ₹${brokerage}`;
+    }
+
+    // Debt Calculator
+    function calculateDebt() {
+      const principal = parseFloat(document.getElementById('principal').value);
+      const interest = parseFloat(document.getElementById('interest').value);
+      const time = parseFloat(document.getElementById('time').value);
+
+      if (isNaN(principal) || isNaN(interest) || isNaN(time) || principal <= 0 || interest <= 0 || time <= 0) {
+        document.getElementById('debt-result').textContent = 'Please enter valid values.';
+        return;
+      }
+
+      // Simple interest calculation
+      const totalDebt = principal + (principal * interest * time) / 100;
+      document.getElementById('debt-result').textContent = `Total Debt: ₹${totalDebt.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
