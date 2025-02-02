@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Tax Calculator 2025</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result, #details {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        #details ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .slab {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Income Tax Calculator 2025</h1>
+    <form id="taxForm">
+        <label for="income">Enter your annual income (in INR):</label>
+        <input type="number" id="income" name="income" required>
+        
+        <button type="button" onclick="calculateTax()">Calculate Tax</button>
+    </form>
+    <div id="details"></div>
+    <div id="result"></div>
+
+    <script>
+        function calculateTax() {
+            const income = Number(document.getElementById('income').value);
+            let taxableIncome = income - 75000; // Standard Deduction
+            let tax = 0;
+            let slabDetails = [];
+
+            function addSlab(description, amount, rate) {
+                let slabTax = Math.max(0, amount) * rate;
+                slabDetails.push(`<li class="slab">${description}: ₹${slabTax.toFixed(2)}</li>`);
+                tax += slabTax;
+            }
+
+            if (taxableIncome <= 400000) {
+                slabDetails.push("<li class='slab'>No tax up to ₹4,00,000</li>");
+            } else {
+                if (taxableIncome > 400000) {
+                    addSlab("5% on income from ₹4,00,001 to ₹8,00,000", Math.min(taxableIncome, 800000) - 400000, 0.05);
+                }
+                if (taxableIncome > 800000) {
+                    addSlab("10% on income from ₹8,00,001 to ₹12,00,000", Math.min(taxableIncome, 1200000) - 800000, 0.10);
+                }
+                if (taxableIncome > 1200000) {
+                    addSlab("15% on income from ₹12,00,001 to ₹16,00,000", Math.min(taxableIncome, 1600000) - 1200000, 0.15);
+                }
+                if (taxableIncome > 1600000) {
+                    addSlab("20% on income from ₹16,00,001 to ₹20,00,000", Math.min(taxableIncome, 2000000) - 1600000, 0.20);
+                }
+                if (taxableIncome > 2000000) {
+                    addSlab("25% on income from ₹20,00,001 to ₹24,00,000", Math.min(taxableIncome, 2400000) - 2000000, 0.25);
+                }
+                if (taxableIncome > 2400000) {
+                    addSlab("30% on income above ₹24,00,000", taxableIncome - 2400000, 0.30);
+                }
+            }
+
+            // Health and Education Cess at 4%
+            let cess = tax * 0.04;
+            slabDetails.push(`<li class="slab">Health and Education Cess (4%): ₹${cess.toFixed(2)}</li>`);
+            tax += cess;
+
+            // Apply Section 87A Rebate
+            if (taxableIncome <= 1200000) {
+                slabDetails.push("<li class='slab'>Section 87A rebate applied: No tax payable</li>");
+                tax = 0;
+            }
+
+            document.getElementById('details').innerHTML = "<h3>Tax Calculation Details:</h3><ul>" + slabDetails.join('') + "</ul>";
+            document.getElementById('result').innerText = `Total tax payable: ₹${tax.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
