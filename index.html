@@ -164,7 +164,7 @@
       display: block;
     }
 
-    /* Calculator Styles */
+    /* Tax Calculator Styles */
     .calculator {
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
@@ -208,6 +208,20 @@
     .calculator .result {
       margin-top: 20px;
       font-size: 1.2rem;
+    }
+
+    .calculator #details {
+      margin-top: 20px;
+      font-size: 1rem;
+    }
+
+    .calculator #details ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .calculator .slab {
+      margin-bottom: 5px;
     }
 
     /* Overlay */
@@ -446,57 +460,27 @@
   <div class="popup" id="popup">
     <button class="close-btn" id="close-btn">&times;</button>
     <div class="tool-tabs">
-      <button class="tab-btn active" data-tool="bmi">BMI Calculator</button>
-      <button class="tab-btn" data-tool="tax">Tax Calculator</button>
-      <button class="tab-btn" data-tool="brokerage">Brokerage Calculator</button>
+      <button class="tab-btn active" data-tool="tax">Tax Calculator</button>
       <button class="tab-btn" data-tool="debt">Debt Calculator</button>
     </div>
-    <div class="tool-content active" id="bmi">
+    <div class="tool-content active" id="tax">
       <div class="calculator">
-        <label for="height">Height (in cm):</label>
-        <input type="number" id="height" placeholder="Enter height">
-
-        <label for="weight">Weight (in kg):</label>
-        <input type="number" id="weight" placeholder="Enter weight">
-
-        <button onclick="calculateBMI()">Calculate BMI</button>
-
-        <div class="result" id="bmi-result"></div>
-      </div>
-    </div>
-    <div class="tool-content" id="tax">
-      <div class="calculator">
-        <label for="income">Income (in ₹):</label>
-        <input type="number" id="income" placeholder="Enter income">
-
+        <label for="income">Enter your annual income (in INR):</label>
+        <input type="number" id="income" placeholder="Enter income" required>
         <button onclick="calculateTax()">Calculate Tax</button>
-
+        <div id="details"></div>
         <div class="result" id="tax-result"></div>
-      </div>
-    </div>
-    <div class="tool-content" id="brokerage">
-      <div class="calculator">
-        <label for="amount">Investment Amount (in ₹):</label>
-        <input type="number" id="amount" placeholder="Enter amount">
-
-        <button onclick="calculateBrokerage()">Calculate Brokerage</button>
-
-        <div class="result" id="brokerage-result"></div>
       </div>
     </div>
     <div class="tool-content" id="debt">
       <div class="calculator">
         <label for="principal">Principal Amount (in ₹):</label>
         <input type="number" id="principal" placeholder="Enter principal">
-
         <label for="interest">Interest Rate (%):</label>
         <input type="number" id="interest" placeholder="Enter interest rate">
-
         <label for="time">Time (in years):</label>
         <input type="number" id="time" placeholder="Enter time">
-
         <button onclick="calculateDebt()">Calculate Debt</button>
-
         <div class="result" id="debt-result"></div>
       </div>
     </div>
@@ -649,49 +633,58 @@
       });
     });
 
-    // BMI Calculator
-    function calculateBMI() {
-      const height = parseFloat(document.getElementById('height').value) / 100; // Convert cm to m
-      const weight = parseFloat(document.getElementById('weight').value);
-
-      if (isNaN(height) || isNaN(weight) || height <= 0 || weight <= 0) {
-        document.getElementById('bmi-result').textContent = 'Please enter valid height and weight.';
-        return;
-      }
-
-      const bmi = (weight / (height * height)).toFixed(2);
-      document.getElementById('bmi-result').textContent = `Your BMI is: ${bmi}`;
-    }
-
-    // Tax Calculator
+    // Tax Calculator Logic
     function calculateTax() {
-      const income = parseFloat(document.getElementById('income').value);
+      const income = Number(document.getElementById('income').value);
+      let taxableIncome = income - 75000; // Standard Deduction
+      let tax = 0;
+      let slabDetails = [];
 
-      if (isNaN(income) || income <= 0) {
-        document.getElementById('tax-result').textContent = 'Please enter a valid income.';
-        return;
+      function addSlab(description, amount, rate) {
+        let slabTax = Math.max(0, amount) * rate;
+        slabDetails.push(`<li class="slab">${description}: ₹${slabTax.toFixed(2)}</li>`);
+        tax += slabTax;
       }
 
-      // Example tax calculation (simplified)
-      const tax = (income * 0.2).toFixed(2); // 20% tax rate
-      document.getElementById('tax-result').textContent = `Estimated Tax: ₹${tax}`;
-    }
-
-    // Brokerage Calculator
-    function calculateBrokerage() {
-      const amount = parseFloat(document.getElementById('amount').value);
-
-      if (isNaN(amount) || amount <= 0) {
-        document.getElementById('brokerage-result').textContent = 'Please enter a valid amount.';
-        return;
+      if (taxableIncome <= 400000) {
+        slabDetails.push("<li class='slab'>No tax up to ₹4,00,000</li>");
+      } else {
+        if (taxableIncome > 400000) {
+          addSlab("5% on income from ₹4,00,001 to ₹8,00,000", Math.min(taxableIncome, 800000) - 400000, 0.05);
+        }
+        if (taxableIncome > 800000) {
+          addSlab("10% on income from ₹8,00,001 to ₹12,00,000", Math.min(taxableIncome, 1200000) - 800000, 0.10);
+        }
+        if (taxableIncome > 1200000) {
+          addSlab("15% on income from ₹12,00,001 to ₹16,00,000", Math.min(taxableIncome, 1600000) - 1200000, 0.15);
+        }
+        if (taxableIncome > 1600000) {
+          addSlab("20% on income from ₹16,00,001 to ₹20,00,000", Math.min(taxableIncome, 2000000) - 1600000, 0.20);
+        }
+        if (taxableIncome > 2000000) {
+          addSlab("25% on income from ₹20,00,001 to ₹24,00,000", Math.min(taxableIncome, 2400000) - 2000000, 0.25);
+        }
+        if (taxableIncome > 2400000) {
+          addSlab("30% on income above ₹24,00,000", taxableIncome - 2400000, 0.30);
+        }
       }
 
-      // Example brokerage calculation (simplified)
-      const brokerage = (amount * 0.01).toFixed(2); // 1% brokerage fee
-      document.getElementById('brokerage-result').textContent = `Brokerage Fee: ₹${brokerage}`;
+      // Health and Education Cess at 4%
+      let cess = tax * 0.04;
+      slabDetails.push(`<li class="slab">Health and Education Cess (4%): ₹${cess.toFixed(2)}</li>`);
+      tax += cess;
+
+      // Apply Section 87A Rebate
+      if (taxableIncome <= 1200000) {
+        slabDetails.push("<li class='slab'>Section 87A rebate applied: No tax payable</li>");
+        tax = 0;
+      }
+
+      document.getElementById('details').innerHTML = "<h3>Tax Calculation Details:</h3><ul>" + slabDetails.join('') + "</ul>";
+      document.getElementById('tax-result').innerText = `Total tax payable: ₹${tax.toFixed(2)}`;
     }
 
-    // Debt Calculator
+    // Debt Calculator Logic
     function calculateDebt() {
       const principal = parseFloat(document.getElementById('principal').value);
       const interest = parseFloat(document.getElementById('interest').value);
