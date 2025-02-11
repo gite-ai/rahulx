@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahulx.com - Trading Hub</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Source Code Pro', monospace;
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      color: #00ffcc;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header */
+    header {
+      position: relative;
+      background: radial-gradient(circle, #001f3f, #000);
+      color: #00ffcc;
+      padding: 40px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      animation: glow 2s infinite alternate;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Trading Chart Animation */
+    .chart-container {
+      position: relative;
+      width: 90%;
+      max-width: 800px;
+      height: 400px;
+      margin: 40px auto;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .chart {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+    }
+
+    .candle {
+      width: 10px;
+      background: #00ffcc;
+      margin: 0 2px;
+      position: relative;
+      animation: grow 2s ease-in-out infinite;
+    }
+
+    .candle::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 2px;
+      height: 100%;
+      background: #ff00cc;
+      transform: translateX(-50%);
+    }
+
+    .line-chart {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      stroke: #00ffcc;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    @keyframes grow {
+      0%, 100% { height: 20%; }
+      50% { height: 80%; }
+    }
+
+    /* Trading Categories */
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .category-card {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .category-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .category-card h3 {
+      padding: 15px;
+      font-size: 1.5rem;
+      text-align: center;
+      background: linear-gradient(135deg, #00ffcc, #0099cc);
+      color: #000;
+      margin: 0;
+    }
+
+    .category-card p {
+      padding: 15px;
+      text-align: center;
+      color: #00ffcc;
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: #00ffcc;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    footer a {
+      color: #ff00cc;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
+      100% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Sci-Fi Background */
+    .sci-fi-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle, #001f3f, #000);
+      animation: stars 10s infinite linear;
+    }
+
+    @keyframes stars {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Sci-Fi Background -->
+  <div class="sci-fi-bg"></div>
+
+  <!-- Header -->
+  <header>
+    <h1>Welcome to the Trading Hub</h1>
+    <p>Where Markets Meet Innovation</p>
+  </header>
+
+  <!-- Trading Chart Animation -->
+  <div class="chart-container">
+    <div class="chart">
+      <div class="candle" style="height: 30%;"></div>
+      <div class="candle" style="height: 60%;"></div>
+      <div class="candle" style="height: 40%;"></div>
+      <div class="candle" style="height: 80%;"></div>
+      <div class="candle" style="height: 20%;"></div>
+      <div class="candle" style="height: 50%;"></div>
+      <div class="candle" style="height: 70%;"></div>
+    </div>
+    <svg class="line-chart" viewBox="0 0 500 200">
+      <polyline points="0,180 50,150 100,160 150,140 200,170 250,130 300,150 350,120 400,160 450,140 500,180" />
+    </svg>
+  </div>
+
+  <!-- Trading Categories -->
+  <section>
+    <h2 style="text-align: center; margin: 20px 0;">Explore Trading Topics</h2>
+    <div class="categories">
+      <div class="category-card">
+        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Stocks">
+        <h3>Stocks</h3>
+        <p>Invest in the future of companies.</p>
+      </div>
+      <div class="category-card">
+        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Crypto">
+        <h3>Crypto</h3>
+        <p>Explore the world of digital currencies.</p>
+      </div>
+      <div class="category-card">
+        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Forex">
+        <h3>Forex</h3>
+        <p>Trade global currencies.</p>
+      </div>
+      <div class="category-card">
+        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Commodities">
+        <h3>Commodities</h3>
+        <p>Invest in gold, oil, and more.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
+  </footer>
+</body>
+</html>
