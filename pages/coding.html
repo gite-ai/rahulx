@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahulx.com - Coding Hub</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Source Code Pro', monospace;
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      color: #00ffcc;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header */
+    header {
+      position: relative;
+      background: radial-gradient(circle, #001f3f, #000);
+      color: #00ffcc;
+      padding: 40px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      animation: glow 2s infinite alternate;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Code Animation Section */
+    .code-animation {
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 800px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .code-animation pre {
+      margin: 0;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #00ffcc;
+      white-space: pre-wrap;
+      animation: scrollCode 10s linear infinite;
+    }
+
+    @keyframes scrollCode {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-100%); }
+    }
+
+    /* Coding Categories */
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .category-card {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .category-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .category-card h3 {
+      padding: 15px;
+      font-size: 1.5rem;
+      text-align: center;
+      background: linear-gradient(135deg, #00ffcc, #0099cc);
+      color: #000;
+      margin: 0;
+    }
+
+    .category-card p {
+      padding: 15px;
+      text-align: center;
+      color: #00ffcc;
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: #00ffcc;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    footer a {
+      color: #ff00cc;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
+      100% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Sci-Fi Background */
+    .sci-fi-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle, #001f3f, #000);
+      animation: stars 10s infinite linear;
+    }
+
+    @keyframes stars {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Sci-Fi Background -->
+  <div class="sci-fi-bg"></div>
+
+  <!-- Header -->
+  <header>
+    <h1>Welcome to the Coding Hub</h1>
+    <p>Where Code Meets Creativity</p>
+  </header>
+
+  <!-- Code Animation Section -->
+  <div class="code-animation">
+    <pre>
+      <code>
+        // Hello, World!
+        function helloWorld() {
+          console.log("Welcome to the Coding Hub!");
+        }
+
+        // Fibonacci Sequence
+        function fibonacci(n) {
+          if (n <= 1) return n;
+          return fibonacci(n - 1) + fibonacci(n - 2);
+        }
+
+        // Binary Search
+        function binarySearch(arr, target) {
+          let left = 0, right = arr.length - 1;
+          while (left <= right) {
+            const mid = Math.floor((left + right) / 2);
+            if (arr[mid] === target) return mid;
+            if (arr[mid] < target) left = mid + 1;
+            else right = mid - 1;
+          }
+          return -1;
+        }
+
+        // Quick Sort
+        function quickSort(arr) {
+          if (arr.length <= 1) return arr;
+          const pivot = arr[0];
+          const left = [], right = [];
+          for (let i = 1; i < arr.length; i++) {
+            if (arr[i] < pivot) left.push(arr[i]);
+            else right.push(arr[i]);
+          }
+          return [...quickSort(left), pivot, ...quickSort(right)];
+        }
+      </code>
+    </pre>
+  </div>
+
+  <!-- Coding Categories -->
+  <section class="categories">
+    <a href="https://www.rahulx.com/pages/web-development" class="category-card">
+      <img src="https://via.placeholder.com/300x150" alt="Web Development">
+      <h3>Web Development</h3>
+      <p>Build the future of the web.</p>
+    </a>
+    <a href="https://www.rahulx.com/pages/ai-ml" class="category-card">
+      <img src="https://via.placeholder.com/300x150" alt="AI & ML">
+      <h3>AI & ML</h3>
+      <p>Explore artificial intelligence and machine learning.</p>
+    </a>
+    <a href="https://www.rahulx.com/pages/game-dev" class="category-card">
+      <img src="https://via.placeholder.com/300x150" alt="Game Development">
+      <h3>Game Development</h3>
+      <p>Create immersive gaming experiences.</p>
+    </a>
+    <a href="https://www.rahulx.com/pages/data-science" class="category-card">
+      <img src="https://via.placeholder.com/300x150" alt="Data Science">
+      <h3>Data Science</h3>
+      <p>Unlock insights from data.</p>
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
+  </footer>
+</body>
+</html>
