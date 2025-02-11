@@ -32,6 +32,11 @@
       padding: 40px 0;
       text-align: center;
       overflow: hidden;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     header h1 {
@@ -46,31 +51,29 @@
       animation: float 3s ease-in-out infinite;
     }
 
-    /* Space Animation Section */
-    .space-animation {
-      position: relative;
-      height: 300px;
-      background: url('https://i.imgur.com/7W0mz9A.jpg') center/cover;
-      margin: 20px auto;
-      width: 90%;
-      max-width: 800px;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .space-animation::before {
-      content: '';
+    /* Starfield Animation */
+    .starfield {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      z-index: -1;
       background: radial-gradient(circle, transparent 20%, #000 70%);
-      animation: twinkle 5s infinite;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 2s infinite ease-in-out;
     }
 
     @keyframes twinkle {
-      0%, 100% { opacity: 0.8; }
+      0%, 100% { opacity: 0; }
       50% { opacity: 1; }
     }
 
@@ -220,14 +223,12 @@
   <!-- Sci-Fi Background -->
   <div class="sci-fi-bg"></div>
 
-  <!-- Header -->
+  <!-- Header with Starfield Animation -->
   <header>
+    <div class="starfield" id="starfield"></div>
     <h1>Welcome to Space Exploration</h1>
     <p>Discover the wonders of the universe.</p>
   </header>
-
-  <!-- Space Animation Section -->
-  <div class="space-animation"></div>
 
   <!-- Planets Section -->
   <section>
@@ -287,5 +288,21 @@
   <footer>
     <p>&copy; 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
   </footer>
+
+  <!-- JavaScript for Starfield Animation -->
+  <script>
+    // Create starfield animation
+    const starfield = document.getElementById('starfield');
+    const numStars = 100;
+
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.animationDelay = `${Math.random() * 2}s`;
+      starfield.appendChild(star);
+    }
+  </script>
 </body>
 </html>
