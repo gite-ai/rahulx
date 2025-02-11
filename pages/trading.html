@@ -46,107 +46,82 @@
       animation: float 3s ease-in-out infinite;
     }
 
-    /* Trading Chart Animation */
+    /* Trading Chart Container */
     .chart-container {
       position: relative;
       width: 90%;
-      max-width: 800px;
+      max-width: 1200px;
       height: 400px;
       margin: 40px auto;
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
       border-radius: 10px;
       overflow: hidden;
-    }
-
-    .chart {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
       display: flex;
       align-items: flex-end;
-      justify-content: space-around;
+      justify-content: center;
+    }
+
+    /* Candlestick Chart */
+    .candlestick-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      padding: 20px;
     }
 
     .candle {
       width: 10px;
-      background: #00ffcc;
-      margin: 0 2px;
       position: relative;
-      animation: grow 2s ease-in-out infinite;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .candle::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: 2px;
-      height: 100%;
-      background: #ff00cc;
-      transform: translateX(-50%);
-    }
-
-    .line-chart {
-      position: absolute;
-      top: 0;
-      left: 0;
+    .candle-body {
       width: 100%;
-      height: 100%;
-      stroke: #00ffcc;
-      stroke-width: 2;
-      fill: none;
+      background: #00ffcc;
+      position: relative;
     }
 
-    @keyframes grow {
-      0%, 100% { height: 20%; }
-      50% { height: 80%; }
+    .candle.wick {
+      width: 2px;
+      background: #00ffcc;
     }
 
-    /* Trading Categories */
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px;
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
+    .candle.green .candle-body {
+      background: #00cc00; /* Green for price rise */
     }
 
-    .category-card {
+    .candle.red .candle-body {
+      background: #ff0000; /* Red for price drop */
+    }
+
+    /* Timeframes */
+    .timeframes {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .timeframe {
+      padding: 10px 20px;
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
-      border-radius: 10px;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
     }
 
-    .category-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
-    }
-
-    .category-card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-    }
-
-    .category-card h3 {
-      padding: 15px;
-      font-size: 1.5rem;
-      text-align: center;
-      background: linear-gradient(135deg, #00ffcc, #0099cc);
+    .timeframe.active {
+      background: #00ffcc;
       color: #000;
-      margin: 0;
     }
 
-    .category-card p {
-      padding: 15px;
-      text-align: center;
-      color: #00ffcc;
+    .timeframe:hover {
+      background: #00ffcc;
+      color: #000;
     }
 
     /* Footer */
@@ -211,52 +186,83 @@
     <p>Where Markets Meet Innovation</p>
   </header>
 
-  <!-- Trading Chart Animation -->
+  <!-- Trading Chart Container -->
   <div class="chart-container">
-    <div class="chart">
-      <div class="candle" style="height: 30%;"></div>
-      <div class="candle" style="height: 60%;"></div>
-      <div class="candle" style="height: 40%;"></div>
-      <div class="candle" style="height: 80%;"></div>
-      <div class="candle" style="height: 20%;"></div>
-      <div class="candle" style="height: 50%;"></div>
-      <div class="candle" style="height: 70%;"></div>
-    </div>
-    <svg class="line-chart" viewBox="0 0 500 200">
-      <polyline points="0,180 50,150 100,160 150,140 200,170 250,130 300,150 350,120 400,160 450,140 500,180" />
-    </svg>
+    <div class="candlestick-chart" id="candlestick-chart"></div>
   </div>
 
-  <!-- Trading Categories -->
-  <section>
-    <h2 style="text-align: center; margin: 20px 0;">Explore Trading Topics</h2>
-    <div class="categories">
-      <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Stocks">
-        <h3>Stocks</h3>
-        <p>Invest in the future of companies.</p>
-      </div>
-      <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Crypto">
-        <h3>Crypto</h3>
-        <p>Explore the world of digital currencies.</p>
-      </div>
-      <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Forex">
-        <h3>Forex</h3>
-        <p>Trade global currencies.</p>
-      </div>
-      <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Commodities">
-        <h3>Commodities</h3>
-        <p>Invest in gold, oil, and more.</p>
-      </div>
-    </div>
-  </section>
+  <!-- Timeframes -->
+  <div class="timeframes">
+    <div class="timeframe active" data-timeframe="1m">1m</div>
+    <div class="timeframe" data-timeframe="5m">5m</div>
+    <div class="timeframe" data-timeframe="15m">15m</div>
+    <div class="timeframe" data-timeframe="1h">1h</div>
+    <div class="timeframe" data-timeframe="4h">4h</div>
+  </div>
 
   <!-- Footer -->
   <footer>
     <p>&copy; 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
   </footer>
+
+  <!-- JavaScript for Candlestick Chart -->
+  <script>
+    const candlestickChart = document.getElementById('candlestick-chart');
+    const timeframes = document.querySelectorAll('.timeframe');
+
+    // Function to generate random candlestick data
+    function generateCandles(count) {
+      const candles = [];
+      for (let i = 0; i < count; i++) {
+        const open = Math.random() * 100;
+        const close = open + (Math.random() - 0.5) * 20;
+        const high = Math.max(open, close) + Math.random() * 10;
+        const low = Math.min(open, close) - Math.random() * 10;
+        candles.push({ open, close, high, low });
+      }
+      return candles;
+    }
+
+    // Function to render candlesticks
+    function renderCandles(candles) {
+      candlestickChart.innerHTML = '';
+      candles.forEach(candle => {
+        const isGreen = candle.close > candle.open;
+        const candleHeight = Math.abs(candle.close - candle.open);
+        const wickHeight = candle.high - candle.low;
+
+        const candleElement = document.createElement('div');
+        candleElement.classList.add('candle', isGreen ? 'green' : 'red');
+
+        // Candle wick
+        const wick = document.createElement('div');
+        wick.classList.add('candle', 'wick');
+        wick.style.height = `${wickHeight}%`;
+        candleElement.appendChild(wick);
+
+        // Candle body
+        const body = document.createElement('div');
+        body.classList.add('candle-body');
+        body.style.height = `${candleHeight}%`;
+        candleElement.appendChild(body);
+
+        candlestickChart.appendChild(candleElement);
+      });
+    }
+
+    // Generate and render initial candles
+    const initialCandles = generateCandles(20);
+    renderCandles(initialCandles);
+
+    // Timeframe click handler
+    timeframes.forEach(timeframe => {
+      timeframe.addEventListener('click', () => {
+        timeframes.forEach(tf => tf.classList.remove('active'));
+        timeframe.classList.add('active');
+        const newCandles = generateCandles(20);
+        renderCandles(newCandles);
+      });
+    });
+  </script>
 </body>
 </html>
