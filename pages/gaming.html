@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahulx.com - Gaming Hub</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      color: #00ffcc;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header */
+    header {
+      position: relative;
+      background: radial-gradient(circle, #001f3f, #000);
+      color: #00ffcc;
+      padding: 40px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      animation: glow 2s infinite alternate;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Gaming Animation Section */
+    .gaming-animation {
+      position: relative;
+      width: 90%;
+      max-width: 1200px;
+      height: 400px;
+      margin: 40px auto;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 3D Rotating Game Console */
+    .game-console {
+      width: 150px;
+      height: 150px;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: rotate 5s linear infinite;
+    }
+
+    .game-console div {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 255, 204, 0.1);
+      border: 2px solid #00ffcc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: #00ffcc;
+    }
+
+    .front { transform: translateZ(75px); }
+    .back { transform: rotateY(180deg) translateZ(75px); }
+    .left { transform: rotateY(-90deg) translateZ(75px); }
+    .right { transform: rotateY(90deg) translateZ(75px); }
+    .top { transform: rotateX(90deg) translateZ(75px); }
+    .bottom { transform: rotateX(-90deg) translateZ(75px); }
+
+    @keyframes rotate {
+      0% { transform: rotateY(0deg); }
+      100% { transform: rotateY(360deg); }
+    }
+
+    /* Floating Gaming Icons */
+    .floating-icon {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: rgba(0, 255, 204, 0.1);
+      border: 2px solid #00ffcc;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #00ffcc;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .icon-1 { top: 10%; left: 10%; animation-delay: 0s; }
+    .icon-2 { top: 30%; left: 30%; animation-delay: 1s; }
+    .icon-3 { top: 50%; left: 50%; animation-delay: 2s; }
+    .icon-4 { top: 70%; left: 70%; animation-delay: 3s; }
+
+    /* Trending Hashtags */
+    .hashtags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+    }
+
+    .hashtag {
+      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .hashtag:hover {
+      background: #00ffcc;
+      color: #000;
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: #00ffcc;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    footer a {
+      color: #ff00cc;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
+      100% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Sci-Fi Background */
+    .sci-fi-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle, #001f3f, #000);
+      animation: stars 10s infinite linear;
+    }
+
+    @keyframes stars {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Sci-Fi Background -->
+  <div class="sci-fi-bg"></div>
+
+  <!-- Header -->
+  <header>
+    <h1>Welcome to the Gaming Hub</h1>
+    <p>Where Virtual Worlds Come Alive</p>
+  </header>
+
+  <!-- Gaming Animation Section -->
+  <div class="gaming-animation">
+    <!-- 3D Rotating Game Console -->
+    <div class="game-console">
+      <div class="front">🎮</div>
+      <div class="back">🎮</div>
+      <div class="left">🎮</div>
+      <div class="right">🎮</div>
+      <div class="top">🎮</div>
+      <div class="bottom">🎮</div>
+    </div>
+
+    <!-- Floating Gaming Icons -->
+    <div class="floating-icon icon-1">🕹️</div>
+    <div class="floating-icon icon-2">🎧</div>
+    <div class="floating-icon icon-3">💻</div>
+    <div class="floating-icon icon-4">🎯</div>
+  </div>
+
+  <!-- Trending Hashtags -->
+  <div class="hashtags">
+    <a href="https://twitter.com/hashtag/Gaming" class="hashtag">#Gaming</a>
+    <a href="https://twitter.com/hashtag/Esports" class="hashtag">#Esports</a>
+    <a href="https://twitter.com/hashtag/Streamers" class="hashtag">#Streamers</a>
+    <a href="https://twitter.com/hashtag/IndieGames" class="hashtag">#IndieGames</a>
+    <a href="https://twitter.com/hashtag/GameDev" class="hashtag">#GameDev</a>
+    <a href="https://twitter.com/hashtag/VRGaming" class="hashtag">#VRGaming</a>
+    <a href="https://twitter.com/hashtag/ConsoleWars" class="hashtag">#ConsoleWars</a>
+    <a href="https://twitter.com/hashtag/RetroGaming" class="hashtag">#RetroGaming</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
+  </footer>
+</body>
+</html>
