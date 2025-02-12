@@ -81,19 +81,6 @@
       50% { border-right-color: transparent; }
     }
 
-    /* Syntax Highlighting */
-    .keyword {
-      color: #ff00cc; /* Pink for keywords */
-    }
-
-    .function {
-      color: #00ccff; /* Blue for functions */
-    }
-
-    .string {
-      color: #00ff00; /* Green for strings */
-    }
-
     /* Trending Hashtags */
     .hashtags {
       display: flex;
@@ -193,11 +180,9 @@
   <!-- Trending Hashtags -->
   <div class="hashtags">
     <a href="https://twitter.com/hashtag/Coding" class="hashtag">#Coding</a>
+    <a href="https://twitter.com/hashtag/Java" class="hashtag">#Java</a>
     <a href="https://twitter.com/hashtag/WebDev" class="hashtag">#WebDev</a>
-    <a href="https://twitter.com/hashtag/JavaScript" class="hashtag">#JavaScript</a>
-    <a href="https://twitter.com/hashtag/Python" class="hashtag">#Python</a>
-    <a href="https://twitter.com/hashtag/ReactJS" class="hashtag">#ReactJS</a>
-    <a href="https://twitter.com/hashtag/NodeJS" class="hashtag">#NodeJS</a>
+    <a href="https://twitter.com/hashtag/Programming" class="hashtag">#Programming</a>
     <a href="https://twitter.com/hashtag/OpenSource" class="hashtag">#OpenSource</a>
     <a href="https://twitter.com/hashtag/DevLife" class="hashtag">#DevLife</a>
   </div>
@@ -211,11 +196,11 @@
   <script>
     const codeSnippet = document.getElementById('code-snippet');
     const codeLines = [
-      'public class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}'
+      'public class HelloWorld {',
+      '    public static void main(String[] args) {',
+      '        System.out.println("Hello, World!");',
+      '    }',
+      '}'
     ];
     let currentLine = 0;
     let currentChar = 0;
