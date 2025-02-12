@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahulx.com - Ocean Hub</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      color: #00ccff;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header */
+    header {
+      position: relative;
+      background: radial-gradient(circle, #003366, #000);
+      color: #00ccff;
+      padding: 40px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      animation: glow 2s infinite alternate;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Ocean Animation Section */
+    .ocean-animation {
+      position: relative;
+      width: 90%;
+      max-width: 1200px;
+      height: 400px;
+      margin: 40px auto;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ccff;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Floating Ocean Icons */
+    .floating-icon {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: rgba(0, 204, 255, 0.1);
+      border: 2px solid #00ccff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #00ccff;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .icon-1 { top: 10%; left: 10%; animation-delay: 0s; }
+    .icon-2 { top: 30%; left: 30%; animation-delay: 1s; }
+    .icon-3 { top: 50%; left: 50%; animation-delay: 2s; }
+    .icon-4 { top: 70%; left: 70%; animation-delay: 3s; }
+
+    /* Trending Hashtags */
+    .hashtags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid #00ccff;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+    }
+
+    .hashtag {
+      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ccff;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .hashtag:hover {
+      background: #00ccff;
+      color: #000;
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: #00ccff;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    footer a {
+      color: #ff00cc;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff, 0 0 20px #00ccff; }
+      100% { text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 40px #00ccff; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Ocean Background */
+    .ocean-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle, #003366, #000);
+      animation: waves 10s infinite linear;
+    }
+
+    @keyframes waves {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
+    }
+
+    /* Bubble Animation */
+    .bubbles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      width: 20px;
+      height: 20px;
+      background: rgba(0, 204, 255, 0.3);
+      border-radius: 50%;
+      animation: rise 10s infinite ease-in;
+    }
+
+    .bubble:nth-child(1) {
+      left: 10%;
+      animation-delay: 0s;
+      animation-duration: 8s;
+    }
+
+    .bubble:nth-child(2) {
+      left: 20%;
+      animation-delay: 2s;
+      animation-duration: 10s;
+    }
+
+    .bubble:nth-child(3) {
+      left: 30%;
+      animation-delay: 4s;
+      animation-duration: 7s;
+    }
+
+    .bubble:nth-child(4) {
+      left: 40%;
+      animation-delay: 1s;
+      animation-duration: 9s;
+    }
+
+    .bubble:nth-child(5) {
+      left: 50%;
+      animation-delay: 3s;
+      animation-duration: 6s;
+    }
+
+    .bubble:nth-child(6) {
+      left: 60%;
+      animation-delay: 5s;
+      animation-duration: 8s;
+    }
+
+    .bubble:nth-child(7) {
+      left: 70%;
+      animation-delay: 2s;
+      animation-duration: 10s;
+    }
+
+    .bubble:nth-child(8) {
+      left: 80%;
+      animation-delay: 4s;
+      animation-duration: 7s;
+    }
+
+    .bubble:nth-child(9) {
+      left: 90%;
+      animation-delay: 1s;
+      animation-duration: 9s;
+    }
+
+    .bubble:nth-child(10) {
+      left: 95%;
+      animation-delay: 3s;
+      animation-duration: 6s;
+    }
+
+    @keyframes rise {
+      0% {
+        bottom: -100px;
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(100px);
+      }
+      100% {
+        bottom: 100%;
+        transform: translateX(-100px);
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Ocean Background -->
+  <div class="ocean-bg"></div>
+
+  <!-- Bubble Animation -->
+  <div class="bubbles">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <h1>Welcome to the Ocean Hub</h1>
+    <p>Exploring the Depths of the Blue World</p>
+  </header>
+
+  <!-- Ocean Animation Section -->
+  <div class="ocean-animation">
+    <!-- Floating Ocean Icons -->
+    <div class="floating-icon icon-1">🌊</div>
+    <div class="floating-icon icon-2">🐠</div>
+    <div class="floating-icon icon-3">🐙</div>
+    <div class="floating-icon icon-4">🐋</div>
+  </div>
+
+  <!-- Trending Hashtags -->
+  <div class="hashtags">
+    <a href="https://twitter.com/hashtag/Ocean" class="hashtag">#Ocean</a>
+    <a href="https://twitter.com/hashtag/MarineLife" class="hashtag">#MarineLife</a>
+    <a href="https://twitter.com/hashtag/Conservation" class="hashtag">#Conservation</a>
+    <a href="https://twitter.com/hashtag/BluePlanet" class="hashtag">#BluePlanet</a>
+    <a href="https://twitter.com/hashtag/SaveOurOceans" class="hashtag">#SaveOurOceans</a>
+    <a href="https://twitter.com/hashtag/ClimateChange" class="hashtag">#ClimateChange</a>
+    <a href="https://twitter.com/hashtag/Sustainability" class="hashtag">#Sustainability</a>
+    <a href="https://twitter.com/hashtag/DeepSea" class="hashtag">#DeepSea</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
+  </footer>
+</body>
+</html>
