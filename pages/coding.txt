@@ -3,39 +3,70 @@
     "name": "Coding",
     "desc": "The art of writing instructions for computers to execute, ranging from simple scripts to complex applications.",
     "example": "Writing a Python script to automate file sorting.",
-    "image": "https://images.unsplash.com/photo-1516117172878-fd2c41f4a759?q=80&w=1920&auto=format&fit=crop",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg",
     "thread": "https://x.com/threads/placeholder_coding"
   },
   {
     "name": "Java",
     "desc": "A versatile, object-oriented programming language widely used for enterprise applications and Android development.",
     "example": "Building a Spring Boot REST API.",
-    "image": "https://th.bing.com/th/id/OIP.6X5gRUI8knaYHjDyzF6lMwHaE8?rs=1&pid=ImgDetMain",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg",
     "thread": "https://x.com/threads/placeholder_java"
   },
   {
     "name": "WebDev",
     "desc": "The process of creating websites and web applications using HTML, CSS, and JavaScript.",
     "example": "Designing a responsive portfolio site with React.",
-    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1920&auto=format&fit=crop",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg",
     "thread": "https://x.com/threads/placeholder_webdev"
   },
   {
     "name": "Programming",
     "desc": "The craft of designing, writing, and testing code to solve problems or create software.",
     "example": "Developing a game in C# with Unity.",
-    "image": "https://th.bing.com/th/id/OIP.7QfGZoJZQJ7hK7e7y8e8RwHaE8?rs=1&pid=ImgDetMain",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg",
     "thread": "https://x.com/threads/placeholder_programming"
   },
   {
     "name": "OpenSource",
     "desc": "Software with source code freely available for anyone to use, modify, and distribute.",
     "example": "Contributing to a GitHub repository like VS Code.",
-    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1920&auto=format&fit=crop",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg",
     "thread": "https://x.com/threads/placeholder_opensource"
   },
   {
     "name": "DevLife",
     "desc": "A glimpse into the daily life, struggles, and triumphs of developers.",
     "example": "Debugging a tricky bug at 2 AM.",
-    "image": "https://th.bing.com/th/id/OIP.D9Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e8Z8Z8Q8n8mY7e
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg",
+    "thread": "https://x.com/threads/placeholder_devlife"
+  },
+  {
+    "name": "CodeNewbie",
+    "desc": "A community and tag for beginners learning to code and sharing their journey.",
+    "example": "Writing your first 'Hello, World!' in Python.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg",
+    "thread": "https://x.com/threads/placeholder_codenewbie"
+  },
+  {
+    "name": "DevOps",
+    "desc": "Practices combining software development and IT operations for faster delivery.",
+    "example": "Setting up a CI/CD pipeline with Jenkins.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg",
+    "thread": "https://x.com/threads/placeholder_devops"
+  },
+  {
+    "name": "MachineLearning",
+    "desc": "A subset of AI where systems learn from data to make predictions or decisions.",
+    "example": "Training a model to classify images with TensorFlow.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg",
+    "thread": "https://x.com/threads/placeholder_machinelearning"
+  },
+  {
+    "name": "Python",
+    "desc": "A high-level, versatile programming language popular for its readability and broad applications.",
+    "example": "Creating a web scraper with BeautifulSoup.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg",
+    "thread": "https://x.com/threads/placeholder_python"
+  }
+]
