@@ -181,7 +181,7 @@
       width: 80%;
       max-width: 600px;
       max-height: 80vh;
-      padding: 0; /* Remove padding from container */
+      padding: 0;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -266,7 +266,7 @@
     .modal-body {
       flex: 1;
       padding: 20px;
-      overflow-y: auto; /* Only this section scrolls */
+      overflow-y: auto;
     }
 
     .modal-desc {
@@ -465,7 +465,7 @@
       const searchX = document.getElementById('searchX');
 
       modalTitle.textContent = title;
-      modalDesc.innerHTML = desc; // Use innerHTML for links
+      modalDesc.innerHTML = desc;
       modalExample.textContent = `Example: ${example}`;
       modalImage.src = image;
       modal.style.display = 'flex';
@@ -490,7 +490,7 @@
 
     function copyModalContent() {
       const title = document.getElementById('modalTitle').textContent;
-      const desc = document.getElementById('modalDesc').textContent; // Use textContent to strip HTML
+      const desc = document.getElementById('modalDesc').textContent;
       const example = document.getElementById('modalExample').textContent;
       const content = `${title}\n\n${desc}\n\n${example}`;
       
@@ -509,9 +509,9 @@
       }
     });
 
-    // Fetch data from technology.txt and initialize the page
+    // Fetch data from texts/technology.txt and initialize the page
     window.onload = function() {
-      fetch('technology.txt')
+      fetch('texts/technology.txt')
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -523,7 +523,7 @@
           populateTechTopics(technologies);
         })
         .catch(error => {
-          console.error('Error loading technology.txt:', error);
+          console.error('Error loading texts/technology.txt:', error);
           alert('Failed to load technology data. Please check the console for details.');
         });
     };
