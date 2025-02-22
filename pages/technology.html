@@ -155,6 +155,71 @@
       color: #000;
     }
 
+    /* Modal (Popup) Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: rgba(0, 0, 0, 0.9);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 20px;
+      position: relative;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5rem;
+      color: #00ffcc;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .modal-title {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .modal-desc {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .modal-image {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      margin: 10px auto;
+      display: block;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
     /* Footer */
     footer {
       background: #000;
@@ -234,6 +299,16 @@
     <!-- Topics will be added dynamically -->
   </div>
 
+  <!-- Modal (Popup) -->
+  <div class="modal" id="techModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">✖</button>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <p class="modal-desc" id="modalDesc"></p>
+      <img class="modal-image" id="modalImage" src="" alt="Tech Image">
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer>
     <p>© 2025 TechFrontier. All rights reserved. | <a href="#">Privacy Policy</a></p>
@@ -241,31 +316,31 @@
 
   <script>
     const technologies = [
-      { name: "Quantum Computing", desc: "Revolutionary computing power using quantum mechanics." },
-      { name: "Neural Interfaces", desc: "Brain-computer integration for enhanced control." },
-      { name: "Synthetic Biology", desc: "Designing life for sustainable solutions." },
-      { name: "Edge AI", desc: "Smart devices with local AI processing." },
-      { name: "Generative AI", desc: "Creating content with advanced AI models." },
-      { name: "Blockchain", desc: "Decentralized security and transparency." },
-      { name: "5G Advanced", desc: "Next-gen high-speed wireless networks." },
-      { name: "Augmented Reality", desc: "Overlaying digital info on the real world." },
-      { name: "Virtual Reality", desc: "Immersive digital environments." },
-      { name: "IoT Automation", desc: "Connected devices for smart systems." },
-      { name: "Cybersecurity AI", desc: "AI-driven threat detection and response." },
-      { name: "Neuromorphic Computing", desc: "Brain-inspired efficient processing." },
-      { name: "Sustainable Tech", desc: "Green solutions for energy and resources." },
-      { name: "Autonomous Vehicles", desc: "Self-driving transport innovations." },
-      { name: "3D Bioprinting", desc: "Printing biological tissues and organs." },
-      { name: "Spatial Computing", desc: "Merging physical and digital interactions." },
-      { name: "6G Networks", desc: "Future wireless connectivity beyond 5G." },
-      { name: "Digital Twins", desc: "Virtual replicas for real-world optimization." },
-      { name: "Hyper Automation", desc: "Advanced automation with AI and robotics." },
-      { name: "Emotion AI", desc: "Understanding human emotions via AI." },
-      { name: "Carbon Capture", desc: "Tech to reduce greenhouse gases." },
-      { name: "Advanced Robotics", desc: "Multi-functional robotic systems." },
-      { name: "Photonics", desc: "Light-based tech for computing and sensing." },
-      { name: "Metaverse", desc: "Shared virtual worlds and economies." },
-      { name: "Energy Storage", desc: "Next-gen batteries for sustainability." }
+      { name: "Quantum Computing", desc: "Revolutionary computing power using quantum mechanics to solve complex problems faster than classical computers.", image: "https://via.placeholder.com/400x200?text=Quantum+Computing" },
+      { name: "Neural Interfaces", desc: "Brain-computer integration allowing direct control of devices with thoughts.", image: "https://via.placeholder.com/400x200?text=Neural+Interfaces" },
+      { name: "Synthetic Biology", desc: "Designing and engineering biological systems for sustainable solutions.", image: "https://via.placeholder.com/400x200?text=Synthetic+Biology" },
+      { name: "Edge AI", desc: "Smart devices with local AI processing for real-time decisions.", image: "https://via.placeholder.com/400x200?text=Edge+AI" },
+      { name: "Generative AI", desc: "Creating content like text, images, and music with advanced AI models.", image: "https://via.placeholder.com/400x200?text=Generative+AI" },
+      { name: "Blockchain", desc: "Decentralized ledgers ensuring security and transparency.", image: "https://via.placeholder.com/400x200?text=Blockchain" },
+      { name: "5G Advanced", desc: "Next-gen high-speed wireless networks enhancing connectivity.", image: "https://via.placeholder.com/400x200?text=5G+Advanced" },
+      { name: "Augmented Reality", desc: "Overlaying digital information on the real world.", image: "https://via.placeholder.com/400x200?text=Augmented+Reality" },
+      { name: "Virtual Reality", desc: "Immersive digital environments for entertainment and training.", image: "https://via.placeholder.com/400x200?text=Virtual+Reality" },
+      { name: "IoT Automation", desc: "Connected devices creating smart, automated systems.", image: "https://via.placeholder.com/400x200?text=IoT+Automation" },
+      { name: "Cybersecurity AI", desc: "AI-driven systems for detecting and responding to cyber threats.", image: "https://via.placeholder.com/400x200?text=Cybersecurity+AI" },
+      { name: "Neuromorphic Computing", desc: "Brain-inspired chips for efficient computation.", image: "https://via.placeholder.com/400x200?text=Neuromorphic+Computing" },
+      { name: "Sustainable Tech", desc: "Green innovations for energy and resource efficiency.", image: "https://via.placeholder.com/400x200?text=Sustainable+Tech" },
+      { name: "Autonomous Vehicles", desc: "Self-driving cars and drones for transport.", image: "https://via.placeholder.com/400x200?text=Autonomous+Vehicles" },
+      { name: "3D Bioprinting", desc: "Printing biological tissues and organs for medical use.", image: "https://via.placeholder.com/400x200?text=3D+Bioprinting" },
+      { name: "Spatial Computing", desc: "Merging physical and digital spaces for interaction.", image: "https://via.placeholder.com/400x200?text=Spatial+Computing" },
+      { name: "6G Networks", desc: "Future wireless tech beyond 5G for ultra-low latency.", image: "https://via.placeholder.com/400x200?text=6G+Networks" },
+      { name: "Digital Twins", desc: "Virtual replicas optimizing real-world systems.", image: "https://via.placeholder.com/400x200?text=Digital+Twins" },
+      { name: "Hyper Automation", desc: "Combining AI and robotics for advanced automation.", image: "https://via.placeholder.com/400x200?text=Hyper+Automation" },
+      { name: "Emotion AI", desc: "AI that interprets and responds to human emotions.", image: "https://via.placeholder.com/400x200?text=Emotion+AI" },
+      { name: "Carbon Capture", desc: "Technologies reducing greenhouse gas emissions.", image: "https://via.placeholder.com/400x200?text=Carbon+Capture" },
+      { name: "Advanced Robotics", desc: "Multi-functional robots for industry and daily life.", image: "https://via.placeholder.com/400x200?text=Advanced+Robotics" },
+      { name: "Photonics", desc: "Light-based technologies for computing and sensing.", image: "https://via.placeholder.com/400x200?text=Photonics" },
+      { name: "Metaverse", desc: "Shared virtual worlds for social and economic interaction.", image: "https://via.placeholder.com/400x200?text=Metaverse" },
+      { name: "Energy Storage", desc: "Next-gen batteries for renewable energy.", image: "https://via.placeholder.com/400x200?text=Energy+Storage" }
     ];
 
     function populateTechTopics() {
@@ -276,12 +351,36 @@
         topic.textContent = `#${tech.name.replace(/\s+/g, '')}`;
         
         topic.addEventListener('click', () => {
-          alert(`${tech.name}\n\n${tech.desc}`);
+          openModal(tech.name, tech.desc, tech.image);
         });
         
         topicsContainer.appendChild(topic);
       });
     }
+
+    function openModal(title, desc, image) {
+      const modal = document.getElementById('techModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDesc = document.getElementById('modalDesc');
+      const modalImage = document.getElementById('modalImage');
+
+      modalTitle.textContent = title;
+      modalDesc.textContent = desc;
+      modalImage.src = image;
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('techModal');
+      modal.style.display = 'none';
+    }
+
+    // Close modal when clicking outside the content
+    document.getElementById('techModal').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('techModal')) {
+        closeModal();
+      }
+    });
 
     // Initialize the page
     window.onload = populateTechTopics;
