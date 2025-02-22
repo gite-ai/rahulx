@@ -209,37 +209,27 @@
     }
 
     .thread-icon {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       color: #00ffcc;
       cursor: pointer;
-      margin-left: 20px; /* Increased spacing */
-      transition: transform 0.3s ease, color 0.3s ease;
+      margin-left: 15px;
+      transition: color 0.3s ease;
     }
 
     .thread-icon:hover {
       color: #ff00cc;
-      transform: scale(1.2); /* Slight zoom on hover */
-    }
-
-    .icon-separator {
-      width: 4px;
-      height: 4px;
-      background: #00ffcc;
-      border-radius: 50%;
-      margin: 0 15px; /* Space between icons */
-      animation: glowPulse 1.5s infinite;
     }
 
     .search-icon {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       color: #00ffcc;
       cursor: pointer;
-      transition: transform 0.3s ease, color 0.3s ease;
+      margin-left: 15px;
+      transition: color 0.3s ease;
     }
 
     .search-icon:hover {
       color: #ff00cc;
-      transform: scale(1.2); /* Slight zoom on hover */
     }
 
     .modal-desc {
@@ -270,12 +260,6 @@
     @keyframes slideIn {
       from { transform: translateY(-50px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes glowPulse {
-      0% { box-shadow: 0 0 5px #00ffcc; }
-      50% { box-shadow: 0 0 15px #00ffcc; }
-      100% { box-shadow: 0 0 5px #00ffcc; }
     }
 
     /* Footer */
@@ -366,8 +350,7 @@
       <button class="modal-close" onclick="closeModal()">✖</button>
       <div class="modal-header">
         <h2 class="modal-title" id="modalTitle"></h2>
-        <i class="fa fa-pencil-square-o thread-icon" id="threadLink" title="View Thread"></i>
-        <span class="icon-separator"></span>
+        <i class="fa fa-comment thread-icon" id="threadLink" title="View Thread"></i>
         <i class="fa fa-search search-icon" id="searchX" title="Search on X"></i>
       </div>
       <p class="modal-desc" id="modalDesc"></p>
