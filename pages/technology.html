@@ -24,8 +24,13 @@
     }
 
     a {
-      text-decoration: none;
-      color: inherit;
+      text-decoration: underline;
+      color: #ff00cc;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #00ffcc;
     }
 
     /* Header */
@@ -186,11 +191,22 @@
       position: absolute;
       top: 10px;
       right: 10px;
-      font-size: 1.5rem;
+      font-size: 1.2rem; /* Reduced size */
       color: #00ffcc;
       cursor: pointer;
-      background: none;
+      background: rgba(0, 0, 0, 0.7); /* Added background for better click area */
       border: none;
+      width: 24px; /* Fixed size */
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      border-radius: 50%; /* Circular shape */
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background: #00ffcc;
+      color: #000;
     }
 
     .modal-header {
@@ -209,27 +225,37 @@
     }
 
     .thread-icon {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       color: #00ffcc;
       cursor: pointer;
-      margin-left: 15px;
-      transition: color 0.3s ease;
+      margin-left: 20px;
+      transition: transform 0.3s ease, color 0.3s ease;
     }
 
     .thread-icon:hover {
       color: #ff00cc;
+      transform: scale(1.2);
+    }
+
+    .icon-separator {
+      width: 4px;
+      height: 4px;
+      background: #00ffcc;
+      border-radius: 50%;
+      margin: 0 15px;
+      animation: glowPulse 1.5s infinite;
     }
 
     .search-icon {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       color: #00ffcc;
       cursor: pointer;
-      margin-left: 15px;
-      transition: color 0.3s ease;
+      transition: transform 0.3s ease, color 0.3s ease;
     }
 
     .search-icon:hover {
       color: #ff00cc;
+      transform: scale(1.2);
     }
 
     .modal-desc {
@@ -257,9 +283,34 @@
       display: block;
     }
 
+    .copy-button {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 20px;
+      background: rgba(0, 255, 204, 0.1);
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      color: #00ffcc;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .copy-button:hover {
+      background: #00ffcc;
+      color: #000;
+    }
+
     @keyframes slideIn {
       from { transform: translateY(-50px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 5px #00ffcc; }
+      50% { box-shadow: 0 0 15px #00ffcc; }
+      100% { box-shadow: 0 0 5px #00ffcc; }
     }
 
     /* Footer */
@@ -350,12 +401,14 @@
       <button class="modal-close" onclick="closeModal()">✖</button>
       <div class="modal-header">
         <h2 class="modal-title" id="modalTitle"></h2>
-        <i class="fa fa-comment thread-icon" id="threadLink" title="View Thread"></i>
+        <i class="fa fa-pencil-square-o thread-icon" id="threadLink" title="View Thread"></i>
+        <span class="icon-separator"></span>
         <i class="fa fa-search search-icon" id="searchX" title="Search on X"></i>
       </div>
       <p class="modal-desc" id="modalDesc"></p>
       <p class="modal-example" id="modalExample"></p>
       <img class="modal-image" id="modalImage" src="" alt="Tech Image">
+      <button class="copy-button" onclick="copyModalContent()">Copy Content</button>
     </div>
   </div>
 
@@ -390,7 +443,7 @@
       const searchX = document.getElementById('searchX');
 
       modalTitle.textContent = title;
-      modalDesc.textContent = desc;
+      modalDesc.innerHTML = desc; // Use innerHTML for links
       modalExample.textContent = `Example: ${example}`;
       modalImage.src = image;
       modal.style.display = 'flex';
@@ -411,6 +464,20 @@
     function closeModal() {
       const modal = document.getElementById('techModal');
       modal.style.display = 'none';
+    }
+
+    function copyModalContent() {
+      const title = document.getElementById('modalTitle').textContent;
+      const desc = document.getElementById('modalDesc').textContent; // Use textContent to strip HTML
+      const example = document.getElementById('modalExample').textContent;
+      const content = `${title}\n\n${desc}\n\n${example}`;
+      
+      navigator.clipboard.writeText(content).then(() => {
+        alert('Content copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy content:', err);
+        alert('Failed to copy content. Please try again.');
+      });
     }
 
     // Close modal when clicking outside the content
