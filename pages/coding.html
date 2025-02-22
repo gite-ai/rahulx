@@ -7,21 +7,28 @@
   <style>
     /* General Styles */
     body {
-      font-family: 'Source Code Pro', monospace;
+      font-family: 'Poppins', sans-serif; /* Updated from Source Code Pro */
       margin: 0;
       padding: 0;
       background: #0a0a0a;
       color: #00ffcc;
       overflow-x: hidden;
+      font-size: 16px; /* Base font size from technology.html */
+      line-height: 1.6; /* Improved line spacing */
+      font-weight: 400; /* Default weight */
     }
 
     h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif; /* Updated from Source Code Pro */
       margin: 0;
+      font-weight: 700; /* Bold for headings */
     }
 
     a {
       text-decoration: none;
       color: inherit;
+      font-family: 'Poppins', sans-serif; /* Ensure links use Poppins */
+      font-weight: 500; /* Matches technology.html */
     }
 
     /* Header */
@@ -35,15 +42,17 @@
     }
 
     header h1 {
-      font-size: 2.5rem;
+      font-size: 2.8rem; /* Increased from 2.5rem to match technology.html */
       text-transform: uppercase;
       animation: glow 2s infinite alternate;
+      letter-spacing: 2px; /* Added for modern look */
     }
 
     header p {
-      font-size: 1.2rem;
+      font-size: 1.3rem; /* Increased from 1.2rem */
       opacity: 0.8;
       animation: float 3s ease-in-out infinite;
+      font-weight: 300; /* Lighter weight for friendliness */
     }
 
     /* Typing Animation Section */
@@ -63,11 +72,13 @@
 
     .typing-animation pre {
       margin: 0;
-      font-size: 1.1rem;
-      line-height: 1.5;
+      font-size: 1.1rem; /* Matches technology.html general text */
+      line-height: 1.8; /* Updated from 1.5 to match technology.html */
       color: #00ffcc;
       white-space: pre-wrap;
       overflow: hidden;
+      font-family: 'Poppins', sans-serif; /* Updated from monospace */
+      font-weight: 400; /* Matches technology.html */
     }
 
     .typing-animation pre code {
@@ -103,6 +114,8 @@
       border-radius: 5px;
       cursor: pointer;
       transition: background 0.3s ease, color 0.3s ease;
+      font-size: 1.1rem; /* Matches technology.html .topic */
+      font-weight: 500; /* Matches technology.html .topic */
     }
 
     .hashtag:hover {
@@ -121,11 +134,13 @@
 
     footer p {
       margin: 0;
+      font-size: 1.1rem; /* Matches technology.html */
+      font-weight: 300; /* Matches technology.html */
     }
 
     footer a {
       color: #ff00cc;
-      font-weight: bold;
+      font-weight: 500; /* Matches technology.html */
     }
 
     footer a:hover {
@@ -160,7 +175,7 @@
       100% { background-position: 1000px 1000px; }
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Sci-Fi Background -->
@@ -189,7 +204,7 @@
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
+    <p>© 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
   </footer>
 
   <!-- JavaScript for Typing Animation -->
