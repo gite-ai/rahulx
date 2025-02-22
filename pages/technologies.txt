@@ -1,0 +1,152 @@
+[
+  {
+    "name": "Quantum Computing",
+    "desc": "Quantum computing represents a paradigm shift in computational power, leveraging the principles of quantum mechanics—such as superposition, entanglement, and interference—to process information in ways classical computers cannot. Unlike traditional bits, which represent either a 0 or a 1, quantum bits (qubits) can exist in a superposition of both states simultaneously, enabling exponential parallelism. This allows quantum computers to tackle problems like factoring large numbers, optimizing complex systems, and simulating molecular interactions at unprecedented speeds. For instance, tasks that would take classical supercomputers billions of years could potentially be solved in minutes or seconds. Companies like IBM, Google, and startups like Rigetti are pushing the boundaries, developing quantum processors with increasing qubit counts and coherence times. However, challenges like error correction, decoherence, and the need for extreme cooling (near absolute zero) remain significant hurdles. As research progresses, quantum computing could revolutionize fields such as cryptography, materials science, artificial intelligence, and drug discovery, fundamentally altering our technological landscape.",
+    "example": "Example: Google's Sycamore processor performing a calculation in 200 seconds that would take a supercomputer 10,000 years.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "Neural Interfaces",
+    "desc": "Brain-computer integration allowing direct control of devices with thoughts.",
+    "example": "Example: Neuralink's brain implant enabling a monkey to play Pong with its mind.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "Synthetic Biology",
+    "desc": "Designing and engineering biological systems for sustainable solutions.",
+    "example": "Example: Creating bacteria that produce biofuels from waste materials.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "Edge AI",
+    "desc": "Smart devices with local AI processing for real-time decisions.",
+    "example": "Example: Smart cameras detecting objects without cloud reliance.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "Generative AI",
+    "desc": "Creating content like text, images, and music with advanced AI models.",
+    "example": "Example: DALL-E generating photorealistic images from text prompts.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "Blockchain",
+    "desc": "Decentralized ledgers ensuring security and transparency.",
+    "example": "Example: Bitcoin transactions verified without a central authority.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "5G Advanced",
+    "desc": "Next-gen high-speed wireless networks enhancing connectivity.",
+    "example": "Example: Enabling real-time remote surgery with low latency.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "Augmented Reality",
+    "desc": "Overlaying digital information on the real world.",
+    "example": "Example: Pokémon GO blending virtual characters with real environments.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "Virtual Reality",
+    "desc": "Immersive digital environments for entertainment and training.",
+    "example": "Example: Oculus Quest for fully immersive gaming.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "IoT Automation",
+    "desc": "Connected devices creating smart, automated systems.",
+    "example": "Example: Smart homes adjusting lighting and temperature automatically.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "Cybersecurity AI",
+    "desc": "AI-driven systems for detecting and responding to cyber threats.",
+    "example": "Example: Darktrace detecting anomalies in network traffic.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "Neuromorphic Computing",
+    "desc": "Brain-inspired chips for efficient computation.",
+    "example": "Example: Intel's Loihi chip mimicking human neural processing.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "Sustainable Tech",
+    "desc": "Green innovations for energy and resource efficiency.",
+    "example": "Example: Solar panels made from recycled materials.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "Autonomous Vehicles",
+    "desc": "Self-driving cars and drones for transport.",
+    "example": "Example: Tesla's Full Self-Driving mode navigating roads.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "3D Bioprinting",
+    "desc": "Printing biological tissues and organs for medical use.",
+    "example": "Example: Printing a functional human heart valve.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "Spatial Computing",
+    "desc": "Merging physical and digital spaces for interaction.",
+    "example": "Example: Microsoft HoloLens for mixed reality design.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "6G Networks",
+    "desc": "Future wireless tech beyond 5G for ultra-low latency.",
+    "example": "Example: Holographic calls with near-zero delay.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "Digital Twins",
+    "desc": "Virtual replicas optimizing real-world systems.",
+    "example": "Example: Simulating a factory to improve efficiency.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "Hyper Automation",
+    "desc": "Combining AI and robotics for advanced automation.",
+    "example": "Example: Robotic process automation in warehouses.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "Emotion AI",
+    "desc": "AI that interprets and responds to human emotions.",
+    "example": "Example: Affectiva analyzing facial expressions in cars.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "Carbon Capture",
+    "desc": "Technologies reducing greenhouse gas emissions.",
+    "example": "Example: Climeworks capturing CO2 from the air.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "Advanced Robotics",
+    "desc": "Multi-functional robots for industry and daily life.",
+    "example": "Example: Boston Dynamics' Spot robot inspecting sites.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "Photonics",
+    "desc": "Light-based technologies for computing and sensing.",
+    "example": "Example: LiDAR in self-driving cars for navigation.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "Metaverse",
+    "desc": "Shared virtual worlds for social and economic interaction.",
+    "example": "Example: Meta's Horizon Worlds for virtual meetings.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  },
+  {
+    "name": "Energy Storage",
+    "desc": "Next-gen batteries for renewable energy.",
+    "example": "Example: Tesla's Megapack storing solar energy.",
+    "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
+  }
+]
