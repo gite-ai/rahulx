@@ -181,40 +181,23 @@
       width: 80%;
       max-width: 600px;
       max-height: 80vh;
-      overflow-y: auto;
-      padding: 20px;
+      padding: 0; /* Remove padding from container */
       position: relative;
+      display: flex;
+      flex-direction: column;
       animation: slideIn 0.3s ease-out;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 1.2rem; /* Reduced size */
-      color: #00ffcc;
-      cursor: pointer;
-      background: rgba(0, 0, 0, 0.7); /* Added background for better click area */
-      border: none;
-      width: 24px; /* Fixed size */
-      height: 24px;
-      line-height: 24px;
-      text-align: center;
-      border-radius: 50%; /* Circular shape */
-      transition: background 0.3s ease, color 0.3s ease;
-    }
-
-    .modal-close:hover {
-      background: #00ffcc;
-      color: #000;
     }
 
     .modal-header {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 15px;
-      position: relative;
+      padding: 15px 20px;
+      background: rgba(0, 0, 0, 0.95);
+      border-bottom: 1px solid #00ffcc;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     .modal-title {
@@ -222,6 +205,28 @@
       font-weight: 600;
       text-align: center;
       margin: 0;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.2rem;
+      color: #00ffcc;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.7);
+      border: none;
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      border-radius: 50%;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background: #00ffcc;
+      color: #000;
     }
 
     .thread-icon {
@@ -258,6 +263,12 @@
       transform: scale(1.2);
     }
 
+    .modal-body {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto; /* Only this section scrolls */
+    }
+
     .modal-desc {
       font-size: 1.1rem;
       line-height: 1.8;
@@ -283,23 +294,28 @@
       display: block;
     }
 
+    .modal-footer {
+      padding: 15px 20px;
+      background: rgba(0, 0, 0, 0.95);
+      border-top: 1px solid #00ffcc;
+      position: sticky;
+      bottom: 0;
+      z-index: 10;
+      text-align: right;
+    }
+
     .copy-button {
-      display: block;
-      margin: 20px auto 0;
-      padding: 10px 20px;
-      background: rgba(0, 255, 204, 0.1);
-      border: 1px solid #00ffcc;
-      border-radius: 5px;
+      background: none;
+      border: none;
       color: #00ffcc;
-      font-size: 1rem;
-      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
       cursor: pointer;
-      transition: background 0.3s ease, color 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
 
     .copy-button:hover {
-      background: #00ffcc;
-      color: #000;
+      color: #ff00cc;
+      transform: scale(1.2);
     }
 
     @keyframes slideIn {
@@ -398,17 +414,23 @@
   <!-- Modal (Popup) -->
   <div class="modal" id="techModal">
     <div class="modal-content">
-      <button class="modal-close" onclick="closeModal()">✖</button>
       <div class="modal-header">
         <h2 class="modal-title" id="modalTitle"></h2>
         <i class="fa fa-pencil-square-o thread-icon" id="threadLink" title="View Thread"></i>
         <span class="icon-separator"></span>
         <i class="fa fa-search search-icon" id="searchX" title="Search on X"></i>
+        <button class="modal-close" onclick="closeModal()">✖</button>
       </div>
-      <p class="modal-desc" id="modalDesc"></p>
-      <p class="modal-example" id="modalExample"></p>
-      <img class="modal-image" id="modalImage" src="" alt="Tech Image">
-      <button class="copy-button" onclick="copyModalContent()">Copy Content</button>
+      <div class="modal-body">
+        <p class="modal-desc" id="modalDesc"></p>
+        <p class="modal-example" id="modalExample"></p>
+        <img class="modal-image" id="modalImage" src="" alt="Tech Image">
+      </div>
+      <div class="modal-footer">
+        <button class="copy-button" onclick="copyModalContent()" title="Copy Content">
+          <i class="fa fa-copy"></i>
+        </button>
+      </div>
     </div>
   </div>
 
