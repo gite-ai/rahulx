@@ -1,6 +1,6 @@
 [
   {
-    "name": "Quantum Computing",
+    "name": " X2 Quantum Computing",
     "desc": "Quantum computing represents a paradigm shift in computational power, leveraging the principles of quantum mechanics—such as superposition, entanglement, and interference—to process information in ways classical computers cannot. Unlike traditional bits, which represent either a 0 or a 1, quantum bits (qubits) can exist in a superposition of both states simultaneously, enabling exponential parallelism. This allows quantum computers to tackle problems like factoring large numbers, optimizing complex systems, and simulating molecular interactions at unprecedented speeds. For instance, tasks that would take classical supercomputers billions of years could potentially be solved in minutes or seconds. Companies like IBM, Google, and startups like Rigetti are pushing the boundaries, developing quantum processors with increasing qubit counts and coherence times. However, challenges like error correction, decoherence, and the need for extreme cooling (near absolute zero) remain significant hurdles. As research progresses, quantum computing could revolutionize fields such as cryptography, materials science, artificial intelligence, and drug discovery, fundamentally altering our technological landscape.",
     "example": "Example: Google's Sycamore processor performing a calculation in 200 seconds that would take a supercomputer 10,000 years.",
     "image": "https://cdn.britannica.com/84/203584-050-57D326E5/speed-internet-technology-background.jpg"
