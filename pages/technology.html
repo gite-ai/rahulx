@@ -7,20 +7,20 @@
   <style>
     /* General Styles */
     body {
-      font-family: 'Poppins', sans-serif; /* User-friendly body font */
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
       background: #0a0a0a;
       color: #00ffcc;
       overflow-x: hidden;
-      font-size: 16px; /* Base font size for readability */
-      line-height: 1.6; /* Improved line spacing */
+      font-size: 16px;
+      line-height: 1.6;
     }
 
     h1, h2, h3 {
-      font-family: 'Montserrat', sans-serif; /* Engaging heading font */
+      font-family: 'Montserrat', sans-serif;
       margin: 0;
-      font-weight: 700; /* Bold for emphasis */
+      font-weight: 700;
     }
 
     a {
@@ -39,17 +39,17 @@
     }
 
     header h1 {
-      font-size: 2.8rem; /* Slightly larger for impact */
+      font-size: 2.8rem;
       text-transform: uppercase;
       animation: glow 2s infinite alternate;
-      letter-spacing: 2px; /* Spacing for a modern look */
+      letter-spacing: 2px;
     }
 
     header p {
-      font-size: 1.3rem; /* Larger for readability */
+      font-size: 1.3rem;
       opacity: 0.8;
       animation: float 3s ease-in-out infinite;
-      font-weight: 300; /* Lighter weight for friendliness */
+      font-weight: 300;
     }
 
     /* Tech Animation Section */
@@ -85,18 +85,10 @@
       transform-origin: center;
     }
 
-    .particle-1 {
-      animation: orbit1 6s linear infinite;
-    }
-    .particle-2 {
-      animation: orbit2 5s linear infinite reverse;
-    }
-    .particle-3 {
-      animation: orbit3 4s linear infinite;
-    }
-    .particle-4 {
-      animation: orbit4 7s linear infinite reverse;
-    }
+    .particle-1 { animation: orbit1 6s linear infinite; }
+    .particle-2 { animation: orbit2 5s linear infinite reverse; }
+    .particle-3 { animation: orbit3 4s linear infinite; }
+    .particle-4 { animation: orbit4 7s linear infinite reverse; }
 
     .core {
       position: absolute;
@@ -148,14 +140,14 @@
     }
 
     .topic {
-      padding: 12px 24px; /* Slightly larger padding */
+      padding: 12px 24px;
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
       border-radius: 5px;
       cursor: pointer;
       transition: background 0.3s ease, color 0.3s ease;
-      font-size: 1.1rem; /* Larger for readability */
-      font-weight: 500; /* Medium weight for balance */
+      font-size: 1.1rem;
+      font-weight: 500;
     }
 
     .topic:hover {
@@ -201,26 +193,46 @@
       border: none;
     }
 
-    .modal-title {
-      font-size: 2rem; /* Larger for emphasis */
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin-bottom: 15px;
+      position: relative;
+    }
+
+    .modal-title {
+      font-size: 2rem;
+      font-weight: 600;
       text-align: center;
-      font-weight: 600; /* Slightly less bold for friendliness */
+      margin: 0;
+    }
+
+    .search-icon {
+      font-size: 1.5rem;
+      color: #00ffcc;
+      cursor: pointer;
+      margin-left: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .search-icon:hover {
+      color: #ff00cc; /* Hover effect for engagement */
     }
 
     .modal-desc {
-      font-size: 1.1rem; /* Slightly larger for readability */
-      line-height: 1.8; /* More spacing for comfort */
+      font-size: 1.1rem;
+      line-height: 1.8;
       margin-bottom: 20px;
-      font-weight: 400; /* Regular weight for ease */
+      font-weight: 400;
     }
 
     .modal-example {
-      font-size: 1rem; /* Slightly larger */
-      line-height: 1.6; /* Comfortable spacing */
+      font-size: 1rem;
+      line-height: 1.6;
       margin-bottom: 20px;
       font-style: italic;
-      color: #b0fff0; /* Slightly muted cyan for contrast */
+      color: #b0fff0;
     }
 
     .modal-image {
@@ -249,13 +261,13 @@
 
     footer p {
       margin: 0;
-      font-size: 1.1rem; /* Larger for readability */
-      font-weight: 300; /* Lighter for friendliness */
+      font-size: 1.1rem;
+      font-weight: 300;
     }
 
     footer a {
       color: #ff00cc;
-      font-weight: 500; /* Medium weight for emphasis */
+      font-weight: 500;
     }
 
     footer a:hover {
@@ -291,6 +303,7 @@
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
   <!-- Sci-Fi Background -->
@@ -323,7 +336,10 @@
   <div class="modal" id="techModal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal()">✖</button>
-      <h2 class="modal-title" id="modalTitle"></h2>
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <i class="fa fa-search search-icon" id="searchX" title="Search on X"></i>
+      </div>
       <p class="modal-desc" id="modalDesc"></p>
       <p class="modal-example" id="modalExample"></p>
       <img class="modal-image" id="modalImage" src="" alt="Tech Image">
@@ -357,12 +373,20 @@
       const modalDesc = document.getElementById('modalDesc');
       const modalExample = document.getElementById('modalExample');
       const modalImage = document.getElementById('modalImage');
+      const searchX = document.getElementById('searchX');
 
       modalTitle.textContent = title;
       modalDesc.textContent = desc;
       modalExample.textContent = `Example: ${example}`;
       modalImage.src = image;
       modal.style.display = 'flex';
+
+      // Add click event to search icon
+      searchX.onclick = function() {
+        const searchQuery = encodeURIComponent(title);
+        const xSearchUrl = `https://x.com/search?q=${searchQuery}`;
+        window.open(xSearchUrl, '_blank');
+      };
     }
 
     function closeModal() {
@@ -387,7 +411,7 @@
           return response.text();
         })
         .then(data => {
-          const technologies = JSON.parse(data); // Parse the JSON text into an array
+          const technologies = JSON.parse(data);
           populateTechTopics(technologies);
         })
         .catch(error => {
