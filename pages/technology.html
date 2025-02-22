@@ -364,9 +364,9 @@
       }
     });
 
-    // Fetch data from technologies.txt and initialize the page
+    // Fetch data from technology.txt and initialize the page
     window.onload = function() {
-      fetch('technologies.txt')
+      fetch('technology.txt')
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -378,7 +378,7 @@
           populateTechTopics(technologies);
         })
         .catch(error => {
-          console.error('Error loading technologies.txt:', error);
+          console.error('Error loading technology.txt:', error);
           alert('Failed to load technology data. Please check the console for details.');
         });
     };
