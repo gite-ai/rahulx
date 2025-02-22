@@ -208,6 +208,18 @@
       margin: 0;
     }
 
+    .thread-icon {
+      font-size: 1.5rem;
+      color: #00ffcc;
+      cursor: pointer;
+      margin-left: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .thread-icon:hover {
+      color: #ff00cc;
+    }
+
     .search-icon {
       font-size: 1.5rem;
       color: #00ffcc;
@@ -217,7 +229,7 @@
     }
 
     .search-icon:hover {
-      color: #ff00cc; /* Hover effect for engagement */
+      color: #ff00cc;
     }
 
     .modal-desc {
@@ -338,6 +350,7 @@
       <button class="modal-close" onclick="closeModal()">✖</button>
       <div class="modal-header">
         <h2 class="modal-title" id="modalTitle"></h2>
+        <i class="fa fa-comment thread-icon" id="threadLink" title="View Thread"></i>
         <i class="fa fa-search search-icon" id="searchX" title="Search on X"></i>
       </div>
       <p class="modal-desc" id="modalDesc"></p>
@@ -360,19 +373,20 @@
         topic.textContent = `#${tech.name.replace(/\s+/g, '')}`;
         
         topic.addEventListener('click', () => {
-          openModal(tech.name, tech.desc, tech.example, tech.image);
+          openModal(tech.name, tech.desc, tech.example, tech.image, tech.thread);
         });
         
         topicsContainer.appendChild(topic);
       });
     }
 
-    function openModal(title, desc, example, image) {
+    function openModal(title, desc, example, image, thread) {
       const modal = document.getElementById('techModal');
       const modalTitle = document.getElementById('modalTitle');
       const modalDesc = document.getElementById('modalDesc');
       const modalExample = document.getElementById('modalExample');
       const modalImage = document.getElementById('modalImage');
+      const threadLink = document.getElementById('threadLink');
       const searchX = document.getElementById('searchX');
 
       modalTitle.textContent = title;
@@ -380,6 +394,11 @@
       modalExample.textContent = `Example: ${example}`;
       modalImage.src = image;
       modal.style.display = 'flex';
+
+      // Add click event to thread icon
+      threadLink.onclick = function() {
+        window.open(thread, '_blank');
+      };
 
       // Add click event to search icon
       searchX.onclick = function() {
