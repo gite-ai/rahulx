@@ -26,7 +26,546 @@
 
     /* Header */
     header {
+      position: relative;<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahulx.com - Formula 1 Hub</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Poppins', sans-serif; /* Updated from Orbitron */
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      color: #00ffcc;
+      overflow-x: hidden;
+      font-size: 16px; /* Base font size from technology.html */
+      line-height: 1.6; /* Improved line spacing */
+      font-weight: 400; /* Default weight */
+    }
+
+    h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif; /* Updated from Orbitron */
+      margin: 0;
+      font-weight: 700; /* Bold for headings */
+    }
+
+    a {
+      text-decoration: underline;
+      color: #ff00cc;
+      transition: color 0.3s ease;
+      font-family: 'Poppins', sans-serif; /* Ensure links use Poppins */
+      font-weight: 500; /* Matches technology.html */
+    }
+
+    a:hover {
+      color: #00ffcc;
+    }
+
+    /* Header */
+    header {
       position: relative;
+      background: radial-gradient(circle, #001f3f, #000);
+      color: #00ffcc;
+      padding: 40px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header h1 {
+      font-size: 2.8rem; /* Increased from 2.5rem to match technology.html */
+      text-transform: uppercase;
+      animation: glow 2s infinite alternate;
+      letter-spacing: 2px; /* Added for modern look */
+    }
+
+    header p {
+      font-size: 1.3rem; /* Increased from 1.2rem */
+      opacity: 0.8;
+      animation: float 3s ease-in-out infinite;
+      font-weight: 300; /* Lighter weight for friendliness */
+    }
+
+    /* Racing Track Container */
+    .racing-track {
+      position: relative;
+      width: 90%;
+      max-width: 1200px;
+      height: 400px;
+      margin: 40px auto;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    /* Curved Road */
+    .road {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      background: repeating-linear-gradient(
+        to right,
+        #00ffcc 0%,
+        #00ffcc 50%,
+        transparent 50%,
+        transparent 100%
+      );
+      background-size: 20px 2px;
+      animation: moveTrack 2s linear infinite;
+      transform: translateY(-50%);
+    }
+
+    .road.curve {
+      border-radius: 50%;
+      width: 200px;
+      height: 400px;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @keyframes moveTrack {
+      0% { transform: translateY(-50%) translateX(0); }
+      100% { transform: translateY(-50%) translateX(-20px); }
+    }
+
+    /* Racing Cars */
+    .racing-car {
+      position: absolute;
+      width: 50px;
+      height: 25px;
+      background: url('https://i.imgur.com/7W0mz9A.jpg') center/cover;
+      animation: race 5s linear infinite;
+    }
+
+    @keyframes race {
+      0% { left: -50px; }
+      100% { left: 100%; }
+    }
+
+    /* Car Positions */
+    .car-1 { top: 10%; animation-duration: 6s; }
+    .car-2 { top: 20%; animation-duration: 5.5s; }
+    .car-3 { top: 30%; animation-duration: 5s; }
+    .car-4 { top: 40%; animation-duration: 4.5s; }
+    .car-5 { top: 50%; animation-duration: 4s; }
+    .car-6 { top: 60%; animation-duration: 3.5s; }
+    .car-7 { top: 70%; animation-duration: 3s; }
+    .car-8 { top: 80%; animation-duration: 2.5s; }
+    .car-9 { top: 90%; animation-duration: 2s; }
+    .car-10 { top: 100%; animation-duration: 1.5s; }
+
+    /* Trending Hashtags */
+    .hashtags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+    }
+
+    .hashtag {
+      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+      font-size: 1.1rem; /* Matches technology.html */
+      font-weight: 500; /* Matches technology.html */
+    }
+
+    .hashtag:hover {
+      background: #00ffcc;
+      color: #000;
+    }
+
+    /* Modal (Popup) Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: rgba(0, 0, 0, 0.9);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 600px;
+      max-height: 80vh;
+      padding: 0;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 20px;
+      background: rgba(0, 0, 0, 0.95);
+      border-bottom: 1px solid #00ffcc;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .modal-title {
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: center;
+      margin: 0;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.2rem;
+      color: #00ffcc;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.7);
+      border: none;
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      border-radius: 50%;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background: #00ffcc;
+      color: #000;
+    }
+
+    .thread-icon {
+      font-size: 1.6rem;
+      color: #00ffcc;
+      cursor: pointer;
+      margin-left: 20px;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .thread-icon:hover {
+      color: #ff00cc;
+      transform: scale(1.2);
+    }
+
+    .icon-separator {
+      width: 4px;
+      height: 4px;
+      background: #00ffcc;
+      border-radius: 50%;
+      margin: 0 15px;
+      animation: glowPulse 1.5s infinite;
+    }
+
+    .search-icon {
+      font-size: 1.6rem;
+      color: #00ffcc;
+      cursor: pointer;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .search-icon:hover {
+      color: #ff00cc;
+      transform: scale(1.2);
+    }
+
+    .modal-body {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .modal-desc {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+
+    .modal-example {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      font-style: italic;
+      color: #b0fff0;
+    }
+
+    .modal-image {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      margin: 10px auto;
+      display: block;
+    }
+
+    .modal-footer {
+      padding: 15px 20px;
+      background: rgba(0, 0, 0, 0.95);
+      border-top: 1px solid #00ffcc;
+      position: sticky;
+      bottom: 0;
+      z-index: 10;
+      text-align: right;
+    }
+
+    .copy-button {
+      background: none;
+      border: none;
+      color: #00ffcc;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .copy-button:hover {
+      color: #ff00cc;
+      transform: scale(1.2);
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 5px #00ffcc; }
+      50% { box-shadow: 0 0 15px #00ffcc; }
+      100% { box-shadow: 0 0 5px #00ffcc; }
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: #00ffcc;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 1.1rem; /* Matches technology.html */
+      font-weight: 300; /* Matches technology.html */
+    }
+
+    footer a {
+      color: #ff00cc;
+      font-weight: 500; /* Matches technology.html */
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
+      100% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Sci-Fi Background */
+    .sci-fi-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle, #001f3f, #000);
+      animation: stars 10s infinite linear;
+    }
+
+    @keyframes stars {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <!-- Sci-Fi Background -->
+  <div class="sci-fi-bg"></div>
+
+  <!-- Header -->
+  <header>
+    <h1>Welcome to the Formula 1 Hub</h1>
+    <p>Where Speed Meets Precision</p>
+  </header>
+
+  <!-- Racing Track with Curves -->
+  <div class="racing-track">
+    <!-- Straight Road -->
+    <div class="road"></div>
+    <!-- Curved Road -->
+    <div class="road curve"></div>
+    <!-- Racing Cars -->
+    <div class="racing-car car-1"></div>
+    <div class="racing-car car-2"></div>
+    <div class="racing-car car-3"></div>
+    <div class="racing-car car-4"></div>
+    <div class="racing-car car-5"></div>
+    <div class="racing-car car-6"></div>
+    <div class="racing-car car-7"></div>
+    <div class="racing-car car-8"></div>
+    <div class="racing-car car-9"></div>
+    <div class="racing-car car-10"></div>
+  </div>
+
+  <!-- Trending Hashtags -->
+  <div class="hashtags" id="hashtags">
+    <!-- Hashtags will be added dynamically -->
+  </div>
+
+  <!-- Modal (Popup) -->
+  <div class="modal" id="formula1Modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <i class="fa fa-pencil-square-o thread-icon" id="threadLink" title="View Thread"></i>
+        <span class="icon-separator"></span>
+        <i class="fa fa-search search-icon" id="searchX" title="Search on X"></i>
+        <button class="modal-close" onclick="closeModal()">✖</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc" id="modalDesc"></p>
+        <p class="modal-example" id="modalExample"></p>
+        <img class="modal-image" id="modalImage" src="" alt="Formula 1 Image">
+      </div>
+      <div class="modal-footer">
+        <button class="copy-button" onclick="copyModalContent()" title="Copy Content">
+          <i class="fa fa-copy"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+    // Modal Functions
+    function populateHashtags(hashtags) {
+      const hashtagsContainer = document.getElementById('hashtags');
+      hashtags.forEach(hashtag => {
+        const tag = document.createElement('div');
+        tag.className = 'hashtag';
+        tag.textContent = `#${hashtag.name.replace(/\s+/g, '')}`;
+        
+        tag.addEventListener('click', () => {
+          openModal(hashtag.name, hashtag.desc, hashtag.example, hashtag.image, hashtag.thread);
+        });
+        
+        hashtagsContainer.appendChild(tag);
+      });
+    }
+
+    function openModal(title, desc, example, image, thread) {
+      const modal = document.getElementById('formula1Modal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDesc = document.getElementById('modalDesc');
+      const modalExample = document.getElementById('modalExample');
+      const modalImage = document.getElementById('modalImage');
+      const threadLink = document.getElementById('threadLink');
+      const searchX = document.getElementById('searchX');
+
+      modalTitle.textContent = title;
+      modalDesc.innerHTML = desc;
+      modalExample.textContent = `Example: ${example}`;
+      modalImage.src = image;
+      modal.style.display = 'flex';
+
+      threadLink.onclick = function() {
+        window.open(thread, '_blank');
+      };
+
+      searchX.onclick = function() {
+        const searchQuery = encodeURIComponent(title);
+        const xSearchUrl = `https://x.com/search?q=${searchQuery}`;
+        window.open(xSearchUrl, '_blank');
+      };
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('formula1Modal');
+      modal.style.display = 'none';
+    }
+
+    function copyModalContent() {
+      const title = document.getElementById('modalTitle').textContent;
+      const desc = document.getElementById('modalDesc').textContent;
+      const example = document.getElementById('modalExample').textContent;
+      const content = `${title}\n\n${desc}\n\n${example}`;
+      
+      navigator.clipboard.writeText(content).then(() => {
+        alert('Content copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy content:', err);
+        alert('Failed to copy content. Please try again.');
+      });
+    }
+
+    document.getElementById('formula1Modal').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('formula1Modal')) {
+        closeModal();
+      }
+    });
+
+    // Fetch data from texts/formula1.txt
+    window.onload = function() {
+      fetch('texts/formula1.txt')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(data => {
+          const hashtags = JSON.parse(data);
+          populateHashtags(hashtags);
+        })
+        .catch(error => {
+          console.error('Error loading texts/formula1.txt:', error);
+          alert('Failed to load hashtag data. Please check the console for details.');
+        });
+    };
+  </script>
+</body>
+</html>
       background: radial-gradient(circle, #001f3f, #000);
       color: #00ffcc;
       padding: 40px 0;
