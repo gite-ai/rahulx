@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Ocean",
+    "desc": "The vast body of saltwater covering most of Earth’s surface.",
+    "example": "Exploring the Pacific Ocean’s depths.",
+    "image": "https://images.unsplash.com/photo-1506748686214",
+    "thread": "https://x.com/threads/placeholder_ocean"
+  },
+  {
+    "name": "MarineLife",
+    "desc": "The diverse organisms living in the ocean, from fish to coral.",
+    "example": "Observing a coral reef ecosystem.",
+    "image": "https://th.bing.com/th/id/OIP.Q8n8mY7e8Z8",
+    "thread": "https://x.com/threads/placeholder_marinelife"
+  },
+  {
+    "name": "Conservation",
+    "desc": "Efforts to protect and preserve ocean ecosystems.",
+    "example": "Cleaning up a polluted beach.",
+    "image": "https://images.unsplash.com/photo-1590283603385",
+    "thread": "https://x.com/threads/placeholder_conservation"
+  },
+  {
+    "name": "BluePlanet",
+    "desc": "Earth’s nickname, highlighting its ocean-dominated surface.",
+    "example": "Watching a documentary about ocean currents.",
+    "image": "https://th.bing.com/th/id/OIP.NrYbs9hurY9",
+    "thread": "https://x.com/threads/placeholder_blueplanet"
+  },
+  {
+    "name": "SaveOurOceans",
+    "desc": "A movement to combat ocean pollution and climate impact.",
+    "example": "Joining a campaign against plastic waste.",
+    "image": "https://images.unsplash.com/photo-150213424912",
+    "thread": "https://x.com/threads/placeholder_saveouroceans"
+  },
+  {
+    "name": "ClimateChange",
+    "desc": "The impact of global warming on ocean temperatures and ecosystems.",
+    "example": "Studying coral bleaching events.",
+    "image": "https://th.bing.com/th/id/OIP.6X5gRUI8kna",
+    "thread": "https://x.com/threads/placeholder_climatechange"
+  },
+  {
+    "name": "Sustainability",
+    "desc": "Practices to maintain ocean health for future generations.",
+    "example": "Supporting sustainable fishing methods.",
+    "image": "https://images.unsplash.com/photo-146480268616",
+    "thread": "https://x.com/threads/placeholder_sustainability"
+  },
+  {
+    "name": "DeepSea",
+    "desc": "The mysterious, largely unexplored depths of the ocean.",
+    "example": "Discovering a new species in the Mariana Trench.",
+    "image": "https://th.bing.com/th/id/OIP.7QfGZoJZQJ7",
+    "thread": "https://x.com/threads/placeholder_deepsea"
+  }
+]
