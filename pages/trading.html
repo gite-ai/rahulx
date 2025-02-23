@@ -7,21 +7,33 @@
   <style>
     /* General Styles */
     body {
-      font-family: 'Source Code Pro', monospace;
+      font-family: 'Poppins', sans-serif; /* Updated from Source Code Pro */
       margin: 0;
       padding: 0;
       background: #0a0a0a;
       color: #00ffcc;
       overflow-x: hidden;
+      font-size: 16px; /* Base font size from technology.html */
+      line-height: 1.6; /* Improved line spacing */
+      font-weight: 400; /* Default weight */
     }
 
     h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif; /* Updated from Source Code Pro */
       margin: 0;
+      font-weight: 700; /* Bold for headings */
     }
 
     a {
-      text-decoration: none;
-      color: inherit;
+      text-decoration: underline;
+      color: #ff00cc;
+      transition: color 0.3s ease;
+      font-family: 'Poppins', sans-serif; /* Ensure links use Poppins */
+      font-weight: 500; /* Matches technology.html */
+    }
+
+    a:hover {
+      color: #00ffcc;
     }
 
     /* Header */
@@ -35,15 +47,17 @@
     }
 
     header h1 {
-      font-size: 2.5rem;
+      font-size: 2.8rem; /* Increased from 2.5rem to match technology.html */
       text-transform: uppercase;
       animation: glow 2s infinite alternate;
+      letter-spacing: 2px; /* Added for modern look */
     }
 
     header p {
-      font-size: 1.2rem;
+      font-size: 1.3rem; /* Increased from 1.2rem */
       opacity: 0.8;
       animation: float 3s ease-in-out infinite;
+      font-weight: 300; /* Lighter weight for friendliness */
     }
 
     /* Trading Chart Animation */
@@ -106,47 +120,202 @@
 
     /* Trading Categories */
     .categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
       padding: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
       width: 90%;
       max-width: 1200px;
-      margin: 0 auto;
+      margin: 40px auto;
     }
 
     .category-card {
+      padding: 10px 20px;
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
-      border-radius: 10px;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+      font-size: 1.1rem; /* Matches technology.html */
+      font-weight: 500; /* Matches technology.html */
     }
 
     .category-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
-    }
-
-    .category-card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-    }
-
-    .category-card h3 {
-      padding: 15px;
-      font-size: 1.5rem;
-      text-align: center;
-      background: linear-gradient(135deg, #00ffcc, #0099cc);
+      background: #00ffcc;
       color: #000;
+    }
+
+    /* Modal (Popup) Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: rgba(0, 0, 0, 0.9);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 600px;
+      max-height: 80vh;
+      padding: 0;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 20px;
+      background: rgba(0, 0, 0, 0.95);
+      border-bottom: 1px solid #00ffcc;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .modal-title {
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: center;
       margin: 0;
     }
 
-    .category-card p {
-      padding: 15px;
-      text-align: center;
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.2rem;
       color: #00ffcc;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.7);
+      border: none;
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      border-radius: 50%;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background: #00ffcc;
+      color: #000;
+    }
+
+    .thread-icon {
+      font-size: 1.6rem;
+      color: #00ffcc;
+      cursor: pointer;
+      margin-left: 20px;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .thread-icon:hover {
+      color: #ff00cc;
+      transform: scale(1.2);
+    }
+
+    .icon-separator {
+      width: 4px;
+      height: 4px;
+      background: #00ffcc;
+      border-radius: 50%;
+      margin: 0 15px;
+      animation: glowPulse 1.5s infinite;
+    }
+
+    .search-icon {
+      font-size: 1.6rem;
+      color: #00ffcc;
+      cursor: pointer;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .search-icon:hover {
+      color: #ff00cc;
+      transform: scale(1.2);
+    }
+
+    .modal-body {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .modal-desc {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+
+    .modal-example {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      font-style: italic;
+      color: #b0fff0;
+    }
+
+    .modal-image {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      margin: 10px auto;
+      display: block;
+    }
+
+    .modal-footer {
+      padding: 15px 20px;
+      background: rgba(0, 0, 0, 0.95);
+      border-top: 1px solid #00ffcc;
+      position: sticky;
+      bottom: 0;
+      z-index: 10;
+      text-align: right;
+    }
+
+    .copy-button {
+      background: none;
+      border: none;
+      color: #00ffcc;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .copy-button:hover {
+      color: #ff00cc;
+      transform: scale(1.2);
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 5px #00ffcc; }
+      50% { box-shadow: 0 0 15px #00ffcc; }
+      100% { box-shadow: 0 0 5px #00ffcc; }
     }
 
     /* Footer */
@@ -160,11 +329,13 @@
 
     footer p {
       margin: 0;
+      font-size: 1.1rem; /* Matches technology.html */
+      font-weight: 300; /* Matches technology.html */
     }
 
     footer a {
       color: #ff00cc;
-      font-weight: bold;
+      font-weight: 500; /* Matches technology.html */
     }
 
     footer a:hover {
@@ -199,7 +370,8 @@
       100% { background-position: 1000px 1000px; }
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
   <!-- Sci-Fi Background -->
@@ -229,34 +401,126 @@
 
   <!-- Trading Categories -->
   <section>
-    <h2 style="text-align: center; margin: 20px 0;">Explore Trading Topics</h2>
-    <div class="categories">
-      <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Stocks">
-        <h3>Stocks</h3>
-        <p>Invest in the future of companies.</p>
-      </div>
-      <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Crypto">
-        <h3>Crypto</h3>
-        <p>Explore the world of digital currencies.</p>
-      </div>
-      <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Forex">
-        <h3>Forex</h3>
-        <p>Trade global currencies.</p>
-      </div>
-      <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Commodities">
-        <h3>Commodities</h3>
-        <p>Invest in gold, oil, and more.</p>
-      </div>
+    <h2 style="text-align: center; margin: 20px 0; font-weight: 600;">Explore Trading Topics</h2>
+    <div class="categories" id="categories">
+      <!-- Categories will be added dynamically -->
     </div>
   </section>
 
+  <!-- Modal (Popup) -->
+  <div class="modal" id="tradingModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <i class="fa fa-pencil-square-o thread-icon" id="threadLink" title="View Thread"></i>
+        <span class="icon-separator"></span>
+        <i class="fa fa-search search-icon" id="searchX" title="Search on X"></i>
+        <button class="modal-close" onclick="closeModal()">✖</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc" id="modalDesc"></p>
+        <p class="modal-example" id="modalExample"></p>
+        <img class="modal-image" id="modalImage" src="" alt="Trading Image">
+      </div>
+      <div class="modal-footer">
+        <button class="copy-button" onclick="copyModalContent()" title="Copy Content">
+          <i class="fa fa-copy"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
+    <p>© 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
   </footer>
+
+  <script>
+    // Modal Functions
+    function populateCategories(categories) {
+      const categoriesContainer = document.getElementById('categories');
+      categories.forEach(category => {
+        const card = document.createElement('div');
+        card.className = 'category-card';
+        card.textContent = `#${category.name.replace(/\s+/g, '')}`;
+        
+        card.addEventListener('click', () => {
+          openModal(category.name, category.desc, category.example, category.image, category.thread);
+        });
+        
+        categoriesContainer.appendChild(card);
+      });
+    }
+
+    function openModal(title, desc, example, image, thread) {
+      const modal = document.getElementById('tradingModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDesc = document.getElementById('modalDesc');
+      const modalExample = document.getElementById('modalExample');
+      const modalImage = document.getElementById('modalImage');
+      const threadLink = document.getElementById('threadLink');
+      const searchX = document.getElementById('searchX');
+
+      modalTitle.textContent = title;
+      modalDesc.innerHTML = desc;
+      modalExample.textContent = `Example: ${example}`;
+      modalImage.src = image;
+      modal.style.display = 'flex';
+
+      threadLink.onclick = function() {
+        window.open(thread, '_blank');
+      };
+
+      searchX.onclick = function() {
+        const searchQuery = encodeURIComponent(title);
+        const xSearchUrl = `https://x.com/search?q=${searchQuery}`;
+        window.open(xSearchUrl, '_blank');
+      };
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('tradingModal');
+      modal.style.display = 'none';
+    }
+
+    function copyModalContent() {
+      const title = document.getElementById('modalTitle').textContent;
+      const desc = document.getElementById('modalDesc').textContent;
+      const example = document.getElementById('modalExample').textContent;
+      const content = `${title}\n\n${desc}\n\n${example}`;
+      
+      navigator.clipboard.writeText(content).then(() => {
+        alert('Content copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy content:', err);
+        alert('Failed to copy content. Please try again.');
+      });
+    }
+
+    document.getElementById('tradingModal').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('tradingModal')) {
+        closeModal();
+      }
+    });
+
+    // Fetch data from texts/trading.txt
+    window.onload = function() {
+      fetch('texts/trading.txt')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(data => {
+          const categories = JSON.parse(data);
+          populateCategories(categories);
+        })
+        .catch(error => {
+          console.error('Error loading texts/trading.txt:', error);
+          alert('Failed to load category data. Please check the console for details.');
+        });
+    };
+  </script>
 </body>
 </html>
