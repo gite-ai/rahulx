@@ -7,28 +7,21 @@
   <style>
     /* General Styles */
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Orbitron', sans-serif;
       margin: 0;
       padding: 0;
       background: #0a0a0a;
       color: #00ffcc;
       overflow-x: hidden;
-      font-size: 16px;
-      line-height: 1.6;
-      font-weight: 400;
     }
 
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Montserrat', sans-serif;
+    h1, h2, h3 {
       margin: 0;
-      font-weight: 700;
     }
 
     a {
       text-decoration: none;
       color: inherit;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 500;
     }
 
     /* Header */
@@ -42,17 +35,15 @@
     }
 
     header h1 {
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       text-transform: uppercase;
       animation: glow 2s infinite alternate;
-      letter-spacing: 2px;
     }
 
     header p {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       opacity: 0.8;
       animation: float 3s ease-in-out infinite;
-      font-weight: 300;
     }
 
     /* Date and Time Box */
@@ -62,9 +53,9 @@
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
       border-radius: 10px;
-      width: 400px;
+      width: 400px; /* Adjusted width to fit Tools card */
       text-align: center;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: #00ffcc;
       box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
       display: flex;
@@ -95,7 +86,7 @@
 
     .datetime-box .tools-card a {
       color: #00ffcc;
-      font-weight: 500;
+      font-weight: bold;
     }
 
     .datetime-box .tools-card a:hover {
@@ -131,7 +122,6 @@
       height: 30px;
       font-size: 1.2rem;
       cursor: pointer;
-      font-family: 'Poppins', sans-serif;
     }
 
     .popup .close-btn:hover {
@@ -154,8 +144,6 @@
       cursor: pointer;
       padding: 10px;
       transition: color 0.3s ease;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 400;
     }
 
     .tool-tabs button.active {
@@ -189,7 +177,6 @@
       display: block;
       margin: 10px 0 5px;
       font-size: 1.1rem;
-      font-weight: 400;
     }
 
     .calculator input {
@@ -201,8 +188,6 @@
       background: rgba(0, 0, 0, 0.8);
       color: #00ffcc;
       font-size: 1rem;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 400;
     }
 
     .calculator button {
@@ -214,8 +199,6 @@
       border-radius: 5px;
       cursor: pointer;
       transition: background 0.3s ease;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 500;
     }
 
     .calculator button:hover {
@@ -225,13 +208,11 @@
     .calculator .result {
       margin-top: 20px;
       font-size: 1.2rem;
-      font-weight: 400;
     }
 
     .calculator #details {
       margin-top: 20px;
       font-size: 1rem;
-      font-weight: 400;
     }
 
     .calculator #details ul {
@@ -265,7 +246,6 @@
       right: 20px;
       z-index: 1000;
       color: #00ffcc;
-      font-family: 'Poppins', sans-serif;
     }
 
     nav {
@@ -281,7 +261,6 @@
       margin: 0 20px;
       font-size: 1.1rem;
       transition: color 0.3s ease;
-      font-weight: 500;
     }
 
     nav a:hover {
@@ -312,7 +291,7 @@
         background: rgba(0, 0, 0, 0.9);
         backdrop-filter: blur(10px);
         transition: right 0.3s ease;
-        z-index: 999;
+        z-index: 999; /* Ensure nav is above other content */
       }
 
       nav.active {
@@ -342,7 +321,7 @@
       max-width: 1200px;
       margin: 40px auto;
       position: relative;
-      z-index: 1;
+      z-index: 1; /* Ensure content is below the nav */
     }
 
     .categories {
@@ -378,16 +357,12 @@
       background: linear-gradient(135deg, #00ffcc, #0099cc);
       color: #000;
       margin: 0;
-      font-weight: 600;
     }
 
     .category-card p {
       padding: 15px;
       text-align: center;
       color: #00ffcc;
-      font-size: 1.1rem;
-      line-height: 1.8;
-      font-weight: 400;
     }
 
     /* Footer */
@@ -398,18 +373,16 @@
       padding: 20px 0;
       margin-top: 60px;
       position: relative;
-      z-index: 1;
+      z-index: 1; /* Ensure footer is below the nav */
     }
 
     footer p {
       margin: 0;
-      font-size: 1.1rem;
-      font-weight: 300;
     }
 
     footer a {
       color: #ff00cc;
-      font-weight: 500;
+      font-weight: bold;
     }
 
     footer a:hover {
@@ -456,14 +429,14 @@
       }
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Sci-Fi Background -->
   <div class="sci-fi-bg"></div>
 
   <!-- Hamburger Menu Icon -->
-  <div class="menu-icon" id="menu-icon">☰</div>
+  <div class="menu-icon" id="menu-icon">&#9776;</div>
 
   <!-- Header -->
   <header>
@@ -485,12 +458,12 @@
   <!-- Popup Window -->
   <div class="overlay" id="overlay"></div>
   <div class="popup" id="popup">
-    <button class="close-btn" id="close-btn">×</button>
+    <button class="close-btn" id="close-btn">&times;</button>
     <div class="tool-tabs">
       <button class="tab-btn active" data-tool="tax">Tax Calculator</button>
       <a href="https://www.rahulx.com/debt_matrix" target="_blank">
-        <button class="tab-btn" data-tool="debt">Debt Calculator</button>
-      </a>
+  <button class="tab-btn" data-tool="debt">Debt Calculator</button>
+</a>
     </div>
     <div class="tool-content active" id="tax">
       <div class="calculator">
@@ -501,12 +474,15 @@
         <div class="result" id="tax-result"></div>
       </div>
     </div>
+	
+	
     <div class="tool-content" id="debt">
       <div class="calculator">
         <div class="debt-matrix-header">
           <h3 class="cyber-glow">DEBT MATRIX ANALYZER</h3>
           <div class="holographic-line"></div>
         </div>
+
         <div id="creditor-list">
           <div class="creditor-item">
             <div class="cyber-form">
@@ -514,28 +490,37 @@
                 <label class="neon-label">Creditor Name:</label>
                 <input type="text" class="cyber-input" placeholder="Enter name">
               </div>
+              
               <div class="cyber-grid">
                 <div class="input-group">
                   <label class="neon-label">Monthly EMI (₹):</label>
                   <input type="number" class="cyber-input" placeholder="EMI Amount">
                 </div>
+                
                 <div class="input-group">
                   <label class="neon-label">Total EMIs:</label>
                   <input type="number" class="cyber-input" placeholder="Total Months">
                 </div>
+                
                 <div class="input-group">
                   <label class="neon-label">EMIs Paid:</label>
                   <input type="number" class="cyber-input" placeholder="Paid Months">
                 </div>
               </div>
             </div>
+   
           </div>
         </div>
+
         <div class="matrix-controls">
+
           <div style="text-align: center;">
-            <button class="cyber-button" onclick="calculateDebt()">INITIATE ANALYSIS</button>
-          </div>
+  <button class="cyber-button" onclick="calculateDebt()">
+    INITIATE ANALYSIS
+  </button>
+</div>
         </div>
+
         <div class="matrix-results">
           <div class="holographic-display">
             <div class="result-row">
@@ -547,6 +532,7 @@
               <span class="glowing-amount" id="total-payable">₹0.00</span>
             </div>
           </div>
+
           <div class="debt-table-container">
             <table class="matrix-table">
               <thead>
@@ -568,7 +554,11 @@
       </div>
     </div>
   </div>
-
+  
+  
+    
+  
+  
   <!-- Navigation -->
   <nav id="nav">
     <a href="https://www.rahulx.com/about">About</a>
@@ -607,7 +597,6 @@
           <h3>Gaming</h3>
           <p>Dive into the world of sci-fi gaming.</p>
         </a>
-
         <!-- Category 5 -->
         <a href="https://www.rahulx.com/pages/ethics" class="category-card">
           <img src="https://i0.wp.com/manypossibilities.net/wp-content/uploads/2014/03/paradox-300x175.jpg?resize=300%2C175" alt="Ethics">
@@ -635,27 +624,53 @@
           <h3>Netflix</h3>
           <p>Discover the best shows and movies to watch.</p>
         </a>
+		
 
-        <!-- Category 9 -->
+		 <!-- Category 9 -->
         <a href="https://www.rahulx.com/pages/f1" class="category-card">
-          <img src="https://th.bing.com/th/id/OIP.tfdvlJCaBk3XryBKaNF1VwAAAA?rs=1&pid=ImgDetMain" alt="Sports">
+          <img src="https://th.bing.com/th/id/OIP.tfdvlJCaBk3XryBKaNF1VwAAAA?rs=1&pid=ImgDetMain " alt="Sports">
           <h3>Formula 1</h3>
           <p>"Where Speed Meets Precision. The Ultimate Race."</p>
         </a>
-
-        <!-- Category 10 -->
+			 <!-- Category 10 -->
+        <a href="https://www.rahulx.com/pages/body_hacks" class="category-card">
+          <img src=" https://i0.wp.com/personalityspirituality.net/wp-content/uploads/2009/07/image.jpg" alt="Body Hacks">
+          <h3>Body Hacks</h3>
+          <p>"Simple Hacks for a Stronger, Healthier You."</p>
+        </a>
+			 <!-- Category 11-->
+        <a href="https://www.rahulx.com/pages/how_to_succeed" class="category-card">
+          <img src="https://www.mciinstitute.edu.au/hubfs/The%20Four%20D%E2%80%99s%20of%20Success%20-%20sucess.png " alt="How to Succeed">
+          <h3>How to Succeed</h3>
+          <p>Unlock Your Potential. Redefine Success</p>
+        </a>
+			 <!-- Category 12 -->
         <a href="https://www.rahulx.com/pages/deep_oceans" class="category-card">
-          <img src="https://img.buzzfeed.com/buzzfeed-static/static/2021-07/27/16/asset/afa87cd093b8/sub-buzz-669-1627403352-9.jpg" alt="Oceans">
+          <img src=" https://img.buzzfeed.com/buzzfeed-static/static/2021-07/27/16/asset/afa87cd093b8/sub-buzz-669-1627403352-9.jpg " alt="Oceans">
           <h3>Deep Oceans</h3>
           <p>Dive into the Unknown. Discover the Depths of Wonder</p>
         </a>
+			 <!-- Category 13-->
+        <a href="https://www.rahulx.com/pages/political_ideologies" class="category-card">
+          <img src="https://newamericangovernment.org/wp-content/uploads/2022/07/5caa71b4811434f717e7b2d8079cf1ce.webp" alt="">
+          <h3>Political Ideologies</h3>
+          <p>"From Left to Right and Beyond: Navigating the Ideas That Define Our World."  </p>
+        </a>
+		
+			 <!-- Category 13-->
+        <a href="https://www.rahulx.com/pages/paranormal" class="category-card">
+          <img src="https://traviswhitecommunications.com/wp-content/uploads/2013/11/creepy.jpg" alt="">
+          <h3>Paranormal</h3>
+          <p>"Where Reality Meets the Unseen: Unraveling the Mysteries of the Paranormal"  </p>
+        </a>
+		
       </div>
     </section>
   </div>
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
+    <p>&copy; 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
   </footer>
 
   <!-- JavaScript for Hamburger Menu, Interactive Effects, Date/Time, and Popup -->
@@ -699,19 +714,19 @@
     const closeBtn = document.getElementById('close-btn');
 
     toolsCard.addEventListener('click', (e) => {
-      e.preventDefault();
-      popup.style.display = 'block';
-      overlay.style.display = 'block';
+      e.preventDefault(); // Prevent default link behavior
+      popup.style.display = 'block'; // Show the popup
+      overlay.style.display = 'block'; // Show the overlay
     });
 
     closeBtn.addEventListener('click', () => {
-      popup.style.display = 'none';
-      overlay.style.display = 'none';
+      popup.style.display = 'none'; // Hide the popup
+      overlay.style.display = 'none'; // Hide the overlay
     });
 
     overlay.addEventListener('click', () => {
-      popup.style.display = 'none';
-      overlay.style.display = 'none';
+      popup.style.display = 'none'; // Hide the popup
+      overlay.style.display = 'none'; // Hide the overlay
     });
 
     // Tool Tabs Functionality
@@ -720,9 +735,11 @@
 
     tabButtons.forEach(button => {
       button.addEventListener('click', () => {
+        // Remove active class from all buttons and contents
         tabButtons.forEach(btn => btn.classList.remove('active'));
         toolContents.forEach(content => content.classList.remove('active'));
 
+        // Add active class to the clicked button and corresponding content
         button.classList.add('active');
         const toolId = button.getAttribute('data-tool');
         document.getElementById(toolId).classList.add('active');
@@ -835,6 +852,7 @@
       document.getElementById('total-payable').textContent = `₹${totalPayable.toFixed(2)}`;
       document.getElementById('debt-details').innerHTML = detailsHTML;
     }
+
   </script>
 </body>
 </html>
