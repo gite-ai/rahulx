@@ -1,0 +1,4 @@
+[
+  { "name": "BTC", "image": "https://cdn.pixabay.com/photo/2023/08/28/22/08/ai-generated-8220159_640.jpg" },
+  { "name": "ETH", "image": "https://example.com/eth.png" }
+]
