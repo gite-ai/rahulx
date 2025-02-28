@@ -639,7 +639,7 @@
         const index = Math.round((mouseX - margin.left) / scaleX);
         if (index >= 0 && index < chartData.length) {
           const price = chartData[index].close;
-          const months = ['Apr', 'Jun', 'Aug', 'Oct', 'Dec', 'Feb', 'Mar'];
+          const months = ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct'];
           const timeIndex = Math.round((index / (chartData.length - 1)) * (months.length - 1));
           const time = months[timeIndex] || '';
 
