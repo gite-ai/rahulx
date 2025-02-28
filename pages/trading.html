@@ -67,7 +67,7 @@
       max-width: 800px;
       height: 500px;
       margin: 40px auto;
-      background: rgba(0, 0, 0, 0.6);
+      background: #0a0a0a;
       border: 1px solid #00ffcc;
       border-radius: 10px;
       overflow: hidden;
@@ -82,19 +82,19 @@
       height: 100%;
       background: repeating-linear-gradient(
         to bottom,
-        rgba(0, 255, 204, 0.1),
-        rgba(0, 255, 204, 0.1) 50px,
-        transparent 50px,
-        transparent 100px
+        rgba(0, 255, 204, 0.05),
+        rgba(0, 255, 204, 0.05) 40px,
+        transparent 40px,
+        transparent 80px
       ), repeating-linear-gradient(
         to right,
-        rgba(0, 255, 204, 0.1),
-        rgba(0, 255, 204, 0.1) 50px,
-        transparent 50px,
-        transparent 100px
+        rgba(0, 255, 204, 0.05),
+        rgba(0, 255, 204, 0.05) 40px,
+        transparent 40px,
+        transparent 80px
       );
       z-index: 1;
-      pointer-events: none; /* Allow interaction with chart */
+      pointer-events: none;
     }
 
     .trading-header {
@@ -103,7 +103,7 @@
       left: 10px;
       display: flex;
       align-items: center;
-      z-index: 2;
+      z-index: 3;
     }
 
     .crypto-name {
@@ -145,8 +145,8 @@
       justify-content: flex-start;
       overflow: hidden;
       white-space: nowrap;
-      animation: scrollCandles 20s infinite linear;
-      z-index: 2; /* Above grid */
+      animation: scrollCandles 60s infinite linear; /* Adjusted for 1-minute candles */
+      z-index: 2;
     }
 
     .candle {
@@ -162,21 +162,21 @@
       position: absolute;
       bottom: 0;
       width: 100%;
-      background: linear-gradient(135deg, #00ffcc, #0099cc);
+      background: linear-gradient(135deg, #26a69a, #00796b); /* Darker green for bullish */
       border-radius: 2px;
       transition: height 1s ease-in-out, bottom 1s ease-in-out;
-      box-shadow: 0 0 5px rgba(0, 255, 204, 0.3);
+      box-shadow: 0 0 2px rgba(0, 255, 204, 0.3);
     }
 
     .candle-body.bearish {
-      background: linear-gradient(135deg, #ff4444, #990000);
+      background: linear-gradient(135deg, #ef5350, #b71c1c); /* Darker red for bearish */
     }
 
     .candle-wick {
       position: absolute;
       left: 50%;
-      width: 2px;
-      background: #ff00cc;
+      width: 1px; /* Thinner wicks like TradingView */
+      background: #ff00cc; /* Pink wicks */
       transform: translateX(-50%);
       opacity: 0.8;
       transition: height 1s ease-in-out;
@@ -191,13 +191,34 @@
       top: 100%;
     }
 
+    /* Price Line and Timer */
+    .price-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: calc(100% - 60px);
+      height: 1px;
+      background: #ff0000; /* Red price line */
+      z-index: 2;
+      transition: bottom 1s ease-in-out;
+    }
+
+    .timer {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1rem;
+      color: #00ffcc;
+      z-index: 3;
+    }
+
     /* Axis Styles */
     .x-axis, .y-axis {
       position: absolute;
       color: #00ffcc;
       font-size: 0.8rem;
       font-family: 'Poppins', sans-serif;
-      z-index: 2; /* Above grid */
+      z-index: 2;
     }
 
     .x-axis {
@@ -487,15 +508,18 @@
           <option value="4h">4 Hours</option>
           <option value="15m">15 Minutes</option>
           <option value="5m">5 Minutes</option>
+          <option value="1m">1 Minute</option> <!-- New 1-minute option -->
         </select>
       </div>
     </div>
     <div class="candle-container" id="candleContainer"></div>
+    <div class="price-line" id="priceLine"></div>
+    <div class="timer" id="timer">00:60</div>
     <div class="x-axis" id="xAxis">
-      <span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span>
+      <span>07:00</span><span>07:15</span><span>07:30</span><span>07:45</span><span>08:00</span><span>08:15</span><span>08:30</span><span>08:45</span><span>09:00</span><span>09:15</span><span>09:30</span><span>09:45</span><span>10:00</span><span>10:15</span><span>10:30</span><span>10:45</span><span>11:00</span>
     </div>
     <div class="y-axis" id="yAxis">
-      <span>120K</span><span>110K</span><span>100K</span><span>90K</span><span>80K</span><span>70K</span><span>60K</span><span>50K</span><span>40K</span>
+      <span>356,000</span><span>352,000</span><span>348,000</span><span>344,000</span><span>340,000</span><span>336,000</span><span>332,000</span><span>328,000</span><span>324,000</span><span>320,000</span><span>316,000</span><span>312,000</span><span>308,000</span><span>304,000</span><span>300,000</span><span>296,000</span>
     </div>
   </div>
 
@@ -538,7 +562,7 @@
   </footer>
 
   <script>
-    // Static Bitcoin data
+    // Static Bitcoin data for 1-minute intervals (simplified)
     const btcData = {
       '1d': [
         { close: 60500 }, { close: 61500 }, { close: 62500 }, { close: 64000 }, { close: 65500 },
@@ -553,17 +577,26 @@
       ],
       '5m': [
         { close: 60005 }, { close: 60010 }
+      ],
+      '1m': [
+        { close: 356000 }, { close: 355500 }, { close: 354800 }, { close: 353200 }, { close: 352500 },
+        { close: 351800 }, { close: 350200 }, { close: 349500 }, { close: 348800 }, { close: 347200 },
+        { close: 346500 }, { close: 345800 }, { close: 344200 }, { close: 343500 }, { close: 342800 },
+        { close: 341200 }, { close: 340500 }, { close: 339800 }, { close: 338200 }, { close: 337500 }
       ]
     };
 
     const container = document.getElementById('candleContainer');
+    const priceLine = document.getElementById('priceLine');
+    const timerElement = document.getElementById('timer');
     let candles = [];
-    let currentTimeframe = '1d';
-    let lastClose = 60000;
+    let currentTimeframe = '1m'; // Default to 1-minute
+    let lastClose = 356000; // Start at the top price from the image
+    let timer = 60; // 60 seconds for 1-minute candle
 
     function createCandle(openPrice, closePrice) {
       const maxHeight = 460;
-      const priceRange = 72000;
+      const priceRange = 60000; // 356,000 - 296,000 = 60,000 range
       const scale = maxHeight / priceRange;
 
       const range = Math.abs(closePrice - openPrice) || 100;
@@ -581,7 +614,7 @@
       const body = document.createElement('div');
       body.className = `candle-body ${closePrice > openPrice ? 'bullish' : 'bearish'}`;
       const bodyHeight = Math.abs(closePrice - openPrice) * scale;
-      const bodyBottom = (Math.min(openPrice, closePrice) - 48000) * scale;
+      const bodyBottom = (356000 - Math.min(openPrice, closePrice)) * scale / (priceRange / maxHeight); // Adjust for 296,000-356,000 range
 
       body.style.height = `${bodyHeight}px`;
       body.style.bottom = `${bodyBottom}px`;
@@ -611,7 +644,7 @@
 
       const latestCandle = candles[candles.length - 1];
       const data = btcData[currentTimeframe];
-      const dataPointIndex = Math.floor(Date.now() / 1000) % data.length; // Slower index change
+      const dataPointIndex = Math.floor(Date.now() / 1000) % data.length;
       const dataPoint = data[dataPointIndex];
       const openPrice = parseFloat(latestCandle.dataset.open);
       const closePrice = dataPoint.close;
@@ -626,7 +659,7 @@
         : Math.min(openPrice, closePrice) - (range * Math.random()) - 100;
 
       const maxHeight = 460;
-      const priceRange = 72000;
+      const priceRange = 60000;
       const scale = maxHeight / priceRange;
 
       const body = latestCandle.querySelector('.candle-body');
@@ -634,7 +667,7 @@
       const wickBottom = latestCandle.querySelector('.candle-wick-bottom');
 
       const bodyHeight = Math.abs(closePrice - openPrice) * scale;
-      const bodyBottom = (Math.min(openPrice, closePrice) - 48000) * scale;
+      const bodyBottom = (356000 - Math.min(openPrice, closePrice)) * scale / (priceRange / maxHeight);
       body.style.height = `${bodyHeight}px`;
       body.style.bottom = `${bodyBottom}px`;
       body.className = `candle-body ${closePrice > openPrice ? 'bullish' : 'bearish'}`;
@@ -645,6 +678,9 @@
       latestCandle.dataset.close = closePrice;
       latestCandle.dataset.high = high;
       latestCandle.dataset.low = low;
+
+      // Update price line
+      updatePriceLine(closePrice);
     }
 
     function addNewCandle() {
@@ -654,7 +690,7 @@
       }
 
       const data = btcData[currentTimeframe];
-      const dataPointIndex = Math.floor(Date.now() / 1000) % data.length;
+      const dataPointIndex = Math.floor(Date.now() / 60) % data.length; // 1-minute intervals
       const dataPoint = data[dataPointIndex];
       const openPrice = lastClose;
       const closePrice = dataPoint.close;
@@ -662,14 +698,37 @@
       container.appendChild(newCandle);
       candles.push(newCandle);
       lastClose = closePrice;
+
+      // Update price line with the new close price
+      updatePriceLine(closePrice);
+    }
+
+    function updatePriceLine(price) {
+      const maxHeight = 460;
+      const priceRange = 60000;
+      const scale = maxHeight / priceRange;
+      const bottom = (356000 - price) * scale / (priceRange / maxHeight);
+      priceLine.style.bottom = `${bottom}px`;
+    }
+
+    function updateTimer() {
+      timer--;
+      if (timer <= 0) {
+        timer = 60; // Reset to 60 seconds for 1-minute candle
+        addNewCandle(); // Generate new candle
+      }
+      const minutes = Math.floor(timer / 60);
+      const seconds = timer % 60;
+      timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     }
 
     function updateTimeframe() {
       currentTimeframe = document.getElementById('timeframe').value;
       candles = [];
       container.innerHTML = '';
-      lastClose = 60000;
-      for (let i = 0; i < 20; i++) { // Fixed initial load for consistency
+      lastClose = 356000; // Reset to top price
+      timer = 60; // Reset timer
+      for (let i = 0; i < 20; i++) {
         const data = btcData[currentTimeframe];
         const dataPoint = data[i % data.length];
         const openPrice = lastClose;
@@ -679,20 +738,25 @@
         candles.push(newCandle);
         lastClose = closePrice;
       }
+      updatePriceLine(lastClose); // Set initial price line
+      clearInterval(timerInterval); // Clear existing timer
+      timerInterval = setInterval(updateTimer, 1000); // Start new timer for 1s updates
     }
+
+    let timerInterval = setInterval(updateTimer, 1000); // Initial timer setup
 
     window.onload = function() {
       updateTimeframe();
       let phase = 0;
       setInterval(() => {
-        if (phase === 0) {
+        if (phase === 0 && currentTimeframe === '1m') {
           updateLatestCandle();
           phase = 1;
-        } else {
-          addNewCandle();
+        } else if (currentTimeframe === '1m') {
+          // No new candle until timer resets (handled by updateTimer)
           phase = 0;
         }
-      }, 1000); // Fixed interval for smoother animation
+      }, 30000); // Update every 30s for 1m to simulate partial candle growth
 
       fetch('texts/trading.txt')
         .then(response => {
