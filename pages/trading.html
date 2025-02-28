@@ -65,7 +65,7 @@
       position: relative;
       width: 90%;
       max-width: 800px;
-      height: 400px;
+      height: 500px; /* Increased height for taller candles */
       margin: 40px auto;
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
@@ -73,11 +73,35 @@
       overflow: hidden;
     }
 
+    .timeframe-selector {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 1rem;
+      color: #00ffcc;
+    }
+
+    .timeframe-selector select {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      color: #00ffcc;
+      padding: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .timeframe-selector select:hover, .timeframe-selector select:focus {
+      background: #00ffcc;
+      color: #000;
+    }
+
     .candle-container {
       position: absolute;
       bottom: 40px; /* Space for x-axis */
-      left: 40px; /* Space for y-axis */
-      width: calc(100% - 80px);
+      left: 0;
+      right: 60px; /* Space for y-axis on right */
+      width: calc(100% - 60px);
       height: calc(100% - 40px);
       display: flex;
       align-items: flex-end;
@@ -136,20 +160,20 @@
 
     .x-axis {
       bottom: 5px;
-      left: 40px;
-      width: calc(100% - 80px);
+      left: 0;
+      width: 100%;
       display: flex;
       justify-content: space-between;
     }
 
     .y-axis {
       top: 0;
-      left: 5px;
+      right: 5px;
       height: calc(100% - 40px);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      text-align: right;
+      text-align: left;
     }
 
     /* Trading Hashtags */
@@ -392,10 +416,12 @@
       100% { background-position: 1000px 1000px; }
     }
 
-    @keyframes scrollCandles {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
+   @keyframes scrollCandles {
+  0% { transform: translateX(0); } /* Start at right */
+  100% { transform: translateX(-100%); } /* Move to left */
+}
+
+
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -410,8 +436,16 @@
     <p>Where Markets Meet Innovation</p>
   </header>
 
-  <!-- Trading Animation Section -->
+  <!-- Trading Animation Section with Timeframe Selector -->
   <div class="trading-animation">
+    <div class="timeframe-selector">
+      <select id="timeframe" onchange="updateTimeframe()">
+        <option value="1d">1 Day</option>
+        <option value="4h">4 Hours</option>
+        <option value="15m">15 Minutes</option>
+        <option value="5m">5 Minutes</option>
+      </select>
+    </div>
     <div class="candle-container" id="candleContainer"></div>
     <div class="x-axis" id="xAxis">
       <span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span>
@@ -458,30 +492,51 @@
   </footer>
 
   <script>
-    // Static Bitcoin 1D data (April 2024 to May 2025, based on reference chart)
-    const btcData = [
-      { date: "2024-04-01", open: 60000, high: 61000, low: 59000, close: 60500 },
-      { date: "2024-05-01", open: 60500, high: 62000, low: 59500, close: 61500 },
-      { date: "2024-06-01", open: 61500, high: 63000, low: 60500, close: 62500 },
-      { date: "2024-07-01", open: 62500, high: 64500, low: 62000, close: 64000 },
-      { date: "2024-08-01", open: 64000, high: 66000, low: 63500, close: 65500 },
-      { date: "2024-09-01", open: 65500, high: 67000, low: 65000, close: 66000 }, // Consolidation
-      { date: "2024-10-01", open: 66000, high: 67500, low: 65500, close: 66500 },
-      { date: "2024-11-01", open: 66500, high: 68000, low: 64500, close: 65000 }, // Start of drop
-      { date: "2024-12-01", open: 65000, high: 65500, low: 62000, close: 62500 },
-      { date: "2025-01-01", open: 62500, high: 63000, low: 59000, close: 59500 },
-      { date: "2025-02-01", open: 59500, high: 60500, low: 58000, close: 59000 },
-      { date: "2025-03-01", open: 59000, high: 61000, low: 58500, close: 60000 },
-      { date: "2025-04-01", open: 60000, high: 62000, low: 59500, close: 61000 },
-      { date: "2025-05-01", open: 61000, high: 63000, low: 60500, close: 62000 }
-    ];
+    // Static Bitcoin data for different timeframes (April 2024 to May 2025, simplified)
+    const btcData = {
+      '1d': [
+        { date: "2024-04-01", open: 60000, high: 61000, low: 59000, close: 60500, pattern: 'normal' }, // Normal
+        { date: "2024-05-01", open: 60500, high: 62000, low: 59500, close: 61500, pattern: 'normal' },
+        { date: "2024-06-01", open: 61500, high: 63000, low: 60500, close: 62500, pattern: 'normal' },
+        { date: "2024-07-01", open: 62500, high: 64500, low: 62000, close: 64000, pattern: 'normal' }, // Uptrend
+        { date: "2024-08-01", open: 64000, high: 66000, low: 63500, close: 65500, pattern: 'shooting_star' }, // Shooting Star (small body, long upper wick)
+        { date: "2024-09-01", open: 65500, high: 67000, low: 65000, close: 66000, pattern: 'doji' }, // Doji (open ≈ close, small body)
+        { date: "2024-10-01", open: 66000, high: 67500, low: 65500, close: 66500, pattern: 'normal' }, // Consolidation
+        { date: "2024-11-01", open: 66500, high: 68000, low: 64500, close: 65000, pattern: 'hammer' }, // Hammer (small body, long lower wick)
+        { date: "2024-12-01", open: 65000, high: 65500, low: 62000, close: 62500, pattern: 'normal' }, // Drop
+        { date: "2025-01-01", open: 62500, high: 63000, low: 59000, close: 59500, pattern: 'inverted_hammer' }, // Inverted Hammer (small body, long upper wick)
+        { date: "2025-02-01", open: 59500, high: 60500, low: 58000, close: 59000, pattern: 'normal' },
+        { date: "2025-03-01", open: 59000, high: 61000, low: 58500, close: 60000, pattern: 'normal' },
+        { date: "2025-04-01", open: 60000, high: 62000, low: 59500, close: 61000, pattern: 'normal' },
+        { date: "2025-05-01", open: 61000, high: 63000, low: 60500, close: 62000, pattern: 'normal' }
+      ],
+      '4h': [
+        // Simplified 4-hour data (more frequent, smaller moves)
+        { date: "2024-04-01 00:00", open: 60000, high: 60100, low: 59900, close: 60050, pattern: 'normal' },
+        { date: "2024-04-01 04:00", open: 60050, high: 60200, low: 59950, close: 60100, pattern: 'normal' },
+        // ... (add more for each 4-hour interval, ~6 per day for 14 months)
+      ],
+      '15m': [
+        // Simplified 15-minute data (very frequent, small moves)
+        { date: "2024-04-01 00:00", open: 60000, high: 60020, low: 59980, close: 60010, pattern: 'normal' },
+        { date: "2024-04-01 00:15", open: 60010, high: 60030, low: 59990, close: 60020, pattern: 'normal' },
+        // ... (add more for each 15-minute interval, ~96 per day for 14 months)
+      ],
+      '5m': [
+        // Simplified 5-minute data (most frequent, tiny moves)
+        { date: "2024-04-01 00:00", open: 60000, high: 60010, low: 59990, close: 60005, pattern: 'normal' },
+        { date: "2024-04-01 00:05", open: 60005, high: 60015, low: 59995, close: 60010, pattern: 'normal' },
+        // ... (add more for each 5-minute interval, ~288 per day for 14 months)
+      ]
+    };
 
     const container = document.getElementById('candleContainer');
     let candles = [];
+    let currentTimeframe = '1d';
 
     function createCandle(dataPoint) {
-      const { open, high, low, close } = dataPoint;
-      const maxHeight = 360; // Chart height - 40px for axis
+      const { open, high, low, close, pattern } = dataPoint;
+      const maxHeight = 460; // Increased height for taller candles (500px total - 40px for axis)
       const priceRange = 72000; // $48K to $120K range
       const scale = maxHeight / priceRange;
 
@@ -490,8 +545,31 @@
 
       const body = document.createElement('div');
       body.className = `candle-body ${close > open ? 'bullish' : 'bearish'}`;
-      const bodyHeight = Math.abs(close - open) * scale;
-      const bodyBottom = (Math.min(open, close) - 48000) * scale; // Offset from $48K base
+      let bodyHeight, bodyBottom;
+
+      // Adjust for candlestick patterns
+      switch (pattern) {
+        case 'shooting_star': // Small body, long upper wick
+          bodyHeight = Math.abs(close - open) * 0.3 * scale; // Small body
+          bodyBottom = (Math.min(open, close) - 48000) * scale;
+          break;
+        case 'hammer': // Small body, long lower wick
+          bodyHeight = Math.abs(close - open) * 0.3 * scale; // Small body
+          bodyBottom = (Math.min(open, close) - 48000) * scale;
+          break;
+        case 'doji': // Open ≈ Close, very small body
+          bodyHeight = Math.abs(close - open) * 0.1 * scale; // Tiny body
+          bodyBottom = ((open + close) / 2 - 48000) * scale;
+          break;
+        case 'inverted_hammer': // Small body, long upper wick
+          bodyHeight = Math.abs(close - open) * 0.3 * scale; // Small body
+          bodyBottom = (Math.min(open, close) - 48000) * scale;
+          break;
+        default: // Normal candle
+          bodyHeight = Math.abs(close - open) * scale;
+          bodyBottom = (Math.min(open, close) - 48000) * scale;
+      }
+
       body.style.height = `${bodyHeight}px`;
       body.style.bottom = `${bodyBottom}px`;
 
@@ -510,23 +588,50 @@
     }
 
     function updateCandles() {
-      if (candles.length >= 14) { // Match the chart’s visible timeframe
+      if (candles.length >= 14) { // Match the chart’s visible timeframe for 1d
         container.removeChild(candles.shift()); // Remove oldest candle
       }
-      const dataPoint = btcData[Math.floor(Date.now() / 2000) % btcData.length]; // Loop through data every 2s
+      const data = btcData[currentTimeframe];
+      const dataPoint = data[Math.floor(Date.now() / (currentTimeframe === '1d' ? 2000 : currentTimeframe === '4h' ? 500 : currentTimeframe === '15m' ? 200 : 100)) % data.length];
       const newCandle = createCandle(dataPoint);
       container.appendChild(newCandle);
       candles.push(newCandle);
       container.scrollLeft = container.scrollWidth; // Auto-scroll to latest candle
     }
 
-    // Initial candles
-    for (let i = 0; i < 14; i++) {
-      updateCandles();
+    function updateTimeframe() {
+      currentTimeframe = document.getElementById('timeframe').value;
+      candles = []; // Clear existing candles
+      container.innerHTML = ''; // Reset container
+      for (let i = 0; i < (currentTimeframe === '1d' ? 14 : currentTimeframe === '4h' ? 42 : currentTimeframe === '15m' ? 96 : 288); i++) { // Approx visible candles
+        updateCandles();
+      }
     }
 
-    // Update every 2 seconds to simulate daily updates
-    setInterval(updateCandles, 2000);
+    // Initial candles (1-day timeframe)
+    window.onload = function() {
+      updateTimeframe(); // Initial setup with 1-day data
+      setInterval(updateCandles, currentTimeframe === '1d' ? 2000 : currentTimeframe === '4h' ? 500 : currentTimeframe === '15m' ? 200 : 100); // Adjust update speed
+
+      // Fetch data from texts/trading.txt
+      fetch('texts/trading.txt')
+        .then(response => {
+          if (!response.ok) throw new Error('Network response was not ok');
+          return response.text();
+        })
+        .then(data => {
+          const hashtags = JSON.parse(data);
+          if (!hashtags || hashtags.length === 0) {
+            document.getElementById('hashtags').innerHTML = '<p>No trading topics available.</p>';
+            return;
+          }
+          populateHashtags(hashtags);
+        })
+        .catch(error => {
+          console.error('Error loading texts/trading.txt:', error);
+          document.getElementById('hashtags').innerHTML = '<p>Failed to load hashtags. Please try again later.</p>';
+        });
+    };
 
     // Modal Functions
     function populateHashtags(hashtags) {
@@ -596,27 +701,6 @@
         closeModal();
       }
     });
-
-    // Fetch data from texts/trading.txt
-    window.onload = function() {
-      fetch('texts/trading.txt')
-        .then(response => {
-          if (!response.ok) throw new Error('Network response was not ok');
-          return response.text();
-        })
-        .then(data => {
-          const hashtags = JSON.parse(data);
-          if (!hashtags || hashtags.length === 0) {
-            document.getElementById('hashtags').innerHTML = '<p>No trading topics available.</p>';
-            return;
-          }
-          populateHashtags(hashtags);
-        })
-        .catch(error => {
-          console.error('Error loading texts/trading.txt:', error);
-          document.getElementById('hashtags').innerHTML = '<p>Failed to load hashtags. Please try again later.</p>';
-        });
-    };
   </script>
 </body>
 </html>
