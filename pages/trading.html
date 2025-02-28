@@ -111,7 +111,7 @@
       height: 100%;
     }
 
-    /* Axis Styles (unchanged) */
+    /* Axis Styles */
     .x-axis, .y-axis {
       position: absolute;
       color: #00ffcc;
@@ -121,8 +121,8 @@
 
     .x-axis {
       bottom: 5px;
-      left: 0;
-      width: 100%;
+      left: 50px; /* Match left margin */
+      width: calc(100% - 110px); /* Adjusted for margins */
       display: flex;
       justify-content: space-between;
     }
@@ -135,6 +135,21 @@
       flex-direction: column;
       justify-content: space-between;
       text-align: left;
+    }
+
+    .gear-icon {
+      position: absolute;
+      bottom: 5px;
+      right: 10px;
+      font-size: 1.2rem;
+      color: #00ffcc;
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .gear-icon:hover {
+      color: #ff00cc;
+      transform: rotate(90deg);
     }
 
     /* Trading Hashtags (unchanged) */
@@ -404,11 +419,12 @@
       <canvas id="lineChart"></canvas>
     </div>
     <div class="x-axis" id="xAxis">
-      <span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>  ⚙️  </span>
+      <span>Apr</span><span>Jun</span><span>Aug</span><span>Oct</span><span>Dec</span><span>Feb</span><span>Apr</span>
     </div>
     <div class="y-axis" id="yAxis">
       <span>120K</span><span>110K</span><span>100K</span><span>90K</span><span>80K</span><span>70K</span><span>60K</span><span>50K</span><span>40K</span>
     </div>
+    <i class="fa fa-gear gear-icon" title="Settings"></i>
   </div>
 
   <!-- Trading Hashtags -->
@@ -472,39 +488,53 @@
     const ctx = canvas.getContext('2d');
     let chartData = [];
     let currentTimeframe = '1d';
+    let mouseX = null;
+    let mouseY = null;
 
     function drawLineChart() {
       const width = canvas.width = canvas.offsetWidth;
       const height = canvas.height = canvas.offsetHeight;
 
-      // Define margins for zooming out
+      // Define margins
       const margin = { top: 50, right: 50, bottom: 50, left: 50 };
       const plotWidth = width - margin.left - margin.right;
       const plotHeight = height - margin.top - margin.bottom;
 
       const minPrice = Math.min(...chartData.map(d => d.close));
       const maxPrice = Math.max(...chartData.map(d => d.close));
-      const priceRange = maxPrice - minPrice || 1; // Avoid division by zero
+      const priceRange = maxPrice - minPrice || 1;
       const scaleY = plotHeight / priceRange;
       const scaleX = plotWidth / (chartData.length - 1 || 1);
 
       ctx.clearRect(0, 0, width, height);
 
-      // Draw the line
-      ctx.beginPath();
-      ctx.strokeStyle = '#00ffcc';
-      ctx.lineWidth = 2;
+      // Draw the line with color based on signals
+      let lastSignal = null;
+      for (let i = 1; i < chartData.length; i++) {
+        const prev = chartData[i - 1].close;
+        const curr = chartData[i].close;
+        const x1 = margin.left + (i - 1) * scaleX;
+        const y1 = height - margin.bottom - ((prev - minPrice) * scaleY);
+        const x2 = margin.left + i * scaleX;
+        const y2 = height - margin.bottom - ((curr - minPrice) * scaleY);
 
-      chartData.forEach((data, index) => {
-        const x = margin.left + index * scaleX;
-        const y = height - margin.bottom - ((data.close - minPrice) * scaleY);
-        if (index === 0) {
-          ctx.moveTo(x, y);
+        ctx.beginPath();
+        ctx.lineWidth = 2;
+
+        if (i > 1 && curr < chartData[i - 1].close && curr < (chartData[i + 1]?.close || Infinity)) {
+          ctx.strokeStyle = '#00ff00'; // Green for Buy
+          lastSignal = 'buy';
+        } else if (i > 1 && curr > chartData[i - 1].close && curr > (chartData[i + 1]?.close || -Infinity)) {
+          ctx.strokeStyle = '#ff0000'; // Red for Sell
+          lastSignal = 'sell';
         } else {
-          ctx.lineTo(x, y);
+          ctx.strokeStyle = lastSignal === 'buy' ? '#00ff00' : lastSignal === 'sell' ? '#ff0000' : '#00ffcc';
         }
-      });
-      ctx.stroke();
+
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+      }
 
       // Add Buy/Sell labels at local minima/maxima
       ctx.font = '12px Poppins';
@@ -517,21 +547,45 @@
         const x = margin.left + i * scaleX;
         const y = height - margin.bottom - ((curr - minPrice) * scaleY);
 
-        // Local minimum (Buy)
         if (curr < prev && curr < next) {
           ctx.fillStyle = '#00ff00'; // Green for Buy
           ctx.fillText('Buy', x, y - 10);
           ctx.beginPath();
           ctx.arc(x, y, 4, 0, Math.PI * 2);
           ctx.fill();
-        }
-        // Local maximum (Sell)
-        else if (curr > prev && curr > next) {
+        } else if (curr > prev && curr > next) {
           ctx.fillStyle = '#ff0000'; // Red for Sell
           ctx.fillText('Sell', x, y + 20);
           ctx.beginPath();
           ctx.arc(x, y, 4, 0, Math.PI * 2);
           ctx.fill();
+        }
+      }
+
+      // Draw crosshair
+      if (mouseX !== null && mouseY !== null) {
+        ctx.beginPath();
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([5, 5]);
+        ctx.moveTo(mouseX, margin.top);
+        ctx.lineTo(mouseX, height - margin.bottom);
+        ctx.moveTo(margin.left, mouseY);
+        ctx.lineTo(width - margin.right, mouseY);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Display price and time at crosshair
+        const index = Math.round((mouseX - margin.left) / scaleX);
+        if (index >= 0 && index < chartData.length) {
+          const price = chartData[index].close;
+          const months = ['Apr', 'Jun', 'Aug', 'Oct', 'Dec', 'Feb', 'Apr'];
+          const timeIndex = Math.round((index / (chartData.length - 1)) * (months.length - 1));
+          const time = months[timeIndex] || '';
+
+          ctx.fillStyle = '#00ffcc';
+          ctx.fillText(`$${price}`, mouseX + 5, margin.top + 10);
+          ctx.fillText(time, margin.left + 5, mouseY - 5);
         }
       }
     }
@@ -555,8 +609,8 @@
       const dataPointIndex = Math.floor(Date.now() / (currentTimeframe === '1d' ? 2000 : currentTimeframe === '4h' ? 500 : currentTimeframe === '15m' ? 200 : 100)) % data.length;
       const newDataPoint = data[dataPointIndex];
 
-      chartData.shift(); // Remove the oldest point
-      chartData.push(newDataPoint); // Add the new point
+      chartData.shift();
+      chartData.push(newDataPoint);
       drawLineChart();
     }
 
@@ -582,7 +636,21 @@
           document.getElementById('hashtags').innerHTML = '<p>Failed to load hashtags. Please try again later.</p>';
         });
 
-      window.addEventListener('resize', drawLineChart); // Redraw on resize
+      window.addEventListener('resize', drawLineChart);
+
+      // Mouse events for crosshair
+      canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+        drawLineChart();
+      });
+
+      canvas.addEventListener('mouseleave', () => {
+        mouseX = null;
+        mouseY = null;
+        drawLineChart();
+      });
     };
 
     function populateHashtags(hashtags) {
