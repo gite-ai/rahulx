@@ -499,7 +499,7 @@
         <h2 class="modal-title" id="modalTitle"></h2>
         <i class="fa fa-pencil-square-o thread-icon" id="threadLink" title="View Thread"></i>
         <span class="icon-separator"></span>
-        <i class="fa fa-search search-icon" id="searchX" title="Search on X"></i>
+        <i class准备class="fa fa-search search-icon" id="searchX" title="Search on X"></i>
         <span class="icon-separator"></span>
         <i class="fa fa-image image-icon" id="generateImage" title="Generate Image"></i>
         <button class="modal-close" onclick="closeModal()">✖</button>
@@ -549,6 +549,8 @@
     let mouseX = null;
     let mouseY = null;
     let scripts = [];
+    let isMobile = window.matchMedia("(max-width: 768px)").matches || 'ontouchstart' in window;
+    let pressTimeout;
 
     function drawLineChart() {
       const width = canvas.width = canvas.offsetWidth;
@@ -622,7 +624,7 @@
       ctx.stroke();
       ctx.setLineDash([]);
 
-      // Crosshair
+      // Crosshair (conditional based on device)
       if (mouseX !== null && mouseY !== null && mouseY > margin.top && mouseY < height - margin.bottom && mouseX > margin.left && mouseX < width - margin.right) {
         ctx.beginPath();
         ctx.strokeStyle = '#ffffff';
@@ -756,20 +758,58 @@
       updateChartData();
       setInterval(addNewDataPoint, currentTimeframe === '1d' ? 1000 : currentTimeframe === '4h' ? 250 : currentTimeframe === '15m' ? 100 : 50);
 
-      window.addEventListener('resize', drawLineChart);
-
-      canvas.addEventListener('mousemove', (e) => {
-        const rect = canvas.getBoundingClientRect();
-        mouseX = e.clientX - rect.left;
-        mouseY = e.clientY - rect.top;
+      window.addEventListener('resize', () => {
+        isMobile = window.matchMedia("(max-width: 768px)").matches || 'ontouchstart' in window;
         drawLineChart();
       });
 
-      canvas.addEventListener('mouseleave', () => {
-        mouseX = null;
-        mouseY = null;
-        drawLineChart();
-      });
+      if (!isMobile) {
+        // Desktop mouse events
+        canvas.addEventListener('mousemove', (e) => {
+          const rect = canvas.getBoundingClientRect();
+          mouseX = e.clientX - rect.left;
+          mouseY = e.clientY - rect.top;
+          drawLineChart();
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+          mouseX = null;
+          mouseY = null;
+          drawLineChart();
+        });
+      } else {
+        // Mobile touch events
+        canvas.addEventListener('touchstart', (e) => {
+          e.preventDefault();
+          const rect = canvas.getBoundingClientRect();
+          const touch = e.touches[0];
+          mouseX = touch.clientX - rect.left;
+          mouseY = touch.clientY - rect.top;
+
+          // Show crosshair only after holding for 300ms
+          pressTimeout = setTimeout(() => {
+            drawLineChart();
+          }, 300);
+        });
+
+        canvas.addEventListener('touchmove', (e) => {
+          e.preventDefault();
+          const rect = canvas.getBoundingClientRect();
+          const touch = e.touches[0];
+          mouseX = touch.clientX - rect.left;
+          mouseY = touch.clientY - rect.top;
+          if (pressTimeout) clearTimeout(pressTimeout); // Reset if moved before hold
+          drawLineChart(); // Update only if already held
+        });
+
+        canvas.addEventListener('touchend', (e) => {
+          e.preventDefault();
+          clearTimeout(pressTimeout);
+          mouseX = null;
+          mouseY = null;
+          drawLineChart();
+        });
+      }
 
       canvas.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -795,10 +835,10 @@
       const generateImage = document.getElementById('generateImage');
 
       modalTitle.textContent = title;
-      modalDesc.textContent = desc; // Changed to textContent to match hashtag style
+      modalDesc.textContent = desc;
       modalExample.textContent = example ? `Example: ${example}` : '';
       modalImage.src = image || "https://via.placeholder.com/400x300?text=No+Image+Available";
-      modalImage.style.display = 'block'; // Ensure image is visible
+      modalImage.style.display = 'block';
       modalImage.onerror = () => modalImage.style.display = "none";
       modal.style.display = 'flex';
 
