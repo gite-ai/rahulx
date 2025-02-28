@@ -80,7 +80,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      z-index: 10; /* Ensure toolbar is above canvas */
+      z-index: 10;
     }
 
     .script-selector, .timeframe-selector {
@@ -137,7 +137,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      z-index: 10; /* Ensure tools are above canvas */
+      z-index: 10;
     }
 
     .tool-icon {
@@ -166,7 +166,7 @@
       width: 100%;
       height: 100%;
       position: relative;
-      z-index: 5; /* Canvas below toolbar and tools */
+      z-index: 5;
     }
 
     /* Axis Styles */
@@ -483,7 +483,7 @@
       <span>120K</span><span>110K</span><span>100K</span><span>90K</span><span>80K</span><span>70K</span><span>60K</span><span>50K</span><span>40K</span>
     </div>
     <i class="fa fa-gear gear-icon" title="Settings"></i>
-    <img src="https://www.pinclipart.com/picdir/big/547-5475563_rx-symbol-blue-white-round-button-rx-icon.png" class="logo" alt="RahulX Logo">
+    <img src="https://www.freeiconspng.com/uploads/rx-icon-6.png" class="logo" alt="RahulX Logo">
   </div>
 
   <!-- Trading Hashtags -->
@@ -618,12 +618,12 @@
       ctx.lineWidth = 1;
       ctx.setLineDash([5, 5]);
       ctx.moveTo(lastX, lastY);
-      ctx.lineTo(width - margin.right, lastY); // Point to right y-axis
+      ctx.lineTo(width - margin.right, lastY);
       ctx.stroke();
       ctx.setLineDash([]);
 
       // Crosshair
-      if (mouseX !== null && mouseY !== null) {
+      if (mouseX !== null && mouseY !== null && mouseY > margin.top && mouseY < height - margin.bottom && mouseX > margin.left && mouseX < width - margin.right) {
         ctx.beginPath();
         ctx.strokeStyle = '#ffffff';
         ctx.lineWidth = 1;
@@ -657,22 +657,33 @@
     function updateScript() {
       currentScript = document.getElementById('script').value;
       let imageUrl = "https://via.placeholder.com/400x300?text=No+Image+Available";
+      let desc = `Current ${currentScript} price chart`;
+      let example = "";
+      let thread = null;
+
       if (currentScript === "BTC") {
         imageUrl = "https://cdn.pixabay.com/photo/2023/08/28/22/08/ai-generated-8220159_640.jpg";
+        desc = "Bitcoin (BTC) - The leading cryptocurrency by market cap.";
+        example = "View the latest price movements for BTC.";
+        thread = "https://x.com/search?q=%23Bitcoin";
       } else {
         scripts.forEach(script => {
-          if (script.name === currentScript && script.image) {
-            imageUrl = script.image;
+          if (script.name === currentScript) {
+            imageUrl = script.image || imageUrl;
+            desc = script.desc || desc;
+            example = script.example || example;
+            thread = script.thread || null;
           }
         });
       }
-      openModal(`${currentScript} Chart`, `Current ${currentScript} price chart`, '', imageUrl);
+
+      openModal(`${currentScript} Chart`, desc, example, imageUrl, thread);
       updateChartData();
     }
 
     function updateChartData() {
       chartData = [];
-      const data = btcData[currentTimeframe]; // Placeholder for script-specific data
+      const data = btcData[currentTimeframe];
       const numPoints = currentTimeframe === '1d' ? 14 : currentTimeframe === '4h' ? 42 : currentTimeframe === '15m' ? 96 : 288;
 
       for (let i = 0; i < numPoints; i++) {
@@ -714,7 +725,7 @@
         })
         .catch(error => {
           console.error('Error loading texts/trading_list.txt:', error);
-          updateChartData(); // Fallback to default BTC
+          updateChartData();
         });
 
       // Fetch hashtags from trading.txt
@@ -747,7 +758,6 @@
 
       window.addEventListener('resize', drawLineChart);
 
-      // Mouse events for crosshair
       canvas.addEventListener('mousemove', (e) => {
         const rect = canvas.getBoundingClientRect();
         mouseX = e.clientX - rect.left;
@@ -761,7 +771,6 @@
         drawLineChart();
       });
 
-      // Prevent canvas from intercepting clicks on toolbar
       canvas.addEventListener('click', (e) => {
         e.stopPropagation();
       });
@@ -786,14 +795,15 @@
       const generateImage = document.getElementById('generateImage');
 
       modalTitle.textContent = title;
-      modalDesc.innerHTML = desc;
+      modalDesc.textContent = desc; // Changed to textContent to match hashtag style
       modalExample.textContent = example ? `Example: ${example}` : '';
       modalImage.src = image || "https://via.placeholder.com/400x300?text=No+Image+Available";
+      modalImage.style.display = 'block'; // Ensure image is visible
       modalImage.onerror = () => modalImage.style.display = "none";
       modal.style.display = 'flex';
 
       threadLink.onclick = function() {
-        window.open(thread, '_blank');
+        window.open(thread || `https://x.com/search?q=%23${title}`, '_blank');
       };
 
       searchX.onclick = function() {
