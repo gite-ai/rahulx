@@ -7,29 +7,29 @@
   <style>
     /* General Styles */
     body {
-      font-family: 'Poppins', sans-serif; /* Updated from Source Code Pro */
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
       background: #0a0a0a;
       color: #00ffcc;
       overflow-x: hidden;
-      font-size: 16px; /* Base font size from technology.html */
-      line-height: 1.6; /* Improved line spacing */
-      font-weight: 400; /* Default weight */
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 400;
     }
 
     h1, h2, h3 {
-      font-family: 'Montserrat', sans-serif; /* Updated from Source Code Pro */
+      font-family: 'Montserrat', sans-serif;
       margin: 0;
-      font-weight: 700; /* Bold for headings */
+      font-weight: 700;
     }
 
     a {
       text-decoration: underline;
       color: #ff00cc;
       transition: color 0.3s ease;
-      font-family: 'Poppins', sans-serif; /* Ensure links use Poppins */
-      font-weight: 500; /* Matches technology.html */
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
     }
 
     a:hover {
@@ -47,21 +47,21 @@
     }
 
     header h1 {
-      font-size: 2.8rem; /* Increased from 2.5rem to match technology.html */
+      font-size: 2.8rem;
       text-transform: uppercase;
       animation: glow 2s infinite alternate;
-      letter-spacing: 2px; /* Added for modern look */
+      letter-spacing: 2px;
     }
 
     header p {
-      font-size: 1.3rem; /* Increased from 1.2rem */
+      font-size: 1.3rem;
       opacity: 0.8;
       animation: float 3s ease-in-out infinite;
-      font-weight: 300; /* Lighter weight for friendliness */
+      font-weight: 300;
     }
 
-    /* Trading Chart Animation */
-    .chart-container {
+    /* Trading Animation Section */
+    .trading-animation {
       position: relative;
       width: 90%;
       max-width: 800px;
@@ -73,53 +73,87 @@
       overflow: hidden;
     }
 
-    .chart {
+    .candle-container {
       position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
+      bottom: 40px; /* Space for x-axis */
+      left: 40px; /* Space for y-axis */
+      width: calc(100% - 80px);
+      height: calc(100% - 40px);
       display: flex;
       align-items: flex-end;
-      justify-content: space-around;
+      justify-content: flex-start;
+      overflow: hidden;
+      white-space: nowrap;
+      animation: scrollCandles 60s infinite linear; /* Slow scroll for 1-year timeline */
     }
 
     .candle {
-      width: 10px;
-      background: #00ffcc;
-      margin: 0 2px;
       position: relative;
-      animation: grow 2s ease-in-out infinite;
+      width: 20px;
+      margin: 0 8px;
+      display: inline-block;
+      vertical-align: bottom;
     }
 
-    .candle::before {
-      content: '';
+    .candle-body {
       position: absolute;
-      top: 0;
+      bottom: 0;
+      width: 100%;
+      background: linear-gradient(135deg, #00ffcc, #0099cc); /* Green for bullish */
+      border-radius: 2px;
+      transition: height 1s ease-in-out, bottom 1s ease-in-out;
+      box-shadow: 0 0 5px rgba(0, 255, 204, 0.3);
+    }
+
+    .candle-body.bearish {
+      background: linear-gradient(135deg, #ff4444, #990000); /* Red for bearish */
+    }
+
+    .candle-wick {
+      position: absolute;
       left: 50%;
       width: 2px;
-      height: 100%;
       background: #ff00cc;
       transform: translateX(-50%);
+      opacity: 0.8;
     }
 
-    .line-chart {
+    .candle-wick-top {
+      bottom: 100%;
+    }
+
+    .candle-wick-bottom {
+      top: 100%;
+    }
+
+    /* Axis Styles */
+    .x-axis, .y-axis {
       position: absolute;
+      color: #00ffcc;
+      font-size: 0.8rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .x-axis {
+      bottom: 5px;
+      left: 40px;
+      width: calc(100% - 80px);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .y-axis {
       top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      stroke: #00ffcc;
-      stroke-width: 2;
-      fill: none;
+      left: 5px;
+      height: calc(100% - 40px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: right;
     }
 
-    @keyframes grow {
-      0%, 100% { height: 20%; }
-      50% { height: 80%; }
-    }
-
-    /* Trading Categories */
-    .categories {
+    /* Trading Hashtags */
+    .hashtags {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -133,18 +167,18 @@
       margin: 40px auto;
     }
 
-    .category-card {
+    .hashtag {
       padding: 10px 20px;
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
       border-radius: 5px;
       cursor: pointer;
       transition: background 0.3s ease, color 0.3s ease;
-      font-size: 1.1rem; /* Matches technology.html */
-      font-weight: 500; /* Matches technology.html */
+      font-size: 1.1rem;
+      font-weight: 500;
     }
 
-    .category-card:hover {
+    .hashtag:hover {
       background: #00ffcc;
       color: #000;
     }
@@ -218,7 +252,7 @@
       color: #000;
     }
 
-    .thread-icon {
+    .thread-icon, .search-icon {
       font-size: 1.6rem;
       color: #00ffcc;
       cursor: pointer;
@@ -226,7 +260,7 @@
       transition: transform 0.3s ease, color 0.3s ease;
     }
 
-    .thread-icon:hover {
+    .thread-icon:hover, .search-icon:hover {
       color: #ff00cc;
       transform: scale(1.2);
     }
@@ -238,18 +272,6 @@
       border-radius: 50%;
       margin: 0 15px;
       animation: glowPulse 1.5s infinite;
-    }
-
-    .search-icon {
-      font-size: 1.6rem;
-      color: #00ffcc;
-      cursor: pointer;
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    .search-icon:hover {
-      color: #ff00cc;
-      transform: scale(1.2);
     }
 
     .modal-body {
@@ -329,13 +351,13 @@
 
     footer p {
       margin: 0;
-      font-size: 1.1rem; /* Matches technology.html */
-      font-weight: 300; /* Matches technology.html */
+      font-size: 1.1rem;
+      font-weight: 300;
     }
 
     footer a {
       color: #ff00cc;
-      font-weight: 500; /* Matches technology.html */
+      font-weight: 500;
     }
 
     footer a:hover {
@@ -369,6 +391,11 @@
       0% { background-position: 0 0; }
       100% { background-position: 1000px 1000px; }
     }
+
+    @keyframes scrollCandles {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -383,27 +410,22 @@
     <p>Where Markets Meet Innovation</p>
   </header>
 
-  <!-- Trading Chart Animation -->
-  <div class="chart-container">
-    <div class="chart">
-      <div class="candle" style="height: 30%;"></div>
-      <div class="candle" style="height: 60%;"></div>
-      <div class="candle" style="height: 40%;"></div>
-      <div class="candle" style="height: 80%;"></div>
-      <div class="candle" style="height: 20%;"></div>
-      <div class="candle" style="height: 50%;"></div>
-      <div class="candle" style="height: 70%;"></div>
+  <!-- Trading Animation Section -->
+  <div class="trading-animation">
+    <div class="candle-container" id="candleContainer"></div>
+    <div class="x-axis" id="xAxis">
+      <span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span>
     </div>
-    <svg class="line-chart" viewBox="0 0 500 200">
-      <polyline points="0,180 50,150 100,160 150,140 200,170 250,130 300,150 350,120 400,160 450,140 500,180" />
-    </svg>
+    <div class="y-axis" id="yAxis">
+      <span>120K</span><span>110K</span><span>100K</span><span>90K</span><span>80K</span><span>70K</span><span>60K</span><span>50K</span><span>40K</span>
+    </div>
   </div>
 
-  <!-- Trading Categories -->
+  <!-- Trading Hashtags -->
   <section>
     <h2 style="text-align: center; margin: 20px 0; font-weight: 600;">Explore Trading Topics</h2>
-    <div class="categories" id="categories">
-      <!-- Categories will be added dynamically -->
+    <div class="hashtags" id="hashtags">
+      <!-- Hashtags will be added dynamically -->
     </div>
   </section>
 
@@ -436,19 +458,90 @@
   </footer>
 
   <script>
+    // Static Bitcoin 1D data (April 2024 to May 2025, based on reference chart)
+    const btcData = [
+      { date: "2024-04-01", open: 60000, high: 61000, low: 59000, close: 60500 },
+      { date: "2024-05-01", open: 60500, high: 62000, low: 59500, close: 61500 },
+      { date: "2024-06-01", open: 61500, high: 63000, low: 60500, close: 62500 },
+      { date: "2024-07-01", open: 62500, high: 64500, low: 62000, close: 64000 },
+      { date: "2024-08-01", open: 64000, high: 66000, low: 63500, close: 65500 },
+      { date: "2024-09-01", open: 65500, high: 67000, low: 65000, close: 66000 }, // Consolidation
+      { date: "2024-10-01", open: 66000, high: 67500, low: 65500, close: 66500 },
+      { date: "2024-11-01", open: 66500, high: 68000, low: 64500, close: 65000 }, // Start of drop
+      { date: "2024-12-01", open: 65000, high: 65500, low: 62000, close: 62500 },
+      { date: "2025-01-01", open: 62500, high: 63000, low: 59000, close: 59500 },
+      { date: "2025-02-01", open: 59500, high: 60500, low: 58000, close: 59000 },
+      { date: "2025-03-01", open: 59000, high: 61000, low: 58500, close: 60000 },
+      { date: "2025-04-01", open: 60000, high: 62000, low: 59500, close: 61000 },
+      { date: "2025-05-01", open: 61000, high: 63000, low: 60500, close: 62000 }
+    ];
+
+    const container = document.getElementById('candleContainer');
+    let candles = [];
+
+    function createCandle(dataPoint) {
+      const { open, high, low, close } = dataPoint;
+      const maxHeight = 360; // Chart height - 40px for axis
+      const priceRange = 72000; // $48K to $120K range
+      const scale = maxHeight / priceRange;
+
+      const candle = document.createElement('div');
+      candle.className = 'candle';
+
+      const body = document.createElement('div');
+      body.className = `candle-body ${close > open ? 'bullish' : 'bearish'}`;
+      const bodyHeight = Math.abs(close - open) * scale;
+      const bodyBottom = (Math.min(open, close) - 48000) * scale; // Offset from $48K base
+      body.style.height = `${bodyHeight}px`;
+      body.style.bottom = `${bodyBottom}px`;
+
+      const wickTop = document.createElement('div');
+      wickTop.className = 'candle-wick candle-wick-top';
+      wickTop.style.height = `${(high - Math.max(open, close)) * scale}px`;
+
+      const wickBottom = document.createElement('div');
+      wickBottom.className = 'candle-wick candle-wick-bottom';
+      wickBottom.style.height = `${(Math.min(open, close) - low) * scale}px`;
+
+      candle.appendChild(body);
+      candle.appendChild(wickTop);
+      candle.appendChild(wickBottom);
+      return candle;
+    }
+
+    function updateCandles() {
+      if (candles.length >= 14) { // Match the chart’s visible timeframe
+        container.removeChild(candles.shift()); // Remove oldest candle
+      }
+      const dataPoint = btcData[Math.floor(Date.now() / 2000) % btcData.length]; // Loop through data every 2s
+      const newCandle = createCandle(dataPoint);
+      container.appendChild(newCandle);
+      candles.push(newCandle);
+      container.scrollLeft = container.scrollWidth; // Auto-scroll to latest candle
+    }
+
+    // Initial candles
+    for (let i = 0; i < 14; i++) {
+      updateCandles();
+    }
+
+    // Update every 2 seconds to simulate daily updates
+    setInterval(updateCandles, 2000);
+
     // Modal Functions
-    function populateCategories(categories) {
-      const categoriesContainer = document.getElementById('categories');
-      categories.forEach(category => {
-        const card = document.createElement('div');
-        card.className = 'category-card';
-        card.textContent = `#${category.name.replace(/\s+/g, '')}`;
+    function populateHashtags(hashtags) {
+      const hashtagsContainer = document.getElementById('hashtags');
+      hashtagsContainer.innerHTML = '';
+      hashtags.forEach(hashtag => {
+        const tag = document.createElement('div');
+        tag.className = 'hashtag';
+        tag.textContent = `#${hashtag.name.replace(/\s+/g, '')}`;
         
-        card.addEventListener('click', () => {
-          openModal(category.name, category.desc, category.example, category.image, category.thread);
+        tag.addEventListener('click', () => {
+          openModal(hashtag.name, hashtag.desc, hashtag.example, hashtag.image, hashtag.thread);
         });
         
-        categoriesContainer.appendChild(card);
+        hashtagsContainer.appendChild(tag);
       });
     }
 
@@ -464,7 +557,8 @@
       modalTitle.textContent = title;
       modalDesc.innerHTML = desc;
       modalExample.textContent = `Example: ${example}`;
-      modalImage.src = image;
+      modalImage.src = image || "https://via.placeholder.com/400x300?text=No+Image+Available";
+      modalImage.onerror = () => modalImage.style.display = "none";
       modal.style.display = 'flex';
 
       threadLink.onclick = function() {
@@ -472,7 +566,7 @@
       };
 
       searchX.onclick = function() {
-        const searchQuery = encodeURIComponent(title);
+        const searchQuery = encodeURIComponent(`#${title} trading`);
         const xSearchUrl = `https://x.com/search?q=${searchQuery}`;
         window.open(xSearchUrl, '_blank');
       };
@@ -507,18 +601,20 @@
     window.onload = function() {
       fetch('texts/trading.txt')
         .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
+          if (!response.ok) throw new Error('Network response was not ok');
           return response.text();
         })
         .then(data => {
-          const categories = JSON.parse(data);
-          populateCategories(categories);
+          const hashtags = JSON.parse(data);
+          if (!hashtags || hashtags.length === 0) {
+            document.getElementById('hashtags').innerHTML = '<p>No trading topics available.</p>';
+            return;
+          }
+          populateHashtags(hashtags);
         })
         .catch(error => {
           console.error('Error loading texts/trading.txt:', error);
-          alert('Failed to load category data. Please check the console for details.');
+          document.getElementById('hashtags').innerHTML = '<p>Failed to load hashtags. Please try again later.</p>';
         });
     };
   </script>
