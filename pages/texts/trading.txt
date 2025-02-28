@@ -4,7 +4,7 @@
     "type": "crypto",
     "desc": "The leading cryptocurrency, often called 'digital gold,' with a capped supply of 21 million coins, used as a store of value and payment system.",
     "example": "Investing in Bitcoin via Coinbase or Kraken.",
-    "image": "https://via.placeholder.com/700x400?text=Bitcoin+Chart",
+    "image": "https://x.com/aramtypes/status/1895336121351184389",
     "thread": "https://x.com/threads/placeholder_bitcoin"
   },
   {
