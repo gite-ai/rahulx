@@ -60,7 +60,7 @@
       font-weight: 300;
     }
 
-    /* Trading Animation Section */
+    /* Trading Animation Section (now a static box) */
     .trading-animation {
       position: relative;
       width: 90%;
@@ -71,172 +71,40 @@
       border: 1px solid #00ffcc;
       border-radius: 10px;
       overflow: hidden;
-    }
-
-    /* Grid Background */
-    .grid-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: repeating-linear-gradient(
-        to bottom,
-        rgba(0, 255, 204, 0.05),
-        rgba(0, 255, 204, 0.05) 40px,
-        transparent 40px,
-        transparent 80px
-      ), repeating-linear-gradient(
-        to right,
-        rgba(0, 255, 204, 0.05),
-        rgba(0, 255, 204, 0.05) 40px,
-        transparent 40px,
-        transparent 80px
-      );
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .trading-header {
-      position: absolute;
-      top: 10px;
-      left: 10px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      z-index: 3;
+      justify-content: center;
     }
 
-    .crypto-name {
+    .dropdown-container {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .dropdown {
       font-size: 1rem;
       color: #00ffcc;
-      margin-right: 10px;
-      font-weight: 500;
-    }
-
-    .timeframe-selector {
-      font-size: 1rem;
-      color: #00ffcc;
-    }
-
-    .timeframe-selector select {
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
       border-radius: 5px;
-      color: #00ffcc;
       padding: 5px;
       cursor: pointer;
       transition: background 0.3s ease, color 0.3s ease;
     }
 
-    .timeframe-selector select:hover, .timeframe-selector select:focus {
+    .dropdown:hover, .dropdown:focus {
       background: #00ffcc;
       color: #000;
     }
 
-    .candle-container {
-      position: absolute;
-      bottom: 40px;
-      left: 0;
-      right: 60px;
-      width: calc(100% - 60px);
-      height: calc(100% - 40px);
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      overflow: hidden;
-      white-space: nowrap;
-      animation: scrollCandles 60s infinite linear; /* Adjusted for 1-minute candles */
-      z-index: 2;
-    }
-
-    .candle {
-      position: relative;
-      width: 20px;
-      margin: 0 8px;
-      display: inline-block;
-      vertical-align: bottom;
-      flex-shrink: 0;
-    }
-
-    .candle-body {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      background: linear-gradient(135deg, #26a69a, #00796b); /* Darker green for bullish */
-      border-radius: 2px;
-      transition: height 1s ease-in-out, bottom 1s ease-in-out;
-      box-shadow: 0 0 2px rgba(0, 255, 204, 0.3);
-    }
-
-    .candle-body.bearish {
-      background: linear-gradient(135deg, #ef5350, #b71c1c); /* Darker red for bearish */
-    }
-
-    .candle-wick {
-      position: absolute;
-      left: 50%;
-      width: 1px; /* Thinner wicks like TradingView */
-      background: #ff00cc; /* Pink wicks */
-      transform: translateX(-50%);
-      opacity: 0.8;
-      transition: height 1s ease-in-out;
-      min-height: 5px;
-    }
-
-    .candle-wick-top {
-      bottom: 100%;
-    }
-
-    .candle-wick-bottom {
-      top: 100%;
-    }
-
-    /* Price Line and Timer */
-    .price-line {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: calc(100% - 60px);
-      height: 1px;
-      background: #ff0000; /* Red price line */
-      z-index: 2;
-      transition: bottom 1s ease-in-out;
-    }
-
-    .timer {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 1rem;
-      color: #00ffcc;
-      z-index: 3;
-    }
-
-    /* Axis Styles */
-    .x-axis, .y-axis {
-      position: absolute;
-      color: #00ffcc;
-      font-size: 0.8rem;
-      font-family: 'Poppins', sans-serif;
-      z-index: 2;
-    }
-
-    .x-axis {
-      bottom: 5px;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .y-axis {
-      top: 0;
-      right: 5px;
-      height: calc(100% - 40px);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      text-align: left;
+    .chart-image {
+      max-width: 100%;
+      max-height: 400px;
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      display: none; /* Hidden by default, shown when image URL is selected */
     }
 
     /* Trading Hashtags */
@@ -478,11 +346,6 @@
       0% { background-position: 0 0; }
       100% { background-position: 1000px 1000px; }
     }
-
-    @keyframes scrollCandles {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(0); }
-    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -497,30 +360,20 @@
     <p>Where Markets Meet Innovation</p>
   </header>
 
-  <!-- Trading Animation Section with Timeframe Selector -->
+  <!-- Trading Box Section with Dropdowns -->
   <div class="trading-animation">
-    <div class="grid-background"></div>
-    <div class="trading-header">
-      <span class="crypto-name">Bitcoin</span>
-      <div class="timeframe-selector">
-        <select id="timeframe" onchange="updateTimeframe()">
-          <option value="1d">1 Day</option>
-          <option value="4h">4 Hours</option>
-          <option value="15m">15 Minutes</option>
-          <option value="5m">5 Minutes</option>
-          <option value="1m">1 Minute</option> <!-- New 1-minute option -->
-        </select>
-      </div>
+    <div class="dropdown-container">
+      <select id="crypto" class="dropdown" onchange="updateImage('crypto')">
+        <option value="">Select Crypto</option>
+      </select>
+      <select id="indices" class="dropdown" onchange="updateImage('indices')">
+        <option value="">Select Indices</option>
+      </select>
+      <select id="stocks" class="dropdown" onchange="updateImage('stocks')">
+        <option value="">Select Stocks</option>
+      </select>
     </div>
-    <div class="candle-container" id="candleContainer"></div>
-    <div class="price-line" id="priceLine"></div>
-    <div class="timer" id="timer">00:60</div>
-    <div class="x-axis" id="xAxis">
-      <span>07:00</span><span>07:15</span><span>07:30</span><span>07:45</span><span>08:00</span><span>08:15</span><span>08:30</span><span>08:45</span><span>09:00</span><span>09:15</span><span>09:30</span><span>09:45</span><span>10:00</span><span>10:15</span><span>10:30</span><span>10:45</span><span>11:00</span>
-    </div>
-    <div class="y-axis" id="yAxis">
-      <span>356,000</span><span>352,000</span><span>348,000</span><span>344,000</span><span>340,000</span><span>336,000</span><span>332,000</span><span>328,000</span><span>324,000</span><span>320,000</span><span>316,000</span><span>312,000</span><span>308,000</span><span>304,000</span><span>300,000</span><span>296,000</span>
-    </div>
+    <img id="chartImage" class="chart-image" src="" alt="Chart Image">
   </div>
 
   <!-- Trading Hashtags -->
@@ -562,220 +415,57 @@
   </footer>
 
   <script>
-    // Static Bitcoin data for 1-minute intervals (simplified)
-    const btcData = {
-      '1d': [
-        { close: 60500 }, { close: 61500 }, { close: 62500 }, { close: 64000 }, { close: 65500 },
-        { close: 66000 }, { close: 66500 }, { close: 65000 }, { close: 62500 }, { close: 59500 },
-        { close: 59000 }, { close: 60000 }, { close: 61000 }, { close: 62000 }
-      ],
-      '4h': [
-        { close: 60050 }, { close: 60100 }
-      ],
-      '15m': [
-        { close: 60010 }, { close: 60020 }
-      ],
-      '5m': [
-        { close: 60005 }, { close: 60010 }
-      ],
-      '1m': [
-        { close: 356000 }, { close: 355500 }, { close: 354800 }, { close: 353200 }, { close: 352500 },
-        { close: 351800 }, { close: 350200 }, { close: 349500 }, { close: 348800 }, { close: 347200 },
-        { close: 346500 }, { close: 345800 }, { close: 344200 }, { close: 343500 }, { close: 342800 },
-        { close: 341200 }, { close: 340500 }, { close: 339800 }, { close: 338200 }, { close: 337500 }
-      ]
-    };
-
-    const container = document.getElementById('candleContainer');
-    const priceLine = document.getElementById('priceLine');
-    const timerElement = document.getElementById('timer');
-    let candles = [];
-    let currentTimeframe = '1m'; // Default to 1-minute
-    let lastClose = 356000; // Start at the top price from the image
-    let timer = 60; // 60 seconds for 1-minute candle
-
-    function createCandle(openPrice, closePrice) {
-      const maxHeight = 460;
-      const priceRange = 60000; // 356,000 - 296,000 = 60,000 range
-      const scale = maxHeight / priceRange;
-
-      const range = Math.abs(closePrice - openPrice) || 100;
-      const spikeChance = Math.random() < 0.1;
-      const high = spikeChance 
-        ? Math.max(openPrice, closePrice) + (range * (1 + Math.random() * 2))
-        : Math.max(openPrice, closePrice) + (range * Math.random()) + 100;
-      const low = spikeChance 
-        ? Math.min(openPrice, closePrice) - (range * (1 + Math.random() * 2))
-        : Math.min(openPrice, closePrice) - (range * Math.random()) - 100;
-
-      const candle = document.createElement('div');
-      candle.className = 'candle';
-
-      const body = document.createElement('div');
-      body.className = `candle-body ${closePrice > openPrice ? 'bullish' : 'bearish'}`;
-      const bodyHeight = Math.abs(closePrice - openPrice) * scale;
-      const bodyBottom = (356000 - Math.min(openPrice, closePrice)) * scale / (priceRange / maxHeight); // Adjust for 296,000-356,000 range
-
-      body.style.height = `${bodyHeight}px`;
-      body.style.bottom = `${bodyBottom}px`;
-
-      const wickTop = document.createElement('div');
-      wickTop.className = 'candle-wick candle-wick-top';
-      wickTop.style.height = `${(high - Math.max(openPrice, closePrice)) * scale}px`;
-
-      const wickBottom = document.createElement('div');
-      wickBottom.className = 'candle-wick candle-wick-bottom';
-      wickBottom.style.height = `${(Math.min(openPrice, closePrice) - low) * scale}px`;
-
-      candle.appendChild(body);
-      candle.appendChild(wickTop);
-      candle.appendChild(wickBottom);
-
-      candle.dataset.open = openPrice;
-      candle.dataset.close = closePrice;
-      candle.dataset.high = high;
-      candle.dataset.low = low;
-
-      return candle;
-    }
-
-    function updateLatestCandle() {
-      if (candles.length === 0) return;
-
-      const latestCandle = candles[candles.length - 1];
-      const data = btcData[currentTimeframe];
-      const dataPointIndex = Math.floor(Date.now() / 1000) % data.length;
-      const dataPoint = data[dataPointIndex];
-      const openPrice = parseFloat(latestCandle.dataset.open);
-      const closePrice = dataPoint.close;
-
-      const range = Math.abs(closePrice - openPrice) || 100;
-      const spikeChance = Math.random() < 0.1;
-      const high = spikeChance 
-        ? Math.max(openPrice, closePrice) + (range * (1 + Math.random() * 2))
-        : Math.max(openPrice, closePrice) + (range * Math.random()) + 100;
-      const low = spikeChance 
-        ? Math.min(openPrice, closePrice) - (range * (1 + Math.random() * 2))
-        : Math.min(openPrice, closePrice) - (range * Math.random()) - 100;
-
-      const maxHeight = 460;
-      const priceRange = 60000;
-      const scale = maxHeight / priceRange;
-
-      const body = latestCandle.querySelector('.candle-body');
-      const wickTop = latestCandle.querySelector('.candle-wick-top');
-      const wickBottom = latestCandle.querySelector('.candle-wick-bottom');
-
-      const bodyHeight = Math.abs(closePrice - openPrice) * scale;
-      const bodyBottom = (356000 - Math.min(openPrice, closePrice)) * scale / (priceRange / maxHeight);
-      body.style.height = `${bodyHeight}px`;
-      body.style.bottom = `${bodyBottom}px`;
-      body.className = `candle-body ${closePrice > openPrice ? 'bullish' : 'bearish'}`;
-
-      wickTop.style.height = `${(high - Math.max(openPrice, closePrice)) * scale}px`;
-      wickBottom.style.height = `${(Math.min(openPrice, closePrice) - low) * scale}px`;
-
-      latestCandle.dataset.close = closePrice;
-      latestCandle.dataset.high = high;
-      latestCandle.dataset.low = low;
-
-      // Update price line
-      updatePriceLine(closePrice);
-    }
-
-    function addNewCandle() {
-      if (candles.length >= 20) {
-        container.removeChild(candles.shift());
-        candles.shift();
-      }
-
-      const data = btcData[currentTimeframe];
-      const dataPointIndex = Math.floor(Date.now() / 60) % data.length; // 1-minute intervals
-      const dataPoint = data[dataPointIndex];
-      const openPrice = lastClose;
-      const closePrice = dataPoint.close;
-      const newCandle = createCandle(openPrice, closePrice);
-      container.appendChild(newCandle);
-      candles.push(newCandle);
-      lastClose = closePrice;
-
-      // Update price line with the new close price
-      updatePriceLine(closePrice);
-    }
-
-    function updatePriceLine(price) {
-      const maxHeight = 460;
-      const priceRange = 60000;
-      const scale = maxHeight / priceRange;
-      const bottom = (356000 - price) * scale / (priceRange / maxHeight);
-      priceLine.style.bottom = `${bottom}px`;
-    }
-
-    function updateTimer() {
-      timer--;
-      if (timer <= 0) {
-        timer = 60; // Reset to 60 seconds for 1-minute candle
-        addNewCandle(); // Generate new candle
-      }
-      const minutes = Math.floor(timer / 60);
-      const seconds = timer % 60;
-      timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-    }
-
-    function updateTimeframe() {
-      currentTimeframe = document.getElementById('timeframe').value;
-      candles = [];
-      container.innerHTML = '';
-      lastClose = 356000; // Reset to top price
-      timer = 60; // Reset timer
-      for (let i = 0; i < 20; i++) {
-        const data = btcData[currentTimeframe];
-        const dataPoint = data[i % data.length];
-        const openPrice = lastClose;
-        const closePrice = dataPoint.close;
-        const newCandle = createCandle(openPrice, closePrice);
-        container.appendChild(newCandle);
-        candles.push(newCandle);
-        lastClose = closePrice;
-      }
-      updatePriceLine(lastClose); // Set initial price line
-      clearInterval(timerInterval); // Clear existing timer
-      timerInterval = setInterval(updateTimer, 1000); // Start new timer for 1s updates
-    }
-
-    let timerInterval = setInterval(updateTimer, 1000); // Initial timer setup
-
+    // Load data from trading.txt and populate dropdowns
     window.onload = function() {
-      updateTimeframe();
-      let phase = 0;
-      setInterval(() => {
-        if (phase === 0 && currentTimeframe === '1m') {
-          updateLatestCandle();
-          phase = 1;
-        } else if (currentTimeframe === '1m') {
-          // No new candle until timer resets (handled by updateTimer)
-          phase = 0;
-        }
-      }, 30000); // Update every 30s for 1m to simulate partial candle growth
-
       fetch('texts/trading.txt')
         .then(response => {
           if (!response.ok) throw new Error('Network response was not ok');
           return response.text();
         })
         .then(data => {
-          const hashtags = JSON.parse(data);
-          if (!hashtags || hashtags.length === 0) {
-            document.getElementById('hashtags').innerHTML = '<p>No trading topics available.</p>';
+          const items = JSON.parse(data);
+          if (!items || items.length === 0) {
+            document.getElementById('crypto').innerHTML = '<option>No crypto available</option>';
+            document.getElementById('indices').innerHTML = '<option>No indices available</option>';
+            document.getElementById('stocks').innerHTML = '<option>No stocks available</option>';
             return;
           }
-          populateHashtags(hashtags);
+
+          // Categorize items by type
+          const crypto = [], indices = [], stocks = [];
+          items.forEach(item => {
+            if (item.type === 'crypto') crypto.push(item.name);
+            else if (item.type === 'indices') indices.push(item.name);
+            else if (item.type === 'stocks') stocks.push(item.name);
+          });
+
+          // Populate dropdowns
+          populateDropdown('crypto', crypto);
+          populateDropdown('indices', indices);
+          populateDropdown('stocks', stocks);
+
+          // Load hashtags
+          if (document.getElementById('hashtags')) {
+            populateHashtags(items.filter(item => item.type !== 'crypto' && item.type !== 'indices' && item.type !== 'stocks'));
+          }
         })
         .catch(error => {
           console.error('Error loading texts/trading.txt:', error);
-          document.getElementById('hashtags').innerHTML = '<p>Failed to load hashtags. Please try again later.</p>';
+          document.getElementById('crypto').innerHTML = '<option>Failed to load crypto</option>';
+          document.getElementById('indices').innerHTML = '<option>Failed to load indices</option>';
+          document.getElementById('stocks').innerHTML = '<option>Failed to load stocks</option>';
         });
     };
+
+    function populateDropdown(type, options) {
+      const select = document.getElementById(type);
+      options.forEach(option => {
+        const opt = document.createElement('option');
+        opt.value = option; // You can store the image URL here later, e.g., `option.image`
+        opt.textContent = option;
+        select.appendChild(opt);
+      });
+    }
 
     function populateHashtags(hashtags) {
       const hashtagsContainer = document.getElementById('hashtags');
@@ -791,6 +481,23 @@
         
         hashtagsContainer.appendChild(tag);
       });
+    }
+
+    function updateImage(type) {
+      const select = document.getElementById(type);
+      const selectedValue = select.value;
+      const imageElement = document.getElementById('chartImage');
+
+      // For now, show a placeholder or no image (you'll add image URLs later)
+      if (selectedValue) {
+        // This is where you'd use the image URL from trading.txt or another source
+        // For example: imageElement.src = `images/${selectedValue}.png`;
+        imageElement.src = `https://via.placeholder.com/700x400?text=${encodeURIComponent(selectedValue)}+Chart`; // Placeholder
+        imageElement.style.display = 'block';
+      } else {
+        imageElement.src = '';
+        imageElement.style.display = 'none';
+      }
     }
 
     function openModal(title, desc, example, image, thread) {
@@ -821,7 +528,7 @@
       };
 
       generateImage.onclick = function() {
-        if (confirm('Would you like to generate an image of the current candlestick chart?')) {
+        if (confirm('Would you like to generate an image of the current chart?')) {
           modalImage.src = `https://via.placeholder.com/400x300?text=${encodeURIComponent(title)}+Chart`;
           modalImage.style.display = 'block';
           alert('Image generated! (This is a placeholder.)');
