@@ -7,29 +7,29 @@
   <style>
     /* General Styles */
     body {
-      font-family: 'Poppins', sans-serif; /* Updated from Source Code Pro */
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
       background: #0a0a0a;
       color: #00ffcc;
       overflow-x: hidden;
-      font-size: 16px; /* Base font size from technology.html */
-      line-height: 1.6; /* Improved line spacing */
-      font-weight: 400; /* Default weight */
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 400;
     }
 
     h1, h2, h3 {
-      font-family: 'Montserrat', sans-serif; /* Updated from Source Code Pro */
+      font-family: 'Montserrat', sans-serif;
       margin: 0;
-      font-weight: 700; /* Bold for headings */
+      font-weight: 700;
     }
 
     a {
       text-decoration: underline;
       color: #ff00cc;
       transition: color 0.3s ease;
-      font-family: 'Poppins', sans-serif; /* Ensure links use Poppins */
-      font-weight: 500; /* Matches technology.html */
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
     }
 
     a:hover {
@@ -47,25 +47,25 @@
     }
 
     header h1 {
-      font-size: 2.8rem; /* Increased from 2.5rem to match technology.html */
+      font-size: 2.8rem;
       text-transform: uppercase;
       animation: glow 2s infinite alternate;
-      letter-spacing: 2px; /* Added for modern look */
+      letter-spacing: 2px;
     }
 
     header p {
-      font-size: 1.3rem; /* Increased from 1.2rem */
+      font-size: 1.3rem;
       opacity: 0.8;
       animation: float 3s ease-in-out infinite;
-      font-weight: 300; /* Lighter weight for friendliness */
+      font-weight: 300;
     }
 
-    /* Trading Chart Animation */
-    .chart-container {
+    /* Trading Animation Section */
+    .trading-animation {
       position: relative;
       width: 90%;
       max-width: 800px;
-      height: 400px;
+      height: 500px;
       margin: 40px auto;
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
@@ -73,53 +73,111 @@
       overflow: hidden;
     }
 
-    .chart {
+    .timeframe-selector {
       position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
+      top: 10px;
+      left: 10px; /* Upper-left as requested */
+      font-size: 1rem;
+      color: #00ffcc;
+    }
+
+    .timeframe-selector select {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      color: #00ffcc;
+      padding: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .timeframe-selector select:hover, .timeframe-selector select:focus {
+      background: #00ffcc;
+      color: #000;
+    }
+
+    .candle-container {
+      position: absolute;
+      bottom: 40px;
+      left: 0;
+      right: 60px;
+      width: calc(100% - 60px);
+      height: calc(100% - 40px);
       display: flex;
       align-items: flex-end;
-      justify-content: space-around;
+      justify-content: flex-start;
+      overflow: hidden;
+      white-space: nowrap;
+      animation: scrollCandles 60s infinite linear; /* Left to right */
     }
 
     .candle {
-      width: 10px;
-      background: #00ffcc;
-      margin: 0 2px;
       position: relative;
-      animation: grow 2s ease-in-out infinite;
+      width: 20px;
+      margin: 0 8px;
+      display: inline-block;
+      vertical-align: bottom;
     }
 
-    .candle::before {
-      content: '';
+    .candle-body {
       position: absolute;
-      top: 0;
+      bottom: 0;
+      width: 100%;
+      background: linear-gradient(135deg, #00ffcc, #0099cc);
+      border-radius: 2px;
+      transition: height 1s ease-in-out, bottom 1s ease-in-out;
+      box-shadow: 0 0 5px rgba(0, 255, 204, 0.3);
+    }
+
+    .candle-body.bearish {
+      background: linear-gradient(135deg, #ff4444, #990000);
+    }
+
+    .candle-wick {
+      position: absolute;
       left: 50%;
       width: 2px;
-      height: 100%;
       background: #ff00cc;
       transform: translateX(-50%);
+      opacity: 0.8;
     }
 
-    .line-chart {
+    .candle-wick-top {
+      bottom: 100%;
+    }
+
+    .candle-wick-bottom {
+      top: 100%;
+    }
+
+    /* Axis Styles */
+    .x-axis, .y-axis {
       position: absolute;
-      top: 0;
+      color: #00ffcc;
+      font-size: 0.8rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .x-axis {
+      bottom: 5px;
       left: 0;
       width: 100%;
-      height: 100%;
-      stroke: #00ffcc;
-      stroke-width: 2;
-      fill: none;
+      display: flex;
+      justify-content: space-between;
     }
 
-    @keyframes grow {
-      0%, 100% { height: 20%; }
-      50% { height: 80%; }
+    .y-axis {
+      top: 0;
+      right: 5px;
+      height: calc(100% - 40px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
     }
 
-    /* Trading Categories */
-    .categories {
+    /* Trading Hashtags */
+    .hashtags {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -133,18 +191,18 @@
       margin: 40px auto;
     }
 
-    .category-card {
+    .hashtag {
       padding: 10px 20px;
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
       border-radius: 5px;
       cursor: pointer;
       transition: background 0.3s ease, color 0.3s ease;
-      font-size: 1.1rem; /* Matches technology.html */
-      font-weight: 500; /* Matches technology.html */
+      font-size: 1.1rem;
+      font-weight: 500;
     }
 
-    .category-card:hover {
+    .hashtag:hover {
       background: #00ffcc;
       color: #000;
     }
@@ -218,7 +276,7 @@
       color: #000;
     }
 
-    .thread-icon {
+    .thread-icon, .search-icon, .image-icon {
       font-size: 1.6rem;
       color: #00ffcc;
       cursor: pointer;
@@ -226,7 +284,7 @@
       transition: transform 0.3s ease, color 0.3s ease;
     }
 
-    .thread-icon:hover {
+    .thread-icon:hover, .search-icon:hover, .image-icon:hover {
       color: #ff00cc;
       transform: scale(1.2);
     }
@@ -238,18 +296,6 @@
       border-radius: 50%;
       margin: 0 15px;
       animation: glowPulse 1.5s infinite;
-    }
-
-    .search-icon {
-      font-size: 1.6rem;
-      color: #00ffcc;
-      cursor: pointer;
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    .search-icon:hover {
-      color: #ff00cc;
-      transform: scale(1.2);
     }
 
     .modal-body {
@@ -329,13 +375,13 @@
 
     footer p {
       margin: 0;
-      font-size: 1.1rem; /* Matches technology.html */
-      font-weight: 300; /* Matches technology.html */
+      font-size: 1.1rem;
+      font-weight: 300;
     }
 
     footer a {
       color: #ff00cc;
-      font-weight: 500; /* Matches technology.html */
+      font-weight: 500;
     }
 
     footer a:hover {
@@ -369,6 +415,11 @@
       0% { background-position: 0 0; }
       100% { background-position: 1000px 1000px; }
     }
+
+    @keyframes scrollCandles {
+      0% { transform: translateX(-100%); } /* Start off-screen left */
+      100% { transform: translateX(0); } /* End fully visible on right */
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -383,27 +434,30 @@
     <p>Where Markets Meet Innovation</p>
   </header>
 
-  <!-- Trading Chart Animation -->
-  <div class="chart-container">
-    <div class="chart">
-      <div class="candle" style="height: 30%;"></div>
-      <div class="candle" style="height: 60%;"></div>
-      <div class="candle" style="height: 40%;"></div>
-      <div class="candle" style="height: 80%;"></div>
-      <div class="candle" style="height: 20%;"></div>
-      <div class="candle" style="height: 50%;"></div>
-      <div class="candle" style="height: 70%;"></div>
+  <!-- Trading Animation Section with Timeframe Selector -->
+  <div class="trading-animation">
+    <div class="timeframe-selector">
+      <select id="timeframe" onchange="updateTimeframe()">
+        <option value="1d">1 Day</option>
+        <option value="4h">4 Hours</option>
+        <option value="15m">15 Minutes</option>
+        <option value="5m">5 Minutes</option>
+      </select>
     </div>
-    <svg class="line-chart" viewBox="0 0 500 200">
-      <polyline points="0,180 50,150 100,160 150,140 200,170 250,130 300,150 350,120 400,160 450,140 500,180" />
-    </svg>
+    <div class="candle-container" id="candleContainer"></div>
+    <div class="x-axis" id="xAxis">
+      <span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span>
+    </div>
+    <div class="y-axis" id="yAxis">
+      <span>120K</span><span>110K</span><span>100K</span><span>90K</span><span>80K</span><span>70K</span><span>60K</span><span>50K</span><span>40K</span>
+    </div>
   </div>
 
-  <!-- Trading Categories -->
+  <!-- Trading Hashtags -->
   <section>
     <h2 style="text-align: center; margin: 20px 0; font-weight: 600;">Explore Trading Topics</h2>
-    <div class="categories" id="categories">
-      <!-- Categories will be added dynamically -->
+    <div class="hashtags" id="hashtags">
+      <!-- Hashtags will be added dynamically -->
     </div>
   </section>
 
@@ -415,6 +469,8 @@
         <i class="fa fa-pencil-square-o thread-icon" id="threadLink" title="View Thread"></i>
         <span class="icon-separator"></span>
         <i class="fa fa-search search-icon" id="searchX" title="Search on X"></i>
+        <span class="icon-separator"></span>
+        <i class="fa fa-image image-icon" id="generateImage" title="Generate Image"></i>
         <button class="modal-close" onclick="closeModal()">✖</button>
       </div>
       <div class="modal-body">
@@ -436,19 +492,150 @@
   </footer>
 
   <script>
-    // Modal Functions
-    function populateCategories(categories) {
-      const categoriesContainer = document.getElementById('categories');
-      categories.forEach(category => {
-        const card = document.createElement('div');
-        card.className = 'category-card';
-        card.textContent = `#${category.name.replace(/\s+/g, '')}`;
+    // Static Bitcoin data
+    const btcData = {
+      '1d': [
+        { date: "2024-04-01", open: 60000, high: 61000, low: 59000, close: 60500, pattern: 'normal' },
+        { date: "2024-05-01", open: 60500, high: 62000, low: 59500, close: 61500, pattern: 'normal' },
+        { date: "2024-06-01", open: 61500, high: 63000, low: 60500, close: 62500, pattern: 'normal' },
+        { date: "2024-07-01", open: 62500, high: 64500, low: 62000, close: 64000, pattern: 'normal' },
+        { date: "2024-08-01", open: 64000, high: 66000, low: 63500, close: 65500, pattern: 'shooting_star' },
+        { date: "2024-09-01", open: 65500, high: 67000, low: 65000, close: 66000, pattern: 'doji' },
+        { date: "2024-10-01", open: 66000, high: 67500, low: 65500, close: 66500, pattern: 'normal' },
+        { date: "2024-11-01", open: 66500, high: 68000, low: 64500, close: 65000, pattern: 'hammer' },
+        { date: "2024-12-01", open: 65000, high: 65500, low: 62000, close: 62500, pattern: 'normal' },
+        { date: "2025-01-01", open: 62500, high: 63000, low: 59000, close: 59500, pattern: 'inverted_hammer' },
+        { date: "2025-02-01", open: 59500, high: 60500, low: 58000, close: 59000, pattern: 'normal' },
+        { date: "2025-03-01", open: 59000, high: 61000, low: 58500, close: 60000, pattern: 'normal' },
+        { date: "2025-04-01", open: 60000, high: 62000, low: 59500, close: 61000, pattern: 'normal' },
+        { date: "2025-05-01", open: 61000, high: 63000, low: 60500, close: 62000, pattern: 'normal' }
+      ],
+      '4h': [
+        { date: "2024-04-01 00:00", open: 60000, high: 60100, low: 59900, close: 60050, pattern: 'normal' },
+        { date: "2024-04-01 04:00", open: 60050, high: 60200, low: 59950, close: 60100, pattern: 'normal' },
+      ],
+      '15m': [
+        { date: "2024-04-01 00:00", open: 60000, high: 60020, low: 59980, close: 60010, pattern: 'normal' },
+        { date: "2024-04-01 00:15", open: 60010, high: 60030, low: 59990, close: 60020, pattern: 'normal' },
+      ],
+      '5m': [
+        { date: "2024-04-01 00:00", open: 60000, high: 60010, low: 59990, close: 60005, pattern: 'normal' },
+        { date: "2024-04-01 00:05", open: 60005, high: 60015, low: 59995, close: 60010, pattern: 'normal' },
+      ]
+    };
+
+    const container = document.getElementById('candleContainer');
+    let candles = [];
+    let currentTimeframe = '1d';
+
+    function createCandle(dataPoint) {
+      const { open, high, low, close, pattern } = dataPoint;
+      const maxHeight = 460;
+      const priceRange = 72000;
+      const scale = maxHeight / priceRange;
+
+      const candle = document.createElement('div');
+      candle.className = 'candle';
+
+      const body = document.createElement('div');
+      body.className = `candle-body ${close > open ? 'bullish' : 'bearish'}`;
+      let bodyHeight, bodyBottom;
+
+      switch (pattern) {
+        case 'shooting_star':
+          bodyHeight = Math.abs(close - open) * 0.3 * scale;
+          bodyBottom = (Math.min(open, close) - 48000) * scale;
+          break;
+        case 'hammer':
+          bodyHeight = Math.abs(close - open) * 0.3 * scale;
+          bodyBottom = (Math.min(open, close) - 48000) * scale;
+          break;
+        case 'doji':
+          bodyHeight = Math.abs(close - open) * 0.1 * scale;
+          bodyBottom = ((open + close) / 2 - 48000) * scale;
+          break;
+        case 'inverted_hammer':
+          bodyHeight = Math.abs(close - open) * 0.3 * scale;
+          bodyBottom = (Math.min(open, close) - 48000) * scale;
+          break;
+        default:
+          bodyHeight = Math.abs(close - open) * scale;
+          bodyBottom = (Math.min(open, close) - 48000) * scale;
+      }
+
+      body.style.height = `${bodyHeight}px`;
+      body.style.bottom = `${bodyBottom}px`;
+
+      const wickTop = document.createElement('div');
+      wickTop.className = 'candle-wick candle-wick-top';
+      wickTop.style.height = `${(high - Math.max(open, close)) * scale}px`;
+
+      const wickBottom = document.createElement('div');
+      wickBottom.className = 'candle-wick candle-wick-bottom';
+      wickBottom.style.height = `${(Math.min(open, close) - low) * scale}px`;
+
+      candle.appendChild(body);
+      candle.appendChild(wickTop);
+      candle.appendChild(wickBottom);
+      return candle;
+    }
+
+    function updateCandles() {
+      if (candles.length >= 14) { // Adjust for visible candles
+        container.removeChild(candles.pop()); // Remove rightmost candle
+      }
+      const data = btcData[currentTimeframe];
+      const dataPoint = data[Math.floor(Date.now() / (currentTimeframe === '1d' ? 2000 : currentTimeframe === '4h' ? 500 : currentTimeframe === '15m' ? 200 : 100)) % data.length];
+      const newCandle = createCandle(dataPoint);
+      container.insertBefore(newCandle, container.firstChild); // Add to left
+      candles.unshift(newCandle); // Add to start of array
+    }
+
+    function updateTimeframe() {
+      currentTimeframe = document.getElementById('timeframe').value;
+      candles = [];
+      container.innerHTML = '';
+      for (let i = 0; i < (currentTimeframe === '1d' ? 14 : currentTimeframe === '4h' ? 42 : currentTimeframe === '15m' ? 96 : 288); i++) {
+        updateCandles();
+      }
+    }
+
+    window.onload = function() {
+      updateTimeframe();
+      setInterval(updateCandles, currentTimeframe === '1d' ? 2000 : currentTimeframe === '4h' ? 500 : currentTimeframe === '15m' ? 200 : 100);
+
+      fetch('texts/trading.txt')
+        .then(response => {
+          if (!response.ok) throw new Error('Network response was not ok');
+          return response.text();
+        })
+        .then(data => {
+          const hashtags = JSON.parse(data);
+          if (!hashtags || hashtags.length === 0) {
+            document.getElementById('hashtags').innerHTML = '<p>No trading topics available.</p>';
+            return;
+          }
+          populateHashtags(hashtags);
+        })
+        .catch(error => {
+          console.error('Error loading texts/trading.txt:', error);
+          document.getElementById('hashtags').innerHTML = '<p>Failed to load hashtags. Please try again later.</p>';
+        });
+    };
+
+    function populateHashtags(hashtags) {
+      const hashtagsContainer = document.getElementById('hashtags');
+      hashtagsContainer.innerHTML = '';
+      hashtags.forEach(hashtag => {
+        const tag = document.createElement('div');
+        tag.className = 'hashtag';
+        tag.textContent = `#${hashtag.name.replace(/\s+/g, '')}`;
         
-        card.addEventListener('click', () => {
-          openModal(category.name, category.desc, category.example, category.image, category.thread);
+        tag.addEventListener('click', () => {
+          openModal(hashtag.name, hashtag.desc, hashtag.example, hashtag.image, hashtag.thread);
         });
         
-        categoriesContainer.appendChild(card);
+        hashtagsContainer.appendChild(tag);
       });
     }
 
@@ -460,11 +647,13 @@
       const modalImage = document.getElementById('modalImage');
       const threadLink = document.getElementById('threadLink');
       const searchX = document.getElementById('searchX');
+      const generateImage = document.getElementById('generateImage');
 
       modalTitle.textContent = title;
       modalDesc.innerHTML = desc;
       modalExample.textContent = `Example: ${example}`;
-      modalImage.src = image;
+      modalImage.src = image || "https://via.placeholder.com/400x300?text=No+Image+Available";
+      modalImage.onerror = () => modalImage.style.display = "none";
       modal.style.display = 'flex';
 
       threadLink.onclick = function() {
@@ -472,9 +661,18 @@
       };
 
       searchX.onclick = function() {
-        const searchQuery = encodeURIComponent(title);
+        const searchQuery = encodeURIComponent(`#${title} trading`);
         const xSearchUrl = `https://x.com/search?q=${searchQuery}`;
         window.open(xSearchUrl, '_blank');
+      };
+
+      generateImage.onclick = function() {
+        if (confirm('Would you like to generate an image of the current candlestick chart?')) {
+          // Simulate image generation with a placeholder
+          modalImage.src = `https://via.placeholder.com/400x300?text=${encodeURIComponent(title)}+Chart`;
+          modalImage.style.display = 'block';
+          alert('Image generated! (This is a placeholder.)');
+        }
       };
     }
 
@@ -502,25 +700,6 @@
         closeModal();
       }
     });
-
-    // Fetch data from texts/trading.txt
-    window.onload = function() {
-      fetch('texts/trading.txt')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.text();
-        })
-        .then(data => {
-          const categories = JSON.parse(data);
-          populateCategories(categories);
-        })
-        .catch(error => {
-          console.error('Error loading texts/trading.txt:', error);
-          alert('Failed to load category data. Please check the console for details.');
-        });
-    };
   </script>
 </body>
 </html>
