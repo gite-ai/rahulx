@@ -136,10 +136,6 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 10px;
-      border: 1px solid #00ffcc;
-      border-radius: 5px;
     }
 
     .tool-icon {
@@ -213,8 +209,7 @@
     .logo {
       position: absolute;
       bottom: 25px;
-      left: 50%;
-      transform: translateX(-50%);
+      left: 50px; /* Moved to lower left */
       width: 100px;
       height: auto;
     }
@@ -578,7 +573,7 @@
 
         ctx.beginPath();
         ctx.lineWidth = 2;
-        ctx.strokeStyle = curr > prev ? '#00ff00' : '#ff0000'; // Green up, Red down
+        ctx.strokeStyle = curr > prev ? '#00ff00' : '#ff0000';
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
         ctx.stroke();
@@ -639,7 +634,7 @@
         const index = Math.round((mouseX - margin.left) / scaleX);
         if (index >= 0 && index < chartData.length) {
           const price = chartData[index].close;
-          const months = ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct'];
+          const months = ['Apr', 'Jun', 'Aug', 'Oct', 'Dec', 'Feb', 'Mar'];
           const timeIndex = Math.round((index / (chartData.length - 1)) * (months.length - 1));
           const time = months[timeIndex] || '';
 
@@ -689,7 +684,8 @@
     }
 
     window.onload = function() {
-      fetch('texts/trading.txt')
+      // Fetch scripts from trading_list.txt
+      fetch('texts/trading_list.txt')
         .then(response => {
           if (!response.ok) throw new Error('Network response was not ok');
           return response.text();
@@ -705,10 +701,24 @@
             scriptSelect.appendChild(option);
           });
           updateChartData();
+        })
+        .catch(error => {
+          console.error('Error loading texts/trading_list.txt:', error);
+          // Fallback to default BTC
+          updateChartData();
+        });
 
+      // Fetch hashtags from trading.txt
+      fetch('texts/trading.txt')
+        .then(response => {
+          if (!response.ok) throw new Error('Network response was not ok');
+          return response.text();
+        })
+        .then(data => {
+          const hashtags = JSON.parse(data);
           const hashtagsContainer = document.getElementById('hashtags');
           hashtagsContainer.innerHTML = '';
-          scripts.forEach(hashtag => {
+          hashtags.forEach(hashtag => {
             const tag = document.createElement('div');
             tag.className = 'hashtag';
             tag.textContent = `#${hashtag.name.replace(/\s+/g, '')}`;
