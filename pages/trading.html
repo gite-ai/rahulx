@@ -477,28 +477,63 @@
       const width = canvas.width = canvas.offsetWidth;
       const height = canvas.height = canvas.offsetHeight;
 
+      // Define margins for zooming out
+      const margin = { top: 20, right: 20, bottom: 20, left: 20 };
+      const plotWidth = width - margin.left - margin.right;
+      const plotHeight = height - margin.top - margin.bottom;
+
       const minPrice = Math.min(...chartData.map(d => d.close));
       const maxPrice = Math.max(...chartData.map(d => d.close));
       const priceRange = maxPrice - minPrice || 1; // Avoid division by zero
-      const scaleY = height / priceRange;
-      const scaleX = width / (chartData.length - 1 || 1);
+      const scaleY = plotHeight / priceRange;
+      const scaleX = plotWidth / (chartData.length - 1 || 1);
 
       ctx.clearRect(0, 0, width, height);
+
+      // Draw the line
       ctx.beginPath();
       ctx.strokeStyle = '#00ffcc';
       ctx.lineWidth = 2;
 
       chartData.forEach((data, index) => {
-        const x = index * scaleX;
-        const y = height - ((data.close - minPrice) * scaleY);
+        const x = margin.left + index * scaleX;
+        const y = height - margin.bottom - ((data.close - minPrice) * scaleY);
         if (index === 0) {
           ctx.moveTo(x, y);
         } else {
           ctx.lineTo(x, y);
         }
       });
-
       ctx.stroke();
+
+      // Add Buy/Sell labels at local minima/maxima
+      ctx.font = '12px Poppins';
+      ctx.textAlign = 'center';
+      for (let i = 1; i < chartData.length - 1; i++) {
+        const prev = chartData[i - 1].close;
+        const curr = chartData[i].close;
+        const next = chartData[i + 1].close;
+
+        const x = margin.left + i * scaleX;
+        const y = height - margin.bottom - ((curr - minPrice) * scaleY);
+
+        // Local minimum (Buy)
+        if (curr < prev && curr < next) {
+          ctx.fillStyle = '#00ff00'; // Green for Buy
+          ctx.fillText('Buy', x, y - 10);
+          ctx.beginPath();
+          ctx.arc(x, y, 4, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        // Local maximum (Sell)
+        else if (curr > prev && curr > next) {
+          ctx.fillStyle = '#ff0000'; // Red for Sell
+          ctx.fillText('Sell', x, y + 20);
+          ctx.beginPath();
+          ctx.arc(x, y, 4, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
     }
 
     function updateTimeframe() {
