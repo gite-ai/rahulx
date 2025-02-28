@@ -80,6 +80,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      z-index: 10; /* Ensure toolbar is above canvas */
     }
 
     .script-selector, .timeframe-selector {
@@ -136,6 +137,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      z-index: 10; /* Ensure tools are above canvas */
     }
 
     .tool-icon {
@@ -163,6 +165,8 @@
     canvas {
       width: 100%;
       height: 100%;
+      position: relative;
+      z-index: 5; /* Canvas below toolbar and tools */
     }
 
     /* Axis Styles */
@@ -209,7 +213,7 @@
     .logo {
       position: absolute;
       bottom: 25px;
-      left: 50px; /* Moved to lower left */
+      left: 50px;
       width: 100px;
       height: auto;
     }
@@ -605,7 +609,7 @@
         }
       }
 
-      // Dotted line from current price to y-axis
+      // Dotted line from current price to right y-axis
       const lastPrice = chartData[chartData.length - 1].close;
       const lastX = margin.left + (chartData.length - 1) * scaleX;
       const lastY = height - margin.bottom - ((lastPrice - minPrice) * scaleY);
@@ -614,7 +618,7 @@
       ctx.lineWidth = 1;
       ctx.setLineDash([5, 5]);
       ctx.moveTo(lastX, lastY);
-      ctx.lineTo(margin.left, lastY);
+      ctx.lineTo(width - margin.right, lastY); // Point to right y-axis
       ctx.stroke();
       ctx.setLineDash([]);
 
@@ -652,11 +656,17 @@
 
     function updateScript() {
       currentScript = document.getElementById('script').value;
-      scripts.forEach(script => {
-        if (script.name === currentScript && script.image) {
-          openModal(`${currentScript} Chart`, `Current ${currentScript} price chart`, '', script.image);
-        }
-      });
+      let imageUrl = "https://via.placeholder.com/400x300?text=No+Image+Available";
+      if (currentScript === "BTC") {
+        imageUrl = "https://cdn.pixabay.com/photo/2023/08/28/22/08/ai-generated-8220159_640.jpg";
+      } else {
+        scripts.forEach(script => {
+          if (script.name === currentScript && script.image) {
+            imageUrl = script.image;
+          }
+        });
+      }
+      openModal(`${currentScript} Chart`, `Current ${currentScript} price chart`, '', imageUrl);
       updateChartData();
     }
 
@@ -704,8 +714,7 @@
         })
         .catch(error => {
           console.error('Error loading texts/trading_list.txt:', error);
-          // Fallback to default BTC
-          updateChartData();
+          updateChartData(); // Fallback to default BTC
         });
 
       // Fetch hashtags from trading.txt
@@ -738,6 +747,7 @@
 
       window.addEventListener('resize', drawLineChart);
 
+      // Mouse events for crosshair
       canvas.addEventListener('mousemove', (e) => {
         const rect = canvas.getBoundingClientRect();
         mouseX = e.clientX - rect.left;
@@ -749,6 +759,11 @@
         mouseX = null;
         mouseY = null;
         drawLineChart();
+      });
+
+      // Prevent canvas from intercepting clicks on toolbar
+      canvas.addEventListener('click', (e) => {
+        e.stopPropagation();
       });
 
       document.querySelector('.alarm-icon').addEventListener('click', () => {
