@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rahulx.com - Netflix Binge Watching</title>
+  <title>Rahulx.com - Binge Watching Hub</title>
   <style>
     /* General Styles */
     body {
@@ -74,62 +74,107 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      perspective: 1000px; /* Adds depth to 3D effects */
     }
 
-    /* 3D Rotating TV */
-    .tv-screen {
-      width: 200px;
-      height: 120px;
+    /* 3D Rotating Streaming Prism */
+    .streaming-prism {
+      width: 220px;
+      height: 100px;
       position: relative;
       transform-style: preserve-3d;
-      animation: rotate 5s linear infinite;
+      animation: rotatePrism 12s infinite linear;
+      z-index: 2;
     }
 
-    .tv-screen div {
+    .prism-face {
       position: absolute;
       width: 100%;
       height: 100%;
-      background: rgba(0, 255, 204, 0.1);
-      border: 2px solid #00ffcc;
+      backface-visibility: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
-      color: #00ffcc;
+      font-size: 1.8rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: #ff00cc;
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #00ffcc;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+      text-transform: uppercase;
     }
 
-    .front { transform: translateZ(60px); }
-    .back { transform: rotateY(180deg) translateZ(60px); }
-    .left { transform: rotateY(-90deg) translateZ(60px); }
-    .right { transform: rotateY(90deg) translateZ(60px); }
-    .top { transform: rotateX(90deg) translateZ(60px); }
-    .bottom { transform: rotateX(-90deg) translateZ(60px); }
+    .face-netflix { 
+      transform: rotateY(0deg) translateZ(110px); 
+      background: linear-gradient(135deg, #ff00cc, #00ffcc); 
+      color: #000;
+    }
 
-    @keyframes rotate {
+    .face-prime { 
+      transform: rotateY(90deg) translateZ(110px); 
+      background: linear-gradient(135deg, #00ffcc, #0099ff); 
+      color: #000;
+    }
+
+    .face-appletv { 
+      transform: rotateY(180deg) translateZ(110px); 
+      background: linear-gradient(135deg, #0099ff, #ff00cc); 
+      color: #000;
+    }
+
+    .face-hotstar { 
+      transform: rotateY(270deg) translateZ(110px); 
+      background: linear-gradient(135deg, #ff00cc, #9900cc); 
+      color: #000;
+    }
+
+    @keyframes rotatePrism {
       0% { transform: rotateY(0deg); }
+      25% { transform: rotateY(90deg); }
+      50% { transform: rotateY(180deg); }
+      75% { transform: rotateY(270deg); }
       100% { transform: rotateY(360deg); }
     }
 
-    /* Floating Binge Icons */
-    .floating-icon {
+    /* Binge Carousel */
+    .binge-carousel {
       position: absolute;
-      width: 50px;
-      height: 50px;
-      background: rgba(0, 255, 204, 0.1);
-      border: 2px solid #00ffcc;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      color: #00ffcc;
-      animation: float 5s ease-in-out infinite;
+      width: 300px;
+      height: 300px;
+      transform-style: preserve-3d;
+      animation: carouselSpin 15s infinite linear;
     }
 
-    .icon-1 { top: 10%; left: 10%; animation-delay: 0s; }
-    .icon-2 { top: 30%; left: 30%; animation-delay: 1s; }
-    .icon-3 { top: 50%; left: 50%; animation-delay: 2s; }
-    .icon-4 { top: 70%; left: 70%; animation-delay: 3s; }
+    .carousel-item {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: rgba(0, 255, 204, 0.2);
+      border: 2px solid #00ffcc;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #00ffcc;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      text-align: center;
+      transform-origin: center center;
+    }
+
+    .item-remote { transform: rotateY(0deg) translateZ(150px) rotateX(20deg); }
+    .item-popcorn { transform: rotateY(90deg) translateZ(150px) rotateX(20deg); }
+    .item-blanket { transform: rotateY(180deg) translateZ(150px) rotateX(20deg); }
+    .item-coffee { transform: rotateY(270deg) translateZ(150px) rotateX(20deg); }
+
+    @keyframes carouselSpin {
+      0% { transform: rotateY(0deg) rotateX(10deg); }
+      100% { transform: rotateY(360deg) rotateX(10deg); }
+    }
 
     /* Trending Hashtags */
     .hashtags {
@@ -231,7 +276,7 @@
       color: #000;
     }
 
-    .thread-icon {
+    .thread-icon, .search-icon {
       font-size: 1.6rem;
       color: #00ffcc;
       cursor: pointer;
@@ -239,7 +284,7 @@
       transition: transform 0.3s ease, color 0.3s ease;
     }
 
-    .thread-icon:hover {
+    .thread-icon:hover, .search-icon:hover {
       color: #ff00cc;
       transform: scale(1.2);
     }
@@ -251,18 +296,6 @@
       border-radius: 50%;
       margin: 0 15px;
       animation: glowPulse 1.5s infinite;
-    }
-
-    .search-icon {
-      font-size: 1.6rem;
-      color: #00ffcc;
-      cursor: pointer;
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    .search-icon:hover {
-      color: #ff00cc;
-      transform: scale(1.2);
     }
 
     .modal-body {
@@ -392,27 +425,27 @@
 
   <!-- Header -->
   <header>
-    <h1>Welcome to Netflix Binge Watching</h1>
-    <p>Your Gateway to Endless Streaming</p>
+    <h1>Welcome to the Binge Watching Hub</h1>
+    <p>Explore Endless Streaming Across Platforms</p>
   </header>
 
   <!-- Binge Animation Section -->
   <div class="binge-animation">
-    <!-- 3D Rotating TV Screen -->
-    <div class="tv-screen">
-      <div class="front">📺</div>
-      <div class="back">📺</div>
-      <div class="left">🎬</div>
-      <div class="right">🎬</div>
-      <div class="top">🍿</div>
-      <div class="bottom">🍿</div>
+    <!-- 3D Rotating Streaming Prism -->
+    <div class="streaming-prism">
+      <div class="prism-face face-netflix">Netflix</div>
+      <div class="prism-face face-prime">Prime</div>
+      <div class="prism-face face-appletv">Apple TV</div>
+      <div class="prism-face face-hotstar">Hotstar</div>
     </div>
 
-    <!-- Floating Binge Icons -->
-    <div class="floating-icon icon-1">🎥</div>
-    <div class="floating-icon icon-2">📺</div>
-    <div class="floating-icon icon-3">🍿</div>
-    <div class="floating-icon icon-4">🎧</div>
+    <!-- Binge Carousel -->
+    <div class="binge-carousel">
+      <div class="carousel-item item-remote">📱<br>Remote</div>
+      <div class="carousel-item item-popcorn">🍿<br>Popcorn</div>
+      <div class="carousel-item item-blanket">🛌<br>Blanket</div>
+      <div class="carousel-item item-coffee">☕<br>Coffee</div>
+    </div>
   </div>
 
   <!-- Trending Hashtags -->
@@ -486,7 +519,7 @@
       };
 
       searchX.onclick = function() {
-        const searchQuery = encodeURIComponent(`#${title} netflix`);
+        const searchQuery = encodeURIComponent(`#${title}`);
         const xSearchUrl = `https://x.com/search?q=${searchQuery}`;
         window.open(xSearchUrl, '_blank');
       };
