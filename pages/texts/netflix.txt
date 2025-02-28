@@ -1,0 +1,58 @@
+[
+  {
+    "name": "BingeWatching",
+    "desc": "The art of watching multiple episodes or seasons in one sitting.",
+    "example": "Finishing Stranger Things Season 4 in a weekend.",
+    "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3",
+    "thread": "https://x.com/threads/placeholder_bingewatching"
+  },
+  {
+    "name": "NetflixOriginals",
+    "desc": "Exclusive shows and movies produced by Netflix.",
+    "example": "Streaming The Witcher Season 3.",
+    "image": "https://th.bing.com/th/id/OIP.rRpx98P6up5JkHNfnWMyLwHaDt?rs=1&pid=ImgDetMain",
+    "thread": "https://x.com/threads/placeholder_netflixoriginals"
+  },
+  {
+    "name": "ChillVibes",
+    "desc": "Relaxing with low-key Netflix shows or movies.",
+    "example": "Watching The Great British Bake Off after a long day.",
+    "image": "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-4.0.3",
+    "thread": "https://x.com/threads/placeholder_chillvibes"
+  },
+  {
+    "name": "ThrillerNights",
+    "desc": "Edge-of-your-seat suspense and mystery on Netflix.",
+    "example": "Bingeing Mindhunter late into the night.",
+    "image": "https://th.bing.com/th/id/OIP.Q8n8mY7e8Z8Zt8Y8Z8Y8ZwHaEK?rs=1&pid=ImgDetMain",
+    "thread": "https://x.com/threads/placeholder_thrillernights"
+  },
+  {
+    "name": "SciFiMarathon",
+    "desc": "Diving into science fiction series and films on Netflix.",
+    "example": "Watching all of Black Mirror in one go.",
+    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3",
+    "thread": "https://x.com/threads/placeholder_scifimarathon"
+  },
+  {
+    "name": "RomComBinge",
+    "desc": "Feel-good romantic comedies for a cozy Netflix session.",
+    "example": "Laughing through To All the Boys I’ve Loved Before.",
+    "image": "https://th.bing.com/th/id/OIP.6X5gRUI8knavN5gK5g5g5gHaEK?rs=1&pid=ImgDetMain",
+    "thread": "https://x.com/threads/placeholder_romcombinge"
+  },
+  {
+    "name": "DocuSeries",
+    "desc": "Informative and gripping documentary series on Netflix.",
+    "example": "Exploring Tiger King’s wild story.",
+    "image": "https://images.unsplash.com/photo-1508921340878-703b61f5a465?ixlib=rb-4.0.3",
+    "thread": "https://x.com/threads/placeholder_docuseries"
+  },
+  {
+    "name": "KidsTV",
+    "desc": "Family-friendly shows for kids to binge on Netflix.",
+    "example": "Watching Bluey with the little ones.",
+    "image": "https://th.bing.com/th/id/OIP.NrYbs9hurY9_2X3bSyAaZgAAAA?rs=1&pid=ImgDetMain",
+    "thread": "https://x.com/threads/placeholder_kidstv"
+  }
+]
