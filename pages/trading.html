@@ -7,29 +7,29 @@
   <style>
     /* General Styles */
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Poppins', sans-serif; /* Updated from Source Code Pro */
       margin: 0;
       padding: 0;
       background: #0a0a0a;
       color: #00ffcc;
       overflow-x: hidden;
-      font-size: 16px;
-      line-height: 1.6;
-      font-weight: 400;
+      font-size: 16px; /* Base font size from technology.html */
+      line-height: 1.6; /* Improved line spacing */
+      font-weight: 400; /* Default weight */
     }
 
     h1, h2, h3 {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Montserrat', sans-serif; /* Updated from Source Code Pro */
       margin: 0;
-      font-weight: 700;
+      font-weight: 700; /* Bold for headings */
     }
 
     a {
       text-decoration: underline;
       color: #ff00cc;
       transition: color 0.3s ease;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 500;
+      font-family: 'Poppins', sans-serif; /* Ensure links use Poppins */
+      font-weight: 500; /* Matches technology.html */
     }
 
     a:hover {
@@ -47,68 +47,79 @@
     }
 
     header h1 {
-      font-size: 2.8rem;
+      font-size: 2.8rem; /* Increased from 2.5rem to match technology.html */
       text-transform: uppercase;
       animation: glow 2s infinite alternate;
-      letter-spacing: 2px;
+      letter-spacing: 2px; /* Added for modern look */
     }
 
     header p {
-      font-size: 1.3rem;
+      font-size: 1.3rem; /* Increased from 1.2rem */
       opacity: 0.8;
       animation: float 3s ease-in-out infinite;
-      font-weight: 300;
+      font-weight: 300; /* Lighter weight for friendliness */
     }
 
-    /* Trading Animation Section (now a static box) */
-    .trading-animation {
+    /* Trading Chart Animation */
+    .chart-container {
       position: relative;
       width: 90%;
       max-width: 800px;
-      height: 500px;
+      height: 400px;
       margin: 40px auto;
-      background: #0a0a0a;
+      background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
       border-radius: 10px;
       overflow: hidden;
+    }
+
+    .chart {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-end;
+      justify-content: space-around;
     }
 
-    .dropdown-container {
-      margin-bottom: 20px;
-      display: flex;
-      gap: 20px;
-    }
-
-    .dropdown {
-      font-size: 1rem;
-      color: #00ffcc;
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid #00ffcc;
-      border-radius: 5px;
-      padding: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease, color 0.3s ease;
-    }
-
-    .dropdown:hover, .dropdown:focus {
+    .candle {
+      width: 10px;
       background: #00ffcc;
-      color: #000;
+      margin: 0 2px;
+      position: relative;
+      animation: grow 2s ease-in-out infinite;
     }
 
-    .chart-image {
-      max-width: 100%;
-      max-height: 400px;
-      border: 1px solid #00ffcc;
-      border-radius: 5px;
-      display: none; /* Hidden by default, shown when image URL is selected */
+    .candle::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 2px;
+      height: 100%;
+      background: #ff00cc;
+      transform: translateX(-50%);
     }
 
-    /* Trading Hashtags */
-    .hashtags {
+    .line-chart {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      stroke: #00ffcc;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    @keyframes grow {
+      0%, 100% { height: 20%; }
+      50% { height: 80%; }
+    }
+
+    /* Trading Categories */
+    .categories {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -122,18 +133,18 @@
       margin: 40px auto;
     }
 
-    .hashtag {
+    .category-card {
       padding: 10px 20px;
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
       border-radius: 5px;
       cursor: pointer;
       transition: background 0.3s ease, color 0.3s ease;
-      font-size: 1.1rem;
-      font-weight: 500;
+      font-size: 1.1rem; /* Matches technology.html */
+      font-weight: 500; /* Matches technology.html */
     }
 
-    .hashtag:hover {
+    .category-card:hover {
       background: #00ffcc;
       color: #000;
     }
@@ -207,7 +218,7 @@
       color: #000;
     }
 
-    .thread-icon, .search-icon, .image-icon {
+    .thread-icon {
       font-size: 1.6rem;
       color: #00ffcc;
       cursor: pointer;
@@ -215,7 +226,7 @@
       transition: transform 0.3s ease, color 0.3s ease;
     }
 
-    .thread-icon:hover, .search-icon:hover, .image-icon:hover {
+    .thread-icon:hover {
       color: #ff00cc;
       transform: scale(1.2);
     }
@@ -227,6 +238,18 @@
       border-radius: 50%;
       margin: 0 15px;
       animation: glowPulse 1.5s infinite;
+    }
+
+    .search-icon {
+      font-size: 1.6rem;
+      color: #00ffcc;
+      cursor: pointer;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .search-icon:hover {
+      color: #ff00cc;
+      transform: scale(1.2);
     }
 
     .modal-body {
@@ -306,13 +329,13 @@
 
     footer p {
       margin: 0;
-      font-size: 1.1rem;
-      font-weight: 300;
+      font-size: 1.1rem; /* Matches technology.html */
+      font-weight: 300; /* Matches technology.html */
     }
 
     footer a {
       color: #ff00cc;
-      font-weight: 500;
+      font-weight: 500; /* Matches technology.html */
     }
 
     footer a:hover {
@@ -360,27 +383,27 @@
     <p>Where Markets Meet Innovation</p>
   </header>
 
-  <!-- Trading Box Section with Dropdowns -->
-  <div class="trading-animation">
-    <div class="dropdown-container">
-      <select id="crypto" class="dropdown" onchange="updateImage('crypto')">
-        <option value="">Select Crypto</option>
-      </select>
-      <select id="indices" class="dropdown" onchange="updateImage('indices')">
-        <option value="">Select Indices</option>
-      </select>
-      <select id="stocks" class="dropdown" onchange="updateImage('stocks')">
-        <option value="">Select Stocks</option>
-      </select>
+  <!-- Trading Chart Animation -->
+  <div class="chart-container">
+    <div class="chart">
+      <div class="candle" style="height: 30%;"></div>
+      <div class="candle" style="height: 60%;"></div>
+      <div class="candle" style="height: 40%;"></div>
+      <div class="candle" style="height: 80%;"></div>
+      <div class="candle" style="height: 20%;"></div>
+      <div class="candle" style="height: 50%;"></div>
+      <div class="candle" style="height: 70%;"></div>
     </div>
-    <img id="chartImage" class="chart-image" src="" alt="Chart Image">
+    <svg class="line-chart" viewBox="0 0 500 200">
+      <polyline points="0,180 50,150 100,160 150,140 200,170 250,130 300,150 350,120 400,160 450,140 500,180" />
+    </svg>
   </div>
 
-  <!-- Trading Hashtags -->
+  <!-- Trading Categories -->
   <section>
     <h2 style="text-align: center; margin: 20px 0; font-weight: 600;">Explore Trading Topics</h2>
-    <div class="hashtags" id="hashtags">
-      <!-- Hashtags will be added dynamically -->
+    <div class="categories" id="categories">
+      <!-- Categories will be added dynamically -->
     </div>
   </section>
 
@@ -392,8 +415,6 @@
         <i class="fa fa-pencil-square-o thread-icon" id="threadLink" title="View Thread"></i>
         <span class="icon-separator"></span>
         <i class="fa fa-search search-icon" id="searchX" title="Search on X"></i>
-        <span class="icon-separator"></span>
-        <i class="fa fa-image image-icon" id="generateImage" title="Generate Image"></i>
         <button class="modal-close" onclick="closeModal()">✖</button>
       </div>
       <div class="modal-body">
@@ -415,89 +436,20 @@
   </footer>
 
   <script>
-    // Load data from trading.txt and populate dropdowns
-    window.onload = function() {
-      fetch('texts/trading.txt')
-        .then(response => {
-          if (!response.ok) throw new Error('Network response was not ok');
-          return response.text();
-        })
-        .then(data => {
-          const items = JSON.parse(data);
-          if (!items || items.length === 0) {
-            document.getElementById('crypto').innerHTML = '<option>No crypto available</option>';
-            document.getElementById('indices').innerHTML = '<option>No indices available</option>';
-            document.getElementById('stocks').innerHTML = '<option>No stocks available</option>';
-            return;
-          }
-
-          // Categorize items by type
-          const crypto = [], indices = [], stocks = [];
-          items.forEach(item => {
-            if (item.type === 'crypto') crypto.push(item.name);
-            else if (item.type === 'indices') indices.push(item.name);
-            else if (item.type === 'stocks') stocks.push(item.name);
-          });
-
-          // Populate dropdowns
-          populateDropdown('crypto', crypto);
-          populateDropdown('indices', indices);
-          populateDropdown('stocks', stocks);
-
-          // Load hashtags
-          if (document.getElementById('hashtags')) {
-            populateHashtags(items.filter(item => item.type !== 'crypto' && item.type !== 'indices' && item.type !== 'stocks'));
-          }
-        })
-        .catch(error => {
-          console.error('Error loading texts/trading.txt:', error);
-          document.getElementById('crypto').innerHTML = '<option>Failed to load crypto</option>';
-          document.getElementById('indices').innerHTML = '<option>Failed to load indices</option>';
-          document.getElementById('stocks').innerHTML = '<option>Failed to load stocks</option>';
-        });
-    };
-
-    function populateDropdown(type, options) {
-      const select = document.getElementById(type);
-      options.forEach(option => {
-        const opt = document.createElement('option');
-        opt.value = option; // You can store the image URL here later, e.g., `option.image`
-        opt.textContent = option;
-        select.appendChild(opt);
-      });
-    }
-
-    function populateHashtags(hashtags) {
-      const hashtagsContainer = document.getElementById('hashtags');
-      hashtagsContainer.innerHTML = '';
-      hashtags.forEach(hashtag => {
-        const tag = document.createElement('div');
-        tag.className = 'hashtag';
-        tag.textContent = `#${hashtag.name.replace(/\s+/g, '')}`;
+    // Modal Functions
+    function populateCategories(categories) {
+      const categoriesContainer = document.getElementById('categories');
+      categories.forEach(category => {
+        const card = document.createElement('div');
+        card.className = 'category-card';
+        card.textContent = `#${category.name.replace(/\s+/g, '')}`;
         
-        tag.addEventListener('click', () => {
-          openModal(hashtag.name, hashtag.desc, hashtag.example, hashtag.image, hashtag.thread);
+        card.addEventListener('click', () => {
+          openModal(category.name, category.desc, category.example, category.image, category.thread);
         });
         
-        hashtagsContainer.appendChild(tag);
+        categoriesContainer.appendChild(card);
       });
-    }
-
-    function updateImage(type) {
-      const select = document.getElementById(type);
-      const selectedValue = select.value;
-      const imageElement = document.getElementById('chartImage');
-
-      // For now, show a placeholder or no image (you'll add image URLs later)
-      if (selectedValue) {
-        // This is where you'd use the image URL from trading.txt or another source
-        // For example: imageElement.src = `images/${selectedValue}.png`;
-        imageElement.src = `https://via.placeholder.com/700x400?text=${encodeURIComponent(selectedValue)}+Chart`; // Placeholder
-        imageElement.style.display = 'block';
-      } else {
-        imageElement.src = '';
-        imageElement.style.display = 'none';
-      }
     }
 
     function openModal(title, desc, example, image, thread) {
@@ -508,13 +460,11 @@
       const modalImage = document.getElementById('modalImage');
       const threadLink = document.getElementById('threadLink');
       const searchX = document.getElementById('searchX');
-      const generateImage = document.getElementById('generateImage');
 
       modalTitle.textContent = title;
       modalDesc.innerHTML = desc;
       modalExample.textContent = `Example: ${example}`;
-      modalImage.src = image || "https://via.placeholder.com/400x300?text=No+Image+Available";
-      modalImage.onerror = () => modalImage.style.display = "none";
+      modalImage.src = image;
       modal.style.display = 'flex';
 
       threadLink.onclick = function() {
@@ -522,17 +472,9 @@
       };
 
       searchX.onclick = function() {
-        const searchQuery = encodeURIComponent(`#${title} trading`);
+        const searchQuery = encodeURIComponent(title);
         const xSearchUrl = `https://x.com/search?q=${searchQuery}`;
         window.open(xSearchUrl, '_blank');
-      };
-
-      generateImage.onclick = function() {
-        if (confirm('Would you like to generate an image of the current chart?')) {
-          modalImage.src = `https://via.placeholder.com/400x300?text=${encodeURIComponent(title)}+Chart`;
-          modalImage.style.display = 'block';
-          alert('Image generated! (This is a placeholder.)');
-        }
       };
     }
 
@@ -560,6 +502,25 @@
         closeModal();
       }
     });
+
+    // Fetch data from texts/trading.txt
+    window.onload = function() {
+      fetch('texts/trading.txt')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(data => {
+          const categories = JSON.parse(data);
+          populateCategories(categories);
+        })
+        .catch(error => {
+          console.error('Error loading texts/trading.txt:', error);
+          alert('Failed to load category data. Please check the console for details.');
+        });
+    };
   </script>
 </body>
 </html>
