@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rahulx.com - Trading Hub</title>
   <style>
-    /* General Styles (unchanged) */
+    /* General Styles */
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -36,7 +36,7 @@
       color: #00ffcc;
     }
 
-    /* Header (unchanged) */
+    /* Header */
     header {
       position: relative;
       background: radial-gradient(circle, #001f3f, #000);
@@ -73,27 +73,85 @@
       overflow: hidden;
     }
 
-    .timeframe-selector {
+    .toolbar {
       position: absolute;
       top: 10px;
       left: 10px;
-      font-size: 1rem;
-      color: #00ffcc;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .timeframe-selector select {
+    .script-selector, .timeframe-selector {
+      font-size: 1rem;
+      color: #00ffcc;
+      position: relative;
+    }
+
+    .script-selector select, .timeframe-selector select {
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
       border-radius: 5px;
       color: #00ffcc;
       padding: 5px;
       cursor: pointer;
+      appearance: none;
+      padding-right: 20px;
       transition: background 0.3s ease, color 0.3s ease;
     }
 
+    .script-selector::after, .timeframe-selector::after {
+      content: '+';
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #00ffcc;
+      pointer-events: none;
+    }
+
+    .script-selector select:hover, .script-selector select:focus,
     .timeframe-selector select:hover, .timeframe-selector select:focus {
       background: #00ffcc;
       color: #000;
+    }
+
+    .alarm-icon {
+      font-size: 1.2rem;
+      color: #00ffcc;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .alarm-icon:hover {
+      color: #ff00cc;
+    }
+
+    /* Tool Column */
+    .tool-column {
+      position: absolute;
+      left: 10px;
+      top: 50px;
+      width: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+    }
+
+    .tool-icon {
+      font-size: 1.2rem;
+      color: #00ffcc;
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .tool-icon:hover {
+      color: #ff00cc;
+      transform: scale(1.2);
     }
 
     /* Line Chart Container */
@@ -121,8 +179,8 @@
 
     .x-axis {
       bottom: 5px;
-      left: 50px; /* Match left margin */
-      width: calc(100% - 110px); /* Adjusted for margins */
+      left: 50px;
+      width: calc(100% - 110px);
       display: flex;
       justify-content: space-between;
     }
@@ -152,7 +210,16 @@
       transform: rotate(90deg);
     }
 
-    /* Trading Hashtags (unchanged) */
+    .logo {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: auto;
+    }
+
+    /* Trading Hashtags */
     .hashtags {
       display: flex;
       flex-wrap: wrap;
@@ -183,7 +250,7 @@
       color: #000;
     }
 
-    /* Modal (Popup) Styles (unchanged) */
+    /* Modal (Popup) Styles */
     .modal {
       display: none;
       position: fixed;
@@ -252,28 +319,6 @@
       color: #000;
     }
 
-    .thread-icon, .search-icon, .image-icon {
-      font-size: 1.6rem;
-      color: #00ffcc;
-      cursor: pointer;
-      margin-left: 20px;
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    .thread-icon:hover, .search-icon:hover, .image-icon:hover {
-      color: #ff00cc;
-      transform: scale(1.2);
-    }
-
-    .icon-separator {
-      width: 4px;
-      height: 4px;
-      background: #00ffcc;
-      border-radius: 50%;
-      margin: 0 15px;
-      animation: glowPulse 1.5s infinite;
-    }
-
     .modal-body {
       flex: 1;
       padding: 20px;
@@ -340,7 +385,7 @@
       100% { box-shadow: 0 0 5px #00ffcc; }
     }
 
-    /* Footer (unchanged) */
+    /* Footer */
     footer {
       background: #000;
       color: #00ffcc;
@@ -364,7 +409,7 @@
       text-decoration: underline;
     }
 
-    /* Animations (unchanged) */
+    /* Animations */
     @keyframes glow {
       0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
       100% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
@@ -375,7 +420,7 @@
       50% { transform: translateY(-10px); }
     }
 
-    /* Sci-Fi Background (unchanged) */
+    /* Sci-Fi Background */
     .sci-fi-bg {
       position: fixed;
       top: 0;
@@ -405,34 +450,47 @@
     <p>Where Markets Meet Innovation</p>
   </header>
 
-  <!-- Trading Animation Section with Timeframe Selector -->
+  <!-- Trading Animation Section -->
   <div class="trading-animation">
-    <div class="timeframe-selector">
-      <select id="timeframe" onchange="updateTimeframe()">
-        <option value="1d">1 Day</option>
-        <option value="4h">4 Hours</option>
-        <option value="15m">15 Minutes</option>
-        <option value="5m">5 Minutes</option>
-      </select>
+    <div class="toolbar">
+      <div class="script-selector">
+        <select id="script" onchange="updateScript()">
+          <option value="BTC">BTC</option>
+        </select>
+      </div>
+      <div class="timeframe-selector">
+        <select id="timeframe" onchange="updateTimeframe()">
+          <option value="1d">1 Day</option>
+          <option value="4h">4 Hours</option>
+          <option value="15m">15 Minutes</option>
+          <option value="5m">5 Minutes</option>
+        </select>
+      </div>
+      <i class="fa fa-clock-o alarm-icon" title="Set Alert"></i>
+    </div>
+    <div class="tool-column">
+      <i class="fa fa-line-chart tool-icon" title="Trend Line"></i>
+      <i class="fa fa-minus tool-icon" title="Horizontal Line"></i>
+      <i class="fa fa-ruler tool-icon" title="Measure"></i>
+      <i class="fa fa-pencil tool-icon" title="Draw"></i>
     </div>
     <div class="line-chart-container">
       <canvas id="lineChart"></canvas>
     </div>
     <div class="x-axis" id="xAxis">
-      <span>Apr</span><span>Jun</span><span>Aug</span><span>Oct</span><span>Dec</span><span>Feb</span><span>Apr</span>
+      <span>Apr</span><span>Jun</span><span>Aug</span><span>Oct</span><span>Dec</span><span>Feb</span><span>Mar</span>
     </div>
     <div class="y-axis" id="yAxis">
       <span>120K</span><span>110K</span><span>100K</span><span>90K</span><span>80K</span><span>70K</span><span>60K</span><span>50K</span><span>40K</span>
     </div>
     <i class="fa fa-gear gear-icon" title="Settings"></i>
+    <img src="https://via.placeholder.com/100x30?text=RahulX" class="logo" alt="RahulX Logo">
   </div>
 
   <!-- Trading Hashtags -->
   <section>
     <h2 style="text-align: center; margin: 20px 0; font-weight: 600;">Explore Trading Topics</h2>
-    <div class="hashtags" id="hashtags">
-      <!-- Hashtags will be added dynamically -->
-    </div>
+    <div class="hashtags" id="hashtags"></div>
   </section>
 
   <!-- Modal (Popup) -->
@@ -466,7 +524,7 @@
   </footer>
 
   <script>
-    // Static Bitcoin data (simplified for continuity)
+    // Static Bitcoin data
     const btcData = {
       '1d': [
         { close: 60500 }, { close: 61500 }, { close: 62500 }, { close: 64000 }, { close: 65500 },
@@ -488,14 +546,15 @@
     const ctx = canvas.getContext('2d');
     let chartData = [];
     let currentTimeframe = '1d';
+    let currentScript = 'BTC';
     let mouseX = null;
     let mouseY = null;
+    let scripts = [];
 
     function drawLineChart() {
       const width = canvas.width = canvas.offsetWidth;
       const height = canvas.height = canvas.offsetHeight;
 
-      // Define margins
       const margin = { top: 50, right: 50, bottom: 50, left: 50 };
       const plotWidth = width - margin.left - margin.right;
       const plotHeight = height - margin.top - margin.bottom;
@@ -508,8 +567,7 @@
 
       ctx.clearRect(0, 0, width, height);
 
-      // Draw the line with color based on signals
-      let lastSignal = null;
+      // Draw the line with color based on direction
       for (let i = 1; i < chartData.length; i++) {
         const prev = chartData[i - 1].close;
         const curr = chartData[i].close;
@@ -520,23 +578,13 @@
 
         ctx.beginPath();
         ctx.lineWidth = 2;
-
-        if (i > 1 && curr < chartData[i - 1].close && curr < (chartData[i + 1]?.close || Infinity)) {
-          ctx.strokeStyle = '#00ff00'; // Green for Buy
-          lastSignal = 'buy';
-        } else if (i > 1 && curr > chartData[i - 1].close && curr > (chartData[i + 1]?.close || -Infinity)) {
-          ctx.strokeStyle = '#ff0000'; // Red for Sell
-          lastSignal = 'sell';
-        } else {
-          ctx.strokeStyle = lastSignal === 'buy' ? '#00ff00' : lastSignal === 'sell' ? '#ff0000' : '#00ffcc';
-        }
-
+        ctx.strokeStyle = curr > prev ? '#00ff00' : '#ff0000'; // Green up, Red down
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
         ctx.stroke();
       }
 
-      // Add Buy/Sell labels at local minima/maxima
+      // Buy/Sell signals
       ctx.font = '12px Poppins';
       ctx.textAlign = 'center';
       for (let i = 1; i < chartData.length - 1; i++) {
@@ -548,13 +596,13 @@
         const y = height - margin.bottom - ((curr - minPrice) * scaleY);
 
         if (curr < prev && curr < next) {
-          ctx.fillStyle = '#00ff00'; // Green for Buy
+          ctx.fillStyle = '#00ff00';
           ctx.fillText('Buy', x, y - 10);
           ctx.beginPath();
           ctx.arc(x, y, 4, 0, Math.PI * 2);
           ctx.fill();
         } else if (curr > prev && curr > next) {
-          ctx.fillStyle = '#ff0000'; // Red for Sell
+          ctx.fillStyle = '#ff0000';
           ctx.fillText('Sell', x, y + 20);
           ctx.beginPath();
           ctx.arc(x, y, 4, 0, Math.PI * 2);
@@ -562,7 +610,20 @@
         }
       }
 
-      // Draw crosshair
+      // Dotted line from current price to y-axis
+      const lastPrice = chartData[chartData.length - 1].close;
+      const lastX = margin.left + (chartData.length - 1) * scaleX;
+      const lastY = height - margin.bottom - ((lastPrice - minPrice) * scaleY);
+      ctx.beginPath();
+      ctx.strokeStyle = lastPrice > chartData[chartData.length - 2].close ? '#00ff00' : '#ff0000';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([5, 5]);
+      ctx.moveTo(lastX, lastY);
+      ctx.lineTo(margin.left, lastY);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Crosshair
       if (mouseX !== null && mouseY !== null) {
         ctx.beginPath();
         ctx.strokeStyle = '#ffffff';
@@ -575,11 +636,10 @@
         ctx.stroke();
         ctx.setLineDash([]);
 
-        // Display price and time at crosshair
         const index = Math.round((mouseX - margin.left) / scaleX);
         if (index >= 0 && index < chartData.length) {
           const price = chartData[index].close;
-          const months = ['Apr', 'Jun', 'Aug', 'Oct', 'Dec', 'Feb', 'Apr'];
+          const months = ['Apr', 'Jun', 'Aug', 'Oct', 'Dec', 'Feb', 'Mar'];
           const timeIndex = Math.round((index / (chartData.length - 1)) * (months.length - 1));
           const time = months[timeIndex] || '';
 
@@ -592,8 +652,22 @@
 
     function updateTimeframe() {
       currentTimeframe = document.getElementById('timeframe').value;
+      updateChartData();
+    }
+
+    function updateScript() {
+      currentScript = document.getElementById('script').value;
+      scripts.forEach(script => {
+        if (script.name === currentScript && script.image) {
+          openModal(`${currentScript} Chart`, `Current ${currentScript} price chart`, '', script.image);
+        }
+      });
+      updateChartData();
+    }
+
+    function updateChartData() {
       chartData = [];
-      const data = btcData[currentTimeframe];
+      const data = btcData[currentTimeframe]; // Placeholder for script-specific data
       const numPoints = currentTimeframe === '1d' ? 14 : currentTimeframe === '4h' ? 42 : currentTimeframe === '15m' ? 96 : 288;
 
       for (let i = 0; i < numPoints; i++) {
@@ -615,30 +689,45 @@
     }
 
     window.onload = function() {
-      updateTimeframe();
-      setInterval(addNewDataPoint, currentTimeframe === '1d' ? 1000 : currentTimeframe === '4h' ? 250 : currentTimeframe === '15m' ? 100 : 50);
-
       fetch('texts/trading.txt')
         .then(response => {
           if (!response.ok) throw new Error('Network response was not ok');
           return response.text();
         })
         .then(data => {
-          const hashtags = JSON.parse(data);
-          if (!hashtags || hashtags.length === 0) {
-            document.getElementById('hashtags').innerHTML = '<p>No trading topics available.</p>';
-            return;
-          }
-          populateHashtags(hashtags);
+          scripts = JSON.parse(data);
+          const scriptSelect = document.getElementById('script');
+          scriptSelect.innerHTML = '';
+          scripts.forEach(script => {
+            const option = document.createElement('option');
+            option.value = script.name;
+            option.textContent = script.name;
+            scriptSelect.appendChild(option);
+          });
+          updateChartData();
+
+          const hashtagsContainer = document.getElementById('hashtags');
+          hashtagsContainer.innerHTML = '';
+          scripts.forEach(hashtag => {
+            const tag = document.createElement('div');
+            tag.className = 'hashtag';
+            tag.textContent = `#${hashtag.name.replace(/\s+/g, '')}`;
+            tag.addEventListener('click', () => {
+              openModal(hashtag.name, hashtag.desc, hashtag.example, hashtag.image, hashtag.thread);
+            });
+            hashtagsContainer.appendChild(tag);
+          });
         })
         .catch(error => {
           console.error('Error loading texts/trading.txt:', error);
           document.getElementById('hashtags').innerHTML = '<p>Failed to load hashtags. Please try again later.</p>';
         });
 
+      updateChartData();
+      setInterval(addNewDataPoint, currentTimeframe === '1d' ? 1000 : currentTimeframe === '4h' ? 250 : currentTimeframe === '15m' ? 100 : 50);
+
       window.addEventListener('resize', drawLineChart);
 
-      // Mouse events for crosshair
       canvas.addEventListener('mousemove', (e) => {
         const rect = canvas.getBoundingClientRect();
         mouseX = e.clientX - rect.left;
@@ -651,23 +740,15 @@
         mouseY = null;
         drawLineChart();
       });
-    };
 
-    function populateHashtags(hashtags) {
-      const hashtagsContainer = document.getElementById('hashtags');
-      hashtagsContainer.innerHTML = '';
-      hashtags.forEach(hashtag => {
-        const tag = document.createElement('div');
-        tag.className = 'hashtag';
-        tag.textContent = `#${hashtag.name.replace(/\s+/g, '')}`;
-        
-        tag.addEventListener('click', () => {
-          openModal(hashtag.name, hashtag.desc, hashtag.example, hashtag.image, hashtag.thread);
-        });
-        
-        hashtagsContainer.appendChild(tag);
+      document.querySelector('.alarm-icon').addEventListener('click', () => {
+        alert('Alerts feature coming soon!');
       });
-    }
+
+      document.querySelector('.gear-icon').addEventListener('click', () => {
+        alert('Settings feature coming soon!');
+      });
+    };
 
     function openModal(title, desc, example, image, thread) {
       const modal = document.getElementById('tradingModal');
@@ -681,7 +762,7 @@
 
       modalTitle.textContent = title;
       modalDesc.innerHTML = desc;
-      modalExample.textContent = `Example: ${example}`;
+      modalExample.textContent = example ? `Example: ${example}` : '';
       modalImage.src = image || "https://via.placeholder.com/400x300?text=No+Image+Available";
       modalImage.onerror = () => modalImage.style.display = "none";
       modal.style.display = 'flex';
