@@ -65,7 +65,7 @@
       position: relative;
       width: 90%;
       max-width: 800px;
-      height: 500px; /* Increased height for taller candles */
+      height: 500px;
       margin: 40px auto;
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
@@ -76,7 +76,7 @@
     .timeframe-selector {
       position: absolute;
       top: 10px;
-      left: 10px;
+      left: 10px; /* Upper-left as requested */
       font-size: 1rem;
       color: #00ffcc;
     }
@@ -98,9 +98,9 @@
 
     .candle-container {
       position: absolute;
-      bottom: 40px; /* Space for x-axis */
+      bottom: 40px;
       left: 0;
-      right: 60px; /* Space for y-axis on right */
+      right: 60px;
       width: calc(100% - 60px);
       height: calc(100% - 40px);
       display: flex;
@@ -108,7 +108,7 @@
       justify-content: flex-start;
       overflow: hidden;
       white-space: nowrap;
-      animation: scrollCandles 60s infinite linear; /* Slow scroll for 1-year timeline */
+      animation: scrollCandles 60s infinite linear; /* Left to right */
     }
 
     .candle {
@@ -123,14 +123,14 @@
       position: absolute;
       bottom: 0;
       width: 100%;
-      background: linear-gradient(135deg, #00ffcc, #0099cc); /* Green for bullish */
+      background: linear-gradient(135deg, #00ffcc, #0099cc);
       border-radius: 2px;
       transition: height 1s ease-in-out, bottom 1s ease-in-out;
       box-shadow: 0 0 5px rgba(0, 255, 204, 0.3);
     }
 
     .candle-body.bearish {
-      background: linear-gradient(135deg, #ff4444, #990000); /* Red for bearish */
+      background: linear-gradient(135deg, #ff4444, #990000);
     }
 
     .candle-wick {
@@ -276,7 +276,7 @@
       color: #000;
     }
 
-    .thread-icon, .search-icon {
+    .thread-icon, .search-icon, .image-icon {
       font-size: 1.6rem;
       color: #00ffcc;
       cursor: pointer;
@@ -284,7 +284,7 @@
       transition: transform 0.3s ease, color 0.3s ease;
     }
 
-    .thread-icon:hover, .search-icon:hover {
+    .thread-icon:hover, .search-icon:hover, .image-icon:hover {
       color: #ff00cc;
       transform: scale(1.2);
     }
@@ -416,12 +416,10 @@
       100% { background-position: 1000px 1000px; }
     }
 
-   @keyframes scrollCandles {
-  0% { transform: translateX(0); } /* Start at right */
-  100% { transform: translateX(-100%); } /* Move to left */
-}
-
-
+    @keyframes scrollCandles {
+      0% { transform: translateX(-100%); } /* Start off-screen left */
+      100% { transform: translateX(0); } /* End fully visible on right */
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -471,6 +469,8 @@
         <i class="fa fa-pencil-square-o thread-icon" id="threadLink" title="View Thread"></i>
         <span class="icon-separator"></span>
         <i class="fa fa-search search-icon" id="searchX" title="Search on X"></i>
+        <span class="icon-separator"></span>
+        <i class="fa fa-image image-icon" id="generateImage" title="Generate Image"></i>
         <button class="modal-close" onclick="closeModal()">✖</button>
       </div>
       <div class="modal-body">
@@ -492,41 +492,35 @@
   </footer>
 
   <script>
-    // Static Bitcoin data for different timeframes (April 2024 to May 2025, simplified)
+    // Static Bitcoin data
     const btcData = {
       '1d': [
-        { date: "2024-04-01", open: 60000, high: 61000, low: 59000, close: 60500, pattern: 'normal' }, // Normal
+        { date: "2024-04-01", open: 60000, high: 61000, low: 59000, close: 60500, pattern: 'normal' },
         { date: "2024-05-01", open: 60500, high: 62000, low: 59500, close: 61500, pattern: 'normal' },
         { date: "2024-06-01", open: 61500, high: 63000, low: 60500, close: 62500, pattern: 'normal' },
-        { date: "2024-07-01", open: 62500, high: 64500, low: 62000, close: 64000, pattern: 'normal' }, // Uptrend
-        { date: "2024-08-01", open: 64000, high: 66000, low: 63500, close: 65500, pattern: 'shooting_star' }, // Shooting Star (small body, long upper wick)
-        { date: "2024-09-01", open: 65500, high: 67000, low: 65000, close: 66000, pattern: 'doji' }, // Doji (open ≈ close, small body)
-        { date: "2024-10-01", open: 66000, high: 67500, low: 65500, close: 66500, pattern: 'normal' }, // Consolidation
-        { date: "2024-11-01", open: 66500, high: 68000, low: 64500, close: 65000, pattern: 'hammer' }, // Hammer (small body, long lower wick)
-        { date: "2024-12-01", open: 65000, high: 65500, low: 62000, close: 62500, pattern: 'normal' }, // Drop
-        { date: "2025-01-01", open: 62500, high: 63000, low: 59000, close: 59500, pattern: 'inverted_hammer' }, // Inverted Hammer (small body, long upper wick)
+        { date: "2024-07-01", open: 62500, high: 64500, low: 62000, close: 64000, pattern: 'normal' },
+        { date: "2024-08-01", open: 64000, high: 66000, low: 63500, close: 65500, pattern: 'shooting_star' },
+        { date: "2024-09-01", open: 65500, high: 67000, low: 65000, close: 66000, pattern: 'doji' },
+        { date: "2024-10-01", open: 66000, high: 67500, low: 65500, close: 66500, pattern: 'normal' },
+        { date: "2024-11-01", open: 66500, high: 68000, low: 64500, close: 65000, pattern: 'hammer' },
+        { date: "2024-12-01", open: 65000, high: 65500, low: 62000, close: 62500, pattern: 'normal' },
+        { date: "2025-01-01", open: 62500, high: 63000, low: 59000, close: 59500, pattern: 'inverted_hammer' },
         { date: "2025-02-01", open: 59500, high: 60500, low: 58000, close: 59000, pattern: 'normal' },
         { date: "2025-03-01", open: 59000, high: 61000, low: 58500, close: 60000, pattern: 'normal' },
         { date: "2025-04-01", open: 60000, high: 62000, low: 59500, close: 61000, pattern: 'normal' },
         { date: "2025-05-01", open: 61000, high: 63000, low: 60500, close: 62000, pattern: 'normal' }
       ],
       '4h': [
-        // Simplified 4-hour data (more frequent, smaller moves)
         { date: "2024-04-01 00:00", open: 60000, high: 60100, low: 59900, close: 60050, pattern: 'normal' },
         { date: "2024-04-01 04:00", open: 60050, high: 60200, low: 59950, close: 60100, pattern: 'normal' },
-        // ... (add more for each 4-hour interval, ~6 per day for 14 months)
       ],
       '15m': [
-        // Simplified 15-minute data (very frequent, small moves)
         { date: "2024-04-01 00:00", open: 60000, high: 60020, low: 59980, close: 60010, pattern: 'normal' },
         { date: "2024-04-01 00:15", open: 60010, high: 60030, low: 59990, close: 60020, pattern: 'normal' },
-        // ... (add more for each 15-minute interval, ~96 per day for 14 months)
       ],
       '5m': [
-        // Simplified 5-minute data (most frequent, tiny moves)
         { date: "2024-04-01 00:00", open: 60000, high: 60010, low: 59990, close: 60005, pattern: 'normal' },
         { date: "2024-04-01 00:05", open: 60005, high: 60015, low: 59995, close: 60010, pattern: 'normal' },
-        // ... (add more for each 5-minute interval, ~288 per day for 14 months)
       ]
     };
 
@@ -536,8 +530,8 @@
 
     function createCandle(dataPoint) {
       const { open, high, low, close, pattern } = dataPoint;
-      const maxHeight = 460; // Increased height for taller candles (500px total - 40px for axis)
-      const priceRange = 72000; // $48K to $120K range
+      const maxHeight = 460;
+      const priceRange = 72000;
       const scale = maxHeight / priceRange;
 
       const candle = document.createElement('div');
@@ -547,25 +541,24 @@
       body.className = `candle-body ${close > open ? 'bullish' : 'bearish'}`;
       let bodyHeight, bodyBottom;
 
-      // Adjust for candlestick patterns
       switch (pattern) {
-        case 'shooting_star': // Small body, long upper wick
-          bodyHeight = Math.abs(close - open) * 0.3 * scale; // Small body
+        case 'shooting_star':
+          bodyHeight = Math.abs(close - open) * 0.3 * scale;
           bodyBottom = (Math.min(open, close) - 48000) * scale;
           break;
-        case 'hammer': // Small body, long lower wick
-          bodyHeight = Math.abs(close - open) * 0.3 * scale; // Small body
+        case 'hammer':
+          bodyHeight = Math.abs(close - open) * 0.3 * scale;
           bodyBottom = (Math.min(open, close) - 48000) * scale;
           break;
-        case 'doji': // Open ≈ Close, very small body
-          bodyHeight = Math.abs(close - open) * 0.1 * scale; // Tiny body
+        case 'doji':
+          bodyHeight = Math.abs(close - open) * 0.1 * scale;
           bodyBottom = ((open + close) / 2 - 48000) * scale;
           break;
-        case 'inverted_hammer': // Small body, long upper wick
-          bodyHeight = Math.abs(close - open) * 0.3 * scale; // Small body
+        case 'inverted_hammer':
+          bodyHeight = Math.abs(close - open) * 0.3 * scale;
           bodyBottom = (Math.min(open, close) - 48000) * scale;
           break;
-        default: // Normal candle
+        default:
           bodyHeight = Math.abs(close - open) * scale;
           bodyBottom = (Math.min(open, close) - 48000) * scale;
       }
@@ -588,32 +581,29 @@
     }
 
     function updateCandles() {
-      if (candles.length >= 14) { // Match the chart’s visible timeframe for 1d
-        container.removeChild(candles.shift()); // Remove oldest candle
+      if (candles.length >= 14) { // Adjust for visible candles
+        container.removeChild(candles.pop()); // Remove rightmost candle
       }
       const data = btcData[currentTimeframe];
       const dataPoint = data[Math.floor(Date.now() / (currentTimeframe === '1d' ? 2000 : currentTimeframe === '4h' ? 500 : currentTimeframe === '15m' ? 200 : 100)) % data.length];
       const newCandle = createCandle(dataPoint);
-      container.appendChild(newCandle);
-      candles.push(newCandle);
-      container.scrollLeft = container.scrollWidth; // Auto-scroll to latest candle
+      container.insertBefore(newCandle, container.firstChild); // Add to left
+      candles.unshift(newCandle); // Add to start of array
     }
 
     function updateTimeframe() {
       currentTimeframe = document.getElementById('timeframe').value;
-      candles = []; // Clear existing candles
-      container.innerHTML = ''; // Reset container
-      for (let i = 0; i < (currentTimeframe === '1d' ? 14 : currentTimeframe === '4h' ? 42 : currentTimeframe === '15m' ? 96 : 288); i++) { // Approx visible candles
+      candles = [];
+      container.innerHTML = '';
+      for (let i = 0; i < (currentTimeframe === '1d' ? 14 : currentTimeframe === '4h' ? 42 : currentTimeframe === '15m' ? 96 : 288); i++) {
         updateCandles();
       }
     }
 
-    // Initial candles (1-day timeframe)
     window.onload = function() {
-      updateTimeframe(); // Initial setup with 1-day data
-      setInterval(updateCandles, currentTimeframe === '1d' ? 2000 : currentTimeframe === '4h' ? 500 : currentTimeframe === '15m' ? 200 : 100); // Adjust update speed
+      updateTimeframe();
+      setInterval(updateCandles, currentTimeframe === '1d' ? 2000 : currentTimeframe === '4h' ? 500 : currentTimeframe === '15m' ? 200 : 100);
 
-      // Fetch data from texts/trading.txt
       fetch('texts/trading.txt')
         .then(response => {
           if (!response.ok) throw new Error('Network response was not ok');
@@ -633,7 +623,6 @@
         });
     };
 
-    // Modal Functions
     function populateHashtags(hashtags) {
       const hashtagsContainer = document.getElementById('hashtags');
       hashtagsContainer.innerHTML = '';
@@ -658,6 +647,7 @@
       const modalImage = document.getElementById('modalImage');
       const threadLink = document.getElementById('threadLink');
       const searchX = document.getElementById('searchX');
+      const generateImage = document.getElementById('generateImage');
 
       modalTitle.textContent = title;
       modalDesc.innerHTML = desc;
@@ -674,6 +664,15 @@
         const searchQuery = encodeURIComponent(`#${title} trading`);
         const xSearchUrl = `https://x.com/search?q=${searchQuery}`;
         window.open(xSearchUrl, '_blank');
+      };
+
+      generateImage.onclick = function() {
+        if (confirm('Would you like to generate an image of the current candlestick chart?')) {
+          // Simulate image generation with a placeholder
+          modalImage.src = `https://via.placeholder.com/400x300?text=${encodeURIComponent(title)}+Chart`;
+          modalImage.style.display = 'block';
+          alert('Image generated! (This is a placeholder.)');
+        }
       };
     }
 
