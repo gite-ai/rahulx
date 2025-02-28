@@ -108,16 +108,16 @@
       justify-content: flex-start;
       overflow: hidden;
       white-space: nowrap;
-      animation: scrollCandles 60s infinite linear;
+      animation: scrollCandles 20s infinite linear; /* Reduced duration for visible looping */
     }
 
     .candle {
       position: relative;
-      width: 20px; /* Fixed width */
-      margin: 0 8px; /* Consistent spacing */
+      width: 20px;
+      margin: 0 8px;
       display: inline-block;
       vertical-align: bottom;
-      flex-shrink: 0; /* Prevent shrinking */
+      flex-shrink: 0;
     }
 
     .candle-body {
@@ -138,18 +138,19 @@
       position: absolute;
       left: 50%;
       width: 2px;
-      background: #ff00cc;
+      background: #ff00cc; /* Pink color */
       transform: translateX(-50%);
       opacity: 0.8;
-      transition: height 1s ease-in-out; /* Smooth wick animation */
+      transition: height 1s ease-in-out;
+      min-height: 5px; /* Ensure visibility even if small */
     }
 
     .candle-wick-top {
-      bottom: 100%;
+      bottom: 100%; /* Above body */
     }
 
     .candle-wick-bottom {
-      top: 100%;
+      top: 100%; /* Below body */
     }
 
     /* Axis Styles */
@@ -494,7 +495,7 @@
   </footer>
 
   <script>
-    // Static Bitcoin data (simplified for continuity)
+    // Static Bitcoin data (close prices only)
     const btcData = {
       '1d': [
         { close: 60500 }, { close: 61500 }, { close: 62500 }, { close: 64000 }, { close: 65500 },
@@ -515,22 +516,22 @@
     const container = document.getElementById('candleContainer');
     let candles = [];
     let currentTimeframe = '1d';
-    let lastClose = 60000; // Initial price
+    let lastClose = 60000;
 
     function createCandle(openPrice, closePrice) {
       const maxHeight = 460;
       const priceRange = 72000;
       const scale = maxHeight / priceRange;
 
-      // Simulate high and low with randomness, including occasional spikes
-      const range = Math.abs(closePrice - openPrice);
-      const spikeChance = Math.random() < 0.1; // 10% chance of a spike
+      // Ensure wicks are visible with minimum size and spikes
+      const range = Math.abs(closePrice - openPrice) || 100; // Default range if flat
+      const spikeChance = Math.random() < 0.1;
       const high = spikeChance 
-        ? Math.max(openPrice, closePrice) + (range * (1 + Math.random() * 2)) // Spike up to 3x range
-        : Math.max(openPrice, closePrice) + (range * Math.random());
+        ? Math.max(openPrice, closePrice) + (range * (1 + Math.random() * 2))
+        : Math.max(openPrice, closePrice) + (range * Math.random()) + 100; // Min wick
       const low = spikeChance 
-        ? Math.min(openPrice, closePrice) - (range * (1 + Math.random() * 2)) // Spike down to 3x range
-        : Math.min(openPrice, closePrice) - (range * Math.random());
+        ? Math.min(openPrice, closePrice) - (range * (1 + Math.random() * 2))
+        : Math.min(openPrice, closePrice) - (range * Math.random()) - 100; // Min wick
 
       const candle = document.createElement('div');
       candle.className = 'candle';
@@ -573,15 +574,14 @@
       const openPrice = parseFloat(latestCandle.dataset.open);
       const closePrice = dataPoint.close;
 
-      // Simulate dynamic high and low with potential spikes
-      const range = Math.abs(closePrice - openPrice);
-      const spikeChance = Math.random() < 0.1; // 10% chance of a spike
+      const range = Math.abs(closePrice - openPrice) || 100;
+      const spikeChance = Math.random() < 0.1;
       const high = spikeChance 
         ? Math.max(openPrice, closePrice) + (range * (1 + Math.random() * 2))
-        : Math.max(openPrice, closePrice) + (range * Math.random());
+        : Math.max(openPrice, closePrice) + (range * Math.random()) + 100;
       const low = spikeChance 
         ? Math.min(openPrice, closePrice) - (range * (1 + Math.random() * 2))
-        : Math.min(openPrice, closePrice) - (range * Math.random());
+        : Math.min(openPrice, closePrice) - (range * Math.random()) - 100;
 
       const maxHeight = 460;
       const priceRange = 72000;
@@ -606,7 +606,7 @@
     }
 
     function addNewCandle() {
-      if (candles.length >= 14) {
+      if (candles.length >= 20) { // Increased limit for smoother looping
         container.removeChild(candles.shift());
         candles.shift();
       }
@@ -627,7 +627,7 @@
       candles = [];
       container.innerHTML = '';
       lastClose = 60000;
-      for (let i = 0; i < (currentTimeframe === '1d' ? 14 : currentTimeframe === '4h' ? 42 : currentTimeframe === '15m' ? 96 : 288); i++) {
+      for (let i = 0; i < (currentTimeframe === '1d' ? 20 : currentTimeframe === '4h' ? 42 : currentTimeframe === '15m' ? 96 : 288); i++) {
         const data = btcData[currentTimeframe];
         const dataPoint = data[i % data.length];
         const openPrice = lastClose;
