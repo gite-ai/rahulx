@@ -3,581 +3,260 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rahulx.com - Trading Hub</title>
+  <title>Bitcoin Trading Candlestick Chart</title>
   <style>
-    /* General Styles */
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #0a0a0a;
-      color: #00ffcc;
-      overflow-x: hidden;
-      font-size: 16px;
-      line-height: 1.6;
-      font-weight: 400;
+      background-color: #e0e0e0;
     }
 
-    h1, h2, h3 {
-      font-family: 'Montserrat', sans-serif;
-      margin: 0;
-      font-weight: 700;
-    }
-
-    a {
-      text-decoration: underline;
-      color: #ff00cc;
-      transition: color 0.3s ease;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 500;
-    }
-
-    a:hover {
-      color: #00ffcc;
-    }
-
-    /* Header */
     header {
-      position: relative;
-      background: radial-gradient(circle, #001f3f, #000);
-      color: #00ffcc;
-      padding: 40px 0;
+      background-color: #007bff;
+      color: white;
       text-align: center;
-      overflow: hidden;
+      padding: 20px;
     }
 
-    header h1 {
-      font-size: 2.8rem;
-      text-transform: uppercase;
-      animation: glow 2s infinite alternate;
-      letter-spacing: 2px;
-    }
-
-    header p {
-      font-size: 1.3rem;
-      opacity: 0.8;
-      animation: float 3s ease-in-out infinite;
-      font-weight: 300;
-    }
-
-    /* Trading Animation Section */
-    .trading-animation {
-      position: relative;
-      width: 90%;
-      max-width: 800px;
-      height: 500px; /* Increased height for taller candles */
-      margin: 40px auto;
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid #00ffcc;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .timeframe-selector {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 1rem;
-      color: #00ffcc;
-    }
-
-    .timeframe-selector select {
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid #00ffcc;
-      border-radius: 5px;
-      color: #00ffcc;
-      padding: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease, color 0.3s ease;
-    }
-
-    .timeframe-selector select:hover, .timeframe-selector select:focus {
-      background: #00ffcc;
-      color: #000;
-    }
-
-    .candle-container {
-      position: absolute;
-      bottom: 40px; /* Space for x-axis */
-      left: 0;
-      right: 60px; /* Space for y-axis on right */
-      width: calc(100% - 60px);
-      height: calc(100% - 40px);
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      overflow: hidden;
+    #candleContainer {
+      width: 100%;
+      height: 500px;
+      overflow-x: auto;
       white-space: nowrap;
-      animation: scrollCandles 60s infinite linear; /* Slow scroll for 1-year timeline */
+      background-color: #f0f0f0;
+      padding: 20px 0;
+      position: relative;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     }
 
     .candle {
-      position: relative;
-      width: 20px;
-      margin: 0 8px;
       display: inline-block;
-      vertical-align: bottom;
+      position: relative;
+      width: 25px; /* Slightly wider candles for better visibility */
+      margin: 0 3px;
+      transition: transform 0.3s ease, opacity 0.5s ease; /* Smooth scaling and fading */
     }
 
     .candle-body {
       position: absolute;
-      bottom: 0;
       width: 100%;
-      background: linear-gradient(135deg, #00ffcc, #0099cc); /* Green for bullish */
-      border-radius: 2px;
-      transition: height 1s ease-in-out, bottom 1s ease-in-out;
-      box-shadow: 0 0 5px rgba(0, 255, 204, 0.3);
+      transition: height 0.5s ease, bottom 0.5s ease, background-color 0.3s ease; /* Smooth body changes */
     }
 
-    .candle-body.bearish {
-      background: linear-gradient(135deg, #ff4444, #990000); /* Red for bearish */
+    .bullish {
+      background-color: #00cc00; /* Bright green for bullish */
+    }
+
+    .bearish {
+      background-color: #ff3333; /* Bright red for bearish */
     }
 
     .candle-wick {
       position: absolute;
-      left: 50%;
       width: 2px;
-      background: #ff00cc;
+      background-color: #333;
+      left: 50%;
       transform: translateX(-50%);
-      opacity: 0.8;
+      transition: height 0.5s ease; /* Smooth wick changes */
     }
 
     .candle-wick-top {
-      bottom: 100%;
+      top: 0;
     }
 
     .candle-wick-bottom {
-      top: 100%;
+      bottom: 0;
     }
 
-    /* Axis Styles */
-    .x-axis, .y-axis {
-      position: absolute;
-      color: #00ffcc;
-      font-size: 0.8rem;
-      font-family: 'Poppins', sans-serif;
+    #timeframeSelect {
+      margin: 20px auto;
+      display: block;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      background-color: white;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
-    .x-axis {
-      bottom: 5px;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .y-axis {
-      top: 0;
-      right: 5px;
-      height: calc(100% - 40px);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      text-align: left;
-    }
-
-    /* Trading Hashtags */
-    .hashtags {
+    #hashtags {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 10px;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.8);
-      border: 1px solid #00ffcc;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 1200px;
-      margin: 40px auto;
+      margin: 20px auto;
+      max-width: 800px;
+      justify-content: center;
     }
 
     .hashtag {
-      padding: 10px 20px;
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid #00ffcc;
-      border-radius: 5px;
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border-radius: 20px;
       cursor: pointer;
-      transition: background 0.3s ease, color 0.3s ease;
-      font-size: 1.1rem;
-      font-weight: 500;
+      transition: background-color 0.3s ease, transform 0.3s ease; /* Hover scale effect */
     }
 
     .hashtag:hover {
-      background: #00ffcc;
-      color: #000;
+      background-color: #0056b3;
+      transform: scale(1.05); /* Slight scale on hover for interactivity */
     }
 
-    /* Modal (Popup) Styles */
-    .modal {
+    #tradingModal {
       display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.5);
       justify-content: center;
       align-items: center;
+      z-index: 1000;
     }
 
     .modal-content {
-      background: rgba(0, 0, 0, 0.9);
-      border: 1px solid #00ffcc;
-      border-radius: 10px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
       width: 80%;
-      max-width: 600px;
-      max-height: 80vh;
-      padding: 0;
+      max-width: 500px;
       position: relative;
-      display: flex;
-      flex-direction: column;
-      animation: slideIn 0.3s ease-out;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow for modal */
+      animation: modalFadeIn 0.5s ease; /* Fade-in animation for modal */
     }
 
-    .modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 15px 20px;
-      background: rgba(0, 0, 0, 0.95);
-      border-bottom: 1px solid #00ffcc;
-      position: sticky;
-      top: 0;
-      z-index: 10;
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
     }
 
-    .modal-title {
-      font-size: 2rem;
-      font-weight: 600;
-      text-align: center;
-      margin: 0;
-    }
-
-    .modal-close {
+    .close {
       position: absolute;
       top: 10px;
       right: 10px;
-      font-size: 1.2rem;
-      color: #00ffcc;
+      font-size: 24px;
       cursor: pointer;
-      background: rgba(0, 0, 0, 0.7);
+      transition: color 0.3s ease;
+    }
+
+    .close:hover {
+      color: #ff3333;
+    }
+
+    .modal-buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
       border: none;
-      width: 24px;
-      height: 24px;
-      line-height: 24px;
-      text-align: center;
-      border-radius: 50%;
-      transition: background 0.3s ease, color 0.3s ease;
-    }
-
-    .modal-close:hover {
-      background: #00ffcc;
-      color: #000;
-    }
-
-    .thread-icon, .search-icon {
-      font-size: 1.6rem;
-      color: #00ffcc;
-      cursor: pointer;
-      margin-left: 20px;
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    .thread-icon:hover, .search-icon:hover {
-      color: #ff00cc;
-      transform: scale(1.2);
-    }
-
-    .icon-separator {
-      width: 4px;
-      height: 4px;
-      background: #00ffcc;
-      border-radius: 50%;
-      margin: 0 15px;
-      animation: glowPulse 1.5s infinite;
-    }
-
-    .modal-body {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-    }
-
-    .modal-desc {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-bottom: 20px;
-      font-weight: 400;
-    }
-
-    .modal-example {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 20px;
-      font-style: italic;
-      color: #b0fff0;
-    }
-
-    .modal-image {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-      border: 1px solid #00ffcc;
       border-radius: 5px;
-      margin: 10px auto;
-      display: block;
-    }
-
-    .modal-footer {
-      padding: 15px 20px;
-      background: rgba(0, 0, 0, 0.95);
-      border-top: 1px solid #00ffcc;
-      position: sticky;
-      bottom: 0;
-      z-index: 10;
-      text-align: right;
-    }
-
-    .copy-button {
-      background: none;
-      border: none;
-      color: #00ffcc;
-      font-size: 1.2rem;
       cursor: pointer;
-      transition: color 0.3s ease, transform 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
-    .copy-button:hover {
-      color: #ff00cc;
-      transform: scale(1.2);
-    }
-
-    @keyframes slideIn {
-      from { transform: translateY(-50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes glowPulse {
-      0% { box-shadow: 0 0 5px #00ffcc; }
-      50% { box-shadow: 0 0 15px #00ffcc; }
-      100% { box-shadow: 0 0 5px #00ffcc; }
-    }
-
-    /* Footer */
-    footer {
-      background: #000;
-      color: #00ffcc;
-      text-align: center;
-      padding: 20px 0;
-      margin-top: 60px;
-    }
-
-    footer p {
-      margin: 0;
-      font-size: 1.1rem;
-      font-weight: 300;
-    }
-
-    footer a {
-      color: #ff00cc;
-      font-weight: 500;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Animations */
-    @keyframes glow {
-      0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
-      100% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    /* Sci-Fi Background */
-    .sci-fi-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: radial-gradient(circle, #001f3f, #000);
-      animation: stars 10s infinite linear;
-    }
-
-    @keyframes stars {
-      0% { background-position: 0 0; }
-      100% { background-position: 1000px 1000px; }
-    }
-
-    @keyframes scrollCandles {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
+    button:hover {
+      background-color: #0056b3;
+      transform: scale(1.05); /* Slight scale on hover for buttons */
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-  <!-- Sci-Fi Background -->
-  <div class="sci-fi-bg"></div>
-
-  <!-- Header -->
   <header>
-    <h1>Welcome to the Trading Hub</h1>
-    <p>Where Markets Meet Innovation</p>
+    <h1>Bitcoin Trading Candlestick Chart</h1>
   </header>
 
-  <!-- Trading Animation Section with Timeframe Selector -->
-  <div class="trading-animation">
-    <div class="timeframe-selector">
-      <select id="timeframe" onchange="updateTimeframe()">
-        <option value="1d">1 Day</option>
-        <option value="4h">4 Hours</option>
-        <option value="15m">15 Minutes</option>
-        <option value="5m">5 Minutes</option>
-      </select>
-    </div>
-    <div class="candle-container" id="candleContainer"></div>
-    <div class="x-axis" id="xAxis">
-      <span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span>
-    </div>
-    <div class="y-axis" id="yAxis">
-      <span>120K</span><span>110K</span><span>100K</span><span>90K</span><span>80K</span><span>70K</span><span>60K</span><span>50K</span><span>40K</span>
-    </div>
-  </div>
+  <select id="timeframe" onchange="updateTimeframe()">
+    <option value="1d">1 Day</option>
+    <option value="4h">4 Hours</option>
+    <option value="15m">15 Minutes</option>
+    <option value="5m">5 Minutes</option>
+  </select>
 
-  <!-- Trading Hashtags -->
-  <section>
-    <h2 style="text-align: center; margin: 20px 0; font-weight: 600;">Explore Trading Topics</h2>
-    <div class="hashtags" id="hashtags">
-      <!-- Hashtags will be added dynamically -->
-    </div>
-  </section>
+  <div id="candleContainer"></div>
 
-  <!-- Modal (Popup) -->
-  <div class="modal" id="tradingModal">
+  <div id="hashtags"></div>
+
+  <div id="tradingModal">
     <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="modalTitle"></h2>
-        <i class="fa fa-pencil-square-o thread-icon" id="threadLink" title="View Thread"></i>
-        <span class="icon-separator"></span>
-        <i class="fa fa-search search-icon" id="searchX" title="Search on X"></i>
-        <button class="modal-close" onclick="closeModal()">✖</button>
-      </div>
-      <div class="modal-body">
-        <p class="modal-desc" id="modalDesc"></p>
-        <p class="modal-example" id="modalExample"></p>
-        <img class="modal-image" id="modalImage" src="" alt="Trading Image">
-      </div>
-      <div class="modal-footer">
-        <button class="copy-button" onclick="copyModalContent()" title="Copy Content">
-          <i class="fa fa-copy"></i>
-        </button>
+      <span class="close" onclick="closeModal()">×</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      <p id="modalExample"></p>
+      <img id="modalImage" alt="Trading Image" style="max-width: 100%; height: auto;">
+      <div class="modal-buttons">
+        <button id="threadLink">View Thread</button>
+        <button id="searchX">Search on X</button>
+        <button onclick="copyModalContent()">Copy Content</button>
       </div>
     </div>
   </div>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
-  </footer>
 
   <script>
-    // Static Bitcoin data for different timeframes (April 2024 to May 2025, simplified)
-    const btcData = {
-      '1d': [
-        { date: "2024-04-01", open: 60000, high: 61000, low: 59000, close: 60500, pattern: 'normal' }, // Normal
-        { date: "2024-05-01", open: 60500, high: 62000, low: 59500, close: 61500, pattern: 'normal' },
-        { date: "2024-06-01", open: 61500, high: 63000, low: 60500, close: 62500, pattern: 'normal' },
-        { date: "2024-07-01", open: 62500, high: 64500, low: 62000, close: 64000, pattern: 'normal' }, // Uptrend
-        { date: "2024-08-01", open: 64000, high: 66000, low: 63500, close: 65500, pattern: 'shooting_star' }, // Shooting Star (small body, long upper wick)
-        { date: "2024-09-01", open: 65500, high: 67000, low: 65000, close: 66000, pattern: 'doji' }, // Doji (open ≈ close, small body)
-        { date: "2024-10-01", open: 66000, high: 67500, low: 65500, close: 66500, pattern: 'normal' }, // Consolidation
-        { date: "2024-11-01", open: 66500, high: 68000, low: 64500, close: 65000, pattern: 'hammer' }, // Hammer (small body, long lower wick)
-        { date: "2024-12-01", open: 65000, high: 65500, low: 62000, close: 62500, pattern: 'normal' }, // Drop
-        { date: "2025-01-01", open: 62500, high: 63000, low: 59000, close: 59500, pattern: 'inverted_hammer' }, // Inverted Hammer (small body, long upper wick)
-        { date: "2025-02-01", open: 59500, high: 60500, low: 58000, close: 59000, pattern: 'normal' },
-        { date: "2025-03-01", open: 59000, high: 61000, low: 58500, close: 60000, pattern: 'normal' },
-        { date: "2025-04-01", open: 60000, high: 62000, low: 59500, close: 61000, pattern: 'normal' },
-        { date: "2025-05-01", open: 61000, high: 63000, low: 60500, close: 62000, pattern: 'normal' }
-      ],
-      '4h': [
-        // Simplified 4-hour data (more frequent, smaller moves)
-        { date: "2024-04-01 00:00", open: 60000, high: 60100, low: 59900, close: 60050, pattern: 'normal' },
-        { date: "2024-04-01 04:00", open: 60050, high: 60200, low: 59950, close: 60100, pattern: 'normal' },
-        // ... (add more for each 4-hour interval, ~6 per day for 14 months)
-      ],
-      '15m': [
-        // Simplified 15-minute data (very frequent, small moves)
-        { date: "2024-04-01 00:00", open: 60000, high: 60020, low: 59980, close: 60010, pattern: 'normal' },
-        { date: "2024-04-01 00:15", open: 60010, high: 60030, low: 59990, close: 60020, pattern: 'normal' },
-        // ... (add more for each 15-minute interval, ~96 per day for 14 months)
-      ],
-      '5m': [
-        // Simplified 5-minute data (most frequent, tiny moves)
-        { date: "2024-04-01 00:00", open: 60000, high: 60010, low: 59990, close: 60005, pattern: 'normal' },
-        { date: "2024-04-01 00:05", open: 60005, high: 60015, low: 59995, close: 60010, pattern: 'normal' },
-        // ... (add more for each 5-minute interval, ~288 per day for 14 months)
-      ]
-    };
-
-    const container = document.getElementById('candleContainer');
     let candles = [];
     let currentTimeframe = '1d';
 
+    // Enhanced dummy data for animation (simulating Bitcoin OHLC data)
+    const dummyData = Array.from({ length: 365 }, (_, i) => {
+      const basePrice = 60000 + Math.sin(i * 0.05) * 7000; // More pronounced sinusoidal movement
+      const date = new Date(2024, 3, 1 + i).toISOString().split('T')[0]; // April 1, 2024, to March 31, 2025
+      return {
+        date: date,
+        open: basePrice - Math.random() * 1500, // Larger random variation for open
+        high: basePrice + Math.random() * 2000, // Larger random variation for high
+        low: basePrice - Math.random() * 2000,  // Larger random variation for low
+        close: basePrice + Math.random() * 1500, // Larger random variation for close
+        volume: Math.floor(Math.random() * 15000000) // Larger random volume for realism
+      };
+    });
+
+    const btcData = { '1d': dummyData }; // Use 1-day timeframe for now
+
+    const container = document.getElementById('candleContainer');
+
     function createCandle(dataPoint) {
-      const { open, high, low, close, pattern } = dataPoint;
-      const maxHeight = 460; // Increased height for taller candles (500px total - 40px for axis)
-      const priceRange = 72000; // $48K to $120K range
+      const { open, high, low, close } = dataPoint;
+      const maxHeight = 460; // Height of the chart area
+      const priceRange = 90000; // Adjusted range for Bitcoin prices (e.g., $30K to $120K)
       const scale = maxHeight / priceRange;
 
       const candle = document.createElement('div');
       candle.className = 'candle';
+      candle.style.transition = 'transform 0.5s ease, opacity 0.5s ease'; // Enhanced transition for scaling and fading
 
       const body = document.createElement('div');
       body.className = `candle-body ${close > open ? 'bullish' : 'bearish'}`;
-      let bodyHeight, bodyBottom;
-
-      // Adjust for candlestick patterns
-      switch (pattern) {
-        case 'shooting_star': // Small body, long upper wick
-          bodyHeight = Math.abs(close - open) * 0.3 * scale; // Small body
-          bodyBottom = (Math.min(open, close) - 48000) * scale;
-          break;
-        case 'hammer': // Small body, long lower wick
-          bodyHeight = Math.abs(close - open) * 0.3 * scale; // Small body
-          bodyBottom = (Math.min(open, close) - 48000) * scale;
-          break;
-        case 'doji': // Open ≈ Close, very small body
-          bodyHeight = Math.abs(close - open) * 0.1 * scale; // Tiny body
-          bodyBottom = ((open + close) / 2 - 48000) * scale;
-          break;
-        case 'inverted_hammer': // Small body, long upper wick
-          bodyHeight = Math.abs(close - open) * 0.3 * scale; // Small body
-          bodyBottom = (Math.min(open, close) - 48000) * scale;
-          break;
-        default: // Normal candle
-          bodyHeight = Math.abs(close - open) * scale;
-          bodyBottom = (Math.min(open, close) - 48000) * scale;
-      }
-
+      const bodyHeight = Math.abs(close - open) * scale;
+      const bodyBottom = (Math.min(open, close) - 30000) * scale; // Adjusted offset from $30K base
       body.style.height = `${bodyHeight}px`;
       body.style.bottom = `${bodyBottom}px`;
+      body.style.width = '100%';
+      body.style.borderRadius = '5px'; // Slightly more rounded edges
+      body.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.1)'; // Subtle shadow for depth
 
       const wickTop = document.createElement('div');
       wickTop.className = 'candle-wick candle-wick-top';
       wickTop.style.height = `${(high - Math.max(open, close)) * scale}px`;
+      wickTop.style.bottom = `${bodyBottom + bodyHeight}px`;
 
       const wickBottom = document.createElement('div');
       wickBottom.className = 'candle-wick candle-wick-bottom';
       wickBottom.style.height = `${(Math.min(open, close) - low) * scale}px`;
+
+      // Add hover effect for interactivity
+      candle.addEventListener('mouseover', () => {
+        candle.style.transform = 'scale(1.1)';
+      });
+      candle.addEventListener('mouseout', () => {
+        candle.style.transform = 'scale(1)';
+      });
 
       candle.appendChild(body);
       candle.appendChild(wickTop);
@@ -586,14 +265,27 @@
     }
 
     function updateCandles() {
-      if (candles.length >= 14) { // Match the chart’s visible timeframe for 1d
-        container.removeChild(candles.shift()); // Remove oldest candle
+      if (candles.length >= 14) { // Show 14 candles (2 weeks for 1d)
+        const oldCandle = candles.shift(); // Remove oldest candle
+        oldCandle.style.opacity = '0';
+        setTimeout(() => {
+          container.removeChild(oldCandle);
+        }, 500); // Match the transition duration
       }
-      const data = btcData[currentTimeframe];
-      const dataPoint = data[Math.floor(Date.now() / (currentTimeframe === '1d' ? 2000 : currentTimeframe === '4h' ? 500 : currentTimeframe === '15m' ? 200 : 100)) % data.length];
+
+      const dataPoint = btcData[currentTimeframe][Math.floor(Date.now() / 1500) % btcData[currentTimeframe].length]; // Faster update (1.5s)
       const newCandle = createCandle(dataPoint);
+
+      // Add slide-in and fade-in animation for new candle
+      newCandle.style.opacity = '0';
+      newCandle.style.transform = 'translateX(20px)';
       container.appendChild(newCandle);
       candles.push(newCandle);
+      setTimeout(() => {
+        newCandle.style.opacity = '1';
+        newCandle.style.transform = 'translateX(0)';
+      }, 50);
+
       container.scrollLeft = container.scrollWidth; // Auto-scroll to latest candle
     }
 
@@ -601,17 +293,17 @@
       currentTimeframe = document.getElementById('timeframe').value;
       candles = []; // Clear existing candles
       container.innerHTML = ''; // Reset container
-      for (let i = 0; i < (currentTimeframe === '1d' ? 14 : currentTimeframe === '4h' ? 42 : currentTimeframe === '15m' ? 96 : 288); i++) { // Approx visible candles
+      for (let i = 0; i < (currentTimeframe === '1d' ? 14 : currentTimeframe === '4h' ? 42 : currentTimeframe === '15m' ? 96 : 288); i++) {
         updateCandles();
       }
     }
 
-    // Initial candles (1-day timeframe)
+    // Initial setup and animation loop
     window.onload = function() {
       updateTimeframe(); // Initial setup with 1-day data
-      setInterval(updateCandles, currentTimeframe === '1d' ? 2000 : currentTimeframe === '4h' ? 500 : currentTimeframe === '15m' ? 200 : 100); // Adjust update speed
+      setInterval(updateCandles, 1500); // Update every 1.5 seconds for smoother animation
 
-      // Fetch data from texts/trading.txt
+      // Fetch data from texts/trading.txt (for hashtag modal)
       fetch('texts/trading.txt')
         .then(response => {
           if (!response.ok) throw new Error('Network response was not ok');
@@ -631,7 +323,7 @@
         });
     };
 
-    // Modal Functions
+    // Modal Functions (unchanged, but included for completeness)
     function populateHashtags(hashtags) {
       const hashtagsContainer = document.getElementById('hashtags');
       hashtagsContainer.innerHTML = '';
