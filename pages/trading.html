@@ -73,10 +73,47 @@
       overflow: hidden;
     }
 
-    .timeframe-selector {
+    /* Grid Background */
+    .grid-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 255, 204, 0.1),
+        rgba(0, 255, 204, 0.1) 50px,
+        transparent 50px,
+        transparent 100px
+      ), repeating-linear-gradient(
+        to right,
+        rgba(0, 255, 204, 0.1),
+        rgba(0, 255, 204, 0.1) 50px,
+        transparent 50px,
+        transparent 100px
+      );
+      z-index: 1;
+      pointer-events: none; /* Allow interaction with chart */
+    }
+
+    .trading-header {
       position: absolute;
       top: 10px;
       left: 10px;
+      display: flex;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .crypto-name {
+      font-size: 1rem;
+      color: #00ffcc;
+      margin-right: 10px;
+      font-weight: 500;
+    }
+
+    .timeframe-selector {
       font-size: 1rem;
       color: #00ffcc;
     }
@@ -108,7 +145,8 @@
       justify-content: flex-start;
       overflow: hidden;
       white-space: nowrap;
-      animation: scrollCandles 20s infinite linear; /* Reduced duration for visible looping */
+      animation: scrollCandles 20s infinite linear;
+      z-index: 2; /* Above grid */
     }
 
     .candle {
@@ -138,19 +176,19 @@
       position: absolute;
       left: 50%;
       width: 2px;
-      background: #ff00cc; /* Pink color */
+      background: #ff00cc;
       transform: translateX(-50%);
       opacity: 0.8;
       transition: height 1s ease-in-out;
-      min-height: 5px; /* Ensure visibility even if small */
+      min-height: 5px;
     }
 
     .candle-wick-top {
-      bottom: 100%; /* Above body */
+      bottom: 100%;
     }
 
     .candle-wick-bottom {
-      top: 100%; /* Below body */
+      top: 100%;
     }
 
     /* Axis Styles */
@@ -159,6 +197,7 @@
       color: #00ffcc;
       font-size: 0.8rem;
       font-family: 'Poppins', sans-serif;
+      z-index: 2; /* Above grid */
     }
 
     .x-axis {
@@ -439,13 +478,17 @@
 
   <!-- Trading Animation Section with Timeframe Selector -->
   <div class="trading-animation">
-    <div class="timeframe-selector">
-      <select id="timeframe" onchange="updateTimeframe()">
-        <option value="1d">1 Day</option>
-        <option value="4h">4 Hours</option>
-        <option value="15m">15 Minutes</option>
-        <option value="5m">5 Minutes</option>
-      </select>
+    <div class="grid-background"></div>
+    <div class="trading-header">
+      <span class="crypto-name">Bitcoin</span>
+      <div class="timeframe-selector">
+        <select id="timeframe" onchange="updateTimeframe()">
+          <option value="1d">1 Day</option>
+          <option value="4h">4 Hours</option>
+          <option value="15m">15 Minutes</option>
+          <option value="5m">5 Minutes</option>
+        </select>
+      </div>
     </div>
     <div class="candle-container" id="candleContainer"></div>
     <div class="x-axis" id="xAxis">
@@ -495,7 +538,7 @@
   </footer>
 
   <script>
-    // Static Bitcoin data (close prices only)
+    // Static Bitcoin data
     const btcData = {
       '1d': [
         { close: 60500 }, { close: 61500 }, { close: 62500 }, { close: 64000 }, { close: 65500 },
@@ -523,15 +566,14 @@
       const priceRange = 72000;
       const scale = maxHeight / priceRange;
 
-      // Ensure wicks are visible with minimum size and spikes
-      const range = Math.abs(closePrice - openPrice) || 100; // Default range if flat
+      const range = Math.abs(closePrice - openPrice) || 100;
       const spikeChance = Math.random() < 0.1;
       const high = spikeChance 
         ? Math.max(openPrice, closePrice) + (range * (1 + Math.random() * 2))
-        : Math.max(openPrice, closePrice) + (range * Math.random()) + 100; // Min wick
+        : Math.max(openPrice, closePrice) + (range * Math.random()) + 100;
       const low = spikeChance 
         ? Math.min(openPrice, closePrice) - (range * (1 + Math.random() * 2))
-        : Math.min(openPrice, closePrice) - (range * Math.random()) - 100; // Min wick
+        : Math.min(openPrice, closePrice) - (range * Math.random()) - 100;
 
       const candle = document.createElement('div');
       candle.className = 'candle';
@@ -569,7 +611,7 @@
 
       const latestCandle = candles[candles.length - 1];
       const data = btcData[currentTimeframe];
-      const dataPointIndex = Math.floor(Date.now() / (currentTimeframe === '1d' ? 2000 : currentTimeframe === '4h' ? 500 : currentTimeframe === '15m' ? 200 : 100)) % data.length;
+      const dataPointIndex = Math.floor(Date.now() / 1000) % data.length; // Slower index change
       const dataPoint = data[dataPointIndex];
       const openPrice = parseFloat(latestCandle.dataset.open);
       const closePrice = dataPoint.close;
@@ -606,13 +648,13 @@
     }
 
     function addNewCandle() {
-      if (candles.length >= 20) { // Increased limit for smoother looping
+      if (candles.length >= 20) {
         container.removeChild(candles.shift());
         candles.shift();
       }
 
       const data = btcData[currentTimeframe];
-      const dataPointIndex = Math.floor(Date.now() / (currentTimeframe === '1d' ? 2000 : currentTimeframe === '4h' ? 500 : currentTimeframe === '15m' ? 200 : 100)) % data.length;
+      const dataPointIndex = Math.floor(Date.now() / 1000) % data.length;
       const dataPoint = data[dataPointIndex];
       const openPrice = lastClose;
       const closePrice = dataPoint.close;
@@ -627,7 +669,7 @@
       candles = [];
       container.innerHTML = '';
       lastClose = 60000;
-      for (let i = 0; i < (currentTimeframe === '1d' ? 20 : currentTimeframe === '4h' ? 42 : currentTimeframe === '15m' ? 96 : 288); i++) {
+      for (let i = 0; i < 20; i++) { // Fixed initial load for consistency
         const data = btcData[currentTimeframe];
         const dataPoint = data[i % data.length];
         const openPrice = lastClose;
@@ -650,7 +692,7 @@
           addNewCandle();
           phase = 0;
         }
-      }, currentTimeframe === '1d' ? 1000 : currentTimeframe === '4h' ? 250 : currentTimeframe === '15m' ? 100 : 50);
+      }, 1000); // Fixed interval for smoother animation
 
       fetch('texts/trading.txt')
         .then(response => {
