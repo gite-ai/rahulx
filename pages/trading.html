@@ -76,7 +76,7 @@
     .timeframe-selector {
       position: absolute;
       top: 10px;
-      left: 10px; /* Upper-left as requested */
+      left: 10px;
       font-size: 1rem;
       color: #00ffcc;
     }
@@ -108,7 +108,7 @@
       justify-content: flex-start;
       overflow: hidden;
       white-space: nowrap;
-      animation: scrollCandles 60s infinite linear; /* Left to right */
+      animation: scrollCandles 60s infinite linear;
     }
 
     .candle {
@@ -417,8 +417,8 @@
     }
 
     @keyframes scrollCandles {
-      0% { transform: translateX(-100%); } /* Start off-screen left */
-      100% { transform: translateX(0); } /* End fully visible on right */
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(0); }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
@@ -492,44 +492,45 @@
   </footer>
 
   <script>
-    // Static Bitcoin data
+    // Static Bitcoin data with continuous close-to-open linkage
     const btcData = {
       '1d': [
-        { date: "2024-04-01", open: 60000, high: 61000, low: 59000, close: 60500, pattern: 'normal' },
-        { date: "2024-05-01", open: 60500, high: 62000, low: 59500, close: 61500, pattern: 'normal' },
-        { date: "2024-06-01", open: 61500, high: 63000, low: 60500, close: 62500, pattern: 'normal' },
-        { date: "2024-07-01", open: 62500, high: 64500, low: 62000, close: 64000, pattern: 'normal' },
-        { date: "2024-08-01", open: 64000, high: 66000, low: 63500, close: 65500, pattern: 'shooting_star' },
-        { date: "2024-09-01", open: 65500, high: 67000, low: 65000, close: 66000, pattern: 'doji' },
-        { date: "2024-10-01", open: 66000, high: 67500, low: 65500, close: 66500, pattern: 'normal' },
-        { date: "2024-11-01", open: 66500, high: 68000, low: 64500, close: 65000, pattern: 'hammer' },
-        { date: "2024-12-01", open: 65000, high: 65500, low: 62000, close: 62500, pattern: 'normal' },
-        { date: "2025-01-01", open: 62500, high: 63000, low: 59000, close: 59500, pattern: 'inverted_hammer' },
-        { date: "2025-02-01", open: 59500, high: 60500, low: 58000, close: 59000, pattern: 'normal' },
-        { date: "2025-03-01", open: 59000, high: 61000, low: 58500, close: 60000, pattern: 'normal' },
-        { date: "2025-04-01", open: 60000, high: 62000, low: 59500, close: 61000, pattern: 'normal' },
-        { date: "2025-05-01", open: 61000, high: 63000, low: 60500, close: 62000, pattern: 'normal' }
+        { date: "2024-04-01", open: 60000, high: 61000, low: 59000, close: 60500 },
+        { date: "2024-05-01", open: 60500, high: 62000, low: 59500, close: 61500 },
+        { date: "2024-06-01", open: 61500, high: 63000, low: 60500, close: 62500 },
+        { date: "2024-07-01", open: 62500, high: 64500, low: 62000, close: 64000 },
+        { date: "2024-08-01", open: 64000, high: 66000, low: 63500, close: 65500 },
+        { date: "2024-09-01", open: 65500, high: 67000, low: 65000, close: 66000 },
+        { date: "2024-10-01", open: 66000, high: 67500, low: 65500, close: 66500 },
+        { date: "2024-11-01", open: 66500, high: 68000, low: 64500, close: 65000 },
+        { date: "2024-12-01", open: 65000, high: 65500, low: 62000, close: 62500 },
+        { date: "2025-01-01", open: 62500, high: 63000, low: 59000, close: 59500 },
+        { date: "2025-02-01", open: 59500, high: 60500, low: 58000, close: 59000 },
+        { date: "2025-03-01", open: 59000, high: 61000, low: 58500, close: 60000 },
+        { date: "2025-04-01", open: 60000, high: 62000, low: 59500, close: 61000 },
+        { date: "2025-05-01", open: 61000, high: 63000, low: 60500, close: 62000 }
       ],
       '4h': [
-        { date: "2024-04-01 00:00", open: 60000, high: 60100, low: 59900, close: 60050, pattern: 'normal' },
-        { date: "2024-04-01 04:00", open: 60050, high: 60200, low: 59950, close: 60100, pattern: 'normal' },
+        { date: "2024-04-01 00:00", open: 60000, high: 60100, low: 59900, close: 60050 },
+        { date: "2024-04-01 04:00", open: 60050, high: 60200, low: 59950, close: 60100 },
       ],
       '15m': [
-        { date: "2024-04-01 00:00", open: 60000, high: 60020, low: 59980, close: 60010, pattern: 'normal' },
-        { date: "2024-04-01 00:15", open: 60010, high: 60030, low: 59990, close: 60020, pattern: 'normal' },
+        { date: "2024-04-01 00:00", open: 60000, high: 60020, low: 59980, close: 60010 },
+        { date: "2024-04-01 00:15", open: 60010, high: 60030, low: 59990, close: 60020 },
       ],
       '5m': [
-        { date: "2024-04-01 00:00", open: 60000, high: 60010, low: 59990, close: 60005, pattern: 'normal' },
-        { date: "2024-04-01 00:05", open: 60005, high: 60015, low: 59995, close: 60010, pattern: 'normal' },
+        { date: "2024-04-01 00:00", open: 60000, high: 60010, low: 59990, close: 60005 },
+        { date: "2024-04-01 00:05", open: 60005, high: 60015, low: 59995, close: 60010 },
       ]
     };
 
     const container = document.getElementById('candleContainer');
     let candles = [];
     let currentTimeframe = '1d';
+    let lastClose = 60000; // Initial price for continuity
 
-    function createCandle(dataPoint) {
-      const { open, high, low, close, pattern } = dataPoint;
+    function createCandle(openPrice, dataPoint) {
+      const { high, low, close } = dataPoint;
       const maxHeight = 460;
       const priceRange = 72000;
       const scale = maxHeight / priceRange;
@@ -538,71 +539,106 @@
       candle.className = 'candle';
 
       const body = document.createElement('div');
-      body.className = `candle-body ${close > open ? 'bullish' : 'bearish'}`;
-      let bodyHeight, bodyBottom;
-
-      switch (pattern) {
-        case 'shooting_star':
-          bodyHeight = Math.abs(close - open) * 0.3 * scale;
-          bodyBottom = (Math.min(open, close) - 48000) * scale;
-          break;
-        case 'hammer':
-          bodyHeight = Math.abs(close - open) * 0.3 * scale;
-          bodyBottom = (Math.min(open, close) - 48000) * scale;
-          break;
-        case 'doji':
-          bodyHeight = Math.abs(close - open) * 0.1 * scale;
-          bodyBottom = ((open + close) / 2 - 48000) * scale;
-          break;
-        case 'inverted_hammer':
-          bodyHeight = Math.abs(close - open) * 0.3 * scale;
-          bodyBottom = (Math.min(open, close) - 48000) * scale;
-          break;
-        default:
-          bodyHeight = Math.abs(close - open) * scale;
-          bodyBottom = (Math.min(open, close) - 48000) * scale;
-      }
+      body.className = `candle-body ${close > openPrice ? 'bullish' : 'bearish'}`;
+      const bodyHeight = Math.abs(close - openPrice) * scale;
+      const bodyBottom = (Math.min(openPrice, close) - 48000) * scale;
 
       body.style.height = `${bodyHeight}px`;
       body.style.bottom = `${bodyBottom}px`;
 
       const wickTop = document.createElement('div');
       wickTop.className = 'candle-wick candle-wick-top';
-      wickTop.style.height = `${(high - Math.max(open, close)) * scale}px`;
+      wickTop.style.height = `${(high - Math.max(openPrice, close)) * scale}px`;
 
       const wickBottom = document.createElement('div');
       wickBottom.className = 'candle-wick candle-wick-bottom';
-      wickBottom.style.height = `${(Math.min(open, close) - low) * scale}px`;
+      wickBottom.style.height = `${(Math.min(openPrice, close) - low) * scale}px`;
 
       candle.appendChild(body);
       candle.appendChild(wickTop);
       candle.appendChild(wickBottom);
+
+      // Store price data for reference
+      candle.dataset.open = openPrice;
+      candle.dataset.close = close;
+
       return candle;
     }
 
-    function updateCandles() {
-      if (candles.length >= 14) { // Adjust for visible candles
-        container.removeChild(candles.pop()); // Remove rightmost candle
-      }
+    function updateLatestCandle() {
+      if (candles.length === 0) return;
+
+      const latestCandle = candles[candles.length - 1];
       const data = btcData[currentTimeframe];
-      const dataPoint = data[Math.floor(Date.now() / (currentTimeframe === '1d' ? 2000 : currentTimeframe === '4h' ? 500 : currentTimeframe === '15m' ? 200 : 100)) % data.length];
-      const newCandle = createCandle(dataPoint);
-      container.insertBefore(newCandle, container.firstChild); // Add to left
-      candles.unshift(newCandle); // Add to start of array
+      const dataPointIndex = Math.floor(Date.now() / (currentTimeframe === '1d' ? 2000 : currentTimeframe === '4h' ? 500 : currentTimeframe === '15m' ? 200 : 100)) % data.length;
+      const dataPoint = data[dataPointIndex];
+      const openPrice = parseFloat(latestCandle.dataset.open);
+      const closePrice = dataPoint.close;
+
+      const body = latestCandle.querySelector('.candle-body');
+      const wickTop = latestCandle.querySelector('.candle-wick-top');
+      const wickBottom = latestCandle.querySelector('.candle-wick-bottom');
+
+      const maxHeight = 460;
+      const priceRange = 72000;
+      const scale = maxHeight / priceRange;
+
+      const bodyHeight = Math.abs(closePrice - openPrice) * scale;
+      const bodyBottom = (Math.min(openPrice, closePrice) - 48000) * scale;
+      body.style.height = `${bodyHeight}px`;
+      body.style.bottom = `${bodyBottom}px`;
+      body.className = `candle-body ${closePrice > openPrice ? 'bullish' : 'bearish'}`;
+
+      wickTop.style.height = `${(dataPoint.high - Math.max(openPrice, closePrice)) * scale}px`;
+      wickBottom.style.height = `${(Math.min(openPrice, closePrice) - dataPoint.low) * scale}px`;
+
+      latestCandle.dataset.close = closePrice;
+    }
+
+    function addNewCandle() {
+      if (candles.length >= 14) { // Limit visible candles
+        container.removeChild(candles.shift()); // Remove leftmost
+        candles.shift();
+      }
+
+      const data = btcData[currentTimeframe];
+      const dataPointIndex = Math.floor(Date.now() / (currentTimeframe === '1d' ? 2000 : currentTimeframe === '4h' ? 500 : currentTimeframe === '15m' ? 200 : 100)) % data.length;
+      const dataPoint = data[dataPointIndex];
+      const openPrice = lastClose; // New candle starts at previous close
+      const newCandle = createCandle(openPrice, dataPoint);
+      container.appendChild(newCandle);
+      candles.push(newCandle);
+      lastClose = dataPoint.close; // Update last close for next candle
     }
 
     function updateTimeframe() {
       currentTimeframe = document.getElementById('timeframe').value;
       candles = [];
       container.innerHTML = '';
+      lastClose = 60000; // Reset to initial price
       for (let i = 0; i < (currentTimeframe === '1d' ? 14 : currentTimeframe === '4h' ? 42 : currentTimeframe === '15m' ? 96 : 288); i++) {
-        updateCandles();
+        const data = btcData[currentTimeframe];
+        const dataPoint = data[i % data.length];
+        const openPrice = lastClose;
+        const newCandle = createCandle(openPrice, dataPoint);
+        container.appendChild(newCandle);
+        candles.push(newCandle);
+        lastClose = dataPoint.close;
       }
     }
 
     window.onload = function() {
       updateTimeframe();
-      setInterval(updateCandles, currentTimeframe === '1d' ? 2000 : currentTimeframe === '4h' ? 500 : currentTimeframe === '15m' ? 200 : 100);
+      let phase = 0; // 0 for updating latest, 1 for adding new
+      setInterval(() => {
+        if (phase === 0) {
+          updateLatestCandle();
+          phase = 1;
+        } else {
+          addNewCandle();
+          phase = 0;
+        }
+      }, currentTimeframe === '1d' ? 1000 : currentTimeframe === '4h' ? 250 : currentTimeframe === '15m' ? 100 : 50);
 
       fetch('texts/trading.txt')
         .then(response => {
@@ -668,7 +704,6 @@
 
       generateImage.onclick = function() {
         if (confirm('Would you like to generate an image of the current candlestick chart?')) {
-          // Simulate image generation with a placeholder
           modalImage.src = `https://via.placeholder.com/400x300?text=${encodeURIComponent(title)}+Chart`;
           modalImage.style.display = 'block';
           alert('Image generated! (This is a placeholder.)');
