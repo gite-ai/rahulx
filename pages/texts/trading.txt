@@ -1,30 +1,242 @@
 [
   {
-    "name": "Stocks",
-    "desc": "Shares representing ownership in companies traded on stock exchanges.",
-    "example": "Buying shares of Tesla on NASDAQ.",
-    "image": "https://images.unsplash.com/photo-1611974789855",
-    "thread": "https://x.com/threads/placeholder_stocks"
+    "name": "Bitcoin",
+    "type": "crypto",
+    "desc": "The leading cryptocurrency, often called 'digital gold,' with a capped supply of 21 million coins, used as a store of value and payment system.",
+    "example": "Investing in Bitcoin via Coinbase or Kraken.",
+    "image": "https://via.placeholder.com/700x400?text=Bitcoin+Chart",
+    "thread": "https://x.com/threads/placeholder_bitcoin"
   },
   {
-    "name": "Crypto",
-    "desc": "Digital currencies using cryptography, traded on decentralized platforms.",
-    "example": "Investing in Bitcoin via Coinbase.",
-    "image": "https://th.bing.com/th/id/OIP.Q8n8mY7e8Z8",
-    "thread": "https://x.com/threads/placeholder_crypto"
+    "name": "Ethereum",
+    "type": "crypto",
+    "desc": "A blockchain platform for smart contracts and dApps, known for its vast ecosystem in DeFi and NFTs, with ongoing upgrades for scalability.",
+    "example": "Using Ethereum for decentralized finance on Uniswap.",
+    "image": "https://via.placeholder.com/700x400?text=Ethereum+Chart",
+    "thread": "https://x.com/threads/placeholder_ethereum"
   },
   {
-    "name": "Forex",
-    "desc": "The global market for trading national currencies against one another.",
-    "example": "Trading EUR/USD on a forex platform.",
-    "image": "https://images.unsplash.com/photo-1590283603385",
-    "thread": "https://x.com/threads/placeholder_forex"
+    "name": "Solana",
+    "type": "crypto",
+    "desc": "A high-performance blockchain with fast transactions and low fees, popular for dApps, DeFi, and NFTs, using Proof of History and Proof of Stake.",
+    "example": "Trading on Solana-based platforms like Serum.",
+    "image": "https://via.placeholder.com/700x400?text=Solana+Chart",
+    "thread": "https://x.com/threads/placeholder_solana"
   },
   {
-    "name": "Commodities",
-    "desc": "Physical goods like gold or oil traded on futures markets.",
-    "example": "Speculating on crude oil prices.",
-    "image": "https://th.bing.com/th/id/OIP.NrYbs9hurY9",
-    "thread": "https://x.com/threads/placeholder_commodities"
+    "name": "Cardano",
+    "type": "crypto",
+    "desc": "A research-driven blockchain focusing on sustainability, scalability, and smart contracts, using Proof of Stake for energy efficiency.",
+    "example": "Developing dApps on Cardano for secure transactions.",
+    "image": "https://via.placeholder.com/700x400?text=Cardano+Chart",
+    "thread": "https://x.com/threads/placeholder_cardano"
+  },
+  {
+    "name": "XRP",
+    "type": "crypto",
+    "desc": "A cryptocurrency designed for fast international money transfers via the RippleNet system, often used by financial institutions.",
+    "example": "Using XRP for cross-border payments on RippleNet.",
+    "image": "https://via.placeholder.com/700x400?text=XRP+Chart",
+    "thread": "https://x.com/threads/placeholder_xrp"
+  },
+  {
+    "name": "Dogecoin",
+    "type": "crypto",
+    "desc": "A meme coin with a strong community and growing real-world utility, supported by figures like Elon Musk, used as a payment option.",
+    "example": "Paying with Dogecoin at select online merchants.",
+    "image": "https://via.placeholder.com/700x400?text=Dogecoin+Chart",
+    "thread": "https://x.com/threads/placeholder_dogecoin"
+  },
+  {
+    "name": "Avalanche",
+    "type": "crypto",
+    "desc": "A blockchain focused on high-speed, low-cost transactions, supporting DeFi and trading platforms like Trader Joe.",
+    "example": "Staking AVAX for rewards on Avalanche networks.",
+    "image": "https://via.placeholder.com/700x400?text=Avalanche+Chart",
+    "thread": "https://x.com/threads/placeholder_avalanche"
+  },
+  {
+    "name": "Polygon",
+    "type": "crypto",
+    "desc": "A layer-2 scaling solution for Ethereum, enhancing transaction speed and reducing costs for dApps and NFTs.",
+    "example": "Using Polygon for low-cost Ethereum transactions.",
+    "image": "https://via.placeholder.com/700x400?text=Polygon+Chart",
+    "thread": "https://x.com/threads/placeholder_polygon"
+  },
+  {
+    "name": "Binance Coin",
+    "type": "crypto",
+    "desc": "The native token of the Binance exchange, used for trading fees, staking, and payments on the Binance ecosystem.",
+    "example": "Paying trading fees with BNB on Binance.",
+    "image": "https://via.placeholder.com/700x400?text=Binance+Coin+Chart",
+    "thread": "https://x.com/threads/placeholder_binance"
+  },
+  {
+    "name": "Fetch.ai",
+    "type": "crypto",
+    "desc": "An AI-driven blockchain for decentralized autonomous agents, used in smart cities, supply chains, and data sharing.",
+    "example": "Using Fetch.ai for AI-based blockchain solutions.",
+    "image": "https://via.placeholder.com/700x400?text=Fetch.ai+Chart",
+    "thread": "https://x.com/threads/placeholder_fetchai"
+  },
+  {
+    "name": "Tesla",
+    "type": "stocks",
+    "desc": "Shares of Tesla, Inc., an electric vehicle and clean energy company led by Elon Musk, traded on NASDAQ.",
+    "example": "Investing in Tesla stock for growth in EV and battery technology.",
+    "image": "https://via.placeholder.com/700x400?text=Tesla+Stock+Chart",
+    "thread": "https://x.com/threads/placeholder_tesla"
+  },
+  {
+    "name": "Alphabet (Google)",
+    "type": "stocks",
+    "desc": "Shares of Alphabet Inc., the parent company of Google, known for search, advertising, and cloud computing, traded on NASDAQ.",
+    "example": "Buying Alphabet stock for growth in tech and advertising.",
+    "image": "https://via.placeholder.com/700x400?text=Alphabet+Stock+Chart",
+    "thread": "https://x.com/threads/placeholder_alphabet"
+  },
+  {
+    "name": "Amazon",
+    "type": "stocks",
+    "desc": "Shares of Amazon.com, Inc., a global leader in e-commerce, cloud computing (AWS), and AI, traded on NASDAQ.",
+    "example": "Investing in Amazon stock for e-commerce and cloud growth.",
+    "image": "https://via.placeholder.com/700x400?text=Amazon+Stock+Chart",
+    "thread": "https://x.com/threads/placeholder_amazon"
+  },
+  {
+    "name": "Nvidia",
+    "type": "stocks",
+    "desc": "Shares of NVIDIA Corporation, a leader in GPU technology, AI, and semiconductors, traded on NASDAQ.",
+    "example": "Purchasing Nvidia stock for AI and gaming technology growth.",
+    "image": "https://via.placeholder.com/700x400?text=Nvidia+Stock+Chart",
+    "thread": "https://x.com/threads/placeholder_nvidia"
+  },
+  {
+    "name": "Coinbase Global",
+    "type": "stocks",
+    "desc": "Shares of Coinbase Global, Inc., a major U.S. cryptocurrency exchange, benefiting from crypto market growth, traded on NASDAQ.",
+    "example": "Investing in Coinbase stock for exposure to crypto markets.",
+    "image": "https://via.placeholder.com/700x400?text=Coinbase+Stock+Chart",
+    "thread": "https://x.com/threads/placeholder_coinbase"
+  },
+  {
+    "name": "MicroStrategy (Strategy)",
+    "type": "stocks",
+    "desc": "Shares of MicroStrategy, now rebranded as Strategy, heavily invested in Bitcoin, traded on NASDAQ.",
+    "example": "Buying Strategy stock for Bitcoin exposure and enterprise software.",
+    "image": "https://via.placeholder.com/700x400?text=MicroStrategy+Stock+Chart",
+    "thread": "https://x.com/threads/placeholder_microstrategy"
+  },
+  {
+    "name": "Block (Square)",
+    "type": "stocks",
+    "desc": "Shares of Block, Inc. (formerly Square), a fintech company offering Bitcoin trading via Cash App, traded on NYSE.",
+    "example": "Investing in Block stock for fintech and crypto services.",
+    "image": "https://via.placeholder.com/700x400?text=Block+Stock+Chart",
+    "thread": "https://x.com/threads/placeholder_block"
+  },
+  {
+    "name": "Advanced Micro Devices (AMD)",
+    "type": "stocks",
+    "desc": "Shares of Advanced Micro Devices, Inc., a semiconductor company involved in blockchain and AI, traded on NASDAQ.",
+    "example": "Purchasing AMD stock for semiconductor and crypto tech growth.",
+    "image": "https://via.placeholder.com/700x400?text=AMD+Stock+Chart",
+    "thread": "https://x.com/threads/placeholder_amd"
+  },
+  {
+    "name": "PayPal",
+    "type": "stocks",
+    "desc": "Shares of PayPal Holdings, Inc., a fintech company exploring crypto payments and integrations, traded on NASDAQ.",
+    "example": "Investing in PayPal stock for fintech and crypto payment growth.",
+    "image": "https://via.placeholder.com/700x400?text=PayPal+Stock+Chart",
+    "thread": "https://x.com/threads/placeholder_paypal"
+  },
+  {
+    "name": "Marathon Digital",
+    "type": "stocks",
+    "desc": "Shares of Marathon Digital Holdings, a Bitcoin mining company, benefiting from crypto market trends, traded on NASDAQ.",
+    "example": "Buying Marathon Digital stock for Bitcoin mining exposure.",
+    "image": "https://via.placeholder.com/700x400?text=Marathon+Digital+Stock+Chart",
+    "thread": "https://x.com/threads/placeholder_marathon"
+  },
+  {
+    "name": "S&P 500",
+    "type": "indices",
+    "desc": "A stock market index tracking the performance of 500 large U.S. companies, widely used as a benchmark for the market.",
+    "example": "Investing in an S&P 500 ETF for broad market exposure.",
+    "image": "https://via.placeholder.com/700x400?text=S%26P+500+Chart",
+    "thread": "https://x.com/threads/placeholder_sp500"
+  },
+  {
+    "name": "Dow Jones Industrial Average",
+    "type": "indices",
+    "desc": "An index tracking 30 large, publicly-owned companies on NYSE and Nasdaq, representing industrial sectors.",
+    "example": "Monitoring the Dow Jones via an index fund or ETF.",
+    "image": "https://via.placeholder.com/700x400?text=Dow+Jones+Chart",
+    "thread": "https://x.com/threads/placeholder_dowjones"
+  },
+  {
+    "name": "Nasdaq Composite",
+    "type": "indices",
+    "desc": "An index of over 3,000 stocks listed on the Nasdaq exchange, heavily weighted toward technology companies.",
+    "example": "Investing in a Nasdaq Composite ETF for tech exposure.",
+    "image": "https://via.placeholder.com/700x400?text=Nasdaq+Composite+Chart",
+    "thread": "https://x.com/threads/placeholder_nasdaq"
+  },
+  {
+    "name": "FTSE 100",
+    "type": "indices",
+    "desc": "An index of the 100 largest companies listed on the London Stock Exchange, representing the UK market.",
+    "example": "Tracking the FTSE 100 for UK market performance.",
+    "image": "https://via.placeholder.com/700x400?text=FTSE+100+Chart",
+    "thread": "https://x.com/threads/placeholder_ftse"
+  },
+  {
+    "name": "Nikkei 225",
+    "type": "indices",
+    "desc": "An index of 225 major Japanese companies on the Tokyo Stock Exchange, reflecting Japan’s economy.",
+    "example": "Investing in a Nikkei 225 ETF for Japanese market exposure.",
+    "image": "https://via.placeholder.com/700x400?text=Nikkei+225+Chart",
+    "thread": "https://x.com/threads/placeholder_nikkei"
+  },
+  {
+    "name": "Hang Seng Index",
+    "type": "indices",
+    "desc": "An index of the largest companies on the Hong Kong Stock Exchange, representing Hong Kong’s market.",
+    "example": "Monitoring the Hang Seng for Asian market trends.",
+    "image": "https://via.placeholder.com/700x400?text=Hang+Seng+Chart",
+    "thread": "https://x.com/threads/placeholder_hangseng"
+  },
+  {
+    "name": "CAC 40",
+    "type": "indices",
+    "desc": "An index of the 40 largest companies on the Paris Stock Exchange, reflecting France’s economy.",
+    "example": "Investing in a CAC 40 ETF for French market exposure.",
+    "image": "https://via.placeholder.com/700x400?text=CAC+40+Chart",
+    "thread": "https://x.com/threads/placeholder_cac40"
+  },
+  {
+    "name": "DAX",
+    "type": "indices",
+    "desc": "An index of the 40 largest companies on the Frankfurt Stock Exchange, representing Germany’s market.",
+    "example": "Tracking the DAX for German economic performance.",
+    "image": "https://via.placeholder.com/700x400?text=DAX+Chart",
+    "thread": "https://x.com/threads/placeholder_dax"
+  },
+  {
+    "name": "ASX 200",
+    "type": "indices",
+    "desc": "An index of the 200 largest companies on the Australian Securities Exchange, reflecting Australia’s market.",
+    "example": "Investing in an ASX 200 ETF for Australian market exposure.",
+    "image": "https://via.placeholder.com/700x400?text=ASX+200+Chart",
+    "thread": "https://x.com/threads/placeholder_asx200"
+  },
+  {
+    "name": "MSCI World",
+    "type": "indices",
+    "desc": "A broad market index tracking large and mid-cap companies across 23 developed countries, excluding emerging markets.",
+    "example": "Using MSCI World ETF for global market diversification.",
+    "image": "https://via.placeholder.com/700x400?text=MSCI+World+Chart",
+    "thread": "https://x.com/threads/placeholder_msciworld"
   }
 ]
