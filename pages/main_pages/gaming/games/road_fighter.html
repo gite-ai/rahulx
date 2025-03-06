@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retro Road Fighter 2</title>
+    <title>Road Fighter with Custom Cars</title>
     <style>
         body {
             margin: 0;
@@ -13,6 +13,7 @@
             height: 100vh;
             background-color: #222;
             overflow: hidden;
+            flex-direction: column;
         }
         #game-container {
             width: 500px;
@@ -25,26 +26,33 @@
         #road {
             width: 300px;
             height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                #fff 0px,
-                #fff 8px,
-                #333 8px,
-                #333 16px
-            );
+            background-color: #333;
             position: absolute;
             left: 100px;
             top: 0;
-            animation: scroll 0.08s linear infinite;
+            border-left: 10px solid #555;
+            border-right: 10px solid #555;
+            background-image: linear-gradient(
+                to bottom,
+                transparent 0%,
+                transparent 50%,
+                #fff 50%,
+                #fff 60%,
+                transparent 60%,
+                transparent 100%
+            );
+            background-size: 100% 20px;
+            animation: scroll 0.1s linear infinite;
         }
         @keyframes scroll {
             0% { top: 0; }
-            100% { top: -16px; }
+            100% { top: -20px; }
         }
         #player {
             width: 30px;
             height: 50px;
-            background-color: #ff4444;
+            background-image: url('player-car.png'); /* Replace with your image */
+            background-size: cover;
             position: absolute;
             bottom: 30px;
             left: 235px;
@@ -54,7 +62,8 @@
         .enemy {
             width: 30px;
             height: 50px;
-            background-color: #4444ff;
+            background-image: url('enemy-car.png'); /* Replace with your image */
+            background-size: cover;
             position: absolute;
             border-radius: 3px;
         }
@@ -67,6 +76,19 @@
             font-size: 24px;
             z-index: 10;
         }
+        #reload-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #ff4444;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            display: none;
+        }
+        #reload-btn:hover {
+            background-color: #ff6666;
+        }
     </style>
 </head>
 <body>
@@ -75,12 +97,27 @@
         <div id="player"></div>
         <div id="score">Score: 0</div>
     </div>
+    <button id="reload-btn" onclick="restartGame()">Restart Game</button>
+
+    <audio id="engine-sound" loop>
+        <source src="engine.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="crash-sound">
+        <source src="crash.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="boost-sound">
+        <source src="boost.mp3" type="audio/mpeg">
+    </audio>
 
     <script>
         const gameContainer = document.getElementById('game-container');
         const road = document.getElementById('road');
         const player = document.getElementById('player');
         const scoreDisplay = document.getElementById('score');
+        const reloadBtn = document.getElementById('reload-btn');
+        const engineSound = document.getElementById('engine-sound');
+        const crashSound = document.getElementById('crash-sound');
+        const boostSound = document.getElementById('boost-sound');
         let playerX = 235;
         let score = 0;
         let gameOver = false;
@@ -93,13 +130,14 @@
         const keys = {};
         document.addEventListener('keydown', (e) => {
             keys[e.key] = true;
-            if (e.key === ' ' && !speedBoost) {
+            if (e.key === ' ' && !speedBoost && !gameOver) {
                 speed = baseSpeed * 2;
                 speedBoost = true;
+                boostSound.play();
                 setTimeout(() => {
                     speed = baseSpeed;
                     speedBoost = false;
-                }, 2000); // Boost lasts 2 seconds
+                }, 2000);
             }
         });
         document.addEventListener('keyup', (e) => {
@@ -108,24 +146,35 @@
 
         function movePlayer() {
             if (gameOver) return;
-            if (keys['ArrowLeft'] && playerX > 100) {
+            if (keys['ArrowLeft'] && playerX > 110) {
                 playerX -= 10;
             }
-            if (keys['ArrowRight'] && playerX < 370) {
+            if (keys['ArrowRight'] && playerX < 360) {
                 playerX += 10;
             }
             player.style.left = playerX + 'px';
         }
 
-        // Spawn enemies
+        // Spawn enemies with intelligent movement
         function spawnEnemy() {
             if (gameOver) return;
             const enemy = document.createElement('div');
             enemy.classList.add('enemy');
-            enemy.style.left = (Math.random() * 270 + 100) + 'px'; // Stay within road
+            let enemyX = Math.random() * 250 + 110; // Within road
+            enemy.style.left = enemyX + 'px';
             enemy.style.top = '-50px';
             gameContainer.appendChild(enemy);
-            enemies.push(enemy);
+
+            // Add swerving behavior
+            let direction = Math.random() < 0.5 ? -1 : 1;
+            let swerveInterval = setInterval(() => {
+                if (gameOver) clearInterval(swerveInterval);
+                enemyX += direction * 10;
+                if (enemyX < 110 || enemyX > 360) direction *= -1; // Bounce within road
+                enemy.style.left = enemyX + 'px';
+            }, 500);
+
+            enemies.push({ element: enemy, interval: swerveInterval });
         }
 
         // Game loop
@@ -134,14 +183,12 @@
 
             movePlayer();
 
-            // Move enemies
-            enemies.forEach((enemy, index) => {
-                let enemyY = parseInt(enemy.style.top) + speed;
-                enemy.style.top = enemyY + 'px';
+            enemies.forEach((enemyObj, index) => {
+                let enemyY = parseInt(enemyObj.element.style.top) + speed;
+                enemyObj.element.style.top = enemyY + 'px';
 
-                // Collision detection
                 const playerRect = player.getBoundingClientRect();
-                const enemyRect = enemy.getBoundingClientRect();
+                const enemyRect = enemyObj.element.getBoundingClientRect();
                 if (
                     playerRect.left < enemyRect.right &&
                     playerRect.right > enemyRect.left &&
@@ -149,13 +196,16 @@
                     playerRect.bottom > enemyRect.top
                 ) {
                     gameOver = true;
+                    engineSound.pause();
+                    crashSound.play();
                     alert(`Game Over! Score: ${score}`);
+                    reloadBtn.style.display = 'block';
                     return;
                 }
 
-                // Remove off-screen enemies
                 if (enemyY > 700) {
-                    gameContainer.removeChild(enemy);
+                    gameContainer.removeChild(enemyObj.element);
+                    clearInterval(enemyObj.interval);
                     enemies.splice(index, 1);
                     score += 10;
                     scoreDisplay.textContent = `Score: ${score}`;
@@ -165,10 +215,26 @@
             requestAnimationFrame(updateGame);
         }
 
-        // Spawn enemies every 1.2 seconds
-        setInterval(spawnEnemy, 1200);
+        // Restart game
+        function restartGame() {
+            gameOver = false;
+            score = 0;
+            scoreDisplay.textContent = `Score: ${score}`;
+            playerX = 235;
+            player.style.left = playerX + 'px';
+            enemies.forEach(enemyObj => {
+                gameContainer.removeChild(enemyObj.element);
+                clearInterval(enemyObj.interval);
+            });
+            enemies = [];
+            reloadBtn.style.display = 'none';
+            engineSound.play();
+            spawnEnemy();
+            updateGame();
+        }
 
-        // Start game
+        setInterval(spawnEnemy, 1200);
+        engineSound.play();
         updateGame();
         spawnEnemy();
     </script>
