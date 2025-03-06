@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Road Fighter 2</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #222;
+            overflow: hidden;
+        }
+        #game-container {
+            width: 500px;
+            height: 700px;
+            background-color: #777;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #fff;
+        }
+        #road {
+            width: 300px;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                #fff 0px,
+                #fff 8px,
+                #333 8px,
+                #333 16px
+            );
+            position: absolute;
+            left: 100px;
+            top: 0;
+            animation: scroll 0.08s linear infinite;
+        }
+        @keyframes scroll {
+            0% { top: 0; }
+            100% { top: -16px; }
+        }
+        #player {
+            width: 30px;
+            height: 50px;
+            background-color: #ff4444;
+            position: absolute;
+            bottom: 30px;
+            left: 235px;
+            border-radius: 3px;
+            transition: left 0.1s;
+        }
+        .enemy {
+            width: 30px;
+            height: 50px;
+            background-color: #4444ff;
+            position: absolute;
+            border-radius: 3px;
+        }
+        #score {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div id="road"></div>
+        <div id="player"></div>
+        <div id="score">Score: 0</div>
+    </div>
+
+    <script>
+        const gameContainer = document.getElementById('game-container');
+        const road = document.getElementById('road');
+        const player = document.getElementById('player');
+        const scoreDisplay = document.getElementById('score');
+        let playerX = 235;
+        let score = 0;
+        let gameOver = false;
+        let enemies = [];
+        let baseSpeed = 4;
+        let speed = baseSpeed;
+        let speedBoost = false;
+
+        // Player movement
+        const keys = {};
+        document.addEventListener('keydown', (e) => {
+            keys[e.key] = true;
+            if (e.key === ' ' && !speedBoost) {
+                speed = baseSpeed * 2;
+                speedBoost = true;
+                setTimeout(() => {
+                    speed = baseSpeed;
+                    speedBoost = false;
+                }, 2000); // Boost lasts 2 seconds
+            }
+        });
+        document.addEventListener('keyup', (e) => {
+            keys[e.key] = false;
+        });
+
+        function movePlayer() {
+            if (gameOver) return;
+            if (keys['ArrowLeft'] && playerX > 100) {
+                playerX -= 10;
+            }
+            if (keys['ArrowRight'] && playerX < 370) {
+                playerX += 10;
+            }
+            player.style.left = playerX + 'px';
+        }
+
+        // Spawn enemies
+        function spawnEnemy() {
+            if (gameOver) return;
+            const enemy = document.createElement('div');
+            enemy.classList.add('enemy');
+            enemy.style.left = (Math.random() * 270 + 100) + 'px'; // Stay within road
+            enemy.style.top = '-50px';
+            gameContainer.appendChild(enemy);
+            enemies.push(enemy);
+        }
+
+        // Game loop
+        function updateGame() {
+            if (gameOver) return;
+
+            movePlayer();
+
+            // Move enemies
+            enemies.forEach((enemy, index) => {
+                let enemyY = parseInt(enemy.style.top) + speed;
+                enemy.style.top = enemyY + 'px';
+
+                // Collision detection
+                const playerRect = player.getBoundingClientRect();
+                const enemyRect = enemy.getBoundingClientRect();
+                if (
+                    playerRect.left < enemyRect.right &&
+                    playerRect.right > enemyRect.left &&
+                    playerRect.top < enemyRect.bottom &&
+                    playerRect.bottom > enemyRect.top
+                ) {
+                    gameOver = true;
+                    alert(`Game Over! Score: ${score}`);
+                    return;
+                }
+
+                // Remove off-screen enemies
+                if (enemyY > 700) {
+                    gameContainer.removeChild(enemy);
+                    enemies.splice(index, 1);
+                    score += 10;
+                    scoreDisplay.textContent = `Score: ${score}`;
+                }
+            });
+
+            requestAnimationFrame(updateGame);
+        }
+
+        // Spawn enemies every 1.2 seconds
+        setInterval(spawnEnemy, 1200);
+
+        // Start game
+        updateGame();
+        spawnEnemy();
+    </script>
+</body>
+</html>
