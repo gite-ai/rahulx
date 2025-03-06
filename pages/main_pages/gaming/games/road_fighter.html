@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Road Fighter with Custom Cars</title>
+    <title>Road Fighter NES Style</title>
     <style>
         body {
             margin: 0;
@@ -11,27 +11,27 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #222;
+            background-color: #000;
             overflow: hidden;
             flex-direction: column;
         }
         #game-container {
-            width: 500px;
-            height: 700px;
-            background-color: #777;
+            width: 480px; /* Wider to match NES aspect ratio */
+            height: 640px; /* Taller to fit the road and HUD */
+            background-color: #000;
             position: relative;
             overflow: hidden;
             border: 2px solid #fff;
         }
         #road {
-            width: 300px;
+            width: 320px; /* Wider road to match screenshot */
             height: 100%;
-            background-color: #333;
+            background-color: #666; /* Gray road */
             position: absolute;
-            left: 100px;
+            left: 80px; /* Center the road */
             top: 0;
-            border-left: 10px solid #555;
-            border-right: 10px solid #555;
+            border-left: 20px solid #0f0; /* Green grassy border */
+            border-right: 20px solid #0f0; /* Green grassy border */
             background-image: linear-gradient(
                 to bottom,
                 transparent 0%,
@@ -41,39 +41,62 @@
                 transparent 60%,
                 transparent 100%
             );
-            background-size: 100% 20px;
+            background-size: 100% 16px; /* Dashed line spacing */
             animation: scroll 0.1s linear infinite;
         }
         @keyframes scroll {
             0% { top: 0; }
-            100% { top: -20px; }
+            100% { top: -16px; }
         }
         #player {
-            width: 30px;
-            height: 50px;
-            background-image: url('player-car.png'); /* Replace with your image */
+            width: 32px; /* Slightly wider for pixel art */
+            height: 48px;
+            background-image: url('player-car.png'); /* Red car sprite */
             background-size: cover;
             position: absolute;
-            bottom: 30px;
-            left: 235px;
-            border-radius: 3px;
+            bottom: 20px;
+            left: 224px; /* Center on road */
+            border-radius: 0; /* No rounding for pixel art */
             transition: left 0.1s;
         }
         .enemy {
-            width: 30px;
-            height: 50px;
-            background-image: url('enemy-car.png'); /* Replace with your image */
+            width: 32px;
+            height: 48px;
             background-size: cover;
             position: absolute;
-            border-radius: 3px;
+            border-radius: 0;
+        }
+        .enemy-yellow {
+            background-image: url('enemy-yellow-car.png'); /* Yellow car sprite */
+        }
+        .enemy-blue {
+            background-image: url('enemy-blue-car.png'); /* Blue car sprite */
         }
         #score {
             position: absolute;
             top: 10px;
             left: 10px;
             color: #fff;
-            font-family: Arial, sans-serif;
-            font-size: 24px;
+            font-family: 'Courier New', monospace; /* Retro font */
+            font-size: 16px;
+            z-index: 10;
+        }
+        #speed {
+            position: absolute;
+            top: 30px;
+            left: 10px;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            z-index: 10;
+        }
+        #fuel {
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
             z-index: 10;
         }
         #reload-btn {
@@ -89,13 +112,24 @@
         #reload-btn:hover {
             background-color: #ff6666;
         }
+        /* Optional: Add trees for roadside */
+        .tree {
+            width: 32px;
+            height: 32px;
+            background-image: url('tree.png'); /* Tree sprite */
+            background-size: cover;
+            position: absolute;
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
     <div id="game-container">
         <div id="road"></div>
         <div id="player"></div>
-        <div id="score">Score: 0</div>
+        <div id="score">1P 000000</div>
+        <div id="speed">222 km/h</div>
+        <div id="fuel">FUEL 006</div>
     </div>
     <button id="reload-btn" onclick="restartGame()">Restart Game</button>
 
@@ -114,16 +148,20 @@
         const road = document.getElementById('road');
         const player = document.getElementById('player');
         const scoreDisplay = document.getElementById('score');
+        const speedDisplay = document.getElementById('speed');
+        const fuelDisplay = document.getElementById('fuel');
         const reloadBtn = document.getElementById('reload-btn');
         const engineSound = document.getElementById('engine-sound');
         const crashSound = document.getElementById('crash-sound');
         const boostSound = document.getElementById('boost-sound');
-        let playerX = 235;
+        let playerX = 224; /* Center on wider road */
         let score = 0;
+        let speed = 222; /* Starting speed in km/h */
+        let fuel = 6; /* Starting fuel */
         let gameOver = false;
         let enemies = [];
         let baseSpeed = 4;
-        let speed = baseSpeed;
+        let moveSpeed = baseSpeed;
         let speedBoost = false;
 
         // Player movement
@@ -131,11 +169,13 @@
         document.addEventListener('keydown', (e) => {
             keys[e.key] = true;
             if (e.key === ' ' && !speedBoost && !gameOver) {
-                speed = baseSpeed * 2;
+                moveSpeed = baseSpeed * 2;
+                speed = 444; /* Boost speed */
                 speedBoost = true;
                 boostSound.play();
                 setTimeout(() => {
-                    speed = baseSpeed;
+                    moveSpeed = baseSpeed;
+                    speed = 222; /* Return to normal speed */
                     speedBoost = false;
                 }, 2000);
             }
@@ -146,35 +186,52 @@
 
         function movePlayer() {
             if (gameOver) return;
-            if (keys['ArrowLeft'] && playerX > 110) {
+            if (keys['ArrowLeft'] && playerX > 96) { /* Adjusted for wider road */
                 playerX -= 10;
             }
-            if (keys['ArrowRight'] && playerX < 360) {
+            if (keys['ArrowRight'] && playerX < 352) { /* Adjusted for wider road */
                 playerX += 10;
             }
             player.style.left = playerX + 'px';
+            updateFuel(); /* Fuel decreases with movement */
         }
 
-        // Spawn enemies with intelligent movement
+        // Spawn enemies with intelligent movement (yellow or blue randomly)
         function spawnEnemy() {
             if (gameOver) return;
             const enemy = document.createElement('div');
+            const isYellow = Math.random() < 0.7; /* 70% chance for yellow, 30% for blue */
             enemy.classList.add('enemy');
-            let enemyX = Math.random() * 250 + 110; // Within road
+            enemy.classList.add(isYellow ? 'enemy-yellow' : 'enemy-blue');
+            let enemyX = Math.random() * 256 + 96; /* Within road */
             enemy.style.left = enemyX + 'px';
-            enemy.style.top = '-50px';
+            enemy.style.top = '-48px';
             gameContainer.appendChild(enemy);
 
-            // Add swerving behavior
             let direction = Math.random() < 0.5 ? -1 : 1;
             let swerveInterval = setInterval(() => {
                 if (gameOver) clearInterval(swerveInterval);
                 enemyX += direction * 10;
-                if (enemyX < 110 || enemyX > 360) direction *= -1; // Bounce within road
+                if (enemyX < 96 || enemyX > 352) direction *= -1; /* Bounce within road */
                 enemy.style.left = enemyX + 'px';
             }, 500);
 
             enemies.push({ element: enemy, interval: swerveInterval });
+        }
+
+        // Update fuel (decreases over time, reset on game start)
+        function updateFuel() {
+            if (gameOver) return;
+            fuel -= 0.01; /* Decrease fuel gradually */
+            if (fuel <= 0) {
+                gameOver = true;
+                engineSound.pause();
+                crashSound.play();
+                alert(`Game Over! Out of Fuel! Score: ${score}`);
+                reloadBtn.style.display = 'block';
+                return;
+            }
+            fuelDisplay.textContent = `FUEL ${Math.floor(fuel).toString().padStart(3, '0')}`;
         }
 
         // Game loop
@@ -184,7 +241,7 @@
             movePlayer();
 
             enemies.forEach((enemyObj, index) => {
-                let enemyY = parseInt(enemyObj.element.style.top) + speed;
+                let enemyY = parseInt(enemyObj.element.style.top) + moveSpeed;
                 enemyObj.element.style.top = enemyY + 'px';
 
                 const playerRect = player.getBoundingClientRect();
@@ -198,20 +255,21 @@
                     gameOver = true;
                     engineSound.pause();
                     crashSound.play();
-                    alert(`Game Over! Score: ${score}`);
+                    alert(`Game Over! Crash! Score: ${score}`);
                     reloadBtn.style.display = 'block';
                     return;
                 }
 
-                if (enemyY > 700) {
+                if (enemyY > 640) {
                     gameContainer.removeChild(enemyObj.element);
                     clearInterval(enemyObj.interval);
                     enemies.splice(index, 1);
                     score += 10;
-                    scoreDisplay.textContent = `Score: ${score}`;
+                    scoreDisplay.textContent = `1P ${score.toString().padStart(6, '0')}`;
                 }
             });
 
+            speedDisplay.textContent = `${speed} km/h`;
             requestAnimationFrame(updateGame);
         }
 
@@ -219,8 +277,12 @@
         function restartGame() {
             gameOver = false;
             score = 0;
-            scoreDisplay.textContent = `Score: ${score}`;
-            playerX = 235;
+            speed = 222;
+            fuel = 6;
+            scoreDisplay.textContent = `1P ${score.toString().padStart(6, '0')}`;
+            speedDisplay.textContent = `${speed} km/h`;
+            fuelDisplay.textContent = `FUEL ${Math.floor(fuel).toString().padStart(3, '0')}`;
+            playerX = 224;
             player.style.left = playerX + 'px';
             enemies.forEach(enemyObj => {
                 gameContainer.removeChild(enemyObj.element);
@@ -233,8 +295,20 @@
             updateGame();
         }
 
+        // Add trees for roadside (optional, static for now)
+        function addTrees() {
+            for (let i = 0; i < 10; i++) {
+                const tree = document.createElement('div');
+                tree.classList.add('tree');
+                tree.style.left = (i % 2 === 0 ? 20 : 428) + 'px'; /* Left and right borders */
+                tree.style.top = (i * 64) + 'px'; /* Space them out */
+                gameContainer.appendChild(tree);
+            }
+        }
+
         setInterval(spawnEnemy, 1200);
         engineSound.play();
+        addTrees(); /* Add trees on load */
         updateGame();
         spawnEnemy();
     </script>
