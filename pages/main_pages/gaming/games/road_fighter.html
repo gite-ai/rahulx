@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Road Fighter NES Style</title>
+    <title>Road Fighter NES Style (Plain Road)</title>
     <style>
         body {
             margin: 0;
@@ -51,8 +51,9 @@
         #player {
             width: 32px; /* Slightly wider for pixel art */
             height: 48px;
-            background-image: url('player-car.png'); /* Red car sprite */
+            background-image: url('player-car.png'); /* Red car sprite, fallback to red box */
             background-size: cover;
+            background-color: #ff4444; /* Fallback color if image not found */
             position: absolute;
             bottom: 20px;
             left: 224px; /* Center on road */
@@ -67,10 +68,12 @@
             border-radius: 0;
         }
         .enemy-yellow {
-            background-image: url('enemy-yellow-car.png'); /* Yellow car sprite */
+            background-image: url('enemy-yellow-car.png'); /* Yellow car sprite, fallback to yellow box */
+            background-color: #ffff44; /* Fallback color if image not found */
         }
         .enemy-blue {
-            background-image: url('enemy-blue-car.png'); /* Blue car sprite */
+            background-image: url('enemy-blue-car.png'); /* Blue car sprite, fallback to blue box */
+            background-color: #4444ff; /* Fallback color if image not found */
         }
         #score {
             position: absolute;
@@ -111,15 +114,6 @@
         }
         #reload-btn:hover {
             background-color: #ff6666;
-        }
-        /* Optional: Add trees for roadside */
-        .tree {
-            width: 32px;
-            height: 32px;
-            background-image: url('tree.png'); /* Tree sprite */
-            background-size: cover;
-            position: absolute;
-            z-index: 1;
         }
     </style>
 </head>
@@ -295,20 +289,8 @@
             updateGame();
         }
 
-        // Add trees for roadside (optional, static for now)
-        function addTrees() {
-            for (let i = 0; i < 10; i++) {
-                const tree = document.createElement('div');
-                tree.classList.add('tree');
-                tree.style.left = (i % 2 === 0 ? 20 : 428) + 'px'; /* Left and right borders */
-                tree.style.top = (i * 64) + 'px'; /* Space them out */
-                gameContainer.appendChild(tree);
-            }
-        }
-
         setInterval(spawnEnemy, 1200);
         engineSound.play();
-        addTrees(); /* Add trees on load */
         updateGame();
         spawnEnemy();
     </script>
