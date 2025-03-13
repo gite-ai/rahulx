@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Machine Learning",
+    "desc": "A subset of AI that enables systems to learn and improve from experience without explicit programming.",
+    "example": "Predicting house prices based on historical data.",
+    "image": "https://example.com/images/ml.jpg",
+    "thread": "https://x.com/example/thread/12345"
+  },
+  {
+    "name": "Neural Networks",
+    "desc": "AI systems modeled after the human brain, used for pattern recognition and decision-making.",
+    "example": "Image recognition in self-driving cars.",
+    "image": "https://example.com/images/neural.jpg",
+    "thread": "https://x.com/example/thread/67890"
+  },
+  {
+    "name": "Natural Language Processing",
+    "desc": "The ability of machines to understand and generate human language.",
+    "example": "Chatbots like Grok answering user queries.",
+    "image": "https://example.com/images/nlp.jpg",
+    "thread": "https://x.com/example/thread/54321"
+  },
+  {
+    "name": "Reinforcement Learning",
+    "desc": "A type of machine learning where agents learn by interacting with their environment.",
+    "example": "Training a robot to navigate a maze.",
+    "image": "https://example.com/images/rl.jpg",
+    "thread": "https://x.com/example/thread/98765"
+  }
+]
