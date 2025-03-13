@@ -1,0 +1,58 @@
+[
+  {
+    "name": "F1",
+    "desc": "The pinnacle of single-seater auto racing, known for speed and technology.",
+    "example": "Watching the Monaco Grand Prix.",
+    "image": "https://images.unsplash.com/photo-1610283603385",
+    "thread": "https://x.com/threads/placeholder_f1"
+  },
+  {
+    "name": "Formula1",
+    "desc": "The global motorsport series featuring the fastest cars and top drivers.",
+    "example": "Analyzing the 2025 season opener.",
+    "image": "https://th.bing.com/th/id/OIP.Q8n8mY7e8Z8",
+    "thread": "https://x.com/threads/placeholder_formula1"
+  },
+  {
+    "name": "MaxVerstappen",
+    "desc": "A dominant F1 driver known for his aggressive style and championships.",
+    "example": "Verstappen overtaking at Turn 1.",
+    "image": "https://images.unsplash.com/photo-1611974789855",
+    "thread": "https://x.com/threads/placeholder_maxverstappen"
+  },
+  {
+    "name": "LewisHamilton",
+    "desc": "A legendary F1 driver with multiple world titles and a legacy of excellence.",
+    "example": "Hamilton securing pole at Silverstone.",
+    "image": "https://th.bing.com/th/id/OIP.NrYbs9hurY9",
+    "thread": "https://x.com/threads/placeholder_lewishamilton"
+  },
+  {
+    "name": "GP",
+    "desc": "Grand Prix races forming the backbone of the F1 calendar.",
+    "example": "Attending the Italian GP at Monza.",
+    "image": "https://images.unsplash.com/photo-150213424912",
+    "thread": "https://x.com/threads/placeholder_gp"
+  },
+  {
+    "name": "Racing",
+    "desc": "The high-speed competition at the heart of Formula 1.",
+    "example": "A thrilling duel in the final lap.",
+    "image": "https://th.bing.com/th/id/OIP.6X5gRUI8kna",
+    "thread": "https://x.com/threads/placeholder_racing"
+  },
+  {
+    "name": "PolePosition",
+    "desc": "The top starting spot earned through qualifying in F1.",
+    "example": "Securing pole with a record lap time.",
+    "image": "https://images.unsplash.com/photo-146480268616",
+    "thread": "https://x.com/threads/placeholder_poleposition"
+  },
+  {
+    "name": "FastLap",
+    "desc": "The quickest lap time set during an F1 race, often earning bonus points.",
+    "example": "Setting the fastest lap at Spa.",
+    "image": "https://th.bing.com/th/id/OIP.7QfGZoJZQJ7",
+    "thread": "https://x.com/threads/placeholder_fastlap"
+  }
+]

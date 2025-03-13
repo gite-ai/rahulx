@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Space",
+    "desc": "The vast expanse beyond Earth, encompassing planets, stars, and galaxies awaiting exploration.",
+    "example": "Studying the Milky Way’s structure.",
+    "image": "https://images.unsplash.com/photo-1447433819943",
+    "thread": "https://x.com/threads/placeholder_space"
+  },
+  {
+    "name": "Astronomy",
+    "desc": "The scientific study of celestial objects, their movements, and the universe’s origins.",
+    "example": "Observing a supernova through a telescope.",
+    "image": "https://th.bing.com/th/id/OIP.Q8n8mY7e8Z8",
+    "thread": "https://x.com/threads/placeholder_astronomy"
+  },
+  {
+    "name": "NASA",
+    "desc": "The U.S. agency leading space exploration and scientific discovery beyond Earth.",
+    "example": "Launching the Artemis mission to the Moon.",
+    "image": "https://images.unsplash.com/photo-161029666922",
+    "thread": "https://x.com/threads/placeholder_nasa"
+  },
+  {
+    "name": "Galaxy",
+    "desc": "A massive system of stars, gas, and dust bound by gravity, like our Milky Way.",
+    "example": "Mapping the Andromeda Galaxy.",
+    "image": "https://th.bing.com/th/id/OIP.7QfGZoJZQJ7",
+    "thread": "https://x.com/threads/placeholder_galaxy"
+  },
+  {
+    "name": "Universe",
+    "desc": "The entirety of space, time, matter, and energy, encompassing all existence.",
+    "example": "Exploring the Big Bang theory.",
+    "image": "https://images.unsplash.com/photo-146480268616",
+    "thread": "https://x.com/threads/placeholder_universe"
+  },
+  {
+    "name": "Stargazing",
+    "desc": "The practice of observing the night sky and celestial bodies for wonder or study.",
+    "example": "Spotting the Orion constellation.",
+    "image": "https://th.bing.com/th/id/OIP.6X5gRUI8kna",
+    "thread": "https://x.com/threads/placeholder_stargazing"
+  },
+  {
+    "name": "BlackHole",
+    "desc": "A region in space with gravity so strong that not even light can escape.",
+    "example": "Imaging the Event Horizon of a black hole.",
+    "image": "https://images.unsplash.com/photo-150213424912",
+    "thread": "https://x.com/threads/placeholder_blackhole"
+  },
+  {
+    "name": "SpaceExploration",
+    "desc": "The investigation of outer space using spacecraft and advanced technology.",
+    "example": "Sending rovers to Mars.",
+    "image": "https://th.bing.com/th/id/OIP.NrYbs9hurY9",
+    "thread": "https://x.com/threads/placeholder_spaceexploration"
+  }
+]
