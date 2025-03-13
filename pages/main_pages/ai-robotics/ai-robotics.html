@@ -383,7 +383,7 @@
   </footer>
 
   <script>
-    // Enhanced 2D Human Face Animation
+   // Enhanced 2D Human Face Animation with Floating Binary Digits
 const canvas = document.getElementById('binaryFaceCanvas');
 const ctx = canvas.getContext('2d');
 const container = document.querySelector('.ai-animation');
@@ -430,6 +430,20 @@ for (let i = 0; i < particleCount; i++) {
   });
 }
 
+// Binary digits array
+const binaryDigits = [];
+for (let i = 0; i < 50; i++) { // Number of binary digits
+  binaryDigits.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    speedX: (Math.random() - 0.5) * 2,
+    speedY: (Math.random() - 0.5) * 2,
+    value: Math.random() > 0.5 ? '0' : '1', // Randomly choose 0 or 1
+    size: Math.random() * 20 + 10, // Random size for variety
+    opacity: Math.random() * 0.5 + 0.5, // Random opacity
+  });
+}
+
 // Mouse position tracking
 let mouseX = canvas.width / 2;
 let mouseY = canvas.height / 2;
@@ -439,10 +453,32 @@ canvas.addEventListener('mousemove', (e) => {
   mouseY = e.clientY - rect.top;
 });
 
+// Draw binary digits
+function drawBinaryDigits() {
+  binaryDigits.forEach((digit) => {
+    ctx.font = `${digit.size}px monospace`;
+    ctx.fillStyle = `rgba(0, 255, 204, ${digit.opacity})`; // Neon green color
+    ctx.fillText(digit.value, digit.x, digit.y);
+
+    // Update digit position
+    digit.x += digit.speedX;
+    digit.y += digit.speedY;
+
+    // Wrap digits around the canvas
+    if (digit.x < 0) digit.x = canvas.width;
+    if (digit.x > canvas.width) digit.x = 0;
+    if (digit.y < 0) digit.y = canvas.height;
+    if (digit.y > canvas.height) digit.y = 0;
+  });
+}
+
 // Draw face
 function drawFace() {
   // Clear the canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Draw floating binary digits
+  drawBinaryDigits();
 
   // Draw glowing particles
   particles.forEach((particle) => {

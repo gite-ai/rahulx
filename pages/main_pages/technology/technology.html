@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Enhanced viewport for consistent rendering across modes -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Tech Frontier 2025</title>
   <style>
     /* General Styles */
@@ -12,7 +13,7 @@
       padding: 0;
       background: #0a0a0a;
       color: #00ffcc;
-      overflow-x: hidden;
+      overflow-x: auto; /* Changed to auto to prevent clipping */
       font-size: 16px;
       line-height: 1.6;
     }
@@ -67,7 +68,7 @@
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
       border-radius: 10px;
-      overflow: hidden;
+      overflow: visible; /* Changed to visible to prevent clipping */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -76,8 +77,10 @@
     /* Orbiting Particles */
     .particle-system {
       position: relative;
-      width: 300px;
-      height: 300px;
+      width: 100%;
+      max-width: 300px;
+      height: 100%;
+      max-height: 300px;
     }
 
     .particle {
@@ -107,21 +110,22 @@
       animation: pulse 2s infinite;
     }
 
+    /* Scaled orbit animations with min() for responsiveness */
     @keyframes orbit1 {
-      0% { transform: rotate(0deg) translateX(120px) rotate(0deg); }
-      100% { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+      0% { transform: rotate(0deg) translateX(min(120px, 40vw)) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(min(120px, 40vw)) rotate(-360deg); }
     }
     @keyframes orbit2 {
-      0% { transform: rotate(0deg) translateX(90px) rotate(0deg); }
-      100% { transform: rotate(360deg) translateX(90px) rotate(-360deg); }
+      0% { transform: rotate(0deg) translateX(min(90px, 30vw)) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(min(90px, 30vw)) rotate(-360deg); }
     }
     @keyframes orbit3 {
-      0% { transform: rotate(0deg) translateX(150px) rotate(0deg); }
-      100% { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+      0% { transform: rotate(0deg) translateX(min(150px, 50vw)) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(min(150px, 50vw)) rotate(-360deg); }
     }
     @keyframes orbit4 {
-      0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
-      100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+      0% { transform: rotate(0deg) translateX(min(100px, 35vw)) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(min(100px, 35vw)) rotate(-360deg); }
     }
     @keyframes pulse {
       0% { box-shadow: 0 0 10px #00ffcc; }
@@ -380,6 +384,51 @@
       0% { background-position: 0 0; }
       100% { background-position: 1000px 1000px; }
     }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      header p {
+        font-size: 1rem;
+      }
+
+      .tech-animation {
+        height: 300px;
+      }
+
+      .particle-system {
+        max-width: 200px;
+        max-height: 200px;
+      }
+
+      .particle {
+        width: 15px;
+        height: 15px;
+      }
+
+      .core {
+        width: 30px;
+        height: 30px;
+      }
+
+      .tech-topics {
+        gap: 8px;
+        padding: 15px;
+      }
+
+      .topic {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+      }
+
+      .modal-content {
+        width: 90%;
+        max-width: 500px;
+      }
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -470,12 +519,10 @@
       modalImage.src = image;
       modal.style.display = 'flex';
 
-      // Add click event to thread icon
       threadLink.onclick = function() {
         window.open(thread, '_blank');
       };
 
-      // Add click event to search icon
       searchX.onclick = function() {
         const searchQuery = encodeURIComponent(title);
         const xSearchUrl = `https://x.com/search?q=${searchQuery}`;
@@ -502,29 +549,28 @@
       });
     }
 
-    // Close modal when clicking outside the content
     document.getElementById('techModal').addEventListener('click', (e) => {
       if (e.target === document.getElementById('techModal')) {
         closeModal();
       }
     });
 
-    // Fetch data from texts/technology.txt and initialize the page
+    /* Updated fetch with resize trigger and fallback */
     window.onload = function() {
       fetch('texts/technology.txt')
         .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
+          if (!response.ok) throw new Error('Network response was not ok');
           return response.text();
         })
         .then(data => {
           const technologies = JSON.parse(data);
           populateTechTopics(technologies);
+          window.dispatchEvent(new Event('resize')); // Trigger resize for layout adjustment
         })
         .catch(error => {
           console.error('Error loading texts/technology.txt:', error);
-          alert('Failed to load technology data. Please check the console for details.');
+          const topicsContainer = document.getElementById('techTopics');
+          topicsContainer.innerHTML = '<p style="color: #ff00cc;">Failed to load topics. Please try again later.</p>';
         });
     };
   </script>
