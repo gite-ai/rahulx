@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- Enhanced viewport for consistent rendering across modes -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Tech Frontier 2025</title>
   <style>
@@ -13,7 +12,7 @@
       padding: 0;
       background: #0a0a0a;
       color: #00ffcc;
-      overflow-x: auto; /* Changed to auto to prevent clipping */
+      overflow-x: auto;
       font-size: 16px;
       line-height: 1.6;
     }
@@ -68,69 +67,68 @@
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
       border-radius: 10px;
-      overflow: visible; /* Changed to visible to prevent clipping */
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    /* Orbiting Particles */
-    .particle-system {
-      position: relative;
-      width: 100%;
-      max-width: 300px;
-      height: 100%;
-      max-height: 300px;
-    }
-
-    .particle {
+    /* Core of the Tech Animation */
+    .tech-core {
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background: rgba(0, 255, 204, 0.3);
-      border: 2px solid #00ffcc;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, #00ffcc, #00ccff);
       border-radius: 50%;
-      transform-origin: center;
+      animation: pulse 3s infinite;
     }
 
-    .particle-1 { animation: orbit1 6s linear infinite; }
-    .particle-2 { animation: orbit2 5s linear infinite reverse; }
-    .particle-3 { animation: orbit3 4s linear infinite; }
-    .particle-4 { animation: orbit4 7s linear infinite reverse; }
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.7); }
+      50% { transform: scale(1.1); box-shadow: 0 0 20px 10px rgba(0, 255, 204, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.7); }
+    }
 
-    .core {
+    /* Floating Tech Icons */
+    .tech-icon {
       position: absolute;
-      width: 50px;
-      height: 50px;
+      font-size: 24px;
+      color: #00ffcc;
+      animation: float 6s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Binary Digits Floating Around */
+    .binary-digit {
+      position: absolute;
+      font-size: 16px;
+      color: rgba(0, 255, 204, 0.7);
+      animation: floatBinary 5s infinite linear;
+    }
+
+    @keyframes floatBinary {
+      0% { transform: translateY(0) translateX(0); opacity: 0.7; }
+      50% { transform: translateY(-50px) translateX(50px); opacity: 1; }
+      100% { transform: translateY(0) translateX(0); opacity: 0.7; }
+    }
+
+    /* Orbiting Particles */
+    .orbiting-particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
       background: #00ffcc;
       border-radius: 50%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation: pulse 2s infinite;
+      animation: orbit 8s infinite linear;
     }
 
-    /* Scaled orbit animations with min() for responsiveness */
-    @keyframes orbit1 {
-      0% { transform: rotate(0deg) translateX(min(120px, 40vw)) rotate(0deg); }
-      100% { transform: rotate(360deg) translateX(min(120px, 40vw)) rotate(-360deg); }
-    }
-    @keyframes orbit2 {
-      0% { transform: rotate(0deg) translateX(min(90px, 30vw)) rotate(0deg); }
-      100% { transform: rotate(360deg) translateX(min(90px, 30vw)) rotate(-360deg); }
-    }
-    @keyframes orbit3 {
-      0% { transform: rotate(0deg) translateX(min(150px, 50vw)) rotate(0deg); }
-      100% { transform: rotate(360deg) translateX(min(150px, 50vw)) rotate(-360deg); }
-    }
-    @keyframes orbit4 {
-      0% { transform: rotate(0deg) translateX(min(100px, 35vw)) rotate(0deg); }
-      100% { transform: rotate(360deg) translateX(min(100px, 35vw)) rotate(-360deg); }
-    }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 10px #00ffcc; }
-      50% { box-shadow: 0 0 30px #00ffcc; }
-      100% { box-shadow: 0 0 10px #00ffcc; }
+    @keyframes orbit {
+      0% { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
     }
 
     /* Tech Topics */
@@ -399,19 +397,22 @@
         height: 300px;
       }
 
-      .particle-system {
-        max-width: 200px;
-        max-height: 200px;
+      .tech-core {
+        width: 60px;
+        height: 60px;
       }
 
-      .particle {
-        width: 15px;
-        height: 15px;
+      .tech-icon {
+        font-size: 18px;
       }
 
-      .core {
-        width: 30px;
-        height: 30px;
+      .binary-digit {
+        font-size: 12px;
+      }
+
+      .orbiting-particle {
+        width: 8px;
+        height: 8px;
       }
 
       .tech-topics {
@@ -445,14 +446,27 @@
 
   <!-- Tech Animation Section -->
   <div class="tech-animation">
-    <!-- Orbiting Particle System -->
-    <div class="particle-system">
-      <div class="core"></div>
-      <div class="particle particle-1">⚛️</div>
-      <div class="particle particle-2">🧠</div>
-      <div class="particle particle-3">🧬</div>
-      <div class="particle particle-4">🤖</div>
-    </div>
+    <!-- Core of the Animation -->
+    <div class="tech-core"></div>
+
+    <!-- Floating Tech Icons -->
+    <div class="tech-icon" style="top: 20%; left: 10%;">🤖</div>
+    <div class="tech-icon" style="top: 30%; left: 80%;">🧠</div>
+    <div class="tech-icon" style="top: 70%; left: 20%;">⚛️</div>
+    <div class="tech-icon" style="top: 80%; left: 70%;">🧬</div>
+
+    <!-- Floating Binary Digits -->
+    <div class="binary-digit" style="top: 10%; left: 50%;">0</div>
+    <div class="binary-digit" style="top: 20%; left: 30%;">1</div>
+    <div class="binary-digit" style="top: 40%; left: 80%;">0</div>
+    <div class="binary-digit" style="top: 60%; left: 10%;">1</div>
+    <div class="binary-digit" style="top: 90%; left: 60%;">0</div>
+
+    <!-- Orbiting Particles -->
+    <div class="orbiting-particle" style="animation-delay: 0s;"></div>
+    <div class="orbiting-particle" style="animation-delay: 2s;"></div>
+    <div class="orbiting-particle" style="animation-delay: 4s;"></div>
+    <div class="orbiting-particle" style="animation-delay: 6s;"></div>
   </div>
 
   <!-- Tech Topics -->
@@ -489,6 +503,38 @@
   </footer>
 
   <script>
+    // Generate Floating Binary Digits
+    function generateBinaryDigits() {
+      const techAnimation = document.querySelector('.tech-animation');
+      for (let i = 0; i < 20; i++) {
+        const binaryDigit = document.createElement('div');
+        binaryDigit.className = 'binary-digit';
+        binaryDigit.textContent = Math.random() > 0.5 ? '0' : '1';
+        binaryDigit.style.top = `${Math.random() * 100}%`;
+        binaryDigit.style.left = `${Math.random() * 100}%`;
+        binaryDigit.style.animationDuration = `${Math.random() * 5 + 3}s`;
+        techAnimation.appendChild(binaryDigit);
+      }
+    }
+
+    // Generate Orbiting Particles
+    function generateOrbitingParticles() {
+      const techAnimation = document.querySelector('.tech-animation');
+      for (let i = 0; i < 8; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'orbiting-particle';
+        particle.style.animationDelay = `${i * 1}s`;
+        techAnimation.appendChild(particle);
+      }
+    }
+
+    // Initialize Animations
+    window.onload = function () {
+      generateBinaryDigits();
+      generateOrbitingParticles();
+    };
+
+    // Populate Tech Topics
     function populateTechTopics(technologies) {
       const topicsContainer = document.getElementById('techTopics');
       technologies.forEach(tech => {
