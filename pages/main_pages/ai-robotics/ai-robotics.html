@@ -1,114 +1,549 @@
-// 2D Human Face Animation
-const canvas = document.getElementById('binaryFaceCanvas');
-const ctx = canvas.getContext('2d');
-const container = document.querySelector('.ai-animation');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Frontier 2025</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      color: #00ffcc;
+      overflow-x: hidden;
+      font-size: 16px;
+      line-height: 1.6;
+    }
 
-// Dynamically set canvas size to match container
-function resizeCanvas() {
-  canvas.width = container.offsetWidth;
-  canvas.height = container.offsetHeight;
-}
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
+    h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      font-weight: 700;
+    }
 
-// Face parameters
-const faceRadius = 100;
-const eyeRadius = 15;
-const mouthWidth = 80;
-const mouthHeight = 40;
-let frame = 0;
+    a {
+      text-decoration: underline;
+      color: #ff00cc;
+      transition: color 0.3s ease;
+    }
 
-// Colors
-const faceColor = '#00ffcc';
-const eyeColor = '#ff00cc';
-const mouthColor = '#00ffcc';
+    a:hover {
+      color: #00ffcc;
+    }
 
-// Animation parameters
-const blinkDuration = 10; // Frames for blinking
-const blinkInterval = 200; // Frames between blinks
-const mouthMovementSpeed = 0.05;
+    /* Header */
+    header {
+      position: relative;
+      background: radial-gradient(circle, #001f3f, #000);
+      color: #00ffcc;
+      padding: 40px 0;
+      text-align: center;
+      overflow: hidden;
+    }
 
-function drawFace() {
-  // Clear the canvas
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+    header h1 {
+      font-size: 2.8rem;
+      text-transform: uppercase;
+      animation: glow 2s infinite alternate;
+      letter-spacing: 2px;
+    }
 
-  // Draw face
-  ctx.beginPath();
-  ctx.arc(canvas.width / 2, canvas.height / 2, faceRadius, 0, Math.PI * 2);
-  ctx.fillStyle = faceColor;
-  ctx.fill();
-  ctx.strokeStyle = '#00ffcc';
-  ctx.lineWidth = 4;
-  ctx.stroke();
+    header p {
+      font-size: 1.3rem;
+      opacity: 0.8;
+      animation: float 3s ease-in-out infinite;
+      font-weight: 300;
+    }
 
-  // Draw eyes
-  const eyeOffsetX = 40;
-  const eyeOffsetY = -30;
+    /* AI Animation Section */
+    .ai-animation {
+      position: relative;
+      width: 90%;
+      max-width: 1200px;
+      height: 400px;
+      margin: 40px auto;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-  // Left eye
-  ctx.beginPath();
-  ctx.arc(
-    canvas.width / 2 - eyeOffsetX,
-    canvas.height / 2 + eyeOffsetY,
-    eyeRadius,
-    0,
-    Math.PI * 2
-  );
-  ctx.fillStyle = eyeColor;
-  ctx.fill();
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
 
-  // Right eye
-  ctx.beginPath();
-  ctx.arc(
-    canvas.width / 2 + eyeOffsetX,
-    canvas.height / 2 + eyeOffsetY,
-    eyeRadius,
-    0,
-    Math.PI * 2
-  );
-  ctx.fillStyle = eyeColor;
-  ctx.fill();
+    /* Tech Topics */
+    .tech-topics {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+    }
 
-  // Blinking effect
-  if (frame % blinkInterval < blinkDuration) {
-    ctx.fillStyle = faceColor;
-    ctx.fillRect(
-      canvas.width / 2 - eyeOffsetX - eyeRadius,
-      canvas.height / 2 + eyeOffsetY - eyeRadius,
-      eyeRadius * 2,
-      eyeRadius * 2
-    );
-    ctx.fillRect(
-      canvas.width / 2 + eyeOffsetX - eyeRadius,
-      canvas.height / 2 + eyeOffsetY - eyeRadius,
-      eyeRadius * 2,
-      eyeRadius * 2
-    );
-  }
+    .topic {
+      padding: 12px 24px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
 
-  // Draw mouth
-  const mouthCurve = Math.sin(frame * mouthMovementSpeed) * 20;
-  ctx.beginPath();
-  ctx.moveTo(canvas.width / 2 - mouthWidth / 2, canvas.height / 2 + 50);
-  ctx.quadraticCurveTo(
-    canvas.width / 2,
-    canvas.height / 2 + 50 + mouthCurve,
-    canvas.width / 2 + mouthWidth / 2,
-    canvas.height / 2 + 50
-  );
-  ctx.strokeStyle = mouthColor;
-  ctx.lineWidth = 4;
-  ctx.stroke();
+    .topic:hover {
+      background: #00ffcc;
+      color: #000;
+    }
 
-  // Add glowing effect
-  ctx.shadowBlur = 20;
-  ctx.shadowColor = '#00ffcc';
-}
+    /* Modal (Popup) Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
 
-// Animation loop
-function animate() {
-  drawFace();
-  frame++;
-  requestAnimationFrame(animate);
-}
-animate();
+    .modal-content {
+      background: rgba(0, 0, 0, 0.9);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 600px;
+      max-height: 80vh;
+      padding: 0;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 20px;
+      background: rgba(0, 0, 0, 0.95);
+      border-bottom: 1px solid #00ffcc;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .modal-title {
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: center;
+      margin: 0;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.2rem;
+      color: #00ffcc;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.7);
+      border: none;
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      border-radius: 50%;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background: #00ffcc;
+      color: #000;
+    }
+
+    .thread-icon {
+      font-size: 1.6rem;
+      color: #00ffcc;
+      cursor: pointer;
+      margin-left: 20px;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .thread-icon:hover {
+      color: #ff00cc;
+      transform: scale(1.2);
+    }
+
+    .icon-separator {
+      width: 4px;
+      height: 4px;
+      background: #00ffcc;
+      border-radius: 50%;
+      margin: 0 15px;
+      animation: glowPulse 1.5s infinite;
+    }
+
+    .search-icon {
+      font-size: 1.6rem;
+      color: #00ffcc;
+      cursor: pointer;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .search-icon:hover {
+      color: #ff00cc;
+      transform: scale(1.2);
+    }
+
+    .modal-body {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .modal-desc {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+
+    .modal-example {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      font-style: italic;
+      color: #b0fff0;
+    }
+
+    .modal-image {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      margin: 10px auto;
+      display: block;
+    }
+
+    .modal-footer {
+      padding: 15px 20px;
+      background: rgba(0, 0, 0, 0.95);
+      border-top: 1px solid #00ffcc;
+      position: sticky;
+      bottom: 0;
+      z-index: 10;
+      text-align: right;
+    }
+
+    .copy-button {
+      background: none;
+      border: none;
+      color: #00ffcc;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .copy-button:hover {
+      color: #ff00cc;
+      transform: scale(1.2);
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 5px #00ffcc; }
+      50% { box-shadow: 0 0 15px #00ffcc; }
+      100% { box-shadow: 0 0 5px #00ffcc; }
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: #00ffcc;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 300;
+    }
+
+    footer a {
+      color: #ff00cc;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
+      100% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Sci-Fi Background */
+    .sci-fi-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle, #001f3f, #000);
+      animation: stars 10s infinite linear;
+    }
+
+    @keyframes stars {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <!-- Sci-Fi Background -->
+  <div class="sci-fi-bg"></div>
+
+  <!-- Header -->
+  <header>
+    <h1>AI Frontier 2025</h1>
+    <p>Explore the Future of Artificial Intelligence</p>
+  </header>
+
+  <!-- AI Animation Section -->
+  <div class="ai-animation">
+    <canvas id="binaryFaceCanvas"></canvas>
+  </div>
+
+  <!-- Tech Topics -->
+  <div class="tech-topics" id="techTopics">
+    <!-- Topics will be added dynamically -->
+  </div>
+
+  <!-- Modal (Popup) -->
+  <div class="modal" id="techModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <i class="fa fa-pencil-square-o thread-icon" id="threadLink" title="View Thread"></i>
+        <span class="icon-separator"></span>
+        <i class="fa fa-search search-icon" id="searchX" title="Search on X"></i>
+        <button class="modal-close" onclick="closeModal()">✖</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc" id="modalDesc"></p>
+        <p class="modal-example" id="modalExample"></p>
+        <img class="modal-image" id="modalImage" src="" alt="AI Image">
+      </div>
+      <div class="modal-footer">
+        <button class="copy-button" onclick="copyModalContent()" title="Copy Content">
+          <i class="fa fa-copy"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 AI Frontier. All rights reserved. | <a href="#">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+    // Binary Face Animation
+    const canvas = document.getElementById('binaryFaceCanvas');
+    const ctx = canvas.getContext('2d');
+    const container = document.querySelector('.ai-animation');
+
+    // Dynamically set canvas size to match container
+    function resizeCanvas() {
+      canvas.width = container.offsetWidth;
+      canvas.height = container.offsetHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Detailed binary representation of a human face
+    const faceGrid = [
+      "0000000000000000000000000000",
+      "0000000011111111000000000000",
+      "0000001111111111110000000000",
+      "0000011111111111111000000000",
+      "0000111111111111111100000000",
+      "0001111100000000111110000000", // Eyes start
+      "0011111000000000011111000000",
+      "0011111000000000011111000000",
+      "0111111000000000011111100000",
+      "0111111111111111111111100000", // Nose/Mouth area
+      "0111111111111111111111100000",
+      "0111111100000000011111100000",
+      "0011111110000000111111000000",
+      "0011111111000001111111000000",
+      "0001111111111111111111000000",
+      "0000111111111111111110000000",
+      "0000011111111111111100000000",
+      "0000000111111111111000000000",
+      "0000000001111111100000000000",
+      "0000000000000000000000000000"
+    ];
+
+    const cellSize = 15; // Smaller cell size for more detail
+    let frame = 0;
+
+    function drawFace() {
+      // Clear the canvas with a solid background
+      ctx.fillStyle = 'rgba(0, 0, 0, 1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Calculate grid dimensions
+      const gridWidth = faceGrid[0].length * cellSize;
+      const gridHeight = faceGrid.length * cellSize;
+      const offsetX = (canvas.width - gridWidth) / 2;
+      const offsetY = (canvas.height - gridHeight) / 2;
+
+      // Draw binary digits
+      for (let y = 0; y < faceGrid.length; y++) {
+        for (let x = 0; x < faceGrid[y].length; x++) {
+          const digit = faceGrid[y][x];
+          ctx.font = '16px monospace';
+          ctx.fillStyle = digit === '1' ? '#00ffcc' : 'rgba(0, 255, 204, 0.1)';
+          
+          // Subtle flicker effect (less frequent)
+          const flicker = Math.random() > 0.98 ? (digit === '1' ? '0' : '1') : digit;
+          ctx.fillText(flicker, offsetX + x * cellSize, offsetY + y * cellSize + 12); // +12 for text baseline
+        }
+      }
+
+      // Optional: Add a subtle glow effect
+      frame += 0.05;
+      ctx.fillStyle = `rgba(0, 255, 204, ${Math.sin(frame) * 0.1 + 0.1})`;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // Animation loop
+    function animate() {
+      drawFace();
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Populate Tech Topics (unchanged)
+    function populateTechTopics(technologies) {
+      const topicsContainer = document.getElementById('techTopics');
+      technologies.forEach(tech => {
+        const topic = document.createElement('div');
+        topic.className = 'topic';
+        topic.textContent = `#${tech.name.replace(/\s+/g, '')}`;
+        
+        topic.addEventListener('click', () => {
+          openModal(tech.name, tech.desc, tech.example, tech.image, tech.thread);
+        });
+        
+        topicsContainer.appendChild(topic);
+      });
+    }
+
+    function openModal(title, desc, example, image, thread) {
+      const modal = document.getElementById('techModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDesc = document.getElementById('modalDesc');
+      const modalExample = document.getElementById('modalExample');
+      const modalImage = document.getElementById('modalImage');
+      const threadLink = document.getElementById('threadLink');
+      const searchX = document.getElementById('searchX');
+
+      modalTitle.textContent = title;
+      modalDesc.innerHTML = desc;
+      modalExample.textContent = `Example: ${example}`;
+      modalImage.src = image;
+      modal.style.display = 'flex';
+
+      threadLink.onclick = function() {
+        window.open(thread, '_blank');
+      };
+
+      searchX.onclick = function() {
+        const searchQuery = encodeURIComponent(title);
+        const xSearchUrl = `https://x.com/search?q=${searchQuery}`;
+        window.open(xSearchUrl, '_blank');
+      };
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('techModal');
+      modal.style.display = 'none';
+    }
+
+    function copyModalContent() {
+      const title = document.getElementById('modalTitle').textContent;
+      const desc = document.getElementById('modalDesc').textContent;
+      const example = document.getElementById('modalExample').textContent;
+      const content = `${title}\n\n${desc}\n\n${example}`;
+      
+      navigator.clipboard.writeText(content).then(() => {
+        alert('Content copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy content:', err);
+        alert('Failed to copy content. Please try again.');
+      });
+    }
+
+    document.getElementById('techModal').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('techModal')) {
+        closeModal();
+      }
+    });
+
+    window.onload = function() {
+      fetch('texts/ai.txt')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(data => {
+          const technologies = JSON.parse(data);
+          populateTechTopics(technologies);
+        })
+        .catch(error => {
+          console.error('Error loading texts/ai.txt:', error);
+          alert('Failed to load AI data. Please check the console for details.');
+        });
+    };
+  </script>
+</body>
+</html>
