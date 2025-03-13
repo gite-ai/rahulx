@@ -396,36 +396,39 @@
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    // Larger binary representation of a face
+    // Detailed binary representation of a human face
     const faceGrid = [
-      "000000000000000000000000",
-      "000000011111100000000000",
-      "000001111111111000000000",
-      "000011111111111100000000",
-      "000111110000111110000000",
-      "001111100000011111000000",
-      "001111000000001111000000",
-      "011111111111111111100000",
-      "011111111111111111100000",
-      "011111000000001111100000",
-      "011111100000011111100000",
-      "001111110000111111000000",
-      "000111111111111111000000",
-      "000011111111111110000000",
-      "000001111111111100000000",
-      "000000011111100000000000",
-      "000000000000000000000000"
+      "0000000000000000000000000000",
+      "0000000011111111000000000000",
+      "0000001111111111110000000000",
+      "0000011111111111111000000000",
+      "0000111111111111111100000000",
+      "0001111100000000111110000000", // Eyes start
+      "0011111000000000011111000000",
+      "0011111000000000011111000000",
+      "0111111000000000011111100000",
+      "0111111111111111111111100000", // Nose/Mouth area
+      "0111111111111111111111100000",
+      "0111111100000000011111100000",
+      "0011111110000000111111000000",
+      "0011111111000001111111000000",
+      "0001111111111111111111000000",
+      "0000111111111111111110000000",
+      "0000011111111111111100000000",
+      "0000000111111111111000000000",
+      "0000000001111111100000000000",
+      "0000000000000000000000000000"
     ];
 
-    const cellSize = 20; // Adjust this to scale the face
-    let scanLine = 0;
+    const cellSize = 15; // Smaller cell size for more detail
+    let frame = 0;
 
     function drawFace() {
-      // Clear the canvas
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.9)';
+      // Clear the canvas with a solid background
+      ctx.fillStyle = 'rgba(0, 0, 0, 1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Center the face
+      // Calculate grid dimensions
       const gridWidth = faceGrid[0].length * cellSize;
       const gridHeight = faceGrid.length * cellSize;
       const offsetX = (canvas.width - gridWidth) / 2;
@@ -435,20 +438,19 @@
       for (let y = 0; y < faceGrid.length; y++) {
         for (let x = 0; x < faceGrid[y].length; x++) {
           const digit = faceGrid[y][x];
-          ctx.font = '18px monospace'; // Larger font for visibility
-          ctx.fillStyle = digit === '1' ? '#00ffcc' : 'rgba(0, 255, 204, 0.2)';
+          ctx.font = '16px monospace';
+          ctx.fillStyle = digit === '1' ? '#00ffcc' : 'rgba(0, 255, 204, 0.1)';
           
-          // Flicker effect
-          const flicker = Math.random() > 0.9 ? (digit === '1' ? '0' : '1') : digit;
-          ctx.fillText(flicker, offsetX + x * cellSize, offsetY + y * cellSize);
+          // Subtle flicker effect (less frequent)
+          const flicker = Math.random() > 0.98 ? (digit === '1' ? '0' : '1') : digit;
+          ctx.fillText(flicker, offsetX + x * cellSize, offsetY + y * cellSize + 12); // +12 for text baseline
         }
       }
 
-      // Scanning line effect
-      ctx.fillStyle = 'rgba(0, 255, 204, 0.3)';
-      ctx.fillRect(0, scanLine, canvas.width, 10);
-      scanLine += 2;
-      if (scanLine > canvas.height) scanLine = 0;
+      // Optional: Add a subtle glow effect
+      frame += 0.05;
+      ctx.fillStyle = `rgba(0, 255, 204, ${Math.sin(frame) * 0.1 + 0.1})`;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
     // Animation loop
