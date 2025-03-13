@@ -71,77 +71,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      perspective: 1000px;
     }
 
-    /* Rotating Cube with Nodes */
-    .cube-system {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      transform-style: preserve-3d;
-      animation: rotateCube 10s infinite linear;
-    }
-
-    .cube-face {
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      background: rgba(0, 255, 204, 0.2);
-      border: 1px solid #00ffcc;
-      opacity: 0.7;
-    }
-
-    .front  { transform: translateZ(100px); }
-    .back   { transform: translateZ(-100px) rotateY(180deg); }
-    .right  { transform: rotateY(90deg) translateZ(100px); }
-    .left   { transform: rotateY(-90deg) translateZ(100px); }
-    .top    { transform: rotateX(90deg) translateZ(100px); }
-    .bottom { transform: rotateX(-90deg) translateZ(100px); }
-
-    .node {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: #00ffcc;
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    .node-1 { top: -50px; left: 90px; animation: orbitNode1 4s infinite linear; }
-    .node-2 { top: 250px; left: 90px; animation: orbitNode2 5s infinite linear reverse; }
-    .node-3 { left: -50px; top: 90px; animation: orbitNode3 6s infinite linear; }
-    .node-4 { left: 250px; top: 90px; animation: orbitNode4 7s infinite linear reverse; }
-
-    @keyframes rotateCube {
-      0% { transform: rotateX(0deg) rotateY(0deg); }
-      100% { transform: rotateX(360deg) rotateY(360deg); }
-    }
-
-    @keyframes orbitNode1 {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(50px); }
-      100% { transform: translateY(0); }
-    }
-    @keyframes orbitNode2 {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-50px); }
-      100% { transform: translateY(0); }
-    }
-    @keyframes orbitNode3 {
-      0% { transform: translateX(0); }
-      50% { transform: translateX(50px); }
-      100% { transform: translateX(0); }
-    }
-    @keyframes orbitNode4 {
-      0% { transform: translateX(0); }
-      50% { transform: translateX(-50px); }
-      100% { transform: translateX(0); }
-    }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 10px #00ffcc; }
-      50% { box-shadow: 0 0 30px #00ffcc; }
-      100% { box-shadow: 0 0 10px #00ffcc; }
+    canvas {
+      width: 100%;
+      height: 100%;
     }
 
     /* Tech Topics */
@@ -411,19 +345,7 @@
 
   <!-- AI Animation Section -->
   <div class="ai-animation">
-    <!-- Rotating Cube with Nodes -->
-    <div class="cube-system">
-      <div class="cube-face front"></div>
-      <div class="cube-face back"></div>
-      <div class="cube-face right"></div>
-      <div class="cube-face left"></div>
-      <div class="cube-face top"></div>
-      <div class="cube-face bottom"></div>
-      <div class="node node-1">🧠</div>
-      <div class="node node-2">🤖</div>
-      <div class="node node-3">💡</div>
-      <div class="node node-4">🔍</div>
-    </div>
+    <canvas id="binaryFaceCanvas"></canvas>
   </div>
 
   <!-- Tech Topics -->
@@ -456,10 +378,74 @@
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 AIF Frontier. All rights reserved. | <a href="#">Privacy Policy</a></p>
+    <p>© 2025 AI Frontier. All rights reserved. | <a href="#">Privacy Policy</a></p>
   </footer>
 
   <script>
+    // Binary Face Animation
+    const canvas = document.getElementById('binaryFaceCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Set canvas size to match its container
+    canvas.width = 600;
+    canvas.height = 400;
+
+    // Simple binary representation of a face (0s and 1s grid)
+    const faceGrid = [
+      "0000000000000000",
+      "0000111100000000",
+      "0001111111000000",
+      "0011111111100000",
+      "0111100011110000",
+      "0111000001110000",
+      "0111111111110000",
+      "0111111111110000",
+      "0111000001110000",
+      "0111100011110000",
+      "0011111111100000",
+      "0001111111000000",
+      "0000111100000000",
+      "0000000000000000"
+    ];
+
+    const cellSize = 20;
+    let scanLine = 0;
+
+    function drawFace() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Center the face on the canvas
+      const offsetX = (canvas.width - faceGrid[0].length * cellSize) / 2;
+      const offsetY = (canvas.height - faceGrid.length * cellSize) / 2;
+
+      // Draw binary digits
+      for (let y = 0; y < faceGrid.length; y++) {
+        for (let x = 0; x < faceGrid[y].length; x++) {
+          const digit = faceGrid[y][x];
+          ctx.font = '16px monospace';
+          ctx.fillStyle = digit === '1' ? '#00ffcc' : 'rgba(0, 255, 204, 0.2)';
+          
+          // Flicker effect: randomly change some digits
+          const flicker = Math.random() > 0.95 ? (digit === '1' ? '0' : '1') : digit;
+          ctx.fillText(flicker, offsetX + x * cellSize, offsetY + y * cellSize);
+        }
+      }
+
+      // Scanning line effect
+      ctx.fillStyle = 'rgba(0, 255, 204, 0.3)';
+      ctx.fillRect(0, scanLine, canvas.width, 10);
+      scanLine += 2;
+      if (scanLine > canvas.height) scanLine = 0;
+    }
+
+    // Animation loop
+    function animate() {
+      drawFace();
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Populate Tech Topics (unchanged)
     function populateTechTopics(technologies) {
       const topicsContainer = document.getElementById('techTopics');
       technologies.forEach(tech => {
@@ -490,12 +476,10 @@
       modalImage.src = image;
       modal.style.display = 'flex';
 
-      // Add click event to thread icon
       threadLink.onclick = function() {
         window.open(thread, '_blank');
       };
 
-      // Add click event to search icon
       searchX.onclick = function() {
         const searchQuery = encodeURIComponent(title);
         const xSearchUrl = `https://x.com/search?q=${searchQuery}`;
@@ -522,14 +506,12 @@
       });
     }
 
-    // Close modal when clicking outside the content
     document.getElementById('techModal').addEventListener('click', (e) => {
       if (e.target === document.getElementById('techModal')) {
         closeModal();
       }
     });
 
-    // Fetch data from texts/ai.txt and initialize the page
     window.onload = function() {
       fetch('texts/ai.txt')
         .then(response => {
