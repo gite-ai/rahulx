@@ -511,7 +511,7 @@
 
     // Fetch data from texts/technology.txt and initialize the page
     window.onload = function() {
-      fetch('pages/main_pages/texts/technology.txt')
+      fetch('texts/technology.txt')
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
