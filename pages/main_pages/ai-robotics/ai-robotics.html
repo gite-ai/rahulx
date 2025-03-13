@@ -383,7 +383,7 @@
   </footer>
 
   <script>
-    // Binary Face Animation
+    // 2D Human Face Animation
     const canvas = document.getElementById('binaryFaceCanvas');
     const ctx = canvas.getContext('2d');
     const container = document.querySelector('.ai-animation');
@@ -396,66 +396,104 @@
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    // Detailed binary representation of a human face
-    const faceGrid = [
-      "0000000000000000000000000000",
-      "0000000011111111000000000000",
-      "0000001111111111110000000000",
-      "0000011111111111111000000000",
-      "0000111111111111111100000000",
-      "0001111100000000111110000000", // Eyes start
-      "0011111000000000011111000000",
-      "0011111000000000011111000000",
-      "0111111000000000011111100000",
-      "0111111111111111111111100000", // Nose/Mouth area
-      "0111111111111111111111100000",
-      "0111111100000000011111100000",
-      "0011111110000000111111000000",
-      "0011111111000001111111000000",
-      "0001111111111111111111000000",
-      "0000111111111111111110000000",
-      "0000011111111111111100000000",
-      "0000000111111111111000000000",
-      "0000000001111111100000000000",
-      "0000000000000000000000000000"
-    ];
-
-    const cellSize = 15; // Smaller cell size for more detail
+    // Face parameters
+    const faceRadius = 100;
+    const eyeRadius = 15;
+    const mouthWidth = 80;
+    const mouthHeight = 40;
     let frame = 0;
 
+    // Colors
+    const faceColor = '#00ffcc';
+    const eyeColor = '#ff00cc';
+    const mouthColor = '#00ffcc';
+
+    // Animation parameters
+    const blinkDuration = 10; // Frames for blinking
+    const blinkInterval = 200; // Frames between blinks
+    const mouthMovementSpeed = 0.05;
+
     function drawFace() {
-      // Clear the canvas with a solid background
-      ctx.fillStyle = 'rgba(0, 0, 0, 1)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Clear the canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Calculate grid dimensions
-      const gridWidth = faceGrid[0].length * cellSize;
-      const gridHeight = faceGrid.length * cellSize;
-      const offsetX = (canvas.width - gridWidth) / 2;
-      const offsetY = (canvas.height - gridHeight) / 2;
+      // Draw face
+      ctx.beginPath();
+      ctx.arc(canvas.width / 2, canvas.height / 2, faceRadius, 0, Math.PI * 2);
+      ctx.fillStyle = faceColor;
+      ctx.fill();
+      ctx.strokeStyle = '#00ffcc';
+      ctx.lineWidth = 4;
+      ctx.stroke();
 
-      // Draw binary digits
-      for (let y = 0; y < faceGrid.length; y++) {
-        for (let x = 0; x < faceGrid[y].length; x++) {
-          const digit = faceGrid[y][x];
-          ctx.font = '16px monospace';
-          ctx.fillStyle = digit === '1' ? '#00ffcc' : 'rgba(0, 255, 204, 0.1)';
-          
-          // Subtle flicker effect (less frequent)
-          const flicker = Math.random() > 0.98 ? (digit === '1' ? '0' : '1') : digit;
-          ctx.fillText(flicker, offsetX + x * cellSize, offsetY + y * cellSize + 12); // +12 for text baseline
-        }
+      // Draw eyes
+      const eyeOffsetX = 40;
+      const eyeOffsetY = -30;
+
+      // Left eye
+      ctx.beginPath();
+      ctx.arc(
+        canvas.width / 2 - eyeOffsetX,
+        canvas.height / 2 + eyeOffsetY,
+        eyeRadius,
+        0,
+        Math.PI * 2
+      );
+      ctx.fillStyle = eyeColor;
+      ctx.fill();
+
+      // Right eye
+      ctx.beginPath();
+      ctx.arc(
+        canvas.width / 2 + eyeOffsetX,
+        canvas.height / 2 + eyeOffsetY,
+        eyeRadius,
+        0,
+        Math.PI * 2
+      );
+      ctx.fillStyle = eyeColor;
+      ctx.fill();
+
+      // Blinking effect
+      if (frame % blinkInterval < blinkDuration) {
+        ctx.fillStyle = faceColor;
+        ctx.fillRect(
+          canvas.width / 2 - eyeOffsetX - eyeRadius,
+          canvas.height / 2 + eyeOffsetY - eyeRadius,
+          eyeRadius * 2,
+          eyeRadius * 2
+        );
+        ctx.fillRect(
+          canvas.width / 2 + eyeOffsetX - eyeRadius,
+          canvas.height / 2 + eyeOffsetY - eyeRadius,
+          eyeRadius * 2,
+          eyeRadius * 2
+        );
       }
 
-      // Optional: Add a subtle glow effect
-      frame += 0.05;
-      ctx.fillStyle = `rgba(0, 255, 204, ${Math.sin(frame) * 0.1 + 0.1})`;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Draw mouth
+      const mouthCurve = Math.sin(frame * mouthMovementSpeed) * 20;
+      ctx.beginPath();
+      ctx.moveTo(canvas.width / 2 - mouthWidth / 2, canvas.height / 2 + 50);
+      ctx.quadraticCurveTo(
+        canvas.width / 2,
+        canvas.height / 2 + 50 + mouthCurve,
+        canvas.width / 2 + mouthWidth / 2,
+        canvas.height / 2 + 50
+      );
+      ctx.strokeStyle = mouthColor;
+      ctx.lineWidth = 4;
+      ctx.stroke();
+
+      // Add glowing effect
+      ctx.shadowBlur = 20;
+      ctx.shadowColor = '#00ffcc';
     }
 
     // Animation loop
     function animate() {
       drawFace();
+      frame++;
       requestAnimationFrame(animate);
     }
     animate();
