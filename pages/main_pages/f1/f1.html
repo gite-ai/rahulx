@@ -109,8 +109,8 @@
     /* Racing Cars */
     .racing-car {
       position: absolute;
-      width: 50px;
-      height: 25px;
+      width: 75px; /* Increased from 50px */
+      height: 38px; /* Increased from 25px */
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
@@ -118,7 +118,7 @@
     }
 
     @keyframes race {
-      0% { left: -50px; }
+      0% { left: -75px; } /* Adjusted to match new width */
       100% { left: 100%; }
     }
 
@@ -126,52 +126,27 @@
     .car-1 {
       top: 10%;
       animation-duration: 6s;
-      background-image: url('./images/car1.png'); /* Local path */
+      background-image: url('./images/car1.png');
     }
     .car-2 {
-      top: 20%;
+      top: 25%;
       animation-duration: 5.5s;
-      background-image: url('./images/car1.png'); /* Local path */
+      background-image: url('./images/car2.png');
     }
     .car-3 {
-      top: 30%;
+      top: 40%;
       animation-duration: 5s;
-      background-image: url('./images/car3.png'); /* Local path */
+      background-image: url('./images/car3.png');
     }
     .car-4 {
-      top: 40%;
+      top: 55%;
       animation-duration: 4.5s;
-      background-image: url('./images/car4.png'); /* Local path */
+      background-image: url('./images/car4.png');
     }
     .car-5 {
-      top: 50%;
-      animation-duration: 4s;
-      background-image: url('./images/car5.png'); /* Local path */
-    }
-    .car-6 {
-      top: 60%;
-      animation-duration: 3.5s;
-      background-image: url('./images/car6.png'); /* Local path */
-    }
-    .car-7 {
       top: 70%;
-      animation-duration: 3s;
-      background-image: url('./images/car7.png'); /* Local path */
-    }
-    .car-8 {
-      top: 80%;
-      animation-duration: 2.5s;
-      background-image: url('./images/car8.png'); /* Local path */
-    }
-    .car-9 {
-      top: 90%;
-      animation-duration: 2s;
-      background-image: url('./images/car9.png'); /* Local path */
-    }
-    .car-10 {
-      top: 100%;
-      animation-duration: 1.5s;
-      background-image: url('./images/car10.png'); /* Local path */
+      animation-duration: 4s;
+      background-image: url('./images/car5.png');
     }
 
     /* Trending Hashtags */
@@ -451,11 +426,6 @@
     <div class="racing-car car-3"></div>
     <div class="racing-car car-4"></div>
     <div class="racing-car car-5"></div>
-    <div class="racing-car car-6"></div>
-    <div class="racing-car car-7"></div>
-    <div class="racing-car car-8"></div>
-    <div class="racing-car car-9"></div>
-    <div class="racing-car car-10"></div>
   </div>
 
   <!-- Trending Hashtags -->
