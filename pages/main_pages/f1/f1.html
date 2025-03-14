@@ -7,29 +7,29 @@
   <style>
     /* General Styles */
     body {
-      font-family: 'Poppins', sans-serif; /* Updated from Orbitron */
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
       background: #0a0a0a;
       color: #00ffcc;
       overflow-x: hidden;
-      font-size: 16px; /* Base font size from technology.html */
-      line-height: 1.6; /* Improved line spacing */
-      font-weight: 400; /* Default weight */
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 400;
     }
 
     h1, h2, h3 {
-      font-family: 'Montserrat', sans-serif; /* Updated from Orbitron */
+      font-family: 'Montserrat', sans-serif;
       margin: 0;
-      font-weight: 700; /* Bold for headings */
+      font-weight: 700;
     }
 
     a {
       text-decoration: underline;
       color: #ff00cc;
       transition: color 0.3s ease;
-      font-family: 'Poppins', sans-serif; /* Ensure links use Poppins */
-      font-weight: 500; /* Matches technology.html */
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
     }
 
     a:hover {
@@ -47,17 +47,17 @@
     }
 
     header h1 {
-      font-size: 2.8rem; /* Increased from 2.5rem to match technology.html */
+      font-size: 2.8rem;
       text-transform: uppercase;
       animation: glow 2s infinite alternate;
-      letter-spacing: 2px; /* Added for modern look */
+      letter-spacing: 2px;
     }
 
     header p {
-      font-size: 1.3rem; /* Increased from 1.2rem */
+      font-size: 1.3rem;
       opacity: 0.8;
       animation: float 3s ease-in-out infinite;
-      font-weight: 300; /* Lighter weight for friendliness */
+      font-weight: 300;
     }
 
     /* Racing Track Container */
@@ -111,7 +111,9 @@
       position: absolute;
       width: 50px;
       height: 25px;
-      background: url('images/car1.png') center/cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
       animation: race 5s linear infinite;
     }
 
@@ -120,17 +122,57 @@
       100% { left: 100%; }
     }
 
-    /* Car Positions */
-    .car-1 { top: 10%; animation-duration: 6s; }
-    .car-2 { top: 20%; animation-duration: 5.5s; }
-    .car-3 { top: 30%; animation-duration: 5s; }
-    .car-4 { top: 40%; animation-duration: 4.5s; }
-    .car-5 { top: 50%; animation-duration: 4s; }
-    .car-6 { top: 60%; animation-duration: 3.5s; }
-    .car-7 { top: 70%; animation-duration: 3s; }
-    .car-8 { top: 80%; animation-duration: 2.5s; }
-    .car-9 { top: 90%; animation-duration: 2s; }
-    .car-10 { top: 100%; animation-duration: 1.5s; }
+    /* Car Positions with Local Images */
+    .car-1 {
+      top: 10%;
+      animation-duration: 6s;
+      background-image: url('./images/car1.png'); /* Local path */
+    }
+    .car-2 {
+      top: 20%;
+      animation-duration: 5.5s;
+      background-image: url('./images/car2.png'); /* Local path */
+    }
+    .car-3 {
+      top: 30%;
+      animation-duration: 5s;
+      background-image: url('./images/car3.png'); /* Local path */
+    }
+    .car-4 {
+      top: 40%;
+      animation-duration: 4.5s;
+      background-image: url('./images/car4.png'); /* Local path */
+    }
+    .car-5 {
+      top: 50%;
+      animation-duration: 4s;
+      background-image: url('./images/car5.png'); /* Local path */
+    }
+    .car-6 {
+      top: 60%;
+      animation-duration: 3.5s;
+      background-image: url('./images/car6.png'); /* Local path */
+    }
+    .car-7 {
+      top: 70%;
+      animation-duration: 3s;
+      background-image: url('./images/car7.png'); /* Local path */
+    }
+    .car-8 {
+      top: 80%;
+      animation-duration: 2.5s;
+      background-image: url('./images/car8.png'); /* Local path */
+    }
+    .car-9 {
+      top: 90%;
+      animation-duration: 2s;
+      background-image: url('./images/car9.png'); /* Local path */
+    }
+    .car-10 {
+      top: 100%;
+      animation-duration: 1.5s;
+      background-image: url('./images/car10.png'); /* Local path */
+    }
 
     /* Trending Hashtags */
     .hashtags {
@@ -154,8 +196,8 @@
       border-radius: 5px;
       cursor: pointer;
       transition: background 0.3s ease, color 0.3s ease;
-      font-size: 1.1rem; /* Matches technology.html */
-      font-weight: 500; /* Matches technology.html */
+      font-size: 1.1rem;
+      font-weight: 500;
     }
 
     .hashtag:hover {
@@ -343,13 +385,13 @@
 
     footer p {
       margin: 0;
-      font-size: 1.1rem; /* Matches technology.html */
-      font-weight: 300; /* Matches technology.html */
+      font-size: 1.1rem;
+      font-weight: 300;
     }
 
     footer a {
       color: #ff00cc;
-      font-weight: 500; /* Matches technology.html */
+      font-weight: 500;
     }
 
     footer a:hover {
