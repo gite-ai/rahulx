@@ -276,28 +276,6 @@
       color: #000;
     }
 
-    .thread-icon, .search-icon {
-      font-size: 1.6rem;
-      color: #00ffcc;
-      cursor: pointer;
-      margin-left: 20px;
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    .thread-icon:hover, .search-icon:hover {
-      color: #ff00cc;
-      transform: scale(1.2);
-    }
-
-    .icon-separator {
-      width: 4px;
-      height: 4px;
-      background: #00ffcc;
-      border-radius: 50%;
-      margin: 0 15px;
-      animation: glowPulse 1.5s infinite;
-    }
-
     .modal-body {
       flex: 1;
       padding: 20px;
@@ -330,25 +308,29 @@
     }
 
     .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
       padding: 15px 20px;
       background: rgba(0, 0, 0, 0.95);
       border-top: 1px solid #00ffcc;
       position: sticky;
       bottom: 0;
       z-index: 10;
-      text-align: right;
     }
 
-    .copy-button {
+    .modal-action-button {
       background: none;
       border: none;
       color: #00ffcc;
       font-size: 1.2rem;
       cursor: pointer;
       transition: color 0.3s ease, transform 0.3s ease;
+      padding: 5px;
     }
 
-    .copy-button:hover {
+    .modal-action-button:hover {
       color: #ff00cc;
       transform: scale(1.2);
     }
@@ -356,12 +338,6 @@
     @keyframes slideIn {
       from { transform: translateY(-50px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes glowPulse {
-      0% { box-shadow: 0 0 5px #00ffcc; }
-      50% { box-shadow: 0 0 15px #00ffcc; }
-      100% { box-shadow: 0 0 5px #00ffcc; }
     }
 
     /* Footer */
@@ -458,9 +434,6 @@
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title" id="modalTitle"></h2>
-        <i class="fa fa-pencil-square-o thread-icon" id="threadLink" title="View Thread"></i>
-        <span class="icon-separator"></span>
-        <i class="fa fa-search search-icon" id="searchX" title="Search on X"></i>
         <button class="modal-close" onclick="closeModal()">✖</button>
       </div>
       <div class="modal-body">
@@ -469,8 +442,14 @@
         <img class="modal-image" id="modalImage" src="" alt="Binge Image">
       </div>
       <div class="modal-footer">
-        <button class="copy-button" onclick="copyModalContent()" title="Copy Content">
+        <button class="modal-action-button" id="copyButton" onclick="copyModalContent()" title="Copy Content">
           <i class="fa fa-copy"></i>
+        </button>
+        <button class="modal-action-button" id="threadButton" title="View Thread">
+          𝕩
+        </button>
+        <button class="modal-action-button" id="searchButton" title="Search on X">
+          <i class="fa fa-search"></i>
         </button>
       </div>
     </div>
@@ -504,8 +483,6 @@
       const modalDesc = document.getElementById('modalDesc');
       const modalExample = document.getElementById('modalExample');
       const modalImage = document.getElementById('modalImage');
-      const threadLink = document.getElementById('threadLink');
-      const searchX = document.getElementById('searchX');
 
       modalTitle.textContent = title;
       modalDesc.innerHTML = desc;
@@ -514,11 +491,13 @@
       modalImage.alt = title;
       modal.style.display = 'flex';
 
-      threadLink.onclick = function() {
+      const threadButton = document.getElementById('threadButton');
+      threadButton.onclick = function() {
         window.open(thread, '_blank');
       };
 
-      searchX.onclick = function() {
+      const searchButton = document.getElementById('searchButton');
+      searchButton.onclick = function() {
         const searchQuery = encodeURIComponent(`#${title}`);
         const xSearchUrl = `https://x.com/search?q=${searchQuery}`;
         window.open(xSearchUrl, '_blank');
