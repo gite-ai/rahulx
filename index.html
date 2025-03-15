@@ -73,159 +73,6 @@
       gap: 5px;
     }
 
-    /* Popup Window */
-    .popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 90%;
-      max-width: 600px;
-      background: rgba(0, 0, 0, 0.9);
-      border: 1px solid #00ffcc;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
-      z-index: 1000;
-    }
-
-    .popup .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: #ff00cc;
-      color: #000;
-      border: none;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .popup .close-btn:hover {
-      background: #00ffcc;
-      color: #000;
-    }
-
-    /* Tool Tabs */
-    .tool-tabs {
-      display: flex;
-      justify-content: space-around;
-      margin-bottom: 20px;
-    }
-
-    .tool-tabs button {
-      background: none;
-      border: none;
-      color: #00ffcc;
-      font-size: 1rem;
-      cursor: pointer;
-      padding: 10px;
-      transition: color 0.3s ease;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 400;
-    }
-
-    .tool-tabs button.active {
-      color: #ff00cc;
-      border-bottom: 2px solid #ff00cc;
-    }
-
-    .tool-tabs button:hover {
-      color: #ff00cc;
-    }
-
-    /* Tool Content */
-    .tool-content {
-      display: none;
-    }
-
-    .tool-content.active {
-      display: block;
-    }
-
-    /* Tax Calculator Styles */
-    .calculator {
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid #00ffcc;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
-    }
-
-    .calculator label {
-      display: block;
-      margin: 10px 0 5px;
-      font-size: 1.1rem;
-      font-weight: 400;
-    }
-
-    .calculator input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #00ffcc;
-      border-radius: 5px;
-      background: rgba(0, 0, 0, 0.8);
-      color: #00ffcc;
-      font-size: 1rem;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 400;
-    }
-
-    .calculator button {
-      background: #00ffcc;
-      color: #000;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 500;
-    }
-
-    .calculator button:hover {
-      background: #ff00cc;
-    }
-
-    .calculator .result {
-      margin-top: 20px;
-      font-size: 1.2rem;
-      font-weight: 400;
-    }
-
-    .calculator #details {
-      margin-top: 20px;
-      font-size: 1rem;
-      font-weight: 400;
-    }
-
-    .calculator #details ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-
-    .calculator .slab {
-      margin-bottom: 5px;
-    }
-
-    /* Overlay */
-    .overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      z-index: 999;
-    }
-
     /* Hamburger Menu */
     .menu-icon {
       display: none;
@@ -443,98 +290,11 @@
       </div>
     </header>
 
-    <!-- Popup Window -->
-    <div class="overlay" id="overlay"></div>
-    <div class="popup" id="popup">
-      <button class="close-btn" id="close-btn">×</button>
-      <div class="tool-tabs">
-        <button class="tab-btn active" data-tool="tax">Tax Calculator</button>
-        <a href="https://www.rahulx.com/debt_matrix" target="_blank">
-          <button class="tab-btn" data-tool="debt">Debt Calculator</button>
-        </a>
-      </div>
-      <div class="tool-content active" id="tax">
-        <div class="calculator">
-          <label for="income">Enter your annual income (in INR):</label>
-          <input type="number" id="income" placeholder="Enter income" required>
-          <button onclick="calculateTax()">Calculate Tax</button>
-          <div id="details"></div>
-          <div class="result" id="tax-result"></div>
-        </div>
-      </div>
-      <div class="tool-content" id="debt">
-        <div class="calculator">
-          <div class="debt-matrix-header">
-            <h3 class="cyber-glow">DEBT MATRIX ANALYZER</h3>
-            <div class="holographic-line"></div>
-          </div>
-          <div id="creditor-list">
-            <div class="creditor-item">
-              <div class="cyber-form">
-                <div class="input-group">
-                  <label class="neon-label">Creditor Name:</label>
-                  <input type="text" class="cyber-input" placeholder="Enter name">
-                </div>
-                <div class="cyber-grid">
-                  <div class="input-group">
-                    <label class="neon-label">Monthly EMI (₹):</label>
-                    <input type="number" class="cyber-input" placeholder="EMI Amount">
-                  </div>
-                  <div class="input-group">
-                    <label class="neon-label">Total EMIs:</label>
-                    <input type="number" class="cyber-input" placeholder="Total Months">
-                  </div>
-                  <div class="input-group">
-                    <label class="neon-label">EMIs Paid:</label>
-                    <input type="number" class="cyber-input" placeholder="Paid Months">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="matrix-controls">
-            <div style="text-align: center;">
-              <button class="cyber-button" onclick="calculateDebt()">INITIATE ANALYSIS</button>
-            </div>
-          </div>
-          <div class="matrix-results">
-            <div class="holographic-display">
-              <div class="result-row">
-                <span class="neon-text">Total Remaining Debt:</span>
-                <span class="glowing-amount" id="total-debt">₹0.00</span>
-              </div>
-              <div class="result-row">
-                <span class="neon-text">Total Payable:</span>
-                <span class="glowing-amount" id="total-payable">₹0.00</span>
-              </div>
-            </div>
-            <div class="debt-table-container">
-              <table class="matrix-table">
-                <thead>
-                  <tr>
-                    <th class="cyber-th">Creditor</th>
-                    <th class="cyber-th">EMI</th>
-                    <th class="cyber-th">Paid</th>
-                    <th class="cyber-th">Left</th>
-                    <th class="cyber-th">Remaining</th>
-                    <th class="cyber-th">Total</th>
-                  </tr>
-                </thead>
-                <tbody id="debt-details">
-                  <!-- Results will be populated here -->
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Navigation -->
     <nav id="nav">
       <a href="https://www.rahulx.com/about">About</a>
       <a href="https://www.x.com/gite_ai">Contact</a>
-      <a href="#" id="tools-link">Tools</a>
+      <a href="income_tax_calculator.html">Tax Calculator</a>
     </nav>
 
     <!-- Main Content -->
@@ -542,28 +302,26 @@
       <!-- Categories Section -->
       <section>
         <div class="categories">
-		
-		
-		 <!-- Category 1 -->
+          <!-- Category 1 -->
           <a href="https://www.rahulx.com/pages/main_pages/ai-robotics/ai-robotics" class="category-card">
             <img src="https://th.bing.com/th/id/OIP.fz0A6p1CQ49T6pAK4tGbxgAAAA?w=247&h=180&c=7&r=0&o=5&dpr=1.4&pid=1.7" alt="AI & Robotics">
-            <h3>Artificial intelligence</h3>
-            <p>Delve into all aspects of artificial intelligence. .</p>
+            <h3>Artificial Intelligence</h3>
+            <p>Delve into all aspects of artificial intelligence.</p>
           </a>
-		
+
           <!-- Category 2 -->
           <a href="https://www.rahulx.com/pages/main_pages/technology/technology" class="category-card">
             <img src="https://th.bing.com/th/id/OIP.NrYbs9hurY9_2X3bSyAaZgAAAA?rs=1&pid=ImgDetMain" alt="Technology">
             <h3>Technology</h3>
             <p>Discover the latest in tech innovation other than AI.</p>
           </a>
-		  <!-- Category 3 -->
+
+          <!-- Category 3 -->
           <a href="https://www.rahulx.com/pages/main_pages/coding/coding" class="category-card">
             <img src="https://c1.wallpaperflare.com/preview/183/501/299/code-coding-programming-css.jpg" alt="Coding">
             <h3>Coding</h3>
             <p>Dive into the art and science of programming.</p>
           </a>
-		  
 
           <!-- Category 4 -->
           <a href="https://www.rahulx.com/pages/main_pages/space/space" class="category-card">
@@ -572,16 +330,12 @@
             <p>Explore the mysteries of the universe.</p>
           </a>
 
-         
-
           <!-- Category 5 -->
           <a href="https://www.rahulx.com/pages/main_pages/gaming/gaming" class="category-card">
             <img src="https://th.bing.com/th/id/OIP.CHnQNmfOWK5QfMBEGQZNTAHaE8?rs=1&pid=ImgDetMain" alt="Gaming">
             <h3>Gaming</h3>
             <p>Dive into the world of sci-fi gaming.</p>
           </a>
-
-        
 
           <!-- Category 6 -->
           <a href="https://www.rahulx.com/pages/main_pages/trading/trading" class="category-card">
@@ -590,7 +344,6 @@
             <p>Learn about the world of trading and investments.</p>
           </a>
 
-          
           <!-- Category 7 -->
           <a href="https://www.rahulx.com/pages/main_pages/netflix/netflix" class="category-card">
             <img src="https://th.bing.com/th/id/OIP.rRpx98P6up5JkHNfnWMyLwHaDt?rs=1&pid=ImgDetMain" alt="Netflix">
@@ -604,8 +357,6 @@
             <h3>Formula 1</h3>
             <p>"Where Speed Meets Precision. The Ultimate Race."</p>
           </a>
-
-        
         </div>
       </section>
     </div>
@@ -615,7 +366,7 @@
       <p>© 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
     </footer>
 
-    <!-- JavaScript for Hamburger Menu, Interactive Effects, Date/Time, and Popup -->
+    <!-- JavaScript for Hamburger Menu, Interactive Effects, and Date/Time -->
     <script>
       // Hamburger Menu Toggle
       const menuIcon = document.getElementById('menu-icon');
@@ -659,150 +410,6 @@
       // Update date and time every second
       setInterval(updateDateTime, 1000);
       updateDateTime(); // Initial call to display date and time immediately
-
-      // Popup Window Functionality
-      const toolsLink = document.getElementById('tools-link');
-      const popup = document.getElementById('popup');
-      const overlay = document.getElementById('overlay');
-      const closeBtn = document.getElementById('close-btn');
-
-      toolsLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        popup.style.display = 'block';
-        overlay.style.display = 'block';
-      });
-
-      closeBtn.addEventListener('click', () => {
-        popup.style.display = 'none';
-        overlay.style.display = 'none';
-      });
-
-      overlay.addEventListener('click', () => {
-        popup.style.display = 'none';
-        overlay.style.display = 'none';
-      });
-
-      // Tool Tabs Functionality
-      const tabButtons = document.querySelectorAll('.tab-btn');
-      const toolContents = document.querySelectorAll('.tool-content');
-
-      tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          tabButtons.forEach(btn => btn.classList.remove('active'));
-          toolContents.forEach(content => content.classList.remove('active'));
-
-          button.classList.add('active');
-          const toolId = button.getAttribute('data-tool');
-          document.getElementById(toolId).classList.add('active');
-        });
-      });
-
-      // Tax Calculator Logic
-      function calculateTax() {
-        const income = Number(document.getElementById('income').value);
-        let taxableIncome = income - 75000; // Standard Deduction
-        let tax = 0;
-        let slabDetails = [];
-
-        function addSlab(description, amount, rate) {
-          let slabTax = Math.max(0, amount) * rate;
-          slabDetails.push(`<li class="slab">${description}: ₹${slabTax.toFixed(2)}</li>`);
-          tax += slabTax;
-        }
-
-        if (taxableIncome <= 400000) {
-          slabDetails.push("<li class='slab'>No tax up to ₹4,00,000</li>");
-        } else {
-          if (taxableIncome > 400000) {
-            addSlab("5% on income from ₹4,00,001 to ₹8,00,000", Math.min(taxableIncome, 800000) - 400000, 0.05);
-          }
-          if (taxableIncome > 800000) {
-            addSlab("10% on income from ₹8,00,001 to ₹12,00,000", Math.min(taxableIncome, 1200000) - 800000, 0.10);
-          }
-          if (taxableIncome > 1200000) {
-            addSlab("15% on income from ₹12,00,001 to ₹16,00,000", Math.min(taxableIncome, 1600000) - 1200000, 0.15);
-          }
-          if (taxableIncome > 1600000) {
-            addSlab("20% on income from ₹16,00,001 to ₹20,00,000", Math.min(taxableIncome, 2000000) - 1600000, 0.20);
-          }
-          if (taxableIncome > 2000000) {
-            addSlab("25% on income from ₹20,00,001 to ₹24,00,000", Math.min(taxableIncome, 2400000) - 2000000, 0.25);
-          }
-          if (taxableIncome > 2400000) {
-            addSlab("30% on income above ₹24,00,000", taxableIncome - 2400000, 0.30);
-          }
-        }
-
-        // Health and Education Cess at 4%
-        let cess = tax * 0.04;
-        slabDetails.push(`<li class="slab">Health and Education Cess (4%): ₹${cess.toFixed(2)}</li>`);
-        tax += cess;
-
-        // Apply Section 87A Rebate
-        if (taxableIncome <= 1200000) {
-          slabDetails.push("<li class='slab'>Section 87A rebate applied: No tax payable</li>");
-          tax = 0;
-        }
-
-        document.getElementById('details').innerHTML = "<h3>Tax Calculation Details:</h3><ul>" + slabDetails.join('') + "</ul>";
-        document.getElementById('tax-result').innerText = `Total tax payable: ₹${tax.toFixed(2)}`;
-      }
-
-      // Debt Matrix Functions
-      let creditorCount = 1;
-
-      function addCreditor() {
-        const creditorList = document.getElementById('creditor-list');
-        const newCreditor = creditorList.firstElementChild.cloneNode(true);
-        creditorCount++;
-        newCreditor.querySelectorAll('input').forEach(input => input.value = '');
-        creditorList.appendChild(newCreditor);
-      }
-
-      function removeCreditor(btn) {
-        const creditors = document.querySelectorAll('.creditor-item');
-        if(creditors.length > 1) {
-          btn.closest('.creditor-item').remove();
-          creditorCount--;
-        }
-      }
-
-      function calculateDebt() {
-        const creditors = document.querySelectorAll('.creditor-item');
-        let totalDebt = 0;
-        let totalPayable = 0;
-        let detailsHTML = '';
-
-        creditors.forEach(creditor => {
-          const inputs = creditor.querySelectorAll('input');
-          const [name, monthlyEMI, totalEmis, emisPaid] = Array.from(inputs).map(i => i.value);
-          
-          const emi = parseFloat(monthlyEMI) || 0;
-          const total = parseInt(totalEmis) || 0;
-          const paid = parseInt(emisPaid) || 0;
-          const left = total - paid;
-          const remaining = emi * left;
-          const totalPay = emi * total;
-
-          totalDebt += remaining;
-          totalPayable += totalPay;
-
-          detailsHTML += `
-            <tr>
-              <td>${name || 'Unknown'}</td>
-              <td>₹${emi.toFixed(2)}</td>
-              <td>${paid}</td>
-              <td>${left}</td>
-              <td class="glowing-amount">₹${remaining.toFixed(2)}</td>
-              <td>₹${totalPay.toFixed(2)}</td>
-            </tr>
-          `;
-        });
-
-        document.getElementById('total-debt').textContent = `₹${totalDebt.toFixed(2)}`;
-        document.getElementById('total-payable').textContent = `₹${totalPayable.toFixed(2)}`;
-        document.getElementById('debt-details').innerHTML = detailsHTML;
-      }
     </script>
   </body>
-</html> 
+</html>
