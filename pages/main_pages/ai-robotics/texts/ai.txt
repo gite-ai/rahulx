@@ -1,11 +1,13 @@
 [
-  {
+
+{
     "name": "Basics of A.I.",
-    "desc": "Artificial Intelligence (AI) is the field of computer science that enables machines to simulate human intelligence. It includes various subfields such as Machine Learning, Neural Networks, Natural Language Processing, and Reinforcement Learning.",
+    "desc": "Artificial Intelligence (AI) is a part of computer science that creates machines to think and work like humans. It helps computers solve problems, make decisions, learn from data, recognize things, and understand language.",
     "example": "Predicting house prices based on historical data.",
     "image": "https://example.com/images/ml.jpg",
     "thread": "https://x.com/example/thread/12345"
   },
+  
   {
     "name": "Machine Learning",
     "desc": "A subset of AI that enables systems to learn and improve from experience without explicit programming.",
