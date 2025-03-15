@@ -179,40 +179,6 @@
       color: #000;
     }
 
-    .thread-icon {
-      font-size: 1.6rem;
-      color: #00ffcc;
-      cursor: pointer;
-      margin-left: 20px;
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    .thread-icon:hover {
-      color: #ff00cc;
-      transform: scale(1.2);
-    }
-
-    .icon-separator {
-      width: 4px;
-      height: 4px;
-      background: #00ffcc;
-      border-radius: 50%;
-      margin: 0 15px;
-      animation: glowPulse 1.5s infinite;
-    }
-
-    .search-icon {
-      font-size: 1.6rem;
-      color: #00ffcc;
-      cursor: pointer;
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    .search-icon:hover {
-      color: #ff00cc;
-      transform: scale(1.2);
-    }
-
     .modal-body {
       flex: 1;
       padding: 20px;
@@ -245,25 +211,29 @@
     }
 
     .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
       padding: 15px 20px;
       background: rgba(0, 0, 0, 0.95);
       border-top: 1px solid #00ffcc;
       position: sticky;
       bottom: 0;
       z-index: 10;
-      text-align: right;
     }
 
-    .copy-button {
+    .modal-action-button {
       background: none;
       border: none;
       color: #00ffcc;
       font-size: 1.2rem;
       cursor: pointer;
       transition: color 0.3s ease, transform 0.3s ease;
+      padding: 5px;
     }
 
-    .copy-button:hover {
+    .modal-action-button:hover {
       color: #ff00cc;
       transform: scale(1.2);
     }
@@ -271,12 +241,6 @@
     @keyframes slideIn {
       from { transform: translateY(-50px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes glowPulse {
-      0% { box-shadow: 0 0 5px #00ffcc; }
-      50% { box-shadow: 0 0 15px #00ffcc; }
-      100% { box-shadow: 0 0 5px #00ffcc; }
     }
 
     /* Footer */
@@ -359,9 +323,6 @@
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title" id="modalTitle"></h2>
-        <i class="fa fa-pencil-square-o thread-icon" id="threadLink" title="View Thread"></i>
-        <span class="icon-separator"></span>
-        <i class="fa fa-search search-icon" id="searchX" title="Search on X"></i>
         <button class="modal-close" onclick="closeModal()">✖</button>
       </div>
       <div class="modal-body">
@@ -370,8 +331,14 @@
         <img class="modal-image" id="modalImage" src="" alt="AI Image">
       </div>
       <div class="modal-footer">
-        <button class="copy-button" onclick="copyModalContent()" title="Copy Content">
+        <button class="modal-action-button" id="copyButton" onclick="copyModalContent()" title="Copy Content">
           <i class="fa fa-copy"></i>
+        </button>
+        <button class="modal-action-button" id="threadButton" title="View Thread">
+          𝕩
+        </button>
+        <button class="modal-action-button" id="searchButton" title="Search on X">
+          <i class="fa fa-search"></i>
         </button>
       </div>
     </div>
@@ -383,194 +350,194 @@
   </footer>
 
   <script>
-   // Enhanced 2D Human Face Animation with Floating Binary Digits
-const canvas = document.getElementById('binaryFaceCanvas');
-const ctx = canvas.getContext('2d');
-const container = document.querySelector('.ai-animation');
+    // Enhanced 2D Human Face Animation with Floating Binary Digits
+    const canvas = document.getElementById('binaryFaceCanvas');
+    const ctx = canvas.getContext('2d');
+    const container = document.querySelector('.ai-animation');
 
-// Dynamically set canvas size to match container
-function resizeCanvas() {
-  canvas.width = container.offsetWidth;
-  canvas.height = container.offsetHeight;
-}
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
+    // Dynamically set canvas size to match container
+    function resizeCanvas() {
+      canvas.width = container.offsetWidth;
+      canvas.height = container.offsetHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
 
-// Face parameters
-const faceRadius = 100;
-const eyeRadius = 15;
-const mouthWidth = 80;
-const mouthHeight = 40;
-let frame = 0;
+    // Face parameters
+    const faceRadius = 100;
+    const eyeRadius = 15;
+    const mouthWidth = 80;
+    const mouthHeight = 40;
+    let frame = 0;
 
-// Colors
-const colors = ['#00ffcc', '#ff00cc', '#00ccff', '#cc00ff']; // Color palette
-let currentColorIndex = 0;
-let faceColor = colors[currentColorIndex];
-let eyeColor = colors[(currentColorIndex + 1) % colors.length];
-let mouthColor = colors[(currentColorIndex + 2) % colors.length];
+    // Colors
+    const colors = ['#00ffcc', '#ff00cc', '#00ccff', '#cc00ff']; // Color palette
+    let currentColorIndex = 0;
+    let faceColor = colors[currentColorIndex];
+    let eyeColor = colors[(currentColorIndex + 1) % colors.length];
+    let mouthColor = colors[(currentColorIndex + 2) % colors.length];
 
-// Animation parameters
-const blinkDuration = 10; // Frames for blinking
-const blinkInterval = 200; // Frames between blinks
-const mouthMovementSpeed = 0.05;
-const glowIntensity = 20; // Glow effect intensity
-const particleCount = 100; // Number of floating particles
+    // Animation parameters
+    const blinkDuration = 10; // Frames for blinking
+    const blinkInterval = 200; // Frames between blinks
+    const mouthMovementSpeed = 0.05;
+    const glowIntensity = 20; // Glow effect intensity
+    const particleCount = 100; // Number of floating particles
 
-// Particles array
-const particles = [];
-for (let i = 0; i < particleCount; i++) {
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    radius: Math.random() * 3 + 1,
-    speedX: (Math.random() - 0.5) * 2,
-    speedY: (Math.random() - 0.5) * 2,
-    color: colors[Math.floor(Math.random() * colors.length)],
-  });
-}
+    // Particles array
+    const particles = [];
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 3 + 1,
+        speedX: (Math.random() - 0.5) * 2,
+        speedY: (Math.random() - 0.5) * 2,
+        color: colors[Math.floor(Math.random() * colors.length)],
+      });
+    }
 
-// Binary digits array
-const binaryDigits = [];
-for (let i = 0; i < 50; i++) { // Number of binary digits
-  binaryDigits.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    speedX: (Math.random() - 0.5) * 2,
-    speedY: (Math.random() - 0.5) * 2,
-    value: Math.random() > 0.5 ? '0' : '1', // Randomly choose 0 or 1
-    size: Math.random() * 20 + 10, // Random size for variety
-    opacity: Math.random() * 0.5 + 0.5, // Random opacity
-  });
-}
+    // Binary digits array
+    const binaryDigits = [];
+    for (let i = 0; i < 50; i++) { // Number of binary digits
+      binaryDigits.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        speedX: (Math.random() - 0.5) * 2,
+        speedY: (Math.random() - 0.5) * 2,
+        value: Math.random() > 0.5 ? '0' : '1', // Randomly choose 0 or 1
+        size: Math.random() * 20 + 10, // Random size for variety
+        opacity: Math.random() * 0.5 + 0.5, // Random opacity
+      });
+    }
 
-// Mouse position tracking
-let mouseX = canvas.width / 2;
-let mouseY = canvas.height / 2;
-canvas.addEventListener('mousemove', (e) => {
-  const rect = canvas.getBoundingClientRect();
-  mouseX = e.clientX - rect.left;
-  mouseY = e.clientY - rect.top;
-});
+    // Mouse position tracking
+    let mouseX = canvas.width / 2;
+    let mouseY = canvas.height / 2;
+    canvas.addEventListener('mousemove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    });
 
-// Draw binary digits
-function drawBinaryDigits() {
-  binaryDigits.forEach((digit) => {
-    ctx.font = `${digit.size}px monospace`;
-    ctx.fillStyle = `rgba(0, 255, 204, ${digit.opacity})`; // Neon green color
-    ctx.fillText(digit.value, digit.x, digit.y);
+    // Draw binary digits
+    function drawBinaryDigits() {
+      binaryDigits.forEach((digit) => {
+        ctx.font = `${digit.size}px monospace`;
+        ctx.fillStyle = `rgba(0, 255, 204, ${digit.opacity})`; // Neon green color
+        ctx.fillText(digit.value, digit.x, digit.y);
 
-    // Update digit position
-    digit.x += digit.speedX;
-    digit.y += digit.speedY;
+        // Update digit position
+        digit.x += digit.speedX;
+        digit.y += digit.speedY;
 
-    // Wrap digits around the canvas
-    if (digit.x < 0) digit.x = canvas.width;
-    if (digit.x > canvas.width) digit.x = 0;
-    if (digit.y < 0) digit.y = canvas.height;
-    if (digit.y > canvas.height) digit.y = 0;
-  });
-}
+        // Wrap digits around the canvas
+        if (digit.x < 0) digit.x = canvas.width;
+        if (digit.x > canvas.width) digit.x = 0;
+        if (digit.y < 0) digit.y = canvas.height;
+        if (digit.y > canvas.height) digit.y = 0;
+      });
+    }
 
-// Draw face
-function drawFace() {
-  // Clear the canvas
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Draw face
+    function drawFace() {
+      // Clear the canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Draw floating binary digits
-  drawBinaryDigits();
+      // Draw floating binary digits
+      drawBinaryDigits();
 
-  // Draw glowing particles
-  particles.forEach((particle) => {
-    ctx.beginPath();
-    ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-    ctx.fillStyle = particle.color;
-    ctx.fill();
+      // Draw glowing particles
+      particles.forEach((particle) => {
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+        ctx.fillStyle = particle.color;
+        ctx.fill();
 
-    // Update particle position
-    particle.x += particle.speedX;
-    particle.y += particle.speedY;
+        // Update particle position
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
 
-    // Wrap particles around the canvas
-    if (particle.x < 0) particle.x = canvas.width;
-    if (particle.x > canvas.width) particle.x = 0;
-    if (particle.y < 0) particle.y = canvas.height;
-    if (particle.y > canvas.height) particle.y = 0;
-  });
+        // Wrap particles around the canvas
+        if (particle.x < 0) particle.x = canvas.width;
+        if (particle.x > canvas.width) particle.x = 0;
+        if (particle.y < 0) particle.y = canvas.height;
+        if (particle.y > canvas.height) particle.y = 0;
+      });
 
-  // Draw face with pulsating glow
-  ctx.beginPath();
-  ctx.arc(canvas.width / 2, canvas.height / 2, faceRadius, 0, Math.PI * 2);
-  ctx.fillStyle = faceColor;
-  ctx.shadowBlur = glowIntensity * Math.sin(frame * 0.05) + glowIntensity;
-  ctx.shadowColor = faceColor;
-  ctx.fill();
-  ctx.strokeStyle = faceColor;
-  ctx.lineWidth = 4;
-  ctx.stroke();
+      // Draw face with pulsating glow
+      ctx.beginPath();
+      ctx.arc(canvas.width / 2, canvas.height / 2, faceRadius, 0, Math.PI * 2);
+      ctx.fillStyle = faceColor;
+      ctx.shadowBlur = glowIntensity * Math.sin(frame * 0.05) + glowIntensity;
+      ctx.shadowColor = faceColor;
+      ctx.fill();
+      ctx.strokeStyle = faceColor;
+      ctx.lineWidth = 4;
+      ctx.stroke();
 
-  // Draw eyes with dynamic movement
-  const eyeOffsetX = 40;
-  const eyeOffsetY = -30;
-  const eyeFollowSpeed = 0.1;
+      // Draw eyes with dynamic movement
+      const eyeOffsetX = 40;
+      const eyeOffsetY = -30;
+      const eyeFollowSpeed = 0.1;
 
-  // Calculate eye position based on mouse cursor
-  const leftEyeX = canvas.width / 2 - eyeOffsetX + (mouseX - canvas.width / 2) * eyeFollowSpeed;
-  const leftEyeY = canvas.height / 2 + eyeOffsetY + (mouseY - canvas.height / 2) * eyeFollowSpeed;
-  const rightEyeX = canvas.width / 2 + eyeOffsetX + (mouseX - canvas.width / 2) * eyeFollowSpeed;
-  const rightEyeY = canvas.height / 2 + eyeOffsetY + (mouseY - canvas.height / 2) * eyeFollowSpeed;
+      // Calculate eye position based on mouse cursor
+      const leftEyeX = canvas.width / 2 - eyeOffsetX + (mouseX - canvas.width / 2) * eyeFollowSpeed;
+      const leftEyeY = canvas.height / 2 + eyeOffsetY + (mouseY - canvas.height / 2) * eyeFollowSpeed;
+      const rightEyeX = canvas.width / 2 + eyeOffsetX + (mouseX - canvas.width / 2) * eyeFollowSpeed;
+      const rightEyeY = canvas.height / 2 + eyeOffsetY + (mouseY - canvas.height / 2) * eyeFollowSpeed;
 
-  // Left eye
-  ctx.beginPath();
-  ctx.arc(leftEyeX, leftEyeY, eyeRadius, 0, Math.PI * 2);
-  ctx.fillStyle = eyeColor;
-  ctx.fill();
+      // Left eye
+      ctx.beginPath();
+      ctx.arc(leftEyeX, leftEyeY, eyeRadius, 0, Math.PI * 2);
+      ctx.fillStyle = eyeColor;
+      ctx.fill();
 
-  // Right eye
-  ctx.beginPath();
-  ctx.arc(rightEyeX, rightEyeY, eyeRadius, 0, Math.PI * 2);
-  ctx.fillStyle = eyeColor;
-  ctx.fill();
+      // Right eye
+      ctx.beginPath();
+      ctx.arc(rightEyeX, rightEyeY, eyeRadius, 0, Math.PI * 2);
+      ctx.fillStyle = eyeColor;
+      ctx.fill();
 
-  // Blinking effect
-  if (frame % blinkInterval < blinkDuration) {
-    ctx.fillStyle = faceColor;
-    ctx.fillRect(leftEyeX - eyeRadius, leftEyeY - eyeRadius, eyeRadius * 2, eyeRadius * 2);
-    ctx.fillRect(rightEyeX - eyeRadius, rightEyeY - eyeRadius, eyeRadius * 2, eyeRadius * 2);
-  }
+      // Blinking effect
+      if (frame % blinkInterval < blinkDuration) {
+        ctx.fillStyle = faceColor;
+        ctx.fillRect(leftEyeX - eyeRadius, leftEyeY - eyeRadius, eyeRadius * 2, eyeRadius * 2);
+        ctx.fillRect(rightEyeX - eyeRadius, rightEyeY - eyeRadius, eyeRadius * 2, eyeRadius * 2);
+      }
 
-  // Draw mouth with dynamic curve
-  const mouthCurve = Math.sin(frame * mouthMovementSpeed) * 20;
-  ctx.beginPath();
-  ctx.moveTo(canvas.width / 2 - mouthWidth / 2, canvas.height / 2 + 50);
-  ctx.quadraticCurveTo(
-    canvas.width / 2,
-    canvas.height / 2 + 50 + mouthCurve,
-    canvas.width / 2 + mouthWidth / 2,
-    canvas.height / 2 + 50
-  );
-  ctx.strokeStyle = mouthColor;
-  ctx.lineWidth = 4;
-  ctx.stroke();
+      // Draw mouth with dynamic curve
+      const mouthCurve = Math.sin(frame * mouthMovementSpeed) * 20;
+      ctx.beginPath();
+      ctx.moveTo(canvas.width / 2 - mouthWidth / 2, canvas.height / 2 + 50);
+      ctx.quadraticCurveTo(
+        canvas.width / 2,
+        canvas.height / 2 + 50 + mouthCurve,
+        canvas.width / 2 + mouthWidth / 2,
+        canvas.height / 2 + 50
+      );
+      ctx.strokeStyle = mouthColor;
+      ctx.lineWidth = 4;
+      ctx.stroke();
 
-  // Update colors for smooth transitions
-  if (frame % 100 === 0) {
-    currentColorIndex = (currentColorIndex + 1) % colors.length;
-    faceColor = colors[currentColorIndex];
-    eyeColor = colors[(currentColorIndex + 1) % colors.length];
-    mouthColor = colors[(currentColorIndex + 2) % colors.length];
-  }
-}
+      // Update colors for smooth transitions
+      if (frame % 100 === 0) {
+        currentColorIndex = (currentColorIndex + 1) % colors.length;
+        faceColor = colors[currentColorIndex];
+        eyeColor = colors[(currentColorIndex + 1) % colors.length];
+        mouthColor = colors[(currentColorIndex + 2) % colors.length];
+      }
+    }
 
-// Animation loop
-function animate() {
-  drawFace();
-  frame++;
-  requestAnimationFrame(animate);
-}
-animate();
+    // Animation loop
+    function animate() {
+      drawFace();
+      frame++;
+      requestAnimationFrame(animate);
+    }
+    animate();
 
-    // Populate Tech Topics (unchanged)
+    // Populate Tech Topics
     function populateTechTopics(technologies) {
       const topicsContainer = document.getElementById('techTopics');
       technologies.forEach(tech => {
@@ -592,8 +559,6 @@ animate();
       const modalDesc = document.getElementById('modalDesc');
       const modalExample = document.getElementById('modalExample');
       const modalImage = document.getElementById('modalImage');
-      const threadLink = document.getElementById('threadLink');
-      const searchX = document.getElementById('searchX');
 
       modalTitle.textContent = title;
       modalDesc.innerHTML = desc;
@@ -601,11 +566,13 @@ animate();
       modalImage.src = image;
       modal.style.display = 'flex';
 
-      threadLink.onclick = function() {
+      const threadButton = document.getElementById('threadButton');
+      threadButton.onclick = function() {
         window.open(thread, '_blank');
       };
 
-      searchX.onclick = function() {
+      const searchButton = document.getElementById('searchButton');
+      searchButton.onclick = function() {
         const searchQuery = encodeURIComponent(title);
         const xSearchUrl = `https://x.com/search?q=${searchQuery}`;
         window.open(xSearchUrl, '_blank');
