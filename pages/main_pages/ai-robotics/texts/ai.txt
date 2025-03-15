@@ -1,4 +1,31 @@
 [
+
+{
+    "name": "Basics of A.I.",
+    "desc": "🔹 Purpose & Relevance → Why AI is important?  
+   ⬇  
+🔹 History → From rule-based systems to deep learning  
+   ⬇  
+🔹 Evolution → How AI evolved from simple algorithms to neural networks  
+   ⬇  
+🔹 Basics → Core concepts (ML, DL, NLP, CV)  
+   📌 Table: "Supervised vs. Unsupervised vs. Reinforcement Learning"  
+   ⬇  
+🔹 Common Mistakes → Overfitting, bad data, biased models  
+   ⬇  
+🔹 Specifics → AI architectures (CNNs, RNNs, Transformers)  
+   📌 Table: "CNN vs. RNN vs. Transformer"  
+   ⬇  
+🔹 Current Trends → Generative AI, AI in trading, robotics  
+   ⬇  
+🔹 Hands-on → Build a simple ML model, fine-tune a pre-trained AI  
+   ⬇  
+🔹 Mind Maps & Summary Notes → Connecting AI concepts visually  
+",
+    "example": "Predicting house prices based on historical data.",
+    "image": "https://example.com/images/ml.jpg",
+    "thread": "https://x.com/example/thread/12345"
+  },
   {
     "name": "Machine Learning",
     "desc": "A subset of AI that enables systems to learn and improve from experience without explicit programming.",
