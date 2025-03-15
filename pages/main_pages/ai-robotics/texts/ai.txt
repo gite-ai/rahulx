@@ -2,7 +2,7 @@
 
 {
     "name": "Basics of A.I.",
-    "desc": "Artificial Intelligence (AI) is a part of computer science that creates machines to think and work like humans. It helps computers solve problems, make decisions, learn from data, recognize things, and understand language.<br> Types of AI (Narrow AI, General AI, Super AI)",
+    "desc": "Artificial Intelligence (AI) is a part of computer science that creates machines to think and work like humans. It helps computers solve problems, make decisions, learn from data, recognize things, and understand language.<br> Types of AI (Narrow AI, General AI, Super AI) ",
     "example": "Predicting house prices based on historical data.",
     "image": "https://example.com/images/ml.jpg",
     "thread": "https://x.com/example/thread/12345"
