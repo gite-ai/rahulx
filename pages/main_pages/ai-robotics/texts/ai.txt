@@ -34,7 +34,7 @@
     "image": "https://example.com/images/rl.jpg",
     "thread": "https://x.com/example/thread/98765"
   }
-  
+  ,
   
   {
     "name": "AI Ethics",
