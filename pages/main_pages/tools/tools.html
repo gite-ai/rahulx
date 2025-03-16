@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Tools 2025</title>
+  <title>Rahulx.com - Tools</title>
   <style>
-    /* General Styles */
+    /* Reuse styles from index.html */
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -15,25 +15,22 @@
       overflow-x: hidden;
       font-size: 16px;
       line-height: 1.6;
+      font-weight: 400;
     }
 
-    h1, h2, h3 {
+    h1, h2, h3, h4, h5, h6 {
       font-family: 'Montserrat', sans-serif;
       margin: 0;
       font-weight: 700;
     }
 
     a {
-      text-decoration: underline;
-      color: #ff00cc;
-      transition: color 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
     }
 
-    a:hover {
-      color: #00ffcc;
-    }
-
-    /* Header */
     header {
       position: relative;
       background: radial-gradient(circle, #001f3f, #000);
@@ -57,198 +54,152 @@
       font-weight: 300;
     }
 
-    /* AI Animation Section */
-    .ai-animation {
-      position: relative;
+    .datetime-box {
+      margin: 20px auto;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      width: 200px;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    .datetime-box .datetime {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      color: #00ffcc;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 0;
+      backdrop-filter: blur(10px);
+    }
+
+    nav a {
+      color: #00ffcc;
+      margin: 0 20px;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #ff00cc;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 250px;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(10px);
+        transition: right 0.3s ease;
+        z-index: 999;
+      }
+
+      nav.active {
+        right: 0;
+      }
+
+      nav a {
+        margin: 15px 0;
+        padding: 10px 20px;
+        border-bottom: 1px solid rgba(0, 255, 204, 0.2);
+      }
+
+      .datetime-box {
+        width: 90%;
+        font-size: 0.9rem;
+      }
+    }
+
+    .container {
       width: 90%;
       max-width: 1200px;
-      height: 400px;
       margin: 40px auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .tool-card {
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
       border-radius: 10px;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    canvas {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    /* Tools Container */
-    .tech-topics {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.8);
-      border: 1px solid #00ffcc;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 1200px;
-      margin: 40px auto;
-    }
-
-    .topic {
-      padding: 12px 24px;
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid #00ffcc;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease, color 0.3s ease;
-      font-size: 1.1rem;
-      font-weight: 500;
-    }
-
-    .topic:hover {
-      background: #00ffcc;
-      color: #000;
-    }
-
-    /* Modal (Popup) Styles */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-content {
-      background: rgba(0, 0, 0, 0.9);
-      border: 1px solid #00ffcc;
-      border-radius: 10px;
-      width: 80%;
-      max-width: 600px;
-      max-height: 80vh;
-      padding: 0;
       position: relative;
-      display: flex;
-      flex-direction: column;
-      animation: slideIn 0.3s ease-out;
-    }
-
-    .modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px 20px;
-      background: rgba(0, 0, 0, 0.95);
-      border-bottom: 1px solid #00ffcc;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .modal-title {
-      font-size: 2rem;
-      font-weight: 600;
-      text-align: center;
-      margin: 0;
-      flex-grow: 1;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 1.2rem;
-      color: #00ffcc;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
-      background: rgba(0, 0, 0, 0.7);
-      border: none;
-      width: 24px;
-      height: 24px;
-      line-height: 24px;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+    }
+
+    .tool-card h3 {
+      padding: 15px;
+      font-size: 1.5rem;
       text-align: center;
-      border-radius: 50%;
-      transition: background 0.3s ease, color 0.3s ease;
-    }
-
-    .modal-close:hover {
-      background: #00ffcc;
+      background: linear-gradient(135deg, #00ffcc, #0099cc);
       color: #000;
+      margin: 0;
+      font-weight: 600;
     }
 
-    .modal-body {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-    }
-
-    .modal-desc {
+    .tool-card p {
+      padding: 15px;
+      text-align: center;
+      color: #00ffcc;
       font-size: 1.1rem;
       line-height: 1.8;
-      margin-bottom: 20px;
       font-weight: 400;
     }
 
-    .modal-example {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 20px;
-      font-style: italic;
-      color: #b0fff0;
-    }
-
-    .modal-image {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-      border: 1px solid #00ffcc;
-      border-radius: 5px;
-      margin: 10px auto;
-      display: block;
-    }
-
-    .modal-footer {
-      display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-      padding: 15px 20px;
-      background: rgba(0, 0, 0, 0.95);
-      border-top: 1px solid #00ffcc;
-      position: sticky;
-      bottom: 0;
-      z-index: 10;
-    }
-
-    .copy-button {
-      background: none;
-      border: none;
-      color: #00ffcc;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    .copy-button:hover {
-      color: #ff00cc;
-      transform: scale(1.2);
-    }
-
-    @keyframes slideIn {
-      from { transform: translateY(-50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    /* Footer */
     footer {
       background: #000;
       color: #00ffcc;
       text-align: center;
       padding: 20px 0;
       margin-top: 60px;
+      position: relative;
+      z-index: 1;
     }
 
     footer p {
@@ -266,7 +217,6 @@
       text-decoration: underline;
     }
 
-    /* Animations */
     @keyframes glow {
       0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
       100% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
@@ -277,7 +227,6 @@
       50% { transform: translateY(-10px); }
     }
 
-    /* Sci-Fi Background */
     .sci-fi-bg {
       position: fixed;
       top: 0;
@@ -295,332 +244,152 @@
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
   <!-- Sci-Fi Background -->
   <div class="sci-fi-bg"></div>
 
+  <!-- Hamburger Menu Icon -->
+  <div class="menu-icon" id="menu-icon">☰</div>
+
   <!-- Header -->
   <header>
-    <h1>AI Tools 2025</h1>
-    <p>Discover Useful Tools for AI and Technology</p>
-  </header>
-
-  <!-- AI Animation Section -->
-  <div class="ai-animation">
-    <canvas id="binaryFaceCanvas"></canvas>
-  </div>
-
-  <!-- Tools Container -->
-  <div class="tech-topics" id="toolsContainer">
-    <!-- Tools will be added dynamically -->
-  </div>
-
-  <!-- Modal (Popup) -->
-  <div class="modal" id="techModal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="modalTitle"></h2>
-        <button class="modal-close" onclick="closeModal()">✖</button>
+    <h1>Tools - Rahulx.com</h1>
+    <p>Your futuristic toolkit for everyday solutions.</p>
+    <div class="datetime-box">
+      <div class="datetime">
+        <span id="date"></span>
+        <span id="time"></span>
       </div>
-      <div class="modal-body">
-        <p class="modal-desc" id="modalDesc"></p>
-        <p class="modal-example" id="modalExample"></p>
-        <img class="modal-image" id="modalImage" src="" alt="Tool Image">
-      </div>
-      <div class="modal-footer">
-        <button class="copy-button" id="threadLink" title="View Thread">𝕩</button>
-        <button class="copy-button" id="searchX" title="Search on X"><i class="fa fa-search"></i></button>
-        <button class="copy-button" onclick="copyModalContent()" title="Copy Content">
-          <i class="fa fa-copy"></i>
-        </button>
-      </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav id="nav">
+      <a href="https://www.rahulx.com">Home</a>
+      <a href="https://www.rahulx.com/about">About</a>
+      <a href="https://www.x.com/gite_ai">Contact</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+      <section>
+        <div class="tools-grid">
+          <!-- Tool 1 -->
+          <div class="tool-card" onclick="alert('Debt Calculator coming soon!')">
+            <h3>Debt Calculator</h3>
+            <p>Calculate your debt repayment plan with ease.</p>
+          </div>
+
+          <!-- Tool 2 -->
+          <div class="tool-card" onclick="alert('Tax Calculator coming soon!')">
+            <h3>Tax Calculator</h3>
+            <p>Estimate your taxes in a futuristic way.</p>
+          </div>
+
+          <!-- Tool 3 -->
+          <div class="tool-card" onclick="alert('Units Converter coming soon!')">
+            <h3>Units Converter</h3>
+            <p>Convert units across space and time.</p>
+          </div>
+
+          <!-- Tool 4 -->
+          <div class="tool-card" onclick="alert('Age Calculator coming soon!')">
+            <h3>Age Calculator</h3>
+            <p>Find your age in cosmic years.</p>
+          </div>
+
+          <!-- Tool 5 -->
+          <div class="tool-card" onclick="alert('HTML Viewer coming soon!')">
+            <h3>HTML Viewer</h3>
+            <p>Preview your HTML code instantly.</p>
+          </div>
+
+          <!-- Tool 6 -->
+          <div class="tool-card" onclick="alert('BMI Calculator coming soon!')">
+            <h3>BMI Calculator</h3>
+            <p>Check your body mass index with precision.</p>
+          </div>
+
+          <!-- Tool 7 -->
+          <div class="tool-card" onclick="alert('Posts Splitter coming soon!')">
+            <h3>Posts Splitter</h3>
+            <p>Split long posts for social media.</p>
+          </div>
+
+          <!-- Tool 8 -->
+          <div class="tool-card" onclick="alert('Character Counter coming soon!')">
+            <h3>Character Counter</h3>
+            <p>Count characters in your text effortlessly.</p>
+          </div>
+
+          <!-- Tool 9 -->
+          <div class="tool-card" onclick="alert('Copy Emoji coming soon!')">
+            <h3>Copy Emoji</h3>
+            <p>Access and copy emojis with one click.</p>
+          </div>
+
+          <!-- Tool 10 -->
+          <div class="tool-card" onclick="alert('Copy Special Signs coming soon!')">
+            <h3>Copy Special Signs</h3>
+            <p>Get special symbols for your projects.</p>
+          </div>
+
+          <!-- Tool 11 -->
+          <div class="tool-card" onclick="alert('Interest Calculator coming soon!')">
+            <h3>Interest Calculator</h3>
+            <p>Compute interest for loans or savings.</p>
+          </div>
+        </div>
+      </section>
     </div>
-  </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 AI Frontier. All rights reserved. | <a href="#">Privacy Policy</a></p>
-  </footer>
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
+    </footer>
 
-  <script>
-    // Enhanced 2D Human Face Animation with Floating Binary Digits
-    const canvas = document.getElementById('binaryFaceCanvas');
-    const ctx = canvas.getContext('2d');
-    const container = document.querySelector('.ai-animation');
+    <!-- JavaScript -->
+    <script>
+      // Hamburger Menu Toggle
+      const menuIcon = document.getElementById('menu-icon');
+      const nav = document.getElementById('nav');
 
-    // Dynamically set canvas size to match container
-    function resizeCanvas() {
-      canvas.width = container.offsetWidth;
-      canvas.height = container.offsetHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    // Face parameters
-    const faceRadius = 100;
-    const eyeRadius = 15;
-    const mouthWidth = 80;
-    const mouthHeight = 40;
-    let frame = 0;
-
-    // Colors
-    const colors = ['#00ffcc', '#ff00cc', '#00ccff', '#cc00ff']; // Color palette
-    let currentColorIndex = 0;
-    let faceColor = colors[currentColorIndex];
-    let eyeColor = colors[(currentColorIndex + 1) % colors.length];
-    let mouthColor = colors[(currentColorIndex + 2) % colors.length];
-
-    // Animation parameters
-    const blinkDuration = 10; // Frames for blinking
-    const blinkInterval = 200; // Frames between blinks
-    const mouthMovementSpeed = 0.05;
-    const glowIntensity = 20; // Glow effect intensity
-    const particleCount = 100; // Number of floating particles
-
-    // Particles array
-    const particles = [];
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 3 + 1,
-        speedX: (Math.random() - 0.5) * 2,
-        speedY: (Math.random() - 0.5) * 2,
-        color: colors[Math.floor(Math.random() * colors.length)],
-      });
-    }
-
-    // Binary digits array
-    const binaryDigits = [];
-    for (let i = 0; i < 50; i++) { // Number of binary digits
-      binaryDigits.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        speedX: (Math.random() - 0.5) * 2,
-        speedY: (Math.random() - 0.5) * 2,
-        value: Math.random() > 0.5 ? '0' : '1', // Randomly choose 0 or 1
-        size: Math.random() * 20 + 10, // Random size for variety
-        opacity: Math.random() * 0.5 + 0.5, // Random opacity
-      });
-    }
-
-    // Mouse position tracking
-    let mouseX = canvas.width / 2;
-    let mouseY = canvas.height / 2;
-    canvas.addEventListener('mousemove', (e) => {
-      const rect = canvas.getBoundingClientRect();
-      mouseX = e.clientX - rect.left;
-      mouseY = e.clientY - rect.top;
-    });
-
-    // Draw binary digits
-    function drawBinaryDigits() {
-      binaryDigits.forEach((digit) => {
-        ctx.font = `${digit.size}px monospace`;
-        ctx.fillStyle = `rgba(0, 255, 204, ${digit.opacity})`; // Neon green color
-        ctx.fillText(digit.value, digit.x, digit.y);
-
-        // Update digit position
-        digit.x += digit.speedX;
-        digit.y += digit.speedY;
-
-        // Wrap digits around the canvas
-        if (digit.x < 0) digit.x = canvas.width;
-        if (digit.x > canvas.width) digit.x = 0;
-        if (digit.y < 0) digit.y = canvas.height;
-        if (digit.y > canvas.height) digit.y = 0;
-      });
-    }
-
-    // Draw face
-    function drawFace() {
-      // Clear the canvas
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Draw floating binary digits
-      drawBinaryDigits();
-
-      // Draw glowing particles
-      particles.forEach((particle) => {
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        ctx.fillStyle = particle.color;
-        ctx.fill();
-
-        // Update particle position
-        particle.x += particle.speedX;
-        particle.y += particle.speedY;
-
-        // Wrap particles around the canvas
-        if (particle.x < 0) particle.x = canvas.width;
-        if (particle.x > canvas.width) particle.x = 0;
-        if (particle.y < 0) particle.y = canvas.height;
-        if (particle.y > canvas.height) particle.y = 0;
+      menuIcon.addEventListener('click', () => {
+        nav.classList.toggle('active');
       });
 
-      // Draw face with pulsating glow
-      ctx.beginPath();
-      ctx.arc(canvas.width / 2, canvas.height / 2, faceRadius, 0, Math.PI * 2);
-      ctx.fillStyle = faceColor;
-      ctx.shadowBlur = glowIntensity * Math.sin(frame * 0.05) + glowIntensity;
-      ctx.shadowColor = faceColor;
-      ctx.fill();
-      ctx.strokeStyle = faceColor;
-      ctx.lineWidth = 4;
-      ctx.stroke();
-
-      // Draw eyes with dynamic movement
-      const eyeOffsetX = 40;
-      const eyeOffsetY = -30;
-      const eyeFollowSpeed = 0.1;
-
-      // Calculate eye position based on mouse cursor
-      const leftEyeX = canvas.width / 2 - eyeOffsetX + (mouseX - canvas.width / 2) * eyeFollowSpeed;
-      const leftEyeY = canvas.height / 2 + eyeOffsetY + (mouseY - canvas.height / 2) * eyeFollowSpeed;
-      const rightEyeX = canvas.width / 2 + eyeOffsetX + (mouseX - canvas.width / 2) * eyeFollowSpeed;
-      const rightEyeY = canvas.height / 2 + eyeOffsetY + (mouseY - canvas.height / 2) * eyeFollowSpeed;
-
-      // Left eye
-      ctx.beginPath();
-      ctx.arc(leftEyeX, leftEyeY, eyeRadius, 0, Math.PI * 2);
-      ctx.fillStyle = eyeColor;
-      ctx.fill();
-
-      // Right eye
-      ctx.beginPath();
-      ctx.arc(rightEyeX, rightEyeY, eyeRadius, 0, Math.PI * 2);
-      ctx.fillStyle = eyeColor;
-      ctx.fill();
-
-      // Blinking effect
-      if (frame % blinkInterval < blinkDuration) {
-        ctx.fillStyle = faceColor;
-        ctx.fillRect(leftEyeX - eyeRadius, leftEyeY - eyeRadius, eyeRadius * 2, eyeRadius * 2);
-        ctx.fillRect(rightEyeX - eyeRadius, rightEyeY - eyeRadius, eyeRadius * 2, eyeRadius * 2);
-      }
-
-      // Draw mouth with dynamic curve
-      const mouthCurve = Math.sin(frame * mouthMovementSpeed) * 20;
-      ctx.beginPath();
-      ctx.moveTo(canvas.width / 2 - mouthWidth / 2, canvas.height / 2 + 50);
-      ctx.quadraticCurveTo(
-        canvas.width / 2,
-        canvas.height / 2 + 50 + mouthCurve,
-        canvas.width / 2 + mouthWidth / 2,
-        canvas.height / 2 + 50
-      );
-      ctx.strokeStyle = mouthColor;
-      ctx.lineWidth = 4;
-      ctx.stroke();
-
-      // Update colors for smooth transitions
-      if (frame % 100 === 0) {
-        currentColorIndex = (currentColorIndex + 1) % colors.length;
-        faceColor = colors[currentColorIndex];
-        eyeColor = colors[(currentColorIndex + 1) % colors.length];
-        mouthColor = colors[(currentColorIndex + 2) % colors.length];
-      }
-    }
-
-    // Animation loop
-    function animate() {
-      drawFace();
-      frame++;
-      requestAnimationFrame(animate);
-    }
-    animate();
-
-    // Populate Tools
-    function populateTools(tools) {
-      const toolsContainer = document.getElementById('toolsContainer');
-      tools.forEach(tool => {
-        const topic = document.createElement('div');
-        topic.className = 'topic';
-        topic.textContent = `#${tool.name.replace(/\s+/g, '')}`;
-        
-        topic.addEventListener('click', () => {
-          openModal(tool.name, tool.desc, tool.example, tool.image, tool.thread);
-        });
-        
-        toolsContainer.appendChild(topic);
-      });
-    }
-
-    // Open Modal
-    function openModal(title, desc, example, image, thread) {
-      const modal = document.getElementById('techModal');
-      const modalTitle = document.getElementById('modalTitle');
-      const modalDesc = document.getElementById('modalDesc');
-      const modalExample = document.getElementById('modalExample');
-      const modalImage = document.getElementById('modalImage');
-      const threadLink = document.getElementById('threadLink');
-      const searchX = document.getElementById('searchX');
-
-      modalTitle.textContent = title;
-      modalDesc.innerHTML = desc;
-      modalExample.textContent = `Example: ${example}`;
-      modalImage.src = image;
-      modal.style.display = 'flex';
-
-      threadLink.onclick = function() {
-        window.open(thread, '_blank');
-      };
-
-      searchX.onclick = function() {
-        const searchQuery = encodeURIComponent(title);
-        const xSearchUrl = `https://x.com/search?q=${searchQuery}`;
-        window.open(xSearchUrl, '_blank');
-      };
-    }
-
-    // Close Modal
-    function closeModal() {
-      const modal = document.getElementById('techModal');
-      modal.style.display = 'none';
-    }
-
-    // Copy Modal Content
-    function copyModalContent() {
-      const title = document.getElementById('modalTitle').textContent;
-      const desc = document.getElementById('modalDesc').textContent;
-      const example = document.getElementById('modalExample').textContent;
-      const content = `${title}\n\n${desc}\n\n${example}`;
-      
-      navigator.clipboard.writeText(content).then(() => {
-        alert('Content copied to clipboard!');
-      }).catch(err => {
-        console.error('Failed to copy content:', err);
-        alert('Failed to copy content. Please try again.');
-      });
-    }
-
-    // Close modal when clicking outside
-    document.getElementById('techModal').addEventListener('click', (e) => {
-      if (e.target === document.getElementById('techModal')) {
-        closeModal();
-      }
-    });
-
-    // Load Tools Data
-    window.onload = function() {
-      fetch('texts/tools.txt')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
+      document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && nav.classList.contains('active')) {
+          const isClickInsideNav = nav.contains(e.target);
+          const isClickOnMenuIcon = menuIcon.contains(e.target);
+          if (!isClickInsideNav && !isClickOnMenuIcon) {
+            nav.classList.remove('active');
           }
-          return response.text();
-        })
-        .then(data => {
-          const tools = JSON.parse(data);
-          populateTools(tools);
-        })
-        .catch(error => {
-          console.error('Error loading texts/tools.txt:', error);
-          alert('Failed to load tools data. Please check the console for details.');
+        }
+      });
+
+      // Glowing effect on hover
+      const cards = document.querySelectorAll('.tool-card');
+      cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          card.style.boxShadow = '0 0 30px rgba(0, 255, 204, 0.8)';
         });
-    };
-  </script>
-</body>
+        card.addEventListener('mouseleave', () => {
+          card.style.boxShadow = '0 0 20px rgba(0, 255, 204, 0.6)';
+        });
+      });
+
+      // Date and Time Function
+      function updateDateTime() {
+        const now = new Date();
+        const date = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        const time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        document.getElementById('date').textContent = date;
+        document.getElementById('time').textContent = time;
+      }
+
+      setInterval(updateDateTime, 1000);
+      updateDateTime();
+    </script>
+  </body>
 </html>
