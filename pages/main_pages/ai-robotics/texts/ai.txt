@@ -33,12 +33,5 @@
     "example": "Training a robot to navigate a maze.",
     "image": "https://example.com/images/rl.jpg",
     "thread": "https://x.com/example/thread/98765"
-  },
-  {
-    "name": "Robotics",
-    "desc": "Robotics uses AI to make <b>smart machines</b> that move and work on their own.<br>It’s like building <i>helpful robots</i> for tasks!",
-    "example": "A robot vacuum cleaner <b>cleaning your floor</b> without you pushing it.",
-    "image": "https://example.com/images/robotics.jpg",
-    "thread": "https://x.com/example/thread/33333"
   }
 ]
