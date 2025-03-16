@@ -31,22 +31,7 @@
     "name": "Reinforcement Learning",
     "desc": "A type of machine learning where agents <i>learn by interacting</i> with their environment.<br><b>Goal:</b> Maximize rewards over time.",
     "example": "Training a robot to navigate a maze.",
-*written consent",
     "image": "https://example.com/images/rl.jpg",
     "thread": "https://x.com/example/thread/98765"
-  },
-  {
-    "name": "Computer Vision",
-    "desc": "A field of AI that teaches computers to <b>see and understand</b> images or videos.<br>It’s like giving machines <i>eyes</i> to recognize objects or faces.",
-    "example": "Your phone unlocking when it <b>sees your face</b>—pretty cool, right?",
-    "image": "https://example.com/images/computer_vision.jpg",
-    "thread": "https://x.com/example/thread/11111"
-  },
-  {
-    "name": "AI Applications",
-    "desc": "AI applications are <b>real-world uses</b> of artificial intelligence to make life easier.<br>They range from <i>smart assistants</i> to medical tools.",
-    "example": "Siri or Alexa helping you set reminders or play music.",
-    "image": "https://example.com/images/ai_applications.jpg",
-    "thread": "https://x.com/example/thread/22222"
   }
 ]
