@@ -1,58 +1,23 @@
 [
   {
-    "name": "Ethics",
-    "desc": "The branch of philosophy dealing with moral principles that govern behavior.",
-    "example": "Debating the ethics of AI in decision-making.",
-    "image": "https://images.unsplash.com/photo-1505664194779",
-    "thread": "https://x.com/threads/placeholder_ethics"
+    "name": "AI Ethics",
+    "desc": "The moral implications of <b>artificial intelligence</b>.<br>Focuses on <i>fairness</i> and accountability.",
+    "example": "Ensuring <b>AI hiring tools</b> avoid <i>bias</i>.<br>A <b>critical</b> challenge.",
+    "image": "https://example.com/images/ai_ethics.jpg",
+    "thread": "https://x.com/example/thread/12345"
   },
   {
-    "name": "Morality",
-    "desc": "Principles concerning the distinction between right and wrong or good and bad behavior.",
-    "example": "Evaluating moral choices in a dilemma like the trolley problem.",
-    "image": "https://th.bing.com/th/id/OIP.K8Z8Q8n8mY7",
-    "thread": "https://x.com/threads/placeholder_morality"
+    "name": "Bioethics",
+    "desc": "Ethical issues in <b>biology</b> and medicine.<br>Includes debates on <i>gene editing</i>.",
+    "example": "CRISPR’s use in <b>human embryos</b> raises <i>moral questions</i>.<br>A <b>complex</b> dilemma.",
+    "image": "https://example.com/images/bioethics.jpg",
+    "thread": "https://x.com/example/thread/67890"
   },
   {
-    "name": "Values",
-    "desc": "Core beliefs or standards that guide individual and societal actions.",
-    "example": "Prioritizing honesty in personal relationships.",
-    "image": "https://images.unsplash.com/photo-152531007741",
-    "thread": "https://x.com/threads/placeholder_values"
-  },
-  {
-    "name": "Integrity",
-    "desc": "The quality of being honest and having strong moral principles.",
-    "example": "Refusing a bribe to maintain professional integrity.",
-    "image": "https://th.bing.com/th/id/OIP.Q8n8mY7e8Z8",
-    "thread": "https://x.com/threads/placeholder_integrity"
-  },
-  {
-    "name": "Justice",
-    "desc": "The concept of fairness and moral rightness in actions and decisions.",
-    "example": "Ensuring equal treatment in a legal system.",
-    "image": "https://images.unsplash.com/photo-150566406360",
-    "thread": "https://x.com/threads/placeholder_justice"
-  },
-  {
-    "name": "Empathy",
-    "desc": "The ability to understand and share the feelings of others.",
-    "example": "Listening to a friend’s struggles with compassion.",
-    "image": "https://th.bing.com/th/id/OIP.7QfGZoJZQJ7",
-    "thread": "https://x.com/threads/placeholder_empathy"
-  },
-  {
-    "name": "Philosophy",
-    "desc": "The study of fundamental questions about existence, knowledge, and ethics.",
-    "example": "Analyzing Kant’s categorical imperative.",
-    "image": "https://images.unsplash.com/photo-150783815341",
-    "thread": "https://x.com/threads/placeholder_philosophy"
-  },
-  {
-    "name": "HumanRights",
-    "desc": "Basic rights and freedoms inherent to all individuals, regardless of status.",
-    "example": "Advocating for freedom of speech.",
-    "image": "https://th.bing.com/th/id/OIP.NrYbs9hurY9",
-    "thread": "https://x.com/threads/placeholder_humanrights"
+    "name": "Environmental Ethics",
+    "desc": "Moral principles guiding <b>environmental care</b>.<br>Emphasizes <i>sustainability</i>.",
+    "example": "Reducing <b>carbon footprints</b> for <i>future generations</i>.<br>A <b>noble</b> goal.",
+    "image": "https://example.com/images/env_ethics.jpg",
+    "thread": "https://x.com/example/thread/54321"
   }
 ]
