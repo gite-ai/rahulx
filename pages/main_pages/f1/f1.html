@@ -10,7 +10,7 @@
       font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      background: #000; /* Solid black background */
+      background: #000;
       color: #00ffcc;
       overflow-x: hidden;
       font-size: 16px;
@@ -67,7 +67,7 @@
       max-width: 1200px;
       height: 400px;
       margin: 40px auto;
-      background: #000; /* Solid black background */
+      background: #000;
       border: 1px solid #00ffcc;
       border-radius: 10px;
       overflow: hidden;
@@ -229,12 +229,36 @@
       font-weight: 400;
     }
 
+    .modal-desc b,
+    .modal-desc strong {
+      color: #ff00cc; /* Neon pink for bold text */
+      font-weight: 700;
+    }
+
+    .modal-desc i,
+    .modal-desc em {
+      color: #00ccff; /* Cyan for italic text */
+      font-style: italic;
+    }
+
     .modal-example {
       font-size: 1rem;
       line-height: 1.6;
       margin-bottom: 20px;
       font-style: italic;
       color: #b0fff0;
+    }
+
+    .modal-example b,
+    .modal-example strong {
+      color: #ff00cc; /* Neon pink for bold text */
+      font-weight: 700;
+    }
+
+    .modal-example i,
+    .modal-example em {
+      color: #00ccff; /* Cyan for italic text */
+      font-style: italic;
     }
 
     .modal-image {
@@ -315,7 +339,7 @@
       50% { transform: translateY(-10px); }
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400-eye500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -397,7 +421,7 @@
 
       modalTitle.textContent = title;
       modalDesc.innerHTML = desc;
-      modalExample.textContent = `Example: ${example}`;
+      modalExample.innerHTML = `Example: ${example}`; // Changed to innerHTML
       modalImage.src = image;
       modal.style.display = 'flex';
 

@@ -210,12 +210,36 @@
       font-weight: 400;
     }
 
+    .modal-desc b,
+    .modal-desc strong {
+      color: #ff00cc; /* Neon pink for bold text */
+      font-weight: 700;
+    }
+
+    .modal-desc i,
+    .modal-desc em {
+      color: #00ccff; /* Cyan for italic text */
+      font-style: italic;
+    }
+
     .modal-example {
       font-size: 1rem;
       line-height: 1.6;
       margin-bottom: 20px;
       font-style: italic;
       color: #b0fff0;
+    }
+
+    .modal-example b,
+    .modal-example strong {
+      color: #ff00cc; /* Neon pink for bold text */
+      font-weight: 700;
+    }
+
+    .modal-example i,
+    .modal-example em {
+      color: #00ccff; /* Cyan for italic text */
+      font-style: italic;
     }
 
     .modal-image {
@@ -424,7 +448,7 @@
 
       modalTitle.textContent = title;
       modalDesc.innerHTML = desc;
-      modalExample.textContent = `Example: ${example}`;
+      modalExample.innerHTML = `Example: ${example}`; // Changed to innerHTML
       modalImage.src = image;
       modal.style.display = 'flex';
 

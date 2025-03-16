@@ -1,58 +1,23 @@
 [
   {
-    "name": "Gaming",
-    "desc": "The interactive entertainment of playing video games across platforms.",
-    "example": "Completing a mission in Cyberpunk 2077.",
-    "image": "https://images.unsplash.com/photo-1611974789855",
-    "thread": "https://x.com/threads/placeholder_gaming"
-  },
-  {
     "name": "Esports",
-    "desc": "Competitive gaming at a professional level with tournaments and teams.",
-    "example": "Watching a Dota 2 championship match.",
-    "image": "https://th.bing.com/th/id/OIP.Q8n8mY7e8Z8",
-    "thread": "https://x.com/threads/placeholder_esports"
+    "desc": "Competitive gaming at a <b>professional level</b>.<br>Features <i>tournaments</i> with huge prize pools.",
+    "example": "Winning a <b>CS:GO Major</b> with <i>perfect aim</i>.<br>A <b>career-defining</b> moment.",
+    "image": "https://example.com/images/esports.jpg",
+    "thread": "https://x.com/example/thread/12345"
   },
   {
-    "name": "Streamers",
-    "desc": "Content creators who live-stream their gaming sessions online.",
-    "example": "Following a Twitch streamer playing Fortnite.",
-    "image": "https://images.unsplash.com/photo-1590283603385",
-    "thread": "https://x.com/threads/placeholder_streamers"
+    "name": "VR Gaming",
+    "desc": "Immersive gaming using <b>virtual reality</b>.<br>Offers an <i>unmatched experience</i> in 3D worlds.",
+    "example": "Exploring <b>Beat Saber</b> with <i>VR headsets</i>.<br>A <b>thrilling</b> rhythm game.",
+    "image": "https://example.com/images/vr_gaming.jpg",
+    "thread": "https://x.com/example/thread/67890"
   },
   {
-    "name": "IndieGames",
-    "desc": "Video games developed by small teams or individuals, often innovative.",
-    "example": "Playing Hollow Knight on Steam.",
-    "image": "https://th.bing.com/th/id/OIP.NrYbs9hurY9",
-    "thread": "https://x.com/threads/placeholder_indiegames"
-  },
-  {
-    "name": "GameDev",
-    "desc": "The process of designing and creating video games.",
-    "example": "Building a game with Unity engine.",
-    "image": "https://images.unsplash.com/photo-150213424912",
-    "thread": "https://x.com/threads/placeholder_gamedev"
-  },
-  {
-    "name": "VRGaming",
-    "desc": "Immersive gaming experiences using virtual reality headsets.",
-    "example": "Exploring VR worlds in Half-Life: Alyx.",
-    "image": "https://th.bing.com/th/id/OIP.6X5gRUI8kna",
-    "thread": "https://x.com/threads/placeholder_vrgaming"
-  },
-  {
-    "name": "ConsoleWars",
-    "desc": "The rivalry between gaming consoles like PlayStation and Xbox.",
-    "example": "Debating PS5 vs. Xbox Series X performance.",
-    "image": "https://images.unsplash.com/photo-146480268616",
-    "thread": "https://x.com/threads/placeholder_consolewars"
-  },
-  {
-    "name": "RetroGaming",
-    "desc": "Playing or collecting classic video games from past decades.",
-    "example": "Replaying Super Mario Bros. on an NES.",
-    "image": "https://th.bing.com/th/id/OIP.7QfGZoJZQJ7",
-    "thread": "https://x.com/threads/placeholder_retrogaming"
+    "name": "Indie Games",
+    "desc": "Games made by <b>small teams</b> or individuals.<br>Known for <i>creative innovation</i>.",
+    "example": "Playing <b>Hollow Knight</b>, an <i>indie masterpiece</i>.<br>A <b>unique</b> adventure.",
+    "image": "https://example.com/images/indie_games.jpg",
+    "thread": "https://x.com/example/thread/54321"
   }
 ]

@@ -7,29 +7,29 @@
   <style>
     /* General Styles */
     body {
-      font-family: 'Poppins', sans-serif; /* Updated from Orbitron */
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
       background: #0a0a0a;
       color: #00ffcc;
       overflow-x: hidden;
-      font-size: 16px; /* Base font size from technology.html */
-      line-height: 1.6; /* Improved line spacing */
-      font-weight: 400; /* Default weight */
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 400;
     }
 
     h1, h2, h3 {
-      font-family: 'Montserrat', sans-serif; /* Updated from Orbitron */
+      font-family: 'Montserrat', sans-serif;
       margin: 0;
-      font-weight: 700; /* Bold for headings */
+      font-weight: 700;
     }
 
     a {
       text-decoration: underline;
       color: #ff00cc;
       transition: color 0.3s ease;
-      font-family: 'Poppins', sans-serif; /* Ensure links use Poppins */
-      font-weight: 500; /* Matches technology.html */
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
     }
 
     a:hover {
@@ -47,17 +47,17 @@
     }
 
     header h1 {
-      font-size: 2.8rem; /* Increased from 2.5rem to match technology.html */
+      font-size: 2.8rem;
       text-transform: uppercase;
       animation: glow 2s infinite alternate;
-      letter-spacing: 2px; /* Added for modern look */
+      letter-spacing: 2px;
     }
 
     header p {
-      font-size: 1.3rem; /* Increased from 1.2rem */
+      font-size: 1.3rem;
       opacity: 0.8;
       animation: float 3s ease-in-out infinite;
-      font-weight: 300; /* Lighter weight for friendliness */
+      font-weight: 300;
     }
 
     /* Gaming Animation Section */
@@ -153,8 +153,8 @@
       border-radius: 5px;
       cursor: pointer;
       transition: background 0.3s ease, color 0.3s ease;
-      font-size: 1.1rem; /* Matches technology.html */
-      font-weight: 500; /* Matches technology.html */
+      font-size: 1.1rem;
+      font-weight: 500;
     }
 
     .hashtag:hover {
@@ -244,12 +244,36 @@
       font-weight: 400;
     }
 
+    .modal-desc b,
+    .modal-desc strong {
+      color: #ff00cc; /* Neon pink for bold text */
+      font-weight: 700;
+    }
+
+    .modal-desc i,
+    .modal-desc em {
+      color: #00ccff; /* Cyan for italic text */
+      font-style: italic;
+    }
+
     .modal-example {
       font-size: 1rem;
       line-height: 1.6;
       margin-bottom: 20px;
       font-style: italic;
       color: #b0fff0;
+    }
+
+    .modal-example b,
+    .modal-example strong {
+      color: #ff00cc; /* Neon pink for bold text */
+      font-weight: 700;
+    }
+
+    .modal-example i,
+    .modal-example em {
+      color: #00ccff; /* Cyan for italic text */
+      font-style: italic;
     }
 
     .modal-image {
@@ -306,13 +330,13 @@
 
     footer p {
       margin: 0;
-      font-size: 1.1rem; /* Matches technology.html */
-      font-weight: 300; /* Matches technology.html */
+      font-size: 1.1rem;
+      font-weight: 300;
     }
 
     footer a {
       color: #ff00cc;
-      font-weight: 500; /* Matches technology.html */
+      font-weight: 500;
     }
 
     footer a:hover {
@@ -425,7 +449,7 @@
         tag.textContent = `#${hashtag.name.replace(/\s+/g, '')}`;
         
         tag.addEventListener('click', () => {
-          openModal(hashtag.name, hashtag.desc, hashtag.example, hashtag.image, hashtag-thread);
+          openModal(hashtag.name, hashtag.desc, hashtag.example, hashtag.image, hashtag.thread); // Fixed typo: hashtag-thread to hashtag.thread
         });
         
         hashtagsContainer.appendChild(tag);
@@ -441,7 +465,7 @@
 
       modalTitle.textContent = title;
       modalDesc.innerHTML = desc;
-      modalExample.textContent = `Example: ${example}`;
+      modalExample.innerHTML = `Example: ${example}`; // Changed to innerHTML
       modalImage.src = image;
       modal.style.display = 'flex';
 

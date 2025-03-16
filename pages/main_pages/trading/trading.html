@@ -331,12 +331,36 @@
       font-weight: 400;
     }
 
+    .modal-desc b,
+    .modal-desc strong {
+      color: #ff00cc; /* Neon pink for bold text */
+      font-weight: 700;
+    }
+
+    .modal-desc i,
+    .modal-desc em {
+      color: #00ccff; /* Cyan for italic text */
+      font-style: italic;
+    }
+
     .modal-example {
       font-size: 1rem;
       line-height: 1.6;
       margin-bottom: 20px;
       font-style: italic;
       color: #b0fff0;
+    }
+
+    .modal-example b,
+    .modal-example strong {
+      color: #ff00cc; /* Neon pink for bold text */
+      font-weight: 700;
+    }
+
+    .modal-example i,
+    .modal-example em {
+      color: #00ccff; /* Cyan for italic text */
+      font-style: italic;
     }
 
     .modal-image {
@@ -667,8 +691,8 @@
 
       if (currentScript === "BTC") {
         imageUrl = "https://cdn.pixabay.com/photo/2023/08/28/22/08/ai-generated-8220159_640.jpg";
-        desc = "Bitcoin (BTC) - The leading cryptocurrency by market cap.";
-        example = "View the latest price movements for BTC.";
+        desc = "Bitcoin (BTC) - The leading <b>cryptocurrency</b> by <i>market cap</i>.";
+        example = "View the <b>latest price</b> movements for <i>BTC</i>.";
         thread = "https://x.com/search?q=%23Bitcoin";
       } else {
         scripts.forEach(script => {
@@ -834,8 +858,8 @@
       const modalImage = document.getElementById('modalImage');
 
       modalTitle.textContent = title;
-      modalDesc.textContent = desc;
-      modalExample.textContent = example ? `Example: ${example}` : '';
+      modalDesc.innerHTML = desc; // Changed to innerHTML
+      modalExample.innerHTML = example ? `Example: ${example}` : ''; // Changed to innerHTML
       modalImage.src = image || "https://via.placeholder.com/400x300?text=No+Image+Available";
       modalImage.style.display = 'block';
       modalImage.onerror = () => modalImage.style.display = "none";
