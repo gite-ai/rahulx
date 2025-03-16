@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rahulx.com - Tools</title>
   <style>
-    /* Reuse styles from index.html */
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -110,6 +109,22 @@
       z-index: 1;
     }
 
+    .category-section {
+      margin-bottom: 40px;
+    }
+
+    .category-title {
+      font-size: 2rem;
+      color: #00ffcc;
+      text-align: center;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #00ffcc;
+      padding-bottom: 10px;
+      animation: glow 2s infinite alternate;
+    }
+
     .tools-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -192,6 +207,10 @@
         font-size: 0.9rem;
       }
 
+      .category-title {
+        font-size: 1.5rem;
+      }
+
       .tools-grid {
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         gap: 15px;
@@ -228,7 +247,7 @@
       }
 
       .tool-card p {
-        display: none; /* Hide description on mobile for icon-like look */
+        display: none;
       }
     }
 
@@ -313,71 +332,109 @@
     <!-- Main Content -->
     <div class="container">
       <section>
-        <div class="tools-grid">
-          <!-- Tool 1 -->
-          <div class="tool-card" onclick="alert('Debt Calculator coming soon!')">
-            <h3>Debt Calculator</h3>
-            <p>Calculate your debt repayment plan with ease.</p>
+        <!-- Finance Category -->
+        <div class="category-section">
+          <h2 class="category-title">Finance</h2>
+          <div class="tools-grid">
+            <div class="tool-card" onclick="alert('Debt Calculator coming soon!')">
+              <h3>Debt Calculator</h3>
+              <p>Calculate your debt repayment plan with ease.</p>
+            </div>
+            <div class="tool-card" onclick="alert('Tax Calculator coming soon!')">
+              <h3>Tax Calculator</h3>
+              <p>Estimate your taxes in a futuristic way.</p>
+            </div>
+            <div class="tool-card" onclick="alert('Interest Calculator coming soon!')">
+              <h3>Interest Calculator</h3>
+              <p>Compute interest for loans or savings.</p>
+            </div>
           </div>
+        </div>
 
-          <!-- Tool 2 -->
-          <div class="tool-card" onclick="alert('Tax Calculator coming soon!')">
-            <h3>Tax Calculator</h3>
-            <p>Estimate your taxes in a futuristic way.</p>
+        <!-- Health Category -->
+        <div class="category-section">
+          <h2 class="category-title">Health</h2>
+          <div class="tools-grid">
+            <div class="tool-card" onclick="alert('BMI Calculator coming soon!')">
+              <h3>BMI Calculator</h3>
+              <p>Check your body mass index with precision.</p>
+            </div>
+            <div class="tool-card" onclick="alert('Age Calculator coming soon!')">
+              <h3>Age Calculator</h3>
+              <p>Find your age in cosmic years.</p>
+            </div>
           </div>
+        </div>
 
-          <!-- Tool 3 -->
-          <div class="tool-card" onclick="alert('Units Converter coming soon!')">
-            <h3>Units Converter</h3>
-            <p>Convert units across space and time.</p>
+        <!-- X Tools Category (Social Media/Text Utilities) -->
+        <div class="category-section">
+          <h2 class="category-title">X Tools</h2>
+          <div class="tools-grid">
+            <div class="tool-card" onclick="alert('Posts Splitter coming soon!')">
+              <h3>Posts Splitter</h3>
+              <p>Split long posts for social media.</p>
+            </div>
+            <div class="tool-card" onclick="alert('Character Counter coming soon!')">
+              <h3>Character Counter</h3>
+              <p>Count characters in your text effortlessly.</p>
+            </div>
+            <div class="tool-card" onclick="alert('Copy Emoji coming soon!')">
+              <h3>Copy Emoji</h3>
+              <p>Access and copy emojis with one click.</p>
+            </div>
+            <div class="tool-card" onclick="alert('Copy Special Signs coming soon!')">
+              <h3>Copy Special Signs</h3>
+              <p>Get special symbols for your projects.</p>
+            </div>
+            <div class="tool-card" onclick="alert('HTML Viewer coming soon!')">
+              <h3>HTML Viewer</h3>
+              <p>Preview your HTML code instantly.</p>
+            </div>
           </div>
+        </div>
 
-          <!-- Tool 4 -->
-          <div class="tool-card" onclick="alert('Age Calculator coming soon!')">
-            <h3>Age Calculator</h3>
-            <p>Find your age in cosmic years.</p>
+        <!-- Fun & Games Category -->
+        <div class="category-section">
+          <h2 class="category-title">Fun & Games</h2>
+          <div class="tools-grid">
+            <div class="tool-card" onclick="alert('Zodiac Sign coming soon!')">
+              <h3>Zodiac Sign</h3>
+              <p>Discover your cosmic zodiac sign.</p>
+            </div>
+            <div class="tool-card" onclick="alert('Love Match coming soon!')">
+              <h3>Love Match</h3>
+              <p>Find your interstellar compatibility.</p>
+            </div>
+            <div class="tool-card" onclick="alert('Random Number Generator coming soon!')">
+              <h3>Random Number Generator</h3>
+              <p>Generate numbers from the void.</p>
+            </div>
+            <div class="tool-card" onclick="alert('Spin Wheel coming soon!')">
+              <h3>Spin Wheel</h3>
+              <p>Spin a wheel of futuristic fate.</p>
+            </div>
           </div>
+        </div>
 
-          <!-- Tool 5 -->
-          <div class="tool-card" onclick="alert('HTML Viewer coming soon!')">
-            <h3>HTML Viewer</h3>
-            <p>Preview your HTML code instantly.</p>
+        <!-- Depression Help Category (Placeholder) -->
+        <div class="category-section">
+          <h2 class="category-title">Depression Help</h2>
+          <div class="tools-grid">
+            <div class="tool-card" onclick="alert('Coming soon! Stay tuned for mental health tools.')">
+              <h3>Coming Soon</h3>
+              <p>Tools to support your mental well-being.</p>
+            </div>
           </div>
+        </div>
 
-          <!-- Tool 6 -->
-          <div class="tool-card" onclick="alert('BMI Calculator coming soon!')">
-            <h3>BMI Calculator</h3>
-            <p>Check your body mass index with precision.</p>
-          </div>
-
-          <!-- Tool 7 -->
-          <div class="tool-card" onclick="alert('Posts Splitter coming soon!')">
-            <h3>Posts Splitter</h3>
-            <p>Split long posts for social media.</p>
-          </div>
-
-          <!-- Tool 8 -->
-          <div class="tool-card" onclick="alert('Character Counter coming soon!')">
-            <h3>Character Counter</h3>
-            <p>Count characters in your text effortlessly.</p>
-          </div>
-
-          <!-- Tool 9 -->
-          <div class="tool-card" onclick="alert('Copy Emoji coming soon!')">
-            <h3>Copy Emoji</h3>
-            <p>Access and copy emojis with one click.</p>
-          </div>
-
-          <!-- Tool 10 -->
-          <div class="tool-card" onclick="alert('Copy Special Signs coming soon!')">
-            <h3>Copy Special Signs</h3>
-            <p>Get special symbols for your projects.</p>
-          </div>
-
-          <!-- Tool 11 -->
-          <div class="tool-card" onclick="alert('Interest Calculator coming soon!')">
-            <h3>Interest Calculator</h3>
-            <p>Compute interest for loans or savings.</p>
+        <!-- Utility Category -->
+        <div class="category-section">
+          <h2 class="category-title">Utilities</h2>
+          <div class="tools-grid">
+            <div class="tool-card" onclick="alert('Units Converter coming soon!')">
+              <h3>Units Converter</h3>
+              <p>Convert units across space and time.</p>
+            </div>
           </div>
         </div>
       </section>
