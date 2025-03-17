@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interest Calculator - Rahulx.com</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #0a0a0a;
+            color: #00ffcc;
+            overflow-x: hidden;
+            font-size: 16px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: glow 2s infinite alternate;
+            text-align: center;
+            font-size: 2.8rem;
+            padding: 40px 0;
+            background: radial-gradient(circle, #001f3f, #000);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .calculator {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #00ffcc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            background: rgba(0, 255, 204, 0.1);
+            border: 1px solid #00ffcc;
+            border-radius: 5px;
+            color: #00ffcc;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: box-shadow 0.3s ease;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            box-shadow: 0 0 10px #00ffcc;
+        }
+
+        select {
+            padding: 10px;
+            background: #000000;
+            border: 1px solid #00ffcc;
+            border-radius: 5px;
+            color: #00ffcc;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(135deg, #00ffcc, #0099cc);
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.8);
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: 400;
+            text-align: center;
+            font-size: 1.2rem;
+            text-shadow: 0 0 5px rgba(0, 255, 204, 0.5);
+        }
+
+        .sci-fi-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle, #001f3f, #000);
+            animation: stars 10s infinite linear;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
+            100% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
+        }
+
+        @keyframes stars {
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 1000px; }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .input-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            input[type="number"], select {
+                width: 100%;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sci-Fi Background -->
+    <div class="sci-fi-bg"></div>
+
+    <!-- Header -->
+    <h1>Interest Calculator</h1>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="calculator">
+            <div class="input-group">
+                <label for="principal">Principal Amount (₹):</label>
+                <input type="number" id="principal" placeholder="Enter amount" required>
+            </div>
+
+            <div class="input-group">
+                <label for="rate">Annual Interest Rate (%):</label>
+                <input type="number" id="rate" placeholder="Enter rate" step="0.1" required>
+            </div>
+
+            <div class="input-group">
+                <label for="time">Time Period:</label>
+                <div class="input-row">
+                    <input type="number" id="time" placeholder="Enter time" required>
+                    <select id="time-unit">
+                        <option value="years">Years</option>
+                        <option value="months">Months</option>
+                    </select>
+                </div>
+            </div>
+
+            <button onclick="calculateInterest()">Calculate Interest</button>
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: #000; color: #00ffcc; text-align: center; padding: 20px 0; margin-top: 60px; position: relative; z-index: 1;">
+        <p>© 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy" style="color: #ff00cc; font-weight: 500;">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        function calculateInterest() {
+            const principal = parseFloat(document.getElementById('principal').value);
+            const rate = parseFloat(document.getElementById('rate').value);
+            const time = parseFloat(document.getElementById('time').value);
+            const timeUnit = document.getElementById('time-unit').value;
+
+            if (!principal || !rate || !time || principal <= 0 || rate <= 0 || time <= 0) {
+                document.getElementById('result').innerText = "Please enter valid values.";
+                return;
+            }
+
+            // Convert time to years if in months
+            let timeInYears = timeUnit === 'years' ? time : time / 12;
+
+            // Simple Interest: I = PRT/100
+            const simpleInterest = (principal * rate * timeInYears) / 100;
+            const simpleTotal = principal + simpleInterest;
+
+            // Compound Interest: A = P(1 + r/100)^t
+            const compoundTotal = principal * Math.pow(1 + (rate / 100), timeInYears);
+            const compoundInterest = compoundTotal - principal;
+
+            document.getElementById('result').innerHTML = `
+                <strong>Simple Interest</strong><br>
+                Formula: I = (P × R × T) / 100<br>
+                Interest: ₹${simpleInterest.toFixed(2)}<br>
+                Total Amount: ₹${simpleTotal.toFixed(2)}<br><br>
+                <strong>Compound Interest</strong><br>
+                Formula: A = P(1 + R/100)<sup>T</sup><br>
+                Interest: ₹${compoundInterest.toFixed(2)}<br>
+                Total Amount: ₹${compoundTotal.toFixed(2)}
+            `;
+        }
+    </script>
+</body>
+</html>
