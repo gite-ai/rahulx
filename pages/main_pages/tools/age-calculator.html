@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator - Rahulx.com</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #0a0a0a;
+            color: #00ffcc;
+            overflow-x: hidden;
+            font-size: 16px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: glow 2s infinite alternate;
+            text-align: center;
+            font-size: 2.8rem;
+            padding: 40px 0;
+            background: radial-gradient(circle, #001f3f, #000);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .calculator {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #00ffcc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        input[type="date"], input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            background: rgba(0, 255, 204, 0.1);
+            border: 1px solid #00ffcc;
+            border-radius: 5px;
+            color: #00ffcc;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: box-shadow 0.3s ease;
+        }
+
+        input[type="date"]:focus, input[type="text"]:focus {
+            outline: none;
+            box-shadow: 0 0 10px #00ffcc;
+        }
+
+        select, input[type="radio"] {
+            padding: 10px;
+            background: #000000;
+            border: 1px solid #00ffcc;
+            border-radius: 5px;
+            color: #00ffcc;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        select {
+            width: 100%;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(135deg, #00ffcc, #0099cc);
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.8);
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: 400;
+            text-align: center;
+            font-size: 1.2rem;
+            text-shadow: 0 0 5px rgba(0, 255, 204, 0.5);
+        }
+
+        .country-name {
+            color: #ff9900; /* Orange color for country name */
+        }
+
+        .time-card {
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ffcc;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .time-card strong {
+            font-weight: 600;
+        }
+
+        .time-card span {
+            display: block;
+            margin: 10px 0;
+            animation: pulse 2s infinite;
+        }
+
+        .time-card .orange-number {
+            color: #ff9900; /* Orange color for numbers */
+        }
+
+        .time-card button {
+            width: 50%;
+            margin: 10px auto 0;
+            display: block;
+            font-size: 1rem;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .sci-fi-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle, #001f3f, #000);
+            animation: stars 10s infinite linear;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
+            100% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
+        }
+
+        @keyframes stars {
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 1000px; }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .input-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            input[type="date"], input[type="text"], select {
+                width: 100%;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .time-card button {
+                width: 80%;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sci-Fi Background -->
+    <div class="sci-fi-bg"></div>
+
+    <!-- Header -->
+    <h1>Age Calculator</h1>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="calculator">
+            <div class="input-group">
+                <label>Select Date Format:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="dateFormat" value="yyyy-mm-dd"> YYYY-MM-DD</label>
+                    <label><input type="radio" name="dateFormat" value="dd/mm/yyyy" checked> DD/MM/YYYY</label>
+                    <label><input type="radio" name="dateFormat" value="mm/dd/yyyy"> MM/DD/YYYY</label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="birthdate">Date of Birth:</label>
+                <input type="text" id="birthdate" placeholder="DD/MM/YYYY" required>
+            </div>
+
+            <div class="input-group">
+                <label for="customDate">Custom Date (optional, defaults to today):</label>
+                <input type="text" id="customDate" placeholder="DD/MM/YYYY">
+            </div>
+
+            <div class="input-group">
+                <label for="country">Country:</label>
+                <select id="country">
+                    <option value="73.2">Afghanistan</option>
+                    <option value="79.1">Albania</option>
+                    <option value="77.5">Algeria</option>
+                    <option value="77.8">Andorra</option>
+                    <option value="61.1">Angola</option>
+                    <option value="76.7">Antigua and Barbuda</option>
+                    <option value="76.2">Argentina</option>
+                    <option value="75.3">Armenia</option>
+                    <option value="82.5">Australia</option>
+                    <option value="81.6">Austria</option>
+                    <option value="73.8">Azerbaijan</option>
+                    <option value="78.0">Bahamas</option>
+                    <option value="77.7">Bahrain</option>
+                    <option value="71.8">Bangladesh</option>
+                    <option value="78.8">Barbados</option>
+                    <option value="73.6">Belarus</option>
+                    <option value="81.2">Belgium</option>
+                    <option value="74.5">Belize</option>
+                    <option value="61.8">Benin</option>
+                    <option value="71.8">Bhutan</option>
+                    <option value="68.9">Bolivia</option>
+                    <option value="76.8">Bosnia and Herzegovina</option>
+                    <option value="62.8">Botswana</option>
+                    <option value="76.3">Brazil</option>
+                    <option value="77.5">Brunei</option>
+                    <option value="74.8">Bulgaria</option>
+                    <option value="61.8">Burkina Faso</option>
+                    <option value="62.0">Burundi</option>
+                    <option value="71.1">Cabo Verde</option>
+                    <option value="63.2">Cambodia</option>
+                    <option value="60.8">Cameroon</option>
+                    <option value="81.6">Canada</option>
+                    <option value="59.7">Central African Republic</option>
+                    <option value="53.0">Chad</option>
+                    <option value="79.4">Chile</option>
+                    <option value="77.1">China</option>
+                    <option value="76.8">Colombia</option>
+                    <option value="63.6">Comoros</option>
+                    <option value="62.3">Congo, Democratic Republic of the</option>
+                    <option value="64.5">Congo, Republic of the</option>
+                    <option value="80.6">Costa Rica</option>
+                    <option value="77.8">Croatia</option>
+                    <option value="79.9">Cuba</option>
+                    <option value="81.8">Cyprus</option>
+                    <option value="79.8">Czech Republic</option>
+                    <option value="81.4">Denmark</option>
+                    <option value="72.5">Djibouti</option>
+                    <option value="76.9">Dominica</option>
+                    <option value="74.2">Dominican Republic</option>
+                    <option value="77.0">Ecuador</option>
+                    <option value="71.5">Egypt</option>
+                    <option value="76.7">El Salvador</option>
+                    <option value="60.1">Equatorial Guinea</option>
+                    <option value="65.3">Eritrea</option>
+                    <option value="78.5">Estonia</option>
+                    <option value="62.7">Eswatini</option>
+                    <option value="67.5">Ethiopia</option>
+                    <option value="74.9">Fiji</option>
+                    <option value="81.7">Finland</option>
+                    <option value="82.3">France</option>
+                    <option value="65.5">Gabon</option>
+                    <option value="72.2">Gambia</option>
+                    <option value="73.8">Georgia</option>
+                    <option value="80.6">Germany</option>
+                    <option value="65.8">Ghana</option>
+                    <option value="81.1">Greece</option>
+                    <option value="77.8">Grenada</option>
+                    <option value="75.8">Guatemala</option>
+                    <option value="62.1">Guinea</option>
+                    <option value="59.8">Guinea-Bissau</option>
+                    <option value="66.8">Guyana</option>
+                    <option value="65.1">Haiti</option>
+                    <option value="76.8">Honduras</option>
+                    <option value="83.5">Hong Kong (SAR China)</option>
+                    <option value="76.9">Hungary</option>
+                    <option value="82.3">Iceland</option>
+                    <option value="71.3" selected>India</option>
+                    <option value="71.7">Indonesia</option>
+                    <option value="76.2">Iran</option>
+                    <option value="70.5">Iraqnątrz
+
+                    <option value="82.0">Ireland</option>
+                    <option value="82.8">Israel</option>
+                    <option value="83.0">Italy</option>
+                    <option value="80.0">Jamaica</option>
+                    <option value="84.1">Japan</option>
+                    <option value="74.2">Jordan</option>
+                    <option value="71.4">Kazakhstan</option>
+                    <option value="66.5">Kenya</option>
+                    <option value="71.8">Kiribati</option>
+                    <option value="71.0">Kuwait</option>
+                    <option value="71.6">Kyrgyzstan</option>
+                    <option value="67.3">Laos</option>
+                    <option value="78.2">Latvia</option>
+                    <option value="75.0">Lebanon</option>
+                    <option value="59.6">Lesotho</option>
+                    <option value="62.4">Liberia</option>
+                    <option value="65.0">Libya</option>
+                    <option value="81.2">Liechtenstein</option>
+                    <option value="76.4">Lithuania</option>
+                    <option value="82.1">Luxembourg</option>
+                    <option value="77.2">Macau (SAR China)</option>
+                    <option value="66.1">Madagascar</option>
+                    <option value="62.7">Malawi</option>
+                    <option value="77.5">Malaysia</option>
+                    <option value="79.6">Maldives</option>
+                    <option value="62.8">Mali</option>
+                    <option value="82.5">Malta</option>
+                    <option value="73.9">Marshall Islands</option>
+                    <option value="63.7">Mauritania</option>
+                    <option value="76.9">Mauritius</option>
+                    <option value="75.5">Mexico</option>
+                    <option value="70.8">Micronesia</option>
+                    <option value="74.4">Moldova</option>
+                    <option value="81.9">Monaco</option>
+                    <option value="68.5">Mongolia</option>
+                    <option value="76.8">Montenegro</option>
+                    <option value="73.8">Morocco</option>
+                    <option value="62.0">Mozambique</option>
+                    <option value="65.0">Myanmar</option>
+                    <option value="63.8">Namibia</option>
+                    <option value="71.0">Nauru</option>
+                    <option value="70.4">Nepal</option>
+                    <option value="81.1">Netherlands</option>
+                    <option value="81.8">New Zealand</option>
+                    <option value="76.7">Nicaragua</option>
+                    <option value="61.8">Niger</option>
+                    <option value="54.7">Nigeria</option>
+                    <option value="83.2">Norway</option>
+                    <option value="77.0">Oman</option>
+                    <option value="70.2">Pakistan</option>
+                    <option value="74.8">Palau</option>
+                    <option value="77.9">Panama</option>
+                    <option value="66.6">Papua New Guinea</option>
+                    <option value="73.7">Paraguay</option>
+                    <option value="76.5">Peru</option>
+                    <option value="73.2">Philippines</option>
+                    <option value="77.6">Poland</option>
+                    <option value="82.0">Portugal</option>
+                    <option value="77.8">Qatar</option>
+                    <option value="74.9">Romania</option>
+                    <option value="71.9">Russia</option>
+                    <option value="63.4">Rwanda</option>
+                    <option value="78.5">Saint Kitts and Nevis</option>
+                    <option value="76.9">Saint Lucia</option>
+                    <option value="74.8">Saint Vincent and the Grenadines</option>
+                    <option value="71.8">Samoa</option>
+                    <option value="82.4">San Marino</option>
+                    <option value="67.4">Sao Tome and Principe</option>
+                    <option value="77.8">Saudi Arabia</option>
+                    <option value="65.7">Senegal</option>
+                    <option value="76.8">Serbia</option>
+                    <option value="61.2">Sierra Leone</option>
+                    <option value="83.5">Singapore</option>
+                    <option value="76.2">Slovakia</option>
+                    <option value="80.9">Slovenia</option>
+                    <option value="71.8">Solomon Islands</option>
+                    <option value="57.9">Somalia</option>
+                    <option value="57.6">South Africa</option>
+                    <option value="74.0">South Korea</option>
+                    <option value="64.8">South Sudan</option>
+                    <option value="83.8">Spain</option>
+                    <option value="76.5">Sri Lanka</option>
+                    <option value="68.7">Sudan</option>
+                    <option value="66.6">Suriname</option>
+                    <option value="82.8">Sweden</option>
+                    <option value="84.2">Switzerland</option>
+                    <option value="74.5">Syria</option>
+                    <option value="73.9">Tajikistan</option>
+                    <option value="77.8">Tanzania</option>
+                    <option value="77.0">Thailand</option>
+                    <option value="70.6">Timor-Leste</option>
+                    <option value="61.8">Togo</option>
+                    <option value="73.8">Tonga</option>
+                    <option value="76.0">Trinidad and Tobago</option>
+                    <option value="76.7">Tunisia</option>
+                    <option value="75.7">Turkey</option>
+                    <option value="70.3">Turkmenistan</option>
+                    <option value="73.0">Tuvalu</option>
+                    <option value="66.0">Uganda</option>
+                    <option value="71.6">Ukraine</option>
+                    <option value="78.0">United Arab Emirates</option>
+                    <option value="81.3">United Kingdom</option>
+                    <option value="77.4">United States</option>
+                    <option value="75.2">Uruguay</option>
+                    <option value="70.4">Uzbekistan</option>
+                    <option value="71.7">Vanuatu</option>
+                    <option value="75.4">Venezuela</option>
+                    <option value="76.9">Vietnam</option>
+                    <option value="66.1">Yemen</option>
+                    <option value="63.6">Zambia</option>
+                    <option value="61.9">Zimbabwe</option>
+                </select>
+            </div>
+
+            <button onclick="startAgeCalculation()">Calculate Age</button>
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: #000; color: #00ffcc; text-align: center; padding: 20px 0; margin-top: 60px; position: relative; z-index: 1;">
+        <p>© 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy" style="color: #ff00cc; font-weight: 500;">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        let intervalId = null;
+
+        // Update input fields based on selected date format
+        document.querySelectorAll('input[name="dateFormat"]').forEach(radio => {
+            radio.addEventListener('change', updateInputFields);
+        });
+
+        function updateInputFields() {
+            const format = document.querySelector('input[name="dateFormat"]:checked').value;
+            const birthdateInput = document.getElementById('birthdate');
+            const customDateInput = document.getElementById('customDate');
+
+            if (format === 'yyyy-mm-dd') {
+                birthdateInput.type = 'date';
+                customDateInput.type = 'date';
+                birthdateInput.placeholder = '';
+                customDateInput.placeholder = '';
+            } else {
+                birthdateInput.type = 'text';
+                customDateInput.type = 'text';
+                birthdateInput.placeholder = format === 'dd/mm/yyyy' ? 'DD/MM/YYYY' : 'MM/DD/YYYY';
+                customDateInput.placeholder = format === 'dd/mm/yyyy' ? 'DD/MM/YYYY' : 'MM/DD/YYYY';
+            }
+        }
+
+        // Initial setup
+        updateInputFields();
+
+        // Autofill slashes for DD/MM/YYYY and MM/DD/YYYY
+        function autoFillSlashes(input) {
+            input.addEventListener('input', (e) => {
+                const format = document.querySelector('input[name="dateFormat"]:checked').value;
+                if (format === 'yyyy-mm-dd') return; // No autofill for date input
+
+                let value = e.target.value.replace(/[^0-9]/g, ''); // Remove non-digits
+                if (format === 'dd/mm/yyyy') {
+                    if (value.length >= 2 && value.length < 5) {
+                        e.target.value = `${value.slice(0, 2)}/${value.slice(2)}`;
+                    } else if (value.length >= 4) {
+                        e.target.value = `${value.slice(0, 2)}/${value.slice(2, 4)}/${value.slice(4, 8)}`;
+                    }
+                } else if (format === 'mm/dd/yyyy') {
+                    if (value.length >= 2 && value.length < 5) {
+                        e.target.value = `${value.slice(0, 2)}/${value.slice(2)}`;
+                    } else if (value.length >= 4) {
+                        e.target.value = `${value.slice(0, 2)}/${value.slice(2, 4)}/${value.slice(4, 8)}`;
+                    }
+                }
+                // Limit to 10 characters (e.g., 12/12/2023)
+                if (e.target.value.length > 10) {
+                    e.target.value = e.target.value.slice(0, 10);
+                }
+            });
+        }
+
+        // Apply autofill to both inputs
+        autoFillSlashes(document.getElementById('birthdate'));
+        autoFillSlashes(document.getElementById('customDate'));
+
+        function parseDate(dateStr, format) {
+            if (format === 'yyyy-mm-dd') {
+                return new Date(dateStr);
+            } else if (format === 'dd/mm/yyyy') {
+                const [day, month, year] = dateStr.split('/').map(Number);
+                return new Date(year, month - 1, day);
+            } else if (format === 'mm/dd/yyyy') {
+                const [month, day, year] = dateStr.split('/').map(Number);
+                return new Date(year, month - 1, day);
+            }
+            return null;
+        }
+
+        function getCountryName(value) {
+            const select = document.getElementById('country');
+            return select.options[select.selectedIndex].text;
+        }
+
+        function startAgeCalculation() {
+            const format = document.querySelector('input[name="dateFormat"]:checked').value;
+            const birthdateStr = document.getElementById('birthdate').value;
+            const customDateStr = document.getElementById('customDate').value;
+            const birthdate = parseDate(birthdateStr, format);
+            const customDate = customDateStr ? parseDate(customDateStr, format) : new Date();
+            const countryLifeExpectancy = parseFloat(document.getElementById('country').value);
+            const countryName = getCountryName(countryLifeExpectancy);
+
+            if (!birthdate || isNaN(birthdate) || birthdate > customDate) {
+                document.getElementById('result').innerText = "Please enter a valid birth date earlier than the custom date.";
+                return;
+            }
+
+            // Clear any existing interval
+            if (intervalId) clearInterval(intervalId);
+
+            // Update in real-time unless a custom date is set
+            if (!customDateStr) {
+                intervalId = setInterval(() => updateAge(birthdate, customDate, countryLifeExpectancy, countryName), 1000);
+            }
+            updateAge(birthdate, customDate, countryLifeExpectancy, countryName);
+        }
+
+        function updateAge(birthdate, referenceDate, lifeExpectancy, countryName) {
+            const now = referenceDate;
+            const diffMs = now - birthdate;
+
+            // Calculate age components
+            const years = Math.floor(diffMs / (1000 * 60 * 60 * 24 * 365.25));
+            const months = Math.floor((diffMs % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
+            const days = Math.floor((diffMs % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diffMs % (1000 * 60)) / 1000);
+
+            // Total age in hours, minutes, seconds
+            const totalHours = Math.floor(diffMs / (1000 * 60 * 60));
+            const totalMinutes = Math.floor(diffMs / (1000 * 60));
+            const totalSeconds = Math.floor(diffMs / 1000);
+
+            // Calculate remaining life in milliseconds
+            const lifeExpectancyMs = lifeExpectancy * 365.25 * 24 * 60 * 60 * 1000;
+            const remainingMs = lifeExpectancyMs - diffMs;
+
+            // Remaining life components (current, not total)
+            const remainingYears = Math.floor(remainingMs / (1000 * 60 * 60 * 24 * 365.25));
+            const remainingMonths = Math.floor((remainingMs % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
+            const remainingDays = Math.floor((remainingMs % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+            const remainingHours = Math.floor((remainingMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const remainingMinutes = Math.floor((remainingMs % (1000 * 60 * 60)) / (1000 * 60));
+            const remainingSeconds = Math.floor((remainingMs % (1000 * 60)) / 1000);
+
+            // Total remaining life in hours, minutes, seconds
+            const totalRemainingHours = Math.floor(remainingMs / (1000 * 60 * 60));
+            const totalRemainingMinutes = Math.floor(remainingMs / (1000 * 60));
+            const totalRemainingSeconds = Math.floor(remainingMs / 1000);
+
+            document.getElementById('result').innerHTML = `
+                <strong>Your Age as of ${now.toLocaleDateString()}:</strong><br>
+                ${years} years, ${months} months, ${days} days, 
+                ${hours} hours, ${minutes} minutes, ${seconds} seconds<br><br>
+                <strong>Average life expectancy in <span class="country-name">${countryName}</span> is ${lifeExpectancy} years</strong><br>
+                <strong>Remaining Life (approx):</strong><br>
+                ${remainingYears} years, ${remainingMonths} months, ${remainingDays} days, 
+                ${remainingHours} hours, ${remainingMinutes} minutes, ${remainingSeconds} seconds<br><br>
+                <div class="time-card">
+                    <strong>🌌 Your Cosmic Journey So Far:</strong><br>
+                    <span>🕒 <span class="orange-number">${totalHours.toLocaleString()}</span> Hours of Epic Adventure!</span>
+                    <span>⏱️ <span class="orange-number">${totalMinutes.toLocaleString()}</span> Minutes of Stellar Moments!</span>
+                    <span>🚀 <span class="orange-number">${totalSeconds.toLocaleString()}</span> Seconds of Galactic Living!</span>
+                    <button onclick="copyCard('journey')">Copy</button>
+                </div>
+                <div class="time-card">
+                    <strong>⏳ Your Future Awaits:</strong><br>
+                    ${remainingMs >= 0 ? 
+                        `<span>🌟 <span class="orange-number">${totalRemainingHours.toLocaleString()}</span> Hours Left to Conquer the Universe!</span>
+                        <span>✨ <span class="orange-number">${totalRemainingMinutes.toLocaleString()}</span> Minutes to Shine Bright!</span>
+                        <span>⚡ <span class="orange-number">${totalRemainingSeconds.toLocaleString()}</span> Seconds to Make Every Moment Count!</span>` :
+                        `<span>🌠 <span class="orange-number">${totalRemainingHours.toLocaleString()}</span> Hours Beyond - You're a Legend!</span>
+                        <span>🔥 <span class="orange-number">${totalRemainingMinutes.toLocaleString()}</span> Minutes of Extra Time Mastered!</span>
+                        <span>🌌 <span class="orange-number">${totalRemainingSeconds.toLocaleString()}</span> Seconds Living the Extra Life!</span>`}
+                    <button onclick="copyCard('future')">Copy</button>
+                </div>
+            `;
+        }
+
+        function copyCard(cardType) {
+            let text;
+            if (cardType === 'journey') {
+                const journeyCard = document.querySelectorAll('.time-card')[0];
+                text = journeyCard.innerText.replace('Copy', '').trim();
+            } else if (cardType === 'future') {
+                const futureCard = document.querySelectorAll('.time-card')[1];
+                text = futureCard.innerText.replace('Copy', '').trim();
+            }
+            navigator.clipboard.writeText(text)
+                .then(() => alert(`${cardType === 'journey' ? 'Journey' : 'Future'} card copied to clipboard!`))
+                .catch(err => alert(`Failed to copy ${cardType} card: ` + err));
+        }
+
+        // Stop interval when page is unloaded
+        window.onunload = () => {
+            if (intervalId) clearInterval(intervalId);
+        };
+    </script>
+</body>
+</html>
