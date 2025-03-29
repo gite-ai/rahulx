@@ -100,7 +100,7 @@
       font-size: 2rem;
       text-align: center;
       margin-bottom: 20px;
-      color: #00ffcc; /* Same color for all headings */
+      color: #00ffcc;
     }
 
     .category-grid-container {
@@ -208,7 +208,7 @@
       text-align: right;
     }
 
-    .copy-btn {
+    .copy-btn, .share-btn {
       background: #00ffcc;
       color: #000;
       border: none;
@@ -217,9 +217,10 @@
       cursor: pointer;
       font-weight: 500;
       transition: background 0.3s ease;
+      margin-right: 5px;
     }
 
-    .copy-btn:hover {
+    .copy-btn:hover, .share-btn:hover {
       background: #ff00cc;
       color: #fff;
     }
@@ -318,7 +319,7 @@
       }
       .quote-card p { font-size: 1rem; }
       .quote-card span { font-size: 0.8rem; }
-      .copy-btn { padding: 5px 10px; font-size: 0.8rem; }
+      .copy-btn, .share-btn { padding: 5px 10px; font-size: 0.8rem; }
     }
 
     @media (max-width: 480px) {
@@ -398,51 +399,6 @@
       'z': ['Zach Galifianakis', 'Zachary Scott', 'Zadie Smith', 'Zakir Naik', 'Zakk Wylde', 'Zane Grey', 'Zayn Malik', 'Zelda Fitzgerald', 'Zhuangzi', 'Zig Ziglar', 'Ziggy Marley', 'Zinedine Zidane', 'Zitkala-Sa', 'Zoe Koplowitz', 'Zoe Kravitz', 'Zoe Saldana', 'Zooey Deschanel', 'Zora Neale Hurston', 'Zsa Zsa Gabor', 'Zulfikar Ali Bhutto']
     };
 
-    // Quotes from quotes.txt
-    const quotes = [
-      { text: "The real question is not whether machines think but whether men do.", author: "B.F. Skinner", category: "Intelligence" },
-      { text: "The universe is a pretty big place. If it's just us, seems like an awful waste of space.", author: "Carl Sagan", category: "Cosmos" },
-      { text: "The future is already here – it's just not evenly distributed.", author: "William Gibson", category: "Future" },
-      { text: "Artificial intelligence is the next stage in evolution.", author: "Elon Musk", category: "Artificial Intelligence" },
-      { text: "To confine our attention to terrestrial matters would be to limit the human spirit.", author: "Stephen Hawking", category: "Exploration" },
-      { text: "Any sufficiently advanced technology is indistinguishable from magic.", author: "Arthur C. Clarke", category: "Technology" },
-      { text: "We are all travelers in the wilderness of this world, and the best we can find in our travels is an honest friend.", author: "Robert Louis Stevenson", category: "Friendship" },
-      { text: "The only way to do great work is to love what you do.", author: "Steve Jobs", category: "Work" },
-      { text: "Imagination is more important than knowledge. Knowledge is limited; imagination encircles the world.", author: "Albert Einstein", category: "Imagination" },
-      { text: "The cosmos is within us. We are made of star-stuff.", author: "Carl Sagan", category: "Cosmos" },
-      { text: "Love is the only force capable of transforming an enemy into a friend.", author: "Martin Luther King, Jr.", category: "Love" },
-      { text: "Do not judge me by my successes, judge me by how many times I fell down and got back up again.", author: "Nelson Mandela", category: "Resilience" },
-      { text: "The journey of a thousand miles begins with a single step.", author: "Lao Tzu", category: "Journeys" },
-      { text: "Life is what happens when you're busy making other plans.", author: "John Lennon", category: "Life" },
-      { text: "There is no greater agony than bearing an untold story inside you.", author: "Maya Angelou", category: "Mysteries" },
-      { text: "Hope is the thing with feathers that perches in the soul.", author: "Emily Dickinson", category: "Hope" },
-      { text: "The stars are the street lights of eternity.", author: "Isaac Asimov", category: "Galaxies" },
-      { text: "Peace cannot be kept by force; it can only be achieved by understanding.", author: "Albert Einstein", category: "Peace" },
-      { text: "We are all in the gutter, but some of us are looking at the stars.", author: "Oscar Wilde", category: "Wonder" },
-      { text: "The mind is everything. What you think you become.", author: "Buddha", category: "Knowledge" },
-      { text: "To the stars, through difficulties.", author: "Seneca", category: "Space Exploration" },
-      { text: "Fear is the mind-killer. I will face my fear and let it pass through me.", author: "Frank Herbert", category: "Bravery" },
-      { text: "The greatest discovery of all time is that a person can change his future by merely changing his attitude.", author: "Oprah Winfrey", category: "Transformation" },
-      { text: "Time is an illusion.", author: "Albert Einstein", category: "Time" },
-      { text: "There is nothing permanent except change.", author: "Heraclitus", category: "Change" },
-      { text: "The universe doesn’t give you what you ask for with your thoughts—it gives you what you demand with your actions.", author: "Steve Maraboli", category: "Universe" },
-      { text: "Adventure is worthwhile in itself.", author: "Amelia Earhart", category: "Adventure" },
-      { text: "We are the cosmos made conscious and life is the means by which the universe understands itself.", author: "Brian Cox", category: "Consciousness" },
-      { text: "The only limit to our realization of tomorrow will be our doubts of today.", author: "Franklin D. Roosevelt", category: "Future" },
-      { text: "In the middle of difficulty lies opportunity.", author: "Albert Einstein", category: "Opportunities" },
-      { text: "Be kind, for everyone you meet is fighting a harder battle.", author: "Plato", category: "Kindness" },
-      { text: "The Earth is a very small stage in a vast cosmic arena.", author: "Carl Sagan", category: "Cosmos" },
-      { text: "To love and be loved is to feel the sun from both sides.", author: "David Viscott", category: "Love Declarations" },
-      { text: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill", category: "Courage" },
-      { text: "Zero gravity is the equalizer of all things.", author: "Buzz Aldrin", category: "Zero Gravity" },
-      { text: "The quantum world is a strange place, where the rules of reality bend.", author: "Niels Bohr", category: "Quantum" },
-      { text: "We are the music makers, and we are the dreamers of dreams.", author: "Arthur O’Shaughnessy", category: "Dreams" },
-      { text: "Let the beauty of what you love be what you do.", author: "Rumi", category: "Beauty" },
-      { text: "You don’t have to see the whole staircase, just take the first step.", author: "Martin Luther King, Jr.", category: "Journeys" },
-      { text: "Strength does not come from physical capacity. It comes from an indomitable will.", author: "Mahatma Gandhi", category: "Strength" },
-      { text: "The best way to predict the future is to create it.", author: "Peter Drucker", category: "Innovation" }
-    ];
-
     // Hamburger Menu Toggle
     const menuIcon = document.getElementById('menu-icon');
     const nav = document.getElementById('nav');
@@ -461,6 +417,7 @@
     // Generate Author Grid
     const authorGrid = document.getElementById('author-grid');
     const authorSubcategories = document.getElementById('author-subcategories');
+    const quotesList = document.getElementById('quotes-list');
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
     
     letters.forEach(letter => {
@@ -471,9 +428,31 @@
       authorGrid.appendChild(authorNode);
     });
 
-    // Quotes Display and Filtering
-    const quotesList = document.getElementById('quotes-list');
+    // Fetch Quotes from topics.txt
+    let quotes = [];
+    fetch('data/topics.txt')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text();
+      })
+      .then(data => {
+        const lines = data.split('\n').filter(line => line.trim() !== '');
+        quotes = lines.map(line => {
+          const [text, author, category] = line.split('|');
+          return { text, author, category };
+        });
+        // Initial Display
+        displaySubcategories(authorSubcategories, authors, 'a');
+        authorNodes[0].classList.add('active');
+      })
+      .catch(err => {
+        console.error('Error fetching quotes:', err);
+        quotesList.innerHTML = '<p style="text-align: center;">Failed to load quotes. Please try again later.</p>';
+      });
 
+    // Quotes Display and Filtering
     function displaySubcategories(container, data, char) {
       container.innerHTML = '';
       container.classList.remove('active');
@@ -510,22 +489,29 @@
           const quoteCard = document.createElement('div');
           quoteCard.classList.add('quote-card');
           quoteCard.innerHTML = `
-            <p>"${quote.text}"</p>
+            <p>❛ ${quote.text} ❜</p>
             <span>- ${quote.author}</span>
-            <button class="copy-btn" onclick="copyQuote('${quote.text}')">Copy</button>
+            <button class="copy-btn" onclick="copyQuote('❛ ${quote.text} ❜ - ${quote.author}')">Copy</button>
+            <button class="share-btn" onclick="shareOnX('❛ ${quote.text} ❜ - ${quote.author}')">𝕩</button>
           `;
           quotesList.appendChild(quoteCard);
         });
       }
     }
 
-    // Copy Quote Function
+    // Copy Quote Function (with author)
     function copyQuote(text) {
       navigator.clipboard.writeText(text).then(() => {
-        alert('Quote copied to clipboard!');
+        alert('Quote and author copied to clipboard!');
       }).catch(err => {
         console.error('Failed to copy: ', err);
       });
+    }
+
+    // Share on X Function
+    function shareOnX(text) {
+      const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank');
     }
 
     // Event Listeners for Author Nodes
@@ -537,10 +523,6 @@
         displaySubcategories(authorSubcategories, authors, node.dataset.char);
       });
     });
-
-    // Initial Display
-    displaySubcategories(authorSubcategories, authors, 'a');
-    authorNodes[0].classList.add('active');
   </script>
 </body>
 </html>
