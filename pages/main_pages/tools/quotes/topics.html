@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahulx.com - Quotes</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      color: #00ffcc;
+      overflow-x: hidden;
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+    }
+
+    header {
+      position: relative;
+      background: radial-gradient(circle, #001f3f, #000);
+      color: #00ffcc;
+      padding: 40px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      text-transform: uppercase;
+      animation: glow 2s infinite alternate;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      opacity: 0.8;
+      animation: float 3s ease-in-out infinite;
+      font-weight: 300;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      color: #00ffcc;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 0;
+      backdrop-filter: blur(10px);
+    }
+
+    nav a {
+      color: #00ffcc;
+      margin: 0 20px;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #ff00cc;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .quote-categories {
+      margin-bottom: 40px;
+    }
+
+    .quote-categories h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #00ffcc; /* Same color for all headings */
+    }
+
+    .category-grid-container {
+      position: sticky;
+      top: 0;
+      background: #0a0a0a;
+      z-index: 10;
+      padding: 10px 0;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
+      gap: 8px;
+      justify-items: center;
+      padding: 0 15px;
+    }
+
+    .category-node {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: rgba(0, 255, 204, 0.1);
+      border: 2px solid #00ffcc;
+      color: #00ffcc;
+    }
+
+    .category-node:hover, .category-node.active {
+      background: #00ffcc;
+      color: #000;
+      transform: scale(1.2);
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.8);
+    }
+
+    .subcategory-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .subcategory-buttons.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .subcategory-btn {
+      background: rgba(0, 255, 204, 0.1);
+      border: 1px solid #00ffcc;
+      padding: 6px 12px;
+      border-radius: 5px;
+      color: #00ffcc;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .subcategory-btn:hover, .subcategory-btn.active {
+      background: #00ffcc;
+      color: #000;
+      transform: scale(1.05);
+    }
+
+    .quotes-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+    }
+
+    .quote-card {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      padding: 15px;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .quote-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+    }
+
+    .quote-card p {
+      font-size: 1.1rem;
+      margin: 0 0 10px;
+      font-style: italic;
+    }
+
+    .quote-card span {
+      display: block;
+      font-size: 0.9rem;
+      color: #ff00cc;
+      text-align: right;
+    }
+
+    .copy-btn {
+      background: #00ffcc;
+      color: #000;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    .copy-btn:hover {
+      background: #ff00cc;
+      color: #fff;
+    }
+
+    footer {
+      background: #000;
+      color: #00ffcc;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    footer a {
+      color: #ff00cc;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
+      100% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .sci-fi-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle, #001f3f, #000);
+      animation: stars 10s infinite linear;
+    }
+
+    @keyframes stars {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
+    }
+
+    /* Mobile Adjustments */
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.8rem; }
+      header p { font-size: 1rem; }
+      .menu-icon { display: block; }
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 200px;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.9);
+        transition: right 0.3s ease;
+        z-index: 999;
+      }
+      nav.active { right: 0; }
+      nav a {
+        margin: 10px 0;
+        padding: 8px 15px;
+        border-bottom: 1px solid rgba(0, 255, 204, 0.2);
+      }
+      .quote-categories h2 { font-size: 1.5rem; margin-bottom: 15px; }
+      .category-grid {
+        grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+        gap: 6px;
+        padding: 0 10px;
+      }
+      .category-node {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+      }
+      .subcategory-buttons { gap: 8px; margin-top: 10px; }
+      .subcategory-btn {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+        min-width: 60px;
+      }
+      .quotes-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .quote-card p { font-size: 1rem; }
+      .quote-card span { font-size: 0.8rem; }
+      .copy-btn { padding: 5px 10px; font-size: 0.8rem; }
+    }
+
+    @media (max-width: 480px) {
+      header h1 { font-size: 1.5rem; }
+      header p { font-size: 0.9rem; }
+      .quote-categories h2 { font-size: 1.2rem; margin-bottom: 10px; }
+      .category-grid { gap: 5px; }
+      .category-node { width: 25px; height: 25px; font-size: 0.9rem; }
+      .subcategory-btn { font-size: 0.7rem; padding: 4px 8px; min-width: 50px; }
+      .quote-card { padding: 12px; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="sci-fi-bg"></div>
+  <div class="menu-icon" id="menu-icon">☰</div>
+
+  <header>
+    <h1>Quotes</h1>
+    <p>Words that inspire from the realms of imagination.</p>
+  </header>
+
+  <nav id="nav">
+    <a href="https://www.rahulx.com/about">About</a>
+    <a href="https://www.x.com/gite_ai">Contact</a>
+    <a href="https://www.rahulx.com/">Home</a>
+    <a href="/authors.html">Authors</a>
+  </nav>
+
+  <div class="container">
+    <section class="quote-categories topic">
+      <h2>Topics</h2>
+      <div class="category-grid-container">
+        <div class="category-grid" id="topic-grid"></div>
+      </div>
+      <div class="subcategory-buttons" id="topic-subcategories"></div>
+    </section>
+
+    <section class="quotes-list" id="quotes-list">
+      <!-- Quotes will be dynamically inserted here -->
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+    // Optimized and expanded topics organized by letter
+    const topics = {
+      'a': ['Anniversaries', 'Anger', 'Appreciation', 'Art', 'Artificial Intelligence', 'Adventure'],
+      'b': ['Best Friends', 'Birthdays', 'Breakups', 'Boyfriends', 'Beauty', 'Bravery'],
+      'c': ['Change', 'Christmas', 'Confidence', 'Courage', 'Cuteness', 'Cosmos'],
+      'd': ['Depression', 'Dance', 'Death', 'Dreams', 'Daughters', 'Discovery'],
+      'e': ['Encouragement', 'Education', 'Equality', 'Experience', 'Exploration', 'Ethics'],
+      'f': ['Friendship', 'Family', 'Forgiveness', 'Fun', 'Future', 'Freedom'],
+      'g': ['Good Morning', 'Graduation', 'God', 'Good Night', 'Girls', 'Galaxies'],
+      'h': ['Happiness', 'Heartbreak', 'Humor', 'Hope', 'Humanity', 'Heroes'],
+      'i': ['Inspiration', 'Love Declarations', 'Intelligence', 'Imagination', 'Innovation', 'Integrity'],
+      'j': ['Jealousy', 'Jesus', 'Jobs', 'Journeys', 'Justice', 'Joy'],
+      'k': ['Knowledge', 'Karma', 'Kindness', 'Kids', 'Kings', 'Kinetics'],
+      'l': ['Love', 'Life', 'Leadership', 'Learning', 'Loyalty', 'Legacies'],
+      'm': ['Motivation', 'Movies', 'Moving On', 'Music', 'Marriage', 'Mysteries'],
+      'n': ['Nature', 'New Year', 'Nostalgia', 'Night', 'New Worlds', 'Nebulae'],
+      'o': ['Ocean', 'Optimism', 'Opportunities', 'Orchids', 'Outer Space', 'Order'],
+      'p': ['Positivity', 'Patience', 'Peace', 'Parenting', 'Power', 'Progress'],
+      'q': ['Quests', 'Quiet Moments', 'Queens', 'Quirks', 'Quality', 'Quantum'],
+      'r': ['Relationships', 'Romance', 'Respect', 'Religion', 'Running', 'Resilience'],
+      's': ['Strength', 'Sisters', 'Smiles', 'Sadness', 'Success', 'Space Exploration'],
+      't': ['Trust', 'Thankfulness', 'Time', 'True Love', 'Technology', 'Transformation'],
+      'u': ['Uplifting', 'Unity', 'Unconditional Love', 'Universe', 'Understanding', 'Utopia'],
+      'v': ['Valentines', 'Victory', 'Virtue', 'Vision', 'Voyages', 'Vitality'],
+      'w': ['Weddings', 'Wisdom', 'Work', 'Women', 'Wonder', 'Warriors'],
+      'x': ['Xenophobia', 'Xmas', 'X-Factors', 'Xeno Worlds', 'X-Ray Vision', 'Xtreme'],
+      'y': ['Yoga', 'Youth', 'Yearnings', 'You Are Enough', 'Yesterdays', 'Yield'],
+      'z': ['Zeal', 'Zero Gravity', 'Zoos', 'Zest', 'Zodiac', 'Zones']
+    };
+
+    // Quotes from quotes.txt
+    const quotes = [
+      { text: "The real question is not whether machines think but whether men do.", author: "B.F. Skinner", category: "Intelligence" },
+      { text: "The universe is a pretty big place. If it's just us, seems like an awful waste of space.", author: "Carl Sagan", category: "Cosmos" },
+      { text: "The future is already here – it's just not evenly distributed.", author: "William Gibson", category: "Future" },
+      { text: "Artificial intelligence is the next stage in evolution.", author: "Elon Musk", category: "Artificial Intelligence" },
+      { text: "To confine our attention to terrestrial matters would be to limit the human spirit.", author: "Stephen Hawking", category: "Exploration" },
+      { text: "Any sufficiently advanced technology is indistinguishable from magic.", author: "Arthur C. Clarke", category: "Technology" },
+      { text: "We are all travelers in the wilderness of this world, and the best we can find in our travels is an honest friend.", author: "Robert Louis Stevenson", category: "Friendship" },
+      { text: "The only way to do great work is to love what you do.", author: "Steve Jobs", category: "Work" },
+      { text: "Imagination is more important than knowledge. Knowledge is limited; imagination encircles the world.", author: "Albert Einstein", category: "Imagination" },
+      { text: "The cosmos is within us. We are made of star-stuff.", author: "Carl Sagan", category: "Cosmos" },
+      { text: "Love is the only force capable of transforming an enemy into a friend.", author: "Martin Luther King, Jr.", category: "Love" },
+      { text: "Do not judge me by my successes, judge me by how many times I fell down and got back up again.", author: "Nelson Mandela", category: "Resilience" },
+      { text: "The journey of a thousand miles begins with a single step.", author: "Lao Tzu", category: "Journeys" },
+      { text: "Life is what happens when you're busy making other plans.", author: "John Lennon", category: "Life" },
+      { text: "There is no greater agony than bearing an untold story inside you.", author: "Maya Angelou", category: "Mysteries" },
+      { text: "Hope is the thing with feathers that perches in the soul.", author: "Emily Dickinson", category: "Hope" },
+      { text: "The stars are the street lights of eternity.", author: "Isaac Asimov", category: "Galaxies" },
+      { text: "Peace cannot be kept by force; it can only be achieved by understanding.", author: "Albert Einstein", category: "Peace" },
+      { text: "We are all in the gutter, but some of us are looking at the stars.", author: "Oscar Wilde", category: "Wonder" },
+      { text: "The mind is everything. What you think you become.", author: "Buddha", category: "Knowledge" },
+      { text: "To the stars, through difficulties.", author: "Seneca", category: "Space Exploration" },
+      { text: "Fear is the mind-killer. I will face my fear and let it pass through me.", author: "Frank Herbert", category: "Bravery" },
+      { text: "The greatest discovery of all time is that a person can change his future by merely changing his attitude.", author: "Oprah Winfrey", category: "Transformation" },
+      { text: "Time is an illusion.", author: "Albert Einstein", category: "Time" },
+      { text: "There is nothing permanent except change.", author: "Heraclitus", category: "Change" },
+      { text: "The universe doesn’t give you what you ask for with your thoughts—it gives you what you demand with your actions.", author: "Steve Maraboli", category: "Universe" },
+      { text: "Adventure is worthwhile in itself.", author: "Amelia Earhart", category: "Adventure" },
+      { text: "We are the cosmos made conscious and life is the means by which the universe understands itself.", author: "Brian Cox", category: "Consciousness" },
+      { text: "The only limit to our realization of tomorrow will be our doubts of today.", author: "Franklin D. Roosevelt", category: "Future" },
+      { text: "In the middle of difficulty lies opportunity.", author: "Albert Einstein", category: "Opportunities" },
+      { text: "Be kind, for everyone you meet is fighting a harder battle.", author: "Plato", category: "Kindness" },
+      { text: "The Earth is a very small stage in a vast cosmic arena.", author: "Carl Sagan", category: "Cosmos" },
+      { text: "To love and be loved is to feel the sun from both sides.", author: "David Viscott", category: "Love Declarations" },
+      { text: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill", category: "Courage" },
+      { text: "Zero gravity is the equalizer of all things.", author: "Buzz Aldrin", category: "Zero Gravity" },
+      { text: "The quantum world is a strange place, where the rules of reality bend.", author: "Niels Bohr", category: "Quantum" },
+      { text: "We are the music makers, and we are the dreamers of dreams.", author: "Arthur O’Shaughnessy", category: "Dreams" },
+      { text: "Let the beauty of what you love be what you do.", author: "Rumi", category: "Beauty" },
+      { text: "You don’t have to see the whole staircase, just take the first step.", author: "Martin Luther King, Jr.", category: "Journeys" },
+      { text: "Strength does not come from physical capacity. It comes from an indomitable will.", author: "Mahatma Gandhi", category: "Strength" },
+      { text: "The best way to predict the future is to create it.", author: "Peter Drucker", category: "Innovation" }
+    ];
+
+    // Hamburger Menu Toggle
+    const menuIcon = document.getElementById('menu-icon');
+    const nav = document.getElementById('nav');
+    menuIcon.addEventListener('click', () => nav.classList.toggle('active'));
+
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768 && nav.classList.contains('active')) {
+        const isClickInsideNav = nav.contains(e.target);
+        const isClickOnMenuIcon = menuIcon.contains(e.target);
+        if (!isClickInsideNav && !isClickOnMenuIcon) {
+          nav.classList.remove('active');
+        }
+      }
+    });
+
+    // Generate Topic Grid
+    const topicGrid = document.getElementById('topic-grid');
+    const topicSubcategories = document.getElementById('topic-subcategories');
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    
+    letters.forEach(letter => {
+      const topicNode = document.createElement('div');
+      topicNode.classList.add('category-node');
+      topicNode.textContent = letter;
+      topicNode.dataset.char = letter.toLowerCase();
+      topicGrid.appendChild(topicNode);
+    });
+
+    // Quotes Display and Filtering
+    const quotesList = document.getElementById('quotes-list');
+
+    function displaySubcategories(container, data, char) {
+      container.innerHTML = '';
+      container.classList.remove('active');
+      const items = data[char] || [];
+      items.forEach(item => {
+        const btn = document.createElement('button');
+        btn.classList.add('subcategory-btn');
+        btn.textContent = item;
+        btn.dataset.item = item;
+        btn.addEventListener('click', () => {
+          document.querySelectorAll(`#${container.id} .subcategory-btn`).forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          displayQuotes(item);
+        });
+        container.appendChild(btn);
+      });
+      if (items.length > 0) {
+        container.classList.add('active');
+        displayQuotes(items[0]);
+        container.querySelector('.subcategory-btn').classList.add('active');
+      } else {
+        quotesList.innerHTML = '<p style="text-align: center;">No topics available.</p>';
+      }
+    }
+
+    function displayQuotes(value) {
+      quotesList.innerHTML = '';
+      const filteredQuotes = quotes.filter(q => q.category.toLowerCase() === value.toLowerCase());
+
+      if (filteredQuotes.length === 0) {
+        quotesList.innerHTML = '<p style="text-align: center;">No quotes found for this topic.</p>';
+      } else {
+        filteredQuotes.forEach(quote => {
+          const quoteCard = document.createElement('div');
+          quoteCard.classList.add('quote-card');
+          quoteCard.innerHTML = `
+            <p>"${quote.text}"</p>
+            <span>- ${quote.author}</span>
+            <button class="copy-btn" onclick="copyQuote('${quote.text}')">Copy</button>
+          `;
+          quotesList.appendChild(quoteCard);
+        });
+      }
+    }
+
+    // Copy Quote Function
+    function copyQuote(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Quote copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+
+    // Event Listeners for Topic Nodes
+    const topicNodes = document.querySelectorAll('#topic-grid .category-node');
+    topicNodes.forEach(node => {
+      node.addEventListener('click', () => {
+        topicNodes.forEach(n => n.classList.remove('active'));
+        node.classList.add('active');
+        displaySubcategories(topicSubcategories, topics, node.dataset.char);
+      });
+    });
+
+    // Initial Display
+    displaySubcategories(topicSubcategories, topics, 'a');
+    topicNodes[0].classList.add('active');
+  </script>
+</body>
+</html>
