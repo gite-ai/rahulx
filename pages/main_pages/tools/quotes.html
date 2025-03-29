@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahulx.com - Sci-Fi Quotes</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      color: #00ffcc;
+      overflow-x: hidden;
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+    }
+
+    header {
+      position: relative;
+      background: radial-gradient(circle, #001f3f, #000);
+      color: #00ffcc;
+      padding: 40px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      text-transform: uppercase;
+      animation: glow 2s infinite alternate;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      opacity: 0.8;
+      animation: float 3s ease-in-out infinite;
+      font-weight: 300;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      color: #00ffcc;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 0;
+      backdrop-filter: blur(10px);
+    }
+
+    nav a {
+      color: #00ffcc;
+      margin: 0 20px;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #ff00cc;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 250px;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.9);
+        transition: right 0.3s ease;
+        z-index: 999;
+      }
+
+      nav.active {
+        right: 0;
+      }
+
+      nav a {
+        margin: 15px 0;
+        padding: 10px 20px;
+        border-bottom: 1px solid rgba(0, 255, 204, 0.2);
+      }
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .quote-categories {
+      margin-bottom: 40px;
+    }
+
+    .quote-categories h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #00ffcc;
+    }
+
+    .category-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .category-btn {
+      background: rgba(0, 255, 204, 0.1);
+      border: 1px solid #00ffcc;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: #00ffcc;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .category-btn:hover, .category-btn.active {
+      background: #00ffcc;
+      color: #000;
+      transform: scale(1.05);
+    }
+
+    .quotes-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .quote-card {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      padding: 20px;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .quote-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+    }
+
+    .quote-card p {
+      font-size: 1.2rem;
+      margin: 0 0 15px;
+      font-style: italic;
+    }
+
+    .quote-card span {
+      display: block;
+      font-size: 1rem;
+      color: #ff00cc;
+      text-align: right;
+    }
+
+    .copy-btn {
+      background: #00ffcc;
+      color: #000;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    .copy-btn:hover {
+      background: #ff00cc;
+      color: #fff;
+    }
+
+    footer {
+      background: #000;
+      color: #00ffcc;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 300;
+    }
+
+    footer a {
+      color: #ff00cc;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
+      100% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .sci-fi-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle, #001f3f, #000);
+      animation: stars 10s infinite linear;
+    }
+
+    @keyframes stars {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="sci-fi-bg"></div>
+  <div class="menu-icon" id="menu-icon">☰</div>
+
+  <header>
+    <h1>Sci-Fi Quotes</h1>
+    <p>Words that inspire from the realms of science fiction.</p>
+  </header>
+
+  <nav id="nav">
+    <a href="https://www.rahulx.com/about">About</a>
+    <a href="https://www.x.com/gite_ai">Contact</a>
+    <a href="https://www.rahulx.com/">Home</a>
+  </nav>
+
+  <div class="container">
+    <section class="quote-categories">
+      <h2>Categories</h2>
+      <div class="category-buttons">
+        <button class="category-btn active" data-category="all">All</button>
+        <button class="category-btn" data-category="ai">A.I.</button>
+        <button class="category-btn" data-category="space">Space</button>
+        <button class="category-btn" data-category="future">Future</button>
+      </div>
+    </section>
+
+    <section class="quotes-list" id="quotes-list">
+      <!-- Quotes will be dynamically inserted here -->
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+    // Embedded quotes data (simulating quotes.txt for GitHub Pages)
+    const quotes = [
+      { text: "The real question is not whether machines think but whether men do.", author: "B.F. Skinner", category: "ai" },
+      { text: "The universe is a pretty big place. If it's just us, seems like an awful waste of space.", author: "Carl Sagan", category: "space" },
+      { text: "The future is already here – it's just not evenly distributed.", author: "William Gibson", category: "future" },
+      { text: "Artificial intelligence is the next stage in evolution.", author: "Elon Musk", category: "ai" },
+      { text: "To confine our attention to terrestrial matters would be to limit the human spirit.", author: "Stephen Hawking", category: "space" },
+      { text: "Any sufficiently advanced technology is indistinguishable from magic.", author: "Arthur C. Clarke", category: "future" },
+    ];
+
+    // Hamburger Menu Toggle
+    const menuIcon = document.getElementById('menu-icon');
+    const nav = document.getElementById('nav');
+    menuIcon.addEventListener('click', () => nav.classList.toggle('active'));
+
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768 && nav.classList.contains('active')) {
+        const isClickInsideNav = nav.contains(e.target);
+        const isClickOnMenuIcon = menuIcon.contains(e.target);
+        if (!isClickInsideNav && !isClickOnMenuIcon) {
+          nav.classList.remove('active');
+        }
+      }
+    });
+
+    // Quotes Display and Filtering
+    const quotesList = document.getElementById('quotes-list');
+    const categoryButtons = document.querySelectorAll('.category-btn');
+
+    function displayQuotes(category) {
+      quotesList.innerHTML = '';
+      const filteredQuotes = category === 'all' ? quotes : quotes.filter(q => q.category === category);
+
+      filteredQuotes.forEach(quote => {
+        const quoteCard = document.createElement('div');
+        quoteCard.classList.add('quote-card');
+        quoteCard.innerHTML = `
+          <p>"${quote.text}"</p>
+          <span>- ${quote.author}</span>
+          <button class="copy-btn" onclick="copyQuote('${quote.text}')">Copy</button>
+        `;
+        quotesList.appendChild(quoteCard);
+      });
+    }
+
+    // Copy Quote Function
+    function copyQuote(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Quote copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+
+    // Category Filter
+    categoryButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        categoryButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        displayQuotes(btn.dataset.category);
+      });
+    });
+
+    // Initial Display
+    displayQuotes('all');
+
+    // Optional: If you want to fetch quotes.txt (won't work on GitHub Pages without a workaround)
+    /*
+    fetch('data/quotes.txt')
+      .then(response => response.text())
+      .then(data => {
+        const lines = data.split('\n').filter(line => line.trim() !== '');
+        const quotes = lines.map(line => {
+          const [text, author, category] = line.split('|');
+          return { text, author, category };
+        });
+        displayQuotes('all');
+      })
+      .catch(err => console.error('Error fetching quotes:', err));
+    */
+  </script>
+</body>
+</html>
