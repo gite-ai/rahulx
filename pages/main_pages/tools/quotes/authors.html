@@ -274,7 +274,6 @@
       100% { background-position: 1000px 1000px; }
     }
 
-    /* Mobile Adjustments */
     @media (max-width: 768px) {
       header h1 { font-size: 1.8rem; }
       header p { font-size: 1rem; }
@@ -428,29 +427,29 @@
       authorGrid.appendChild(authorNode);
     });
 
-    // Fetch Quotes from topics.txt
+    // Fetch Quotes for Selected Letter
     let quotes = [];
-    fetch('data/topics.txt')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.text();
-      })
-      .then(data => {
-        const lines = data.split('\n').filter(line => line.trim() !== '');
-        quotes = lines.map(line => {
-          const [text, author, category] = line.split('|');
-          return { text, author, category };
+    function loadQuotesForLetter(char) {
+      fetch(`${char}.txt`) // Files are in the same folder as authors.html
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(data => {
+          const lines = data.split('\n').filter(line => line.trim() !== '');
+          quotes = lines.map(line => {
+            const [text, author, category] = line.split('|');
+            return { text, author, category };
+          });
+          displaySubcategories(authorSubcategories, authors, char);
+        })
+        .catch(err => {
+          console.error('Error fetching quotes:', err);
+          quotesList.innerHTML = '<p style="text-align: center;">Failed to load quotes. Please try again later.</p>';
         });
-        // Initial Display
-        displaySubcategories(authorSubcategories, authors, 'a');
-        authorNodes[0].classList.add('active');
-      })
-      .catch(err => {
-        console.error('Error fetching quotes:', err);
-        quotesList.innerHTML = '<p style="text-align: center;">Failed to load quotes. Please try again later.</p>';
-      });
+    }
 
     // Quotes Display and Filtering
     function displaySubcategories(container, data, char) {
@@ -520,9 +519,13 @@
       node.addEventListener('click', () => {
         authorNodes.forEach(n => n.classList.remove('active'));
         node.classList.add('active');
-        displaySubcategories(authorSubcategories, authors, node.dataset.char);
+        loadQuotesForLetter(node.dataset.char);
       });
     });
+
+    // Initial Display
+    loadQuotesForLetter('a');
+    authorNodes[0].classList.add('active');
   </script>
 </body>
 </html>
