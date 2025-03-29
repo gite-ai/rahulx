@@ -84,42 +84,6 @@
       color: #ff00cc;
     }
 
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      header p {
-        font-size: 1rem;
-      }
-
-      .menu-icon {
-        display: block;
-      }
-
-      nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        height: 100vh;
-        width: 250px;
-        flex-direction: column;
-        background: rgba(0, 0, 0, 0.9);
-        transition: right 0.3s ease;
-        z-index: 999;
-      }
-
-      nav.active {
-        right: 0;
-      }
-
-      nav a {
-        margin: 15px 0;
-        padding: 10px 20px;
-        border-bottom: 1px solid rgba(0, 255, 204, 0.2);
-      }
-    }
-
     .container {
       width: 90%;
       max-width: 1200px;
@@ -136,27 +100,92 @@
       font-size: 2rem;
       text-align: center;
       margin-bottom: 20px;
-      color: #00ffcc;
     }
 
-    .category-buttons {
+    .quote-categories.topic h2 {
+      color: #00ccff; /* Neon blue for topics */
+    }
+
+    .quote-categories.author h2 {
+      color: #ff6600; /* Neon orange for authors */
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
+      gap: 8px;
+      justify-items: center;
+      padding: 0 15px;
+    }
+
+    .category-node {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
       display: flex;
+      align-items: center;
       justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
-    .category-btn {
+    .topic .category-node {
+      background: rgba(0, 204, 255, 0.1);
+      border: 2px solid #00ccff;
+      color: #00ccff;
+    }
+
+    .author .category-node {
+      background: rgba(255, 102, 0, 0.1);
+      border: 2px solid #ff6600;
+      color: #ff6600;
+    }
+
+    .category-node:hover, .category-node.active {
+      transform: scale(1.2);
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.8);
+    }
+
+    .topic .category-node:hover, .topic .category-node.active {
+      background: #00ccff;
+      color: #000;
+    }
+
+    .author .category-node:hover, .author .category-node.active {
+      background: #ff6600;
+      color: #000;
+    }
+
+    .subcategory-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .subcategory-buttons.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .subcategory-btn {
       background: rgba(0, 255, 204, 0.1);
       border: 1px solid #00ffcc;
-      padding: 10px 20px;
+      padding: 6px 12px;
       border-radius: 5px;
       color: #00ffcc;
       cursor: pointer;
+      font-size: 0.9rem;
       transition: background 0.3s ease, transform 0.3s ease;
     }
 
-    .category-btn:hover, .category-btn.active {
+    .subcategory-btn:hover, .subcategory-btn.active {
       background: #00ffcc;
       color: #000;
       transform: scale(1.05);
@@ -164,15 +193,15 @@
 
     .quotes-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
     }
 
     .quote-card {
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
       border-radius: 10px;
-      padding: 20px;
+      padding: 15px;
       position: relative;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
@@ -183,14 +212,14 @@
     }
 
     .quote-card p {
-      font-size: 1.2rem;
-      margin: 0 0 15px;
+      font-size: 1.1rem;
+      margin: 0 0 10px;
       font-style: italic;
     }
 
     .quote-card span {
       display: block;
-      font-size: 1rem;
+      font-size: 0.9rem;
       color: #ff00cc;
       text-align: right;
     }
@@ -199,7 +228,7 @@
       background: #00ffcc;
       color: #000;
       border: none;
-      padding: 8px 15px;
+      padding: 6px 12px;
       border-radius: 5px;
       cursor: pointer;
       font-weight: 500;
@@ -216,12 +245,12 @@
       color: #00ffcc;
       text-align: center;
       padding: 20px 0;
-      margin-top: 60px;
+      margin-top: 40px;
     }
 
     footer p {
       margin: 0;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 300;
     }
 
@@ -259,6 +288,64 @@
       0% { background-position: 0 0; }
       100% { background-position: 1000px 1000px; }
     }
+
+    /* Mobile Adjustments */
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.8rem; }
+      header p { font-size: 1rem; }
+      .menu-icon { display: block; }
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 200px;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.9);
+        transition: right 0.3s ease;
+        z-index: 999;
+      }
+      nav.active { right: 0; }
+      nav a {
+        margin: 10px 0;
+        padding: 8px 15px;
+        border-bottom: 1px solid rgba(0, 255, 204, 0.2);
+      }
+      .quote-categories h2 { font-size: 1.5rem; margin-bottom: 15px; }
+      .category-grid {
+        grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+        gap: 6px;
+        padding: 0 10px;
+      }
+      .category-node {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+      }
+      .subcategory-buttons { gap: 8px; margin-top: 10px; }
+      .subcategory-btn {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+        min-width: 60px; /* Ensure touch targets are large enough */
+      }
+      .quotes-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .quote-card p { font-size: 1rem; }
+      .quote-card span { font-size: 0.8rem; }
+      .copy-btn { padding: 5px 10px; font-size: 0.8rem; }
+    }
+
+    @media (max-width: 480px) {
+      header h1 { font-size: 1.5rem; }
+      header p { font-size: 0.9rem; }
+      .quote-categories h2 { font-size: 1.2rem; margin-bottom: 10px; }
+      .category-grid { gap: 5px; }
+      .category-node { width: 25px; height: 25px; font-size: 0.9rem; }
+      .subcategory-btn { font-size: 0.7rem; padding: 4px 8px; min-width: 50px; }
+      .quote-card { padding: 12px; }
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 </head>
@@ -278,14 +365,16 @@
   </nav>
 
   <div class="container">
-    <section class="quote-categories">
-      <h2>Categories</h2>
-      <div class="category-buttons">
-        <button class="category-btn active" data-category="all">All</button>
-        <button class="category-btn" data-category="ai">A.I.</button>
-        <button class="category-btn" data-category="space">Space</button>
-        <button class="category-btn" data-category="future">Future</button>
-      </div>
+    <section class="quote-categories topic">
+      <h2>Topics</h2>
+      <div class="category-grid" id="topic-grid"></div>
+      <div class="subcategory-buttons" id="topic-subcategories"></div>
+    </section>
+
+    <section class="quote-categories author">
+      <h2>Authors</h2>
+      <div class="category-grid" id="author-grid"></div>
+      <div class="subcategory-buttons" id="author-subcategories"></div>
     </section>
 
     <section class="quotes-list" id="quotes-list">
@@ -298,14 +387,74 @@
   </footer>
 
   <script>
-    // Embedded quotes data (simulating quotes.txt for GitHub Pages)
+    // Optimized and expanded topics organized by letter
+    const topics = {
+      'a': ['Anniversaries', 'Anger', 'Appreciation', 'Art', 'Artificial Intelligence', 'Adventure'],
+      'b': ['Best Friends', 'Birthdays', 'Breakups', 'Boyfriends', 'Beauty', 'Bravery'],
+      'c': ['Change', 'Christmas', 'Confidence', 'Courage', 'Cuteness', 'Cosmos'],
+      'd': ['Depression', 'Dance', 'Death', 'Dreams', 'Daughters', 'Discovery'],
+      'e': ['Encouragement', 'Education', 'Equality', 'Experience', 'Exploration', 'Ethics'],
+      'f': ['Friendship', 'Family', 'Forgiveness', 'Fun', 'Future', 'Freedom'],
+      'g': ['Good Morning', 'Graduation', 'God', 'Good Night', 'Girls', 'Galaxies'],
+      'h': ['Happiness', 'Heartbreak', 'Humor', 'Hope', 'Humanity', 'Heroes'],
+      'i': ['Inspiration', 'Love Declarations', 'Intelligence', 'Imagination', 'Innovation', 'Integrity'],
+      'j': ['Jealousy', 'Jesus', 'Jobs', 'Journeys', 'Justice', 'Joy'],
+      'k': ['Knowledge', 'Karma', 'Kindness', 'Kids', 'Kings', 'Kinetics'],
+      'l': ['Love', 'Life', 'Leadership', 'Learning', 'Loyalty', 'Legacies'],
+      'm': ['Motivation', 'Movies', 'Moving On', 'Music', 'Marriage', 'Mysteries'],
+      'n': ['Nature', 'New Year', 'Nostalgia', 'Night', 'New Worlds', 'Nebulae'],
+      'o': ['Ocean', 'Optimism', 'Opportunities', 'Orchids', 'Outer Space', 'Order'],
+      'p': ['Positivity', 'Patience', 'Peace', 'Parenting', 'Power', 'Progress'],
+      'q': ['Quests', 'Quiet Moments', 'Queens', 'Quirks', 'Quality', 'Quantum'],
+      'r': ['Relationships', 'Romance', 'Respect', 'Religion', 'Running', 'Resilience'],
+      's': ['Strength', 'Sisters', 'Smiles', 'Sadness', 'Success', 'Space Exploration'],
+      't': ['Trust', 'Thankfulness', 'Time', 'True Love', 'Technology', 'Transformation'],
+      'u': ['Uplifting', 'Unity', 'Unconditional Love', 'Universe', 'Understanding', 'Utopia'],
+      'v': ['Valentines', 'Victory', 'Virtue', 'Vision', 'Voyages', 'Vitality'],
+      'w': ['Weddings', 'Wisdom', 'Work', 'Women', 'Wonder', 'Warriors'],
+      'x': ['Xenophobia', 'Xmas', 'X-Factors', 'Xeno Worlds', 'X-Ray Vision', 'Xtreme'],
+      'y': ['Yoga', 'Youth', 'Yearnings', 'You Are Enough', 'Yesterdays', 'Yield'],
+      'z': ['Zeal', 'Zero Gravity', 'Zoos', 'Zest', 'Zodiac', 'Zones']
+    };
+
+    // Authors organized by letter (unchanged)
+    const authors = {
+      'a': ['Abdul Kalam', 'Abraham Lincoln', 'Abu Bakr', 'Al-Ghazali', 'Alan Cohen', 'Alan Watts', 'Albert Camus', 'Albert Einstein', 'Albert Schweitzer', 'Aldous Huxley', 'Alexander Graham Bell', 'Alice Hoffman', 'Alice Walker', 'Anais Nin', 'Ann Landers', 'Anne Frank', 'Aristotle', 'Arthur Schopenhauer', 'Audrey Hepburn', 'Ayn Rand'],
+      'b': ['Babe Ruth', 'Barack Obama', 'Bear Bryant', 'Benjamin Disraeli', 'Benjamin Franklin', 'Bertrand Russell', 'Beth Moore', 'Bill Cosby', 'Bill Gates', 'Billy Graham', 'Blaise Pascal', 'Bob Marley', 'Booker T. Washington', 'Brennan Manning', 'Brené Brown', 'Brian Tracy', 'Bruce Lee', 'Bruce Springsteen', 'Bryant H. McGill', 'Byron Katie'],
+      'c': ['C. S. Lewis', 'Calvin Coolidge', 'Carl Jung', 'Carl Sagan', 'Carol Burnett', 'Caroline Myss', 'Charles Bukowski', 'Charles Dickens', 'Charles Kettering', 'Charles Spurgeon', 'Charlie Daniels', 'Charlotte Bronte', 'Cheryl Strayed', 'Chesty Puller', 'Chuck Palahniuk', 'Clint Eastwood', 'Coco Chanel', 'Colin Powell', 'Confucius', 'Corrie Ten Boom'],
+      'd': ['Dalai Lama', 'Dale Carnegie', 'Dallas Willard', 'Dan Millman', 'Daniel Radcliffe', 'David Jeremiah', 'Dean Karnazes', 'Deepak Chopra', 'Dejan Stojanovic', 'Demi Lovato', 'Denis Waitley', 'Desmond Tutu', 'Dieter F. Uchtdorf', 'Dietrich Bonhoeffer', 'Dolly Parton', 'Douglas MacArthur', 'Dr. Seuss', 'Drake', 'Dwight D. Eisenhower', 'Dwight L. Moody'],
+      'e': ['E. M. Forster', 'Earl Nightingale', 'Eckhart Tolle', 'Eddie Vedder', 'Edgar Allan Poe', 'Edwin Louis Cole', 'Elbert Hubbard', 'Eleanor Roosevelt', 'Elie Wiesel', 'Elisabeth Elliot', 'Elisabeth Kubler-Ross', 'Elizabeth Barrett Browning', 'Elizabeth Gilbert', 'Ellen DeGeneres', 'Emma Watson', 'Epictetus', 'Erica Jong', 'Erich Fromm', 'Ernest Hemingway', 'Eugene H. Peterson'],
+      'f': ['F. Scott Fitzgerald', 'Farrah Gray', 'Fawad Afzal Khan', 'Ferdinand de Saussure', 'Florence Nightingale', 'Frances Hodgson Burnett', 'Francis Bacon', 'Francis Chan', 'Francis of Assisi', 'Frank A. Clark', 'Frank Zappa', 'Franklin D. Roosevelt', 'Franz Kafka', 'Fred Rogers', 'Frederick Buechner', 'Frederick Douglass', 'Frida Kahlo', 'Friedrich Nietzsche', 'Fulton J. Sheen', 'Fyodor Dostoevsky'],
+      'g': ['Gabourey Sidibe', 'Gabriel Garcia Marquez', 'Gary Zukav', 'George A. Sheehan', 'George Bernard Shaw', 'George Carlin', 'George Eliot', 'George Mason', 'George Orwell', 'George S. Patton', 'George W. Bush', 'George Washington', 'George Washington Carver', 'Gilbert K. Chesterton', 'Gloria Steinem', 'Golda Meir', 'Gordie Howe', 'Gordon B. Hinckley', 'Groucho Marx', 'Guy Finley'],
+      'h': ['H. G. Wells', 'H. Jackson Brown, Jr.', 'H. L. Mencken', 'Haruki Murakami', 'Harvey Mackay', 'Helen Keller', 'Helen Steiner Rice', 'Henri Nouwen', 'Henry David Thoreau', 'Henry Ford', 'Henry Miller', 'Henry Wadsworth Longfellow', 'Henry Ward Beecher', 'Hermann Hesse', 'Hillary Clinton', 'Hippocrates', 'Honore de Balzac', 'Horace', 'Howard Zinn', 'Hunter S. Thompson'],
+      'i': ['Ibn Hazm', 'Ibn Qayyim Al-Jawziyya', 'Ibn Taymiyyah', 'Ice Cube', 'Ignatius of Antioch', 'Imelda Marcos', 'Immanuel Kant', 'Indira Gandhi', 'Indra Devi', 'Ingrid Bergman', 'Iris Murdoch', 'Irving Berlin', 'Irving Langmuir', 'Irwin Corey', 'Isaac Asimov', 'Isaac Bashevis Singer', 'Isaac Newton', 'Isabel Allende', 'Ivanka Trump', 'Iyanla Vanzant'],
+      'j': ['J. C. Ryle', 'J. K. Rowling', 'J. R. R. Tolkien', 'James Madison', 'Jane Austen', 'Janis Joplin', 'Jim Morrison', 'Jim Rohn', 'Joan Rivers', 'Joel Osteen', 'Johann Wolfgang von Goethe', 'John C. Maxwell', 'John F. Kennedy', 'John Green', 'John Lennon', 'John Piper', 'John Wooden', 'Johnny Cash', 'Joseph Campbell', 'Joyce Meyer'],
+      'k': ['Kara Goucher', 'Karan Johar', 'Karl Lagerfeld', 'Karl Marx', 'Katharine Hepburn', 'Katherine Heigl', 'Kathrine Switzer', 'Kathryn Kuhlman', 'Katy Perry', 'Kay Arthur', 'Ken Keyes Jr.', 'Ken Venturi', 'Khalil Gibran', 'Kim Kardashian', 'Kin Hubbard', 'Kobe Bryant', 'Kris Carr', 'Kristin Armstrong', 'Kurt Cobain', 'Kurt Vonnegut'],
+      'l': ['Lady Gaga', 'Lana Del Rey', 'Leo Buscaglia', 'Leo Tolstoy', 'Leon Brown', 'Leonard Ravenhill', 'Leonardo da Vinci', 'Les Brown', 'Lil Wayne', 'Lisa St. Aubin de Terán', 'Lord Acton', 'Lord Byron', 'Lou Holtz', 'Louie Giglio', 'Louisa May Alcott', 'Louise Hay', 'Lucille Ball', 'Ludwig von Mises', 'Lydia M. Child', 'Lysa TerKeurst'],
+      'm': ['Mahatma Gandhi', 'Malcolm X', 'Marcus Aurelius', 'Marianne Williamson', 'Marilyn Monroe', 'Mark Twain', 'Martin Luther', 'Martin Luther King, Jr.', 'Mary Kay Ash', 'Max Lucado', 'Maya Angelou', 'Melody Beattie', 'Michael Jackson', 'Michael Jordan', 'Michelle Obama', 'Milton Friedman', 'Mitch Albom', 'Mother Teresa', 'Muhammad', 'Muhammad Ali'],
+      'n': ['N. T. Wright', 'Napoleon Bonaparte', 'Napoleon Hill', 'Neal A. Maxwell', 'Neale Donald Walsch', 'Neil Armstrong', 'Neil Gaiman', 'Neil deGrasse Tyson', 'Nelson Mandela', 'Nhat Hanh', 'Nicholas Sparks', 'Nick Vujicic', 'Nicole Kidman', 'Nido R Qubein', 'Nikola Tesla', 'Noam Chomsky', 'Nora Ephron', 'Nora Roberts', 'Norman Vincent Peale', 'Nouman Ali Khan'],
+      'o': ['Octavio Paz', 'Og Mandino', 'Ogden Nash', 'Ole Hallesby', 'Oliver P. Smith', 'Oliver Sacks', 'Oliver Wendell Holmes', 'Oliver Wendell Holmes, Jr.', 'Omar N. Bradley', 'Omar Suleiman', 'Oprah Winfrey', 'Oral Roberts', 'Orhan Pamuk', 'Orison Swett Marden', 'Orson Welles', 'Oscar Wilde', 'Oscar de la Renta', 'Oswald Chambers', 'Oswald J. Smith', 'Ovid'],
+      'p': ['Pablo Neruda', 'Pablo Picasso', 'Paramahansa Yogananda', 'Pat Riley', 'Patrick Henry', 'Paulo Coelho', 'Pearl S. Buck', 'Pele', 'Pema Chodron', 'Pete Seeger', 'Peter Drucker', 'Peter Marshall', 'Phil Robertson', 'Plato', 'Plutarch', 'Pope Benedict XVI', 'Pope Francis', 'Pope John Paul II', 'Prince', 'Princess Diana'],
+      'q': ['Q-Tip', 'Queen Elizabeth II', 'Queen Latifah', 'Queen Rania of Jordan', 'Queen Victoria', 'Quentin Crisp', 'Quentin L. Cook', 'Quentin Tarantino', 'Quincy Jones', 'Quinn Cummings', 'Quintilian', 'Quintus Ennius'],
+      'r': ['Rainer Maria Rilke', 'Ralph Waldo Emerson', 'Ram Dass', 'Ray Bradbury', 'Rhonda Byrne', 'Richard Bach', 'Richard Branson', 'Rick Warren', 'Rihanna', 'Roald Dahl', 'Robert A. Heinlein', 'Robert Frost', 'Robert H. Schuller', 'Robert Kiyosaki', 'Robin Williams', 'Roger Federer', 'Ron Paul', 'Ronald Reagan', 'Rumi', 'Ruth Graham'],
+      's': ['Saint Augustine', 'Saint Patrick', 'Samuel Adams', 'Samuel Beckett', 'Sarah Dessen', 'Sarah Palin', 'Shakira', 'Shakti Gawain', 'Sigmund Freud', 'Smith Wigglesworth', 'Socrates', 'Stephen Colbert', 'Stephen Covey', 'Stephen Hawking', 'Stephen King', 'Steve Jobs', 'Susan B. Anthony', 'Swami Vivekananda', 'Sydney J. Harris', 'Sylvia Plath'],
+      't': ['T. Harv Eker', 'T. S. Eliot', 'Tariq Ramadan', 'Terence McKenna', 'Theodore Roosevelt', 'Thomas A. Edison', 'Thomas Carlyle', 'Thomas Fuller', 'Thomas Jefferson', 'Thomas Merton', 'Thomas Paine', 'Thomas S. Monson', 'Thomas Sowell', 'Tim Ferriss', 'Timothy Keller', 'Tina Fey', 'Toni Morrison', 'Tony Robbins', 'Trent Shelton', 'Tupac Shakur'],
+      'u': ['U Thant', 'U.G. Krishnamurti', 'Uell Stanley Andersen', 'Ugo Betti', 'Ulrike Meinhof', 'Ulysses S. Grant', 'Uma Thurman', 'Umar', 'Umberto Eco', 'Upton Sinclair', 'Uri Geller', 'Urie Bronfenbrenner', 'Ursula Andress', 'Ursula K. Le Guin', 'Ursula Nordstrom', 'Usain Bolt', 'Usher', 'Uta Hagen', 'Utah Phillips', 'Uthman ibn Affan'],
+      'v': ['Vandana Shiva', 'Vera Wang', 'Vern Law', 'Vernon Howard', 'Veronica Lake', 'Veronica Roth', 'Victor H. Krulak', 'Victor Hugo', 'Victoria Moran', 'Viktor E. Frankl', 'Vince Gironda', 'Vince Lombardi', 'Vincent Van Gogh', 'Viola Davis', 'Virginia Satir', 'Virginia Woolf', 'Vivien Leigh', 'Vivienne Westwood', 'Vladimir Nabokov', 'Voltaire'],
+      'w': ['W. Clement Stone', 'W. E. B. Du Bois', 'Walt Disney', 'Walt Whitman', 'Warren Buffett', 'Warren W. Wiersbe', 'Washington Irving', 'Watchman Nee', 'Wayne Dyer', 'Will Rogers', 'Will Smith', 'William Arthur Ward', 'William Feather', 'William James', 'William Penn', 'William S. Burroughs', 'William Shakespeare', 'Willie Nelson', 'Wilma Rudolph', 'Winston Churchill'],
+      'x': ['Xabi Alonso', 'Xavi', 'Xenocrates', 'Xenophanes', 'Xiaolu Guo'],
+      'y': ['Yakov Smirnoff', 'Yamamoto Tsunetomo', 'Yani Tseng', 'Yann Martel', 'Yasmin Mogahed', 'Yasunari Kawabata', 'Yehuda Berg', 'Yevgeny Yevtushenko', 'Yevgeny Zamyatin', 'Yo-Yo Ma', 'Yogaswami', 'Yogi Berra', 'Yohji Yamamoto', 'Yoko Ono', 'Yongey Mingyur Rinpoche', 'Young Jeezy', 'Yukio Mishima', 'Yuri Kochiyama', 'Yves Saint Laurent', 'Yvon Chouinard'],
+      'z': ['Zach Galifianakis', 'Zachary Scott', 'Zadie Smith', 'Zakir Naik', 'Zakk Wylde', 'Zane Grey', 'Zayn Malik', 'Zelda Fitzgerald', 'Zhuangzi', 'Zig Ziglar', 'Ziggy Marley', 'Zinedine Zidane', 'Zitkala-Sa', 'Zoe Koplowitz', 'Zoe Kravitz', 'Zoe Saldana', 'Zooey Deschanel', 'Zora Neale Hurston', 'Zsa Zsa Gabor', 'Zulfikar Ali Bhutto']
+    };
+
+    // Sample quotes (updated to match new topics)
     const quotes = [
-      { text: "The real question is not whether machines think but whether men do.", author: "B.F. Skinner", category: "ai" },
-      { text: "The universe is a pretty big place. If it's just us, seems like an awful waste of space.", author: "Carl Sagan", category: "space" },
-      { text: "The future is already here – it's just not evenly distributed.", author: "William Gibson", category: "future" },
-      { text: "Artificial intelligence is the next stage in evolution.", author: "Elon Musk", category: "ai" },
-      { text: "To confine our attention to terrestrial matters would be to limit the human spirit.", author: "Stephen Hawking", category: "space" },
-      { text: "Any sufficiently advanced technology is indistinguishable from magic.", author: "Arthur C. Clarke", category: "future" },
+      { text: "The real question is not whether machines think but whether men do.", author: "B.F. Skinner", category: "Intelligence" },
+      { text: "The universe is a pretty big place. If it's just us, seems like an awful waste of space.", author: "Carl Sagan", category: "Cosmos" },
+      { text: "The future is already here – it's just not evenly distributed.", author: "William Gibson", category: "Future" },
+      { text: "Artificial intelligence is the next stage in evolution.", author: "Elon Musk", category: "Artificial Intelligence" },
+      { text: "To confine our attention to terrestrial matters would be to limit the human spirit.", author: "Stephen Hawking", category: "Exploration" },
+      { text: "Any sufficiently advanced technology is indistinguishable from magic.", author: "Arthur C. Clarke", category: "Technology" }
     ];
 
     // Hamburger Menu Toggle
@@ -323,24 +472,75 @@
       }
     });
 
+    // Generate Grids (A-Z only)
+    const topicGrid = document.getElementById('topic-grid');
+    const authorGrid = document.getElementById('author-grid');
+    const topicSubcategories = document.getElementById('topic-subcategories');
+    const authorSubcategories = document.getElementById('author-subcategories');
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    
+    letters.forEach(letter => {
+      const topicNode = document.createElement('div');
+      topicNode.classList.add('category-node');
+      topicNode.textContent = letter;
+      topicNode.dataset.char = letter.toLowerCase();
+      topicGrid.appendChild(topicNode);
+
+      const authorNode = document.createElement('div');
+      authorNode.classList.add('category-node');
+      authorNode.textContent = letter;
+      authorNode.dataset.char = letter.toLowerCase();
+      authorGrid.appendChild(authorNode);
+    });
+
     // Quotes Display and Filtering
     const quotesList = document.getElementById('quotes-list');
-    const categoryButtons = document.querySelectorAll('.category-btn');
 
-    function displayQuotes(category) {
-      quotesList.innerHTML = '';
-      const filteredQuotes = category === 'all' ? quotes : quotes.filter(q => q.category === category);
-
-      filteredQuotes.forEach(quote => {
-        const quoteCard = document.createElement('div');
-        quoteCard.classList.add('quote-card');
-        quoteCard.innerHTML = `
-          <p>"${quote.text}"</p>
-          <span>- ${quote.author}</span>
-          <button class="copy-btn" onclick="copyQuote('${quote.text}')">Copy</button>
-        `;
-        quotesList.appendChild(quoteCard);
+    function displaySubcategories(container, data, char, filterType) {
+      container.innerHTML = '';
+      container.classList.remove('active');
+      const items = data[char] || [];
+      items.forEach(item => {
+        const btn = document.createElement('button');
+        btn.classList.add('subcategory-btn');
+        btn.textContent = item;
+        btn.dataset.item = item;
+        btn.addEventListener('click', () => {
+          document.querySelectorAll(`#${container.id} .subcategory-btn`).forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          displayQuotes(item, filterType);
+        });
+        container.appendChild(btn);
       });
+      if (items.length > 0) {
+        container.classList.add('active');
+        displayQuotes(items[0], filterType); // Default to first item
+        container.querySelector('.subcategory-btn').classList.add('active');
+      } else {
+        quotesList.innerHTML = '<p style="text-align: center;">No items available.</p>';
+      }
+    }
+
+    function displayQuotes(value, filterType) {
+      quotesList.innerHTML = '';
+      const filteredQuotes = filterType === 'topic' 
+        ? quotes.filter(q => q.category.toLowerCase() === value.toLowerCase())
+        : quotes.filter(q => q.author.toLowerCase() === value.toLowerCase());
+
+      if (filteredQuotes.length === 0) {
+        quotesList.innerHTML = `<p style="text-align: center;">No quotes found for this ${filterType}.</p>`;
+      } else {
+        filteredQuotes.forEach(quote => {
+          const quoteCard = document.createElement('div');
+          quoteCard.classList.add('quote-card');
+          quoteCard.innerHTML = `
+            <p>"${quote.text}"</p>
+            <span>- ${quote.author}</span>
+            <button class="copy-btn" onclick="copyQuote('${quote.text}')">Copy</button>
+          `;
+          quotesList.appendChild(quoteCard);
+        });
+      }
     }
 
     // Copy Quote Function
@@ -352,32 +552,31 @@
       });
     }
 
-    // Category Filter
-    categoryButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        categoryButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        displayQuotes(btn.dataset.category);
+    // Event Listeners for Topic Nodes
+    const topicNodes = document.querySelectorAll('#topic-grid .category-node');
+    topicNodes.forEach(node => {
+      node.addEventListener('click', () => {
+        topicNodes.forEach(n => n.classList.remove('active'));
+        node.classList.add('active');
+        displaySubcategories(topicSubcategories, topics, node.dataset.char, 'topic');
       });
     });
 
-    // Initial Display
-    displayQuotes('all');
+    // Event Listeners for Author Nodes
+    const authorNodes = document.querySelectorAll('#author-grid .category-node');
+    authorNodes.forEach(node => {
+      node.addEventListener('click', () => {
+        authorNodes.forEach(n => n.classList.remove('active'));
+        node.classList.add('active');
+        displaySubcategories(authorSubcategories, authors, node.dataset.char, 'author');
+      });
+    });
 
-    // Optional: If you want to fetch quotes.txt (won't work on GitHub Pages without a workaround)
-    /*
-    fetch('data/quotes.txt')
-      .then(response => response.text())
-      .then(data => {
-        const lines = data.split('\n').filter(line => line.trim() !== '');
-        const quotes = lines.map(line => {
-          const [text, author, category] = line.split('|');
-          return { text, author, category };
-        });
-        displayQuotes('all');
-      })
-      .catch(err => console.error('Error fetching quotes:', err));
-    */
+    // Initial Display (default to 'A' for both)
+    displaySubcategories(topicSubcategories, topics, 'a', 'topic');
+    topicNodes[0].classList.add('active');
+    displaySubcategories(authorSubcategories, authors, 'a', 'author');
+    authorNodes[0].classList.add('active');
   </script>
 </body>
 </html>
