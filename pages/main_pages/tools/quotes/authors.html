@@ -204,25 +204,32 @@
     .quote-card span {
       display: block;
       font-size: 0.9rem;
-      color: #ff00cc;
+      color: #fff; /* Changed to white */
       text-align: right;
     }
 
-    .copy-btn, .share-btn {
+    .quote-card .copy-btn {
       background: #00ffcc;
       color: #000;
       border: none;
-      padding: 6px 12px;
+      padding: 6px;
       border-radius: 5px;
       cursor: pointer;
-      font-weight: 500;
+      font-size: 1rem;
       transition: background 0.3s ease;
-      margin-right: 5px;
+      margin-top: 10px;
     }
 
-    .copy-btn:hover, .share-btn:hover {
+    .quote-card .copy-btn:hover {
       background: #ff00cc;
       color: #fff;
+    }
+
+    .quote-card .sources {
+      font-size: 0.8rem;
+      color: #ff00cc;
+      margin-top: 10px;
+      font-style: italic;
     }
 
     footer {
@@ -318,7 +325,7 @@
       }
       .quote-card p { font-size: 1rem; }
       .quote-card span { font-size: 0.8rem; }
-      .copy-btn, .share-btn { padding: 5px 10px; font-size: 0.8rem; }
+      .quote-card .copy-btn { padding: 5px; font-size: 0.8rem; }
     }
 
     @media (max-width: 480px) {
@@ -368,7 +375,6 @@
   </footer>
 
   <script>
-    // Authors organized by letter
     const authors = {
       'a': ['Abdul Kalam', 'Abraham Lincoln', 'Abu Bakr', 'Al-Ghazali', 'Alan Cohen', 'Alan Watts', 'Albert Camus', 'Albert Einstein', 'Albert Schweitzer', 'Aldous Huxley', 'Alexander Graham Bell', 'Alice Hoffman', 'Alice Walker', 'Anais Nin', 'Ann Landers', 'Anne Frank', 'Aristotle', 'Arthur Schopenhauer', 'Audrey Hepburn', 'Ayn Rand'],
       'b': ['Babe Ruth', 'Barack Obama', 'Bear Bryant', 'Benjamin Disraeli', 'Benjamin Franklin', 'Bertrand Russell', 'Beth Moore', 'Bill Cosby', 'Bill Gates', 'Billy Graham', 'Blaise Pascal', 'Bob Marley', 'Booker T. Washington', 'Brennan Manning', 'Brené Brown', 'Brian Tracy', 'Bruce Lee', 'Bruce Springsteen', 'Bryant H. McGill', 'Byron Katie'],
@@ -430,7 +436,7 @@
     // Fetch Quotes for Selected Letter
     let quotes = [];
     function loadQuotesForLetter(char) {
-      fetch(`${char}.txt`) // Files are in the same folder as authors.html
+      fetch(`${char}.txt`)
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -440,18 +446,17 @@
         .then(data => {
           const lines = data.split('\n').filter(line => line.trim() !== '');
           quotes = lines.map(line => {
-            const [text, author, category] = line.split('|');
-            return { text, author, category };
+            const [text, author, category, source] = line.split('|');
+            return { text, author, category, source };
           });
           displaySubcategories(authorSubcategories, authors, char);
         })
         .catch(err => {
           console.error('Error fetching quotes:', err);
-          quotesList.innerHTML = '<p style="text-align: center;">Failed to load quotes. Please try again later.</p>';
+          quotesList.innerHTML = '<p style="text-align: center;">Failed to load quotes. Please check if the file exists.</p>';
         });
     }
 
-    // Quotes Display and Filtering
     function displaySubcategories(container, data, char) {
       container.innerHTML = '';
       container.classList.remove('active');
@@ -473,7 +478,7 @@
         displayQuotes(items[0]);
         container.querySelector('.subcategory-btn').classList.add('active');
       } else {
-        quotesList.innerHTML = '<p style="text-align: center;">No authors available.</p>';
+        quotesList.innerHTML = '<p style="text-align: center;">No authors available for this letter.</p>';
       }
     }
 
@@ -490,30 +495,20 @@
           quoteCard.innerHTML = `
             <p>❛ ${quote.text} ❜</p>
             <span>- ${quote.author}</span>
-            <button class="copy-btn" onclick="copyQuote('❛ ${quote.text} ❜ - ${quote.author}')">Copy</button>
-            <button class="share-btn" onclick="shareOnX('❛ ${quote.text} ❜ - ${quote.author}')">𝕩</button>
+            <button class="copy-btn">📋</button>
           `;
           quotesList.appendChild(quoteCard);
         });
+
+        // Add sources section
+        const sourcesDiv = document.createElement('div');
+        sourcesDiv.classList.add('sources');
+        sourcesDiv.innerHTML = '<strong>Sources:</strong><br>' + 
+          filteredQuotes.map(q => `${q.text} - ${q.source}`).join('<br>');
+        quotesList.appendChild(sourcesDiv);
       }
     }
 
-    // Copy Quote Function (with author)
-    function copyQuote(text) {
-      navigator.clipboard.writeText(text).then(() => {
-        alert('Quote and author copied to clipboard!');
-      }).catch(err => {
-        console.error('Failed to copy: ', err);
-      });
-    }
-
-    // Share on X Function
-    function shareOnX(text) {
-      const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
-      window.open(url, '_blank');
-    }
-
-    // Event Listeners for Author Nodes
     const authorNodes = document.querySelectorAll('#author-grid .category-node');
     authorNodes.forEach(node => {
       node.addEventListener('click', () => {
