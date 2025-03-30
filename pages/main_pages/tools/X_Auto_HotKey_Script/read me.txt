@@ -1,0 +1,4 @@
+Install Auto Hotkey on Windows 
+Keep it running
+Run the .ahk script
+Use X on Edge or Chrome browser
