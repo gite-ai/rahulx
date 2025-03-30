@@ -204,7 +204,7 @@
     .quote-card span {
       display: block;
       font-size: 0.9rem;
-      color: #fff; /* Changed to white */
+      color: #fff; /* Author name in white */
       text-align: right;
     }
 
@@ -225,11 +225,12 @@
       color: #fff;
     }
 
-    .quote-card .sources {
+    .sources {
       font-size: 0.8rem;
       color: #ff00cc;
-      margin-top: 10px;
+      margin-top: 20px;
       font-style: italic;
+      grid-column: 1 / -1; /* Span full width */
     }
 
     footer {
@@ -453,7 +454,7 @@
         })
         .catch(err => {
           console.error('Error fetching quotes:', err);
-          quotesList.innerHTML = '<p style="text-align: center;">Failed to load quotes. Please check if the file exists.</p>';
+          quotesList.innerHTML = '<p style="text-align: center;">Failed to load quotes. Please ensure the file exists.</p>';
         });
     }
 
@@ -504,7 +505,7 @@
         const sourcesDiv = document.createElement('div');
         sourcesDiv.classList.add('sources');
         sourcesDiv.innerHTML = '<strong>Sources:</strong><br>' + 
-          filteredQuotes.map(q => `${q.text} - ${q.source}`).join('<br>');
+          filteredQuotes.map(q => `${q.source}`).join('<br>');
         quotesList.appendChild(sourcesDiv);
       }
     }
