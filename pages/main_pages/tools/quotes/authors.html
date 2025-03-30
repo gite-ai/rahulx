@@ -186,8 +186,9 @@
       border: 1px solid #00ffcc;
       border-radius: 10px;
       padding: 15px;
-      position: relative;
+      position: relative; /* For absolute positioning of buttons */
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      min-height: 150px; /* Ensure enough space for buttons */
     }
 
     .quote-card:hover {
@@ -204,11 +205,14 @@
     .quote-card span {
       display: block;
       font-size: 0.9rem;
-      color: #fff; /* Author name in white */
+      color: #fff;
       text-align: right;
+      margin-bottom: 40px; /* Space for buttons */
     }
 
-    .quote-card .copy-btn {
+    .quote-card .copy-btn, .quote-card .share-btn {
+      position: absolute;
+      bottom: 10px;
       background: #00ffcc;
       color: #000;
       border: none;
@@ -217,10 +221,17 @@
       cursor: pointer;
       font-size: 1rem;
       transition: background 0.3s ease;
-      margin-top: 10px;
     }
 
-    .quote-card .copy-btn:hover {
+    .quote-card .copy-btn {
+      right: 50px; /* Positioned to the left of share button */
+    }
+
+    .quote-card .share-btn {
+      right: 10px;
+    }
+
+    .quote-card .copy-btn:hover, .quote-card .share-btn:hover {
       background: #ff00cc;
       color: #fff;
     }
@@ -230,7 +241,7 @@
       color: #ff00cc;
       margin-top: 20px;
       font-style: italic;
-      grid-column: 1 / -1; /* Span full width */
+      grid-column: 1 / -1;
     }
 
     footer {
@@ -326,7 +337,7 @@
       }
       .quote-card p { font-size: 1rem; }
       .quote-card span { font-size: 0.8rem; }
-      .quote-card .copy-btn { padding: 5px; font-size: 0.8rem; }
+      .quote-card .copy-btn, .quote-card .share-btn { padding: 5px; font-size: 0.8rem; }
     }
 
     @media (max-width: 480px) {
@@ -496,7 +507,8 @@
           quoteCard.innerHTML = `
             <p>❛ ${quote.text} ❜</p>
             <span>- ${quote.author}</span>
-            <button class="copy-btn">📋</button>
+            <button class="copy-btn" onclick="copyQuote('❛ ${quote.text} ❜ - ${quote.author}')">⎘</button>
+            <button class="share-btn" onclick="shareOnX('❛ ${quote.text} ❜ - ${quote.author}')">𝕩</button>
           `;
           quotesList.appendChild(quoteCard);
         });
@@ -508,6 +520,24 @@
           filteredQuotes.map(q => `${q.source}`).join('<br>');
         quotesList.appendChild(sourcesDiv);
       }
+    }
+
+    // Copy Quote Function
+    function copyQuote(text) {
+      navigator.clipboard.writeText(text)
+        .then(() => {
+          alert('Quote copied to clipboard!');
+        })
+        .catch(err => {
+          console.error('Failed to copy quote:', err);
+          alert('Failed to copy quote. Please try again.');
+        });
+    }
+
+    // Share on X Function
+    function shareOnX(text) {
+      const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank');
     }
 
     const authorNodes = document.querySelectorAll('#author-grid .category-node');
