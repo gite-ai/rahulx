@@ -1,5 +1,8 @@
-﻿#IfWinActive, ahk_exe msedge.exe  ; Only activate this hotkey when Microsoft Edge is the active window
-$Enter::                         ; Remap the Enter key
-    Send {Enter}                 ; Simulate pressing Enter
+﻿#IfWinActive, ahk_exe msedge.exe
+$Enter::
+    Send {Ctrl down}  ; Ctrl+Enter is a reliable way to post on X
+    Send {Enter}
+    Send {Ctrl up}
+    Sleep 100         ; Small delay to ensure it registers
     Return
-#IfWinActive                     ; End the context-sensitive hotkey
+#IfWinActive
