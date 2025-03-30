@@ -1,13 +1,18 @@
-"Wings are not only for birds; they are also for minds. Human potentialities are limitless.|A.P.J. Abdul Kalam|Inspiration"
-"Let us sacrifice our today so that our children can have a better tomorrow.|A.P.J. Abdul Kalam|Future"
-"Don’t take rest after your first victory because if you fail in second, more lips are waiting to say that your first victory was just luck.|A.P.J. Abdul Kalam|Success"
-"Man needs his difficulties because they are necessary to enjoy success.|A.P.J. Abdul Kalam|Strength"
-"Science is a beautiful gift to humanity; we should not distort it.|A.P.J. Abdul Kalam|Science"
-"Don’t read success stories, you will only get a message. Read failure stories, you will get some ideas to get success.|A.P.J. Abdul Kalam|Learning"
-"Creativity is the key to success in the future, and primary education is where teachers can bring creativity in children at that level.|A.P.J. Abdul Kalam|Education"
 "Dream, dream, dream. Dreams transform into thoughts and thoughts result in action.|A.P.J. Abdul Kalam|Imagination"
-"The best brains of the nation may be found on the last benches of the classroom.|A.P.J. Abdul Kalam|Potential"
-"Excellence is a continuous process and not an accident.|A.P.J. Abdul Kalam|Effort"
+"You have to dream before your dreams can come true.|A.P.J. Abdul Kalam|Dreams"
+"If you want to shine like a sun, first burn like a sun.|A.P.J. Abdul Kalam|Effort"
+"Excellence is a continuous process and not an accident.|A.P.J. Abdul Kalam|Excellence"
+"Failure will never overtake me if my determination to succeed is strong enough.|A.P.J. Abdul Kalam|Determination"
+"Look at the sky. We are not alone. The whole universe is friendly to us and conspires only to give the best to those who dream and work.|A.P.J. Abdul Kalam|Universe"
+"Man needs his difficulties because they are necessary to enjoy success.|A.P.J. Abdul Kalam|Strength"
+"To succeed in your mission, you must have single-minded devotion to your goal.|A.P.J. Abdul Kalam|Success"
+"Don’t take rest after your first victory because if you fail in second, more lips are waiting to say that your first victory was just luck.|A.P.J. Abdul Kalam|Perseverance"
+"Learning gives creativity, creativity leads to thinking, thinking provides knowledge, knowledge makes you great.|A.P.J. Abdul Kalam|Knowledge"
+
+
+
+
+
 "Government is not reason; it is not eloquent; it is force. Like fire, it is a dangerous servant and a fearful master.|Abraham Lincoln|Power"
 "Whatever you are, be a good one.|Abraham Lincoln|Excellence"
 "Don’t interfere with anything in the Constitution. That must be maintained, for it is the only safeguard of our liberties.|Abraham Lincoln|Freedom"
@@ -18,7 +23,11 @@
 "I destroy my enemies when I make them my friends.|Abraham Lincoln|Relationships"
 "Four score and seven years ago our fathers brought forth on this continent a new nation, conceived in liberty, and dedicated to the proposition that all men are created equal.|Abraham Lincoln|Equality"
 "Character is like a tree and reputation like a shadow. The shadow is what we think of it; the tree is the real thing.|Abraham Lincoln|Integrity"
-"Every man’s happiness is his own responsibility.|Abraham Lincoln|Happiness"
+
+
+
+
+
 "There is only one good, knowledge, and one evil, ignorance.|Abu Bakr|Knowledge"
 "Do not follow vain desires; for verily he who prospers is preserved from lust, greed and anger.|Abu Bakr|Wisdom"
 "The greatest truth is honesty, and the greatest falsehood is dishonesty.|Abu Bakr|Truth"
@@ -28,6 +37,12 @@
 "He who avoids complaint invites happiness.|Abu Bakr|Happiness"
 "The more knowledge you have, the greater will be your fear of Allah.|Abu Bakr|Wisdom"
 "Pride in the case of a rich man is bad, but pride in the case of a poor man is worse.|Abu Bakr|Humility"
+"Run away from greatness and greatness will follow you.|Abu Bakr|Humility"
+
+
+
+
+
 "Reason has always existed, but not always in a reasonable form.|Al-Ghazali|Reason"
 "Knowledge without action is wastefulness and action without knowledge is foolishness.|Al-Ghazali|Knowledge"
 "The tongue is a small thing, but what issues from it is enormous.|Al-Ghazali|Words"
@@ -37,6 +52,42 @@
 "Declare your jihad on thirteen enemies you cannot see—egoism, arrogance, conceit, selfishness, greed, lust, intolerance, anger, lying, cheating, gossiping and slandering.|Al-Ghazali|Virtue"
 "If the first inward thought is not warded off, it will generate a desire, then the desire will generate a wish, and the wish will generate an intention, and the intention will generate an action.|Al-Ghazali|Mindfulness"
 "The happiness of the drop is to die in the river.|Al-Ghazali|Unity"
+"Know that the life of this world is only play and amusement, pomp and mutual boasting among you, and rivalry in respect of wealth and children.|Al-Ghazali|Life"
+
+
+
+
+
+"There are no secrets to success. It is the result of preparation, hard work, and learning from failure.|Alan Cohen|Success"
+"Scared and sacred are spelled with the same letters. Awful proceeds from the same root word as awesome. Terrify and terrific. Every negative experience holds the seed of transformation.|Alan Cohen|Transformation"
+"Do not wait until the conditions are perfect to begin. Beginning makes the conditions perfect.|Alan Cohen|Action"
+"Everything will line up perfectly when knowing and living the truth becomes more important than looking good.|Alan Cohen|Truth"
+"The same source that gave you the dream, will give you the means to fulfill it, if you are willing to release your doubt and take action.|Alan Cohen|Dreams"
+"You can only see in others what you see in yourself.|Alan Cohen|Perception"
+"To change your life, change your mind about what is possible.|Alan Cohen|Change"
+"Appreciation is the highest form of prayer, for it acknowledges the presence of good wherever you shine the light of your thankful thoughts.|Alan Cohen|Appreciation"
+"The more you recognize the immensity of your own potential, the more you can accomplish.|Alan Cohen|Potential"
+"Personal growth is not a matter of learning new information but of unlearning old limits.|Alan Cohen|Growth"
+
+
+
+
+
+"Trying to define yourself is like trying to bite your own teeth.|Alan Watts|Identity"
+"Man suffers only because he takes seriously what the gods made for fun.|Alan Watts|Life"
+"We seldom realize, for example, that our most private thoughts and emotions are not actually our own. For we think in terms of languages and images which we did not invent, but which were given to us by our society.|Alan Watts|Mind"
+"The only way to make sense out of change is to plunge into it, move with it, and join the dance.|Alan Watts|Change"
+"To have faith is to trust yourself to the water. When you swim you don’t grab hold of the water, because if you do you will sink and drown. Instead you relax, and float.|Alan Watts|Faith"
+"No valid plans for the future can be made by those who have no capacity for living now.|Alan Watts|Present"
+"The meaning of life is just to be alive. It is so plain and so obvious and so simple. And yet, everybody rushes around in a great panic as if it were necessary to achieve something beyond themselves.|Alan Watts|Life"
+"You are that vast thing that you see far, far off with great telescopes.|Alan Watts|Universe"
+"This is the real secret of life—to be completely engaged with what you are doing in the here and now. And instead of calling it work, realize it is play.|Alan Watts|Joy"
+"Muddy water is best cleared by leaving it alone.|Alan Watts|Patience"
+
+
+
+
+
 "Man is condemned to be free; because once thrown into the world, he is responsible for everything he does.|Albert Camus|Freedom"
 "In the depth of winter, I finally learned that within me there lay an invincible summer.|Albert Camus|Resilience"
 "The only way to deal with an unfree world is to become so absolutely free that your very existence is an act of rebellion.|Albert Camus|Freedom"
@@ -47,6 +98,11 @@
 "You will never be happy if you continue to search for what happiness consists of.|Albert Camus|Happiness"
 "The struggle itself toward the heights is enough to fill a man’s heart. One must imagine Sisyphus happy.|Albert Camus|Effort"
 "Life is the sum of all your choices.|Albert Camus|Life"
+
+
+
+
+
 "Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world.|Albert Einstein|Imagination"
 "Life is like riding a bicycle. To keep your balance, you must keep moving.|Albert Einstein|Life"
 "I have no special talents. I am only passionately curious.|Albert Einstein|Curiosity"
@@ -57,6 +113,11 @@
 "The world is a dangerous place to live, not because of the people who are evil, but because of the people who don’t do anything about it.|Albert Einstein|Responsibility"
 "Anyone who has never made a mistake has never tried anything new.|Albert Einstein|Effort"
 "Peace cannot be kept by force; it can only be achieved by understanding.|Albert Einstein|Peace"
+
+
+
+
+
 "Compassion, not knowledge alone, is what heals.|Albert Schweitzer|Compassion"
 "The only thing of importance, when we depart, will be the traces of love we have left behind.|Albert Schweitzer|Love"
 "Success is not the key to happiness. Happiness is the key to success.|Albert Schweitzer|Happiness"
@@ -67,6 +128,11 @@
 "Example is not the main thing in influencing others. It is the only thing.|Albert Schweitzer|Leadership"
 "Until he extends his circle of compassion to all living things, man will not himself find peace.|Albert Schweitzer|Peace"
 "Happiness is nothing more than good health and a bad memory.|Albert Schweitzer|Happiness"
+
+
+
+
+
 "Man can hardly even recognize the devils of his own creation.|Aldous Huxley|Technology"
 "Technological progress has merely provided us with more efficient means for going backwards.|Aldous Huxley|Technology"
 "Words can be like X-rays if you use them properly—they’ll go through anything.|Aldous Huxley|Words"
@@ -77,6 +143,11 @@
 "Experience is not what happens to a man; it is what a man does with what happens to him.|Aldous Huxley|Experience"
 "Every man’s memory is his private literature.|Aldous Huxley|Memory"
 "The secret of genius is to carry the spirit of the child into old age, which means never losing your enthusiasm.|Aldous Huxley|Creativity"
+
+
+
+
+
 "Opportunity is missed by most people because it is dressed in overalls and looks like work.|Alexander Graham Bell|Opportunity"
 "Before anything else, preparation is the key to success.|Alexander Graham Bell|Success"
 "The most successful men in the end are those whose success is the result of steady accretion.|Alexander Graham Bell|Success"
@@ -87,6 +158,11 @@
 "What this power is I cannot say; all I know is that it exists.|Alexander Graham Bell|Mystery"
 "Sometimes we stare so long at a door that is closing that we see too late the one that is open.|Alexander Graham Bell|Change"
 "The inventor looks upon the world and is not contented with things as they are.|Alexander Graham Bell|Innovation"
+
+
+
+
+
 "Writing a novel is a terrible experience, during which the hair often falls out and the teeth decay.|Alice Hoffman|Writing"
 "Books may well be the only true magic.|Alice Hoffman|Books"
 "Every problem has a solution, although it may not be the outcome that was originally hoped for or expected.|Alice Hoffman|Problem-Solving"
@@ -97,6 +173,11 @@
 "The sky is full of stories waiting to be told.|Alice Hoffman|Imagination"
 "No one knows you like a person with whom you’ve shared a childhood.|Alice Hoffman|Relationships"
 "Every fairy tale had a bloody lining. Every one had teeth and claws.|Alice Hoffman|Stories"
+
+
+
+
+
 "The arc of the moral universe is long, but it bends toward justice.|Alice Walker|Justice"
 "The most common way people give up their power is by thinking they don’t have any.|Alice Walker|Power"
 "Time moves slowly, but passes quickly.|Alice Walker|Time"
@@ -107,6 +188,11 @@
 "Writing saved me from the sin and inconvenience of violence.|Alice Walker|Writing"
 "Expect nothing. Live frugally on surprise.|Alice Walker|Life"
 "Look closely at the present you are constructing: it should look like the future you are dreaming.|Alice Walker|Future"
+
+
+
+
+
 "We write to taste life twice, in the moment and in retrospect.|Anais Nin|Writing"
 "Life shrinks or expands in proportion to one’s courage.|Anais Nin|Courage"
 "The possession of knowledge does not kill the sense of wonder and mystery. There is always more mystery.|Anais Nin|Mystery"
@@ -117,6 +203,11 @@
 "We don’t see things as they are, we see them as we are.|Anais Nin|Perception"
 "Life is a process of becoming, a combination of states we have to go through.|Anais Nin|Life"
 "There are many ways to be free. One of them is to transcend reality by imagination, as I try to do.|Anais Nin|Imagination"
+
+
+
+
+
 "Never doubt that a small group of thoughtful, committed citizens can change the world; indeed, it’s the only thing that ever has.|Ann Landers|Change"
 "Maturity is the ability to do a job whether or not you are supervised, to carry money without spending it, and to bear an injustice without wanting to get even.|Ann Landers|Maturity"
 "Opportunities are usually disguised as hard work, so most people don’t recognize them.|Ann Landers|Opportunity"
@@ -127,6 +218,11 @@
 "Some people believe holding on and hanging in there are signs of great strength. However, there are times when it takes much more strength to know when to let go.|Ann Landers|Strength"
 "Keep in mind that the true measure of an individual is how he treats a person who can do him absolutely no good.|Ann Landers|Character"
 "The poor wish to be rich, the rich wish to be happy, the single wish to be married, and the married wish to be dead.|Ann Landers|Happiness"
+
+
+
+
+
 "Life is what happens to you while you’re busy making other plans.|Anne Frank|Life"
 "How wonderful it is that nobody need wait a single moment before starting to improve the world.|Anne Frank|Change"
 "I don’t think of all the misery, but of the beauty that still remains.|Anne Frank|Beauty"
@@ -137,6 +233,11 @@
 "I must uphold my ideals, for perhaps the time will come when I shall be able to carry them out.|Anne Frank|Ideals"
 "In spite of everything, I still believe that people are really good at heart.|Anne Frank|Humanity"
 "No one has ever become poor by giving.|Anne Frank|Generosity"
+
+
+
+
+
 "Anybody can sympathize with the sufferings of a friend, but it requires a very fine nature to sympathize with a friend’s success.|Aristotle|Friendship"
 "Excellence is never an accident. It is always the result of high intention, sincere effort, and intelligent execution.|Aristotle|Excellence"
 "The educated differ from the uneducated as much as the living differ from the dead.|Aristotle|Education"
@@ -147,6 +248,11 @@
 "To avoid criticism say nothing, do nothing, be nothing.|Aristotle|Criticism"
 "Man is by nature a political animal.|Aristotle|Humanity"
 "The roots of education are bitter, but the fruit is sweet.|Aristotle|Education"
+
+
+
+
+
 "All paid jobs absorb and degrade the mind.|Arthur Schopenhauer|Work"
 "Talent hits a target no one else can hit; genius hits a target no one else can see.|Arthur Schopenhauer|Genius"
 "The two enemies of human happiness are pain and boredom.|Arthur Schopenhauer|Happiness"
@@ -157,6 +263,11 @@
 "The greatest of follies is to sacrifice health for any other kind of happiness.|Arthur Schopenhauer|Health"
 "Almost all of our sorrows spring out of our relations with other people.|Arthur Schopenhauer|Relationships"
 "The world is my idea.|Arthur Schopenhauer|Perception"
+
+
+
+
+
 "Success is not final, failure is not fatal: it is the courage to continue that counts.|Audrey Hepburn|Courage"
 "Nothing is impossible, the word itself says ‘I’m possible’!|Audrey Hepburn|Possibility"
 "The most important thing is to enjoy your life—to be happy—it’s all that matters.|Audrey Hepburn|Happiness"
@@ -167,6 +278,11 @@
 "Let’s face it, a nice creamy chocolate cake does a lot for a lot of people; it does for me.|Audrey Hepburn|Joy"
 "I don’t want to be alone, I want to be left alone.|Audrey Hepburn|Solitude"
 "The best thing to hold onto in life is each other.|Audrey Hepburn|Relationships"
+
+
+
+
+
 "Capital is money, capital is commodities. By virtue of it being value, it has acquired the occult ability to add value to itself.|Ayn Rand|Capitalism"
 "The question isn’t who is going to let me; it’s who is going to stop me.|Ayn Rand|Determination"
 "The smallest minority on earth is the individual. Those who deny individual rights cannot claim to be defenders of minorities.|Ayn Rand|Individualism"
