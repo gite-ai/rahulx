@@ -108,6 +108,11 @@
       box-shadow: 0 0 30px rgba(0, 255, 204, 0.8);
     }
 
+    /* Animation Classes */
+    .reveal-animation {
+      animation: zoomIn 0.5s ease-out forwards, shake 0.5s ease 0.5s, bounce 1s ease-in-out infinite 1s;
+    }
+
     /* Sci-Fi Background */
     .sci-fi-bg {
       position: fixed;
@@ -136,11 +141,29 @@
       100% { background-position: 1000px 1000px; }
     }
 
+    @keyframes zoomIn {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-10px); }
+      50% { transform: translateX(10px); }
+      75% { transform: translateX(-5px); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       header h1 { font-size: 2rem; }
       header p { font-size: 1rem; }
       .portal-form { padding: 20px; }
+      .fool-image { max-width: 90%; }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
@@ -171,9 +194,10 @@
       const form = document.getElementById('portalForm');
       const image = document.getElementById('foolImage');
       
-      // Hide form and show image
+      // Hide form and show image with animation
       form.style.display = 'none';
       image.style.display = 'block';
+      image.classList.add('reveal-animation');
     }
   </script>
 </body>
