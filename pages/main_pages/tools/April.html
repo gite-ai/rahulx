@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahulx.com - April Fool's Portal</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      color: #00ffcc;
+      overflow-x: hidden;
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    h1, h2 {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+    }
+
+    /* Header */
+    header {
+      background: radial-gradient(circle, #001f3f, #000);
+      color: #00ffcc;
+      padding: 40px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      text-transform: uppercase;
+      animation: glow 2s infinite alternate;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      opacity: 0.8;
+      animation: float 3s ease-in-out infinite;
+      font-weight: 300;
+    }
+
+    /* Main Container */
+    .container {
+      width: 90%;
+      max-width: 600px;
+      margin: 40px auto;
+      text-align: center;
+    }
+
+    .portal-form {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+    }
+
+    .portal-form input {
+      width: 80%;
+      padding: 10px;
+      margin: 20px 0;
+      background: #001f3f;
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      color: #00ffcc;
+      font-size: 1.1rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .portal-form button {
+      background: linear-gradient(135deg, #00ffcc, #0099cc);
+      color: #000;
+      padding: 10px 30px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .portal-form button:hover {
+      transform: scale(1.05);
+    }
+
+    /* Fool's Image */
+    .fool-image {
+      display: none;
+      max-width: 100%;
+      border: 2px solid #00ffcc;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 0 30px rgba(0, 255, 204, 0.8);
+    }
+
+    /* Sci-Fi Background */
+    .sci-fi-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle, #001f3f, #000);
+      animation: stars 10s infinite linear;
+    }
+
+    /* Animations */
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
+      100% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes stars {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      header p { font-size: 1rem; }
+      .portal-form { padding: 20px; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Sci-Fi Background -->
+  <div class="sci-fi-bg"></div>
+
+  <!-- Header -->
+  <header>
+    <h1>Secret Portal Access</h1>
+    <p>Enter your username to unlock exclusive sci-fi content!</p>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="portal-form" id="portalForm">
+      <h2>Enter Username</h2>
+      <input type="text" id="username" placeholder="Your Username" required>
+      <button onclick="activatePortal()">Activate Portal</button>
+    </div>
+    <img src="https://i.imgur.com/5Z5Y5kG.png" alt="Happy April Fool's Day" class="fool-image" id="foolImage">
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function activatePortal() {
+      const form = document.getElementById('portalForm');
+      const image = document.getElementById('foolImage');
+      
+      // Hide form and show image
+      form.style.display = 'none';
+      image.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
