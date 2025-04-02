@@ -2,3 +2,59 @@ Install Auto Hotkey on Windows
 Keep it running
 Run the .ahk script
 Use X on Edge or Chrome browser
+
+
+ALL FILTER FOR X
+
+X (Twitter) provides several search filters that you can use to refine your search results. These filters are typically applied by adding specific operators to your search query in the X search bar. While X doesn’t publish an exhaustive official list of all filters, based on its functionality and common usage, here are the known filters available as of April 3, 2025, along with their purposes:
+Standard Search Filters
+These are widely used operators you can append to your search terms:
+filter:follows – Shows posts only from accounts you follow.
+-filter:replies – Excludes replies from the results, showing only original posts.
+-filter:nativeretweets – Excludes retweets, displaying only original posts.
+filter:media – Shows only posts that contain media (images, videos, GIFs, etc.).
+-filter:media – Excludes posts with media, showing only text-based posts.
+filter:images – Limits results to posts with images.
+-filter:images – Excludes posts with images.
+filter:videos – Shows only posts with videos.
+-filter:videos – Excludes posts with videos.
+filter:links – Shows only posts containing links.
+-filter:links – Excludes posts with links.
+filter:news – Shows posts from news sources or containing news links.
+-filter:news – Excludes news-related posts.
+filter:verified – Limits results to posts from verified (blue check) accounts.
+-filter:verified – Excludes posts from verified accounts.
+filter:safe – Shows posts deemed "safe" (excludes sensitive content).
+-filter:safe – Excludes "safe" posts, potentially showing more sensitive content.
+Advanced Search Filters
+These can be used in the search bar or accessed via the Advanced Search interface (available on the web by clicking the three-dot menu next to the search bar after entering a query):
+from:username – Shows posts from a specific user (e.g., from:elonmusk).
+to:username – Shows posts directed to a specific user (e.g., to:elonmusk).
+@username – Shows posts mentioning a specific user.
+since:YYYY-MM-DD – Shows posts after a specific date (e.g., since:2024-01-01).
+until:YYYY-MM-DD – Shows posts before a specific date (e.g., until:2024-12-31).
+"exact phrase" – Searches for an exact phrase (e.g., "artificial intelligence").
+-word – Excludes posts containing a specific word (e.g., -spam).
+#hashtag – Shows posts with a specific hashtag (e.g., #AI).
+lang:code – Filters by language using two-letter codes (e.g., lang:en for English, lang:es for Spanish).
+Premium Filters (X Premium Features)
+X has introduced additional search filters for Premium subscribers, initially rolled out to iOS users in early 2024. These are accessible via the search interface for paying users and may expand to all users over time:
+Date Range: Sort posts by specific dates (beyond since and until, with a more precise UI).
+Location: Filter posts by geographic location (e.g., near a city or region).
+Post Activity: Sort by engagement metrics (e.g., likes, retweets).
+Language: More granular language filtering (beyond lang:).
+Verified Accounts Only: Restrict results to verified accounts (similar to filter:verified, but integrated into the Premium UI).
+Content and Safety Filters
+These are more about controlling what you see rather than search-specific, but they can influence search results:
+filter:quality – Prioritizes higher-quality content (algorithmically determined).
+-filter:sensitive – Attempts to exclude sensitive or explicit content (effectiveness varies).
+Muted Words – You can mute specific words or phrases via Settings > Privacy and Safety > Muted > Muted Words, which filters them out of your timeline and search results.
+How to Use Filters
+In the Search Bar: Type your query followed by the filter (e.g., AI filter:media -filter:replies to find media posts about AI that aren’t replies).
+Advanced Search: On the web, enter a query, click the three-dot menu, and select "Advanced Search" to use a form-based interface for some of these filters.
+Combine Filters: You can stack multiple filters (e.g., filter:follows -filter:media -filter:replies to see only text posts from people you follow, excluding replies).
+Notes
+Availability: Some filters (like Premium ones) may not be available to all users yet, depending on your subscription status or platform (web, iOS, Android).
+Effectiveness: Filters like -filter:sensitive or filter:safe rely on X’s algorithms and may not catch everything.
+Undocumented Filters: X doesn’t always document every filter, so some may exist experimentally or be discovered by users over time.
+This list covers the known filters based on X’s current functionality as of April 3, 2025. If you’re looking for something specific or want to test a combination, let me know, and I can help refine it!
