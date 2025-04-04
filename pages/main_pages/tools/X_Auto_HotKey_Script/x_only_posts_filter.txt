@@ -1,1 +1,2 @@
-filter:follows -filter:replies -filter:nativeretweets
+filter:follows -filter:replies -filter:nativeretweets  see only posts from followers
+filter:follows -filter:replies -filter:nativeretweets -filter:quote see only posts from people you follow
