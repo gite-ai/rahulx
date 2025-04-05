@@ -2,4 +2,9 @@ filter:follows -filter:replies -filter:nativeretweets  see only posts from follo
 filter:follows -filter:replies -filter:nativeretweets -filter:quote see only posts from people you follow
 
 
-filter:follows -filter:replies -filter:nativeretweets -filter:quotes "good night" see posts with good night only
+filter:follows -filter:replies -filter:nativeretweets -filter:quotes "good night" OR "sweet dreams" OR "sleep well" OR "gn")
+ see posts with good night only
+ 
+ 
+ 
+ filter:follows -filter:replies -filter:nativeretweets -filter:quotes -filter:media "good night" OR "or" OR "grinding" OR "good morning" OR "good afternoon" OR "GN" "GM" OR "GA" "family" OR "Fam" "x" 
