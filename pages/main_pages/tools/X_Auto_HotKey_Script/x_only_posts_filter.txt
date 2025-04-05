@@ -7,4 +7,4 @@ filter:follows -filter:replies -filter:nativeretweets -filter:quotes "good night
  
  
  
- filter:follows -filter:replies -filter:nativeretweets -filter:quotes -filter:media "good night" OR "or" OR "grinding" OR "good morning" OR "good afternoon" OR "GN" OR "GM" OR "GA" OR "family" OR "Fam" OR "x" 
+ filter:follows -filter:replies -filter:nativeretweets -filter:quotes filter:media "good night" OR "or" OR "grinding" OR "good morning" OR "good afternoon" OR "GN" OR "GM" OR "GA" OR "family" OR "Fam" OR "x"  OR "are you on" OR "Do you" OR "When do" OR "What do"
