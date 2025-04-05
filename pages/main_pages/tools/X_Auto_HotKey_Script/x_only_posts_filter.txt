@@ -1,2 +1,5 @@
 filter:follows -filter:replies -filter:nativeretweets  see only posts from followers
 filter:follows -filter:replies -filter:nativeretweets -filter:quote see only posts from people you follow
+
+
+filter:follows -filter:replies -filter:nativeretweets -filter:quotes "good night" see posts with good night only
