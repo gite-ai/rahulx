@@ -395,7 +395,7 @@
       <a href="https://www.rahulx.com/about">About</a>
       <a href="/tools.html">Tools</a>
       <a href="https://www.x.com/gite_ai">Contact</a>
-    </nav rob">
+    </nav>
 
     <div class="container">
       <div class="tool-section">
@@ -464,61 +464,33 @@
 
       function splitTextIntoPosts(text) {
         const posts = [];
-
-        // Pattern for numbered sections (e.g., "1/", "2/")
-        const numberPattern = /(\d+\/\s*)/g;
-        let numberMatches = [];
+        const pattern = /(\d+\/\s*)/g; // Match the start of each numbered section (e.g., "1/", "2/")
+        let matches = [];
         let match;
 
-        // Collect all numbered section matches
-        while ((match = numberPattern.exec(text)) !== null) {
-          numberMatches.push({
+        // Collect all matches (start of numbered sections)
+        while ((match = pattern.exec(text)) !== null) {
+          matches.push({
             index: match.index,
             number: match[1].trim()
           });
         }
 
-        // Pattern for new format: Bold Unicode title (e.g., "𝚂𝚃𝚁𝙰𝙽𝙶𝙴𝚁 𝚃𝙷𝙸𝙽𝙶𝚂") followed by details
-        const unicodePattern = /([𝙰-𝚉\s]+)\n/g; // Matches bold Unicode titles (A-Z with spaces) followed by newline
-        let unicodeMatches = [];
-        let unicodeMatch;
-
-        while ((unicodeMatch = unicodePattern.exec(text)) !== null) {
-          unicodeMatches.push({
-            index: unicodeMatch.index,
-            title: unicodeMatch[1].trim()
-          });
-        }
-
-        // If numbered sections are found, process them (original functionality)
-        if (numberMatches.length > 0) {
-          for (let i = 0; i < numberMatches.length; i++) {
-            const currentMatch = numberMatches[i];
-            const nextMatch = numberMatches[i + 1];
-            const postStart = currentMatch.index;
-            const postEnd = nextMatch ? nextMatch.index : text.length;
-            const postText = text.substring(postStart, postEnd).trim();
-            if (postText) {
-              posts.push(postText);
-            }
-          }
-        }
-        // If Unicode bold titles are found, process them (new functionality)
-        else if (unicodeMatches.length > 0) {
-          for (let i = 0; i < unicodeMatches.length; i++) {
-            const currentMatch = unicodeMatches[i];
-            const nextMatch = unicodeMatches[i + 1];
-            const postStart = currentMatch.index;
-            const postEnd = nextMatch ? nextMatch.index : text.length;
-            const postText = text.substring(postStart, postEnd).trim();
-            if (postText) {
-              posts.push(postText);
-            }
-          }
-        }
-        // If no patterns match, treat the whole text as one post
-        else {
+        // If no numbered sections found, treat the whole text as one post
+        if (matches.length === 0) {
           posts.push(text.trim());
+        } else {
+          // Process each numbered section
+          for (let i = 0; i < matches.length; i++) {
+            const currentMatch = matches[i];
+            const nextMatch = matches[i + 1];
+            const postStart = currentMatch.index;
+            const postEnd = nextMatch ? nextMatch.index : text.length;
+            const postText = text.substring(postStart, postEnd).trim();
+            if (postText) {
+              posts.push(postText);
+            }
+          }
         }
 
         // Add thread numbering (e.g., "(1/7)")
