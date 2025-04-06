@@ -1,550 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thread Splitter for X - Rahulx.com</title>
-  <style>
-    /* Previous CSS remains unchanged */
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #0a0a0a;
-      color: #00ffcc;
-      overflow-x: hidden;
-      font-size: 16px;
-      line-height: 1.6;
-      font-weight: 400;
-    }
-
-    h1, h2, h3 {
-      font-family: 'Montserrat', sans-serif;
-      margin: 0;
-      font-weight: 700;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 500;
-    }
-
-    header {
-      position: relative;
-      background: radial-gradient(circle, #001f3f, #000);
-      color: #00ffcc;
-      padding: 40px 0;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    header h1 {
-      font-size: 2.8rem;
-      text-transform: uppercase;
-      animation: glow 2s infinite alternate;
-      letter-spacing: 2px;
-    }
-
-    header p {
-      font-size: 1.3rem;
-      opacity: 0.8;
-      animation: float 3s ease-in-out infinite;
-      font-weight: 300;
-    }
-
-    .datetime-box {
-      margin: 20px auto;
-      padding: 10px;
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid #00ffcc;
-      border-radius: 5px;
-      width: 200px;
-      text-align: center;
-      font-size: 1rem;
-    }
-
-    .datetime-box .datetime {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .menu-icon {
-      display: none;
-      font-size: 2rem;
-      cursor: pointer;
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-      color: #00ffcc;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 15px 0;
-      backdrop-filter: blur(10px);
-    }
-
-    nav a {
-      color: #00ffcc;
-      margin: 0 20px;
-      font-size: 1.1rem;
-      transition: color 0.3s ease;
-      font-weight: 500;
-    }
-
-    nav a:hover {
-      color: #ff00cc;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 40px auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .tool-section {
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid #00ffcc;
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .tool-section h2 {
-      font-size: 2rem;
-      color: #00ffcc;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 20px;
-      animation: glow 2s infinite alternate;
-    }
-
-    .tool-section textarea {
-      width: 100%;
-      max-width: 600px;
-      height: 150px;
-      background: #1a1a1a;
-      border: 1px solid #00ffcc;
-      border-radius: 5px;
-      padding: 15px;
-      color: #00ffcc;
-      font-family: 'Poppins', sans-serif;
-      font-size: 1rem;
-      resize: vertical;
-      outline: none;
-      transition: border-color 0.3s ease;
-    }
-
-    .tool-section textarea:focus {
-      border-color: #ff00cc;
-    }
-
-    .split-btn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: linear-gradient(135deg, #ff4500, #ff8c00);
-      border: none;
-      border-radius: 5px;
-      color: #000;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .split-btn:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px rgba(255, 69, 0, 0.6);
-    }
-
-    .posts-container {
-      margin-top: 20px;
-      text-align: left;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .post-item {
-      background: rgba(0, 0, 0, 0.8);
-      border: 1px solid #00ffcc;
-      border-radius: 5px;
-      padding: 15px;
-      margin-bottom: 15px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .post-text {
-      color: #00ffcc;
-      font-size: 1rem;
-      word-wrap: break-word;
-    }
-
-    .post-meta {
-      font-size: 0.9rem;
-      color: #ff00cc;
-    }
-
-    .post-meta.warning {
-      color: #ff4500;
-    }
-
-    .copy-btn {
-      padding: 8px 15px;
-      background: linear-gradient(135deg, #00ffcc, #0099cc);
-      border: none;
-      border-radius: 5px;
-      color: #000;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      align-self: flex-end;
-    }
-
-    .copy-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
-    }
-
-    .copy-all-btn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: linear-gradient(135deg, #00ccff, #0066cc);
-      border: none;
-      border-radius: 5px;
-      color: #000;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .copy-all-btn:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px rgba(0, 204, 255, 0.6);
-    }
-
-    .back-link {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: linear-gradient(135deg, #00ffcc, #0099cc);
-      border-radius: 5px;
-      color: #000;
-      font-weight: 600;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .back-link:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px rgba(0, 255, 204, 0.6);
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      header p {
-        font-size: 1rem;
-      }
-
-      .menu-icon {
-        display: block;
-      }
-
-      nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        height: 100vh;
-        width: 250px;
-        flex-direction: column;
-        background: rgba(0, 0, 0, 0.9);
-        backdrop-filter: blur(10px);
-        transition: right 0.3s ease;
-        z-index: 999;
-      }
-
-      nav.active {
-        right: 0;
-      }
-
-      nav a {
-        margin: 15px 0;
-        padding: 10px 20px;
-        border-bottom: 1px solid rgba(0, 255, 204, 0.2);
-      }
-
-      .datetime-box {
-        width: 90%;
-        font-size: 0.9rem;
-      }
-
-      .tool-section h2 {
-        font-size: 1.5rem;
-      }
-
-      .tool-section textarea {
-        width: 100%;
-        height: 100px;
-      }
-
-      .split-btn {
-        padding: 8px 16px;
-        font-size: 0.9rem;
-      }
-
-      .post-item {
-        padding: 10px;
-      }
-
-      .post-text {
-        font-size: 0.9rem;
-      }
-
-      .copy-btn {
-        padding: 6px 12px;
-        font-size: 0.8rem;
-      }
-    }
-
-    footer {
-      background: #000;
-      color: #00ffcc;
-      text-align: center;
-      padding: 20px 0;
-      margin-top: 60px;
-      position: relative;
-      z-index: 1;
-    }
-
-    footer p {
-      margin: 0;
-      font-size: 1.1rem;
-      font-weight: 300;
-    }
-
-    footer a {
-      color: #ff00cc;
-      font-weight: 500;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    @keyframes glow {
-      0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
-      100% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    .sci-fi-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: radial-gradient(circle, #001f3f, #000);
-      animation: stars 10s infinite linear;
-    }
-
-    @keyframes stars {
-      0% { background-position: 0 0; }
-      100% { background-position: 1000px 1000px; }
-    }
-  </style>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thread Splitter for X - Rahulx.com</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        body{font-family:Poppins,sans-serif;margin:0;padding:0;background:#0a0a0a;color:#00ffcc;overflow-x:hidden;font-size:16px;line-height:1.6}
+        h1,h2,h3{font-family:Montserrat,sans-serif;font-weight:700;margin:0}
+        a{text-decoration:none;color:inherit;font-family:Poppins,sans-serif;font-weight:500}
+        header{position:relative;background:radial-gradient(circle,#001f3f,#000);color:#00ffcc;padding:40px 0;text-align:center}
+        header h1{font-size:2.8rem;text-transform:uppercase;animation:glow 2s infinite alternate;letter-spacing:2px}
+        header p{font-size:1.3rem;opacity:.8;animation:float 3s ease-in-out infinite;font-weight:300}
+        .datetime-box{margin:20px auto;padding:10px;background:rgba(0,0,0,.6);border:1px solid #00ffcc;border-radius:5px;width:200px;text-align:center}
+        .datetime{display:flex;flex-direction:column;gap:5px}
+        .menu-icon{display:none;font-size:2rem;cursor:pointer;position:fixed;top:20px;right:20px;z-index:1000;color:#00ffcc}
+        nav{display:flex;justify-content:center;background:rgba(0,0,0,.8);padding:15px 0;backdrop-filter:blur(10px)}
+        nav a{color:#00ffcc;margin:0 20px;font-size:1.1rem;transition:color .3s ease;font-weight:500}
+        nav a:hover{color:#ff00cc}
+        .container{width:90%;max-width:1200px;margin:40px auto;position:relative;z-index:1}
+        .tool-section{background:rgba(0,0,0,.6);border:1px solid #00ffcc;border-radius:10px;padding:20px;text-align:center;margin-bottom:40px}
+        .tool-section h2{font-size:2rem;color:#00ffcc;text-transform:uppercase;letter-spacing:1px;margin-bottom:20px;animation:glow 2s infinite alternate}
+        .tool-section input,.tool-section textarea{width:100%;max-width:600px;background:#1a1a1a;border:1px solid #00ffcc;border-radius:5px;padding:15px;color:#00ffcc;font-family:Poppins,sans-serif;font-size:1rem;outline:none;transition:border-color .3s ease}
+        .tool-section input{height:40px}
+        .tool-section textarea{height:150px;resize:vertical}
+        .tool-section input:focus,.tool-section textarea:focus{border-color:#ff00cc}
+        .generate-btn,.split-btn,.option-btn{margin-top:20px;padding:10px 20px;background:linear-gradient(135deg,#ff4500,#ff8c00);border:none;border-radius:5px;color:#000;font-family:Montserrat,sans-serif;font-size:1rem;font-weight:600;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease}
+        .option-btn{margin-left:10px;padding:8px 16px;font-size:.9rem;background:linear-gradient(135deg,#00ccff,#0066cc)}
+        .option-btn.active{background:linear-gradient(135deg,#ff00cc,#cc00ff)}
+        .generate-btn:hover,.split-btn:hover,.option-btn:hover{transform:translateY(-5px)}
+        .generate-btn:hover,.split-btn:hover{box-shadow:0 0 15px rgba(255,69,0,.6)}
+        .option-btn:hover{box-shadow:0 0 15px rgba(0,204,255,.6)}
+        .posts-container{margin-top:20px;text-align:left;max-width:600px;margin-left:auto;margin-right:auto}
+        .post-item{background:rgba(0,0,0,.8);border:1px solid #00ffcc;border-radius:5px;padding:15px;margin-bottom:15px;display:flex;flex-direction:column;gap:10px}
+        .post-text{color:#00ffcc;font-size:1rem;word-wrap:break-word}
+        .post-meta{font-size:.9rem;color:#ff00cc}
+        .post-meta.warning{color:#ff4500}
+        .note{font-size:.9rem;color:#ff00cc;margin-top:10px}
+        .copy-btn,.copy-all-btn,.back-link{padding:8px 15px;background:linear-gradient(135deg,#00ffcc,#0099cc);border:none;border-radius:5px;color:#000;font-family:Montserrat,sans-serif;font-weight:600;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease}
+        .copy-btn{font-size:.9rem;align-self:flex-end}
+        .copy-btn:hover{transform:translateY(-3px);box-shadow:0 0 10px rgba(0,255,204,.6)}
+        .copy-all-btn{margin-top:20px;padding:10px 20px;font-size:1rem;background:linear-gradient(135deg,#00ccff,#0066cc)}
+        .copy-all-btn:hover,.back-link:hover{transform:translateY(-5px);box-shadow:0 0 15px rgba(0,255,204,.6)}
+        .back-link{display:inline-block;margin-top:20px}
+        @media (max-width:768px){
+            header h1{font-size:2rem}
+            header p{font-size:1rem}
+            .menu-icon{display:block}
+            nav{position:fixed;top:0;right:-100%;height:100vh;width:250px;flex-direction:column;background:rgba(0,0,0,.9);transition:right .3s ease;z-index:999}
+            nav.active{right:0}
+            nav a{margin:15px 0;padding:10px 20px;border-bottom:1px solid rgba(0,255,204,.2)}
+            .datetime-box{width:90%;font-size:.9rem}
+            .tool-section h2{font-size:1.5rem}
+            .tool-section textarea{height:100px}
+            .generate-btn,.split-btn,.option-btn{padding:8px 16px;font-size:.9rem}
+            .option-btn{margin-left:5px;padding:6px 12px}
+            .post-item{padding:10px}
+            .post-text{font-size:.9rem}
+            .copy-btn{padding:6px 12px;font-size:.8rem}
+        }
+        footer{background:#000;color:#00ffcc;text-align:center;padding:20px 0;margin-top:60px}
+        footer p{margin:0;font-size:1.1rem;font-weight:300}
+        footer a{color:#ff00cc}
+        footer a:hover{text-decoration:underline}
+        @keyframes glow{0%{text-shadow:0 0 5px #00ffcc,0 0 10px #00ffcc,0 0 20px #00ffcc}100%{text-shadow:0 0 10px #00ffcc,0 0 20px #00ffcc,0 0 40px #00ffcc}}
+        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        .sci-fi-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;background:radial-gradient(circle,#001f3f,#000);animation:stars 10s infinite linear}
+        @keyframes stars{0%{background-position:0 0}100%{background-position:1000px 1000px}}
+    </style>
 </head>
 <body>
-  <div class="sci-fi-bg"></div>
-  <div class="menu-icon" id="menu-icon">☰</div>
-
-  <header>
-    <h1>Thread Splitter for X</h1>
-    <p>Split your text into X-ready posts effortlessly.</p>
-    <div class="datetime-box">
-      <div class="datetime">
-        <span id="date"></span>
-        <span id="time"></span>
-      </div>
+    <div class="sci-fi-bg"></div>
+    <div class="menu-icon" id="menu-icon">☰</div>
+    <header>
+        <h1>Thread Splitter & Prompt Creator for X</h1>
+        <p>Split your text into X-ready posts or create prompts effortlessly.</p>
+        <div class="datetime-box">
+            <div class="datetime">
+                <span id="date"></span>
+                <span id="time"></span>
+            </div>
+        </div>
     </header>
-
     <nav id="nav">
-      <a href="https://www.rahulx.com">Home</a>
-      <a href="https://www.rahulx.com/about">About</a>
-      <a href="/tools.html">Tools</a>
-      <a href="https://www.x.com/gite_ai">Contact</a>
+        <a href="https://www.rahulx.com">Home</a>
+        <a href="https://www.rahulx.com/about">About</a>
+        <a href="/tools.html">Tools</a>
+        <a href="https://www.x.com/gite_ai">Contact</a>
     </nav>
-
     <div class="container">
-      <div class="tool-section">
-        <h2>Thread Splitter</h2>
-        <textarea id="text-input" placeholder="Paste your thread text here"></textarea>
-        <button class="split-btn" id="split-btn">Split Thread</button>
-        <div class="posts-container" id="posts-container"></div>
-        <button class="copy-all-btn" id="copy-all-btn" style="display: none;">Copy All Output</button>
-        <a href="/tools.html" class="back-link">Back to Tools</a>
-      </div>
+        <div class="tool-section">
+            <h2>Thread Prompt Creator</h2>
+            <input id="topic-input" placeholder="Enter your topic (e.g., Formula 1)">
+            <button class="generate-btn" id="generate-btn">Generate Prompt</button>
+            <button class="option-btn" id="one-liner-btn">One Liner</button>
+            <button class="option-btn" id="hashtags-btn">Use Hashtags</button>
+            <div class="posts-container" id="prompt-posts-container"></div>
+        </div>
+        <div class="tool-section">
+            <h2>Thread Splitter</h2>
+            <textarea id="text-input" placeholder="Paste your thread text here"></textarea>
+            <button class="split-btn" id="split-btn">Split Thread</button>
+            <div class="posts-container" id="posts-container"></div>
+            <button class="copy-all-btn" id="copy-all-btn" style="display:none">Copy All Output</button>
+            <a href="/tools.html" class="back-link">Back to Tools</a>
+        </div>
     </div>
-
     <footer>
-      <p>© 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
+        <p>© 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
     </footer>
-
     <script>
-      const menuIcon = document.getElementById('menu-icon');
-      const nav = document.getElementById('nav');
-
-      menuIcon.addEventListener('click', () => {
-        nav.classList.toggle('active');
-      });
-
-      document.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768 && nav.classList.contains('active')) {
-          const isClickInsideNav = nav.contains(e.target);
-          const isClickOnMenuIcon = menuIcon.contains(e.target);
-          if (!isClickInsideNav && !isClickOnMenuIcon) {
-            nav.classList.remove('active');
-          }
-        }
-      });
-
-      const textInput = document.getElementById('text-input');
-      const splitBtn = document.getElementById('split-btn');
-      const postsContainer = document.getElementById('posts-container');
-      const copyAllBtn = document.getElementById('copy-all-btn');
-      const MAX_CHARS = 280;
-
-      splitBtn.addEventListener('click', () => {
-        const text = textInput.value.trim();
-        if (!text) {
-          alert('Please enter some text to split!');
-          return;
-        }
-
-        try {
-          const posts = splitTextIntoPosts(text);
-          renderPosts(posts);
-          copyAllBtn.style.display = posts.length > 0 ? 'block' : 'none'; // Show button only if there are posts
-        } catch (error) {
-          console.error('Error splitting text:', error);
-          alert('An error occurred while splitting the text. Please check your input format.');
-        }
-      });
-
-      copyAllBtn.addEventListener('click', () => {
-        const allPostsText = Array.from(postsContainer.querySelectorAll('.post-text'))
-          .map(post => post.textContent)
-          .join('\n\n');
-        navigator.clipboard.writeText(allPostsText)
-          .then(() => alert('All posts copied to clipboard!'))
-          .catch(err => alert('Failed to copy: ' + err));
-      });
-
-      function splitTextIntoPosts(text) {
-        const posts = [];
-        const pattern = /(\d+\/\s*)/g; // Match the start of each numbered section (e.g., "1/", "2/")
-        let matches = [];
-        let match;
-
-        // Collect all matches (start of numbered sections)
-        while ((match = pattern.exec(text)) !== null) {
-          matches.push({
-            index: match.index,
-            number: match[1].trim()
-          });
-        }
-
-        // If no numbered sections found, treat the whole text as one post
-        if (matches.length === 0) {
-          posts.push(text.trim());
-        } else {
-          // Process each numbered section
-          for (let i = 0; i < matches.length; i++) {
-            const currentMatch = matches[i];
-            const nextMatch = matches[i + 1];
-            const postStart = currentMatch.index;
-            const postEnd = nextMatch ? nextMatch.index : text.length;
-            const postText = text.substring(postStart, postEnd).trim();
-            if (postText) {
-              posts.push(postText);
-            }
-          }
-        }
-
-        // Add thread numbering (e.g., "(1/7)")
-        return posts.map((post, index) => {
-          const numbering = ` (${index + 1}/${posts.length})`;
-          const fullPost = post + numbering;
-          return {
-            text: fullPost,
-            chars: fullPost.length,
-            exceedsLimit: fullPost.length > MAX_CHARS
-          };
-        });
-      }
-
-      function renderPosts(posts) {
-        postsContainer.innerHTML = '';
-        posts.forEach((post, index) => {
-          const postDiv = document.createElement('div');
-          postDiv.className = 'post-item';
-
-          const postText = document.createElement('div');
-          postText.className = 'post-text';
-          postText.textContent = post.text;
-
-          const postMeta = document.createElement('div');
-          postMeta.className = `post-meta${post.exceedsLimit ? ' warning' : ''}`;
-          postMeta.textContent = `${post.chars} characters${post.exceedsLimit ? ' (Exceeds 280 limit)' : ''}`;
-
-          const copyBtn = document.createElement('button');
-          copyBtn.className = 'copy-btn';
-          copyBtn.textContent = 'Copy';
-          copyBtn.addEventListener('click', () => {
-            navigator.clipboard.writeText(post.text)
-              .then(() => alert(`Post ${index + 1} copied to clipboard!${post.exceedsLimit ? ' Note: This exceeds X\'s 280-character limit.' : ''}`))
-              .catch(err => alert('Failed to copy: ' + err));
-          });
-
-          postDiv.appendChild(postText);
-          postDiv.appendChild(postMeta);
-          postDiv.appendChild(copyBtn);
-          postsContainer.appendChild(postDiv);
-        });
-      }
-
-      function updateDateTime() {
-        const now = new Date();
-        const date = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-        const time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-        document.getElementById('date').textContent = date;
-        document.getElementById('time').textContent = time;
-      }
-
-      setInterval(updateDateTime, 1000);
-      updateDateTime();
+        const MAX_CHARS=280,elements={menuIcon:document.getElementById("menu-icon"),nav:document.getElementById("nav"),topicInput:document.getElementById("topic-input"),generateBtn:document.getElementById("generate-btn"),oneLinerBtn:document.getElementById("one-liner-btn"),hashtagsBtn:document.getElementById("hashtags-btn"),promptPostsContainer:document.getElementById("prompt-posts-container"),textInput:document.getElementById("text-input"),splitBtn:document.getElementById("split-btn"),postsContainer:document.getElementById("posts-container"),copyAllBtn:document.getElementById("copy-all-btn")};let useOneLiner=!1,useHashtags=!1;
+        elements.menuIcon.addEventListener("click",()=>{elements.nav.classList.toggle("active")}),document.addEventListener("click",e=>{window.innerWidth<=768&&elements.nav.classList.contains("active")&&!(elements.nav.contains(e.target)||elements.menuIcon.contains(e.target))&&elements.nav.classList.remove("active")}),elements.oneLinerBtn.addEventListener("click",()=>{useOneLiner=!useOneLiner,elements.oneLinerBtn.classList.toggle("active",useOneLiner)}),elements.hashtagsBtn.addEventListener("click",()=>{useHashtags=!useHashtags,elements.hashtagsBtn.classList.toggle("active",useHashtags)}),elements.generateBtn.addEventListener("click",()=>{const e=elements.topicInput.value.trim();e?renderPrompt(generatePrompt(e),elements.promptPostsContainer):alert("Please enter a topic!")}),elements.splitBtn.addEventListener("click",()=>{const e=elements.textInput.value.trim();if(!e)return alert("Please enter some text to split!");try{const t=splitTextIntoPosts(e);renderPosts(t,elements.postsContainer),elements.copyAllBtn.style.display=t.length>0?"block":"none"}catch(e){console.error("Error splitting text:",e),alert("An error occurred while splitting the text. Please check your input format.")}}),elements.copyAllBtn.addEventListener("click",()=>{navigator.clipboard.writeText([...elements.postsContainer.querySelectorAll(".post-text")].map(e=>e.textContent).join("\n\n")).then(()=>alert("All posts copied to clipboard!")).catch(e=>alert("Failed to copy: "+e))});
+        function generatePrompt(e){let t=`Create a thread on ${e}${useOneLiner?" (post must be oneliner)":""} with format 1/post1\n2/post2\n3/post3${useHashtags?" (hashtag text here)":""}`;return useHashtags&&(t+=`\n\nuse relevant hashtags`),{text:t,chars:t.length,exceedsLimit:t.length>MAX_CHARS}}
+        function renderPrompt(prompt,t){t.innerHTML="";const n=createPostElement(prompt.text,prompt.chars,prompt.exceedsLimit,"Copy paste this prompt in ChatGPT or Grok");n.querySelector(".copy-btn").addEventListener("click",()=>{const s=n.querySelector(".post-text").textContent+"\n"+n.querySelector(".post-meta").textContent+(n.querySelector(".note")?"\n"+n.querySelector(".note").textContent:"");navigator.clipboard.writeText(s).then(()=>alert(`All text copied to clipboard!${prompt.exceedsLimit?" Note: This exceeds X's 280-character limit.":""}`)).catch(e=>alert("Failed to copy: "+e))}),t.appendChild(n)}
+        function splitTextIntoPosts(e){const t=/(\d+\/\s*)/g;let n=[],s;while((s=t.exec(e))!==null)n.push({index:s.index,number:s[1].trim()});const o=n.length===0?[e.trim()]:n.map((t,s,a)=>e.substring(t.index,a[s+1]?.index??e.length).trim()).filter(e=>e);return o.map((e,t)=>(e+=` (${t+1}/${o.length})`,{text:e,chars:e.length,exceedsLimit:e.length>MAX_CHARS}))}
+        function renderPosts(e,t){t.innerHTML="",e.forEach((e,n)=>{const s=createPostElement(e.text,e.chars,e.exceedsLimit);s.querySelector(".copy-btn").addEventListener("click",()=>navigator.clipboard.writeText(e.text).then(()=>alert(`Post ${n+1} copied to clipboard!${e.exceedsLimit?" Note: This exceeds X's 280-character limit.":""}`)).catch(e=>alert("Failed to copy: "+e))),t.appendChild(s)})}
+        function createPostElement(e,t,n,s){const o=document.createElement("div");return o.className="post-item",o.innerHTML=`<div class="post-text">${e}</div><div class="post-meta${n?" warning":""}">${t} characters${n?" (Exceeds 280 limit)":""}</div>${s?`<div class="note">${s}</div>`:""}<button class="copy-btn">Copy</button>`,o}
+        function updateDateTime(){const e=new Date;document.getElementById("date").textContent=e.toLocaleDateString("en-US",{weekday:"long",year:"numeric",month:"long",day:"numeric"}),document.getElementById("time").textContent=e.toLocaleTimeString("en-US",{hour:"2-digit",minute:"2-digit",second:"2-digit"})}setInterval(updateDateTime,1e3),updateDateTime();
     </script>
-  </body>
+</body>
 </html>
