@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thread Splitter for X - Rahulx.com</title>
   <style>
-    /* Previous CSS remains unchanged */
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -189,6 +188,7 @@
       color: #00ffcc;
       font-size: 1rem;
       word-wrap: break-word;
+      white-space: pre-wrap; /* Preserve whitespace and line breaks */
     }
 
     .post-meta {
@@ -446,7 +446,7 @@
         try {
           const posts = splitTextIntoPosts(text);
           renderPosts(posts);
-          copyAllBtn.style.display = posts.length > 0 ? 'block' : 'none'; // Show button only if there are posts
+          copyAllBtn.style.display = posts.length > 0 ? 'block' : 'none';
         } catch (error) {
           console.error('Error splitting text:', error);
           alert('An error occurred while splitting the text. Please check your input format.');
@@ -464,11 +464,11 @@
 
       function splitTextIntoPosts(text) {
         const posts = [];
-        const pattern = /(\d+\/\s*)/g; // Match the start of each numbered section (e.g., "1/", "2/")
+        const pattern = /(\d+\/\s*)/g; // Match numbered sections like "1/", "2/"
         let matches = [];
         let match;
 
-        // Collect all matches (start of numbered sections)
+        // Collect all matches
         while ((match = pattern.exec(text)) !== null) {
           matches.push({
             index: match.index,
@@ -476,11 +476,15 @@
           });
         }
 
-        // If no numbered sections found, treat the whole text as one post
+        // If no numbered sections, treat as one post
         if (matches.length === 0) {
-          posts.push(text.trim());
+          if (text.length <= MAX_CHARS) {
+            posts.push(text.trim());
+          } else {
+            throw new Error('Text exceeds 280 characters with no numbered sections.');
+          }
         } else {
-          // Process each numbered section
+          // Split at numbered sections
           for (let i = 0; i < matches.length; i++) {
             const currentMatch = matches[i];
             const nextMatch = matches[i + 1];
@@ -488,21 +492,20 @@
             const postEnd = nextMatch ? nextMatch.index : text.length;
             const postText = text.substring(postStart, postEnd).trim();
             if (postText) {
-              posts.push(postText);
+              if (postText.length <= MAX_CHARS) {
+                posts.push(postText);
+              } else {
+                throw new Error(`Post starting with "${currentMatch.number}" exceeds 280 characters.`);
+              }
             }
           }
         }
 
-        // Add thread numbering (e.g., "(1/7)")
-        return posts.map((post, index) => {
-          const numbering = ` (${index + 1}/${posts.length})`;
-          const fullPost = post + numbering;
-          return {
-            text: fullPost,
-            chars: fullPost.length,
-            exceedsLimit: fullPost.length > MAX_CHARS
-          };
-        });
+        return posts.map((post, index) => ({
+          text: post,
+          chars: post.length,
+          exceedsLimit: post.length > MAX_CHARS
+        }));
       }
 
       function renderPosts(posts) {
@@ -513,7 +516,7 @@
 
           const postText = document.createElement('div');
           postText.className = 'post-text';
-          postText.textContent = post.text;
+          postText.innerHTML = post.text.replace(/\n/g, '<br>'); // Replace newlines with <br> tags
 
           const postMeta = document.createElement('div');
           postMeta.className = `post-meta${post.exceedsLimit ? ' warning' : ''}`;
@@ -524,7 +527,7 @@
           copyBtn.textContent = 'Copy';
           copyBtn.addEventListener('click', () => {
             navigator.clipboard.writeText(post.text)
-              .then(() => alert(`Post ${index + 1} copied to clipboard!${post.exceedsLimit ? ' Note: This exceeds X\'s 280-character limit.' : ''}`))
+              .then(() => alert(`Post ${index + 1} copied to clipboard!${post.exceedsLimit ? ' Note: Exceeds 280-character limit.' : ''}`))
               .catch(err => alert('Failed to copy: ' + err));
           });
 
