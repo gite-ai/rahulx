@@ -448,7 +448,7 @@
           copyAllBtn.style.display = posts.length > 0 ? 'block' : 'none';
         } catch (error) {
           console.error('Error splitting text:', error);
-          alert('An error occurred while splitting the text. Check your input format.');
+          alert('An error occurred while splitting the text. Please check your input format.');
         }
       });
 
@@ -456,22 +456,18 @@
         const allPostsText = Array.from(postsContainer.querySelectorAll('.post-text'))
           .map(post => post.textContent)
           .join('\n\n');
-        if (allPostsText) {
-          navigator.clipboard.writeText(allPostsText)
-            .then(() => alert('All posts copied to clipboard!'))
-            .catch(err => alert('Failed to copy: ' + err));
-        } else {
-          alert('No posts to copy!');
-        }
+        navigator.clipboard.writeText(allPostsText)
+          .then(() => alert('All posts copied to clipboard!'))
+          .catch(err => alert('Failed to copy: ' + err));
       });
 
       function splitTextIntoPosts(text) {
         const posts = [];
-        const pattern = /(\d+\/\s*)/g; // Match numbered sections like "1/", "2/", etc.
+        const pattern = /(\d+\/\s*)/g; // Match numbered sections like "1/", "2/"
         let matches = [];
         let match;
 
-        // Collect all numbered section matches
+        // Collect all matches
         while ((match = pattern.exec(text)) !== null) {
           matches.push({
             index: match.index,
@@ -479,12 +475,12 @@
           });
         }
 
-        // If no numbered sections found, treat as one post
+        // If no numbered sections, treat as one post
         if (matches.length === 0) {
           if (text.length <= MAX_CHARS) {
             posts.push(text.trim());
           } else {
-            throw new Error('Text exceeds 280 characters and has no numbered sections.');
+            throw new Error('Text exceeds 280 characters with no numbered sections.');
           }
         } else {
           // Split at numbered sections
@@ -498,16 +494,16 @@
               if (postText.length <= MAX_CHARS) {
                 posts.push(postText);
               } else {
-                throw new Error(`Post ${currentMatch.number} exceeds 280 characters.`);
+                throw new Error(`Post starting with "${currentMatch.number}" exceeds 280 characters.`);
               }
             }
           }
         }
 
-        return posts.map(post => ({
+        return posts.map((post, index) => ({
           text: post,
           chars: post.length,
-          exceedsLimit: post.length > MAX_CHARS // This will always be false due to prior check
+          exceedsLimit: post.length > MAX_CHARS // Will always be false due to check
         }));
       }
 
