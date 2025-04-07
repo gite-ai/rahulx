@@ -3,9 +3,67 @@ Keep it running
 Run the .ahk script
 Use X on Edge or Chrome browser
 
-LilySpeech for voice typing on windows ctr+D
+LilySpeech for voice typing on windows ctr+D website- https://lilyspeech.com/
 AHK - x enter to send
 Filters- to filter out posts on x
+
+
+
+Inline Commands
+Inline commands can be said in the middle of a dictation without pausing your speech.
+
+List of inline commands:
+
+‘period’ = period
+‘full stop’ = period
+‘comma’ = comma
+‘open quote’ = “
+‘close quote’ = “
+‘open bracket’ = (
+‘close bracket’ = )
+‘new paragraph’ = new paragraph
+‘new line’ = new line
+‘space key’ = space
+‘space character’ = space
+‘dollars’ = $ (whether this types out literally or as a symbol will depend upon the context of your dictation)
+‘hashtag’ = # (whether this types out literally or as a symbol will depend upon the context of your dictation)
+‘ampersand symbol’ = &
+‘smiley face’ = 🙂
+‘sad face’ = 🙁
+’tilde symbol’ = ~
+‘plus symbol’ = +
+‘minus symbol’ = –
+‘asterixis symbol’ = *
+‘at sign symbol’ = @
+‘divide symbol’ = /
+‘times symbol’ = x
+‘next lower’ – forces the next word to start lowercase
+‘next upper’ – forces the next word to start upper case
+‘next caps’ – forces the next word to be all caps
+
+Standalone Commands
+Standalone commands must be the only thing said during that dictation.
+
+List of standalone commands:
+
+‘undo’ – undoes the last action in that application
+‘backspace’ – backspace
+‘delete’ – delete
+‘tab’ – tab
+‘end’ – goes to the end of the line
+‘home’ – goes to the beginning of the line
+‘lower case on’ – turns on lower case mode
+‘lower case off’ – turns off lower case mode
+‘title case on’ – turns on title case mode
+‘title case off’ – turns off title case mode
+‘caps case on’ – turns on caps case mode
+‘caps case off’ – turns off caps case mode
+‘numbers on’ – turns on numbers mode
+‘numbers off’ – turns off numbers mode
+‘normal casing’ – turns on normal dictation mode
+
+
+
 
 
 
