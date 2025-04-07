@@ -1,7 +1,13 @@
-Install Auto Hotkey on Windows 
+Install Auto Hotkey Application on Windows 
 Keep it running
 Run the .ahk script
 Use X on Edge or Chrome browser
+
+LilySpeech for voice typing on windows ctr+D
+AHK - x enter to send
+Filters- to filter out posts on x
+
+
 
 
 ALL FILTER FOR X

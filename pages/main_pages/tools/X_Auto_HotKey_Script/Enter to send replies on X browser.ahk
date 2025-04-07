@@ -1,8 +1,17 @@
 ﻿#IfWinActive, ahk_exe msedge.exe
+
 $Enter::
-    Send {Ctrl down}  ; Ctrl+Enter is a reliable way to post on X
+    Send {Ctrl down}
     Send {Enter}
     Send {Ctrl up}
-    Sleep 100         ; Small delay to ensure it registers
+    Sleep 100
     Return
+
+$RButton::
+    Send {Ctrl down}
+    Send {Enter}
+    Send {Ctrl up}
+    Sleep 100
+    Return
+
 #IfWinActive
