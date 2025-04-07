@@ -21,12 +21,14 @@
         .container{width:90%;max-width:1200px;margin:40px auto;position:relative;z-index:1}
         .tool-section{background:rgba(0,0,0,.6);border:1px solid #00ffcc;border-radius:10px;padding:20px;text-align:center;margin-bottom:40px}
         .tool-section h2{font-size:2rem;color:#00ffcc;text-transform:uppercase;letter-spacing:1px;margin-bottom:20px;animation:glow 2s infinite alternate}
-        .tool-section input,.tool-section textarea,.tool-section select{width:100%;max-width:600px;background:#1a1a1a;border:1px solid #00ffcc;border-radius:5px;padding:15px;color:#00ffcc;font-family:Poppins,sans-serif;font-size:1rem;outline:none;transition:border-color .3s ease}
+        .tool-section input,.tool-section textarea{width:100%;max-width:600px;background:#1a1a1a;border:1px solid #00ffcc;border-radius:5px;padding:15px;color:#00ffcc;font-family:Poppins,sans-serif;font-size:1rem;outline:none;transition:border-color .3s ease}
         .tool-section input{height:40px}
         .tool-section textarea{height:150px;resize:vertical}
-        .tool-section select{height:40px}
-        .tool-section input:focus,.tool-section textarea:focus,.tool-section select:focus{border-color:#ff00cc}
-        .custom-delimiter-input{display:none;margin-top:10px;width:100%;max-width:600px}
+        .tool-section input:focus,.tool-section textarea:focus{border-color:#ff00cc}
+        .delimiter-container{display:flex;align-items:center;gap:10px;margin-top:10px;justify-content:center}
+        .tool-section select{width:100px;height:40px;background:#1a1a1a;border:1px solid #00ffcc;border-radius:5px;padding:5px;color:#00ffcc;font-family:Poppins,sans-serif;font-size:1rem;outline:none;transition:border-color .3s ease}
+        .tool-section select:focus{border-color:#ff00cc}
+        .custom-delimiter-input{display:none;width:100px;height:40px;margin:0;padding:5px;font-size:1rem}
         .generate-btn,.split-btn,.option-btn{margin-top:20px;padding:10px 20px;background:linear-gradient(135deg,#ff4500,#ff8c00);border:none;border-radius:5px;color:#000;font-family:Montserrat,sans-serif;font-size:1rem;font-weight:600;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease}
         .option-btn{margin-left:10px;padding:8px 16px;font-size:.9rem;background:linear-gradient(135deg,#00ccff,#0066cc)}
         .option-btn.active{background:linear-gradient(135deg,#ff00cc,#cc00ff)}
@@ -60,6 +62,8 @@
             .post-item{padding:10px}
             .post-text{font-size:.9rem}
             .copy-btn{padding:6px 12px;font-size:.8rem}
+            .delimiter-container{flex-wrap:wrap}
+            .tool-section select,.custom-delimiter-input{width:80px}
         }
         footer{background:#000;color:#00ffcc;text-align:center;padding:20px 0;margin-top:60px}
         footer p{margin:0;font-size:1.1rem;font-weight:300}
@@ -68,7 +72,7 @@
         @keyframes glow{0%{text-shadow:0 0 5px #00ffcc,0 0 10px #00ffcc,0 0 20px #00ffcc}100%{text-shadow:0 0 10px #00ffcc,0 0 20px #00ffcc,0 0 40px #00ffcc}}
         @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
         .sci-fi-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;background:radial-gradient(circle,#001f3f,#000);animation:stars 10s infinite linear}
-        @keyframes stars_JSON{0%{background-position:0 0}100%{background-position:1000px 1000px}}
+        @keyframes stars{0%{background-position:0 0}100%{background-position:1000px 1000px}}
     </style>
 </head>
 <body>
@@ -94,14 +98,16 @@
         <div class="tool-section">
             <h2>Thread Prompt Creator</h2>
             <input id="topic-input" placeholder="Enter your topic (e.g., Formula 1)">
-            <select id="delimiter-select">
-                <option value="/">/</option>
-                <option value=".">.</option>
-                <option value="-">-</option>
-                <option value=":">:</option>
-                <option value="other">Other</option>
-            </select>
-            <input id="custom-delimiter" class="custom-delimiter-input" placeholder="Enter custom delimiter">
+            <div class="delimiter-container">
+                <select id="delimiter-select">
+                    <option value="/">/</option>
+                    <option value=".">.</option>
+                    <option value="-">-</option>
+                    <option value=":">:</option>
+                    <option value="other">Other</option>
+                </select>
+                <input id="custom-delimiter" class="custom-delimiter-input" placeholder="Custom">
+            </div>
             <button class="generate-btn" id="generate-btn">Generate Prompt</button>
             <button class="option-btn" id="one-liner-btn">One Liner</button>
             <button class="option-btn" id="hashtags-btn">Use Hashtags</button>
@@ -110,6 +116,16 @@
         <div class="tool-section">
             <h2>Thread Splitter</h2>
             <textarea id="text-input" placeholder="Paste your thread text here"></textarea>
+            <div class="delimiter-container">
+                <select id="split-delimiter-select">
+                    <option value="/">/</option>
+                    <option value=".">.</option>
+                    <option value="-">-</option>
+                    <option value=":">:</option>
+                    <option value="other">Other</option>
+                </select>
+                <input id="split-custom-delimiter" class="custom-delimiter-input" placeholder="Custom">
+            </div>
             <button class="split-btn" id="split-btn">Split Thread</button>
             <div class="posts-container" id="posts-container"></div>
             <button class="copy-all-btn" id="copy-all-btn" style="display:none">Copy All Output</button>
@@ -120,11 +136,11 @@
         <p>© 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
     </footer>
     <script>
-        const MAX_CHARS=280,elements={menuIcon:document.getElementById("menu-icon"),nav:document.getElementById("nav"),topicInput:document.getElementById("topic-input"),delimiterSelect:document.getElementById("delimiter-select"),customDelimiter:document.getElementById("custom-delimiter"),generateBtn:document.getElementById("generate-btn"),oneLinerBtn:document.getElementById("one-liner-btn"),hashtagsBtn:document.getElementById("hashtags-btn"),promptPostsContainer:document.getElementById("prompt-posts-container"),textInput:document.getElementById("text-input"),splitBtn:document.getElementById("split-btn"),postsContainer:document.getElementById("posts-container"),copyAllBtn:document.getElementById("copy-all-btn")};let useOneLiner=!1,useHashtags=!1;
-        elements.menuIcon.addEventListener("click",()=>{elements.nav.classList.toggle("active")}),document.addEventListener("click",e=>{window.innerWidth<=768&&elements.nav.classList.contains("active")&&!(elements.nav.contains(e.target)||elements.menuIcon.contains(e.target))&&elements.nav.classList.remove("active")}),elements.oneLinerBtn.addEventListener("click",()=>{useOneLiner=!useOneLiner,elements.oneLinerBtn.classList.toggle("active",useOneLiner)}),elements.hashtagsBtn.addEventListener("click",()=>{useHashtags=!useHashtags,elements.hashtagsBtn.classList.toggle("active",useHashtags)}),elements.delimiterSelect.addEventListener("change",()=>{elements.customDelimiter.style.display=elements.delimiterSelect.value==="other"?"block":"none"}),elements.generateBtn.addEventListener("click",()=>{const e=elements.topicInput.value.trim();e?renderPrompt(generatePrompt(e),elements.promptPostsContainer):alert("Please enter a topic!")}),elements.splitBtn.addEventListener("click",()=>{const e=elements.textInput.value.trim();if(!e)return alert("Please enter some text to split!");try{const t=splitTextIntoPosts(e);renderPosts(t,elements.postsContainer),elements.copyAllBtn.style.display=t.length>0?"block":"none"}catch(e){console.error("Error splitting text:",e),alert("An error occurred while splitting the text. Please check your input format.")}}),elements.copyAllBtn.addEventListener("click",()=>{navigator.clipboard.writeText([...elements.postsContainer.querySelectorAll(".post-text")].map(e=>e.textContent).join("\n\n")).then(()=>alert("All posts copied to clipboard!")).catch(e=>alert("Failed to copy: "+e))});
+        const MAX_CHARS=280,elements={menuIcon:document.getElementById("menu-icon"),nav:document.getElementById("nav"),topicInput:document.getElementById("topic-input"),delimiterSelect:document.getElementById("delimiter-select"),customDelimiter:document.getElementById("custom-delimiter"),generateBtn:document.getElementById("generate-btn"),oneLinerBtn:document.getElementById("one-liner-btn"),hashtagsBtn:document.getElementById("hashtags-btn"),promptPostsContainer:document.getElementById("prompt-posts-container"),textInput:document.getElementById("text-input"),splitDelimiterSelect:document.getElementById("split-delimiter-select"),splitCustomDelimiter:document.getElementById("split-custom-delimiter"),splitBtn:document.getElementById("split-btn"),postsContainer:document.getElementById("posts-container"),copyAllBtn:document.getElementById("copy-all-btn")};let useOneLiner=!1,useHashtags=!1;
+        elements.menuIcon.addEventListener("click",()=>{elements.nav.classList.toggle("active")}),document.addEventListener("click",e=>{window.innerWidth<=768&&elements.nav.classList.contains("active")&&!(elements.nav.contains(e.target)||elements.menuIcon.contains(e.target))&&elements.nav.classList.remove("active")}),elements.oneLinerBtn.addEventListener("click",()=>{useOneLiner=!useOneLiner,elements.oneLinerBtn.classList.toggle("active",useOneLiner)}),elements.hashtagsBtn.addEventListener("click",()=>{useHashtags=!useHashtags,elements.hashtagsBtn.classList.toggle("active",useHashtags)}),elements.delimiterSelect.addEventListener("change",()=>{elements.customDelimiter.style.display=elements.delimiterSelect.value==="other"?"block":"none"}),elements.splitDelimiterSelect.addEventListener("change",()=>{elements.splitCustomDelimiter.style.display=elements.splitDelimiterSelect.value==="other"?"block":"none"}),elements.generateBtn.addEventListener("click",()=>{const e=elements.topicInput.value.trim();e?renderPrompt(generatePrompt(e),elements.promptPostsContainer):alert("Please enter a topic!")}),elements.splitBtn.addEventListener("click",()=>{const e=elements.textInput.value.trim();if(!e)return alert("Please enter some text to split!");try{const t=splitTextIntoPosts(e);renderPosts(t,elements.postsContainer),elements.copyAllBtn.style.display=t.length>0?"block":"none"}catch(e){console.error("Error splitting text:",e),alert("An error occurred while splitting the text. Please check your input format.")}}),elements.copyAllBtn.addEventListener("click",()=>{navigator.clipboard.writeText([...elements.postsContainer.querySelectorAll(".post-text")].map(e=>e.textContent).join("\n\n")).then(()=>alert("All posts copied to clipboard!")).catch(e=>alert("Failed to copy: "+e))});
         function generatePrompt(e){const d=elements.delimiterSelect.value==="other"?elements.customDelimiter.value||"/":elements.delimiterSelect.value;let t=`Create a thread on ${e}${useOneLiner?" (post must be oneliner)":""} with format 1${d}post1\n2${d}post2\n3${d}post3`;return useHashtags&&(t+=`\n\nuse relevant hashtags`),{text:t}}
         function renderPrompt(prompt,container){container.innerHTML="";const postItem=document.createElement("div");postItem.className="post-item";const postText=document.createElement("div");postText.className="post-text";postText.textContent=prompt.text;const copyBtn=document.createElement("button");copyBtn.className="copy-btn";copyBtn.textContent="Copy";copyBtn.addEventListener("click",()=>{navigator.clipboard.writeText(prompt.text).then(()=>alert("Prompt copied to clipboard!")).catch(e=>alert("Failed to copy: "+e))});postItem.appendChild(postText);postItem.appendChild(copyBtn);container.appendChild(postItem);const note=document.createElement("div");note.className="note";note.textContent="Copy paste this prompt in ChatGPT or Grok";container.appendChild(note)}
-        function splitTextIntoPosts(e){const t=/(\d+\/\s*)/g;let n=[],s;while((s=t.exec(e))!==null)n.push({index:s.index,number:s[1].trim()});const o=n.length===0?[e.trim()]:n.map((t,s,a)=>e.substring(t.index,a[s+1]?.index??e.length).trim()).filter(e=>e);return o.map((e,t)=>(e+=` (${t+1}/${o.length})`,{text:e,chars:e.length,exceedsLimit:e.length>MAX_CHARS}))}
+        function splitTextIntoPosts(e){const d=elements.splitDelimiterSelect.value==="other"?elements.splitCustomDelimiter.value||"/":elements.splitDelimiterSelect.value;const t=new RegExp(`(\\d+${d}\\s*)`,"g");let n=[],s;while((s=t.exec(e))!==null)n.push({index:s.index,number:s[1].trim()});const o=n.length===0?[e.trim()]:n.map((t,s,a)=>e.substring(t.index,a[s+1]?.index??e.length).trim()).filter(e=>e);return o.map((e,t)=>(e+=` (${t+1}/${o.length})`,{text:e,chars:e.length,exceedsLimit:e.length>MAX_CHARS}))}
         function renderPosts(e,t){t.innerHTML="",e.forEach((e,n)=>{const s=createPostElement(e.text,e.chars,e.exceedsLimit);s.querySelector(".copy-btn").addEventListener("click",()=>navigator.clipboard.writeText(e.text).then(()=>alert(`Post ${n+1} copied to clipboard!${e.exceedsLimit?" Note: This exceeds X's 280-character limit.":""}`)).catch(e=>alert("Failed to copy: "+e))),t.appendChild(s)})}
         function createPostElement(e,t,n,s){const o=document.createElement("div");return o.className="post-item",o.innerHTML=`<div class="post-text">${e}</div><div class="post-meta${n?" warning":""}">${t} characters${n?" (Exceeds 280 limit)":""}</div>${s?`<div class="note">${s}</div>`:""}<button class="copy-btn">Copy</button>`,o}
         function updateDateTime(){const e=new Date;document.getElementById("date").textContent=e.toLocaleDateString("en-US",{weekday:"long",year:"numeric",month:"long",day:"numeric"}),document.getElementById("time").textContent=e.toLocaleTimeString("en-US",{hour:"2-digit",minute:"2-digit",second:"2-digit"})}setInterval(updateDateTime,1e3),updateDateTime();
