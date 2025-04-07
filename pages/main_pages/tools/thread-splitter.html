@@ -29,6 +29,7 @@
         .tool-section select{width:100px;height:40px;background:#1a1a1a;border:1px solid #00ffcc;border-radius:5px;padding:5px;color:#00ffcc;font-family:Poppins,sans-serif;font-size:1rem;outline:none;transition:border-color .3s ease}
         .tool-section select:focus{border-color:#ff00cc}
         .custom-delimiter-input{display:none;width:100px;height:40px;margin:0;padding:5px;font-size:1rem}
+        .button-container{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
         .generate-btn,.split-btn,.option-btn{margin-top:20px;padding:10px 20px;background:linear-gradient(135deg,#ff4500,#ff8c00);border:none;border-radius:5px;color:#000;font-family:Montserrat,sans-serif;font-size:1rem;font-weight:600;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease}
         .option-btn{margin-left:10px;padding:8px 16px;font-size:.9rem;background:linear-gradient(135deg,#00ccff,#0066cc)}
         .option-btn.active{background:linear-gradient(135deg,#ff00cc,#cc00ff)}
@@ -116,10 +117,12 @@
         <div class="tool-section">
             <h2>Thread Splitter</h2>
             <textarea id="text-input" placeholder="Paste your thread text here"></textarea>
-            <button class="split-btn" id="split-btn">Split Thread</button>
+            <div class="button-container">
+                <button class="split-btn" id="split-btn">Split Thread</button>
+                <button class="copy-all-btn" id="copy-all-btn" style="display:none">Copy All Output</button>
+            </div>
             <div class="posts-container" id="posts-container"></div>
-            <button class="copy-all-btn" id="copy-all-btn" style="display:none">Copy All Output</button>
-            <a href="tools.html" class="back-link">Back to Tools</a>
+            <a href="/tools.html" class="back-link">Back to Tools</a>
         </div>
     </div>
     <footer>
