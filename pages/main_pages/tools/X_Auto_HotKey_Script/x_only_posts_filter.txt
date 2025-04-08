@@ -19,3 +19,5 @@ filter:follows -filter:replies -filter:nativeretweets -filter:quotes -filter:med
 
 
 (from:HumansNoContext OR from:gunsnrosesgirl3 OR from:kirawontmiss) -filter:replies -filter:nativeretweets -filter:quotes filter:media  see only media
+
+(from:HumansNoContext OR from:gunsnrosesgirl3 OR from:kirawontmiss OR from:Rainmaker1973 OR from:AMAZlNGNATURE OR from:PicturesFoIder) -filter:replies -filter:nativeretweets -filter:quotes -filter:media
