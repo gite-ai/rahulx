@@ -8,7 +8,7 @@ see only posts from people you follow
 filter:follows -filter:replies -filter:nativeretweets -filter:quotes "good night" OR "sweet dreams" OR "sleep well" OR "gn")
  see posts with good night only
  
- filter:follows -filter:replies -filter:nativeretweets -" or " -" OR " -"choose one" -"pick one"
+ filter:follows -filter:replies -filter:nativeretweets -" or " -" OR " -"choose one" -"pick one" -"select one"
  this or that question filters
  
  
