@@ -84,6 +84,7 @@
       width: 200px;
       text-align: center;
       font-size: 1rem;
+      display: none; /* Hidden by default */
     }
 
     .tools-box a {
@@ -139,7 +140,7 @@
       color: #ff00cc;
     }
 
-    /* Mobile Navigation */
+    /* Mobile Navigation and Tools Box Visibility */
     @media (max-width: 768px) {
       header h1 {
         font-size: 2rem;
@@ -179,6 +180,10 @@
       .datetime-box, .tools-box {
         width: 90%;
         font-size: 0.9rem;
+      }
+
+      .tools-box {
+        display: block; /* Visible in mobile view */
       }
     }
 
@@ -290,7 +295,7 @@
       height: 100%;
       z-index: -1;
       background: radial-gradient(circle, #001f3f, #000);
-      animation: stars -than-10s infinite linear;
+      animation: stars 10s infinite linear;
     }
 
     @keyframes stars {
@@ -322,7 +327,7 @@
         <span id="time"></span>
       </div>
     </div>
-    <!-- Tools Box -->
+    <!-- Tools Box (Visible only in mobile) -->
     <div class="tools-box">
       <a href="https://www.rahulx.com/pages/main_pages/tools/tools">Tools</a>
       <span class="divider"></span>
@@ -335,6 +340,7 @@
     <a href="https://www.rahulx.com/about">About</a>
     <a href="https://www.x.com/gite_ai">Contact</a>
     <a href="https://www.rahulx.com/pages/main_pages/tools/tools">Tools</a>
+    <a href="https://www.rahulx.com/pages/main_pages/games/games">Games</a>
   </nav>
 
   <!-- Main Content -->
