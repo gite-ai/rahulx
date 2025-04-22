@@ -1,0 +1,6 @@
+[
+  {"symbol": "😀", "name": "Grinning Face", "code": "U+1F600"},
+  {"symbol": "😂", "name": "Face with Tears of Joy", "code": "U+1F602"},
+  {"symbol": "❤️", "name": "Red Heart", "code": "U+2764"},
+  ...
+]
