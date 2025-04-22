@@ -317,11 +317,19 @@
       const charTable = document.getElementById('char-table');
       const errorMessage = document.getElementById('error-message');
 
+      // Fallback data in case fetch fails
+      const fallbackEmojis = [
+        { symbol: "😀", name: "Grinning Face", code: "U+1F600" },
+        { symbol: "😂", name: "Face with Tears of Joy", code: "U+1F602" },
+        { symbol: "❤️", name: "Red Heart", code: "U+2764" }
+      ];
+
       try {
         console.log('Attempting to fetch emojis.txt from texts/emojis.txt');
         const response = await fetch('texts/emojis.txt', {
           method: 'GET',
-          headers: { 'Content-Type': 'application/json' }
+          headers: { 'Content-Type': 'application/json' },
+          cache: 'no-cache'
         });
 
         if (!response.ok) {
@@ -368,13 +376,32 @@
         });
 
         if (emojis.length === 0) {
-          errorMessage.textContent = 'No emojis found in the file.';
-          errorMessage.style.display = 'block';
+          throw new Error('No emojis found in the file');
         }
       } catch (error) {
-        errorMessage.textContent = `Error loading emojis: ${error.message}. Check the console for details.`;
+        errorMessage.textContent = `Error loading emojis: ${error.message}. Using fallback data.`;
         errorMessage.style.display = 'block';
         console.error('Error loading emojis:', error);
+
+        // Load fallback emojis
+        fallbackEmojis.forEach(emoji => {
+          const card = document.createElement('div');
+          card.className = 'char-card';
+          card.setAttribute('onclick', `copyToClipboard('${emoji.symbol}')`);
+          card.innerHTML = `
+            <span class="symbol" role="img" aria-label="Copy ${emoji.name}" title="Copy ${emoji.name}">${emoji.symbol}</span>
+            <div class="name">${emoji.name}</div>
+            <div class="code">${emoji.code}</div>
+          `;
+          charTable.appendChild(card);
+
+          card.addEventListener('mouseenter', () => {
+            card.style.boxShadow = '0 0 30px rgba(0, 255, 204, 0.8)';
+          });
+          card.addEventListener('mouseleave', () => {
+            card.style.boxShadow = '0 0 20px rgba(0, 255, 204, 0.6)';
+          });
+        });
       }
     }
 
