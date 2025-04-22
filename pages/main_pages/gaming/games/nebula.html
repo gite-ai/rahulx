@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escape the Nebula</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+    }
+    canvas {
+      border: 1px solid #00ffcc;
+      background: #000;
+    }
+    .game-over {
+      display: none;
+      position: absolute;
+      color: #00ffcc;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+    }
+    .game-over h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    .game-over p {
+      font-size: 1.2rem;
+      margin: 5px 0;
+    }
+    .game-over button {
+      background: #00ffcc;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    .game-over button:hover {
+      background: #ff00cc;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas" width="800" height="600"></canvas>
+  <div class="game-over" id="gameOver">
+    <h1>Game Over</h1>
+    <p>Distance: <span id="finalDistance">0</span> units</p>
+    <button onclick="restartGame()">Restart</button>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Game variables
+    const player = {
+      x: canvas.width / 2,
+      y: canvas.height - 50,
+      width: 30,
+      height: 30,
+      speed: 5,
+      shield: false,
+      shieldTime: 0
+    };
+    let obstacles = [];
+    let collectibles = [];
+    let distance = 0;
+    let gameSpeed = 3;
+    let gameOver = false;
+    let lastObstacle = 0;
+    let lastCollectible = 0;
+
+    // Images
+    const playerImg = new Image();
+    playerImg.src = 'https://via.placeholder.com/30x30.png?text=R'; // Replace with Rahulx logo
+    const obstacleImg = new Image();
+    obstacleImg.src = 'https://via.placeholder.com/40x40/ff00cc/ffffff?text=O'; // Neon obstacle
+    const collectibleImg = new Image();
+    collectibleImg.src = 'https://via.placeholder.com/20x20/00ffcc/ffffff?text=C'; // Fuel cell
+
+    // Controls
+    let keys = { ArrowLeft: false, ArrowRight: false, ArrowUp: false, ArrowDown: false };
+    document.addEventListener('keydown', (e) => { if (keys[e.key] !== undefined) keys[e.key] = true; });
+    document.addEventListener('keyup', (e) => { if (keys[e.key] !== undefined) keys[e.key] = false; });
+
+    // Mouse control
+    canvas.addEventListener('mousemove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      player.x = e.clientX - rect.left - player.width / 2;
+      player.y = e.clientY - rect.top - player.height / 2;
+    });
+
+    // Spawn obstacles
+    function spawnObstacle() {
+      const size = 40;
+      const x = Math.random() * (canvas.width - size);
+      obstacles.push({ x, y: -size, width: size, height: size });
+    }
+
+    // Spawn collectibles
+    function spawnCollectible() {
+      const size = 20;
+      const x = Math.random() * (canvas.width - size);
+      collectibles.push({ x, y: -size, width: size, height: size, type: 'fuel' });
+    }
+
+    // Collision detection
+    function checkCollision(a, b) {
+      return a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y;
+    }
+
+    // Game loop
+    function gameLoop() {
+      if (gameOver) return;
+
+      // Clear canvas
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw nebula background
+      ctx.fillStyle = 'rgba(0, 31, 63, 0.5)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < 50; i++) {
+        ctx.fillStyle = `rgba(0, 255, 204, ${Math.random() * 0.5})`;
+        ctx.beginPath();
+        ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Update player
+      if (keys.ArrowLeft) player.x -= player.speed;
+      if (keys.ArrowRight) player.x += player.speed;
+      if (keys.ArrowUp) player.y -= player.speed;
+      if (keys.ArrowDown) player.y += player.speed;
+      player.x = Math.max(0, Math.min(player.x, canvas.width - player.width));
+      player.y = Math.max(0, Math.min(player.y, canvas.height - player.height));
+
+      // Draw player
+      ctx.drawImage(playerImg, player.x, player.y, player.width, player.height);
+      if (player.shield) {
+        ctx.strokeStyle = '#00ffcc';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(player.x - 5, player.y - 5, player.width + 10, player.height + 10);
+      }
+
+      // Update shield
+      if (player.shield) {
+        player.shieldTime--;
+        if (player.shieldTime <= 0) player.shield = false;
+      }
+
+      // Spawn obstacles and collectibles
+      lastObstacle++;
+      lastCollectible++;
+      if (lastObstacle > 60) {
+        spawnObstacle();
+        lastObstacle = 0;
+      }
+      if (lastCollectible > 120) {
+        spawnCollectible();
+        lastCollectible = 0;
+      }
+
+      // Update obstacles
+      obstacles = obstacles.filter(o => o.y < canvas.height);
+      obstacles.forEach(o => {
+        o.y += gameSpeed;
+        ctx.drawImage(obstacleImg, o.x, o.y, o.width, o.height);
+        if (!player.shield && checkCollision(player, o)) {
+          gameOver = true;
+          document.getElementById('gameOver').style.display = 'block';
+          document.getElementById('finalDistance').textContent = Math.floor(distance);
+        }
+      });
+
+      // Update collectibles
+      collectibles = collectibles.filter(c => c.y < canvas.height);
+      collectibles.forEach((c, i) => {
+        c.y += gameSpeed;
+        ctx.drawImage(collectibleImg, c.x, c.y, c.width, c.height);
+        if (checkCollision(player, c)) {
+          collectibles.splice(i, 1);
+          if (c.type === 'fuel') {
+            player.shield = true;
+            player.shieldTime = 180;
+          }
+        }
+      });
+
+      // Update distance
+      distance += gameSpeed / 60;
+      ctx.fillStyle = '#00ffcc';
+      ctx.font = '20px Poppins';
+      ctx.fillText(`Distance: ${Math.floor(distance)} units`, 10, 30);
+
+      // Increase difficulty
+      gameSpeed += 0.001;
+
+      requestAnimationFrame(gameLoop);
+    }
+
+    // Restart game
+    function restartGame() {
+      obstacles = [];
+      collectibles = [];
+      distance = 0;
+      gameSpeed = 3;
+      gameOver = false;
+      player.x = canvas.width / 2;
+      player.y = canvas.height - 50;
+      player.shield = false;
+      document.getElementById('gameOver').style.display = 'none';
+      gameLoop();
+    }
+
+    // Start game
+    gameLoop();
+  </script>
+</body>
+</html>
