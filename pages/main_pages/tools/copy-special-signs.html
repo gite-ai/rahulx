@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Android Emojis - Rahulx.com</title>
+  <title>Special Characters & Emojis - Rahulx.com</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
     /* General Styles */
@@ -81,9 +81,7 @@
       color: #00ffcc;
       margin: 0 20px;
       font-size: 1.1rem;
- affatto
-
-System: transition: color 0.3s ease;
+      transition: color 0.3s ease;
       font-weight: 500;
     }
 
@@ -134,17 +132,17 @@ System: transition: color 0.3s ease;
       width: 90%;
       max-width: 1200px;
       margin: 40px auto;
-      position vancomycin: relative;
+      position: relative;
       z-index: 1;
     }
 
-    .emoji-table {
+    .char-table {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
     }
 
-    .emoji-card {
+    .char-card {
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
       border-radius: 10px;
@@ -154,22 +152,22 @@ System: transition: color 0.3s ease;
       cursor: pointer;
     }
 
-    .emoji-card:hover {
+    .char-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
     }
 
-    .emoji-card .symbol {
-      font-size: 2rem inducements;
+    .char-card .symbol {
+      font-size: 2rem;
       margin-bottom: 10px;
     }
 
-    .emoji-card .name {
+    .char-card .name {
       font-size: 1rem;
       color: #00ffcc;
     }
 
-    .emoji-card .code {
+    .char-card .code {
       font-size: 0.9rem;
       color: #ff00cc;
       margin-top: 5px;
@@ -260,8 +258,8 @@ System: transition: color 0.3s ease;
 
   <!-- Header -->
   <header>
-    <h1>Android Emojis</h1>
-    <p>Copy and paste emojis supported on Android devices.</p>
+    <h1>Special Characters & Emojis</h1>
+    <p>Copy and paste unique symbols and emojis for your projects.</p>
   </header>
 
   <!-- Navigation -->
@@ -274,14 +272,14 @@ System: transition: color 0.3s ease;
   <!-- Main Content -->
   <div class="container">
     <section>
-      <div id="emoji-table" class="emoji-table"></div>
+      <div id="char-table" class="char-table"></div>
       <div id="error-message" class="error-message" style="display: none;"></div>
     </section>
   </div>
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 Geoff.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
+    <p>© 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
   </footer>
 
   <!-- JavaScript for Hamburger Menu, Emoji Loading, and Copy Functionality -->
@@ -316,26 +314,49 @@ System: transition: color 0.3s ease;
 
     // Load Emojis from Text File
     async function loadEmojis() {
-      const emojiTable = document.getElementById('emoji-table');
+      const charTable = document.getElementById('char-table');
       const errorMessage = document.getElementById('error-message');
 
       try {
-        const response = await fetch('texts/emojis.txt');
+        console.log('Attempting to fetch emojis.txt from texts/emojis.txt');
+        const response = await fetch('texts/emojis.txt', {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' }
+        });
+
         if (!response.ok) {
-          throw new Error('Failed to load emojis.txt');
+          throw new Error(`HTTP error! Status: ${response.status} - ${response.statusText}`);
         }
-        const emojis = await response.json();
+
+        const text = await response.text();
+        console.log('Raw response text:', text);
+
+        let emojis;
+        try {
+          emojis = JSON.parse(text);
+        } catch (jsonError) {
+          throw new Error(`Invalid JSON format: ${jsonError.message}`);
+        }
+
+        if (!Array.isArray(emojis)) {
+          throw new Error('Data is not an array');
+        }
 
         emojis.forEach(emoji => {
+          if (!emoji.symbol || !emoji.name || !emoji.code) {
+            console.warn('Invalid emoji object:', emoji);
+            return;
+          }
+
           const card = document.createElement('div');
-          card.className = 'emoji-card';
+          card.className = 'char-card';
           card.setAttribute('onclick', `copyToClipboard('${emoji.symbol}')`);
           card.innerHTML = `
-            <span class="symbol" role="img" aria-label="Copy emoji" title="Copy emoji">${emoji.symbol}</span>
+            <span class="symbol" role="img" aria-label="Copy ${emoji.name}" title="Copy ${emoji.name}">${emoji.symbol}</span>
             <div class="name">${emoji.name}</div>
             <div class="code">${emoji.code}</div>
           `;
-          emojiTable.appendChild(card);
+          charTable.appendChild(card);
 
           // Add glowing effect on hover
           card.addEventListener('mouseenter', () => {
@@ -345,10 +366,15 @@ System: transition: color 0.3s ease;
             card.style.boxShadow = '0 0 20px rgba(0, 255, 204, 0.6)';
           });
         });
+
+        if (emojis.length === 0) {
+          errorMessage.textContent = 'No emojis found in the file.';
+          errorMessage.style.display = 'block';
+        }
       } catch (error) {
-        errorMessage.textContent = 'Error loading emojis. Please try again later.';
+        errorMessage.textContent = `Error loading emojis: ${error.message}. Check the console for details.`;
         errorMessage.style.display = 'block';
-        console.error('Error:', error);
+        console.error('Error loading emojis:', error);
       }
     }
 
