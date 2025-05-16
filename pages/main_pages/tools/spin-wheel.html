@@ -14,11 +14,13 @@
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
+      overflow-x: hidden;
     }
     .wheel-container {
       text-align: center;
       padding: 50px 20px;
       max-width: 800px;
+      margin: 0 auto;
     }
     .wheel-container h1 {
       font-size: 48px;
@@ -28,6 +30,7 @@
     }
     .wheel-container p {
       font-size: 24px;
+      color: #e0e0e0;
       text-shadow: 0 0 5px #00ffcc;
       margin-bottom: 20px;
     }
@@ -92,6 +95,12 @@
       0% { transform: scale(1); }
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
+    }
+    @media (max-width: 768px) {
+      .wheel-container h1 { font-size: 36px; }
+      .wheel-container p { font-size: 18px; }
+      .wheel { width: 300px; height: 300px; }
+      .wheel-canvas { width: 300px; height: 300px; }
     }
   </style>
 </head>
@@ -179,6 +188,11 @@
       }
     }
 
+    // Easing function for smooth deceleration
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
     // Spin the wheel and determine the winner using color
     function spinWheel() {
       if (spinning) return;
@@ -190,8 +204,9 @@
       let startTime = null;
       function animate(time) {
         if (!startTime) startTime = time;
-        const progress = (time - startTime) / duration;
-        const currentAngle = spinAngle * progress;
+        const progress = Math.min((time - startTime) / duration, 1);
+        const easedProgress = easeOutCubic(progress); // Apply easing for deceleration
+        const currentAngle = spinAngle * easedProgress;
         canvas.style.transform = `rotate(${currentAngle}deg)`;
 
         if (progress < 1) {
