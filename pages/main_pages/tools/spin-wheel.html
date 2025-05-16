@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpinWheel</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #0d1b2a, #1b263b);
+      color: #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .wheel-container {
+      text-align: center;
+      padding: 50px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .wheel-container h1 {
+      font-size: 48px;
+      color: #00ffcc;
+      text-shadow: 0 0 10px #00ffcc;
+      margin-bottom: 10px;
+    }
+
+    .wheel-container p {
+      font-size: 24px;
+      color: #e0e0e0;
+      text-shadow: 0 0 5px #00ffcc;
+      margin-bottom: 20px;
+    }
+
+    .wheel {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      margin: 0 auto;
+    }
+
+    .wheel-canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    .arrow {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 50px solid #ffffff;
+      z-index: 10;
+    }
+
+    .sci-fi-button {
+      background: linear-gradient(45deg, #00ffcc, #ff007a);
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      color: #fff;
+      border-radius: 25px;
+      cursor: pointer;
+      margin: 20px 0;
+      text-transform: uppercase;
+      box-shadow: 0 0 15px #00ffcc;
+      transition: all 0.3s;
+    }
+
+    .sci-fi-button:hover {
+      box-shadow: 0 0 25px #ff007a;
+      transform: scale(1.05);
+    }
+
+    .input-container {
+      margin-bottom: 20px;
+    }
+
+    .input-container input {
+      padding: 10px;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid #00ffcc;
+      color: #fff;
+      border-radius: 5px;
+      width: 100px;
+      text-align: center;
+    }
+
+    .winner-message {
+      font-size: 36px;
+      color: #00ffcc;
+      text-shadow: 0 0 10px #00ffcc;
+      margin-top: 20px;
+      animation: pulse 1.5s infinite;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .winner-message.show {
+      opacity: 1;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @media (max-width: 768px) {
+      .wheel-container h1 {
+        font-size: 36px;
+      }
+
+      .wheel-container p {
+        font-size: 18px;
+      }
+
+      .wheel {
+        width: 300px;
+        height: 300px;
+      }
+
+      .wheel-canvas {
+        width: 300px;
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="wheel-container">
+    <h1>SpinWheel</h1>
+    <p>Unleash the Future: Spin to Discover Your Destiny</p>
+    <div class="input-container">
+      <input type="number" id="memberCount" min="1" max="20" value="8" placeholder="Members (1-20)">
+    </div>
+    <div class="wheel">
+      <canvas class="wheel-canvas" width="400" height="400"></canvas>
+      <div class="arrow"></div>
+    </div>
+    <button class="sci-fi-button" onclick="spinWheel()">Spin the Wheel</button>
+    <div class="winner-message" id="winnerMessage">0</div>
+  </section>
+
+  <script>
+    const canvas = document.querySelector('.wheel-canvas');
+    const ctx = canvas.getContext('2d');
+    const memberInput = document.getElementById('memberCount');
+    const winnerMessage = document.getElementById('winnerMessage');
+    let partitions = parseInt(memberInput.value);
+    let angle = 0;
+    let spinning = false;
+
+    function drawWheel() {
+      const numPartitions = Math.min(parseInt(memberInput.value) || 1, 20);
+      partitions = numPartitions;
+      const anglePerPartition = (2 * Math.PI) / numPartitions;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < numPartitions; i++) {
+        const startAngle = i * anglePerPartition;
+        const endAngle = (i + 1) * anglePerPartition;
+        ctx.beginPath();
+        ctx.moveTo(200, 200);
+        ctx.arc(200, 200, 200, startAngle, endAngle);
+        ctx.fillStyle = `hsl(${i * 360 / numPartitions}, 70%, 50%)`;
+        ctx.fill();
+        ctx.strokeStyle = '#00ffcc';
+        ctx.stroke();
+
+        // Draw number
+        ctx.save();
+        ctx.translate(200, 200);
+        ctx.rotate(startAngle + anglePerPartition / 2);
+        ctx.font = '20px Orbitron';
+        ctx.fillStyle = '#fff';
+        ctx.textAlign = 'center';
+        ctx.fillText(i + 1, 150, 0);
+        ctx.restore();
+      }
+    }
+
+    function spinWheel() {
+      if (spinning) return;
+      spinning = true;
+      winnerMessage.classList.remove('show');
+      const numPartitions = Math.min(parseInt(memberInput.value) || 1, 20);
+      const spinAngle = Math.random() * 360 + 360 * 5; // 5+ rotations
+      const duration = 5000;
+
+      let startTime = null;
+      function animate(time) {
+        if (!startTime) startTime = time;
+        const progress = (time - startTime) / duration;
+        angle = spinAngle * progress;
+        canvas.style.transform = `rotate(${angle}deg)`;
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          spinning = false;
+          const finalAngle = angle % 360;
+          const totalAngle = (270 + finalAngle) % 360;
+          const anglePerPartitionDeg = 360 / numPartitions;
+          const winningPartition = Math.floor(totalAngle / anglePerPartitionDeg) + 1;
+          winnerMessage.textContent = winningPartition;
+          winnerMessage.classList.add('show');
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+
+    memberInput.addEventListener('input', () => {
+      const value = Math.min(parseInt(memberInput.value) || 1, 20);
+      memberInput.value = value;
+      drawWheel();
+    });
+
+    drawWheel();
+  </script>
+</body>
+</html>
