@@ -53,6 +53,22 @@
       border-bottom: 50px solid #ffffff;
       z-index: 10;
     }
+    .magnifier-canvas {
+      position: absolute;
+      bottom: unset; /* Avoid bottom overlap */
+      left: calc(50% + 220px); /* Right of the wheel */
+      top: 50%;
+      transform: translateY(-50%); /* Center vertically */
+      width: 80px;
+      height: 80px;
+      border: 2px solid #00ffcc;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00ffcc;
+      z-index: 10;
+    }
+    .button-wrapper {
+      perspective: 1000px;
+    }
     .sci-fi-button {
       background: linear-gradient(45deg, #00ffcc, #ff007a);
       border: none;
@@ -61,14 +77,19 @@
       color: #fff;
       border-radius: 25px;
       cursor: pointer;
-      margin: 20px 0;
+      margin: 80px 0 20px;
       text-transform: uppercase;
-      box-shadow: 0 0 15px #00ffcc;
-      transition: all 0.3s;
+      box-shadow: 0 8px 15px #00ffcc, 0 0 20px rgba(0, 255, 204, 0.5);
+      transition: transform 0.1s, box-shadow 0.1s;
+      transform: translateZ(10px);
     }
     .sci-fi-button:hover {
-      box-shadow: 0 0 25px #ff007a;
-      transform: scale(1.05);
+      box-shadow: 0 10px 25px #ff007a, 0 0 30px rgba(255, 0, 122, 0.5);
+      transform: translateZ(15px) scale(1.05);
+    }
+    .sci-fi-button:active {
+      transform: translateZ(0) scale(0.95);
+      box-shadow: 0 2px 5px #00ffcc, 0 0 10px rgba(0, 255, 204, 0.3);
     }
     .input-container { margin-bottom: 20px; }
     .input-container input {
@@ -80,6 +101,14 @@
       border-radius: 5px;
       width: 100px;
       text-align: center;
+      -webkit-appearance: textfield;
+    }
+    .input-container input::-webkit-inner-spin-button,
+    .input-container input::-webkit-outer-spin-button {
+      -webkit-appearance: inner-spin-button;
+      opacity: 1;
+      margin: 0;
+      cursor: pointer;
     }
     .winner-message {
       font-size: 36px;
@@ -101,6 +130,18 @@
       .wheel-container p { font-size: 18px; }
       .wheel { width: 300px; height: 300px; }
       .wheel-canvas { width: 300px; height: 300px; }
+      .magnifier-canvas {
+        width: 60px;
+        height: 60px;
+        left: calc(50% + 160px); /* Adjusted for smaller wheel */
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .sci-fi-button { margin: 60px 0 20px; }
+      .input-container input {
+        width: 120px;
+        padding: 8px;
+      }
     }
   </style>
 </head>
@@ -109,19 +150,24 @@
     <h1>SpinWheel</h1>
     <p>Unleash the Future: Spin to Discover Your Destiny</p>
     <div class="input-container">
-      <input type="number" id="memberCount" min="1" max="20" value="8" placeholder="Members (1-20)">
+      <input type="number" id="memberCount" min="1" max="100" value="8" placeholder="Members (1-100)">
     </div>
     <div class="wheel">
       <canvas class="wheel-canvas" width="400" height="400"></canvas>
       <div class="arrow"></div>
+      <canvas class="magnifier-canvas" width="80" height="80"></canvas>
     </div>
-    <button class="sci-fi-button" onclick="spinWheel()">Spin the Wheel</button>
+    <div class="button-wrapper">
+      <button class="sci-fi-button" onclick="spinWheel()">Spin the Wheel</button>
+    </div>
     <div class="winner-message" id="winnerMessage">0</div>
   </section>
 
   <script>
     const canvas = document.querySelector('.wheel-canvas');
     const ctx = canvas.getContext('2d');
+    const magnifierCanvas = document.querySelector('.magnifier-canvas');
+    const magnifierCtx = magnifierCanvas.getContext('2d');
     const memberInput = document.getElementById('memberCount');
     const winnerMessage = document.getElementById('winnerMessage');
     let partitions = parseInt(memberInput.value);
@@ -154,7 +200,7 @@
 
     // Draw the wheel and store partition colors
     function drawWheel() {
-      const numPartitions = Math.min(parseInt(memberInput.value) || 1, 20);
+      const numPartitions = Math.min(parseInt(memberInput.value) || 1, 100);
       partitions = numPartitions;
       const anglePerPartition = (2 * Math.PI) / numPartitions;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -176,7 +222,7 @@
         ctx.save();
         ctx.translate(200, 200);
         ctx.rotate(startAngle + anglePerPartition / 2);
-        ctx.font = '20px Orbitron';
+        ctx.font = '16px Orbitron';
         ctx.fillStyle = '#fff';
         ctx.textAlign = 'center';
         ctx.fillText(i + 1, 150, 0);
@@ -186,6 +232,30 @@
         const [r, g, b] = hslToRgb(hue, 70, 50);
         partitionColors.push([r, g, b]);
       }
+    }
+
+    // Update the magnifier canvas
+    function updateMagnifier(currentAngle) {
+      const finalAngleRad = (currentAngle % 360) * Math.PI / 180;
+      const centerX = 200;
+      const centerY = 200;
+      const r = 190;
+      const sampleX = centerX + r * Math.sin(finalAngleRad);
+      const sampleY = centerY + r * Math.cos(finalAngleRad);
+
+      // Get a 20x20 pixel region around the sample point
+      const regionSize = 20;
+      const halfRegion = regionSize / 2;
+      const imageData = ctx.getImageData(sampleX - halfRegion, sampleY - halfRegion, regionSize, regionSize);
+
+      // Clear and draw magnified region
+      magnifierCtx.clearRect(0, 0, magnifierCanvas.width, magnifierCanvas.height);
+      magnifierCtx.imageSmoothingEnabled = false;
+      magnifierCtx.drawImage(
+        canvas,
+        sampleX - halfRegion, sampleY - halfRegion, regionSize, regionSize,
+        0, 0, magnifierCanvas.width, magnifierCanvas.height
+      );
     }
 
     // Easing function for smooth deceleration
@@ -198,16 +268,19 @@
       if (spinning) return;
       spinning = true;
       winnerMessage.classList.remove('show');
-      const spinAngle = Math.random() * 360 + 360 * 5; // 5+ rotations
+      const spinAngle = Math.random() * 360 + 360 * 5;
       const duration = 5000;
 
       let startTime = null;
       function animate(time) {
         if (!startTime) startTime = time;
         const progress = Math.min((time - startTime) / duration, 1);
-        const easedProgress = easeOutCubic(progress); // Apply easing for deceleration
+        const easedProgress = easeOutCubic(progress);
         const currentAngle = spinAngle * easedProgress;
         canvas.style.transform = `rotate(${currentAngle}deg)`;
+
+        // Update magnifier during spin
+        updateMagnifier(currentAngle);
 
         if (progress < 1) {
           requestAnimationFrame(animate);
@@ -217,13 +290,12 @@
           const centerX = 200;
           const centerY = 200;
           let pr, pg, pb;
-          const rOptions = [190, 150, 100]; // Try different radii to avoid text
+          const rOptions = [190, 150, 100];
 
-          // Pick a point where the arrow is (bottom, adjusted for rotation)
+          // Pick a point where the arrow is
           for (let r of rOptions) {
             const x = centerX + r * Math.sin(finalAngleRad);
             const y = centerY + r * Math.cos(finalAngleRad);
-            // Average color over a 3x3 area to handle anti-aliasing
             const pixelData = ctx.getImageData(Math.round(x) - 1, Math.round(y) - 1, 3, 3).data;
             let sumR = 0, sumG = 0, sumB = 0;
             for (let i = 0; i < 9; i++) {
@@ -234,7 +306,6 @@
             pr = sumR / 9;
             pg = sumG / 9;
             pb = sumB / 9;
-            // Skip if it’s white (likely text)
             if (pr > 200 && pg > 200 && pb > 200) continue;
             break;
           }
@@ -247,7 +318,7 @@
             const dist = (r - pr) ** 2 + (g - pg) ** 2 + (b - pb) ** 2;
             if (dist < minDist) {
               minDist = dist;
-              winningPartition = index + 1; // 1-based index
+              winningPartition = index + 1;
             }
           });
 
@@ -260,13 +331,15 @@
 
     // Update wheel when partition count changes
     memberInput.addEventListener('input', () => {
-      const value = Math.min(parseInt(memberInput.value) || 1, 20);
+      const value = Math.min(parseInt(memberInput.value) || 1, 100);
       memberInput.value = value;
       drawWheel();
+      updateMagnifier(0);
     });
 
     // Initial draw
     drawWheel();
+    updateMagnifier(0);
   </script>
 </body>
 </html>
