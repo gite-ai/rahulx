@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Previewer - Rahulx.com</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: #ffffff;
+    }
+
+    .navbar {
+      background: linear-gradient(to right, #1a1a1a, #2a2a2a);
+      padding: 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      text-align: left;
+    }
+
+    .navbar .menu-icon {
+      color: #00ffcc;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 120px 20px;
+      background: url('https://images.unsplash.com/photo-1516321310766-61f6f9c1e48d') no-repeat center/cover;
+      color: #ffffff;
+      margin-top: 60px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: #cccccc;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .editor-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .editor, .preview {
+      background: #1a1a1a;
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
+    }
+
+    .editor h2, .preview h2 {
+      color: #00ffcc;
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+
+    .editor textarea {
+      width: 100%;
+      height: 500px;
+      resize: none;
+      padding: 15px;
+      border: 1px solid #333;
+      border-radius: 5px;
+      background: #0d0d0d;
+      color: #ffffff;
+      font-family: 'Courier New', monospace;
+      font-size: 16px;
+    }
+
+    .preview iframe {
+      width: 100%;
+      height: 500px;
+      border: 1px solid #333;
+      border-radius: 5px;
+      background: #ffffff;
+    }
+
+    button {
+      background: linear-gradient(to right, #00ffcc, #00b3b3);
+      color: #0d0d0d;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 15px;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #00b3b3, #00ffcc);
+      transform: scale(1.05);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px;
+      background: linear-gradient(to right, #1a1a1a, #2a2a2a);
+      color: #cccccc;
+      margin-top: 50px;
+      font-size: 14px;
+    }
+
+    .footer a {
+      color: #00ffcc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer a:hover {
+      color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+      .editor-section {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <span class="menu-icon">☰</span>
+  </div>
+
+  <div class="hero">
+    <h1>HTML Code Previewer</h1>
+    <p>Write and preview your HTML code instantly with our interactive tool.</p>
+  </div>
+
+  <div class="container">
+    <div class="editor-section">
+      <div class="editor">
+        <h2>Code Editor</h2>
+        <textarea id="htmlInput" placeholder="Enter your HTML code here..."></textarea>
+        <button onclick="previewHTML()">Preview Code</button>
+      </div>
+      <div class="preview">
+        <h2>Live Preview</h2>
+        <iframe id="previewFrame"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>© 2025 Rahulx.com. All rights reserved. | <a href="#">Privacy Policy</a></p>
+  </div>
+
+  <script>
+    function previewHTML() {
+      const html = document.getElementById('htmlInput').value;
+      const iframe = document.getElementById('previewFrame');
+      iframe.contentDocument.open();
+      iframe.contentDocument.write(html);
+      iframe.contentDocument.close();
+    }
+  </script>
+</body>
+</html>
