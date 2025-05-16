@@ -186,9 +186,9 @@
       border: 1px solid #00ffcc;
       border-radius: 10px;
       padding: 15px;
-      position: relative;
+      position: relative; /* For absolute positioning of buttons */
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      min-height: 150px;
+      min-height: 150px; /* Ensure enough space for buttons */
     }
 
     .quote-card:hover {
@@ -207,32 +207,33 @@
       font-size: 0.9rem;
       color: #fff;
       text-align: right;
-      margin-bottom: 40px;
+      margin-bottom: 40px; /* Space for buttons */
     }
 
-    .quote-card .action-button {
+    .quote-card .copy-btn, .quote-card .share-btn {
       position: absolute;
       bottom: 10px;
-      background: none;
+      background: #00ffcc;
+      color: #000;
       border: none;
-      color: #00ffcc;
-      font-size: 1.2rem;
+      padding: 6px;
+      border-radius: 5px;
       cursor: pointer;
-      transition: color 0.3s ease, transform 0.3s ease;
-      padding: 5px;
+      font-size: 1rem;
+      transition: background 0.3s ease;
     }
 
     .quote-card .copy-btn {
-      right: 50px;
+      right: 50px; /* Positioned to the left of share button */
     }
 
     .quote-card .share-btn {
       right: 10px;
     }
 
-    .quote-card .action-button:hover {
-      color: #ff00cc;
-      transform: scale(1.2);
+    .quote-card .copy-btn:hover, .quote-card .share-btn:hover {
+      background: #ff00cc;
+      color: #fff;
     }
 
     .sources {
@@ -336,7 +337,7 @@
       }
       .quote-card p { font-size: 1rem; }
       .quote-card span { font-size: 0.8rem; }
-      .quote-card .action-button { padding: 5px; font-size: 0.8rem; }
+      .quote-card .copy-btn, .quote-card .share-btn { padding: 5px; font-size: 0.8rem; }
     }
 
     @media (max-width: 480px) {
@@ -350,7 +351,6 @@
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
   <div class="sci-fi-bg"></div>
@@ -399,4 +399,159 @@
       'i': ['Ibn Hazm', 'Ibn Qayyim Al-Jawziyya', 'Ibn Taymiyyah', 'Ice Cube', 'Ignatius of Antioch', 'Imelda Marcos', 'Immanuel Kant', 'Indira Gandhi', 'Indra Devi', 'Ingrid Bergman', 'Iris Murdoch', 'Irving Berlin', 'Irving Langmuir', 'Irwin Corey', 'Isaac Asimov', 'Isaac Bashevis Singer', 'Isaac Newton', 'Isabel Allende', 'Ivanka Trump', 'Iyanla Vanzant'],
       'j': ['J. C. Ryle', 'J. K. Rowling', 'J. R. R. Tolkien', 'James Madison', 'Jane Austen', 'Janis Joplin', 'Jim Morrison', 'Jim Rohn', 'Joan Rivers', 'Joel Osteen', 'Johann Wolfgang von Goethe', 'John C. Maxwell', 'John F. Kennedy', 'John Green', 'John Lennon', 'John Piper', 'John Wooden', 'Johnny Cash', 'Joseph Campbell', 'Joyce Meyer'],
       'k': ['Kara Goucher', 'Karan Johar', 'Karl Lagerfeld', 'Karl Marx', 'Katharine Hepburn', 'Katherine Heigl', 'Kathrine Switzer', 'Kathryn Kuhlman', 'Katy Perry', 'Kay Arthur', 'Ken Keyes Jr.', 'Ken Venturi', 'Khalil Gibran', 'Kim Kardashian', 'Kin Hubbard', 'Kobe Bryant', 'Kris Carr', 'Kristin Armstrong', 'Kurt Cobain', 'Kurt Vonnegut'],
-      'l': ['Lady Gaga', 'Lana Del Rey', 'Leo Buscaglia', 'Leo Tolstoy', '
+      'l': ['Lady Gaga', 'Lana Del Rey', 'Leo Buscaglia', 'Leo Tolstoy', 'Leon Brown', 'Leonard Ravenhill', 'Leonardo da Vinci', 'Les Brown', 'Lil Wayne', 'Lisa St. Aubin de Terán', 'Lord Acton', 'Lord Byron', 'Lou Holtz', 'Louie Giglio', 'Louisa May Alcott', 'Louise Hay', 'Lucille Ball', 'Ludwig von Mises', 'Lydia M. Child', 'Lysa TerKeurst'],
+      'm': ['Mahatma Gandhi', 'Malcolm X', 'Marcus Aurelius', 'Marianne Williamson', 'Marilyn Monroe', 'Mark Twain', 'Martin Luther', 'Martin Luther King, Jr.', 'Mary Kay Ash', 'Max Lucado', 'Maya Angelou', 'Melody Beattie', 'Michael Jackson', 'Michael Jordan', 'Michelle Obama', 'Milton Friedman', 'Mitch Albom', 'Mother Teresa', 'Muhammad', 'Muhammad Ali'],
+      'n': ['N. T. Wright', 'Napoleon Bonaparte', 'Napoleon Hill', 'Neal A. Maxwell', 'Neale Donald Walsch', 'Neil Armstrong', 'Neil Gaiman', 'Neil deGrasse Tyson', 'Nelson Mandela', 'Nhat Hanh', 'Nicholas Sparks', 'Nick Vujicic', 'Nicole Kidman', 'Nido R Qubein', 'Nikola Tesla', 'Noam Chomsky', 'Nora Ephron', 'Nora Roberts', 'Norman Vincent Peale', 'Nouman Ali Khan'],
+      'o': ['Octavio Paz', 'Og Mandino', 'Ogden Nash', 'Ole Hallesby', 'Oliver P. Smith', 'Oliver Sacks', 'Oliver Wendell Holmes', 'Oliver Wendell Holmes, Jr.', 'Omar N. Bradley', 'Omar Suleiman', 'Oprah Winfrey', 'Oral Roberts', 'Orhan Pamuk', 'Orison Swett Marden', 'Orson Welles', 'Oscar Wilde', 'Oscar de la Renta', 'Oswald Chambers', 'Oswald J. Smith', 'Ovid'],
+      'p': ['Pablo Neruda', 'Pablo Picasso', 'Paramahansa Yogananda', 'Pat Riley', 'Patrick Henry', 'Paulo Coelho', 'Pearl S. Buck', 'Pele', 'Pema Chodron', 'Pete Seeger', 'Peter Drucker', 'Peter Marshall', 'Phil Robertson', 'Plato', 'Plutarch', 'Pope Benedict XVI', 'Pope Francis', 'Pope John Paul II', 'Prince', 'Princess Diana'],
+      'q': ['Q-Tip', 'Queen Elizabeth II', 'Queen Latifah', 'Queen Rania of Jordan', 'Queen Victoria', 'Quentin Crisp', 'Quentin L. Cook', 'Quentin Tarantino', 'Quincy Jones', 'Quinn Cummings', 'Quintilian', 'Quintus Ennius'],
+      'r': ['Rainer Maria Rilke', 'Ralph Waldo Emerson', 'Ram Dass', 'Ray Bradbury', 'Rhonda Byrne', 'Richard Bach', 'Richard Branson', 'Rick Warren', 'Rihanna', 'Roald Dahl', 'Robert A. Heinlein', 'Robert Frost', 'Robert H. Schuller', 'Robert Kiyosaki', 'Robin Williams', 'Roger Federer', 'Ron Paul', 'Ronald Reagan', 'Rumi', 'Ruth Graham'],
+      's': ['Saint Augustine', 'Saint Patrick', 'Samuel Adams', 'Samuel Beckett', 'Sarah Dessen', 'Sarah Palin', 'Shakira', 'Shakti Gawain', 'Sigmund Freud', 'Smith Wigglesworth', 'Socrates', 'Stephen Colbert', 'Stephen Covey', 'Stephen Hawking', 'Stephen King', 'Steve Jobs', 'Susan B. Anthony', 'Swami Vivekananda', 'Sydney J. Harris', 'Sylvia Plath'],
+      't': ['T. Harv Eker', 'T. S. Eliot', 'Tariq Ramadan', 'Terence McKenna', 'Theodore Roosevelt', 'Thomas A. Edison', 'Thomas Carlyle', 'Thomas Fuller', 'Thomas Jefferson', 'Thomas Merton', 'Thomas Paine', 'Thomas S. Monson', 'Thomas Sowell', 'Tim Ferriss', 'Timothy Keller', 'Tina Fey', 'Toni Morrison', 'Tony Robbins', 'Trent Shelton', 'Tupac Shakur'],
+      'u': ['U Thant', 'U.G. Krishnamurti', 'Uell Stanley Andersen', 'Ugo Betti', 'Ulrike Meinhof', 'Ulysses S. Grant', 'Uma Thurman', 'Umar', 'Umberto Eco', 'Upton Sinclair', 'Uri Geller', 'Urie Bronfenbrenner', 'Ursula Andress', 'Ursula K. Le Guin', 'Ursula Nordstrom', 'Usain Bolt', 'Usher', 'Uta Hagen', 'Utah Phillips', 'Uthman ibn Affan'],
+      'v': ['Vandana Shiva', 'Vera Wang', 'Vern Law', 'Vernon Howard', 'Veronica Lake', 'Veronica Roth', 'Victor H. Krulak', 'Victor Hugo', 'Victoria Moran', 'Viktor E. Frankl', 'Vince Gironda', 'Vince Lombardi', 'Vincent Van Gogh', 'Viola Davis', 'Virginia Satir', 'Virginia Woolf', 'Vivien Leigh', 'Vivienne Westwood', 'Vladimir Nabokov', 'Voltaire'],
+      'w': ['W. Clement Stone', 'W. E. B. Du Bois', 'Walt Disney', 'Walt Whitman', 'Warren Buffett', 'Warren W. Wiersbe', 'Washington Irving', 'Watchman Nee', 'Wayne Dyer', 'Will Rogers', 'Will Smith', 'William Arthur Ward', 'William Feather', 'William James', 'William Penn', 'William S. Burroughs', 'William Shakespeare', 'Willie Nelson', 'Wilma Rudolph', 'Winston Churchill'],
+      'x': ['Xabi Alonso', 'Xavi', 'Xenocrates', 'Xenophanes', 'Xiaolu Guo'],
+      'y': ['Yakov Smirnoff', 'Yamamoto Tsunetomo', 'Yani Tseng', 'Yann Martel', 'Yasmin Mogahed', 'Yasunari Kawabata', 'Yehuda Berg', 'Yevgeny Yevtushenko', 'Yevgeny Zamyatin', 'Yo-Yo Ma', 'Yogaswami', 'Yogi Berra', 'Yohji Yamamoto', 'Yoko Ono', 'Yongey Mingyur Rinpoche', 'Young Jeezy', 'Yukio Mishima', 'Yuri Kochiyama', 'Yves Saint Laurent', 'Yvon Chouinard'],
+      'z': ['Zach Galifianakis', 'Zachary Scott', 'Zadie Smith', 'Zakir Naik', 'Zakk Wylde', 'Zane Grey', 'Zayn Malik', 'Zelda Fitzgerald', 'Zhuangzi', 'Zig Ziglar', 'Ziggy Marley', 'Zinedine Zidane', 'Zitkala-Sa', 'Zoe Koplowitz', 'Zoe Kravitz', 'Zoe Saldana', 'Zooey Deschanel', 'Zora Neale Hurston', 'Zsa Zsa Gabor', 'Zulfikar Ali Bhutto']
+    };
+
+    // Hamburger Menu Toggle
+    const menuIcon = document.getElementById('menu-icon');
+    const nav = document.getElementById('nav');
+    menuIcon.addEventListener('click', () => nav.classList.toggle('active'));
+
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768 && nav.classList.contains('active')) {
+        const isClickInsideNav = nav.contains(e.target);
+        const isClickOnMenuIcon = menuIcon.contains(e.target);
+        if (!isClickInsideNav && !isClickOnMenuIcon) {
+          nav.classList.remove('active');
+        }
+      }
+    });
+
+    // Generate Author Grid
+    const authorGrid = document.getElementById('author-grid');
+    const authorSubcategories = document.getElementById('author-subcategories');
+    const quotesList = document.getElementById('quotes-list');
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    
+    letters.forEach(letter => {
+      const authorNode = document.createElement('div');
+      authorNode.classList.add('category-node');
+      authorNode.textContent = letter;
+      authorNode.dataset.char = letter.toLowerCase();
+      authorGrid.appendChild(authorNode);
+    });
+
+    // Fetch Quotes for Selected Letter
+    let quotes = [];
+    function loadQuotesForLetter(char) {
+      fetch(`${char}.txt`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(data => {
+          const lines = data.split('\n').filter(line => line.trim() !== '');
+          quotes = lines.map(line => {
+            const [text, author, category, source] = line.split('|');
+            return { text, author, category, source };
+          });
+          displaySubcategories(authorSubcategories, authors, char);
+        })
+        .catch(err => {
+          console.error('Error fetching quotes:', err);
+          quotesList.innerHTML = '<p style="text-align: center;">Failed to load quotes. Please ensure the file exists.</p>';
+        });
+    }
+
+    function displaySubcategories(container, data, char) {
+      container.innerHTML = '';
+      container.classList.remove('active');
+      const items = data[char] || [];
+      items.forEach(item => {
+        const btn = document.createElement('button');
+        btn.classList.add('subcategory-btn');
+        btn.textContent = item;
+        btn.dataset.item = item;
+        btn.addEventListener('click', () => {
+          document.querySelectorAll(`#${container.id} .subcategory-btn`).forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          displayQuotes(item);
+        });
+        container.appendChild(btn);
+      });
+      if (items.length > 0) {
+        container.classList.add('active');
+        displayQuotes(items[0]);
+        container.querySelector('.subcategory-btn').classList.add('active');
+      } else {
+        quotesList.innerHTML = '<p style="text-align: center;">No authors available for this letter.</p>';
+      }
+    }
+
+    function displayQuotes(value) {
+      quotesList.innerHTML = '';
+      const filteredQuotes = quotes.filter(q => q.author.toLowerCase() === value.toLowerCase());
+
+      if (filteredQuotes.length === 0) {
+        quotesList.innerHTML = '<p style="text-align: center;">No quotes found for this author.</p>';
+      } else {
+        filteredQuotes.forEach(quote => {
+          const quoteCard = document.createElement('div');
+          quoteCard.classList.add('quote-card');
+          quoteCard.innerHTML = `
+            <p>❛ ${quote.text} ❜</p>
+            <span>- ${quote.author}</span>
+            <button class="copy-btn" onclick="copyQuote('❛ ${quote.text} ❜ - ${quote.author}')">⎘</button>
+            <button class="share-btn" onclick="shareOnX('❛ ${quote.text} ❜ - ${quote.author}')">𝕩</button>
+          `;
+          quotesList.appendChild(quoteCard);
+        });
+
+        // Add sources section
+        const sourcesDiv = document.createElement('div');
+        sourcesDiv.classList.add('sources');
+        sourcesDiv.innerHTML = '<strong>Sources:</strong><br>' + 
+          filteredQuotes.map(q => `${q.source}`).join('<br>');
+        quotesList.appendChild(sourcesDiv);
+      }
+    }
+
+    // Copy Quote Function
+    function copyQuote(text) {
+      navigator.clipboard.writeText(text)
+        .then(() => {
+          alert('Quote copied to clipboard!');
+        })
+        .catch(err => {
+          console.error('Failed to copy quote:', err);
+          alert('Failed to copy quote. Please try again.');
+        });
+    }
+
+    // Share on X Function
+    function shareOnX(text) {
+      const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank');
+    }
+
+    const authorNodes = document.querySelectorAll('#author-grid .category-node');
+    authorNodes.forEach(node => {
+      node.addEventListener('click', () => {
+        authorNodes.forEach(n => n.classList.remove('active'));
+        node.classList.add('active');
+        loadQuotesForLetter(node.dataset.char);
+      });
+    });
+
+    // Initial Display
+    loadQuotesForLetter('a');
+    authorNodes[0].classList.add('active');
+  </script>
+</body>
+</html>

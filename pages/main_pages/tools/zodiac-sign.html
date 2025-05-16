@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zodiac Sign Calculator - Rahulx.com</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+      color: #ffffff;
+      line-height: 1.4;
+    }
+
+    .navbar {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 0.8rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .menu-icon {
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #00ffcc;
+    }
+
+    .hero {
+      height: 40vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1.5rem;
+      background: url('stars-bg.jpg') no-repeat center center/cover;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.8rem;
+      color: #00ffcc;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      max-width: 500px;
+    }
+
+    .content {
+      padding: 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .footer a {
+      color: #00ffcc;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      color: #00ccaa;
+    }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .form-container label {
+      display: block;
+      margin-bottom: 0.4rem;
+      color: #00ffcc;
+      font-size: 0.9rem;
+    }
+
+    .form-container input {
+      width: 100%;
+      padding: 0.4rem;
+      margin-bottom: 0.8rem;
+      border: none;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 0.9rem;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .input-group input {
+      flex: 1;
+    }
+
+    .form-container button {
+      padding: 0.6rem 1.2rem;
+      background: #00ffcc;
+      color: #000;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .form-container button:hover {
+      background: #00ccaa;
+    }
+
+    .result {
+      margin-top: 1rem;
+      text-align: center;
+      color: #00ffcc;
+    }
+
+    .result h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .result p {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="menu-icon">☰</div>
+  </div>
+
+  <section class="hero">
+    <h1>Zodiac Sign Calculator</h1>
+    <p>Enter your date of birth to discover your Zodiac sign.</p>
+  </section>
+
+  <section class="content">
+    <div class="form-container">
+      <label>Date of Birth:</label>
+      <div class="input-group">
+        <input type="number" id="day" placeholder="Day" min="1" max="31" required>
+        <input type="number" id="month" placeholder="Month" min="1" max="12" required>
+        <input type="number" id="year" placeholder="Year" min="1900" max="2025" required>
+      </div>
+      <button onclick="findZodiac()">Find Zodiac</button>
+    </div>
+    <div class="result" id="result"></div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 Rahulx.com. All rights reserved. | <a href="#privacy">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+    function findZodiac() {
+      const day = parseInt(document.getElementById('day').value);
+      const month = parseInt(document.getElementById('month').value);
+      const year = parseInt(document.getElementById('year').value);
+      const resultDiv = document.getElementById('result');
+
+      if (!day || !month || !year || day < 1 || day > 31 || month < 1 || month > 12 || year < 1900 || year > 2025) {
+        resultDiv.innerHTML = 'Please enter a valid date of birth.';
+        return;
+      }
+
+      let zodiac = '';
+      if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) zodiac = 'Aries';
+      else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) zodiac = 'Taurus';
+      else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) zodiac = 'Gemini';
+      else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) zodiac = 'Cancer';
+      else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) zodiac = 'Leo';
+      else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) zodiac = 'Virgo';
+      else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) zodiac = 'Libra';
+      else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) zodiac = 'Scorpio';
+      else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) zodiac = 'Sagittarius';
+      else if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) zodiac = 'Capricorn';
+      else if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) zodiac = 'Aquarius';
+      else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) zodiac = 'Pisces';
+
+      resultDiv.innerHTML = `
+        <h3>Your Zodiac Sign is</h3>
+        <p>${zodiac}</p>
+      `;
+    }
+  </script>
+</body>
+</html>
