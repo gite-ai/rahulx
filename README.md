@@ -49,3 +49,11 @@ Remove empty directories Open source app to scan Empty folder in given location
 GitHub For synchronising code and taking backup in real time.. Edit the code in notepad file then push it to the directory on github. It will create backup of your code Online
 PDF 24 All kind of PDF merging editing can be done in this app
 VLC It supports most of the video formats
+
+
+Mast hai Microsoft edge plugins
+
+You block origin Two block ads or page website page elements Its open source and blocker
+Push Bullet to share the files across the devices
+Just read To convert website into only text only Reading mode
+
