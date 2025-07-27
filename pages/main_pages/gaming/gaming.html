@@ -541,7 +541,7 @@
 
     // Fetch data from gaming.txt
     window.onload = function() {
-      fetch('/gaming.txt') // Use root-relative path for GitHub Pages
+      fetch('/texts/gaming.txt') // Use root-relative path for GitHub Pages
         .then(response => {
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
