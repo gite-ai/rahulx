@@ -11,7 +11,8 @@
       "https://www.dota2.com/",
       "https://www.leagueoflegends.com/",
       "https://playvalorant.com/"
-    ]
+    ],
+    "image": "https://i.postimg.cc/Y9MmMWqh/pexels-a-darmel-7862514.jpg"
   },
   {
     "name": "VR Gaming",
@@ -25,7 +26,8 @@
       "https://beatsaber.com/",
       "https://www.half-life.com/en/alyx/",
       "https://www.meta.com/quest/"
-    ]
+    ],
+    "image": "https://i.postimg.cc/rmg6YvPK/pexels-tima-miroshnichenko-6498723.jpg"
   },
   {
     "name": "Indie Games",
@@ -39,7 +41,8 @@
       "https://store.steampowered.com/genre/Indie/",
       "https://itch.io/games",
       "https://www.hollowknight.com/"
-    ]
+    ],
+    "image": "https://i.postimg.cc/Bvrtn1Sx/pexels-tima-miroshnichenko-7047002.jpg"
   },
   {
     "name": "Steam",
@@ -51,7 +54,8 @@
     "top_games": ["Baldur's Gate 3", "Elden Ring", "Cyberpunk 2077", "The Witcher 3", "Portal 2", "Hades", "DOOM Eternal", "GTA V", "Red Dead Redemption 2", "Counter-Strike 2"],
     "official_websites": [
       "https://store.steampowered.com/"
-    ]
+    ],
+    "image": "https://i.postimg.cc/Rhz3XJ2M/OIP.jpg"
   },
   {
     "name": "Android Gaming",
@@ -65,7 +69,8 @@
       "https://play.google.com/store/games",
       "https://www.callofduty.com/mobile",
       "https://www.pubgmobile.com/"
-    ]
+    ],
+    "image": "https://i.postimg.cc/WbTFZrM8/best-android-games-14-9-20230406083255537.jpg"
   },
   {
     "name": "PlayStation",
@@ -77,7 +82,8 @@
     "top_games": ["God of War Ragnarök", "The Last of Us Part II", "Spider-Man: Miles Morales", "Horizon Forbidden West", "Uncharted 4", "Bloodborne", "Ghost of Tsushima", "FFVII Remake", "Demon’s Souls", "Ratchet & Clank: Rift Apart"],
     "official_websites": [
       "https://www.playstation.com/"
-    ]
+    ],
+    "image": "https://i.postimg.cc/DwY8RMRp/pexels-jeshoots-com-147458-442576.jpg"
   },
   {
     "name": "Xbox",
@@ -89,7 +95,8 @@
     "top_games": ["Halo Infinite", "Forza Horizon 5", "Gears 5", "Sea of Thieves", "Starfield", "Microsoft Flight Simulator", "Ori and the Will of the Wisps", "Psychonauts 2", "Hellblade II", "Fable"],
     "official_websites": [
       "https://www.xbox.com/"
-    ]
+    ],
+    "image": "https://i.postimg.cc/PrsnxQn3/pexels-nathanjhilton-10997582.jpg"
   },
   {
     "name": "PC Games",
@@ -102,7 +109,8 @@
     "official_websites": [
       "https://www.epicgames.com/store/",
       "https://www.gog.com/"
-    ]
+    ],
+    "image": "https://i.postimg.cc/zfbVNkrz/pexels-sharad-7199194.jpg"
   },
   {
     "name": "Retro Games",
@@ -115,7 +123,8 @@
     "official_websites": [
       "https://www.nintendo.com/games/classics/",
       "https://segaretro.org/"
-    ]
+    ],
+    "image": "https://i.postimg.cc/FHKYW4CJ/pexels-mikhail-nilov-7887712.jpg"
   },
   {
     "name": "Emulators for Android",
@@ -128,7 +137,8 @@
     "official_websites": [
       "https://www.retroarch.com/",
       "https://www.ppsspp.org/"
-    ]
+    ],
+    "image": "https://i.postimg.cc/WbTFZrM8/best-android-games-14-9-20230406083255537.jpg"
   },
   {
     "name": "Emulators for PC",
@@ -142,6 +152,7 @@
       "https://dolphin-emu.org/",
       "https://pcsx2.net/",
       "https://www.snes9x.com/"
-    ]
+    ],
+    "image": "https://i.postimg.cc/T2r5hQWh/how-to-use-rpcs3-emulator-to-play-ps3-games.jpg"
   }
 ]
