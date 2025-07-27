@@ -530,8 +530,8 @@
       modalGettingStarted.textContent = gettingStarted;
       modalExample.innerHTML = `Example: ${example}`;
       modalTopGames.textContent = topGames;
-      modalLinks.innerHTML = links && links.length ? links.map(link => `<a href="${link}" target="_blank">${link}</a>`).join('<br>') : 'No links available';
-      modalImage.src = image;
+      modalLinks.innerHTML = Array.isArray(links) && links.length ? links.map(link => `<a href="${link}" target="_blank">${link}</a>`).join('<br>') : 'No links available';
+      modalImage.src = image || "https://via.placeholder.com/400";
       modal.style.display = 'flex';
 
       const threadButton = document.getElementById('threadButton');
@@ -591,8 +591,15 @@
           try {
             const data = JSON.parse(text);
             if (!Array.isArray(data) || !data.every(item => item.name && item.desc)) {
-              throw new Error('Invalid JSON structure: Missing required fields (name, desc)');
+              throw new Error('Invalid JSON structure: Must be an array with name and desc fields');
             }
+            // Validate links field
+            data.forEach(item => {
+              if (item.links && !Array.isArray(item.links)) {
+                console.warn(`Invalid links field for ${item.name}: Expected an array, got ${typeof item.links}`);
+                item.links = [];
+              }
+            });
             populateHashtags(data);
           } catch (e) {
             throw new Error(`Invalid JSON in texts/gaming.txt: ${e.message}`);
@@ -600,31 +607,9 @@
         })
         .catch(error => {
           console.error('Error loading ./texts/gaming.txt:', error);
-          // Try absolute path as fallback
-          fetch('https://rahulx.com/texts/gaming.txt')
-            .then(response => {
-              if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status} - URL: ${response.url}`);
-              }
-              return response.text();
-            })
-            .then(text => {
-              try {
-                const data = JSON.parse(text);
-                if (!Array.isArray(data) || !data.every(item => item.name && item.desc)) {
-                  throw new Error('Invalid JSON structure: Missing required fields (name, desc)');
-                }
-                populateHashtags(data);
-              } catch (e) {
-                throw new Error(`Invalid JSON in texts/gaming.txt: ${e.message}`);
-              }
-            })
-            .catch(error => {
-              console.error('Error loading https://rahulx.com/texts/gaming.txt:', error);
-              const hashtagsContainer = document.getElementById('hashtags');
-              hashtagsContainer.innerHTML = `<p style="color: #ff00cc;">Failed to load gaming data. Error: ${error.message}. Ensure texts/gaming.txt exists at rahulx.com/texts/gaming.txt and matches the expected JSON structure.</p>`;
-              populateHashtags(fallbackData);
-            });
+          const hashtagsContainer = document.getElementById('hashtags');
+          hashtagsContainer.innerHTML = `<p style="color: #ff00cc;">Failed to load gaming data. Error: ${error.message}. Ensure texts/gaming.txt is valid JSON and accessible at rahulx.com/texts/gaming.txt.</p>`;
+          populateHashtags(fallbackData);
         });
     };
   </script>
