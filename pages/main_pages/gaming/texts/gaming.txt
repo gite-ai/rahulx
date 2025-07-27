@@ -11,11 +11,11 @@
     "thread": "https://x.com/example/thread/12345",
     "top_games": ["Counter-Strike 2", "Dota 2", "League of Legends", "Valorant", "Overwatch 2", "Fortnite", "Apex Legends", "Rocket League", "Call of Duty: Warzone", "Rainbow Six Siege"],
     "links": [
-      "https://www.counter-strike.net/", // Official Counter-Strike website
-      "https://www.dota2.com/", // Official Dota 2 website
-      "https://www.leagueoflegends.com/", // Official League of Legends website
-      "https://playvalorant.com/", // Official Valorant website
-      "https://www.overwatch.blizzard.com/" // Official Overwatch website
+      "https://www.counter-strike.net/",
+      "https://www.dota2.com/",
+      "https://www.leagueoflegends.com/", 
+      "https://playvalorant.com/",
+      "https://www.overwatch.blizzard.com/" 
     ]
   },
   {
@@ -30,7 +30,7 @@
     "thread": "https://x.com/example/thread/67890",
     "top_games": ["Beat Saber", "Half-Life: Alyx", "Superhot VR", "The Elder Scrolls V: Skyrim VR", "Resident Evil 4 VR", "Pistol Whip", "Boneworks", "Blade & Sorcery", "Population: One", "Asgard's Wrath II"],
     "links": [
-      "https://www.meta.com/quest/" // Official Meta Quest website
+      "https://www.meta.com/quest/" 
     ]
   },
   {
@@ -45,8 +45,8 @@
     "thread": "https://x.com/example/thread/54321",
     "top_games": ["Hollow Knight", "Stardew Valley", "Celeste", "Hades", "Among Us", "Undertale", "Slay the Spire", "Disco Elysium", "Cuphead", "Dead Cells"],
     "links": [
-      "https://store.steampowered.com/", // Official Steam website
-      "https://itch.io/" // Official itch.io website
+      "https://store.steampowered.com/", 
+      "https://itch.io/" 
     ]
   },
   {
@@ -61,7 +61,7 @@
     "thread": "https://x.com/example/thread/12345",
     "top_games": ["Baldur's Gate 3", "Elden Ring", "Cyberpunk 2077", "The Witcher 3: Wild Hunt", "Portal 2", "Hades", "DOOM Eternal", "Grand Theft Auto V", "Red Dead Redemption 2", "Counter-Strike 2"],
     "links": [
-      "https://store.steampowered.com/" // Official Steam website
+      "https://store.steampowered.com/" 
     ]
   },
   {
@@ -76,7 +76,7 @@
     "thread": "https://x.com/example/thread/12345",
     "top_games": ["Genshin Impact", "Clash of Clans", "Among Us", "PUBG Mobile", "Candy Crush Saga", "Brawl Stars", "Call of Duty: Mobile", "Minecraft", "Roblox", "Pokémon GO"],
     "links": [
-      "https://play.google.com/store/games" // Official Google Play website
+      "https://play.google.com/store/games"
     ]
   },
   {
@@ -91,7 +91,7 @@
     "thread": "https://x.com/example/thread/12345",
     "top_games": ["God of War Ragnarök", "The Last of Us Part II", "Spider-Man: Miles Morales", "Horizon Forbidden West", "Uncharted 4: A Thief’s End", "Bloodborne", "Ghost of Tsushima", "Final Fantasy VII Remake", "Demon’s Souls", "Ratchet & Clank: Rift Apart"],
     "links": [
-      "https://www.playstation.com/" // Official PlayStation website
+      "https://www.playstation.com/" 
     ]
   },
   {
@@ -107,7 +107,7 @@
     "top_games": ["Halo Infinite", "Forza Horizon 5", "Gears 5", "Sea of Thieves", "Starfield", "Microsoft Flight Simulator", "Ori and the Will of the Wisps", "Psychonauts 2", "Hellblade II: Senua’s Saga", "Fable"],
     "links": [
       "https://www.xbox.com/", // Official Xbox website
-      "https://www.xbox.com/en-US/xbox-game-pass" // Official Xbox Game Pass website
+      "https://www.xbox.com/en-US/xbox-game-pass" 
     ]
   },
   {
@@ -122,7 +122,7 @@
     "thread": "https://x.com/example/thread/12345",
     "top_games": ["Elden Ring", "Cyberpunk 2077", "The Witcher 3: Wild Hunt", "Baldur’s Gate 3", "DOOM Eternal", "Half-Life 2", "Total War: Warhammer III", "Civilization VI", "Portal 2", "StarCraft II"],
     "links": [
-      "https://www.discord.com/" // Official Discord website
+      "https://www.discord.com/" 
     ]
   },
   {
@@ -137,8 +137,8 @@
     "thread": "https://x.com/example/thread/12345",
     "top_games": ["Super Mario Bros. 3", "The Legend of Zelda: A Link to the Past", "Super Metroid", "Sonic the Hedgehog 2", "Street Fighter II", "Chrono Trigger", "Final Fantasy VI", "Pokémon Red/Blue", "Donkey Kong Country", "Mega Man 2"],
     "links": [
-      "https://store.steampowered.com/", // Official Steam website
-      "https://www.gog.com/" // Official GOG website
+      "https://store.steampowered.com/",
+      "https://www.gog.com/"
     ]
   },
   {
@@ -153,8 +153,8 @@
     "thread": "https://x.com/example/thread/12345",
     "top_games": ["Pokémon Emerald", "Super Mario World", "The Legend of Zelda: Link’s Awakening", "Final Fantasy Tactics", "Castlevania: Aria of Sorrow", "Metroid Fusion", "Fire Emblem", "Golden Sun", "Kingdom Hearts: Chain of Memories", "Mega Man Zero"],
     "links": [
-      "https://www.retroarch.com/", // Official RetroArch website
-      "https://www.ppsspp.org/" // Official PPSSPP website
+      "https://www.retroarch.com/",
+      "https://www.ppsspp.org/" 
     ]
   },
   {
@@ -169,9 +169,9 @@
     "thread": "https://x.com/example/thread/12345",
     "top_games": ["The Legend of Zelda: Wind Waker", "Super Smash Bros. Melee", "Resident Evil 4", "Final Fantasy XII", "Super Mario 64", "Metroid Prime", "Kingdom Hearts II", "Shadow of the Colossus", "Mario Kart: Double Dash", "Fire Emblem: Path of Radiance"],
     "links": [
-      "https://dolphin-emu.org/", // Official Dolphin website
-      "https://pcsx2.net/", // Official PCSX2 website
-      "https://www.snes9x.com/" // Official Snes9x website
+      "https://dolphin-emu.org/", 
+      "https://pcsx2.net/", 
+      "https://www.snes9x.com/" //
     ]
   }
 ]
