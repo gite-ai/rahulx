@@ -3,70 +3,190 @@
     "name": "Multiplayer online- Esports",
     "desc": "Online competitive gaming where players and teams battle for supremacy.<br>Features leagues, global tournaments, and enthusiastic fanbases.",
     "example": "Winning a <b>CS:GO Major</b> with <i>perfect aim</i>.<br>A <b>career-defining</b> moment.",
-    "image": "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80",
+    "image": "https://images.pexels.com/photos/907240/pexels-photo-907240.jpeg?auto=compress&w=600",
+    "top_games": [
+      "Counter-Strike: Global Offensive",
+      "League of Legends",
+      "Dota 2",
+      "Valorant",
+      "Overwatch",
+      "Rainbow Six Siege",
+      "Rocket League",
+      "Fortnite",
+      "PUBG: Battlegrounds",
+      "Call of Duty: Warzone"
+    ],
     "thread": "https://x.com/example/thread/12345"
   },
   {
     "name": "VR Gaming",
     "desc": "Immersive gaming experiences powered by <b>virtual reality headsets</b>.<br>Engage all your senses in stunning interactive worlds.",
     "example": "Exploring <b>Beat Saber</b> with <i>VR headsets</i>.<br>A <b>thrilling</b> rhythm game.",
-    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+    "image": "https://images.pexels.com/photos/1298611/pexels-photo-1298611.jpeg?auto=compress&w=600",
+    "top_games": [
+      "Beat Saber",
+      "Half-Life: Alyx",
+      "Superhot VR",
+      "The Walking Dead: Saints & Sinners",
+      "No Man's Sky VR",
+      "Boneworks",
+      "Moss",
+      "Vader Immortal",
+      "Pistol Whip",
+      "Skyrim VR"
+    ],
     "thread": "https://x.com/example/thread/67890"
   },
   {
     "name": "Indie Games",
     "desc": "Unique games created by <b>independent developers</b>.<br>Renowned for creativity, innovation, and storytelling.",
     "example": "Playing <b>Hollow Knight</b>, an <i>indie masterpiece</i>.<br>A <b>unique</b> adventure.",
-    "image": "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80",
+    "image": "https://images.pexels.com/photos/907240/pexels-photo-907240.jpeg?auto=compress&w=600",
+    "top_games": [
+      "Hollow Knight",
+      "Celeste",
+      "Undertale",
+      "Stardew Valley",
+      "Dead Cells",
+      "Hades",
+      "Cuphead",
+      "Slay the Spire",
+      "Disco Elysium",
+      "The Messenger"
+    ],
     "thread": "https://x.com/example/thread/54321"
   },
   {
     "name": "Steam",
     "desc": "Leading digital distribution platform for <b>PC games</b>.<br>Home to thousands of titles, from AAA blockbusters to indie gems.",
     "example": "Building a vast library of favorite games.<br>Enjoying the best discounts in Steam sales.",
-    "image": "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
+    "image": "https://images.pexels.com/photos/159393/gaming-gamepad-video-game-controller-joystick-159393.jpeg?auto=compress&w=600",
+    "top_games": [
+      "Counter-Strike: Global Offensive",
+      "Dota 2",
+      "PUBG: Battlegrounds",
+      "Apex Legends",
+      "Team Fortress 2",
+      "Rust",
+      "Grand Theft Auto V",
+      "Elden Ring",
+      "Stardew Valley",
+      "The Witcher 3: Wild Hunt"
+    ],
     "thread": "https://x.com/example/thread/12345"
   },
   {
     "name": "Android",
     "desc": "Mobile gaming on <b>Android smartphones and tablets</b>.<br>Offers everything from hyper-casual to complex strategy games.",
     "example": "Rank climbing in <b>Clash of Clans</b>.<br>Gaming on the go, anywhere, anytime.",
-    "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80",
+    "image": "https://images.pexels.com/photos/133579/pexels-photo-133579.jpeg?auto=compress&w=600",
+    "top_games": [
+      "PUBG Mobile",
+      "Call of Duty: Mobile",
+      "Genshin Impact",
+      "Clash Royale",
+      "Clash of Clans",
+      "Among Us",
+      "Mobile Legends: Bang Bang",
+      "Brawl Stars",
+      "Subway Surfers",
+      "Candy Crush Saga"
+    ],
     "thread": "https://x.com/example/thread/12345"
   },
   {
     "name": "PlayStation",
     "desc": "<b>Sony PlayStation</b> gaming consoles, famous for exclusive titles and high-end experiences.<br>From the PS1 classics to the latest PS5 hits.",
     "example": "Epic missions in <b>God of War</b>.<br>Immersed in powerful story-driven adventures.",
-    "image": "https://images.unsplash.com/photo-1622464199994-d0d9234a1e7b?auto=format&fit=crop&w=600&q=80",
+    "image": "https://images.pexels.com/photos/161888/casual-controller-console-controller-joypad-161888.jpeg?auto=compress&w=600",
+    "top_games": [
+      "God of War Ragnarok",
+      "The Last of Us Part II",
+      "Marvel’s Spider-Man",
+      "Uncharted 4: A Thief’s End",
+      "Horizon Forbidden West",
+      "Ghost of Tsushima",
+      "Bloodborne",
+      "Gran Turismo 7",
+      "Ratchet & Clank: Rift Apart",
+      "Demon’s Souls (Remake)"
+    ],
     "thread": "https://x.com/example/thread/12345"
   },
   {
     "name": "Xbox",
     "desc": "<b>Microsoft's Xbox</b> consoles deliver cutting-edge graphics and multiplayer action.<br>Enjoy Game Pass and exclusive franchises.",
     "example": "Playing <b>Halo</b> with friends on Xbox Live.<br>Competing worldwide in intense multiplayer matches.",
-    "image": "https://images.unsplash.com/photo-1507646227500-4df86c435ab2?auto=format&fit=crop&w=600&q=80",
+    "image": "https://images.pexels.com/photos/275033/pexels-photo-275033.jpeg?auto=compress&w=600",
+    "top_games": [
+      "Halo Infinite",
+      "Forza Horizon 5",
+      "Gears 5",
+      "Sea of Thieves",
+      "Ori and the Will of the Wisps",
+      "FIFA 24",
+      "Forza Motorsport",
+      "Microsoft Flight Simulator",
+      "Hellblade: Senua’s Sacrifice",
+      "Starfield"
+    ],
     "thread": "https://x.com/example/thread/12345"
   },
   {
     "name": "PC Games",
     "desc": "Gaming on powerful <b>personal computers</b> that offer customizable experiences.<br>Ideal for high graphics, mods, and a huge range of genres.",
     "example": "Building your own rig to run <b>Cyberpunk 2077</b>.<br>Enjoying ultra-high settings and smooth FPS.",
-    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80",
+    "image": "https://images.pexels.com/photos/1174746/pexels-photo-1174746.jpeg?auto=compress&w=600",
+    "top_games": [
+      "Cyberpunk 2077",
+      "Elden Ring",
+      "Baldur’s Gate 3",
+      "The Witcher 3: Wild Hunt",
+      "Valorant",
+      "League of Legends",
+      "Minecraft",
+      "Counter-Strike 2",
+      "Apex Legends",
+      "Red Dead Redemption 2"
+    ],
     "thread": "https://x.com/example/thread/12345"
   },
   {
     "name": "Retro Games",
     "desc": "Classic games from the '80s, '90s, and 2000s.<br>Relive nostalgic arcades, consoles, and pixel art adventures.",
     "example": "Mastering <b>Super Mario Bros.</b> once again.<br>Rediscovering childhood gaming favorites.",
-    "image": "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80",
+    "image": "https://images.pexels.com/photos/845255/pexels-photo-845255.jpeg?auto=compress&w=600",
+    "top_games": [
+      "Super Mario Bros.",
+      "Sonic the Hedgehog",
+      "Pac-Man",
+      "The Legend of Zelda: A Link to the Past",
+      "Super Metroid",
+      "Street Fighter II",
+      "Donkey Kong",
+      "Mega Man 2",
+      "Tetris",
+      "Castlevania: Symphony of the Night"
+    ],
     "thread": "https://x.com/example/thread/12345"
   },
   {
     "name": "Emulators for games",
     "desc": "Software that allows you to play games from older consoles or systems on modern devices.<br>Preserve and experience classics across generations.",
     "example": "Running <b>Pokémon Emerald</b> on your PC.<br>Accessing a library of retro hits with ease.",
-    "image": "https://images.unsplash.com/photo-1526401485004-2c2e4e3dfd7a?auto=format&fit=crop&w=600&q=80",
+    "image": "https://images.pexels.com/photos/339246/pexels-photo-339246.jpeg?auto=compress&w=600",
+    "top_games": [
+      "Pokémon Emerald",
+      "Super Mario 64",
+      "The Legend of Zelda: Ocarina of Time",
+      "Chrono Trigger",
+      "Metroid Fusion",
+      "Earthbound",
+      "Sonic Adventure 2",
+      "Fire Emblem: Blazing Sword",
+      "Castlevania: Aria of Sorrow",
+      "Golden Sun"
+    ],
     "thread": "https://x.com/example/thread/12345"
   }
 ]
