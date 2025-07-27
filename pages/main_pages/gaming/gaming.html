@@ -189,11 +189,14 @@
       transition: background 0.3s ease, color 0.3s ease;
       font-size: 1.1rem;
       font-weight: 500;
+      user-select: none;
     }
 
-    .hashtag:hover {
+    .hashtag:hover,
+    .hashtag:focus {
       background: #00ffcc;
       color: #000;
+      outline: none;
     }
 
     /* Modal (Popup) Styles */
@@ -260,9 +263,11 @@
       transition: background 0.3s ease, color 0.3s ease;
     }
 
-    .modal-close:hover {
+    .modal-close:hover,
+    .modal-close:focus {
       background: #00ffcc;
       color: #000;
+      outline: none;
     }
 
     .modal-body {
@@ -342,9 +347,11 @@
       padding: 5px;
     }
 
-    .modal-action-button:hover {
+    .modal-action-button:hover,
+    .modal-action-button:focus {
       color: #ff00cc;
       transform: scale(1.2);
+      outline: none;
     }
 
     @keyframes slideIn {
@@ -378,8 +385,10 @@
       font-weight: 500;
     }
 
-    footer a:hover {
+    footer a:hover,
+    footer a:focus {
       text-decoration: underline;
+      outline: none;
     }
 
     /* Animations */
@@ -433,8 +442,10 @@
       word-break: break-word;
     }
 
-    #modalLinks a:hover {
+    #modalLinks a:hover,
+    #modalLinks a:focus {
       color: #00ffcc;
+      outline: none;
     }
   </style>
   <link
@@ -540,28 +551,39 @@
       data.forEach((item) => {
         const tag = document.createElement('div');
         tag.className = 'hashtag';
+        tag.setAttribute('tabindex', '0'); // Keyboard focusable
         // Remove spaces and dashes for hashtag text
         tag.textContent = `#${item.name.replace(/[\s-]+/g, '')}`;
 
-        // Onclick handler to open modal with all details
+        // Onclick and keyboard 'Enter' or 'Space' key to open modal
         tag.addEventListener('click', () => {
-          openModal(
-            item.name,
-            item.desc,
-            item.type,
-            item.categories.join(', '),
-            item.key_features || item.keyFeatures || 'N/A',
-            item.getting_started || item.gettingStarted || 'N/A',
-            item.example,
-            item.top_games.join(', '),
-            item.image || '',
-            item.thread || '',
-            item.official_websites || item.officialWebsites || []
-          );
+          openModalWithItem(item);
+        });
+        tag.addEventListener('keydown', (e) => {
+          if(e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openModalWithItem(item);
+          }
         });
 
         hashtagsContainer.appendChild(tag);
       });
+    }
+
+    function openModalWithItem(item) {
+      openModal(
+        item.name,
+        item.desc || '',
+        item.type || '',
+        item.categories ? item.categories.join(', ') : '',
+        item.key_features || item.keyFeatures || 'N/A',
+        item.getting_started || item.gettingStarted || 'N/A',
+        item.example || '',
+        item.top_games ? item.top_games.join(', ') : '',
+        item.image || '',
+        item.thread || '',
+        item.official_websites || item.officialWebsites || []
+      );
     }
 
     // Open modal and populate contents with passed data
@@ -602,9 +624,6 @@
       modalTopGames.textContent = topGames;
       modalImage.src = image || '';
       modalImage.alt = `${title} image` || 'Gaming image';
-
-      // Debug: Log the officialLinks
-      console.log('Official website URLs:', officialLinks);
 
       // Populate official website links safely
       modalLinks.innerHTML = ''; // Clear existing
@@ -665,6 +684,7 @@
       };
 
       modal.style.display = 'flex';
+      modal.focus();
     }
 
     // Close modal
@@ -707,6 +727,13 @@
       }
     });
 
+    // Close modal on Escape key press
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
     // Load JSON data and initialize UI
     window.onload = function () {
       fetch('./texts/gaming.txt')
@@ -717,10 +744,8 @@
           return response.json();
         })
         .then((data) => {
-          console.log('Loaded gaming data:', data);
-          data.forEach((item) => {
-            console.log(item.name, 'official_websites:', item.official_websites);
-          });
+          // Optional debug logs:
+          // console.log('Loaded gaming data:', data);
           populateHashtags(data);
         })
         .catch((error) => {
