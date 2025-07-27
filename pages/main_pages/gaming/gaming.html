@@ -286,23 +286,6 @@
       display: block;
     }
 
-    .modal-links {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-bottom: 20px;
-      font-weight: 400;
-    }
-
-    .modal-links a {
-      display: block;
-      color: #ff00cc;
-      text-decoration: underline;
-    }
-
-    .modal-links a:hover {
-      color: #00ffcc;
-    }
-
     .modal-footer {
       display: flex;
       justify-content: flex-end;
@@ -440,7 +423,7 @@
         <p class="modal-desc"><strong>Getting Started:</strong> <span id="modalGettingStarted"></span></p>
         <p class="modal-example" id="modalExample"></p>
         <p class="modal-desc"><strong>Top Games:</strong> <span id="modalTopGames"></span></p>
-        <p class="modal-links"><strong>Links:</strong> <span id="modalLinks"></span></p>
+		<p class="modal-desc"><strong>Links:</strong> <span id="modalTopGames"></span></p>
         <img class="modal-image" id="modalImage" src="" alt="Gaming Image">
       </div>
       <div class="modal-footer">
@@ -463,23 +446,6 @@
   </footer>
 
   <script>
-    // Fallback JSON data in case fetch fails
-    const fallbackData = [
-      {
-        name: "Fallback",
-        desc: "Unable to load gaming data. Please check texts/gaming.txt.",
-        type: "N/A",
-        categories: [],
-        key_features: "N/A",
-        getting_started: "N/A",
-        example: "N/A",
-        top_games: [],
-        links: [],
-        image: "https://via.placeholder.com/400",
-        thread: "https://x.com/example/thread/12345"
-      }
-    ];
-
     // Modal Functions
     function populateHashtags(hashtags) {
       const hashtagsContainer = document.getElementById('hashtags');
@@ -491,17 +457,16 @@
         
         tag.addEventListener('click', () => {
           openModal(
-            hashtag.name || "N/A",
-            hashtag.desc || "No description available",
-            hashtag.type || "N/A",
-            (hashtag.categories || []).join(', ') || "N/A",
-            hashtag.key_features || "N/A",
-            hashtag.getting_started || "N/A",
-            hashtag.example || "N/A",
-            (hashtag.top_games || []).join(', ') || "N/A",
-            hashtag.links || [],
-            hashtag.image || "https://via.placeholder.com/400",
-            hashtag.thread || "https://x.com/example/thread/12345"
+            hashtag.name,
+            hashtag.desc,
+            hashtag.type,
+            hashtag.categories.join(', '),
+            hashtag.key_features,
+            hashtag.getting_started,
+            hashtag.example,
+            hashtag.top_games.join(', '),
+            hashtag.image,
+            hashtag.thread
           );
         });
         
@@ -509,7 +474,7 @@
       });
     }
 
-    function openModal(title, desc, type, categories, features, gettingStarted, example, topGames, links, image, thread) {
+    function openModal(title, desc, type, categories, features, gettingStarted, example, topGames, image, thread) {
       const modal = document.getElementById('gamingModal');
       const modalTitle = document.getElementById('modalTitle');
       const modalDesc = document.getElementById('modalDesc');
@@ -519,7 +484,6 @@
       const modalGettingStarted = document.getElementById('modalGettingStarted');
       const modalExample = document.getElementById('modalExample');
       const modalTopGames = document.getElementById('modalTopGames');
-      const modalLinks = document.getElementById('modalLinks');
       const modalImage = document.getElementById('modalImage');
 
       modalTitle.textContent = title;
@@ -530,8 +494,7 @@
       modalGettingStarted.textContent = gettingStarted;
       modalExample.innerHTML = `Example: ${example}`;
       modalTopGames.textContent = topGames;
-      modalLinks.innerHTML = Array.isArray(links) && links.length ? links.map(link => `<a href="${link}" target="_blank">${link}</a>`).join('<br>') : 'No links available';
-      modalImage.src = image || "https://via.placeholder.com/400";
+      modalImage.src = image;
       modal.style.display = 'flex';
 
       const threadButton = document.getElementById('threadButton');
@@ -561,8 +524,7 @@
       const gettingStarted = document.getElementById('modalGettingStarted').textContent;
       const example = document.getElementById('modalExample').textContent;
       const topGames = document.getElementById('modalTopGames').textContent;
-      const links = document.getElementById('modalLinks').innerText;
-      const content = `${title}\n\nDescription: ${desc}\n\nType: ${type}\n\nCategories: ${categories}\n\nKey Features: ${features}\n\nGetting Started: ${gettingStarted}\n\n${example}\n\nTop Games: ${topGames}\n\nLinks: ${links}`;
+      const content = `${title}\n\nDescription: ${desc}\n\nType: ${type}\n\nCategories: ${categories}\n\nKey Features: ${features}\n\nGetting Started: ${gettingStarted}\n\n${example}\n\nTop Games: ${topGames}`;
       
       navigator.clipboard.writeText(content).then(() => {
         alert('Content copied to clipboard!');
@@ -580,36 +542,20 @@
 
     // Fetch data from texts/gaming.txt
     window.onload = function() {
-      fetch('./texts/gaming.txt')
+      fetch('./texts/gaming.txt') // Correct path to texts folder
         .then(response => {
           if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status} - URL: ${response.url}`);
+            throw new Error(`HTTP error! Status: ${response.status}`);
           }
-          return response.text();
+          return response.json();
         })
-        .then(text => {
-          try {
-            const data = JSON.parse(text);
-            if (!Array.isArray(data) || !data.every(item => item.name && item.desc)) {
-              throw new Error('Invalid JSON structure: Must be an array with name and desc fields');
-            }
-            // Validate links field
-            data.forEach(item => {
-              if (item.links && !Array.isArray(item.links)) {
-                console.warn(`Invalid links field for ${item.name}: Expected an array, got ${typeof item.links}`);
-                item.links = [];
-              }
-            });
-            populateHashtags(data);
-          } catch (e) {
-            throw new Error(`Invalid JSON in texts/gaming.txt: ${e.message}`);
-          }
+        .then(data => {
+          populateHashtags(data);
         })
         .catch(error => {
           console.error('Error loading ./texts/gaming.txt:', error);
           const hashtagsContainer = document.getElementById('hashtags');
-          hashtagsContainer.innerHTML = `<p style="color: #ff00cc;">Failed to load gaming data. Error: ${error.message}. Ensure texts/gaming.txt is valid JSON and accessible at rahulx.com/texts/gaming.txt.</p>`;
-          populateHashtags(fallbackData);
+          hashtagsContainer.innerHTML = '<p style="color: #ff00cc;">Failed to load gaming data. Please ensure texts/gaming.txt exists and is valid JSON.</p>';
         });
     };
   </script>
