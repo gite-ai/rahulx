@@ -168,7 +168,7 @@
     "image": "https://www.pexels.com/photo/person-holding-game-console-controller-339246/",
     "thread": "https://x.com/example/thread/12345",
     "top_games": ["The Legend of Zelda: Wind Waker", "Super Smash Bros. Melee", "Resident Evil 4", "Final Fantasy XII", "Super Mario 64", "Metroid Prime", "Kingdom Hearts II", "Shadow of the Colossus", "Mario Kart: Double Dash", "Fire Emblem: Path of Radiance"],
-    "links": [
+    "linksx": [
       "https://dolphin-emu.org/",
       "https://pcsx2.net/",
       "https://www.snes9x.com/"
