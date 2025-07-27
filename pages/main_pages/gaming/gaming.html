@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rahulx.com - Gaming Hub</title>
   <style>
     /* General Styles */
@@ -18,7 +18,9 @@
       font-weight: 400;
     }
 
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
       font-family: 'Montserrat', sans-serif;
       margin: 0;
       font-weight: 700;
@@ -98,16 +100,32 @@
       color: #00ffcc;
     }
 
-    .front { transform: translateZ(75px); }
-    .back { transform: rotateY(180deg) translateZ(75px); }
-    .left { transform: rotateY(-90deg) translateZ(75px); }
-    .right { transform: rotateY(90deg) translateZ(75px); }
-    .top { transform: rotateX(90deg) translateZ(75px); }
-    .bottom { transform: rotateX(-90deg) translateZ(75px); }
+    .front {
+      transform: translateZ(75px);
+    }
+    .back {
+      transform: rotateY(180deg) translateZ(75px);
+    }
+    .left {
+      transform: rotateY(-90deg) translateZ(75px);
+    }
+    .right {
+      transform: rotateY(90deg) translateZ(75px);
+    }
+    .top {
+      transform: rotateX(90deg) translateZ(75px);
+    }
+    .bottom {
+      transform: rotateX(-90deg) translateZ(75px);
+    }
 
     @keyframes rotate {
-      0% { transform: rotateY(0deg); }
-      100% { transform: rotateY(360deg); }
+      0% {
+        transform: rotateY(0deg);
+      }
+      100% {
+        transform: rotateY(360deg);
+      }
     }
 
     /* Floating Gaming Icons */
@@ -126,10 +144,26 @@
       animation: float 5s ease-in-out infinite;
     }
 
-    .icon-1 { top: 10%; left: 10%; animation-delay: 0s; }
-    .icon-2 { top: 30%; left: 30%; animation-delay: 1s; }
-    .icon-3 { top: 50%; left: 50%; animation-delay: 2s; }
-    .icon-4 { top: 70%; left: 70%; animation-delay: 3s; }
+    .icon-1 {
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    .icon-2 {
+      top: 30%;
+      left: 30%;
+      animation-delay: 1s;
+    }
+    .icon-3 {
+      top: 50%;
+      left: 50%;
+      animation-delay: 2s;
+    }
+    .icon-4 {
+      top: 70%;
+      left: 70%;
+      animation-delay: 3s;
+    }
 
     /* Trending Hashtags */
     .hashtags {
@@ -235,12 +269,12 @@
       flex: 1;
       padding: 20px;
       overflow-y: auto;
+      font-size: 1.1rem;
     }
 
     .modal-desc {
-      font-size: 1.1rem;
       line-height: 1.8;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
       font-weight: 400;
     }
 
@@ -257,11 +291,9 @@
     }
 
     .modal-example {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 20px;
       font-style: italic;
       color: #b0fff0;
+      margin-bottom: 12px;
     }
 
     .modal-example b,
@@ -282,7 +314,7 @@
       height: auto;
       border: 1px solid #00ffcc;
       border-radius: 5px;
-      margin: 10px auto;
+      margin: 10px auto 20px auto;
       display: block;
     }
 
@@ -315,8 +347,14 @@
     }
 
     @keyframes slideIn {
-      from { transform: translateY(-50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     /* Footer */
@@ -345,13 +383,22 @@
 
     /* Animations */
     @keyframes glow {
-      0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
-      100% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
+      0% {
+        text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+      }
+      100% {
+        text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+      }
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
     }
 
     /* Sci-Fi Background */
@@ -367,12 +414,35 @@
     }
 
     @keyframes stars {
-      0% { background-position: 0 0; }
-      100% { background-position: 1000px 1000px; }
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 1000px 1000px;
+      }
+    }
+
+    /* Official links styling in modal */
+    #modalLinks a {
+      display: inline-block;
+      margin-right: 12px;
+      color: #ff00cc;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    #modalLinks a:hover {
+      color: #00ffcc;
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
 </head>
 <body>
   <!-- Sci-Fi Background -->
@@ -409,11 +479,11 @@
   </div>
 
   <!-- Modal (Popup) -->
-  <div class="modal" id="gamingModal">
+  <div class="modal" id="gamingModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title" id="modalTitle"></h2>
-        <button class="modal-close" onclick="closeModal()">✖</button>
+        <button class="modal-close" onclick="closeModal()" aria-label="Close modal">✖</button>
       </div>
       <div class="modal-body">
         <p class="modal-desc" id="modalDesc"></p>
@@ -423,17 +493,28 @@
         <p class="modal-desc"><strong>Getting Started:</strong> <span id="modalGettingStarted"></span></p>
         <p class="modal-example" id="modalExample"></p>
         <p class="modal-desc"><strong>Top Games:</strong> <span id="modalTopGames"></span></p>
-		<p class="modal-desc"><strong>Links:</strong> <span id="modalTopGames"></span></p>
-        <img class="modal-image" id="modalImage" src="" alt="Gaming Image">
+        <p class="modal-desc"><strong>Official Links:</strong> <span id="modalLinks"></span></p>
+        <img class="modal-image" id="modalImage" src="" alt="Gaming Image" />
       </div>
       <div class="modal-footer">
-        <button class="modal-action-button" id="copyButton" onclick="copyModalContent()" title="Copy Content">
+        <button
+          class="modal-action-button"
+          id="copyButton"
+          onclick="copyModalContent()"
+          title="Copy Content"
+          aria-label="Copy content"
+        >
           <i class="fa fa-copy"></i>
         </button>
-        <button class="modal-action-button" id="threadButton" title="View Thread">
+        <button class="modal-action-button" id="threadButton" title="View Thread" aria-label="View thread on X">
           𝕩
         </button>
-        <button class="modal-action-button" id="searchButton" title="Search on X">
+        <button
+          class="modal-action-button"
+          id="searchButton"
+          title="Search on X"
+          aria-label="Search on X"
+        >
           <i class="fa fa-search"></i>
         </button>
       </div>
@@ -442,39 +523,61 @@
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
+    <p>
+      © 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy
+      Policy</a>
+    </p>
   </footer>
 
   <script>
-    // Modal Functions
-    function populateHashtags(hashtags) {
+    // Data will be injected here after fetching ./texts/gaming.txt JSON
+
+    // Function to create hashtags and clickable UI elements
+    function populateHashtags(data) {
       const hashtagsContainer = document.getElementById('hashtags');
-      hashtagsContainer.innerHTML = ''; // Clear any existing content
-      hashtags.forEach(hashtag => {
+      hashtagsContainer.innerHTML = ''; // Clear existing content
+
+      data.forEach((item, index) => {
         const tag = document.createElement('div');
         tag.className = 'hashtag';
-        tag.textContent = `#${hashtag.name.replace(/[\s-]+/g, '')}`;
-        
+        // Remove spaces and dashes for hashtag text
+        tag.textContent = `#${item.name.replace(/[\s-]+/g, '')}`;
+
+        // Onclick handler to open modal with all details
         tag.addEventListener('click', () => {
           openModal(
-            hashtag.name,
-            hashtag.desc,
-            hashtag.type,
-            hashtag.categories.join(', '),
-            hashtag.key_features,
-            hashtag.getting_started,
-            hashtag.example,
-            hashtag.top_games.join(', '),
-            hashtag.image,
-            hashtag.thread
+            item.name,
+            item.desc,
+            item.type,
+            item.categories.join(', '),
+            item.key_features || item.keyFeatures || 'N/A',
+            item.getting_started || item.gettingStarted || 'N/A',
+            item.example,
+            item.top_games.join(', '),
+            item.image || '',
+            item.thread || '',
+            item.official_websites || []
           );
         });
-        
+
         hashtagsContainer.appendChild(tag);
       });
     }
 
-    function openModal(title, desc, type, categories, features, gettingStarted, example, topGames, image, thread) {
+    // Open modal and populate contents with passed data
+    function openModal(
+      title,
+      desc,
+      type,
+      categories,
+      features,
+      gettingStarted,
+      example,
+      topGames,
+      image,
+      thread,
+      officialLinks
+    ) {
       const modal = document.getElementById('gamingModal');
       const modalTitle = document.getElementById('modalTitle');
       const modalDesc = document.getElementById('modalDesc');
@@ -485,36 +588,62 @@
       const modalExample = document.getElementById('modalExample');
       const modalTopGames = document.getElementById('modalTopGames');
       const modalImage = document.getElementById('modalImage');
+      const modalLinks = document.getElementById('modalLinks');
+      const threadButton = document.getElementById('threadButton');
+      const searchButton = document.getElementById('searchButton');
 
       modalTitle.textContent = title;
-      modalDesc.innerHTML = desc;
+      modalDesc.textContent = desc;
       modalType.textContent = type;
       modalCategories.textContent = categories;
       modalFeatures.textContent = features;
       modalGettingStarted.textContent = gettingStarted;
-      modalExample.innerHTML = `Example: ${example}`;
+      modalExample.innerHTML = example ? `<strong>Example:</strong> ${example}` : '';
       modalTopGames.textContent = topGames;
-      modalImage.src = image;
-      modal.style.display = 'flex';
+      modalImage.src = image || '';
+      modalImage.alt = `${title} image` || 'Gaming image';
 
-      const threadButton = document.getElementById('threadButton');
-      threadButton.onclick = function() {
-        window.open(thread, '_blank');
-      };
+      // Populate official website links
+      modalLinks.innerHTML = ''; // Clear existing
+      if (officialLinks.length) {
+        officialLinks.forEach((url) => {
+          const a = document.createElement('a');
+          a.href = url;
+          a.textContent = new URL(url).hostname.replace('www.', '');
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          modalLinks.appendChild(a);
+        });
+      } else {
+        modalLinks.textContent = 'No official links available.';
+      }
 
-      const searchButton = document.getElementById('searchButton');
-      searchButton.onclick = function() {
+      // Thread button link
+      if (thread) {
+        threadButton.style.display = 'inline-block';
+        threadButton.onclick = () => {
+          window.open(thread, '_blank');
+        };
+      } else {
+        threadButton.style.display = 'none';
+      }
+
+      // Search button link on X (Twitter)
+      searchButton.onclick = () => {
         const searchQuery = encodeURIComponent(title);
-        const xSearchUrl = `https://x.com/search?q=${searchQuery}`;
-        window.open(xSearchUrl, '_blank');
+        window.open(`https://x.com/search?q=${searchQuery}`, '_blank');
       };
+
+      modal.style.display = 'flex';
     }
 
+    // Close modal
     function closeModal() {
       const modal = document.getElementById('gamingModal');
       modal.style.display = 'none';
     }
 
+    // Copy modal content to clipboard
     function copyModalContent() {
       const title = document.getElementById('modalTitle').textContent;
       const desc = document.getElementById('modalDesc').textContent;
@@ -524,38 +653,47 @@
       const gettingStarted = document.getElementById('modalGettingStarted').textContent;
       const example = document.getElementById('modalExample').textContent;
       const topGames = document.getElementById('modalTopGames').textContent;
-      const content = `${title}\n\nDescription: ${desc}\n\nType: ${type}\n\nCategories: ${categories}\n\nKey Features: ${features}\n\nGetting Started: ${gettingStarted}\n\n${example}\n\nTop Games: ${topGames}`;
-      
-      navigator.clipboard.writeText(content).then(() => {
-        alert('Content copied to clipboard!');
-      }).catch(err => {
-        console.error('Failed to copy content:', err);
-        alert('Failed to copy content. Please try again.');
-      });
+      const links = Array.from(document.getElementById('modalLinks').querySelectorAll('a'))
+        .map((a) => a.href)
+        .join(', ');
+
+      const content = `${title}\n\nDescription: ${desc}\n\nType: ${type}\n\nCategories: ${categories}\n\nKey Features: ${features}\n\nGetting Started: ${gettingStarted}\n\n${example}\n\nTop Games: ${topGames}\n\nOfficial Links: ${links}`;
+
+      navigator.clipboard
+        .writeText(content)
+        .then(() => {
+          alert('Content copied to clipboard!');
+        })
+        .catch((err) => {
+          console.error('Failed to copy content:', err);
+          alert('Failed to copy content. Please try again.');
+        });
     }
 
+    // Close modal on outside click
     document.getElementById('gamingModal').addEventListener('click', (e) => {
       if (e.target === document.getElementById('gamingModal')) {
         closeModal();
       }
     });
 
-    // Fetch data from texts/gaming.txt
-    window.onload = function() {
-      fetch('./texts/gaming.txt') // Correct path to texts folder
-        .then(response => {
+    // Load JSON data and initialize UI
+    window.onload = function () {
+      fetch('./texts/gaming.txt')
+        .then((response) => {
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
           }
           return response.json();
         })
-        .then(data => {
+        .then((data) => {
           populateHashtags(data);
         })
-        .catch(error => {
+        .catch((error) => {
           console.error('Error loading ./texts/gaming.txt:', error);
           const hashtagsContainer = document.getElementById('hashtags');
-          hashtagsContainer.innerHTML = '<p style="color: #ff00cc;">Failed to load gaming data. Please ensure texts/gaming.txt exists and is valid JSON.</p>';
+          hashtagsContainer.innerHTML =
+            '<p style="color: #ff00cc;">Failed to load gaming data. Please ensure texts/gaming.txt exists and is valid JSON.</p>';
         });
     };
   </script>
