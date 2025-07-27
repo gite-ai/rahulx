@@ -466,7 +466,7 @@
     // Fallback JSON data in case fetch fails
     const fallbackData = [
       {
-        name: "Fallback",
+        name: "FallbackX",
         desc: "Unable to load gaming data. Please check texts/gaming.txt.",
         type: "N/A",
         categories: [],
@@ -601,7 +601,7 @@
         .catch(error => {
           console.error('Error loading ./texts/gaming.txt:', error);
           // Try absolute path as fallback
-          fetch('https://rahulx.com/texts/gaming.txt')
+          fetch('https://rahulx.com/pages/main_pages/gaming/texts/gaming.txt')
             .then(response => {
               if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status} - URL: ${response.url}`);
