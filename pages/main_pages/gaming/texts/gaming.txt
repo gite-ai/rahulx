@@ -142,6 +142,7 @@
       "https://dolphin-emu.org/",
       "https://pcsx2.net/",
       "https://www.snes9x.com/"
+	   "https://www.wwe.com/"
     ]
   }
 ]
