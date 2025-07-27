@@ -9,14 +9,7 @@
     "example": "Winning a CS:GO Major with perfect aim and clear team calls—a career-defining moment.",
     "image": "https://www.pexels.com/photo/professional-esports-tournament-907240/",
     "thread": "https://x.com/example/thread/12345",
-    "top_games": ["Counter-Strike 2", "Dota 2", "League of Legends", "Valorant", "Overwatch 2", "Fortnite", "Apex Legends", "Rocket League", "Call of Duty: Warzone", "Rainbow Six Siege"],
-    "links": [
-      "https://www.counter-strike.net/",
-      "https://www.dota2.com/",
-      "https://www.leagueoflegends.com/",
-      "https://playvalorant.com/",
-      "https://www.overwatch.blizzard.com/"
-    ]
+    "top_games": ["Counter-Strike 2", "Dota 2", "League of Legends", "Valorant", "Overwatch 2", "Fortnite", "Apex Legends", "Rocket League", "Call of Duty: Warzone", "Rainbow Six Siege"]
   },
   {
     "name": "VR Gaming",
@@ -28,10 +21,7 @@
     "example": "Slicing neon blocks in Beat Saber using arm swings—an exhilarating rhythm experience.",
     "image": "https://www.pexels.com/photo/person-wearing-black-vr-goggles-1298611/",
     "thread": "https://x.com/example/thread/67890",
-    "top_games": ["Beat Saber", "Half-Life: Alyx", "Superhot VR", "The Elder Scrolls V: Skyrim VR", "Resident Evil 4 VR", "Pistol Whip", "Boneworks", "Blade & Sorcery", "Population: One", "Asgard's Wrath II"],
-    "links": [
-      "https://www.meta.com/quest/"
-    ]
+    "top_games": ["Beat Saber", "Half-Life: Alyx", "Superhot VR", "The Elder Scrolls V: Skyrim VR", "Resident Evil 4 VR", "Pistol Whip", "Boneworks", "Blade & Sorcery", "Population: One", "Asgard's Wrath II"]
   },
   {
     "name": "Indie Games",
@@ -43,11 +33,7 @@
     "example": "Exploring Hollow Knight’s hand-drawn world and uncovering secret paths in a rich, atmospheric adventure.",
     "image": "https://www.pexels.com/photo/person-playing-game-on-laptop-907240/",
     "thread": "https://x.com/example/thread/54321",
-    "top_games": ["Hollow Knight", "Stardew Valley", "Celeste", "Hades", "Among Us", "Undertale", "Slay the Spire", "Disco Elysium", "Cuphead", "Dead Cells"],
-    "links": [
-      "https://store.steampowered.com/",
-      "https://itch.io/"
-    ]
+    "top_games": ["Hollow Knight", "Stardew Valley", "Celeste", "Hades", "Among Us", "Undertale", "Slay the Spire", "Disco Elysium", "Cuphead", "Dead Cells"]
   },
   {
     "name": "Steam",
@@ -59,10 +45,7 @@
     "example": "Building a library of favorite games during a 90 % off Summer Sale.",
     "image": "https://www.pexels.com/photo/person-holding-a-controller-in-front-of-a-computer-monitor-159393/",
     "thread": "https://x.com/example/thread/12345",
-    "top_games": ["Baldur's Gate 3", "Elden Ring", "Cyberpunk 2077", "The Witcher 3: Wild Hunt", "Portal 2", "Hades", "DOOM Eternal", "Grand Theft Auto V", "Red Dead Redemption 2", "Counter-Strike 2"],
-    "links": [
-      "https://store.steampowered.com/"
-    ]
+    "top_games": ["Baldur's Gate 3", "Elden Ring", "Cyberpunk 2077", "The Witcher 3: Wild Hunt", "Portal 2", "Hades", "DOOM Eternal", "Grand Theft Auto V", "Red Dead Redemption 2", "Counter-Strike 2"]
   },
   {
     "name": "Android Gaming",
@@ -74,10 +57,7 @@
     "example": "Climbing the Clash of Clans leaderboard during a clan war on the bus.",
     "image": "https://www.pexels.com/photo/person-holding-black-android-smartphone-133579/",
     "thread": "https://x.com/example/thread/12345",
-    "top_games": ["Genshin Impact", "Clash of Clans", "Among Us", "PUBG Mobile", "Candy Crush Saga", "Brawl Stars", "Call of Duty: Mobile", "Minecraft", "Roblox", "Pokémon GO"],
-    "links": [
-      "https://play.google.com/store/games"
-    ]
+    "top_games": ["Genshin Impact", "Clash of Clans", "Among Us", "PUBG Mobile", "Candy Crush Saga", "Brawl Stars", "Call of Duty: Mobile", "Minecraft", "Roblox", "Pokémon GO"]
   },
   {
     "name": "PlayStation",
@@ -89,10 +69,7 @@
     "example": "Immersing in God of War’s emotional Norse saga.",
     "image": "https://www.pexels.com/photo/casual-controller-console-controller-joypad-161888/",
     "thread": "https://x.com/example/thread/12345",
-    "top_games": ["God of War Ragnarök", "The Last of Us Part II", "Spider-Man: Miles Morales", "Horizon Forbidden West", "Uncharted 4: A Thief’s End", "Bloodborne", "Ghost of Tsushima", "Final Fantasy VII Remake", "Demon’s Souls", "Ratchet & Clank: Rift Apart"],
-    "links": [
-      "https://www.playstation.com/"
-    ]
+    "top_games": ["God of War Ragnarök", "The Last of Us Part II", "Spider-Man: Miles Morales", "Horizon Forbidden West", "Uncharted 4: A Thief’s End", "Bloodborne", "Ghost of Tsushima", "Final Fantasy VII Remake", "Demon’s Souls", "Ratchet & Clank: Rift Apart"]
   },
   {
     "name": "Xbox",
@@ -104,11 +81,7 @@
     "example": "Leading a Spartan team through Halo Infinite’s epic campaign.",
     "image": "https://www.pexels.com/photo/close-up-photo-of-xbox-controller-275033/",
     "thread": "https://x.com/example/thread/12345",
-    "top_games": ["Halo Infinite", "Forza Horizon 5", "Gears 5", "Sea of Thieves", "Starfield", "Microsoft Flight Simulator", "Ori and the Will of the Wisps", "Psychonauts 2", "Hellblade II: Senua’s Saga", "Fable"],
-    "links": [
-      "https://www.xbox.com/",
-      "https://www.xbox.com/en-US/xbox-game-pass"
-    ]
+    "top_games": ["Halo Infinite", "Forza Horizon 5", "Gears 5", "Sea of Thieves", "Starfield", "Microsoft Flight Simulator", "Ori and the Will of the Wisps", "Psychonauts 2", "Hellblade II: Senua’s Saga", "Fable"]
   },
   {
     "name": "PC Games",
@@ -120,10 +93,7 @@
     "example": "Running Cyberpunk 2077 at ultra settings on a custom-built rig.",
     "image": "https://www.pexels.com/photo/gaming-pc-1174746/",
     "thread": "https://x.com/example/thread/12345",
-    "top_games": ["Elden Ring", "Cyberpunk 2077", "The Witcher 3: Wild Hunt", "Baldur’s Gate 3", "DOOM Eternal", "Half-Life 2", "Total War: Warhammer III", "Civilization VI", "Portal 2", "StarCraft II"],
-    "links": [
-      "https://www.discord.com/"
-    ]
+    "top_games": ["Elden Ring", "Cyberpunk 2077", "The Witcher 3: Wild Hunt", "Baldur’s Gate 3", "DOOM Eternal", "Half-Life 2", "Total War: Warhammer III", "Civilization VI", "Portal 2", "StarCraft II"]
   },
   {
     "name": "Retro Games",
@@ -135,11 +105,7 @@
     "example": "Beating Super Mario Bros. World 8’s final castle after months of practice.",
     "image": "https://www.pexels.com/photo/nintendo-console-and-red-controller-845255/",
     "thread": "https://x.com/example/thread/12345",
-    "top_games": ["Super Mario Bros. 3", "The Legend of Zelda: A Link to the Past", "Super Metroid", "Sonic the Hedgehog 2", "Street Fighter II", "Chrono Trigger", "Final Fantasy VI", "Pokémon Red/Blue", "Donkey Kong Country", "Mega Man 2"],
-    "links": [
-      "https://store.steampowered.com/",
-      "https://www.gog.com/"
-    ]
+    "top_games": ["Super Mario Bros. 3", "The Legend of Zelda: A Link to the Past", "Super Metroid", "Sonic the Hedgehog 2", "Street Fighter II", "Chrono Trigger", "Final Fantasy VI", "Pokémon Red/Blue", "Donkey Kong Country", "Mega Man 2"]
   },
   {
     "name": "Emulators for Android",
@@ -151,11 +117,7 @@
     "example": "Reliving Pokémon Emerald’s journey on a modern smartphone.",
     "image": "https://www.pexels.com/photo/person-holding-game-console-controller-339246/",
     "thread": "https://x.com/example/thread/12345",
-    "top_games": ["Pokémon Emerald", "Super Mario World", "The Legend of Zelda: Link’s Awakening", "Final Fantasy Tactics", "Castlevania: Aria of Sorrow", "Metroid Fusion", "Fire Emblem", "Golden Sun", "Kingdom Hearts: Chain of Memories", "Mega Man Zero"],
-    "links": [
-      "https://www.retroarch.com/",
-      "https://www.ppsspp.org/"
-    ]
+    "top_games": ["Pokémon Emerald", "Super Mario World", "The Legend of Zelda: Link’s Awakening", "Final Fantasy Tactics", "Castlevania: Aria of Sorrow", "Metroid Fusion", "Fire Emblem", "Golden Sun", "Kingdom Hearts: Chain of Memories", "Mega Man Zero"]
   },
   {
     "name": "Emulators for PC",
@@ -167,11 +129,6 @@
     "example": "Enjoying Zelda: Wind Waker in 4K with custom shaders.",
     "image": "https://www.pexels.com/photo/person-holding-game-console-controller-339246/",
     "thread": "https://x.com/example/thread/12345",
-    "top_games": ["The Legend of Zelda: Wind Waker", "Super Smash Bros. Melee", "Resident Evil 4", "Final Fantasy XII", "Super Mario 64", "Metroid Prime", "Kingdom Hearts II", "Shadow of the Colossus", "Mario Kart: Double Dash", "Fire Emblem: Path of Radiance"],
-    "linksx": [
-      "https://dolphin-emu.org/",
-      "https://pcsx2.net/",
-      "https://www.snes9x.com/"
-    ]
+    "top_games": ["The Legend of Zelda: Wind Waker", "Super Smash Bros. Melee", "Resident Evil 4", "Final Fantasy XII", "Super Mario 64", "Metroid Prime", "Kingdom Hearts II", "Shadow of the Colossus", "Mario Kart: Double Dash", "Fire Emblem: Path of Radiance"]
   }
 ]
