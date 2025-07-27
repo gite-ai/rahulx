@@ -276,6 +276,7 @@
       line-height: 1.8;
       margin-bottom: 12px;
       font-weight: 400;
+      white-space: pre-wrap;
     }
 
     .modal-desc b,
@@ -429,6 +430,7 @@
       color: #ff00cc;
       font-weight: 600;
       text-decoration: underline;
+      word-break: break-word;
     }
 
     #modalLinks a:hover {
@@ -455,9 +457,9 @@
   </header>
 
   <!-- Gaming Animation Section -->
-  <div class="gaming-animation">
+  <div class="gaming-animation" aria-label="3D rotating game console and icons">
     <!-- 3D Rotating Game Console -->
-    <div class="game-console">
+    <div class="game-console" aria-hidden="true">
       <div class="front">🎮</div>
       <div class="back">🎮</div>
       <div class="left">🎮</div>
@@ -467,20 +469,20 @@
     </div>
 
     <!-- Floating Gaming Icons -->
-    <div class="floating-icon icon-1">🕹️</div>
-    <div class="floating-icon icon-2">🎧</div>
-    <div class="floating-icon icon-3">💻</div>
-    <div class="floating-icon icon-4">🎯</div>
+    <div class="floating-icon icon-1" aria-hidden="true">🕹️</div>
+    <div class="floating-icon icon-2" aria-hidden="true">🎧</div>
+    <div class="floating-icon icon-3" aria-hidden="true">💻</div>
+    <div class="floating-icon icon-4" aria-hidden="true">🎯</div>
   </div>
 
   <!-- Trending Hashtags -->
-  <div class="hashtags" id="hashtags">
+  <div class="hashtags" id="hashtags" role="list" aria-label="Gaming categories as hashtags">
     <!-- Hashtags will be added dynamically -->
   </div>
 
   <!-- Modal (Popup) -->
   <div class="modal" id="gamingModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-content">
+    <div class="modal-content" role="document">
       <div class="modal-header">
         <h2 class="modal-title" id="modalTitle"></h2>
         <button class="modal-close" onclick="closeModal()" aria-label="Close modal">✖</button>
@@ -530,14 +532,12 @@
   </footer>
 
   <script>
-    // Data will be injected here after fetching ./texts/gaming.txt JSON
-
     // Function to create hashtags and clickable UI elements
     function populateHashtags(data) {
       const hashtagsContainer = document.getElementById('hashtags');
       hashtagsContainer.innerHTML = ''; // Clear existing content
 
-      data.forEach((item, index) => {
+      data.forEach((item) => {
         const tag = document.createElement('div');
         tag.className = 'hashtag';
         // Remove spaces and dashes for hashtag text
@@ -556,7 +556,7 @@
             item.top_games.join(', '),
             item.image || '',
             item.thread || '',
-            item.official_websites || []
+            item.official_websites || item.officialWebsites || []
           );
         });
 
@@ -603,13 +603,43 @@
       modalImage.src = image || '';
       modalImage.alt = `${title} image` || 'Gaming image';
 
-      // Populate official website links
+      // Debug: Log the officialLinks
+      console.log('Official website URLs:', officialLinks);
+
+      // Populate official website links safely
       modalLinks.innerHTML = ''; // Clear existing
-      if (officialLinks.length) {
+
+      // Filter valid URLs using try/catch for new URL()
+      const validLinks = officialLinks.filter((l) => {
+        try {
+          new URL(l);
+          return true;
+        } catch {
+          return false;
+        }
+      });
+
+      if (validLinks.length > 0) {
+        validLinks.forEach((url) => {
+          let hostname = url;
+          try {
+            hostname = new URL(url).hostname.replace('www.', '');
+          } catch (e) {
+            // fallback to full url text
+          }
+          const a = document.createElement('a');
+          a.href = url;
+          a.textContent = hostname;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          modalLinks.appendChild(a);
+        });
+      } else if (officialLinks.length > 0) {
+        // If no valid URLs but there are links, just display raw URLs
         officialLinks.forEach((url) => {
           const a = document.createElement('a');
           a.href = url;
-          a.textContent = new URL(url).hostname.replace('www.', '');
+          a.textContent = url;
           a.target = '_blank';
           a.rel = 'noopener noreferrer';
           modalLinks.appendChild(a);
@@ -687,6 +717,10 @@
           return response.json();
         })
         .then((data) => {
+          console.log('Loaded gaming data:', data);
+          data.forEach((item) => {
+            console.log(item.name, 'official_websites:', item.official_websites);
+          });
           populateHashtags(data);
         })
         .catch((error) => {
