@@ -59,7 +59,7 @@
     "key_features": "Xbox Game Pass, Cloud Gaming, Cross-Play & Xbox Live",
     "getting_started": "Purchase Game Pass Ultimate; link Xbox app; try free Game Preview demos; join Xbox Live for monthly free titles.",
     "example": "Leading a Spartan team through Halo Infinite’s epic campaign.",
-    "image": "https://www.pexels.com/photo/close-up-photo-of-xbox-controller-275033/",
+    "image": "https://mega.nz/file/GVYzyKiD#WNmaYwC3eCbwVCiuNnBcNjams_02H_I2IMoJi3g57OA",
     "thread": "https://x.com/example/thread/12345"
   },
   {
