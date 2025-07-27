@@ -448,6 +448,7 @@
     // Modal Functions
     function populateHashtags(hashtags) {
       const hashtagsContainer = document.getElementById('hashtags');
+      hashtagsContainer.innerHTML = ''; // Clear any existing content
       hashtags.forEach(hashtag => {
         const tag = document.createElement('div');
         tag.className = 'hashtag';
@@ -540,10 +541,10 @@
 
     // Fetch data from gaming.txt
     window.onload = function() {
-      fetch('gaming.txt')
+      fetch('/gaming.txt') // Use root-relative path for GitHub Pages
         .then(response => {
           if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error(`HTTP error! Status: ${response.status}`);
           }
           return response.json();
         })
@@ -552,7 +553,8 @@
         })
         .catch(error => {
           console.error('Error loading gaming.txt:', error);
-          alert('Failed to load hashtag data. Please check the console for details.');
+          const hashtagsContainer = document.getElementById('hashtags');
+          hashtagsContainer.innerHTML = '<p style="color: #ff00cc;">Failed to load gaming data. Please ensure gaming.txt is in the root directory.</p>';
         });
     };
   </script>
