@@ -590,7 +590,6 @@
         .then(text => {
           try {
             const data = JSON.parse(text);
-            // Validate required fields
             if (!Array.isArray(data) || !data.every(item => item.name && item.desc)) {
               throw new Error('Invalid JSON structure: Missing required fields (name, desc)');
             }
@@ -623,7 +622,7 @@
             .catch(error => {
               console.error('Error loading https://rahulx.com/texts/gaming.txt:', error);
               const hashtagsContainer = document.getElementById('hashtags');
-              hashtagsContainer.innerHTML = `<p style="color: #ff00cc;">Failed to load gaming data. Error: ${error.message}. Ensure texts/gaming.txt exists at rahulx.com/texts/gaming.txt and is valid JSON.</p>`;
+              hashtagsContainer.innerHTML = `<p style="color: #ff00cc;">Failed to load gaming data. Error: ${error.message}. Ensure texts/gaming.txt exists at rahulx.com/texts/gaming.txt and matches the expected JSON structure.</p>`;
               populateHashtags(fallbackData);
             });
         });
