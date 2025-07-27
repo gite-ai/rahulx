@@ -246,13 +246,13 @@
 
     .modal-desc b,
     .modal-desc strong {
-      color: #ff00cc; /* Neon pink for bold text */
+      color: #ff00cc;
       font-weight: 700;
     }
 
     .modal-desc i,
     .modal-desc em {
-      color: #00ccff; /* Cyan for italic text */
+      color: #00ccff;
       font-style: italic;
     }
 
@@ -266,13 +266,13 @@
 
     .modal-example b,
     .modal-example strong {
-      color: #ff00cc; /* Neon pink for bold text */
+      color: #ff00cc;
       font-weight: 700;
     }
 
     .modal-example i,
     .modal-example em {
-      color: #00ccff; /* Cyan for italic text */
+      color: #00ccff;
       font-style: italic;
     }
 
@@ -417,7 +417,12 @@
       </div>
       <div class="modal-body">
         <p class="modal-desc" id="modalDesc"></p>
+        <p class="modal-desc"><strong>Type:</strong> <span id="modalType"></span></p>
+        <p class="modal-desc"><strong>Categories:</strong> <span id="modalCategories"></span></p>
+        <p class="modal-desc"><strong>Key Features:</strong> <span id="modalFeatures"></span></p>
+        <p class="modal-desc"><strong>Getting Started:</strong> <span id="modalGettingStarted"></span></p>
         <p class="modal-example" id="modalExample"></p>
+        <p class="modal-desc"><strong>Top Games:</strong> <span id="modalTopGames"></span></p>
         <img class="modal-image" id="modalImage" src="" alt="Gaming Image">
       </div>
       <div class="modal-footer">
@@ -446,26 +451,47 @@
       hashtags.forEach(hashtag => {
         const tag = document.createElement('div');
         tag.className = 'hashtag';
-        tag.textContent = `#${hashtag.name.replace(/\s+/g, '')}`;
+        tag.textContent = `#${hashtag.name.replace(/[\s-]+/g, '')}`;
         
         tag.addEventListener('click', () => {
-          openModal(hashtag.name, hashtag.desc, hashtag.example, hashtag.image, hashtag.thread); // Fixed typo: hashtag-thread to hashtag.thread
+          openModal(
+            hashtag.name,
+            hashtag.desc,
+            hashtag.type,
+            hashtag.categories.join(', '),
+            hashtag.key_features,
+            hashtag.getting_started,
+            hashtag.example,
+            hashtag.top_games.join(', '),
+            hashtag.image,
+            hashtag.thread
+          );
         });
         
         hashtagsContainer.appendChild(tag);
       });
     }
 
-    function openModal(title, desc, example, image, thread) {
+    function openModal(title, desc, type, categories, features, gettingStarted, example, topGames, image, thread) {
       const modal = document.getElementById('gamingModal');
       const modalTitle = document.getElementById('modalTitle');
       const modalDesc = document.getElementById('modalDesc');
+      const modalType = document.getElementById('modalType');
+      const modalCategories = document.getElementById('modalCategories');
+      const modalFeatures = document.getElementById('modalFeatures');
+      const modalGettingStarted = document.getElementById('modalGettingStarted');
       const modalExample = document.getElementById('modalExample');
+      const modalTopGames = document.getElementById('modalTopGames');
       const modalImage = document.getElementById('modalImage');
 
       modalTitle.textContent = title;
       modalDesc.innerHTML = desc;
-      modalExample.innerHTML = `Example: ${example}`; // Changed to innerHTML
+      modalType.textContent = type;
+      modalCategories.textContent = categories;
+      modalFeatures.textContent = features;
+      modalGettingStarted.textContent = gettingStarted;
+      modalExample.innerHTML = `Example: ${example}`;
+      modalTopGames.textContent = topGames;
       modalImage.src = image;
       modal.style.display = 'flex';
 
@@ -490,8 +516,13 @@
     function copyModalContent() {
       const title = document.getElementById('modalTitle').textContent;
       const desc = document.getElementById('modalDesc').textContent;
+      const type = document.getElementById('modalType').textContent;
+      const categories = document.getElementById('modalCategories').textContent;
+      const features = document.getElementById('modalFeatures').textContent;
+      const gettingStarted = document.getElementById('modalGettingStarted').textContent;
       const example = document.getElementById('modalExample').textContent;
-      const content = `${title}\n\n${desc}\n\n${example}`;
+      const topGames = document.getElementById('modalTopGames').textContent;
+      const content = `${title}\n\nDescription: ${desc}\n\nType: ${type}\n\nCategories: ${categories}\n\nKey Features: ${features}\n\nGetting Started: ${gettingStarted}\n\n${example}\n\nTop Games: ${topGames}`;
       
       navigator.clipboard.writeText(content).then(() => {
         alert('Content copied to clipboard!');
@@ -507,21 +538,20 @@
       }
     });
 
-    // Fetch data from texts/gaming.txt
+    // Fetch data from gaming.txt
     window.onload = function() {
-      fetch('texts/gaming.txt')
+      fetch('gaming.txt')
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
-          return response.text();
+          return response.json();
         })
         .then(data => {
-          const hashtags = JSON.parse(data);
-          populateHashtags(hashtags);
+          populateHashtags(data);
         })
         .catch(error => {
-          console.error('Error loading texts/gaming.txt:', error);
+          console.error('Error loading gaming.txt:', error);
           alert('Failed to load hashtag data. Please check the console for details.');
         });
     };
