@@ -4,7 +4,6 @@
     "type": "Competitive Online",
     "categories": ["MOBA", "FPS", "Battle Royale"],
     "desc": "Online competitive gaming with structured leagues, global tournaments, and live streaming communities.",
-    "key_features": "Leagues & Tournaments, Team Roles & Communication, Live Streaming & Community",
     "getting_started": "Choose popular titles like CS:GO or Dota 2, follow tutorials, and join beginner servers.",
     "example": "Winning a CS:GO Major with perfect aim and coordinated team calls.",
     "top_games": ["Counter-Strike 2", "Dota 2", "League of Legends", "Valorant", "Overwatch 2", "Fortnite", "Apex Legends", "Rocket League", "Call of Duty: Warzone", "Rainbow Six Siege"],
@@ -13,15 +12,13 @@
       "https://www.leagueoflegends.com/",
       "https://playvalorant.com/"
     ],
-    "image": "https://i.postimg.cc/Y9MmMWqh/pexels-a-darmel-7862514.jpg",
-    "thread": "https://x.com/example/thread/12345"
+    "image": "https://i.postimg.cc/Y9MmMWqh/pexels-a-darmel-7862514.jpg"
   },
   {
     "name": "VR Gaming",
     "type": "Virtual Reality",
     "categories": ["Room-Scale VR", "Seated VR", "Mixed Reality"],
     "desc": "Play immersive games using VR headsets with motion tracking and haptics.",
-    "key_features": "Room-Scale & Seated Modes, Motion Tracking, Haptic Feedback",
     "getting_started": "Start with an Oculus Quest 3, set up play space, and use free demos.",
     "example": "Slicing blocks in Beat Saber through arm swings.",
     "top_games": ["Beat Saber", "Half-Life: Alyx", "Superhot VR", "Skyrim VR", "Resident Evil 4 VR", "Pistol Whip", "Boneworks", "Blade & Sorcery", "Population: One", "Asgard's Wrath II"],
@@ -30,15 +27,13 @@
       "https://www.half-life.com/en/alyx/",
       "https://www.meta.com/quest/"
     ],
-    "image": "https://i.postimg.cc/rmg6YvPK/pexels-tima-miroshnichenko-6498723.jpg",
-    "thread": "https://x.com/example/thread/67890"
+    "image": "https://i.postimg.cc/rmg6YvPK/pexels-tima-miroshnichenko-6498723.jpg"
   },
   {
     "name": "Indie Games",
     "type": "Independent",
     "categories": ["Narrative", "Pixel Art", "Puzzle", "Platformer"],
     "desc": "Unique, creative games by indie developers often focused on storytelling.",
-    "key_features": "Creative Mechanics, Hand-crafted Art & Sound, Direct Dev–Player Interaction",
     "getting_started": "Explore Steam and itch.io, filter by tags like “narrative” or “pixel art.”",
     "example": "Exploring Hollow Knight’s hand-drawn world with secrets and atmosphere.",
     "top_games": ["Hollow Knight", "Stardew Valley", "Celeste", "Hades", "Among Us", "Undertale", "Slay the Spire", "Disco Elysium", "Cuphead", "Dead Cells"],
@@ -47,30 +42,26 @@
       "https://itch.io/games",
       "https://www.hollowknight.com/"
     ],
-    "image": "https://i.postimg.cc/Bvrtn1Sx/pexels-tima-miroshnichenko-7047002.jpg",
-    "thread": "https://x.com/example/thread/54321"
+    "image": "https://i.postimg.cc/Bvrtn1Sx/pexels-tima-miroshnichenko-7047002.jpg"
   },
   {
     "name": "Steam",
     "type": "Digital Platform",
     "categories": ["PC", "Mac", "Linux"],
     "desc": "Massive PC game platform with sales, guides, and easy installs.",
-    "key_features": "Vast Library, Community Hubs & Mods, Seasonal Sales",
     "getting_started": "Create a Steam account, install client, browse curated lists, wishlist for sale alerts.",
     "example": "Building a game library during the Steam Summer Sale.",
     "top_games": ["Baldur's Gate 3", "Elden Ring", "Cyberpunk 2077", "The Witcher 3", "Portal 2", "Hades", "DOOM Eternal", "GTA V", "Red Dead Redemption 2", "Counter-Strike 2"],
     "official_websites": [
       "https://store.steampowered.com/"
     ],
-    "image": "https://i.postimg.cc/Rhz3XJ2M/OIP.jpg",
-    "thread": "https://x.com/example/thread/12345"
+    "image": "https://i.postimg.cc/Rhz3XJ2M/OIP.jpg"
   },
   {
     "name": "Android Gaming",
     "type": "Mobile",
     "categories": ["Hyper-Casual", "Strategy", "RPG", "Puzzle"],
     "desc": "Mobile gaming for Android devices; from quick puzzles to deep strategy games.",
-    "key_features": "Broad Genre Range, Touch & Controller Support, On-the-Go Convenience",
     "getting_started": "Browse Google Play Top Charts, install demos, manage battery/data.",
     "example": "Climbing Clash of Clans leaderboard on the go.",
     "top_games": ["Genshin Impact", "Clash of Clans", "Among Us", "PUBG Mobile", "Candy Crush Saga", "Brawl Stars", "Call of Duty: Mobile", "Minecraft", "Roblox", "Pokémon GO"],
@@ -79,45 +70,39 @@
       "https://www.callofduty.com/mobile",
       "https://www.pubgmobile.com/"
     ],
-    "image": "https://i.postimg.cc/WbTFZrM8/best-android-games-14-9-20230406083255537.jpg",
-    "thread": "https://x.com/example/thread/12345"
+    "image": "https://i.postimg.cc/WbTFZrM8/best-android-games-14-9-20230406083255537.jpg"
   },
   {
     "name": "PlayStation",
     "type": "Console",
     "categories": ["PS1", "PS2", "PS3", "PS4", "PS5"],
     "desc": "Sony consoles known for exclusive, story-driven games and PS Plus subscription perks.",
-    "key_features": "Exclusive Franchises, Backward Compatibility, PS Plus Subscription",
     "getting_started": "Select PS4/PS5, set up PSN, subscribe to PS Plus for monthly titles.",
     "example": "Experiencing God of War’s Norse saga.",
     "top_games": ["God of War Ragnarök", "The Last of Us Part II", "Spider-Man: Miles Morales", "Horizon Forbidden West", "Uncharted 4", "Bloodborne", "Ghost of Tsushima", "FFVII Remake", "Demon’s Souls", "Ratchet & Clank: Rift Apart"],
     "official_websites": [
       "https://www.playstation.com/"
     ],
-    "image": "https://i.postimg.cc/DwY8RMRp/pexels-jeshoots-com-147458-442576.jpg",
-    "thread": "https://x.com/example/thread/12345"
+    "image": "https://i.postimg.cc/DwY8RMRp/pexels-jeshoots-com-147458-442576.jpg"
   },
   {
     "name": "Xbox",
     "type": "Console",
     "categories": ["Xbox", "Xbox 360", "Xbox One", "Xbox Series X|S"],
     "desc": "Microsoft’s consoles with Game Pass, cloud gaming, and cross-play.",
-    "key_features": "Xbox Game Pass, Cloud Gaming, Cross-Play & Xbox Live",
     "getting_started": "Get Game Pass Ultimate, link the Xbox app, and try free demos.",
     "example": "Leading Spartans in Halo Infinite.",
     "top_games": ["Halo Infinite", "Forza Horizon 5", "Gears 5", "Sea of Thieves", "Starfield", "Microsoft Flight Simulator", "Ori and the Will of the Wisps", "Psychonauts 2", "Hellblade II", "Fable"],
     "official_websites": [
       "https://www.xbox.com/"
     ],
-    "image": "https://i.postimg.cc/PrsnxQn3/pexels-nathanjhilton-10997582.jpg",
-    "thread": "https://x.com/example/thread/12345"
+    "image": "https://i.postimg.cc/PrsnxQn3/pexels-nathanjhilton-10997582.jpg"
   },
   {
     "name": "PC Games",
     "type": "Desktop/Laptop",
     "categories": ["Action", "Strategy", "RPG", "Simulation"],
     "desc": "Gaming on desktops/laptops; enjoy high frame rates, mods, and vast genres.",
-    "key_features": "Customizable Hardware, Mod Support, Wide Genre Selection",
     "getting_started": "Check specs before buying, update drivers, use Discord, overlay for chat.",
     "example": "Running Cyberpunk 2077 on ultra settings.",
     "top_games": ["Elden Ring", "Cyberpunk 2077", "The Witcher 3", "Baldur’s Gate 3", "DOOM Eternal", "Half-Life 2", "Total War: Warhammer III", "Civilization VI", "Portal 2", "StarCraft II"],
@@ -125,15 +110,13 @@
       "https://www.epicgames.com/store/",
       "https://www.gog.com/"
     ],
-    "image": "https://i.postimg.cc/zfbVNkrz/pexels-sharad-7199194.jpg",
-    "thread": "https://x.com/example/thread/12345"
+    "image": "https://i.postimg.cc/zfbVNkrz/pexels-sharad-7199194.jpg"
   },
   {
     "name": "Retro Games",
     "type": "Classic",
     "categories": ["Arcade", "8-bit", "16-bit", "32-bit"],
     "desc": "Classic titles from the '80s–2000s with pixel art and straightforward mechanics.",
-    "key_features": "Pixel Art & Chiptunes, Simple Mechanics, Collectible Mini Consoles",
     "getting_started": "Buy mini consoles, digital re-releases, use USB adapters for controllers.",
     "example": "Beating the last castle in Super Mario Bros. 3.",
     "top_games": ["Super Mario Bros. 3", "Zelda: A Link to the Past", "Super Metroid", "Sonic 2", "Street Fighter II", "Chrono Trigger", "Final Fantasy VI", "Pokémon Red/Blue", "Donkey Kong Country", "Mega Man 2"],
@@ -141,15 +124,13 @@
       "https://www.nintendo.com/games/classics/",
       "https://segaretro.org/"
     ],
-    "image": "https://i.postimg.cc/FHKYW4CJ/pexels-mikhail-nilov-7887712.jpg",
-    "thread": "https://x.com/example/thread/12345"
+    "image": "https://i.postimg.cc/FHKYW4CJ/pexels-mikhail-nilov-7887712.jpg"
   },
   {
     "name": "Emulators for Android",
     "type": "Emulation",
     "categories": ["NES", "SNES", "Game Boy", "PS1", "PSP"],
     "desc": "Play classic console games on Android using apps that replicate original hardware.",
-    "key_features": "Multi-System Support, Save States, Customizable On-Screen Controls",
     "getting_started": "Install RetroArch or PPSSPP, dump your ROMs legally, set up touch/Bluetooth controls.",
     "example": "Playing Pokémon Emerald on a smartphone.",
     "top_games": ["Pokémon Emerald", "Super Mario World", "The Legend of Zelda: Link’s Awakening", "Final Fantasy Tactics", "Castlevania: Aria of Sorrow", "Metroid Fusion", "Fire Emblem", "Golden Sun", "Kingdom Hearts: Chain of Memories", "Mega Man Zero"],
@@ -157,15 +138,13 @@
       "https://www.retroarch.com/",
       "https://www.ppsspp.org/"
     ],
-    "image": "https://i.postimg.cc/WbTFZrM8/best-android-games-14-9-20230406083255537.jpg",
-    "thread": "https://x.com/example/thread/12345"
+    "image": "https://i.postimg.cc/WbTFZrM8/best-android-games-14-9-20230406083255537.jpg"
   },
   {
     "name": "Emulators for PC",
     "type": "Emulation",
     "categories": ["GameCube", "Wii", "PS2", "SNES", "N64"],
     "desc": "Software for retro console experiences on PC with HD upscaling and plugin support.",
-    "key_features": "HD Upscaling, Plugin Ecosystem, Broad Compatibility",
     "getting_started": "Download Dolphin (GC/Wii), PCSX2 (PS2), Snes9x (SNES); configure settings and shaders.",
     "example": "Playing Zelda: Wind Waker in 4K on PC.",
     "top_games": ["The Legend of Zelda: Wind Waker", "Super Smash Bros. Melee", "Resident Evil 4", "Final Fantasy XII", "Super Mario 64", "Metroid Prime", "Kingdom Hearts II", "Shadow of the Colossus", "Mario Kart: Double Dash", "Fire Emblem: Path of Radiance"],
@@ -174,7 +153,6 @@
       "https://pcsx2.net/",
       "https://www.snes9x.com/"
     ],
-    "image": "https://i.postimg.cc/T2r5hQWh/how-to-use-rpcs3-emulator-to-play-ps3-games.jpg",
-    "thread": "https://x.com/example/thread/12345"
+    "image": "https://i.postimg.cc/T2r5hQWh/how-to-use-rpcs3-emulator-to-play-ps3-games.jpg"
   }
 ]
