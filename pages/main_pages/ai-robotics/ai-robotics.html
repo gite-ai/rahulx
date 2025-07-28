@@ -132,8 +132,8 @@
       border: 1px solid #00ffcc;
       border-radius: 10px;
       width: 90%;
-      max-width: 600px;
-      max-height: 80vh;
+      max-width: 700px;
+      max-height: 90vh;
       padding: 0;
       position: relative;
       display: flex;
@@ -186,33 +186,44 @@
       flex: 1;
       padding: 20px;
       overflow-y: auto;
+      color: #b0fff0;
+      font-size: 1rem;
+      line-height: 1.7;
     }
-    .modal-desc {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-bottom: 15px;
-      font-weight: 400;
-      white-space: pre-wrap;
+    .modal-section {
+      margin-bottom: 1.4em;
     }
-    .modal-desc b, .modal-desc strong {
+    .modal-section h3 {
       color: #ff00cc;
-      font-weight: 700;
+      border-bottom: 1px solid #00ffcc;
+      padding-bottom: 4px;
+      margin-bottom: 8px;
+      font-size: 1.3rem;
     }
-    .modal-desc i, .modal-desc em {
-      color: #00ccff;
-      font-style: italic;
+    .modal-list {
+      list-style-type: disc;
+      margin-left: 20px;
+      margin-top: 0;
+      margin-bottom: 0.8em;
+      color: #00ffcc;
+    }
+    .modal-list li {
+      margin-bottom: 0.3em;
+      font-weight: 400;
+    }
+    .modal-desc-pre {
+      white-space: pre-wrap;
+      margin-bottom: 1em;
+      color: #b0fff0;
     }
     .modal-example {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 15px;
       font-style: italic;
-      color: #b0fff0;
-      white-space: pre-wrap;
+      margin-bottom: 1em;
+      color: #d0f8f1;
     }
     .modal-image {
       width: 100%;
-      max-width: 400px;
+      max-width: 480px;
       height: auto;
       border: 1px solid #00ffcc;
       border-radius: 5px;
@@ -235,7 +246,7 @@
       background: none;
       border: none;
       color: #00ffcc;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       cursor: pointer;
       transition: color 0.3s ease, transform 0.3s ease;
       padding: 5px;
@@ -243,7 +254,7 @@
     .modal-action-button:hover,
     .modal-action-button:focus {
       color: #ff00cc;
-      transform: scale(1.2);
+      transform: scale(1.3);
       outline: none;
     }
 
@@ -306,6 +317,16 @@
       0% { background-position: 0 0;}
       100% { background-position: 1000px 1000px;}
     }
+
+    /* Screen reader only */
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -333,15 +354,13 @@
 
   <!-- Modal (Popup) -->
   <div class="modal" id="techModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
-    <div class="modal-content">
+    <div class="modal-content" tabindex="0">
       <header class="modal-header">
         <h2 class="modal-title" id="modalTitle"></h2>
         <button class="modal-close" onclick="closeModal()" aria-label="Close modal">✖</button>
       </header>
-      <main class="modal-body">
-        <p class="modal-desc" id="modalDesc"></p>
-        <p class="modal-example" id="modalExample"></p>
-        <img class="modal-image" id="modalImage" src="" alt="" />
+      <main class="modal-body" id="modalBody">
+        <!-- Content inserted dynamically -->
       </main>
       <footer class="modal-footer">
         <button class="modal-action-button" id="copyButton" onclick="copyModalContent()" title="Copy Content" aria-label="Copy content to clipboard">
@@ -374,7 +393,6 @@
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    // Animation Variables, particles, binary digits, colors (same as your script)
     const faceRadius = 100;
     const eyeRadius = 15;
     const mouthWidth = 80;
@@ -542,23 +560,146 @@
       });
     }
 
-    // Modal open function accepts full tech object
+    // Helper to safely create list items from an array of strings
+    function createList(title, items) {
+      if (!items || !items.length) return '';
+      let html = `<section class="modal-section"><h3>${title}</h3><ul class="modal-list">`;
+      items.forEach(item => {
+        if(typeof item === "string"){
+          html += `<li>${item}</li>`;
+        } else if(typeof item === "object" && item.term && item.definition) {
+          // For key_terms array with term/definition objects
+          html += `<li><strong>${item.term}:</strong> ${item.definition}</li>`;
+        }
+      });
+      html += `</ul></section>`;
+      return html;
+    }
+
+    // Helper to render milestone/invention arrays
+    function createMilestones(title, array) {
+      if(!array || !array.length) return '';
+      let html = `<section class="modal-section"><h3>${title}</h3><ul class="modal-list">`;
+      array.forEach(item => {
+        if(item.year && item.event && item.description){
+          html += `<li><strong>${item.year} - ${item.event}:</strong> ${item.description}</li>`;
+        } else if(item.event && item.year){ 
+          // For invention.early_pioneers just list strings, skip here
+        }
+      });
+      html += `</ul></section>`;
+      return html;
+    }
+
+    // Render invention object details
+    function createInventionSection(invention) {
+      if(!invention) return '';
+      let html = `<section class="modal-section"><h3>Invention & Early Pioneers</h3>`;
+
+      if(invention.term_coined_by){
+        html += `<p><strong>Term coined by:</strong> ${invention.term_coined_by}</p>`;
+      }
+
+      if(invention.year){
+        html += `<p><strong>Year:</strong> ${invention.year}</p>`;
+      }
+
+      if(invention.early_pioneers && invention.early_pioneers.length){
+        html += `<p><strong>Early Pioneers:</strong></p><ul class="modal-list">`;
+        invention.early_pioneers.forEach(pioneer => {
+          html += `<li>${pioneer}</li>`;
+        });
+        html += `</ul>`;
+      }
+
+      if(invention.official_birth){
+        html += `<p><strong>Official birth event:</strong> ${invention.official_birth.event} (${invention.official_birth.year})</p>`;
+        if(invention.official_birth.organizers && invention.official_birth.organizers.length){
+          html += `<p><strong>Organizers:</strong> ${invention.official_birth.organizers.join(', ')}</p>`;
+        }
+      }
+      html += `</section>`;
+      return html;
+    }
+
+    // Main modal open function
     function openModal(tech) {
       const modal = document.getElementById('techModal');
       const modalTitle = document.getElementById('modalTitle');
-      const modalDesc = document.getElementById('modalDesc');
-      const modalExample = document.getElementById('modalExample');
-      const modalImage = document.getElementById('modalImage');
+      const modalBody = document.getElementById('modalBody');
       const threadButton = document.getElementById('threadButton');
       const searchButton = document.getElementById('searchButton');
 
       modalTitle.textContent = tech.name || 'Topic';
-      modalDesc.innerHTML = tech.desc || '';
-      modalExample.textContent = tech.example ? `Example: ${tech.example}` : '';
-      modalImage.src = tech.image || '';
-      modalImage.alt = tech.name ? `${tech.name} image` : 'AI Image';
 
-      if(tech.thread) {
+      // Compose modal body content as HTML with sections
+      let bodyHTML = '';
+
+      // Description (desc) as paragraph
+      if(tech.desc){
+        bodyHTML += `<section class="modal-section"><h3>Description</h3><p class="modal-desc-pre">${tech.desc}</p></section>`;
+      }
+
+      // Purpose - if array
+      bodyHTML += createList('Purpose / Importance', tech.purpose || tech.importance);
+
+      // Applications - if array
+      bodyHTML += createList('Applications', tech.applications);
+
+      // Key Concepts - if array
+      bodyHTML += createList('Key Concepts', tech.key_concepts);
+
+      // Basic Types and Examples if present (for AI basics)
+      if(tech.basic_types_and_examples && tech.basic_types_and_examples.length){
+        bodyHTML += `<section class="modal-section"><h3>Basic Types & Examples</h3>`;
+        tech.basic_types_and_examples.forEach(type => {
+          bodyHTML += `<h4 style="color:#ff33cc; margin-bottom:5px;">${type.name}</h4>`;
+          if(type.desc) bodyHTML += `<p>${type.desc}</p>`;
+          if(type.example) bodyHTML += `<p><em>Example:</em> ${type.example}</p>`;
+        });
+        bodyHTML += `</section>`;
+      }
+
+      // Invention & milestones details
+      if(tech.invention){
+        bodyHTML += createInventionSection(tech.invention);
+      }
+      if(tech.key_milestones){
+        bodyHTML += createMilestones('Key Milestones', tech.key_milestones);
+      }
+
+      // Basics (for Robotics etc)
+      if(tech.basics){
+        if(tech.basics.definition){
+          bodyHTML += `<section class="modal-section"><h3>Basics</h3><p>${tech.basics.definition}</p></section>`;
+        }
+        if(tech.basics.fundamental_components){
+          bodyHTML += createList('Fundamental Components', tech.basics.fundamental_components);
+        }
+        if(tech.basics.types_of_robots){
+          bodyHTML += createList('Types of Robots', tech.basics.types_of_robots);
+        }
+      }
+
+      // Key Terms (for Robotics, AI etc)
+      if(tech.key_terms){
+        bodyHTML += createList('Key Terms', tech.key_terms);
+      }
+
+      // Examples (if example string)
+      if(tech.example){
+        bodyHTML += `<section class="modal-section"><h3>Example</h3><p class="modal-example">${tech.example}</p></section>`;
+      }
+
+      // Image
+      if(tech.image){
+        bodyHTML += `<img class="modal-image" src="${tech.image}" alt="${tech.name} illustration" />`;
+      }
+
+      modalBody.innerHTML = bodyHTML;
+
+      // Thread button show/hide and action
+      if(tech.thread){
         threadButton.style.display = 'inline-block';
         threadButton.onclick = () => window.open(tech.thread, '_blank', 'noopener');
       } else {
@@ -566,13 +707,15 @@
         threadButton.onclick = null;
       }
 
+      // Search button action
       searchButton.onclick = () => {
         const query = encodeURIComponent(tech.name || '');
         window.open(`https://x.com/search?q=${query}`, '_blank', 'noopener');
       };
 
       modal.style.display = 'flex';
-      modal.focus();
+      // Focus modal content for accessibility
+      modal.querySelector('.modal-content').focus();
     }
 
     function closeModal() {
@@ -581,12 +724,37 @@
     }
 
     function copyModalContent() {
-      const title = document.getElementById('modalTitle').textContent;
-      const desc = document.getElementById('modalDesc').textContent;
-      const example = document.getElementById('modalExample').textContent;
-      const content = `${title}\n\n${desc}\n\n${example}`;
+      const modalTitle = document.getElementById('modalTitle').textContent;
+      const modalBody = document.getElementById('modalBody');
+      const clone = modalBody.cloneNode(true);
 
-      navigator.clipboard.writeText(content).then(() => {
+      // Extract visible text only, including modalTitle
+      let textContent = modalTitle + "\n\n";
+
+      function extractText(node) {
+        let text = '';
+        node.childNodes.forEach(child => {
+          if(child.nodeType === Node.TEXT_NODE){
+            text += child.textContent;
+          } else if(child.nodeType === Node.ELEMENT_NODE) {
+            const tag = child.tagName.toLowerCase();
+            if(tag === 'li'){
+              text += "- " + extractText(child) + "\n";
+            } else if(['h3', 'h4'].includes(tag)){
+              text += child.textContent + "\n";
+            } else if(tag === 'p'){
+              text += extractText(child) + "\n\n";
+            } else {
+              text += extractText(child);
+            }
+          }
+        });
+        return text;
+      }
+
+      textContent += extractText(clone).trim();
+
+      navigator.clipboard.writeText(textContent).then(() => {
         alert('Content copied to clipboard!');
       }).catch(err => {
         console.error('Copy failed', err);
@@ -602,7 +770,16 @@
       if(e.key === 'Escape') closeModal();
     });
 
-    // Load tech topics from JSON text file
+    // Unified JSON data – this should be from your unified JSON file (texts/ai.txt)
+    // For demo here, sample embedded data from your last unified JSON, you should use external .txt file or a .json file loaded via fetch
+    // As per your last JSON, here we simulate fetch with embedded data for demo:
+
+    const unifiedData = [
+      /* Paste here the content of your unified JSON file or load via fetch */
+      /* For now, we fetch the external file as your current code does */
+    ];
+
+    // Load tech topics from JSON file (texts/ai.txt) on window load
     window.onload = () => {
       fetch('texts/ai.txt')
         .then(response => {
