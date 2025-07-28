@@ -306,6 +306,16 @@
       0% { background-position: 0 0;}
       100% { background-position: 1000px 1000px;}
     }
+
+    /* Screen reader only */
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -322,20 +332,20 @@
 
   <!-- AI Animation Section -->
   <section class="ai-animation" aria-label="Animated futuristic AI face with floating binary digits">
-    <canvas id="binaryFaceCanvas" role="img" aria-describedby="aiAnimationDesc"></canvas>
+    <canvas id="binaryFaceCanvas" role="img" aria-describedby="aiAnimationDesc" tabindex="0"></canvas>
     <p id="aiAnimationDesc" class="sr-only">Animated futuristic AI face with dynamic glowing particles and floating binary digits.</p>
   </section>
 
   <!-- Tech Topics -->
   <nav class="tech-topics" id="techTopics" aria-label="AI and Technology Topics" role="list">
-    <!-- Topics loaded dynamically -->
+    <!-- Dynamic content will be inserted here -->
   </nav>
 
   <!-- Modal (Popup) -->
   <div class="modal" id="techModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
     <div class="modal-content">
       <header class="modal-header">
-        <h2 class="modal-title" id="modalTitle"></h2>
+        <h2 class="modal-title" id="modalTitle" tabindex="0"></h2>
         <button class="modal-close" onclick="closeModal()" aria-label="Close modal">✖</button>
       </header>
       <main class="modal-body">
@@ -363,10 +373,11 @@
   </footer>
 
   <script>
-    // Canvas and Animation Setup for AI Face (as you provided)
+    // Canvas and Animation Setup for AI Face
     const canvas = document.getElementById('binaryFaceCanvas');
     const ctx = canvas.getContext('2d');
     const container = document.querySelector('.ai-animation');
+
     function resizeCanvas() {
       canvas.width = container.clientWidth;
       canvas.height = container.clientHeight;
@@ -374,7 +385,7 @@
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    // Animation Variables, particles, binary digits, colors (same as your script)
+    // Animation Variables
     const faceRadius = 100;
     const eyeRadius = 15;
     const mouthWidth = 80;
@@ -602,7 +613,7 @@
       if(e.key === 'Escape') closeModal();
     });
 
-    // Load tech topics from JSON text file
+    // Load tech topics from merged JSON text file
     window.onload = () => {
       fetch('texts/ai.txt')
         .then(response => {

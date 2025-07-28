@@ -40,5 +40,40 @@
     "example": "Interpretable models in medical diagnostics, financial risk analysis.",
     "image": "images/xai.png",
     "thread": "https://x.com/example_thread6"
+  },
+  {
+    "name": "Humanoid Robots",
+    "desc": "Robots designed to resemble or mimic human form and behavior, enabling natural interactions and tasks previously reserved for humans.",
+    "example": "Sophia the robot, humanoid warehouse assistants, bipedal robots for elderly care.",
+    "image": "images/humanoid_robots.png",
+    "thread": "https://x.com/example_robotics1"
+  },
+  {
+    "name": "Swarm Robotics",
+    "desc": "Coordinated groups of simple robots working together, inspired by social insects, for scalable and robust solutions in search, rescue, and exploration.",
+    "example": "Drone swarms for agriculture, coordinated warehouse robots, multi-robot disaster response.",
+    "image": "images/swarm_robotics.png",
+    "thread": "https://x.com/example_robotics2"
+  },
+  {
+    "name": "Robotic Process Automation",
+    "desc": "Software bots that automate repetitive digital tasks, boosting business productivity and reducing human error in routine operations.",
+    "example": "Automated form filling, invoice processing, HR onboarding automation.",
+    "image": "images/rpa.png",
+    "thread": "https://x.com/example_robotics3"
+  },
+  {
+    "name": "Autonomous Vehicles",
+    "desc": "Robots capable of navigating and operating independently, including self-driving cars, drones, and delivery bots using sensors and AI.",
+    "example": "Tesla Autopilot, self-driving taxis, last-mile delivery robots.",
+    "image": "images/autonomous_vehicles.png",
+    "thread": "https://x.com/example_robotics4"
+  },
+  {
+    "name": "Medical Robotics",
+    "desc": "Specialized robots for surgery, rehabilitation, and patient assistance, transforming modern healthcare with precision and consistency.",
+    "example": "Surgical robots (Da Vinci), robotic prosthetics, telemedicine robots.",
+    "image": "images/medical_robotics.png",
+    "thread": "https://x.com/example_robotics5"
   }
 ]
