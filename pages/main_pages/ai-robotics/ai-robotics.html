@@ -535,10 +535,10 @@
     }
     animate();
 
-    // Populate Tech Topics dynamically
+    // Populate Tech Topics dynamically from array of tech objects
     function populateTechTopics(technologies) {
       const topicsContainer = document.getElementById('techTopics');
-      topicsContainer.innerHTML = '';
+      // Do not clear existing content here to allow adding from multiple files
       technologies.forEach(tech => {
         const topic = document.createElement('div');
         topic.className = 'topic';
@@ -550,7 +550,7 @@
           openModal(tech);
         });
         topic.addEventListener('keydown', e => {
-          if(e.key === 'Enter' || e.key === ' ') {
+          if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             openModal(tech);
           }
@@ -583,8 +583,6 @@
       array.forEach(item => {
         if(item.year && item.event && item.description){
           html += `<li><strong>${item.year} - ${item.event}:</strong> ${item.description}</li>`;
-        } else if(item.event && item.year){ 
-          // For invention.early_pioneers just list strings, skip here
         }
       });
       html += `</ul></section>`;
@@ -770,28 +768,34 @@
       if(e.key === 'Escape') closeModal();
     });
 
-    // Unified JSON data – this should be from your unified JSON file (texts/ai.txt)
-    // For demo here, sample embedded data from your last unified JSON, you should use external .txt file or a .json file loaded via fetch
-    // As per your last JSON, here we simulate fetch with embedded data for demo:
-
-    const unifiedData = [
-      /* Paste here the content of your unified JSON file or load via fetch */
-      /* For now, we fetch the external file as your current code does */
-    ];
-
-    // Load tech topics from JSON file (texts/ai.txt) on window load
+    // Load both ai.txt (main topics) and add_on.txt (additional terminologies)
     window.onload = () => {
+      const topicsContainer = document.getElementById('techTopics');
+      topicsContainer.innerHTML = ''; // clear just once before loading
+
+      // Load main AI topics
       fetch('texts/ai.txt')
         .then(response => {
           if(!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
           return response.text();
         })
         .then(text => {
-          const technologies = JSON.parse(text);
-          populateTechTopics(technologies);
+          const mainTopics = JSON.parse(text);
+          populateTechTopics(mainTopics);
+
+          // Load addon topics AFTER main topics have loaded
+          return fetch('texts/add_on.txt');
+        })
+        .then(response => {
+          if(!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+          return response.text();
+        })
+        .then(text => {
+          const addOnTopics = JSON.parse(text);
+          populateTechTopics(addOnTopics);
         })
         .catch(err => {
-          console.error('Loading AI data failed:', err);
+          console.error('Loading AI or addon data failed:', err);
           const container = document.getElementById('techTopics');
           container.innerHTML = '<p style="color:#ff00cc;">Failed to load AI data. Check console for details.</p>';
         });
