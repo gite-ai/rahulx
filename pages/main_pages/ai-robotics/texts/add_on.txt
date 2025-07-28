@@ -13,22 +13,10 @@
       "Self-driving cars"
     ],
     "key_concepts": [
-      {
-        "term": "Neurons (nodes) and layers (input, hidden, output)",
-        "key_concept_desc": "Basic units of a neural network organized in layers for processing."
-      },
-      {
-        "term": "Weights and biases",
-        "key_concept_desc": "Parameters that adjust the strength of connections for learning."
-      },
-      {
-        "term": "Activation functions",
-        "key_concept_desc": "Functions that introduce non-linearity to model complex patterns."
-      },
-      {
-        "term": "Backpropagation learning algorithm",
-        "key_concept_desc": "Method for training neural networks by minimizing error."
-      }
+      "Neurons (nodes) and layers (input, hidden, output)",
+      "Weights and biases",
+      "Activation functions",
+      "Backpropagation learning algorithm"
     ],
     "example": "Image and speech recognition, recommendation systems, self-driving cars.",
     "image": "images/neural_networks.png",
@@ -48,22 +36,10 @@
       "Sentiment analysis for social media"
     ],
     "key_concepts": [
-      {
-        "term": "Tokenization and parsing",
-        "key_concept_desc": "Breaking text into tokens and analyzing grammatical structure."
-      },
-      {
-        "term": "Language models and embeddings",
-        "key_concept_desc": "Statistical models that represent language semantics in vectors."
-      },
-      {
-        "term": "Named entity recognition",
-        "key_concept_desc": "Identifying entities like people, places, and organizations in text."
-      },
-      {
-        "term": "Machine translation",
-        "key_concept_desc": "Automatically converting text or speech between languages."
-      }
+      "Tokenization and parsing",
+      "Language models and embeddings",
+      "Named entity recognition",
+      "Machine translation"
     ],
     "example": "Chatbots like ChatGPT, Google Translate, sentiment analysis tools.",
     "image": "images/nlp.png",
@@ -83,22 +59,10 @@
       "Game AI adapting to player strategies"
     ],
     "key_concepts": [
-      {
-        "term": "Agent, environment, states, and actions",
-        "key_concept_desc": "Core elements of RL interacting dynamically to learn."
-      },
-      {
-        "term": "Reward signal",
-        "key_concept_desc": "Feedback to evaluate the desirability of actions."
-      },
-      {
-        "term": "Policy and value functions",
-        "key_concept_desc": "Strategies for action selection and expected rewards estimation."
-      },
-      {
-        "term": "Exploration vs. exploitation trade-off",
-        "key_concept_desc": "Balancing new action discovery against known rewards."
-      }
+      "Agent, environment, states, and actions",
+      "Reward signal",
+      "Policy and value functions",
+      "Exploration vs. exploitation trade-off"
     ],
     "example": "AlphaGo's Go mastery, robotic navigation, game AI.",
     "image": "images/reinforcement_learning.png",
@@ -118,22 +82,10 @@
       "Music composition tools creating original pieces"
     ],
     "key_concepts": [
-      {
-        "term": "Generative models (GANs, VAEs, transformers)",
-        "key_concept_desc": "Models that learn to generate new, similar data."
-      },
-      {
-        "term": "Training on large datasets",
-        "key_concept_desc": "Learning data distributions from vast examples."
-      },
-      {
-        "term": "Latent space representation",
-        "key_concept_desc": "Compressed internal representation of input features."
-      },
-      {
-        "term": "Conditional generation",
-        "key_concept_desc": "Generating outputs based on specific inputs or conditions."
-      }
+      "Generative models (GANs, VAEs, transformers)",
+      "Training on large datasets",
+      "Latent space representation",
+      "Conditional generation"
     ],
     "example": "AI art generators, LLM chatbots, music composition tools.",
     "image": "images/generative_ai.png",
@@ -153,22 +105,10 @@
       "Industrial IoT analytics for predictive maintenance"
     ],
     "key_concepts": [
-      {
-        "term": "Model optimization for limited hardware",
-        "key_concept_desc": "Adapting AI models to run efficiently on edge devices."
-      },
-      {
-        "term": "Real-time inference on device",
-        "key_concept_desc": "Making instant AI predictions locally."
-      },
-      {
-        "term": "Energy-efficient computing",
-        "key_concept_desc": "Minimizing power use for battery-operated devices."
-      },
-      {
-        "term": "Data privacy and security",
-        "key_concept_desc": "Protecting sensitive information by local processing."
-      }
+      "Model optimization for limited hardware",
+      "Real-time inference on device",
+      "Energy-efficient computing",
+      "Data privacy and security"
     ],
     "example": "On-device voice assistants, smart cameras, industrial IoT analytics.",
     "image": "images/edge_ai.png",
@@ -188,22 +128,10 @@
       "Legal and compliance decision support systems"
     ],
     "key_concepts": [
-      {
-        "term": "Model interpretability techniques (SHAP, LIME)",
-        "key_concept_desc": "Methods to explain AI model predictions."
-      },
-      {
-        "term": "Transparent model architectures",
-        "key_concept_desc": "Designing models whose operation can be understood."
-      },
-      {
-        "term": "Post-hoc explanation methods",
-        "key_concept_desc": "Techniques to explain decisions after model training."
-      },
-      {
-        "term": "Human-in-the-loop systems",
-        "key_concept_desc": "Combining AI and human judgment for decisions."
-      }
+      "Model interpretability techniques (SHAP, LIME)",
+      "Transparent model architectures",
+      "Post-hoc explanation methods",
+      "Human-in-the-loop systems"
     ],
     "example": "Interpretable models in medical diagnostics, financial risk analysis.",
     "image": "images/xai.png",
