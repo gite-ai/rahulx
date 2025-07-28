@@ -323,7 +323,7 @@
       "Human-robot interaction",
       "Robot ethics and safety"
     ],
-    "image": "https://i.postimg.cc/0yP1TRS9/pexels-cottonbro-6153354.jpg",
+    "image": "https://i.postimg.cc/d3DHr6gk/pexels-vanessa-loring-7868822.jpg",
     "thread": "https://x.com/example_robotics_thread"
   }
 ]
