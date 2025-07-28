@@ -1,37 +1,44 @@
 [
   {
-    "name": "Basics of AI",
-    "desc": "Artificial Intelligence (AI) is a part of <b>computer science</b> that creates machines to <i>think and work like humans</i>.<br>It helps computers <b>solve problems</b>, make decisions, learn from data, recognize things, and understand language.",
-    "example": "Predicting house prices based on historical data.",
-    "image": "https://example.com/images/ml.jpg",
-    "thread": "https://x.com/example/thread/12345"
-  },
-  {
-    "name": "Machine Learning",
-    "desc": "A subset of AI that enables systems to <i>learn and improve</i> from experience without explicit programming.<br><b>Key concept:</b> It relies heavily on data patterns.",
-    "example": "Predicting house prices based on historical data.",
-    "image": "https://example.com/images/ml.jpg",
-    "thread": "https://x.com/example/thread/12345"
-  },
-  {
     "name": "Neural Networks",
-    "desc": "AI systems modeled after the <b>human brain</b>.<br>Used for <i>pattern recognition</i> and decision-making.",
-    "example": "Image recognition in self-driving cars.",
-    "image": "https://example.com/images/neural.jpg",
-    "thread": "https://x.com/example/thread/67890"
+    "desc": "Artificial neural networks are computing systems inspired by the structure of biological brains. They are foundational in deep learning and are used for complex pattern recognition tasks.",
+    "example": "Image and speech recognition, recommendation systems, self-driving cars.",
+    "image": "images/neural_networks.png",
+    "thread": "https://x.com/example_thread1"
   },
   {
     "name": "Natural Language Processing",
-    "desc": "The ability of machines to <b>understand</b> and <i>generate human language</i>.<br>It powers tools like chatbots and translators.",
-    "example": "Chatbots like Grok answering user queries.",
-    "image": "https://example.com/images/nlp.jpg",
-    "thread": "https://x.com/example/thread/54321"
+    "desc": "NLP combines linguistics and machine learning to enable computers to interpret and generate human language, powering chatbots, translators, and search engines.",
+    "example": "Chatbots like ChatGPT, Google Translate, sentiment analysis tools.",
+    "image": "images/nlp.png",
+    "thread": "https://x.com/example_thread2"
   },
   {
     "name": "Reinforcement Learning",
-    "desc": "A type of machine learning where agents <i>learn by interacting</i> with their environment.<br><b>Goal:</b> Maximize rewards over time.",
-    "example": "Training a robot to navigate a maze.",
-    "image": "https://example.com/images/rl.jpg",
-    "thread": "https://x.com/example/thread/98765"
+    "desc": "Machines learn optimal actions through trial and error, receiving rewards or penalties. Essential for autonomous agents mastering complex tasks.",
+    "example": "AlphaGo's Go mastery, robotic navigation, game AI.",
+    "image": "images/reinforcement_learning.png",
+    "thread": "https://x.com/example_thread3"
+  },
+  {
+    "name": "Generative AI",
+    "desc": "Generative AIs can create new content—text, images, audio, or code—using advanced neural architectures like GANs and transformers.",
+    "example": "AI art generators, LLM chatbots, music composition tools.",
+    "image": "images/generative_ai.png",
+    "thread": "https://x.com/example_thread4"
+  },
+  {
+    "name": "Edge AI",
+    "desc": "Runs AI models directly on devices like smartphones, cameras, and IoT sensors, reducing latency and cloud dependence for real-time insights.",
+    "example": "On-device voice assistants, smart cameras, industrial IoT analytics.",
+    "image": "images/edge_ai.png",
+    "thread": "https://x.com/example_thread5"
+  },
+  {
+    "name": "Explainable AI (XAI)",
+    "desc": "XAI improves transparency by making AI decision processes comprehensible for users, critical for sectors like healthcare, law, and finance.",
+    "example": "Interpretable models in medical diagnostics, financial risk analysis.",
+    "image": "images/xai.png",
+    "thread": "https://x.com/example_thread6"
   }
 ]
