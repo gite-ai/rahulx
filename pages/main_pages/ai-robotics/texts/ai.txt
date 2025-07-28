@@ -213,7 +213,8 @@
           "Human-in-the-loop systems"
         ]
       }
-    ]
+    ],
+    "image": "https://i.postimg.cc/0yP1TRS9/pexels-cottonbro-6153354.jpg"
   },
   {
     "name": "Robotics",
@@ -322,7 +323,7 @@
       "Human-robot interaction",
       "Robot ethics and safety"
     ],
-    "image": "images/robotics.png",
+    "image": "https://i.postimg.cc/0yP1TRS9/pexels-cottonbro-6153354.jpg",
     "thread": "https://x.com/example_robotics_thread"
   }
 ]
