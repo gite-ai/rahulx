@@ -1,143 +1,5 @@
 [
   {
-    "name": "Neural Networks",
-    "desc": "Artificial neural networks are computing systems inspired by the structure and functioning of biological brains. They process information through interconnected nodes (neurons) and are foundational in deep learning. Neural networks excel at recognizing complex patterns and representations in data.",
-    "importance": [
-      "Enable machines to learn from data",
-      "Form the basis of deep learning architectures",
-      "Used for tasks requiring feature extraction from raw data"
-    ],
-    "applications": [
-      "Image and speech recognition",
-      "Recommendation systems",
-      "Self-driving cars"
-    ],
-    "key_concepts": [
-      "Neurons (nodes) and layers (input, hidden, output)",
-      "Weights and biases",
-      "Activation functions",
-      "Backpropagation learning algorithm"
-    ],
-    "example": "Image and speech recognition, recommendation systems, self-driving cars.",
-    "image": "https://i.postimg.cc/gk56ssLy/pexels-googledeepmind-17484975.jpg",
-    "thread": "https://x.com/example_thread1"
-  },
-  {
-    "name": "Natural Language Processing",
-    "desc": "Natural Language Processing (NLP) combines linguistics, computer science, and machine learning to enable computers to understand, interpret, and generate human language. It powers technologies that communicate with humans in text or speech.",
-    "importance": [
-      "Allows interaction with machines in human languages",
-      "Transforms unstructured text/speech data into structured information",
-      "Enables translation, summarization, sentiment analysis, and more"
-    ],
-    "applications": [
-      "Chatbots like ChatGPT",
-      "Google Translate",
-      "Sentiment analysis for social media"
-    ],
-    "key_concepts": [
-      "Tokenization and parsing",
-      "Language models and embeddings",
-      "Named entity recognition",
-      "Machine translation"
-    ],
-    "example": "Chatbots like ChatGPT, Google Translate, sentiment analysis tools.",
-    "image": "https://i.postimg.cc/Yqyyx5xX/pexels-markus-winkler-1430818-30869073.jpg",
-    "thread": "https://x.com/example_thread2"
-  },
-  {
-    "name": "Reinforcement Learning",
-    "desc": "Reinforcement Learning (RL) is a machine learning technique where agents learn optimal actions by interacting with environments, receiving feedback through rewards or penalties. This trial-and-error method enables machines to master tasks requiring sequential decisions.",
-    "importance": [
-      "Ideal for problems with delayed consequences",
-      "Enables autonomous agents to learn complex behaviors",
-      "Applicable to areas where explicit programming is difficult"
-    ],
-    "applications": [
-      "AlphaGo defeating human champions in Go",
-      "Robotic navigation in dynamic environments",
-      "Game AI adapting to player strategies"
-    ],
-    "key_concepts": [
-      "Agent, environment, states, and actions",
-      "Reward signal",
-      "Policy and value functions",
-      "Exploration vs. exploitation trade-off"
-    ],
-    "example": "AlphaGo's Go mastery, robotic navigation, game AI.",
-    "image": "https://i.postimg.cc/43tfGbdg/pexels-davidmcbee-388846.jpg",
-    "thread": "https://x.com/example_thread3"
-  },
-  {
-    "name": "Generative AI",
-    "desc": "Generative AI refers to systems that can create new content such as text, images, music, or code. They leverage advanced neural architectures like Generative Adversarial Networks (GANs) and transformers to generate novel outputs indistinguishable from human-created ones.",
-    "importance": [
-      "Enables creative synthesis of content",
-      "Automates content generation for various media",
-      "Accelerates innovation in art, writing, and design"
-    ],
-    "applications": [
-      "AI art generators producing paintings or designs",
-      "Large language model (LLM) chatbots like GPT",
-      "Music composition tools creating original pieces"
-    ],
-    "key_concepts": [
-      "Generative models (GANs, VAEs, transformers)",
-      "Training on large datasets",
-      "Latent space representation",
-      "Conditional generation"
-    ],
-    "example": "AI art generators, LLM chatbots, music composition tools.",
-    "image": "https://i.postimg.cc/mZ1052tv/pexels-sahilsharma-32845478.jpg",
-    "thread": "https://x.com/example_thread4"
-  },
-  {
-    "name": "Edge AI",
-    "desc": "Edge AI involves running AI algorithms directly on devices like smartphones, cameras, or IoT sensors rather than relying on cloud computing. This setup reduces latency, enhances privacy, and enables real-time processing.",
-    "importance": [
-      "Facilitates AI applications in low connectivity or latency-sensitive scenarios",
-      "Enhances user privacy by limiting data transmission to cloud",
-      "Reduces dependence on centralized data centers"
-    ],
-    "applications": [
-      "On-device voice assistants (e.g., smartphones)",
-      "Smart surveillance cameras with local analytics",
-      "Industrial IoT analytics for predictive maintenance"
-    ],
-    "key_concepts": [
-      "Model optimization for limited hardware",
-      "Real-time inference on device",
-      "Energy-efficient computing",
-      "Data privacy and security"
-    ],
-    "example": "On-device voice assistants, smart cameras, industrial IoT analytics.",
-    "image": "https://i.postimg.cc/VNbVHKNj/pexels-zeleboba-33079302.jpg",
-    "thread": "https://x.com/example_thread5"
-  },
-  {
-    "name": "Explainable AI (XAI)",
-    "desc": "Explainable AI aims to make AI systems’ decisions and predictions understandable to humans. XAI improves transparency, trust, and accountability, especially important in sensitive domains like healthcare, finance, and law.",
-    "importance": [
-      "Helps users trust and effectively use AI tools",
-      "Facilitates regulatory compliance",
-      "Identifies biases or errors in AI decision-making"
-    ],
-    "applications": [
-      "Interpretable models in medical diagnostics",
-      "Financial risk assessment and credit scoring",
-      "Legal and compliance decision support systems"
-    ],
-    "key_concepts": [
-      "Model interpretability techniques (SHAP, LIME)",
-      "Transparent model architectures",
-      "Post-hoc explanation methods",
-      "Human-in-the-loop systems"
-    ],
-    "example": "Interpretable models in medical diagnostics, financial risk analysis.",
-    "image": "https://i.postimg.cc/HxnVg8f4/pexels-thisisengineering-3912992-1.jpg",
-    "thread": "https://x.com/example_thread6"
-  },
-  {
     "name": "Artificial Intelligence (AI) Basics",
     "desc": "Artificial Intelligence (AI) is a branch of computer science dedicated to building machines capable of performing tasks that require human intelligence, including learning, reasoning, problem-solving, perception, language understanding, and decision-making.",
     "invention": {
@@ -217,7 +79,7 @@
         "name": "Neural Networks",
         "desc": "Computing systems inspired by brains; foundational for deep learning.",
         "example": "Image/speech recognition, self-driving cars",
-        "image": "https://i.postimg.cc/gk56ssLy/pexels-googledeepmind-17484975.jpg",
+        "image": "images/neural_networks.png",
         "thread": "https://x.com/example_thread1",
         "importance": [
           "Enable machines to learn from data",
@@ -240,7 +102,7 @@
         "name": "Natural Language Processing",
         "desc": "Computers interpret and generate human language.",
         "example": "ChatGPT, Google Translate",
-        "image": "https://i.postimg.cc/Yqyyx5xX/pexels-markus-winkler-1430818-30869073.jpg",
+        "image": "images/nlp.png",
         "thread": "https://x.com/example_thread2",
         "importance": [
           "Allows interaction with machines in human languages",
@@ -263,7 +125,7 @@
         "name": "Reinforcement Learning",
         "desc": "Machines learn optimal actions via trial and error with rewards or penalties.",
         "example": "AlphaGo, robotic navigation",
-        "image": "https://i.postimg.cc/43tfGbdg/pexels-davidmcbee-388846.jpg",
+        "image": "images/reinforcement_learning.png",
         "thread": "https://x.com/example_thread3",
         "importance": [
           "Ideal for problems with delayed consequences",
@@ -286,7 +148,7 @@
         "name": "Generative AI",
         "desc": "AI generates new content—text, images, music—using models like GANs and transformers.",
         "example": "AI art, LLM chatbots, music generators",
-        "image": "https://i.postimg.cc/mZ1052tv/pexels-sahilsharma-32845478.jpg",
+        "image": "images/generative_ai.png",
         "thread": "https://x.com/example_thread4",
         "importance": [
           "Enables creative synthesis of content",
@@ -309,7 +171,7 @@
         "name": "Edge AI",
         "desc": "Runs AI on devices (phones, sensors) for real-time, privacy-focused applications.",
         "example": "Voice assistants, smart devices",
-        "image": "https://i.postimg.cc/VNbVHKNj/pexels-zeleboba-33079302.jpg",
+        "image": "images/edge_ai.png",
         "thread": "https://x.com/example_thread5",
         "importance": [
           "Facilitates AI applications in low connectivity or latency-sensitive scenarios",
@@ -332,7 +194,7 @@
         "name": "Explainable AI (XAI)",
         "desc": "Improves AI transparency and trust by explaining decisions.",
         "example": "Medical diagnostics, financial analysis",
-        "image": "https://i.postimg.cc/HxnVg8f4/pexels-thisisengineering-3912992-1.jpg",
+        "image": "images/xai.png",
         "thread": "https://x.com/example_thread6",
         "importance": [
           "Helps users trust and effectively use AI tools",
@@ -356,4 +218,112 @@
   },
   {
     "name": "Robotics",
-    "desc": "Robotics is the interdisciplinary
+    "desc": "Robotics is the interdisciplinary branch of engineering and science that deals with the design, construction, operation, and use of robots — programmable machines that can carry out tasks autonomously or semi-autonomously.",
+    "invention": {
+      "early_pioneers": [
+        "Leonardo da Vinci (concept of mechanical knight in late 1400s)",
+        "George Devol (invented the first digitally operated programmable robot in 1954)",
+        "Joseph Engelberger (known as 'Father of Robotics', helped commercialize industrial robots in the 1960s)"
+      ],
+      "key_milestones": [
+        {
+          "year": 1921,
+          "event": "Term 'Robot' Coined",
+          "description": "'Robot' was first used in the play R.U.R. (Rossum's Universal Robots) by Karel Čapek"
+        },
+        {
+          "year": 1956,
+          "event": "Unimate Robot",
+          "description": "George Devol and Joseph Engelberger built Unimate, the first industrial robot used in manufacturing"
+        },
+        {
+          "year": 1970,
+          "event": "Robotic arms in automotive industry",
+          "description": "Robotic arms started being used in automotive manufacturing lines for welding and assembly"
+        },
+        {
+          "year": 1996,
+          "event": "Robotic Surgery",
+          "description": "The da Vinci Surgical System was developed allowing precision robotic surgery"
+        },
+        {
+          "year": 2010,
+          "event": "Advancements in Autonomous Robots",
+          "description": "Robots like Boston Dynamics' Spot and autonomous vehicles emerged"
+        }
+      ]
+    },
+    "basics": {
+      "definition": "Robots are programmable machines capable of carrying out complex series of actions autonomously or with human guidance.",
+      "fundamental_components": [
+        "Sensors (perception)",
+        "Actuators (movement)",
+        "Control system (decision-making)",
+        "Power supply",
+        "End effectors (tools)"
+      ],
+      "types_of_robots": [
+        "Industrial robots (fixed robots for manufacturing)",
+        "Service robots (assisting humans e.g., vacuum robots)",
+        "Mobile robots (wheeled, legged, drones)",
+        "Humanoid robots (robots with human-like form)",
+        "Autonomous robots (self-guided without human input)"
+      ]
+    },
+    "key_terms": [
+      {
+        "term": "Degrees of Freedom (DOF)",
+        "definition": "Number of independent movements a robot joint or arm can make."
+      },
+      {
+        "term": "Kinematics",
+        "definition": "Study of motion without considering forces; robot motion planning."
+      },
+      {
+        "term": "Dynamics",
+        "definition": "Study of forces and torques in robotic motion."
+      },
+      {
+        "term": "End Effector",
+        "definition": "The tool or device at the end of a robotic arm that interacts with the environment."
+      },
+      {
+        "term": "Sensors",
+        "definition": "Devices that allow robots to perceive their environment (e.g., cameras, lidar, touch)."
+      },
+      {
+        "term": "Actuators",
+        "definition": "Motors or devices that cause movement in the robot."
+      },
+      {
+        "term": "Robot Operating System (ROS)",
+        "definition": "An open-source framework for robot software development."
+      },
+      {
+        "term": "Autonomy",
+        "definition": "Capability of a robot to perform tasks with minimal human intervention."
+      },
+      {
+        "term": "Path Planning",
+        "definition": "Calculating a route or sequence of movements for the robot to achieve a goal."
+      }
+    ],
+    "applications": [
+      "Manufacturing automation",
+      "Surgical robots",
+      "Exploration (space, underwater, hazardous sites)",
+      "Agricultural robots",
+      "Military and defense robots",
+      "Consumer robots (vacuum cleaners, personal assistants)"
+    ],
+    "key_concepts": [
+      "Robot design and mechanics",
+      "Control systems and AI integration",
+      "Motion planning and navigation",
+      "Human-robot interaction",
+      "Robot ethics and safety"
+    ],
+    "image": "https://i.postimg.cc/d3DHr6gk/pexels-vanessa-loring-7868822.jpg",
+    "thread": "https://x.com/example_robotics_thread"
+  }
+]
