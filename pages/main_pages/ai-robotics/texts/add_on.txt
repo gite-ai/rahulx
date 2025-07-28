@@ -19,7 +19,7 @@
       "Backpropagation learning algorithm"
     ],
     "example": "Image and speech recognition, recommendation systems, self-driving cars.",
-    "image": "images/neural_networks.png",
+    "image": "https://i.postimg.cc/gk56ssLy/pexels-googledeepmind-17484975.jpg",
     "thread": "https://x.com/example_thread1"
   },
   {
@@ -42,7 +42,7 @@
       "Machine translation"
     ],
     "example": "Chatbots like ChatGPT, Google Translate, sentiment analysis tools.",
-    "image": "images/nlp.png",
+    "image": "https://i.postimg.cc/Yqyyx5xX/pexels-markus-winkler-1430818-30869073.jpg",
     "thread": "https://x.com/example_thread2"
   },
   {
@@ -65,7 +65,7 @@
       "Exploration vs. exploitation trade-off"
     ],
     "example": "AlphaGo's Go mastery, robotic navigation, game AI.",
-    "image": "images/reinforcement_learning.png",
+    "image": "https://i.postimg.cc/43tfGbdg/pexels-davidmcbee-388846.jpg",
     "thread": "https://x.com/example_thread3"
   },
   {
@@ -88,7 +88,7 @@
       "Conditional generation"
     ],
     "example": "AI art generators, LLM chatbots, music composition tools.",
-    "image": "images/generative_ai.png",
+    "image": "https://i.postimg.cc/mZ1052tv/pexels-sahilsharma-32845478.jpg",
     "thread": "https://x.com/example_thread4"
   },
   {
@@ -111,7 +111,7 @@
       "Data privacy and security"
     ],
     "example": "On-device voice assistants, smart cameras, industrial IoT analytics.",
-    "image": "images/edge_ai.png",
+    "image": "https://i.postimg.cc/VNbVHKNj/pexels-zeleboba-33079302.jpg",
     "thread": "https://x.com/example_thread5"
   },
   {
@@ -134,7 +134,7 @@
       "Human-in-the-loop systems"
     ],
     "example": "Interpretable models in medical diagnostics, financial risk analysis.",
-    "image": "images/xai.png",
+    "image": "https://i.postimg.cc/HxnVg8f4/pexels-thisisengineering-3912992-1.jpg",
     "thread": "https://x.com/example_thread6"
   }
 ]
