@@ -382,16 +382,18 @@
       canvas.width = container.clientWidth;
       canvas.height = container.clientHeight;
     }
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      // Also reinitialize particles positions on resize
+      initParticles();
+      initBinaryDigits();
+    });
     resizeCanvas();
 
-    // Animation Variables
     const faceRadius = 100;
     const eyeRadius = 15;
     const mouthWidth = 80;
-    const mouthHeight = 40;
     let frame = 0;
-
     const colors = ['#00ffcc', '#ff00cc', '#00ccff', '#cc00ff']; 
     let currentColorIndex = 0;
     let faceColor = colors[currentColorIndex];
@@ -402,234 +404,31 @@
     const blinkInterval = 200;
     const mouthMovementSpeed = 0.05;
     const glowIntensity = 20;
+
     const particleCount = 100;
-
-    const particles = [];
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 3 + 1,
-        speedX: (Math.random() - 0.5) * 2,
-        speedY: (Math.random() - 0.5) * 2,
-        color: colors[Math.floor(Math.random() * colors.length)],
-      });
-    }
-
-    const binaryDigits = [];
-    for (let i = 0; i < 50; i++) {
-      binaryDigits.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        speedX: (Math.random() - 0.5) * 2,
-        speedY: (Math.random() - 0.5) * 2,
-        value: Math.random() > 0.5 ? '0' : '1',
-        size: Math.random() * 20 + 10,
-        opacity: Math.random() * 0.5 + 0.5,
-      });
-    }
-
-    let mouseX = canvas.width / 2;
-    let mouseY = canvas.height / 2;
-    canvas.addEventListener('mousemove', e => {
-      const rect = canvas.getBoundingClientRect();
-      mouseX = e.clientX - rect.left;
-      mouseY = e.clientY - rect.top;
-    });
-
-    function drawBinaryDigits() {
-      binaryDigits.forEach(digit => {
-        ctx.font = `${digit.size}px monospace`;
-        ctx.fillStyle = `rgba(0,255,204,${digit.opacity})`;
-        ctx.fillText(digit.value, digit.x, digit.y);
-        digit.x += digit.speedX;
-        digit.y += digit.speedY;
-        if (digit.x < 0) digit.x = canvas.width;
-        else if (digit.x > canvas.width) digit.x = 0;
-        if (digit.y < 0) digit.y = canvas.height;
-        else if (digit.y > canvas.height) digit.y = 0;
-      });
-    }
-
-    function drawFace() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      drawBinaryDigits();
-
-      particles.forEach(particle => {
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        ctx.fillStyle = particle.color;
-        ctx.fill();
-
-        particle.x += particle.speedX;
-        particle.y += particle.speedY;
-
-        if (particle.x < 0) particle.x = canvas.width;
-        else if (particle.x > canvas.width) particle.x = 0;
-        if (particle.y < 0) particle.y = canvas.height;
-        else if (particle.y > canvas.height) particle.y = 0;
-      });
-
-      ctx.beginPath();
-      ctx.arc(canvas.width / 2, canvas.height / 2, faceRadius, 0, Math.PI * 2);
-      ctx.fillStyle = faceColor;
-      ctx.shadowBlur = glowIntensity * Math.sin(frame * 0.05) + glowIntensity;
-      ctx.shadowColor = faceColor;
-      ctx.fill();
-      ctx.strokeStyle = faceColor;
-      ctx.lineWidth = 4;
-      ctx.stroke();
-
-      const eyeOffsetX = 40;
-      const eyeOffsetY = -30;
-      const eyeFollowSpeed = 0.1;
-
-      const leftEyeX = canvas.width/2 - eyeOffsetX + (mouseX - canvas.width/2)*eyeFollowSpeed;
-      const leftEyeY = canvas.height/2 + eyeOffsetY + (mouseY - canvas.height/2)*eyeFollowSpeed;
-      const rightEyeX = canvas.width/2 + eyeOffsetX + (mouseX - canvas.width/2)*eyeFollowSpeed;
-      const rightEyeY = canvas.height/2 + eyeOffsetY + (mouseY - canvas.height/2)*eyeFollowSpeed;
-
-      ctx.beginPath();
-      ctx.arc(leftEyeX, leftEyeY, eyeRadius, 0, Math.PI*2);
-      ctx.fillStyle = eyeColor;
-      ctx.fill();
-
-      ctx.beginPath();
-      ctx.arc(rightEyeX, rightEyeY, eyeRadius, 0, Math.PI*2);
-      ctx.fillStyle = eyeColor;
-      ctx.fill();
-
-      if(frame % blinkInterval < blinkDuration) {
-        ctx.fillStyle = faceColor;
-        ctx.fillRect(leftEyeX - eyeRadius, leftEyeY - eyeRadius, eyeRadius*2, eyeRadius*2);
-        ctx.fillRect(rightEyeX - eyeRadius, rightEyeY - eyeRadius, eyeRadius*2, eyeRadius*2);
-      }
-
-      const mouthCurve = Math.sin(frame * mouthMovementSpeed) * 20;
-      ctx.beginPath();
-      ctx.moveTo(canvas.width/2 - mouthWidth/2, canvas.height/2 + 50);
-      ctx.quadraticCurveTo(canvas.width/2, canvas.height/2 + 50 + mouthCurve, canvas.width/2 + mouthWidth/2, canvas.height/2 + 50);
-      ctx.strokeStyle = mouthColor;
-      ctx.lineWidth = 4;
-      ctx.stroke();
-
-      if(frame % 100 === 0) {
-        currentColorIndex = (currentColorIndex + 1) % colors.length;
-        faceColor = colors[currentColorIndex];
-        eyeColor = colors[(currentColorIndex + 1) % colors.length];
-        mouthColor = colors[(currentColorIndex + 2) % colors.length];
+    let particles = [];
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 3 + 1,
+          speedX: (Math.random() - 0.5) * 2,
+          speedY: (Math.random() - 0.5) * 2,
+          color: colors[Math.floor(Math.random() * colors.length)],
+        });
       }
     }
+    initParticles();
 
-    function animate() {
-      drawFace();
-      frame++;
-      requestAnimationFrame(animate);
-    }
-    animate();
-
-    // Populate Tech Topics dynamically
-    function populateTechTopics(technologies) {
-      const topicsContainer = document.getElementById('techTopics');
-      topicsContainer.innerHTML = '';
-      technologies.forEach(tech => {
-        const topic = document.createElement('div');
-        topic.className = 'topic';
-        topic.setAttribute('role', 'listitem');
-        topic.setAttribute('tabindex', '0');
-        topic.textContent = `#${tech.name.replace(/\s+/g, '')}`;
-
-        topic.addEventListener('click', () => {
-          openModal(tech);
-        });
-        topic.addEventListener('keydown', e => {
-          if(e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            openModal(tech);
-          }
-        });
-
-        topicsContainer.appendChild(topic);
-      });
-    }
-
-    // Modal open function accepts full tech object
-    function openModal(tech) {
-      const modal = document.getElementById('techModal');
-      const modalTitle = document.getElementById('modalTitle');
-      const modalDesc = document.getElementById('modalDesc');
-      const modalExample = document.getElementById('modalExample');
-      const modalImage = document.getElementById('modalImage');
-      const threadButton = document.getElementById('threadButton');
-      const searchButton = document.getElementById('searchButton');
-
-      modalTitle.textContent = tech.name || 'Topic';
-      modalDesc.innerHTML = tech.desc || '';
-      modalExample.textContent = tech.example ? `Example: ${tech.example}` : '';
-      modalImage.src = tech.image || '';
-      modalImage.alt = tech.name ? `${tech.name} image` : 'AI Image';
-
-      if(tech.thread) {
-        threadButton.style.display = 'inline-block';
-        threadButton.onclick = () => window.open(tech.thread, '_blank', 'noopener');
-      } else {
-        threadButton.style.display = 'none';
-        threadButton.onclick = null;
-      }
-
-      searchButton.onclick = () => {
-        const query = encodeURIComponent(tech.name || '');
-        window.open(`https://x.com/search?q=${query}`, '_blank', 'noopener');
-      };
-
-      modal.style.display = 'flex';
-      modal.focus();
-    }
-
-    function closeModal() {
-      const modal = document.getElementById('techModal');
-      modal.style.display = 'none';
-    }
-
-    function copyModalContent() {
-      const title = document.getElementById('modalTitle').textContent;
-      const desc = document.getElementById('modalDesc').textContent;
-      const example = document.getElementById('modalExample').textContent;
-      const content = `${title}\n\n${desc}\n\n${example}`;
-
-      navigator.clipboard.writeText(content).then(() => {
-        alert('Content copied to clipboard!');
-      }).catch(err => {
-        console.error('Copy failed', err);
-        alert('Failed to copy content. Please try again.');
-      });
-    }
-
-    // Close modal on outside click or Escape key
-    document.getElementById('techModal').addEventListener('click', e => {
-      if(e.target === document.getElementById('techModal')) closeModal();
-    });
-    document.addEventListener('keydown', e => {
-      if(e.key === 'Escape') closeModal();
-    });
-
-    // Load tech topics from merged JSON text file
-    window.onload = () => {
-      fetch('texts/ai.txt')
-        .then(response => {
-          if(!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-          return response.text();
-        })
-        .then(text => {
-          const technologies = JSON.parse(text);
-          populateTechTopics(technologies);
-        })
-        .catch(err => {
-          console.error('Loading AI data failed:', err);
-          const container = document.getElementById('techTopics');
-          container.innerHTML = '<p style="color:#ff00cc;">Failed to load AI data. Check console for details.</p>';
-        });
-    };
-  </script>
-</body>
-</html>
+    let binaryDigits = [];
+    const binaryCount = 50;
+    function initBinaryDigits() {
+      binaryDigits = [];
+      for (let i = 0; i < binaryCount; i++) {
+        binaryDigits.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          speedX: (Math.random() - 0.5) * 2,
+          speedY: (Math.random() -
