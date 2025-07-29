@@ -2,202 +2,184 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zodiac Sign Calculator - Rahulx.com</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Zodiac Sign Calculator</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Arial', sans-serif;
-    }
-
-    body {
+    html, body {
+      height: 100%;
       background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
-      color: #ffffff;
-      line-height: 1.4;
-    }
-
-    .navbar {
-      background: rgba(0, 0, 0, 0.8);
-      padding: 0.8rem;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .menu-icon {
-      font-size: 1.8rem;
-      cursor: pointer;
-      color: #00ffcc;
-    }
-
-    .hero {
-      height: 30vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 1rem;
-      background: #1a1a1a;
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      color: #00ffcc;
-    }
-
-    .hero p {
-      font-size: 0.9rem;
-      max-width: 400px;
-    }
-
-    .content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .footer {
-      text-align: center;
-      padding: 1rem;
-      background: rgba(0, 0, 0, 0.8);
-    }
-
-    .footer a {
-      color: #00ffcc;
-      text-decoration: none;
-    }
-
-    .footer a:hover {
-      color: #00ccaa;
-    }
-
-    .form-container {
-      max-width: 400px;
-      margin: 0 auto;
-      padding: 0.5rem;
-    }
-
-    .form-container label {
-      display: block;
-      margin-bottom: 0.2rem;
-      color: #00ffcc;
-      font-size: 0.8rem;
-    }
-
-    .form-container input {
-      width: 100%;
-      padding: 0.3rem;
-      margin-bottom: 0.5rem;
-      border: none;
-      border-radius: 4px;
-      background: rgba(255, 255, 255, 0.2);
       color: #fff;
-      font-size: 0.8rem;
+      font-family: Arial, sans-serif;
     }
-
-    .input-group {
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: rgba(20,20,20,0.95);
+      border-radius: 12px;
+      padding: 2rem 1rem 1.5rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
+    }
+    h1 {
+      color: #00ffcc;
+      font-size: 1.5rem;
+      margin-bottom: .5rem;
+    }
+    label {
+      font-size: 0.9rem;
+      color: #00ffcc;
+      margin-bottom: 6px;
+      display: block;
+      text-align: left;
+    }
+    .inputs {
       display: flex;
       gap: 0.3rem;
+      margin-bottom: 1rem;
     }
-
-    .input-group input {
-      flex: 1;
+    .inputs input {
+      background: #242424;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      padding: 0.4em;
+      width: 33%;
+      text-align: center;
+      outline: none;
+      transition: 0.15s;
     }
-
-    .form-container button {
-      padding: 0.5rem 1rem;
+    .inputs input:focus {
+      box-shadow: 0 0 0 1.5px #00ffcc inset;
+    }
+    button {
       background: #00ffcc;
       color: #000;
       border: none;
       border-radius: 4px;
-      cursor: pointer;
+      padding: 0.6em 1.3em;
+      font-size: 1rem;
       font-weight: bold;
-      font-size: 0.8rem;
+      cursor: pointer;
+      transition: background 0.15s;
     }
-
-    .form-container button:hover {
+    button:hover {
       background: #00ccaa;
     }
-
-    .result {
-      margin-top: 0.5rem;
-      text-align: center;
-      color: #00ffcc;
+    .zodiac-icon {
+      font-size: 3.5rem;
+      margin: 0.7rem 0 0.2rem 0;
+      display: inline-block;
+      animation: spin 2.5s linear infinite;
+      filter: drop-shadow(0 0 6px #00ffcc88);
     }
-
-    .result h3 {
-      font-size: 1rem;
-      margin-bottom: 0.3rem;
+    @keyframes spin {
+      0%   { transform: rotate(-5deg); }
+      20%  { transform: rotate(7deg);}
+      36%  { transform: rotate(-8deg);}
+      51%  { transform: rotate(10deg);}
+      70%  { transform: rotate(-3deg);}
+      100% { transform: rotate(-5deg);}
     }
-
     .result p {
-      font-size: 1.8rem;
+      font-size: 1.35rem;
       font-weight: bold;
+      letter-spacing: 1px;
+      color: #00ffcc;
+      margin: 0.1rem 0;
+    }
+    .result h4 {
+      color: #fff;
+      margin-bottom: 0.2rem;
+      margin-top:0.6rem;
+      font-size: 1rem;
     }
   </style>
 </head>
 <body>
-  <div class="navbar">
-    <div class="menu-icon">☰</div>
-  </div>
-
-  <section class="hero">
-    <h1>Zodiac Sign Calculator</h1>
-    <p>Enter your date of birth to discover your Zodiac sign.</p>
-  </section>
-
-  <section class="content">
-    <div class="form-container">
-      <label>Date of Birth:</label>
-      <div class="input-group">
-        <input type="number" id="day" placeholder="Day" min="1" max="31" required>
-        <input type="number" id="month" placeholder="Month" min="1" max="12" required>
-        <input type="number" id="year" placeholder="Year" min="1900" max="2025" required>
+  <div class="container">
+    <h1>Zodiac Sign</h1>
+    <form onsubmit="event.preventDefault();findZodiac();">
+      <label>Date of Birth</label>
+      <div class="inputs">
+        <input id="day" type="number" min="1" max="31" placeholder="DD" required>
+        <input id="month" type="number" min="1" max="12" placeholder="MM" required>
+        <input id="year" type="number" min="1900" max="2025" placeholder="YYYY" required>
       </div>
-      <button onclick="findZodiac()">Find Zodiac</button>
-    </div>
+      <button type="submit">Find</button>
+    </form>
     <div class="result" id="result"></div>
-  </section>
-
-  <footer class="footer">
-    <p>© 2025 Rahulx.com. All rights reserved. | <a href="#privacy">Privacy Policy</a></p>
-  </footer>
-
+  </div>
   <script>
-    function findZodiac() {
-      const day = parseInt(document.getElementById('day').value);
-      const month = parseInt(document.getElementById('month').value);
-      const year = parseInt(document.getElementById('year').value);
-      const resultDiv = document.getElementById('result');
+    // Zodiac data
+    const zodiacList = [
+      {name: "Aries",        emoji: "♈", dates: [[3,21],[4,19]]},
+      {name: "Taurus",       emoji: "♉", dates: [[4,20],[5,20]]},
+      {name: "Gemini",       emoji: "♊", dates: [[5,21],[6,20]]},
+      {name: "Cancer",       emoji: "♋", dates: [[6,21],[7,22]]},
+      {name: "Leo",          emoji: "♌", dates: [[7,23],[8,22]]},
+      {name: "Virgo",        emoji: "♍", dates: [[8,23],[9,22]]},
+      {name: "Libra",        emoji: "♎", dates: [[9,23],[10,22]]},
+      {name: "Scorpio",      emoji: "♏", dates: [[10,23],[11,21]]},
+      {name: "Sagittarius",  emoji: "♐", dates: [[11,22],[12,21]]},
+      {name: "Capricorn",    emoji: "♑", dates: [[12,22],[12,31],[1,1],[1,19]]},
+      {name: "Aquarius",     emoji: "♒", dates: [[1,20],[2,18]]},
+      {name: "Pisces",       emoji: "♓", dates: [[2,19],[3,20]]},
+    ];
 
-      if (!day || !month || !year || day < 1 || day > 31 || month < 1 || month > 12 || year < 1900 || year > 2025) {
-        resultDiv.innerHTML = 'Please enter a valid date of birth.';
+    function findZodiac() {
+      const d = Number(document.getElementById('day').value);
+      const m = Number(document.getElementById('month').value);
+      const y = Number(document.getElementById('year').value);
+      const out = document.getElementById('result');
+
+      // Minimal date validity check
+      if(!d||!m||!y||d<1||d>31||m<1||m>12||y<1900||y>2025) {
+        out.innerHTML = '<p style="color:#F77;">Please enter a valid date.</p>';
         return;
       }
 
-      let zodiac = '';
-      if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) zodiac = 'Aries';
-      else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) zodiac = 'Taurus';
-      else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) zodiac = 'Gemini';
-      else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) zodiac = 'Cancer';
-      else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) zodiac = 'Leo';
-      else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) zodiac = 'Virgo';
-      else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) zodiac = 'Libra';
-      else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) zodiac = 'Scorpio';
-      else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) zodiac = 'Sagittarius';
-      else if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) zodiac = 'Capricorn';
-      else if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) zodiac = 'Aquarius';
-      else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) zodiac = 'Pisces';Marathi
+      let found = null;
+      for(const z of zodiacList) {
+        if(z.name==="Capricorn") {
+          if((m===12&&d>=22&&d<=31)||(m===1&&d>=1&&d<=19)) found = z;
+        } else {
+          const [start,end] = z.dates;
+          if((m===start[0]&&d>=start[1])||(m===end[0]&&d<=end[1])) found = z;
+        }
+        if(found) break;
+      }
 
-      resultDiv.innerHTML = `
-        <h3>Your Zodiac Sign is</h3>
-        <p>${zodiac}</p>
-      `;
+      out.innerHTML = found ? `
+        <div class="zodiac-icon" aria-label="${found.name}">${found.emoji}</div>
+        <h4>Your Zodiac Sign is</h4>
+        <p>${found.name}</p>
+      ` : '<p style="color:#F77;">Invalid date of birth.</p>';
     }
+
+    // AUTO-FOCUS LOGIC
+    const dayInput = document.getElementById('day');
+    const monthInput = document.getElementById('month');
+    const yearInput = document.getElementById('year');
+
+    dayInput.addEventListener('input', function() {
+      if (this.value.length >= 2) monthInput.focus();
+    });
+    monthInput.addEventListener('input', function() {
+      if (this.value.length >= 2) yearInput.focus();
+    });
+    monthInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Backspace' && this.value.length === 0) dayInput.focus();
+    });
+    yearInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Backspace' && this.value.length === 0) monthInput.focus();
+    });
   </script>
 </body>
 </html>
