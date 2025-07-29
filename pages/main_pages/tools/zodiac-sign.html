@@ -232,20 +232,20 @@
   <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
   <script>
-    // Zodiac Data
+    // Zodiac Data with one-liner descriptions
     const zodiacList = [
-      {name: "Aries",        emoji: "♈", dates: [[3, 21], [4, 19]]},
-      {name: "Taurus",       emoji: "♉", dates: [[4, 20], [5, 20]]},
-      {name: "Gemini",       emoji: "♊", dates: [[5, 21], [6, 20]]},
-      {name: "Cancer",       emoji: "♋", dates: [[6, 21], [7, 22]]},
-      {name: "Leo",          emoji: "♌", dates: [[7, 23], [8, 22]]},
-      {name: "Virgo",        emoji: "♍", dates: [[8, 23], [9, 22]]},
-      {name: "Libra",        emoji: "♎", dates: [[9, 23], [10, 22]]},
-      {name: "Scorpio",      emoji: "♏", dates: [[10, 23], [11, 21]]},
-      {name: "Sagittarius",  emoji: "♐", dates: [[11, 22], [12, 21]]},
-      {name: "Capricorn",    emoji: "♑", dates: [[12, 22], [12, 31], [1, 1], [1, 19]]},
-      {name: "Aquarius",     emoji: "♒", dates: [[1, 20], [2, 18]]},
-      {name: "Pisces",       emoji: "♓", dates: [[2, 19], [3, 20]]},
+      {name: "Aries", emoji: "♈", dates: [[3, 21], [4, 19]], desc: "Bold, ambitious, and energetic leader."},
+      {name: "Taurus", emoji: "♉", dates: [[4, 20], [5, 20]], desc: "Practical, reliable, and loves comfort."},
+      {name: "Gemini", emoji: "♊", dates: [[5, 21], [6, 20]], desc: "Curious, quick-witted, and adaptable."},
+      {name: "Cancer", emoji: "♋", dates: [[6, 21], [7, 22]], desc: "Caring, intuitive, and deeply loyal."},
+      {name: "Leo", emoji: "♌", dates: [[7, 23], [8, 22]], desc: "Confident, charismatic, and creative."},
+      {name: "Virgo", emoji: "♍", dates: [[8, 23], [9, 22]], desc: "Detail-oriented, analytical, and helpful."},
+      {name: "Libra", emoji: "♎", dates: [[9, 23], [10, 22]], desc: "Peaceful, fair, and sociable."},
+      {name: "Scorpio", emoji: "♏", dates: [[10, 23], [11, 21]], desc: "Passionate, mysterious, and determined."},
+      {name: "Sagittarius", emoji: "♐", dates: [[11, 22], [12, 21]], desc: "Adventurous, optimistic, and honest."},
+      {name: "Capricorn", emoji: "♑", dates: [[12, 22], [12, 31], [1, 1], [1, 19]], desc: "Disciplined, ambitious, and patient."},
+      {name: "Aquarius", emoji: "♒", dates: [[1, 20], [2, 18]], desc: "Innovative, independent, and humanitarian."},
+      {name: "Pisces", emoji: "♓", dates: [[2, 19], [3, 20]], desc: "Compassionate, artistic, and empathetic."},
     ];
 
     function findZodiac() {
@@ -277,7 +277,11 @@
       out.innerHTML = found ? `
         <div class="zodiac-icon" aria-label="${found.name}">${found.emoji}</div>
         <h4>Your Zodiac Sign is</h4>
-        <p>${found.name}</p>` : '<p style="color:#F77;">Invalid date of birth.</p>';
+        <p>${found.name}</p>
+        <div style="margin-top:0.5rem; font-size:1rem; color:#00ff99;">
+          <em>${found.desc}</em>
+        </div>
+      ` : '<p style="color:#F77;">Invalid date of birth.</p>';
     }
 
     // Auto-focus logic for inputs
