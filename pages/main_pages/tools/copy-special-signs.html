@@ -217,7 +217,7 @@
   </nav>
   <div class="container">
     <section>
-      <input type="text" id="emoji-search" placeholder="Search emojis by name..." aria-label="Search emojis by name"/>
+      <input type="text" id="emoji-search" placeholder="Search emojis by name or emoji character..." aria-label="Search emojis by name or emoji character"/>
       <div id="char-table" class="char-table"></div>
       <div id="error-message" class="error-message" style="display:none;"></div>
     </section>
@@ -316,19 +316,19 @@
       }
 
       // Add event listener for search input
-     searchInput.addEventListener('input', e => {
-  const searchTerm = e.target.value.toLowerCase().trim();
-  if (searchTerm === '') {
-    renderEmojis(allEmojis);
-  } else {
-    const filtered = allEmojis.filter(emoji =>
-      emoji.name.toLowerCase().includes(searchTerm) ||
-      emoji.symbol.includes(searchTerm)
-    );
-    renderEmojis(filtered);
-  }
-});
-
+      const searchInput = document.getElementById('emoji-search');
+      searchInput.addEventListener('input', e => {
+        const searchTerm = e.target.value.toLowerCase().trim();
+        if (searchTerm === '') {
+          renderEmojis(allEmojis);
+        } else {
+          const filtered = allEmojis.filter(emoji =>
+            emoji.name.toLowerCase().includes(searchTerm) ||
+            emoji.symbol.includes(searchTerm)
+          );
+          renderEmojis(filtered);
+        }
+      });
     }
 
     document.addEventListener('DOMContentLoaded', loadEmojis);
