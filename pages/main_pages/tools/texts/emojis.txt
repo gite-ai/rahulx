@@ -576,7 +576,7 @@
   {"symbol": "🦕", "name": "Sauropod", "code": "U+1F995"},
   {"symbol": "🦖", "name": "T-Rex", "code": "U+1F996"},
   {"symbol": "🐳", "name": "Spouting Whale", "code": "U+1F433"},
-  {"symbol": "� whale", "name": "Whale", "code": "U+1F40B"},
+  {"symbol": "  whale", "name": "Whale", "code": "U+1F40B"},
   {"symbol": "🐬", "name": "Dolphin", "code": "U+1F42C"},
   {"symbol": "🦭", "name": "Seal", "code": "U+1F9AD"},
   {"symbol": "🐟", "name": "Fish", "code": "U+1F41F"},

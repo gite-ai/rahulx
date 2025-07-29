@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Special Characters & Emojis - Rahulx.com</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -109,6 +109,24 @@
       position: relative;
       z-index: 1;
     }
+    /* Search Input */
+    #emoji-search {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #00ffcc;
+      background: #000;
+      color: #00ffcc;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    #emoji-search:focus {
+      border-color: #ff00cc;
+      box-shadow: 0 0 8px #ff00cc;
+    }
     .char-table {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -122,6 +140,7 @@
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
+      user-select: none;
     }
     .char-card:hover {
       transform: translateY(-10px);
@@ -130,15 +149,20 @@
     .char-card .symbol {
       font-size: 2rem;
       margin-bottom: 10px;
+      display: inline-block;
+      user-select: text;
     }
     .char-card .name {
       font-size: 1rem;
       color: #00ffcc;
+      word-break: break-word;
     }
     .char-card .code {
       font-size: 0.9rem;
       color: #ff00cc;
       margin-top: 5px;
+      font-family: monospace;
+      user-select: text;
     }
     .error-message {
       text-align: center;
@@ -177,11 +201,11 @@
     }
     @keyframes stars { 0%{background-position:0 0;}100%{background-position:1000px 1000px;} }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="sci-fi-bg"></div>
-  <div class="menu-icon" id="menu-icon">☰</div>
+  <div class="menu-icon" id="menu-icon" aria-label="Toggle menu" role="button" tabindex="0">☰</div>
   <header>
     <h1>Special Characters & Emojis</h1>
     <p>Copy and paste unique symbols and emojis for your projects.</p>
@@ -193,6 +217,7 @@
   </nav>
   <div class="container">
     <section>
+      <input type="text" id="emoji-search" placeholder="Search emojis by name..." aria-label="Search emojis by name"/>
       <div id="char-table" class="char-table"></div>
       <div id="error-message" class="error-message" style="display:none;"></div>
     </section>
@@ -200,11 +225,18 @@
   <footer>
     <p>© 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
   </footer>
+
   <script>
     // Hamburger Menu Toggle
     const menuIcon = document.getElementById('menu-icon');
     const nav = document.getElementById('nav');
     menuIcon.addEventListener('click', () => { nav.classList.toggle('active'); });
+    menuIcon.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        nav.classList.toggle('active');
+      }
+    });
     document.addEventListener('click', (e) => {
       if (window.innerWidth <= 768 && nav.classList.contains('active')) {
         const isClickInsideNav = nav.contains(e.target);
@@ -212,15 +244,50 @@
         if (!isClickInsideNav && !isClickOnMenuIcon) nav.classList.remove('active');
       }
     });
+
     // Copy to Clipboard
     function copyToClipboard(text) {
       navigator.clipboard.writeText(text).then(() => {
         alert('Copied: ' + text);
+      }).catch(() => {
+        alert('Failed to copy, please try manually.');
       });
     }
-    // Load Emojis
-    async function loadEmojis() {
+
+    // Global variable to store emojis
+    let allEmojis = [];
+
+    function renderEmojis(emojis) {
       const charTable = document.getElementById('char-table');
+      charTable.innerHTML = ''; // clear previous content
+      emojis.forEach(emoji => {
+        if (!emoji.symbol || !emoji.name || !emoji.code) return;
+        const card = document.createElement('div');
+        card.className = 'char-card';
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-label', `Copy emoji ${emoji.name}`);
+        card.title = `Copy ${emoji.name}`;
+        card.innerHTML = `
+          <span class="symbol" role="img" aria-hidden="false">${emoji.symbol}</span>
+          <div class="name">${emoji.name}</div>
+          <div class="code">${emoji.code}</div>
+        `;
+        card.onclick = () => copyToClipboard(emoji.symbol);
+        card.onkeypress = (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            copyToClipboard(emoji.symbol);
+          }
+        };
+        card.addEventListener('mouseenter', () => { card.style.boxShadow = '0 0 30px rgba(0,255,204,0.8)'; });
+        card.addEventListener('mouseleave', () => { card.style.boxShadow = '0 0 20px rgba(0,255,204,0.6)'; });
+        charTable.appendChild(card);
+      });
+    }
+
+    // Load Emojis and setup search
+    async function loadEmojis() {
       const errorMessage = document.getElementById('error-message');
       const fallbackEmojis = [
         { symbol: "😀", name: "Grinning Face", code: "U+1F600" },
@@ -238,40 +305,29 @@
         try { emojis = JSON.parse(text); }
         catch { throw new Error("Emoji JSON failed to parse"); }
         if (!Array.isArray(emojis)) throw new Error("Emoji file not array");
-        emojis.forEach(emoji => {
-          if (!emoji.symbol || !emoji.name || !emoji.code) return;
-          const card = document.createElement('div');
-          card.className = 'char-card';
-          card.setAttribute('onclick', `copyToClipboard('${emoji.symbol}')`);
-          card.innerHTML = `
-            <span class="symbol" role="img" aria-label="Copy ${emoji.name}" title="Copy ${emoji.name}">${emoji.symbol}</span>
-            <div class="name">${emoji.name}</div>
-            <div class="code">${emoji.code}</div>
-          `;
-          charTable.appendChild(card);
-          card.addEventListener('mouseenter', () => { card.style.boxShadow = '0 0 30px rgba(0,255,204,0.8)'; });
-          card.addEventListener('mouseleave', () => { card.style.boxShadow = '0 0 20px rgba(0,255,204,0.6)'; });
-        });
-        if (emojis.length === 0)
-          throw new Error("No emojis found in file");
+        if (emojis.length === 0) throw new Error("No emojis found in file");
+        allEmojis = emojis;
+        renderEmojis(allEmojis);
       } catch (error) {
         errorMessage.textContent = `Error loading emojis: ${error.message}. Showing default set.`;
         errorMessage.style.display = 'block';
-        fallbackEmojis.forEach(emoji => {
-          const card = document.createElement('div');
-          card.className = 'char-card';
-          card.setAttribute('onclick', `copyToClipboard('${emoji.symbol}')`);
-          card.innerHTML = `
-            <span class="symbol" role="img" aria-label="Copy ${emoji.name}" title="Copy ${emoji.name}">${emoji.symbol}</span>
-            <div class="name">${emoji.name}</div>
-            <div class="code">${emoji.code}</div>
-          `;
-          charTable.appendChild(card);
-          card.addEventListener('mouseenter', () => { card.style.boxShadow = '0 0 30px rgba(0,255,204,0.8)'; });
-          card.addEventListener('mouseleave', () => { card.style.boxShadow = '0 0 20px rgba(0,255,204,0.6)'; });
-        });
+        allEmojis = fallbackEmojis;
+        renderEmojis(allEmojis);
       }
+
+      // Add event listener for search input
+      const searchInput = document.getElementById('emoji-search');
+      searchInput.addEventListener('input', e => {
+        const searchTerm = e.target.value.toLowerCase().trim();
+        if (searchTerm === '') {
+          renderEmojis(allEmojis);
+        } else {
+          const filtered = allEmojis.filter(emoji => emoji.name.toLowerCase().includes(searchTerm));
+          renderEmojis(filtered);
+        }
+      });
     }
+
     document.addEventListener('DOMContentLoaded', loadEmojis);
   </script>
 </body>
