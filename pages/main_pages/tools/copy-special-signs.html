@@ -316,16 +316,19 @@
       }
 
       // Add event listener for search input
-      const searchInput = document.getElementById('emoji-search');
-      searchInput.addEventListener('input', e => {
-        const searchTerm = e.target.value.toLowerCase().trim();
-        if (searchTerm === '') {
-          renderEmojis(allEmojis);
-        } else {
-          const filtered = allEmojis.filter(emoji => emoji.name.toLowerCase().includes(searchTerm));
-          renderEmojis(filtered);
-        }
-      });
+     searchInput.addEventListener('input', e => {
+  const searchTerm = e.target.value.toLowerCase().trim();
+  if (searchTerm === '') {
+    renderEmojis(allEmojis);
+  } else {
+    const filtered = allEmojis.filter(emoji =>
+      emoji.name.toLowerCase().includes(searchTerm) ||
+      emoji.symbol.includes(searchTerm)
+    );
+    renderEmojis(filtered);
+  }
+});
+
     }
 
     document.addEventListener('DOMContentLoaded', loadEmojis);
