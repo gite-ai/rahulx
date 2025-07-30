@@ -109,7 +109,8 @@
       position: relative;
       z-index: 1;
     }
-    /* Search Input */
+
+    /* Search Input - Sticky Below Header */
     #emoji-search {
       width: 100%;
       padding: 10px;
@@ -122,7 +123,13 @@
       box-sizing: border-box;
       outline: none;
       transition: border-color 0.3s, box-shadow 0.3s;
+
+      position: sticky;
+      top: 0;
+      z-index: 1001;
+      background: #0a0a0a; /* slightly darker for contrast while sticky */
     }
+
     #emoji-search:focus {
       border-color: #ff00cc;
       box-shadow: 0 0 8px #ff00cc;
