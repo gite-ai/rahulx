@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Tech Frontier 2025</title>
   <style>
     /* General Styles */
@@ -95,6 +95,7 @@
       font-size: 24px;
       color: #00ffcc;
       animation: float 6s infinite ease-in-out;
+      user-select: none;
     }
 
     @keyframes float {
@@ -108,6 +109,7 @@
       font-size: 16px;
       color: rgba(0, 255, 204, 0.7);
       animation: floatBinary 5s infinite linear;
+      user-select: none;
     }
 
     @keyframes floatBinary {
@@ -124,6 +126,7 @@
       background: #00ffcc;
       border-radius: 50%;
       animation: orbit 8s infinite linear;
+      user-select: none;
     }
 
     @keyframes orbit {
@@ -143,7 +146,8 @@
       border-radius: 10px;
       width: 90%;
       max-width: 1200px;
-      margin: 40px auto;
+      margin: 40px auto 80px auto;
+      user-select: none;
     }
 
     .topic {
@@ -155,6 +159,7 @@
       transition: background 0.3s ease, color 0.3s ease;
       font-size: 1.1rem;
       font-weight: 500;
+      user-select: none;
     }
 
     .topic:hover {
@@ -174,10 +179,11 @@
       z-index: 1000;
       justify-content: center;
       align-items: center;
+      user-select: text;
     }
 
     .modal-content {
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0, 0, 0, 0.95);
       border: 1px solid #00ffcc;
       border-radius: 10px;
       width: 80%;
@@ -188,6 +194,8 @@
       display: flex;
       flex-direction: column;
       animation: slideIn 0.3s ease-out;
+      color: #00ffcc;
+      box-sizing: border-box;
     }
 
     .modal-header {
@@ -207,23 +215,26 @@
       font-weight: 600;
       text-align: center;
       margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      user-select: text;
     }
 
     .modal-close {
       position: absolute;
       top: 10px;
       right: 10px;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: #00ffcc;
       cursor: pointer;
       background: rgba(0, 0, 0, 0.7);
       border: none;
-      width: 24px;
-      height: 24px;
-      line-height: 24px;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
       text-align: center;
       border-radius: 50%;
       transition: background 0.3s ease, color 0.3s ease;
+      user-select: none;
     }
 
     .modal-close:hover {
@@ -235,6 +246,8 @@
       flex: 1;
       padding: 20px;
       overflow-y: auto;
+      font-family: 'Poppins', sans-serif;
+      user-select: text;
     }
 
     .modal-desc {
@@ -242,6 +255,8 @@
       line-height: 1.8;
       margin-bottom: 20px;
       font-weight: 400;
+      color: #00ffcc;
+      user-select: text;
     }
 
     .modal-desc b,
@@ -262,6 +277,7 @@
       margin-bottom: 20px;
       font-style: italic;
       color: #b0fff0;
+      user-select: text;
     }
 
     .modal-example b,
@@ -282,8 +298,9 @@
       height: auto;
       border: 1px solid #00ffcc;
       border-radius: 5px;
-      margin: 10px auto;
+      margin: 0 auto 12px auto;
       display: block;
+      user-select: none;
     }
 
     .modal-footer {
@@ -297,21 +314,24 @@
       position: sticky;
       bottom: 0;
       z-index: 10;
+      user-select: none;
     }
 
     .modal-action-button {
       background: none;
       border: none;
       color: #00ffcc;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       cursor: pointer;
       transition: color 0.3s ease, transform 0.3s ease;
       padding: 5px;
+      font-family: FontAwesome, 'Arial Unicode MS', Arial, sans-serif;
+      user-select: none;
     }
 
     .modal-action-button:hover {
       color: #ff00cc;
-      transform: scale(1.2);
+      transform: scale(1.3);
     }
 
     @keyframes slideIn {
@@ -326,6 +346,8 @@
       text-align: center;
       padding: 20px 0;
       margin-top: 60px;
+      font-family: 'Poppins', sans-serif;
+      user-select: none;
     }
 
     footer p {
@@ -364,6 +386,7 @@
       z-index: -1;
       background: radial-gradient(circle, #001f3f, #000);
       animation: stars 10s infinite linear;
+      user-select: none;
     }
 
     @keyframes stars {
@@ -416,11 +439,29 @@
       .modal-content {
         width: 90%;
         max-width: 500px;
+        max-height: 70vh;
+      }
+
+      .modal-title {
+        font-size: 1.6rem;
+      }
+
+      .modal-desc {
+        font-size: 1rem;
+      }
+
+      .modal-example {
+        font-size: 0.9rem;
+      }
+
+      .modal-action-button {
+        font-size: 1.1rem;
       }
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 <body>
   <!-- Sci-Fi Background -->
@@ -433,57 +474,38 @@
   </header>
 
   <!-- Tech Animation Section -->
-  <div class="tech-animation">
-    <!-- Core of the Animation -->
+  <div class="tech-animation" aria-hidden="true">
     <div class="tech-core"></div>
 
-    <!-- Floating Tech Icons -->
     <div class="tech-icon" style="top: 20%; left: 10%;">🤖</div>
     <div class="tech-icon" style="top: 30%; left: 80%;">🧠</div>
     <div class="tech-icon" style="top: 70%; left: 20%;">⚛️</div>
     <div class="tech-icon" style="top: 80%; left: 70%;">🧬</div>
-
-    <!-- Floating Binary Digits -->
-    <div class="binary-digit" style="top: 10%; left: 50%;">0</div>
-    <div class="binary-digit" style="top: 20%; left: 30%;">1</div>
-    <div class="binary-digit" style="top: 40%; left: 80%;">0</div>
-    <div class="binary-digit" style="top: 60%; left: 10%;">1</div>
-    <div class="binary-digit" style="top: 90%; left: 60%;">0</div>
-
-    <!-- Orbiting Particles -->
-    <div class="orbiting-particle" style="animation-delay: 0s;"></div>
-    <div class="orbiting-particle" style="animation-delay: 2s;"></div>
-    <div class="orbiting-particle" style="animation-delay: 4s;"></div>
-    <div class="orbiting-particle" style="animation-delay: 6s;"></div>
   </div>
 
   <!-- Tech Topics -->
-  <div class="tech-topics" id="techTopics">
-    <!-- Topics will be added dynamically -->
-  </div>
+  <main>
+    <section class="tech-topics" id="techTopics" aria-label="Technology Topics">
+      <!-- Topics dynamically inserted here -->
+    </section>
+  </main>
 
   <!-- Modal (Popup) -->
-  <div class="modal" id="techModal">
-    <div class="modal-content">
+  <div class="modal" id="techModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+    <div class="modal-content" role="document">
       <div class="modal-header">
         <h2 class="modal-title" id="modalTitle"></h2>
-        <button class="modal-close" onclick="closeModal()">✖</button>
+        <button class="modal-close" aria-label="Close modal" onclick="closeModal()" title="Close Modal">✖</button>
       </div>
       <div class="modal-body">
-        <p class="modal-desc" id="modalDesc"></p>
+        <p class="modal-desc" id="modalDesc" tabindex="0"></p>
         <p class="modal-example" id="modalExample"></p>
-        <img class="modal-image" id="modalImage" src="" alt="Tech Image">
+        <img class="modal-image" id="modalImage" src="" alt="Technology Related Image" />
       </div>
       <div class="modal-footer">
-        <button class="modal-action-button" id="copyButton" onclick="copyModalContent()" title="Copy Content">
-          <i class="fa fa-copy"></i>
-        </button>
-        <button class="modal-action-button" id="threadButton" title="View Thread">
-          𝕩
-        </button>
-        <button class="modal-action-button" id="searchButton" title="Search on X">
-          <i class="fa fa-search"></i>
-        </button>
+        <button class="modal-action-button" id="copyButton" onclick="copyModalContent()" title="Copy content"><i class="fa fa-copy"></i></button>
+        <button class="modal-action-button" id="threadButton" title="View tech thread">𝕩</button>
+        <button class="modal-action-button" id="searchButton" title="Search on X"><i class="fa fa-search"></i></button>
       </div>
     </div>
   </div>
@@ -494,7 +516,7 @@
   </footer>
 
   <script>
-    // Generate Floating Binary Digits
+    // Create floating binary digits dynamically to supplement static ones
     function generateBinaryDigits() {
       const techAnimation = document.querySelector('.tech-animation');
       for (let i = 0; i < 20; i++) {
@@ -508,7 +530,7 @@
       }
     }
 
-    // Generate Orbiting Particles
+    // Create orbiting particles dynamically
     function generateOrbitingParticles() {
       const techAnimation = document.querySelector('.tech-animation');
       for (let i = 0; i < 8; i++) {
@@ -519,90 +541,135 @@
       }
     }
 
-    // Populate Tech Topics
+    // Populate the list of tech topics as hashtag buttons
     function populateTechTopics(technologies) {
       const topicsContainer = document.getElementById('techTopics');
+      topicsContainer.innerHTML = ''; // clear if re-populating
+
       technologies.forEach(tech => {
         const topic = document.createElement('div');
         topic.className = 'topic';
         topic.textContent = `#${tech.name.replace(/\s+/g, '')}`;
-        
-        topic.addEventListener('click', () => {
-          openModal(tech.name, tech.desc, tech.example, tech.image, tech.thread);
+        topic.tabIndex = 0; // keyboard navigable
+
+        topic.addEventListener('click', () => openModalWithTech(tech));
+        topic.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openModalWithTech(tech);
+          }
         });
-        
+
         topicsContainer.appendChild(topic);
       });
     }
 
-    function openModal(title, desc, example, image, thread) {
+    // Open modal and fill with technology info
+    function openModalWithTech(tech) {
       const modal = document.getElementById('techModal');
       const modalTitle = document.getElementById('modalTitle');
       const modalDesc = document.getElementById('modalDesc');
       const modalExample = document.getElementById('modalExample');
       const modalImage = document.getElementById('modalImage');
 
-      modalTitle.textContent = title;
-      modalDesc.innerHTML = desc;
-      modalExample.innerHTML = `Example: ${example}`; // Changed to innerHTML
-      modalImage.src = image;
+      // Set content safely
+      modalTitle.textContent = tech.name || 'Unknown Technology';
+      modalDesc.innerHTML = tech.desc || 'No description available.';
+      modalExample.innerHTML = tech.example ? `<strong>Example:</strong> ${tech.example}` : '';
+      if (tech.image) {
+        modalImage.src = tech.image;
+        modalImage.alt = `Image representing ${tech.name}`;
+        modalImage.style.display = 'block';
+      } else {
+        modalImage.style.display = 'none';
+        modalImage.src = '';
+        modalImage.alt = '';
+      }
       modal.style.display = 'flex';
+      modalDesc.focus();
 
+      // Thread button
       const threadButton = document.getElementById('threadButton');
-      threadButton.onclick = function() {
-        window.open(thread, '_blank');
+      if (tech.thread && tech.thread.trim() !== '') {
+        threadButton.style.display = 'inline-block';
+        threadButton.onclick = () => {
+          window.open(tech.thread, '_blank', 'noopener,noreferrer');
+        };
+      } else {
+        threadButton.style.display = 'none';
+      }
+
+      // Search button
+      const searchButton = document.getElementById('searchButton');
+      searchButton.onclick = () => {
+        const query = encodeURIComponent(tech.name);
+        const searchURL = `https://x.com/search?q=${query}`;
+        window.open(searchURL, '_blank', 'noopener,noreferrer');
       };
 
-      const searchButton = document.getElementById('searchButton');
-      searchButton.onclick = function() {
-        const searchQuery = encodeURIComponent(title);
-        const xSearchUrl = `https://x.com/search?q=${searchQuery}`;
-        window.open(xSearchUrl, '_blank');
-      };
+      // Attach event to close modal on Escape key press
+      document.addEventListener('keydown', escKeyClose);
     }
 
+    // Close modal function
     function closeModal() {
       const modal = document.getElementById('techModal');
       modal.style.display = 'none';
+      // Remove Escape key listener
+      document.removeEventListener('keydown', escKeyClose);
     }
 
+    // Close modal on Escape key
+    function escKeyClose(e) {
+      if (e.key === 'Escape') closeModal();
+    }
+
+    // Copy modal content: title, description (text only), example
     function copyModalContent() {
-      const title = document.getElementById('modalTitle').textContent;
-      const desc = document.getElementById('modalDesc').textContent;
-      const example = document.getElementById('modalExample').textContent;
+      const title = document.getElementById('modalTitle').textContent.trim();
+      const desc = document.getElementById('modalDesc').textContent.trim();
+      const example = document.getElementById('modalExample').textContent.trim();
+
       const content = `${title}\n\n${desc}\n\n${example}`;
-      
+
       navigator.clipboard.writeText(content).then(() => {
-        alert('Content copied to clipboard!');
-      }).catch(err => {
-        console.error('Failed to copy content:', err);
-        alert('Failed to copy content. Please try again.');
+        alert('Technology details copied to clipboard!');
+      }).catch(() => {
+        alert('Failed to copy. Please try again manually.');
       });
     }
 
-    document.getElementById('techModal').addEventListener('click', (e) => {
-      if (e.target === document.getElementById('techModal')) {
+    // Click outside modal content closes modal
+    document.getElementById('techModal').addEventListener('click', (ev) => {
+      if (ev.target === ev.currentTarget) {
         closeModal();
       }
     });
 
-    /* Updated fetch with resize trigger and fallback */
-    window.onload = function() {
+    // Initial setup on page load
+    window.onload = () => {
+      // Fetch your JSON technology data from texts/technology.txt (adjust path as needed)
       fetch('texts/technology.txt')
         .then(response => {
-          if (!response.ok) throw new Error('Network response was not ok');
+          if (!response.ok) throw new Error('Failed to fetch technology data.');
           return response.text();
         })
-        .then(data => {
-          const technologies = JSON.parse(data);
+        .then(text => {
+          let technologies = [];
+          try {
+            technologies = JSON.parse(text);
+          } catch (e) {
+            console.error('Error parsing JSON:', e);
+            alert('Failed to parse technologies JSON data.');
+            return;
+          }
           populateTechTopics(technologies);
-          window.dispatchEvent(new Event('resize')); // Trigger resize for layout adjustment
         })
         .catch(error => {
-          console.error('Error loading texts/technology.txt:', error);
-          const topicsContainer = document.getElementById('techTopics');
-          topicsContainer.innerHTML = '<p style="color: #ff00cc;">Failed to load topics. Please try again later.</p>';
+          console.error('Loading error:', error);
+          document.getElementById('techTopics').innerHTML = '<p style="color:#ff00cc; text-align:center;">Failed to load technology data.</p>';
         });
+
       generateBinaryDigits();
       generateOrbitingParticles();
     };
