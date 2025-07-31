@@ -111,8 +111,6 @@
     "image": "https://example.com/images/wearables.jpg",
     "thread": "https://x.com/example/thread/13536"
   },
-
-  /* ----- FUTURISTIC BREAKTHROUGHS (2020s-2030s) ----- */
   {
     "name": "Structural Battery Composites",
     "desc": "Materials that double as <b>batteries</b>, storing energy within structural components.",
@@ -211,8 +209,6 @@
     "image": "https://example.com/images/nanotube.jpg",
     "thread": "https://x.com/example/thread/31414"
   },
-
-  /* ----- MAJOR HISTORICAL TECHNOLOGIES (not AI) that transformed humanity ----- */
   {
     "name": "Stone Tools",
     "desc": "The first <b>manmade tools</b> enabled our ancestors to hunt, prepare food, and shape their world.",
