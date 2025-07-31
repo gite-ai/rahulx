@@ -1,6 +1,6 @@
 [
   {
-    "name": "Artificial Intelligence (AI) Basics",
+    "name": " Artificial Intelligence ",
     "desc": "Artificial Intelligence (AI) is a branch of computer science dedicated to building machines capable of performing tasks that require human intelligence, including learning, reasoning, problem-solving, perception, language understanding, and decision-making.",
     "invention": {
       "term_coined_by": "John McCarthy",
