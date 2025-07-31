@@ -3079,6 +3079,7 @@
   {"symbol": "👩‍🔧🏽", "name": "Woman Mechanic: Medium Skin Tone", "code": "U+1F469 U+200D U+1F527 U+1F3FD"},
   {"symbol": "👩‍🔧🏾", "name": "Woman Mechanic: Medium-Dark Skin Tone", "code": "U+1F469 U+200D U+1F527 U+1F3FE"},
   {"symbol": "👩‍🔧🏿", "name": "Woman Mechanic: Dark Skin Tone", "code": "U+1F469 U+200D U+1F527 U+1F3FF"},
+  
   {"symbol": "€", "name": "Euro Sign", "code": "U+20AC"},
   {"symbol": "£", "name": "Pound Sign", "code": "U+00A3"},
   {"symbol": "¥", "name": "Yen Sign", "code": "U+00A5"},
@@ -3129,6 +3130,7 @@
   {"symbol": "²", "name": "Superscript Two", "code": "U+00B2"},
   {"symbol": "³", "name": "Superscript Three", "code": "U+00B3"},
   {"symbol": "⁴", "name": "Superscript Four", "code": "U+2074"}
+  
   
  ]
 
