@@ -1,317 +1,438 @@
 [
   {
     "name": "Quantum Computing",
-    "desc": "A <b>revolutionary</b> technology using <i>quantum mechanics</i>.<br>It promises to solve <b>complex problems</b> faster than classical computers.",
-    "example": "Simulating <b>molecules</b> for drug discovery using <i>quantum algorithms</i>.<br>A <b>future-changing</b> application.",
+    "desc": "Quantum Computing leverages <b>quantum mechanical</b> phenomena like superposition and entanglement to process information in fundamentally new ways. It dramatically accelerates solutions to certain problems that are intractable for classical computers.",
+    "invention": {
+      "theory": "Richard Feynman, Paul Benioff (1980s)\nMarked the start of quantum computational models.",
+      "first_qubit_systems": "IBM, D-Wave, Google (2000s—2010s)"
+    },
+    "purpose": [
+      "Solve complex calculations unfeasible for classical computers",
+      "Enhance cryptography and security",
+      "Model molecules, chemical reactions, and physical systems"
+    ],
+    "key_milestones": [
+      {"year": 1982, "event": "Feynman Simulation", "description": "Richard Feynman suggests quantum computers for simulating physics."},
+      {"year": 1994, "event": "Shor's Algorithm", "description": "Peter Shor develops an algorithm for efficient factoring on quantum computers."},
+      {"year": 2019, "event": "Quantum Supremacy", "description": "Google claims supremacy by solving a problem faster than classical supercomputers."}
+    ],
+    "basics": {
+      "definition": "Qubits encode information as 0, 1, or both (superposed states). Quantum logic gates manipulate entangled qubits.",
+      "key_terms": [
+        {"term": "Qubit", "definition": "Basic unit of quantum information (quantum bit)."},
+        {"term": "Superposition", "definition": "Qubit can exist in multiple states simultaneously."},
+        {"term": "Entanglement", "definition": "Qubits linked so their states are dependent, regardless of distance."},
+        {"term": "Quantum Gate", "definition": "Operates on qubits to change their quantum state."}
+      ]
+    },
+    "applications": [
+      "Cryptography",
+      "Drug discovery and material science",
+      "Complex system simulations",
+      "Optimization problems"
+    ],
+    "key_concepts": [
+      "Quantum parallelism",
+      "Quantum decoherence",
+      "Quantum error correction"
+    ],
     "image": "https://example.com/images/quantum.jpg",
     "thread": "https://x.com/example/thread/12345"
   },
   {
     "name": "Blockchain",
-    "desc": "A <b>decentralized</b> ledger technology.<br>Secures data with <i>cryptography</i> for transparency and trust.",
-    "example": "Creating <b>cryptocurrencies</b> like <i>Bitcoin</i>.<br>A <b>secure</b> digital economy.",
+    "desc": "Blockchain is a <b>distributed digital ledger</b> that records transactions securely and immutably using cryptography. It is decentralized, transparent, and enables trust without intermediaries.",
+    "invention": {
+      "concept": "Stuart Haber & W. Scott Stornetta (1991)",
+      "modern_blockchain": "Satoshi Nakamoto (Bitcoin, 2008)"
+    },
+    "purpose": [
+      "Facilitate secure, transparent transactions",
+      "Remove central authorities or middlemen",
+      "Enable cryptocurrencies, smart contracts, and decentralized apps"
+    ],
+    "key_milestones": [
+      {"year": 2008, "event": "Bitcoin Whitepaper", "description": "Satoshi Nakamoto outlines the first modern blockchain for digital cash."},
+      {"year": 2015, "event": "Ethereum", "description": "Ethereum launches smart contracts and programmable blockchain."}
+    ],
+    "basics": {
+      "definition": "Transactions are grouped into 'blocks' chained together with cryptographic hashes.",
+      "key_terms": [
+        {"term": "Ledger", "definition": "A record-keeping system for all transactions."},
+        {"term": "Consensus Mechanism", "definition": "Way to agree on valid transactions (e.g., Proof of Work, Proof of Stake)."},
+        {"term": "Smart Contract", "definition": "Self-executing contracts with the terms in code."}
+      ]
+    },
+    "applications": [
+      "Cryptocurrencies",
+      "Supply chain tracking",
+      "Digital identity",
+      "Voting systems"
+    ],
+    "key_concepts": [
+      "Decentralization",
+      "Immutability",
+      "Transparency"
+    ],
     "image": "https://example.com/images/blockchain.jpg",
     "thread": "https://x.com/example/thread/67890"
   },
   {
     "name": "Augmented Reality",
-    "desc": "Overlays <b>digital content</b> onto the real world.<br>Enhances experiences with <i>interactive visuals</i>.",
-    "example": "Using AR for <b>navigation</b> with <i>real-time overlays</i>.<br>A <b>practical</b> use case.",
+    "desc": "Augmented Reality (AR) overlays <b>digital content</b> onto the physical world, enabling immersive user experiences by blending real and virtual.",
+    "invention": {
+      "early_concept": "Ivan Sutherland's 'Sword of Damocles' (1968)\nFirst head-mounted display prototype.",
+      "term_introduced": "Tom Caudell (1990)"
+    },
+    "purpose": [
+      "Enhance user perception and interaction with the real world",
+      "Visualize complex data contextually",
+      "Create engaging educational, navigation, or entertainment experiences"
+    ],
+    "key_milestones": [
+      {"year": 2012, "event": "Google Glass", "description": "Wearable AR headset reaches consumers."},
+      {"year": 2016, "event": "Pokémon Go", "description": "AR mobile game’s global popularity demonstrates AR's potential."}
+    ],
+    "basics": {
+      "definition": "Real-time blending of digital and real environments using cameras, sensors, and displays.",
+      "key_terms": [
+        {"term": "Overlay", "definition": "Digital items placed atop real-world view."},
+        {"term": "Marker-based AR", "definition": "Uses physical images (markers) to anchor graphics."},
+        {"term": "SLAM", "definition": "Simultaneous Localization and Mapping; maps environment for AR placement."}
+      ]
+    },
+    "applications": [
+      "Mobile games and apps",
+      "Workplace training and simulations",
+      "Navigation and tourism",
+      "Maintenance and repair guides"
+    ],
+    "key_concepts": [
+      "Computer vision",
+      "Sensor fusion",
+      "Gesture recognition"
+    ],
     "image": "https://example.com/images/ar.jpg",
     "thread": "https://x.com/example/thread/54321"
   },
   {
+    "name": "Robotics",
+    "desc": "Robotics is the branch of technology that designs and builds programmable machines—robots—that can carry out tasks autonomously, semi-autonomously, or with direct human interaction.",
+    "invention": {
+      "early_pioneers": [
+        "Leonardo da Vinci (concept of mechanical knight, 1495)",
+        "Karel Čapek ('robot' in his play, 1921)",
+        "George Devol/Joseph Engelberger (Unimate, first industrial robot, 1950s)"
+      ]
+    },
+    "purpose": [
+      "Automate repetitive or dangerous tasks",
+      "Expand human capabilities in industry, healthcare, and exploration",
+      "Perform precise, complex, or mundane actions efficiently"
+    ],
+    "key_milestones": [
+      {"year": 1921, "event": "Term 'Robot' Coined", "description": "'Robot' introduced in R.U.R. by Karel Čapek."},
+      {"year": 1956, "event": "Unimate Built", "description": "First programmable robotic arm deployed in manufacturing."},
+      {"year": 1996, "event": "Robotic Surgery", "description": "da Vinci Surgical System enables remote surgery."},
+      {"year": 2010, "event": "Autonomous Robots Boom", "description": "Rise of Boston Dynamics robots, drones, and self-driving vehicles."}
+    ],
+    "basics": {
+      "definition": "A robot is a machine capable of performing programmable actions automatically.",
+      "fundamental_components": [
+        "Sensors (environment perception)",
+        "Actuators (motion/mechanics)",
+        "Control system (software/decision-making)",
+        "Power supply",
+        "End effectors (tools)"
+      ],
+      "types_of_robots": [
+        "Industrial robots",
+        "Service robots",
+        "Mobile and autonomous robots",
+        "Humanoid robots"
+      ]
+    },
+    "key_terms": [
+      {"term": "Degrees of Freedom (DOF)", "definition": "Independent movements a robot can make."},
+      {"term": "End Effector", "definition": "The tool at the end of a robot arm (gripper, welder, etc)."},
+      {"term": "Sensors", "definition": "Sense data from environment (vision, touch, lidar)."},
+      {"term": "Actuators", "definition": "Motors and devices that move or control robot parts."},
+      {"term": "ROS", "definition": "Robot Operating System—framework for building robot software."}
+    ],
+    "applications": [
+      "Manufacturing automation",
+      "Surgical assistance",
+      "Exploration (space, underwater)",
+      "Agriculture",
+      "Consumer robots (cleaning, companionship)"
+    ],
+    "key_concepts": [
+      "Robot design and mechanics",
+      "Motion planning and control",
+      "Human-robot interaction"
+    ],
+    "image": "https://i.postimg.cc/d3DHr6gk/pexels-vanessa-loring-7868822.jpg",
+    "thread": "https://x.com/example_robotics_thread"
+  },
+  {
     "name": "Virtual Reality",
-    "desc": "Immerses users in <b>computer-generated</b> 3D environments.<br>Transforms <i>gaming</i>, education, and training.",
-    "example": "VR headsets enabling <b>simulated training</b> for pilots.<br>A <i>safe</i>, realistic learning method.",
+    "desc": "Virtual Reality (VR) fully immerses users in a computer-generated, 3D environment that can simulate real-world or imagined worlds. It requires specialized hardware like headsets and controllers to create a sense of presence.",
+    "invention": {
+      "early_innovations": [
+        "Ivan Sutherland's 'Sword of Damocles' (1968) — first VR headset prototype",
+        "Jaron Lanier coins 'Virtual Reality' (1987)"
+      ],
+      "milestones": [
+        {"year": 1990s, "event": "VR arcade games and research labs", "description": "Early consumer trials and industrial VR systems"},
+        {"year": 2012, "event": "Oculus Rift Kickstarter", "description": "Revival of VR interest with modern hardware"},
+        {"year": 2016, "event": "Commercial VR releases", "description": "HTC Vive, PlayStation VR, and Oculus Rift launch"}
+      ]
+    },
+    "purpose": [
+      "Provide immersive experiences for gaming, education, training, and therapy",
+      "Simulate dangerous or inaccessible environments safely",
+      "Enhance communication and social interactions virtually"
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Tethered VR",
+        "desc": "High-fidelity VR systems connected to powerful PCs (e.g., Oculus Rift, HTC Vive).",
+        "example": "Professional flight simulators, detailed gaming experiences",
+        "image": "https://example.com/images/vr_tethered.jpg",
+        "thread": "https://x.com/example/thread/vr_tethered"
+      },
+      {
+        "name": "Standalone VR",
+        "desc": "All-in-one wireless systems with integrated computing (e.g., Oculus Quest).",
+        "example": "Portable VR gaming and social apps",
+        "image": "https://example.com/images/vr_standalone.jpg",
+        "thread": "https://x.com/example/thread/vr_standalone"
+      }
+    ],
+    "applications": [
+      "Immersive gaming",
+      "Virtual meetings and remote collaboration",
+      "Education and skill training (medicine, aviation)",
+      "Therapeutic uses (PTSD, phobia treatment)"
+    ],
+    "key_concepts": [
+      "Head tracking and 6DOF movement",
+      "Stereoscopic 3D rendering",
+      "Motion sickness reduction techniques",
+      "Haptics and sensory feedback"
+    ],
     "image": "https://example.com/images/vr.jpg",
     "thread": "https://x.com/example/thread/11223"
   },
   {
     "name": "Internet of Things (IoT)",
-    "desc": "Connects <b>physical devices</b> to the internet.<br>Enables <i>smart homes</i>, industries, and cities.",
-    "example": "A <b>smart thermostat</b> adjusting temperature automatically.<br>Saves energy, <i>improves</i> comfort.",
+    "desc": "IoT connects everyday physical devices to the internet, enabling communication, data exchange, and automation across homes, industry, and cities.",
+    "invention": {
+      "origins": "Kevin Ashton coined 'Internet of Things' in 1999",
+      "early_deployments": "Smart home devices and industrial sensor networks in 2000s"
+    },
+    "purpose": [
+      "Automate and optimize processes through data from interconnected devices",
+      "Improve resource efficiency, safety, and user convenience",
+      "Enable real-time monitoring and control remotely"
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Consumer IoT",
+        "desc": "Smart home devices like thermostats, lights, and locks connected to apps.",
+        "example": "Nest learning thermostat adjusting temperature automatically",
+        "image": "https://example.com/images/iot_consumer.jpg",
+        "thread": "https://x.com/example/thread/iot_consumer"
+      },
+      {
+        "name": "Industrial IoT (IIoT)",
+        "desc": "Sensors and machines linked in factories, energy grids, and logistics.",
+        "example": "Sensors detecting machinery faults to enable predictive maintenance",
+        "image": "https://example.com/images/iot_industrial.jpg",
+        "thread": "https://x.com/example/thread/iot_industrial"
+      }
+    ],
+    "applications": [
+      "Smart homes and buildings",
+      "Industry 4.0 (smart manufacturing)",
+      "Agriculture (precision farming)",
+      "Smart cities (traffic, utilities, safety)"
+    ],
+    "key_concepts": [
+      "Device connectivity (Wi-Fi, Bluetooth, LPWAN)",
+      "Edge computing for local data processing",
+      "Data security and privacy",
+      "Interoperability and standards"
+    ],
     "image": "https://example.com/images/iot.jpg",
     "thread": "https://x.com/example/thread/22445"
   },
   {
     "name": "5G Technology",
-    "desc": "The <b>fifth-generation</b> wireless standard.<br>Delivers <i>ultra-fast</i> internet & low latency.",
-    "example": "Streaming <b>4K video</b> and powering <i>smart cities</i> in real time.",
+    "desc": "5G is the fifth generation of wireless communication, delivering significantly faster data speeds, higher capacity, and ultra-low latency compared to previous standards.",
+    "invention": {
+      "standardization": "First 5G standards by 3GPP between 2017-2019",
+      "initial_rollout": "Commercial deployments beginning 2019-2020"
+    },
+    "purpose": [
+      "Support massively connected devices and IoT proliferation",
+      "Enable real-time applications like autonomous vehicles and remote surgery",
+      "Enhance mobile broadband and smart city infrastructure"
+    ],
+    "key_milestones": [
+      {"year": 2018, "event": "First 5G NR prototypes", "description": "Milestone in prototype development and testing."},
+      {"year": 2019, "event": "Initial 5G deployments", "description": "Launches by major carriers worldwide."},
+      {"year": 2021, "event": "5G expansion", "description": "Broadening coverage and mass device support."}
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Enhanced Mobile Broadband (eMBB)",
+        "desc": "Higher data rates for fast internet and media streaming.",
+        "example": "4K/8K video streaming on mobile devices."
+      },
+      {
+        "name": "Ultra-Reliable Low Latency Communication (URLLC)",
+        "desc": "Enables mission-critical applications with minimal delay.",
+        "example": "Remote robotic surgery and industrial automation."
+      },
+      {
+        "name": "Massive Machine-Type Communications (mMTC)",
+        "desc": "Connects large numbers of IoT devices efficiently.",
+        "example": "Smart city sensor networks."
+      }
+    ],
+    "applications": [
+      "Enhanced mobile broadband",
+      "IoT connectivity",
+      "Autonomous vehicles",
+      "Smart factories and cities"
+    ],
+    "key_concepts": [
+      "Millimeter wave spectrum",
+      "Small cell infrastructure",
+      "Network slicing",
+      "Massive MIMO antenna systems"
+    ],
     "image": "https://example.com/images/5g.jpg",
     "thread": "https://x.com/example/thread/33556"
   },
   {
     "name": "Edge Computing",
-    "desc": "Processes data <b>closer to the source</b>.<br>Reduces delay for <i>real-time applications</i>.",
-    "example": "Industrial <b>sensors</b> analyzing data on-site for <i>machine control</i>.",
+    "desc": "Edge computing processes data closer to the data source, reducing latency and bandwidth use by avoiding sending everything to centralized data centers.",
+    "invention": {
+      "emergence": "Concept gained traction with IoT rise in late 2010s",
+      "key_developers": "Cisco, Amazon AWS, Microsoft Azure"
+    },
+    "purpose": [
+      "Deliver real-time data processing for latency-sensitive apps",
+      "Reduce bandwidth and cloud dependency",
+      "Improve privacy by localized data handling"
+    ],
+    "applications": [
+      "Industrial automation and control",
+      "Autonomous vehicles",
+      "Smart city applications",
+      "Health monitoring devices"
+    ],
+    "key_concepts": [
+      "Local data processing",
+      "Distributed computing infrastructure",
+      "Integration with cloud and IoT",
+      "Latency-sensitive applications"
+    ],
     "image": "https://example.com/images/edge.jpg",
     "thread": "https://x.com/example/thread/44667"
   },
   {
     "name": "Cloud Computing",
-    "desc": "Provides <b>on-demand</b> access to <i>computing resources</i> over the internet.<br>Scalable and cost-efficient.",
-    "example": "Hosting apps on <b>Amazon AWS</b> or <i>Microsoft Azure</i>.<br>Scales instantly to demand.",
+    "desc": "Cloud computing provides on-demand access to shared computing resources (storage, servers, applications) over the internet, enabling scalable, cost-effective IT infrastructure.",
+    "invention": {
+      "early_developments": "Concepts from mainframe time-sharing in 1960s-70s",
+      "modern_cloud": "Amazon AWS launched in 2006, pioneering commercial cloud services"
+    },
+    "purpose": [
+      "Make computing resources accessible globally",
+      "Enable scalability for websites and applications",
+      "Reduce capital expenditure on hardware"
+    ],
+    "key_milestones": [
+      {"year": 2006, "event": "Amazon AWS", "description": "Launch of Elastic Compute Cloud (EC2) and S3"},
+      {"year": 2010, "event": "Microsoft Azure", "description": "Launch of competing cloud infrastructure"},
+      {"year": 2014, "event": "Google Cloud Platform expansion", "description": "Major growth and investment"}
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Infrastructure as a Service (IaaS)",
+        "desc": "Provides virtualized computing resources.",
+        "example": "Amazon EC2, Google Compute Engine"
+      },
+      {
+        "name": "Platform as a Service (PaaS)",
+        "desc": "Provides platforms for app development.",
+        "example": "Google App Engine, Heroku"
+      },
+      {
+        "name": "Software as a Service (SaaS)",
+        "desc": "Delivers software applications over the internet.",
+        "example": "Google Workspace, Microsoft 365"
+      }
+    ],
+    "applications": [
+      "Web hosting",
+      "Big data analytics",
+      "Enterprise applications",
+      "Backup and disaster recovery"
+    ],
+    "key_concepts": [
+      "Virtualization",
+      "Multitenancy",
+      "Elastic resource provisioning",
+      "Security and compliance"
+    ],
     "image": "https://example.com/images/cloud.jpg",
     "thread": "https://x.com/example/thread/55778"
   },
   {
     "name": "Genetic Engineering",
-    "desc": "Directly <b>manipulates DNA</b> in living organisms.<br>Enables <i>precise</i> medical & agricultural advances.",
-    "example": "Developing <b>disease-resistant crops</b> and <i>gene therapies</i> for patients.",
+    "desc": "Genetic engineering involves modifying the DNA of organisms to change their traits or produce new capabilities, enabling powerful advances in medicine, agriculture, and industry.",
+    "invention": {
+      "early_techniques": "Restriction enzymes discovered in 1970s enabling gene splicing",
+      "milestones": [
+        {"year": 1973, "event": "First recombinant DNA", "description": "Boyce and Cohen create recombinant plasmids"},
+        {"year": 1996, "event": "Dolly the sheep", "description": "First mammal cloned from adult cells"},
+        {"year": 2012, "event": "CRISPR-Cas9", "description": "Gene editing revolution with precision and ease"}
+      ]
+    },
+    "purpose": [
+      "Develop disease-resistant crops",
+      "Create gene therapies for inherited diseases",
+      "Produce biologic medicines and vaccines"
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Transgenic Organisms",
+        "desc": "Organisms with foreign DNA inserted.",
+        "example": "Bt corn resistant to pests"
+      },
+      {
+        "name": "Gene Editing",
+        "desc": "Precise modification of DNA sequences.",
+        "example": "CRISPR-based correction of genetic mutations"
+      }
+    ],
+    "applications": [
+      "Agricultural biotechnology",
+      "Medical gene therapy",
+      "Industrial bio-production"
+    ],
+    "key_concepts": [
+      "DNA manipulation",
+      "Gene expression control",
+      "Off-target effects and ethics"
+    ],
     "image": "https://example.com/images/genetics.jpg",
     "thread": "https://x.com/example/thread/66889"
-  },
-  {
-    "name": "3D Printing (Additive Manufacturing)",
-    "desc": "Creates <b>physical objects</b> layer by layer from digital designs.<br>Enables <i>rapid prototyping</i>.",
-    "example": "Printing <b>custom prosthetics</b> for patients tailored to their body.",
-    "image": "https://example.com/images/3dprint.jpg",
-    "thread": "https://x.com/example/thread/77990"
-  },
-  {
-    "name": "Renewable Energy Technologies",
-    "desc": "Harness <b>natural sources</b> like sun and wind.<br>Drives a <i>sustainable energy</i> revolution.",
-    "example": "Deploying <b>solar panels</b> and <i>wind farms</i> to power cities cleanly.",
-    "image": "https://example.com/images/renewable.jpg",
-    "thread": "https://x.com/example/thread/88001"
-  },
-  {
-    "name": "Biotechnology",
-    "desc": "Uses <b>living systems</b> for technological advancement.<br>Revolutionizes <i>healthcare</i> and agriculture.",
-    "example": "Creating <b>life-saving vaccines</b> through <i>genetic modification</i>.",
-    "image": "https://example.com/images/biotech.jpg",
-    "thread": "https://x.com/example/thread/99112"
-  },
-  {
-    "name": "Nanotechnology",
-    "desc": "Manipulates <b>materials</b> at the atomic or molecular scale.<br>Enables <i>super-strong</i> and novel materials.",
-    "example": "Developing <b>nanomedicines</b> for targeted <i>drug delivery</i>.",
-    "image": "https://example.com/images/nano.jpg",
-    "thread": "https://x.com/example/thread/10213"
-  },
-  {
-    "name": "Cybersecurity",
-    "desc": "Protects <b>digital systems</b> and data from <i>cyber threats</i>.<br>Safeguards privacy and security.",
-    "example": "Using <b>encryption</b> and <i>firewalls</i> to secure online banking.",
-    "image": "https://example.com/images/cybersecurity.jpg",
-    "thread": "https://x.com/example/thread/11314"
-  },
-  {
-    "name": "Robotics",
-    "desc": "Designs and operates <b>automated machines</b>.<br>Transforms <i>manufacturing</i>, medicine, and exploration.",
-    "example": "Robotic <b>arms</b> on <i>assembly lines</i> or surgical <b>robots</b> in hospitals.",
-    "image": "https://example.com/images/robotics.jpg",
-    "thread": "https://x.com/example/thread/12425"
-  },
-  {
-    "name": "Wearable Technology",
-    "desc": "Gadgets worn on the body that monitor and enhance health or productivity.<br>Combines <b>sensors</b> and <i>connectivity</i>.",
-    "example": "Using <b>smartwatches</b> or <i>fitness bands</i> to track daily activity.",
-    "image": "https://example.com/images/wearables.jpg",
-    "thread": "https://x.com/example/thread/13536"
-  },
-  {
-    "name": "Structural Battery Composites",
-    "desc": "Materials that double as <b>batteries</b>, storing energy within structural components.",
-    "example": "Car body panels acting as a vehicle's battery, making electric vehicles lighter.",
-    "image": "https://example.com/images/structural_battery.jpg",
-    "thread": "https://x.com/example/thread/30101"
-  },
-  {
-    "name": "Osmotic Power Systems",
-    "desc": "Generate clean <b>electricity</b> from differences in salt concentration between waters.",
-    "example": "Power stations at river mouths producing renewable energy from seawater/freshwater mixing.",
-    "image": "https://example.com/images/osmotic_power.jpg",
-    "thread": "https://x.com/example/thread/30202"
-  },
-  {
-    "name": "Next-Generation Nuclear Energy",
-    "desc": "Safer, modular nuclear reactors & advanced fusion for clean power.",
-    "example": "Factory-built mini reactors; experimental <b>fusion reactors</b> nearing net energy.",
-    "image": "https://example.com/images/nuclear.jpg",
-    "thread": "https://x.com/example/thread/30303"
-  },
-  {
-    "name": "Engineered Living Therapeutics",
-    "desc": "Custom microbes that <b>produce drugs inside the body</b> for chronic diseases.",
-    "example": "Gut bacteria engineered to secrete insulin for diabetes.",
-    "image": "https://example.com/images/living_therapeutics.jpg",
-    "thread": "https://x.com/example/thread/30404"
-  },
-  {
-    "name": "GLP-1s for Neurodegenerative Disease",
-    "desc": "Repurposed drugs showing promise in slowing <i>Alzheimer’s</i> and <i>Parkinson’s</i>.",
-    "example": "GLP-1 agonists in clinical trials to treat cognitive decline.",
-    "image": "https://example.com/images/glp1.jpg",
-    "thread": "https://x.com/example/thread/30505"
-  },
-  {
-    "name": "Autonomous Biochemical Sensing",
-    "desc": "Tiny <b>sensors</b> monitor health or toxins in real time—wearable or implantable.",
-    "example": "Smart tattoos and ingestible sensors constantly reporting health data.",
-    "image": "https://example.com/images/biochem_sensors.jpg",
-    "thread": "https://x.com/example/thread/30606"
-  },
-  {
-    "name": "Green Nitrogen Fixation",
-    "desc": "Sustainable, non-fossil method for <b>ammonia production</b> — key to food security & climate.",
-    "example": "Electrochemical plants making ammonia from air and water with clean power.",
-    "image": "https://example.com/images/green_nitrogen.jpg",
-    "thread": "https://x.com/example/thread/30707"
-  },
-  {
-    "name": "Nanozymes",
-    "desc": "Synthetic enzyme-like <b>nanomaterials</b> for robust industrial and medical uses.",
-    "example": "Nanozymes break down toxins or deliver drugs in the body.",
-    "image": "https://example.com/images/nanozymes.jpg",
-    "thread": "https://x.com/example/thread/30808"
-  },
-  {
-    "name": "Collaborative Sensing & Smart Swarms",
-    "desc": "Mass networks of sensors or robot swarms <b>collaborate in real time</b> to monitor and act.",
-    "example": "Drones mapping wildfires or traffic as a team.",
-    "image": "https://example.com/images/collaborative_sensing.jpg",
-    "thread": "https://x.com/example/thread/30909"
-  },
-  {
-    "name": "Generative Watermarking",
-    "desc": "Invisible marks on digital content to <b>prove authenticity</b> and combat misinformation.",
-    "example": "Watermarked images & audio flag AI-generated fakes.",
-    "image": "https://example.com/images/generative_watermark.jpg",
-    "thread": "https://x.com/example/thread/31010"
-  },
-  {
-    "name": "Biomedical Nanobots",
-    "desc": "Microscopic robots that <b>target drugs</b>, repair tissue, and diagnose inside the body.",
-    "example": "Cancer nanobots delivering chemo direct to tumor cells.",
-    "image": "https://example.com/images/nanobots.jpg",
-    "thread": "https://x.com/example/thread/31111"
-  },
-  {
-    "name": "Mind Uploading & Neural Interfaces",
-    "desc": "Direct <b>brain-computer interfaces</b> for communication and restoring function.",
-    "example": "Neural sleeves restoring movement, future digital memory transfer.",
-    "image": "https://example.com/images/neurotech.jpg",
-    "thread": "https://x.com/example/thread/31212"
-  },
-  {
-    "name": "De-Extinction & Synthetic Biology",
-    "desc": "Bringing extinct species back or designing new ones for the environment.",
-    "example": "Woolly mammoth revival and microbes engineered to digest plastic.",
-    "image": "https://example.com/images/deextinction.jpg",
-    "thread": "https://x.com/example/thread/31313"
-  },
-  {
-    "name": "Carbon Nanotube Electronics",
-    "desc": "Flexible, ultra-efficient circuits for <b>bendable, implantable</b> next-gen devices.",
-    "example": "Roll-up phones, smart bandages, new battery chemistries.",
-    "image": "https://example.com/images/nanotube.jpg",
-    "thread": "https://x.com/example/thread/31414"
-  },
-  {
-    "name": "Stone Tools",
-    "desc": "The first <b>manmade tools</b> enabled our ancestors to hunt, prepare food, and shape their world.",
-    "example": "Sharp-edged stones used in Africa over 2.5 million years ago.",
-    "image": "https://example.com/images/stone_tools.jpg",
-    "thread": ""
-  },
-  {
-    "name": "Fire Control",
-    "desc": "Mastering <b>fire</b> for warmth, cooking, and protection advanced humanity’s survival and society.",
-    "example": "Homo erectus controlling fire nearly 1 million years ago.",
-    "image": "https://example.com/images/fire.jpg",
-    "thread": ""
-  },
-  {
-    "name": "The Wheel",
-    "desc": "Enabled <b>transportation</b>, trade, and countless inventions (3500 BC).",
-    "example": "Wheeled carts for moving goods, spinning wheels for fabric.",
-    "image": "https://example.com/images/wheel.jpg",
-    "thread": ""
-  },
-  {
-    "name": "Writing Systems",
-    "desc": "Allowed <b>recording</b> information, laws, culture, and achievement for future generations.",
-    "example": "Sumerian cuneiform and Egyptian hieroglyphs.",
-    "image": "https://example.com/images/writing.jpg",
-    "thread": ""
-  },
-  {
-    "name": "Printing Press",
-    "desc": "Mass-produced <b>books</b>, spreading literacy, science, and revolution (Gutenberg, 1440s).",
-    "example": "The Gutenberg Bible and explosion of printed material in Europe.",
-    "image": "https://example.com/images/printing_press.jpg",
-    "thread": ""
-  },
-  {
-    "name": "Compass",
-    "desc": "Revolutionized <b>navigation</b> and enabled the Age of Exploration.",
-    "example": "Chinese and European ships exploring the world.",
-    "image": "https://example.com/images/compass.jpg",
-    "thread": ""
-  },
-  {
-    "name": "Steam Engine",
-    "desc": "Powered the <b>Industrial Revolution</b>, manufacturing, railways, and global trade.",
-    "example": "Locomotives, steamships, factory machines.",
-    "image": "https://example.com/images/steam_engine.jpg",
-    "thread": ""
-  },
-  {
-    "name": "Electricity & The Light Bulb",
-    "desc": "Electrification led to <b>night lighting</b>, appliances, and the modern city.",
-    "example": "Edison’s light bulbs, Tesla’s power grids.",
-    "image": "https://example.com/images/lightbulb.jpg",
-    "thread": ""
-  },
-  {
-    "name": "Internal Combustion Engine",
-    "desc": "Transformed <b>transport</b> (cars, planes) and global industries.",
-    "example": "Automobiles and powered flight.",
-    "image": "https://example.com/images/combustion_engine.jpg",
-    "thread": ""
-  },
-  {
-    "name": "Telephone",
-    "desc": "Instant <b>long-distance communication</b> (Bell, 1876) shrank the world for business and family.",
-    "example": "The rise of global networks, from copper wire to satellites.",
-    "image": "https://example.com/images/telephone.jpg",
-    "thread": ""
-  },
-  {
-    "name": "Vaccination & Penicillin",
-    "desc": "Medical breakthroughs that <b>saved millions</b> of lives and expanded life expectancy.",
-    "example": "Smallpox eradication, antibiotics against bacterial infections.",
-    "image": "https://example.com/images/penicillin.jpg",
-    "thread": ""
-  },
-  {
-    "name": "Radio & Television",
-    "desc": "Brought <b>information and entertainment</b> to the masses in real time.",
-    "example": "World news, music, and education in every home.",
-    "image": "https://example.com/images/radio_tv.jpg",
-    "thread": ""
-  },
-  {
-    "name": "Personal Computer",
-    "desc": "Brought <b>computation</b> and information power to individuals.",
-    "example": "Rise of the PC and digital revolution.",
-    "image": "https://example.com/images/pc.jpg",
-    "thread": ""
-  },
-  {
-    "name": "Internet",
-    "desc": "<b>Global network</b> that connected humanity, driving a knowledge, communication, and commerce revolution.",
-    "example": "Email, web browsing, social networking.",
-    "image": "https://example.com/images/internet.jpg",
-    "thread": ""
-  },
-  {
-    "name": "Smartphone",
-    "desc": "Put <b>powerful computing</b>, communication, and media into billions of hands.",
-    "example": "The iPhone, global 4G/5G networks, and the app economy.",
-    "image": "https://example.com/images/smartphone.jpg",
-    "thread": ""
   }
-]
+ 
+ 
+ ]
