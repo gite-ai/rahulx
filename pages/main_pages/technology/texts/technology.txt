@@ -19,5 +19,303 @@
     "example": "Using AR for <b>navigation</b> with <i>real-time overlays</i>.<br>A <b>practical</b> use case.",
     "image": "https://example.com/images/ar.jpg",
     "thread": "https://x.com/example/thread/54321"
+  },
+  {
+    "name": "Virtual Reality",
+    "desc": "Immerses users in <b>computer-generated</b> 3D environments.<br>Transforms <i>gaming</i>, education, and training.",
+    "example": "VR headsets enabling <b>simulated training</b> for pilots.<br>A <i>safe</i>, realistic learning method.",
+    "image": "https://example.com/images/vr.jpg",
+    "thread": "https://x.com/example/thread/11223"
+  },
+  {
+    "name": "Internet of Things (IoT)",
+    "desc": "Connects <b>physical devices</b> to the internet.<br>Enables <i>smart homes</i>, industries, and cities.",
+    "example": "A <b>smart thermostat</b> adjusting temperature automatically.<br>Saves energy, <i>improves</i> comfort.",
+    "image": "https://example.com/images/iot.jpg",
+    "thread": "https://x.com/example/thread/22445"
+  },
+  {
+    "name": "5G Technology",
+    "desc": "The <b>fifth-generation</b> wireless standard.<br>Delivers <i>ultra-fast</i> internet & low latency.",
+    "example": "Streaming <b>4K video</b> and powering <i>smart cities</i> in real time.",
+    "image": "https://example.com/images/5g.jpg",
+    "thread": "https://x.com/example/thread/33556"
+  },
+  {
+    "name": "Edge Computing",
+    "desc": "Processes data <b>closer to the source</b>.<br>Reduces delay for <i>real-time applications</i>.",
+    "example": "Industrial <b>sensors</b> analyzing data on-site for <i>machine control</i>.",
+    "image": "https://example.com/images/edge.jpg",
+    "thread": "https://x.com/example/thread/44667"
+  },
+  {
+    "name": "Cloud Computing",
+    "desc": "Provides <b>on-demand</b> access to <i>computing resources</i> over the internet.<br>Scalable and cost-efficient.",
+    "example": "Hosting apps on <b>Amazon AWS</b> or <i>Microsoft Azure</i>.<br>Scales instantly to demand.",
+    "image": "https://example.com/images/cloud.jpg",
+    "thread": "https://x.com/example/thread/55778"
+  },
+  {
+    "name": "Genetic Engineering",
+    "desc": "Directly <b>manipulates DNA</b> in living organisms.<br>Enables <i>precise</i> medical & agricultural advances.",
+    "example": "Developing <b>disease-resistant crops</b> and <i>gene therapies</i> for patients.",
+    "image": "https://example.com/images/genetics.jpg",
+    "thread": "https://x.com/example/thread/66889"
+  },
+  {
+    "name": "3D Printing (Additive Manufacturing)",
+    "desc": "Creates <b>physical objects</b> layer by layer from digital designs.<br>Enables <i>rapid prototyping</i>.",
+    "example": "Printing <b>custom prosthetics</b> for patients tailored to their body.",
+    "image": "https://example.com/images/3dprint.jpg",
+    "thread": "https://x.com/example/thread/77990"
+  },
+  {
+    "name": "Renewable Energy Technologies",
+    "desc": "Harness <b>natural sources</b> like sun and wind.<br>Drives a <i>sustainable energy</i> revolution.",
+    "example": "Deploying <b>solar panels</b> and <i>wind farms</i> to power cities cleanly.",
+    "image": "https://example.com/images/renewable.jpg",
+    "thread": "https://x.com/example/thread/88001"
+  },
+  {
+    "name": "Biotechnology",
+    "desc": "Uses <b>living systems</b> for technological advancement.<br>Revolutionizes <i>healthcare</i> and agriculture.",
+    "example": "Creating <b>life-saving vaccines</b> through <i>genetic modification</i>.",
+    "image": "https://example.com/images/biotech.jpg",
+    "thread": "https://x.com/example/thread/99112"
+  },
+  {
+    "name": "Nanotechnology",
+    "desc": "Manipulates <b>materials</b> at the atomic or molecular scale.<br>Enables <i>super-strong</i> and novel materials.",
+    "example": "Developing <b>nanomedicines</b> for targeted <i>drug delivery</i>.",
+    "image": "https://example.com/images/nano.jpg",
+    "thread": "https://x.com/example/thread/10213"
+  },
+  {
+    "name": "Cybersecurity",
+    "desc": "Protects <b>digital systems</b> and data from <i>cyber threats</i>.<br>Safeguards privacy and security.",
+    "example": "Using <b>encryption</b> and <i>firewalls</i> to secure online banking.",
+    "image": "https://example.com/images/cybersecurity.jpg",
+    "thread": "https://x.com/example/thread/11314"
+  },
+  {
+    "name": "Robotics",
+    "desc": "Designs and operates <b>automated machines</b>.<br>Transforms <i>manufacturing</i>, medicine, and exploration.",
+    "example": "Robotic <b>arms</b> on <i>assembly lines</i> or surgical <b>robots</b> in hospitals.",
+    "image": "https://example.com/images/robotics.jpg",
+    "thread": "https://x.com/example/thread/12425"
+  },
+  {
+    "name": "Wearable Technology",
+    "desc": "Gadgets worn on the body that monitor and enhance health or productivity.<br>Combines <b>sensors</b> and <i>connectivity</i>.",
+    "example": "Using <b>smartwatches</b> or <i>fitness bands</i> to track daily activity.",
+    "image": "https://example.com/images/wearables.jpg",
+    "thread": "https://x.com/example/thread/13536"
+  },
+
+  /* ----- FUTURISTIC BREAKTHROUGHS (2020s-2030s) ----- */
+  {
+    "name": "Structural Battery Composites",
+    "desc": "Materials that double as <b>batteries</b>, storing energy within structural components.",
+    "example": "Car body panels acting as a vehicle's battery, making electric vehicles lighter.",
+    "image": "https://example.com/images/structural_battery.jpg",
+    "thread": "https://x.com/example/thread/30101"
+  },
+  {
+    "name": "Osmotic Power Systems",
+    "desc": "Generate clean <b>electricity</b> from differences in salt concentration between waters.",
+    "example": "Power stations at river mouths producing renewable energy from seawater/freshwater mixing.",
+    "image": "https://example.com/images/osmotic_power.jpg",
+    "thread": "https://x.com/example/thread/30202"
+  },
+  {
+    "name": "Next-Generation Nuclear Energy",
+    "desc": "Safer, modular nuclear reactors & advanced fusion for clean power.",
+    "example": "Factory-built mini reactors; experimental <b>fusion reactors</b> nearing net energy.",
+    "image": "https://example.com/images/nuclear.jpg",
+    "thread": "https://x.com/example/thread/30303"
+  },
+  {
+    "name": "Engineered Living Therapeutics",
+    "desc": "Custom microbes that <b>produce drugs inside the body</b> for chronic diseases.",
+    "example": "Gut bacteria engineered to secrete insulin for diabetes.",
+    "image": "https://example.com/images/living_therapeutics.jpg",
+    "thread": "https://x.com/example/thread/30404"
+  },
+  {
+    "name": "GLP-1s for Neurodegenerative Disease",
+    "desc": "Repurposed drugs showing promise in slowing <i>Alzheimer’s</i> and <i>Parkinson’s</i>.",
+    "example": "GLP-1 agonists in clinical trials to treat cognitive decline.",
+    "image": "https://example.com/images/glp1.jpg",
+    "thread": "https://x.com/example/thread/30505"
+  },
+  {
+    "name": "Autonomous Biochemical Sensing",
+    "desc": "Tiny <b>sensors</b> monitor health or toxins in real time—wearable or implantable.",
+    "example": "Smart tattoos and ingestible sensors constantly reporting health data.",
+    "image": "https://example.com/images/biochem_sensors.jpg",
+    "thread": "https://x.com/example/thread/30606"
+  },
+  {
+    "name": "Green Nitrogen Fixation",
+    "desc": "Sustainable, non-fossil method for <b>ammonia production</b> — key to food security & climate.",
+    "example": "Electrochemical plants making ammonia from air and water with clean power.",
+    "image": "https://example.com/images/green_nitrogen.jpg",
+    "thread": "https://x.com/example/thread/30707"
+  },
+  {
+    "name": "Nanozymes",
+    "desc": "Synthetic enzyme-like <b>nanomaterials</b> for robust industrial and medical uses.",
+    "example": "Nanozymes break down toxins or deliver drugs in the body.",
+    "image": "https://example.com/images/nanozymes.jpg",
+    "thread": "https://x.com/example/thread/30808"
+  },
+  {
+    "name": "Collaborative Sensing & Smart Swarms",
+    "desc": "Mass networks of sensors or robot swarms <b>collaborate in real time</b> to monitor and act.",
+    "example": "Drones mapping wildfires or traffic as a team.",
+    "image": "https://example.com/images/collaborative_sensing.jpg",
+    "thread": "https://x.com/example/thread/30909"
+  },
+  {
+    "name": "Generative Watermarking",
+    "desc": "Invisible marks on digital content to <b>prove authenticity</b> and combat misinformation.",
+    "example": "Watermarked images & audio flag AI-generated fakes.",
+    "image": "https://example.com/images/generative_watermark.jpg",
+    "thread": "https://x.com/example/thread/31010"
+  },
+  {
+    "name": "Biomedical Nanobots",
+    "desc": "Microscopic robots that <b>target drugs</b>, repair tissue, and diagnose inside the body.",
+    "example": "Cancer nanobots delivering chemo direct to tumor cells.",
+    "image": "https://example.com/images/nanobots.jpg",
+    "thread": "https://x.com/example/thread/31111"
+  },
+  {
+    "name": "Mind Uploading & Neural Interfaces",
+    "desc": "Direct <b>brain-computer interfaces</b> for communication and restoring function.",
+    "example": "Neural sleeves restoring movement, future digital memory transfer.",
+    "image": "https://example.com/images/neurotech.jpg",
+    "thread": "https://x.com/example/thread/31212"
+  },
+  {
+    "name": "De-Extinction & Synthetic Biology",
+    "desc": "Bringing extinct species back or designing new ones for the environment.",
+    "example": "Woolly mammoth revival and microbes engineered to digest plastic.",
+    "image": "https://example.com/images/deextinction.jpg",
+    "thread": "https://x.com/example/thread/31313"
+  },
+  {
+    "name": "Carbon Nanotube Electronics",
+    "desc": "Flexible, ultra-efficient circuits for <b>bendable, implantable</b> next-gen devices.",
+    "example": "Roll-up phones, smart bandages, new battery chemistries.",
+    "image": "https://example.com/images/nanotube.jpg",
+    "thread": "https://x.com/example/thread/31414"
+  },
+
+  /* ----- MAJOR HISTORICAL TECHNOLOGIES (not AI) that transformed humanity ----- */
+  {
+    "name": "Stone Tools",
+    "desc": "The first <b>manmade tools</b> enabled our ancestors to hunt, prepare food, and shape their world.",
+    "example": "Sharp-edged stones used in Africa over 2.5 million years ago.",
+    "image": "https://example.com/images/stone_tools.jpg",
+    "thread": ""
+  },
+  {
+    "name": "Fire Control",
+    "desc": "Mastering <b>fire</b> for warmth, cooking, and protection advanced humanity’s survival and society.",
+    "example": "Homo erectus controlling fire nearly 1 million years ago.",
+    "image": "https://example.com/images/fire.jpg",
+    "thread": ""
+  },
+  {
+    "name": "The Wheel",
+    "desc": "Enabled <b>transportation</b>, trade, and countless inventions (3500 BC).",
+    "example": "Wheeled carts for moving goods, spinning wheels for fabric.",
+    "image": "https://example.com/images/wheel.jpg",
+    "thread": ""
+  },
+  {
+    "name": "Writing Systems",
+    "desc": "Allowed <b>recording</b> information, laws, culture, and achievement for future generations.",
+    "example": "Sumerian cuneiform and Egyptian hieroglyphs.",
+    "image": "https://example.com/images/writing.jpg",
+    "thread": ""
+  },
+  {
+    "name": "Printing Press",
+    "desc": "Mass-produced <b>books</b>, spreading literacy, science, and revolution (Gutenberg, 1440s).",
+    "example": "The Gutenberg Bible and explosion of printed material in Europe.",
+    "image": "https://example.com/images/printing_press.jpg",
+    "thread": ""
+  },
+  {
+    "name": "Compass",
+    "desc": "Revolutionized <b>navigation</b> and enabled the Age of Exploration.",
+    "example": "Chinese and European ships exploring the world.",
+    "image": "https://example.com/images/compass.jpg",
+    "thread": ""
+  },
+  {
+    "name": "Steam Engine",
+    "desc": "Powered the <b>Industrial Revolution</b>, manufacturing, railways, and global trade.",
+    "example": "Locomotives, steamships, factory machines.",
+    "image": "https://example.com/images/steam_engine.jpg",
+    "thread": ""
+  },
+  {
+    "name": "Electricity & The Light Bulb",
+    "desc": "Electrification led to <b>night lighting</b>, appliances, and the modern city.",
+    "example": "Edison’s light bulbs, Tesla’s power grids.",
+    "image": "https://example.com/images/lightbulb.jpg",
+    "thread": ""
+  },
+  {
+    "name": "Internal Combustion Engine",
+    "desc": "Transformed <b>transport</b> (cars, planes) and global industries.",
+    "example": "Automobiles and powered flight.",
+    "image": "https://example.com/images/combustion_engine.jpg",
+    "thread": ""
+  },
+  {
+    "name": "Telephone",
+    "desc": "Instant <b>long-distance communication</b> (Bell, 1876) shrank the world for business and family.",
+    "example": "The rise of global networks, from copper wire to satellites.",
+    "image": "https://example.com/images/telephone.jpg",
+    "thread": ""
+  },
+  {
+    "name": "Vaccination & Penicillin",
+    "desc": "Medical breakthroughs that <b>saved millions</b> of lives and expanded life expectancy.",
+    "example": "Smallpox eradication, antibiotics against bacterial infections.",
+    "image": "https://example.com/images/penicillin.jpg",
+    "thread": ""
+  },
+  {
+    "name": "Radio & Television",
+    "desc": "Brought <b>information and entertainment</b> to the masses in real time.",
+    "example": "World news, music, and education in every home.",
+    "image": "https://example.com/images/radio_tv.jpg",
+    "thread": ""
+  },
+  {
+    "name": "Personal Computer",
+    "desc": "Brought <b>computation</b> and information power to individuals.",
+    "example": "Rise of the PC and digital revolution.",
+    "image": "https://example.com/images/pc.jpg",
+    "thread": ""
+  },
+  {
+    "name": "Internet",
+    "desc": "<b>Global network</b> that connected humanity, driving a knowledge, communication, and commerce revolution.",
+    "example": "Email, web browsing, social networking.",
+    "image": "https://example.com/images/internet.jpg",
+    "thread": ""
+  },
+  {
+    "name": "Smartphone",
+    "desc": "Put <b>powerful computing</b>, communication, and media into billions of hands.",
+    "example": "The iPhone, global 4G/5G networks, and the app economy.",
+    "image": "https://example.com/images/smartphone.jpg",
+    "thread": ""
   }
 ]
