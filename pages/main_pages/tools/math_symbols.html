@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Special Characters & Emojis - Rahulx.com</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      color: #00ffcc;
+      overflow-x: hidden;
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      font-weight: 700;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+    }
+    /* Header */
+    header {
+      position: relative;
+      background: radial-gradient(circle, #001f3f, #000);
+      color: #00ffcc;
+      padding: 40px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+    header h1 {
+      font-size: 2.8rem;
+      text-transform: uppercase;
+      animation: glow 2s infinite alternate;
+      letter-spacing: 2px;
+    }
+    header p {
+      font-size: 1.3rem;
+      opacity: 0.8;
+      animation: float 3s ease-in-out infinite;
+      font-weight: 300;
+    }
+    /* Hamburger Menu */
+    .menu-icon {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      color: #00ffcc;
+      font-family: 'Poppins', sans-serif;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 0;
+      backdrop-filter: blur(10px);
+      transition: right 0.3s;
+    }
+    nav a {
+      color: #00ffcc;
+      margin: 0 20px;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #ff00cc;
+    }
+    @media (max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      header p { font-size: 1rem; }
+      .menu-icon { display: block; }
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 250px;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(10px);
+        z-index: 999;
+      }
+      nav.active { right: 0; }
+      nav a {
+        margin: 15px 0;
+        padding: 10px 20px;
+        border-bottom: 1px solid rgba(0,255,204,0.2);
+      }
+    }
+    /* Main Content */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Search Input - Sticky Below Header */
+    #emoji-search {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #00ffcc;
+      background: #000;
+      color: #00ffcc;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+
+      position: sticky;
+      top: 0;
+      z-index: 1001;
+      background: #0a0a0a; /* slightly darker for contrast while sticky */
+    }
+
+    #emoji-search:focus {
+      border-color: #ff00cc;
+      box-shadow: 0 0 8px #ff00cc;
+    }
+    .char-table {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .char-card {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      user-select: none;
+    }
+    .char-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px rgba(0,255,204,0.6);
+    }
+    .char-card .symbol {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: inline-block;
+      user-select: text;
+    }
+    .char-card .name {
+      font-size: 1rem;
+      color: #00ffcc;
+      word-break: break-word;
+    }
+    .char-card .code {
+      font-size: 0.9rem;
+      color: #ff00cc;
+      margin-top: 5px;
+      font-family: monospace;
+      user-select: text;
+    }
+    .error-message {
+      text-align: center;
+      color: #ff00cc;
+      font-size: 1.2rem;
+      margin: 20px 0;
+    }
+    /* Footer */
+    footer {
+      background: #000;
+      color: #00ffcc;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+      position: relative;
+      z-index: 1;
+    }
+    footer p { margin: 0; font-size: 1.1rem; font-weight: 300; }
+    footer a { color: #ff00cc; font-weight: 500; }
+    footer a:hover { text-decoration: underline; }
+    /* Animations */
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
+      100% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0);}
+      50% { transform: translateY(-10px);}
+    }
+    /* Sci-Fi Background */
+    .sci-fi-bg {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle, #001f3f, #000);
+      animation: stars 10s infinite linear;
+    }
+    @keyframes stars { 0%{background-position:0 0;}100%{background-position:1000px 1000px;} }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="sci-fi-bg"></div>
+  <div class="menu-icon" id="menu-icon" aria-label="Toggle menu" role="button" tabindex="0">☰</div>
+  <header>
+    <h1>Special Symbols for mathematics </h1>
+    <p>Copy and paste unique symbols for your mathematics projects.</p>
+  </header>
+  <nav id="nav">
+    <a href="https://www.rahulx.com/about">About</a>
+    <a href="https://www.x.com/gite_ai">Contact</a>
+    <a href="https://www.rahulx.com">Home</a>
+  </nav>
+  <div class="container">
+    <section>
+      <input type="text" id="emoji-search" placeholder="Search emojis by name or emoji character..." aria-label="Search emojis by name or emoji character"/>
+      <div id="char-table" class="char-table"></div>
+      <div id="error-message" class="error-message" style="display:none;"></div>
+    </section>
+  </div>
+  <footer>
+    <p>© 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+    // Hamburger Menu Toggle
+    const menuIcon = document.getElementById('menu-icon');
+    const nav = document.getElementById('nav');
+    menuIcon.addEventListener('click', () => { nav.classList.toggle('active'); });
+    menuIcon.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        nav.classList.toggle('active');
+      }
+    });
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768 && nav.classList.contains('active')) {
+        const isClickInsideNav = nav.contains(e.target);
+        const isClickOnMenuIcon = menuIcon.contains(e.target);
+        if (!isClickInsideNav && !isClickOnMenuIcon) nav.classList.remove('active');
+      }
+    });
+
+    // Copy to Clipboard
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Copied: ' + text);
+      }).catch(() => {
+        alert('Failed to copy, please try manually.');
+      });
+    }
+
+    // Global variable to store emojis
+    let allEmojis = [];
+
+    function renderEmojis(emojis) {
+      const charTable = document.getElementById('char-table');
+      charTable.innerHTML = ''; // clear previous content
+      emojis.forEach(emoji => {
+        if (!emoji.symbol || !emoji.name || !emoji.code) return;
+        const card = document.createElement('div');
+        card.className = 'char-card';
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-label', `Copy emoji ${emoji.name}`);
+        card.title = `Copy ${emoji.name}`;
+        card.innerHTML = `
+          <span class="symbol" role="img" aria-hidden="false">${emoji.symbol}</span>
+          <div class="name">${emoji.name}</div>
+          <div class="code">${emoji.code}</div>
+        `;
+        card.onclick = () => copyToClipboard(emoji.symbol);
+        card.onkeypress = (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            copyToClipboard(emoji.symbol);
+          }
+        };
+        card.addEventListener('mouseenter', () => { card.style.boxShadow = '0 0 30px rgba(0,255,204,0.8)'; });
+        card.addEventListener('mouseleave', () => { card.style.boxShadow = '0 0 20px rgba(0,255,204,0.6)'; });
+        charTable.appendChild(card);
+      });
+    }
+
+    // Load Emojis and setup search
+    async function loadEmojis() {
+      const errorMessage = document.getElementById('error-message');
+      const fallbackEmojis = [
+        { symbol: "😀", name: "Grinning Face", code: "U+1F600" },
+        { symbol: "😂", name: "Face with Tears of Joy", code: "U+1F602" },
+        { symbol: "❤️", name: "Red Heart", code: "U+2764" },
+        { symbol: "✨", name: "Sparkles", code: "U+2728" },
+        { symbol: "★", name: "Black Star", code: "U+2605" },
+        { symbol: "✅", name: "Check Mark", code: "U+2705" }
+      ];
+      try {
+        const response = await fetch('texts/maths.txt');
+        if (!response.ok) throw new Error("Emoji file not found");
+        const text = await response.text();
+        let emojis;
+        try { emojis = JSON.parse(text); }
+        catch { throw new Error("Emoji JSON failed to parse"); }
+        if (!Array.isArray(emojis)) throw new Error("Emoji file not array");
+        if (emojis.length === 0) throw new Error("No emojis found in file");
+        allEmojis = emojis;
+        renderEmojis(allEmojis);
+      } catch (error) {
+        errorMessage.textContent = `Error loading emojis: ${error.message}. Showing default set.`;
+        errorMessage.style.display = 'block';
+        allEmojis = fallbackEmojis;
+        renderEmojis(allEmojis);
+      }
+
+      // Add event listener for search input
+      const searchInput = document.getElementById('emoji-search');
+      searchInput.addEventListener('input', e => {
+        const searchTerm = e.target.value.toLowerCase().trim();
+        if (searchTerm === '') {
+          renderEmojis(allEmojis);
+        } else {
+          const filtered = allEmojis.filter(emoji =>
+            emoji.name.toLowerCase().includes(searchTerm) ||
+            emoji.symbol.includes(searchTerm)
+          );
+          renderEmojis(filtered);
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', loadEmojis);
+  </script>
+</body>
+</html>
