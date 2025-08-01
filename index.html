@@ -18,13 +18,11 @@
       line-height: 1.6;
       font-weight: 400;
     }
-
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Montserrat', sans-serif;
       margin: 0;
       font-weight: 700;
     }
-
     a {
       text-decoration: none;
       color: inherit;
@@ -41,14 +39,12 @@
       text-align: center;
       overflow: hidden;
     }
-
     header h1 {
       font-size: 2.8rem;
       text-transform: uppercase;
       animation: glow 2s infinite alternate;
       letter-spacing: 2px;
     }
-
     header p {
       font-size: 1.3rem;
       opacity: 0.8;
@@ -67,14 +63,13 @@
       text-align: center;
       font-size: 1rem;
     }
-
     .datetime-box .datetime {
       display: flex;
       flex-direction: column;
       gap: 5px;
     }
 
-    /* Tools Box */
+    /* Tools Box - always visible */
     .tools-box {
       margin: 20px auto;
       padding: 10px;
@@ -84,19 +79,15 @@
       width: 200px;
       text-align: center;
       font-size: 1rem;
-      display: none; /* Hidden by default */
     }
-
     .tools-box a {
       color: #00ffcc;
       margin: 0 10px;
       transition: color 0.3s ease;
     }
-
     .tools-box a:hover {
       color: #ff00cc;
     }
-
     .tools-box .divider {
       display: inline-block;
       width: 1px;
@@ -119,7 +110,6 @@
       color: #00ffcc;
       font-family: 'Poppins', sans-serif;
     }
-
     nav {
       display: flex;
       justify-content: center;
@@ -127,7 +117,6 @@
       padding: 15px 0;
       backdrop-filter: blur(10px);
     }
-
     nav a {
       color: #00ffcc;
       margin: 0 20px;
@@ -135,25 +124,21 @@
       transition: color 0.3s ease;
       font-weight: 500;
     }
-
     nav a:hover {
       color: #ff00cc;
     }
 
-    /* Mobile Navigation and Tools Box Visibility */
+    /* Responsive & Mobile Adjustments */
     @media (max-width: 768px) {
       header h1 {
         font-size: 2rem;
       }
-
       header p {
         font-size: 1rem;
       }
-
       .menu-icon {
         display: block;
       }
-
       nav {
         position: fixed;
         top: 0;
@@ -166,24 +151,18 @@
         transition: right 0.3s ease;
         z-index: 999;
       }
-
       nav.active {
         right: 0;
       }
-
       nav a {
         margin: 15px 0;
         padding: 10px 20px;
         border-bottom: 1px solid rgba(0, 255, 204, 0.2);
       }
-
-      .datetime-box, .tools-box {
+      .datetime-box,
+      .tools-box {
         width: 90%;
         font-size: 0.9rem;
-      }
-
-      .tools-box {
-        display: block; /* Visible in mobile view */
       }
     }
 
@@ -195,13 +174,11 @@
       position: relative;
       z-index: 1;
     }
-
     .categories {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
-
     .category-card {
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid #00ffcc;
@@ -210,18 +187,15 @@
       position: relative;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
     .category-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
     }
-
     .category-card img {
       width: 100%;
       height: 150px;
       object-fit: cover;
     }
-
     .category-card h3 {
       padding: 15px;
       font-size: 1.5rem;
@@ -231,7 +205,6 @@
       margin: 0;
       font-weight: 600;
     }
-
     .category-card p {
       padding: 15px;
       text-align: center;
@@ -251,18 +224,15 @@
       position: relative;
       z-index: 1;
     }
-
     footer p {
       margin: 0;
       font-size: 1.1rem;
       font-weight: 300;
     }
-
     footer a {
       color: #ff00cc;
       font-weight: 500;
     }
-
     footer a:hover {
       text-decoration: underline;
     }
@@ -276,14 +246,9 @@
         text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc;
       }
     }
-
     @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     /* Sci-Fi Background */
@@ -297,14 +262,9 @@
       background: radial-gradient(circle, #001f3f, #000);
       animation: stars 10s infinite linear;
     }
-
     @keyframes stars {
-      0% {
-        background-position: 0 0;
-      }
-      100% {
-        background-position: 1000px 1000px;
-      }
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
@@ -327,8 +287,12 @@
         <span id="time"></span>
       </div>
     </div>
-    <!-- Tools Box (Visible only in mobile) -->
-   
+    <!-- Tools Box (Now always visible!) -->
+    <div class="tools-box">
+      <a href="https://www.rahulx.com/pages/main_pages/tools/tools">Tools</a>
+      <span class="divider"></span>
+      <a href="https://www.rahulx.com/pages/main_pages/upsc_cse">UPSC CSE</a>
+    </div>
   </header>
 
   <!-- Navigation -->
@@ -336,12 +300,11 @@
     <a href="https://www.rahulx.com/about">About</a>
     <a href="https://www.x.com/gite_ai">Contact</a>
     <a href="https://www.rahulx.com/pages/main_pages/tools/tools">Tools</a>
-	<a href="https://www.rahulx.com/pages/main_pages/upsc_cse">UPSC CSE</a>
+    <a href="https://www.rahulx.com/pages/main_pages/upsc_cse">UPSC CSE</a>
   </nav>
 
   <!-- Main Content -->
   <div class="container">
-    <!-- Categories Section -->
     <section>
       <div class="categories">
         <!-- Category 1 -->
@@ -350,49 +313,42 @@
           <h3> A.I. and Robotics </h3>
           <p>Delve into all aspects of artificial intelligence.</p>
         </a>
-
         <!-- Category 2 -->
         <a href="https://www.rahulx.com/pages/main_pages/technology/technology" class="category-card">
           <img src="https://th.bing.com/th/id/OIP.NrYbs9hurY9_2X3bSyAaZgAAAA?rs=1&pid=ImgDetMain" alt="Technology">
           <h3>Technology</h3>
           <p>Discover the latest in tech innovation other than AI.</p>
         </a>
-
         <!-- Category 3 -->
         <a href="https://www.rahulx.com/pages/main_pages/coding/coding" class="category-card">
           <img src="https://c1.wallpaperflare.com/preview/183/501/299/code-coding-programming-css.jpg" alt="Coding">
           <h3>Coding</h3>
           <p>Dive into the art and science of programming.</p>
         </a>
-
         <!-- Category 4 -->
         <a href="https://www.rahulx.com/pages/main_pages/space/space" class="category-card">
           <img src="https://th.bing.com/th/id/OIP.OzIU63vh40vLhZQi76XjsQHaHa?rs=1&pid=ImgDetMain" alt="Space">
           <h3>Space</h3>
           <p>Explore the mysteries of the universe.</p>
         </a>
-
         <!-- Category 5 -->
         <a href="https://www.rahulx.com/pages/main_pages/gaming/gaming" class="category-card">
           <img src="https://th.bing.com/th/id/OIP.CHnQNmfOWK5QfMBEGQZNTAHaE8?rs=1&pid=ImgDetMain" alt="Gaming">
           <h3>Gaming</h3>
           <p>Dive into the world of sci-fi gaming.</p>
         </a>
-
         <!-- Category 6 -->
         <a href="https://www.rahulx.com/pages/main_pages/trading/trading" class="category-card">
           <img src="https://www.quantifiedstrategies.com/wp-content/uploads/2022/10/image-31.png" alt="Trading">
           <h3>Trading</h3>
           <p>Learn about the world of trading and investments.</p>
         </a>
-
         <!-- Category 7 -->
         <a href="https://www.rahulx.com/pages/main_pages/netflix/netflix" class="category-card">
           <img src="https://th.bing.com/th/id/OIP.rRpx98P6up5JkHNfnWMyLwHaDt?rs=1&pid=ImgDetMain" alt="Netflix">
           <h3>Netflix</h3>
           <p>Discover the best Sci-fi shows and movies to watch.</p>
         </a>
-
         <!-- Category 8 -->
         <a href="https://www.rahulx.com/pages/main_pages/f1/f1" class="category-card">
           <img src="https://th.bing.com/th/id/OIP.tfdvlJCaBk3XryBKaNF1VwAAAA?rs=1&pid=ImgDetMain" alt="Sports">
@@ -413,11 +369,9 @@
     // Hamburger Menu Toggle
     const menuIcon = document.getElementById('menu-icon');
     const nav = document.getElementById('nav');
-
     menuIcon.addEventListener('click', () => {
       nav.classList.toggle('active');
     });
-
     // Close Hamburger Menu on Outside Click (Mobile)
     document.addEventListener('click', (e) => {
       if (window.innerWidth <= 768 && nav.classList.contains('active')) {
@@ -428,7 +382,6 @@
         }
       }
     });
-
     // Add glowing effect to category cards on hover
     const cards = document.querySelectorAll('.category-card');
     cards.forEach(card => {
@@ -439,7 +392,6 @@
         card.style.boxShadow = '0 0 20px rgba(0, 255, 204, 0.6)';
       });
     });
-
     // Date and Time Function
     function updateDateTime() {
       const now = new Date();
@@ -448,11 +400,8 @@
       document.getElementById('date').textContent = date;
       document.getElementById('time').textContent = time;
     }
-
-    // Update date and time every second
     setInterval(updateDateTime, 1000);
-    updateDateTime(); // Initial call to display date and time immediately
+    updateDateTime();
   </script>
-  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93353a0a5cedb05f',t:'MTc0NTE1ODI0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
