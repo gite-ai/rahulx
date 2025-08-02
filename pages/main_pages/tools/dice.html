@@ -7,14 +7,16 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0;}
     body {
+      min-height: 100vh;
+      min-width: 100vw;
+      margin: 0;
+      padding: 0;
       font-family: 'Orbitron', 'Montserrat', 'Poppins', sans-serif;
       background: linear-gradient(135deg, #0d1b2a 30%, #1b263b);
       color: #e0e0e0;
-      min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       overflow-x: hidden;
     }
     .sci-fi-bg {
@@ -28,7 +30,6 @@
       100% { background-position: 800px 800px; }
     }
     .dice-roller-container {
-      margin-top: 5vh;
       max-width: 400px;
       width: 98vw;
       text-align: center;
@@ -39,6 +40,7 @@
       background: rgba(5,32,65,0.07);
       border-radius: 25px;
       box-shadow: 0 0 28px 0 #00ffcc22, 0 0 0 #ff00cc22;
+      margin-top: 0;
     }
     h1 {
       font-family: 'Orbitron', 'Montserrat', sans-serif;
