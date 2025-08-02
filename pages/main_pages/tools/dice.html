@@ -15,6 +15,7 @@
       background: linear-gradient(135deg, #0d1b2a 30%, #1b263b);
       color: #e0e0e0;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       overflow-x: hidden;
@@ -29,19 +30,6 @@
       0% { background-position: 0 0; }
       100% { background-position: 800px 800px; }
     }
-    .dice-roller-container {
-      max-width: 400px;
-      width: 98vw;
-      text-align: center;
-      padding: 0 15px 55px 15px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: rgba(5,32,65,0.07);
-      border-radius: 25px;
-      box-shadow: 0 0 28px 0 #00ffcc22, 0 0 0 #ff00cc22;
-      margin-top: 0;
-    }
     h1 {
       font-family: 'Orbitron', 'Montserrat', sans-serif;
       font-size: 2.7rem;
@@ -54,14 +42,16 @@
       text-shadow: 0 0 10px #00ffcc99;
       animation: glow 2.2s alternate infinite;
       line-height: 1.1;
+      text-align: center;
     }
     p.subheading {
       font-size: 1.29rem;
       color: #e0e0e0;
       opacity: 0.9;
       text-shadow: 0 0 6px #00ffcc88;
-      margin-bottom: 26px;
+      margin-bottom: 32px; /* more space below the tagline! */
       animation: float 3s ease-in-out infinite;
+      text-align: center;
     }
     @keyframes glow {
       0%{ text-shadow: 0 0 7px #00ffcc44,0 0 10px #00ffcc; }
@@ -70,6 +60,19 @@
     @keyframes float {
       0%, 100% { transform: translateY(0);}
       50% { transform: translateY(-10px);}
+    }
+    .dice-roller-container {
+      max-width: 400px;
+      width: 98vw;
+      text-align: center;
+      padding: 0 15px 55px 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(5,32,65,0.07);
+      border-radius: 25px;
+      box-shadow: 0 0 28px 0 #00ffcc22, 0 0 0 #ff00cc22;
+      margin-top: 0;
     }
     .dice-wrapper {
       perspective: 1000px;
@@ -154,15 +157,17 @@
         border-radius: 17em;
         margin-top: 25px;
       }
+      p.subheading { margin-bottom: 18px; }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Montserrat:wght@600;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="sci-fi-bg"></div>
+  <!-- HEADERS OUTSIDE OF CONTAINER -->
+  <h1>3D Dice Roller</h1>
+  <p class="subheading">Enjoy a virtual dice roll in futuristic cosmic style!</p>
   <main class="dice-roller-container">
-    <h1>3D Dice Roller</h1>
-    <p class="subheading">Enjoy a virtual dice roll in futuristic cosmic style!</p>
     <div class="dice-wrapper" aria-live="polite">
       <div class="dice" id="dice" aria-label="Dice shows 1">
         <div class="face face1">1</div>
