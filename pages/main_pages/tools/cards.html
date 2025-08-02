@@ -149,7 +149,7 @@
       box-shadow: 0 0 12px #00ffcc66;
       transition: transform 0.2s, box-shadow 0.2s;
       min-width: 130px;
-      margin: 25px 0;
+      margin: 10px;
     }
     .sci-fi-button:hover {
       transform: scale(1.05);
@@ -182,6 +182,13 @@
       margin-bottom: 10px;
       line-height: 1.4;
     }
+    .facts-section .formula {
+      font-family: 'Courier New', monospace;
+      background: rgba(0, 255, 204, 0.1);
+      padding: 5px;
+      border-radius: 4px;
+      display: inline-block;
+    }
     footer {
       text-align: center;
       padding: 20px 0;
@@ -200,7 +207,7 @@
       .card-value.top { top: 6px; left: 6px; }
       .card-value.bottom { bottom: 6px; right: 6px; }
       .card-suit { font-size: 1.6rem; }
-      .sci-fi-button { padding: 10px 25px; font-size: 0.9rem; min-width: 120px; margin: 20px 0; }
+      .sci-fi-button { padding: 10px 25px; font-size: 0.9rem; min-width: 120px; margin: 8px; }
       .facts-section { padding: 10px; }
       .facts-section h2 { font-size: 1.3rem; }
       .facts-section ul { font-size: 0.8rem; }
@@ -216,7 +223,7 @@
       .card-value.top { top: 5px; left: 5px; }
       .card-value.bottom { bottom: 5px; right: 5px; }
       .card-suit { font-size: 1.4rem; }
-      .sci-fi-button { padding: 8px 20px; font-size: 0.8rem; min-width: 110px; margin: 15px 0; }
+      .sci-fi-button { padding: 8px 20px; font-size: 0.8rem; min-width: 110px; margin: 6px; }
       .facts-section h2 { font-size: 1.1rem; }
       .facts-section ul { font-size: 0.7rem; }
     }
@@ -245,6 +252,7 @@
       </div>
     </div>
     <button class="sci-fi-button" onclick="shuffleAndRedraw()" aria-label="Shuffle and redraw cards">Shuffle Cards</button>
+    <button class="sci-fi-button" onclick="sortAndRedraw()" aria-label="Sort cards in sequence">Sort Cards</button>
     <section class="facts-section">
       <h2>Probability Facts for Cards</h2>
       <ul>
@@ -256,6 +264,9 @@
         <li>Probability of drawing a red card (Hearts or Diamonds): 26/52 = 1/2 = 0.5 (50%).</li>
         <li>Probability of drawing a card of a specific rank (e.g., any 7): 4/52 = 1/13 ≈ 0.0769 (7.69%).</li>
         <li>With replacement, probabilities remain constant; without replacement, they change (e.g., after drawing one card, 51 cards remain).</li>
+        <li><strong>Permutation Formula</strong>: For arranging <span class="formula">r</span> cards from <span class="formula">n</span> cards (order matters): <span class="formula">P(n,r) = n! / (n-r)!</span></li>
+        <li><strong>Combination Formula</strong>: For choosing <span class="formula">r</span> cards from <span class="formula">n</span> cards (order doesn't matter): <span class="formula">C(n,r) = n! / (r!(n-r)!)</span></li>
+        <li>Example: Number of ways to choose 5 cards (e.g., for poker hand): <span class="formula">C(52,5) = 52! / (5!47!) = 2,598,960</span>.</li>
       </ul>
     </section>
   </main>
@@ -283,7 +294,7 @@
       return card;
     }
 
-    function populateDeck() {
+    function populateDeck(shuffle = true) {
       const container = document.getElementById('card-container');
       container.innerHTML = '';
       suits.forEach(suit => {
@@ -291,11 +302,13 @@
         suitGroup.className = 'suit-group';
         suitGroup.id = suit.name;
         suitGroup.innerHTML = `<div class="suit-title">${suit.name.charAt(0).toUpperCase() + suit.name.slice(1)} ${suit.symbol}</div>`;
-        const cards = values.map(value => createCard(value, suit.symbol, suit.color));
-        // Shuffle cards within suit
-        for (let i = cards.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [cards[i], cards[j]] = [cards[j], cards[i]];
+        let cards = values.map(value => createCard(value, suit.symbol, suit.color));
+        if (shuffle) {
+          // Shuffle cards within suit
+          for (let i = cards.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [cards[i], cards[j]] = [cards[j], cards[i]];
+          }
         }
         cards.forEach(card => suitGroup.appendChild(card));
         container.appendChild(suitGroup);
@@ -303,11 +316,15 @@
     }
 
     function shuffleAndRedraw() {
-      populateDeck();
+      populateDeck(true);
     }
 
-    // Initial population
-    populateDeck();
+    function sortAndRedraw() {
+      populateDeck(false);
+    }
+
+    // Initial population (shuffled)
+    populateDeck(true);
   </script>
 </body>
 </html>
