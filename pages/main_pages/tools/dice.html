@@ -3,17 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>3D Sci-Fi Dice Roller</title>
+  <title>3D Dice Roller</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0;}
     body {
-      min-height: 100vh;
-      min-width: 100vw;
-      margin: 0;
-      padding: 0;
       font-family: 'Orbitron', 'Montserrat', 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0d1b2a 30%, #1b263b);
+      background: linear-gradient(135deg, #0d1b2a, #1b263b);
       color: #e0e0e0;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -30,58 +27,46 @@
       0% { background-position: 0 0; }
       100% { background-position: 800px 800px; }
     }
-    h1 {
-      font-family: 'Orbitron', 'Montserrat', sans-serif;
-      font-size: 2.7rem;
-      font-weight: 700;
-      color: #00ffcc;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 6px;
-      margin-top: 18px;
-      text-shadow: 0 0 10px #00ffcc99;
-      animation: glow 2.2s alternate infinite;
-      line-height: 1.1;
+
+    /* Main Container (matches .wheel-container) */
+    .dice-container {
       text-align: center;
-    }
-    p.subheading {
-      font-size: 1.29rem;
-      color: #e0e0e0;
-      opacity: 0.9;
-      text-shadow: 0 0 6px #00ffcc88;
-      margin-bottom: 32px; /* more space below the tagline! */
-      animation: float 3s ease-in-out infinite;
-      text-align: center;
-    }
-    @keyframes glow {
-      0%{ text-shadow: 0 0 7px #00ffcc44,0 0 10px #00ffcc; }
-      100%{ text-shadow: 0 0 18px #00fff866,0 0 28px #00ffcc; }
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0);}
-      50% { transform: translateY(-10px);}
-    }
-    .dice-roller-container {
-      max-width: 400px;
-      width: 98vw;
-      text-align: center;
-      padding: 0 15px 55px 15px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      padding: 50px 20px;
+      max-width: 800px;
+      margin: 0 auto;
       background: rgba(5,32,65,0.07);
       border-radius: 25px;
       box-shadow: 0 0 28px 0 #00ffcc22, 0 0 0 #ff00cc22;
-      margin-top: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
+
+    .dice-container h1 {
+      font-size: 48px;
+      color: #00ffcc;
+      font-family: 'Orbitron', 'Montserrat', sans-serif;
+      text-shadow: 0 0 10px #00ffcc;
+      margin-bottom: 10px;
+    }
+    .dice-container p {
+      font-size: 24px;
+      color: #e0e0e0;
+      text-shadow: 0 0 5px #00ffcc;
+      margin-bottom: 30px;
+      font-family: 'Orbitron', 'Montserrat', 'Poppins', sans-serif;
+    }
+
     .dice-wrapper {
-      perspective: 1000px;
-      margin-bottom: 48px;
-      width: 120px; height: 120px;
+      perspective: 900px;
+      margin-bottom: 44px;
+      width: 120px;
+      height: 120px;
       display: flex;
       justify-content: center;
       align-items: center;
     }
+
     .dice {
       width: 120px;
       height: 120px;
@@ -92,6 +77,7 @@
       user-select: none;
       cursor: pointer;
     }
+
     .face {
       position: absolute;
       width: 120px;
@@ -117,57 +103,58 @@
     .face4 { transform: rotateY(-90deg) translateZ(60px);}
     .face5 { transform: rotateX(90deg) translateZ(60px);}
     .face6 { transform: rotateX(-90deg) translateZ(60px);}
-    .roll-btn {
-      background: linear-gradient(90deg,#00ffcc 55%,#ff00cc 120%);
-      color: #11131b;
-      padding: 18px 38px;
-      font-family: 'Orbitron', sans-serif;
-      letter-spacing: 2px;
-      font-size: 1.08rem;
-      font-weight: 700;
+
+    .button-wrapper {
+      perspective: 1000px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .sci-fi-button {
+      background: linear-gradient(45deg, #00ffcc, #ff007a);
       border: none;
-      border-radius: 20em;
-      text-transform: uppercase;
-      margin: 61px 0 7px 0;
-      box-shadow: 0 0 20px #00ffcc55;
-      cursor: pointer;
-      outline: none;
-      transition: background 0.18s, color 0.14s, transform 0.12s;
-    }
-    .roll-btn:hover {
-      background: linear-gradient(90deg,#ff00cc 35%,#00ffcc 80%);
+      padding: 15px 38px;
+      font-size: 20px;
       color: #fff;
-      transform: scale(1.045);
+      border-radius: 25px;
+      cursor: pointer;
+      margin: 48px 0 0 0;
+      text-transform: uppercase;
+      box-shadow: 0 8px 15px #00ffcc, 0 0 20px rgba(0, 255, 204, 0.5);
+      transition: transform 0.1s, box-shadow 0.1s;
+      transform: translateZ(10px);
+      font-family: 'Orbitron', 'Montserrat', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
     }
-    .roll-btn:active {
-      background: #00ffcc;
-      color: #ff00cc;
-      transform: scale(0.96);
+    .sci-fi-button:hover {
+      box-shadow: 0 10px 25px #ff007a, 0 0 30px rgba(255, 0, 122, 0.5);
+      transform: translateZ(15px) scale(1.05);
     }
+    .sci-fi-button:active {
+      transform: translateZ(0) scale(0.95);
+      box-shadow: 0 2px 5px #00ffcc, 0 0 10px rgba(0, 255, 204, 0.3);
+    }
+
+    /* Responsive */
     @media (max-width: 768px) {
-      h1 { font-size: 1.35rem; }
-      p.subheading { font-size: 1rem; }
-      .dice-wrapper { width: 65px; height: 65px; margin-bottom: 25px;}
+      .dice-container h1 { font-size: 36px; }
+      .dice-container p { font-size: 18px; }
+      .dice-wrapper { width: 65px; height: 65px; margin-bottom: 28px;}
       .dice { width: 65px; height: 65px;}
       .face { width: 65px; height: 65px; font-size: 1.55rem; border-radius: 7px;}
-      .dice-roller-container { max-width: 99vw;}
-      .roll-btn { 
-        padding: 11px 22px; 
-        font-size: 0.93rem;
-        border-radius: 17em;
-        margin-top: 25px;
-      }
-      p.subheading { margin-bottom: 18px; }
+      .sci-fi-button { margin-top: 28px; padding: 12px 23px; font-size: 1.07rem;}
+      .dice-container { padding: 38px 7px; }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Montserrat:wght@600;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="sci-fi-bg"></div>
-  <!-- HEADERS OUTSIDE OF CONTAINER -->
-  <h1>3D Dice Roller</h1>
-  <p class="subheading">Enjoy a virtual dice roll in futuristic cosmic style!</p>
-  <main class="dice-roller-container">
+  <section class="dice-container">
+    <h1>3D Dice Roller</h1>
+    <p>Enjoy a virtual dice roll in futuristic cosmic style!</p>
     <div class="dice-wrapper" aria-live="polite">
       <div class="dice" id="dice" aria-label="Dice shows 1">
         <div class="face face1">1</div>
@@ -178,8 +165,10 @@
         <div class="face face6">6</div>
       </div>
     </div>
-    <button class="roll-btn" onclick="rollDice()" aria-label="Roll the dice">Roll Dice</button>
-  </main>
+    <div class="button-wrapper">
+      <button class="sci-fi-button" onclick="rollDice()" aria-label="Roll the dice">Roll Dice</button>
+    </div>
+  </section>
   <script>
     const dice = document.getElementById('dice');
     const transforms = [
@@ -195,15 +184,14 @@
       let value;
       do {
         value = Math.floor(Math.random() * 6) + 1;
-      } while (value === lastValue); // avoid direct repeat for more feel
+      } while (value === lastValue);
       lastValue = value;
-      // randomize extra spins for drama
       const extraX = Math.floor(Math.random() * 4 + 2) * 360;
       const extraY = Math.floor(Math.random() * 4 + 2) * 360;
       dice.style.transform = `rotateX(${extraX}deg) rotateY(${extraY}deg) ${transforms[value - 1]}`;
       dice.setAttribute('aria-label', `Dice shows ${value}`);
     }
-    // Start facing 1 on load
+    // Initial
     dice.style.transform = transforms[0];
     dice.setAttribute('aria-label', 'Dice shows 1');
   </script>
