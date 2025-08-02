@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Deck of Cards Visualizer – Rahulx.com</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; width: 100%; }
+    body {
+      min-height: 100vh;
+      font-family: 'Orbitron', 'Montserrat', 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0d1b2a, #1b263b);
+      color: #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      padding: 20px;
+      touch-action: manipulation;
+    }
+    .sci-fi-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(circle at 50% 50%, #001f3f55 30%, #000 80%);
+      animation: stars 20s linear infinite;
+    }
+    @keyframes stars { 0% { background-position: 0 0; } 100% { background-position: 1000px 1000px; } }
+    header {
+      text-align: center;
+      padding: 20px 0;
+    }
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      color: #00ffcc;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px #00ffccaa;
+      margin: 20px 0 10px;
+    }
+    .tagline {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      color: #b0e9e4;
+      opacity: 0.9;
+      margin-bottom: 20px;
+      max-width: 90%;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .card-container {
+      width: 100%;
+      max-width: 100vw;
+      margin: 20px 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
+      padding: 20px;
+      background: rgba(5, 32, 65, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 0 15px #00ffcc22;
+      scrollbar-width: thin;
+      scrollbar-color: #00ffcc #1b263b;
+    }
+    .card-container::-webkit-scrollbar {
+      height: 8px;
+    }
+    .card-container::-webkit-scrollbar-thumb {
+      background: #00ffcc;
+      border-radius: 4px;
+    }
+    .card-container::-webkit-scrollbar-track {
+      background: #1b263b;
+    }
+    .suit-group {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 20px;
+    }
+    .suit-group:last-child {
+      margin-right: 0;
+    }
+    .suit-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      color: #00ffcc;
+      text-align: center;
+      margin-bottom: 15px;
+      text-shadow: 0 0 6px #00ffcc66;
+    }
+    .card {
+      width: 80px;
+      height: 120px;
+      background: linear-gradient(145deg, #ffffff, #e6e6e6);
+      border-radius: 8px;
+      border: 1px solid #333;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), inset 0 0 5px rgba(255, 255, 255, 0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 8px;
+      margin-bottom: 10px;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4), 0 0 12px #ff007a66;
+    }
+    .card-value {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1;
+      position: absolute;
+    }
+    .card-value.top {
+      top: 8px;
+      left: 8px;
+    }
+    .card-value.bottom {
+      bottom: 8px;
+      right: 8px;
+      transform: rotate(180deg);
+    }
+    .card-suit {
+      font-size: 2rem;
+      text-align: center;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card.red .card-value, .card.red .card-suit { color: #d00000; }
+    .card.black .card-value, .card.black .card-suit { color: #000; }
+    .sci-fi-button {
+      background: linear-gradient(45deg, #00ffcc, #ff007a);
+      border: none;
+      padding: 12px 30px;
+      font-size: 1rem;
+      color: #fff;
+      border-radius: 15px;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      box-shadow: 0 0 12px #00ffcc66;
+      transition: transform 0.2s, box-shadow 0.2s;
+      min-width: 130px;
+      margin: 25px 0;
+    }
+    .sci-fi-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #ff007a66;
+    }
+    .sci-fi-button:active { transform: scale(0.95); }
+    .facts-section {
+      max-width: 90%;
+      margin: 20px 0;
+      padding: 15px;
+      background: rgba(5, 32, 65, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 0 15px #00ffcc22;
+    }
+    .facts-section h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: #00ffcc;
+      margin-bottom: 15px;
+      text-shadow: 0 0 6px #00ffcc66;
+    }
+    .facts-section ul {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      color: #b0e9e4;
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+    .facts-section li {
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      color: #b0e9e4;
+    }
+    @media (max-width: 600px) {
+      body { padding: 15px; }
+      h1 { font-size: 1.8rem; margin: 15px 0 10px; }
+      .tagline { font-size: 1rem; margin-bottom: 20px; }
+      .card-container { padding: 15px; margin: 15px 0; }
+      .suit-title { font-size: 1rem; margin-bottom: 10px; }
+      .card { width: 65px; height: 98px; padding: 6px; margin-bottom: 8px; }
+      .card-value { font-size: 1rem; }
+      .card-value.top { top: 6px; left: 6px; }
+      .card-value.bottom { bottom: 6px; right: 6px; }
+      .card-suit { font-size: 1.6rem; }
+      .sci-fi-button { padding: 10px 25px; font-size: 0.9rem; min-width: 120px; margin: 20px 0; }
+      .facts-section { padding: 10px; }
+      .facts-section h2 { font-size: 1.3rem; }
+      .facts-section ul { font-size: 0.8rem; }
+      footer { font-size: 0.8rem; padding: 15px 0; }
+    }
+    @media (max-width: 400px) {
+      h1 { font-size: 1.6rem; }
+      .tagline { font-size: 0.9rem; }
+      .card-container { padding: 10px; }
+      .suit-title { font-size: 0.9rem; }
+      .card { width: 55px; height: 82px; padding: 5px; }
+      .card-value { font-size: 0.8rem; }
+      .card-value.top { top: 5px; left: 5px; }
+      .card-value.bottom { bottom: 5px; right: 5px; }
+      .card-suit { font-size: 1.4rem; }
+      .sci-fi-button { padding: 8px 20px; font-size: 0.8rem; min-width: 110px; margin: 15px 0; }
+      .facts-section h2 { font-size: 1.1rem; }
+      .facts-section ul { font-size: 0.7rem; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Montserrat:wght@600;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="sci-fi-bg"></div>
+  <header>
+    <h1>Deck of Cards Visualizer</h1>
+    <p class="tagline">Scroll to explore all 52 cards grouped by suit!</p>
+  </header>
+  <main>
+    <div class="card-container" id="card-container">
+      <div class="suit-group" id="spades">
+        <div class="suit-title">Spades ♠</div>
+      </div>
+      <div class="suit-group" id="hearts">
+        <div class="suit-title">Hearts ♥</div>
+      </div>
+      <div class="suit-group" id="clubs">
+        <div class="suit-title">Clubs ♣</div>
+      </div>
+      <div class="suit-group" id="diamonds">
+        <div class="suit-title">Diamonds ♦</div>
+      </div>
+    </div>
+    <button class="sci-fi-button" onclick="shuffleAndRedraw()" aria-label="Shuffle and redraw cards">Shuffle Cards</button>
+    <section class="facts-section">
+      <h2>Probability Facts for Cards</h2>
+      <ul>
+        <li>Total cards: 52 (4 suits × 13 ranks).</li>
+        <li>Probability of drawing a specific card (e.g., Ace of Spades): 1/52 ≈ 0.0192 (1.92%).</li>
+        <li>Probability of drawing a specific suit (e.g., Hearts): 13/52 = 1/4 = 0.25 (25%).</li>
+        <li>Probability of drawing a face card (J, Q, K): 12/52 = 3/13 ≈ 0.2308 (23.08%).</li>
+        <li>Probability of drawing an Ace: 4/52 = 1/13 ≈ 0.0769 (7.69%).</li>
+        <li>Probability of drawing a red card (Hearts or Diamonds): 26/52 = 1/2 = 0.5 (50%).</li>
+        <li>Probability of drawing a card of a specific rank (e.g., any 7): 4/52 = 1/13 ≈ 0.0769 (7.69%).</li>
+        <li>With replacement, probabilities remain constant; without replacement, they change (e.g., after drawing one card, 51 cards remain).</li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 Rahulx.com. All rights reserved. | <a href="#privacy" style="color: #00ffcc;">Privacy Policy</a></p>
+  </footer>
+  <script>
+    const suits = [
+      { name: 'spades', symbol: '♠', color: 'black' },
+      { name: 'hearts', symbol: '♥', color: 'red' },
+      { name: 'clubs', symbol: '♣', color: 'black' },
+      { name: 'diamonds', symbol: '♦', color: 'red' }
+    ];
+    const values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+
+    function createCard(value, suit, color) {
+      const card = document.createElement('div');
+      card.className = `card ${color}`;
+      card.innerHTML = `
+        <div class="card-value top">${value}</div>
+        <div class="card-suit">${suit}</div>
+        <div class="card-value bottom">${value}</div>
+      `;
+      card.setAttribute('aria-label', `${value} of ${suit}`);
+      return card;
+    }
+
+    function populateDeck() {
+      const container = document.getElementById('card-container');
+      container.innerHTML = '';
+      suits.forEach(suit => {
+        const suitGroup = document.createElement('div');
+        suitGroup.className = 'suit-group';
+        suitGroup.id = suit.name;
+        suitGroup.innerHTML = `<div class="suit-title">${suit.name.charAt(0).toUpperCase() + suit.name.slice(1)} ${suit.symbol}</div>`;
+        const cards = values.map(value => createCard(value, suit.symbol, suit.color));
+        // Shuffle cards within suit
+        for (let i = cards.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [cards[i], cards[j]] = [cards[j], cards[i]];
+        }
+        cards.forEach(card => suitGroup.appendChild(card));
+        container.appendChild(suitGroup);
+      });
+    }
+
+    function shuffleAndRedraw() {
+      populateDeck();
+    }
+
+    // Initial population
+    populateDeck();
+  </script>
+</body>
+</html>
