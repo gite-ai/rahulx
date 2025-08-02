@@ -15,11 +15,10 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       overflow-x: hidden;
-      padding-top: 32px;
-      padding-bottom: 32px;
       box-sizing: border-box;
+      padding: 0;
     }
     .sci-fi-bg {
       pointer-events: none; position: fixed; inset: 0; z-index: -1;
@@ -30,35 +29,34 @@
     h1 {
       font-family: 'Orbitron', 'Montserrat', sans-serif;
       font-weight: 700; font-size: 2.3rem; color: #00ffcc; text-transform: uppercase;
-      letter-spacing: 2px; margin-bottom: 14px; margin-top: 18px;
+      letter-spacing: 2px; margin-bottom: 16px; margin-top: 38px;
       text-shadow: 0 0 12px #00ffccaa; user-select: none; text-align: center;
+      line-height: 1.13;
     }
     p.tagline {
-      font-family: 'Poppins', sans-serif; font-size: 1.15rem; color: #b0e9e4; opacity: 0.9;
-      margin-bottom: 48px; max-width: 600px; user-select: none; text-align: center; line-height: 1.4;
+      font-family: 'Poppins', sans-serif; font-size: 1.13rem; color: #b0e9e4; opacity: 0.9;
+      margin-bottom: 50px; margin-top: 0; max-width: 600px; user-select: none; text-align: center; line-height: 1.45;
     }
     .dice-card {
-      background: rgba(5, 32, 65, 0.11);
+      background: rgba(5, 32, 65, 0.12);
       border-radius: 26px;
       box-shadow: 0 0 28px 0 #00ffcc22, 0 0 8px #ff00cc33;
-      padding: 40px 28px 32px 28px;
-      max-width: 340px;
+      padding: 48px 33px 38px 33px;
+      max-width: 355px;
       width: 100%;
-      margin: 0 auto 40px auto;
+      margin: 0 auto 48px auto;
       display: flex;
       flex-direction: column;
       align-items: center;
       user-select: none;
       box-sizing: border-box;
     }
-    .dice-card:last-of-type {
-      margin-bottom: 0;
-    }
+    .dice-card:last-of-type { margin-bottom: 0; }
     .dice-label {
       color: #a0ffea; text-align: center;
       font-family: 'Orbitron', 'Montserrat', sans-serif;
-      font-size: 1.22rem; font-weight: 600;
-      letter-spacing: 1px; margin-bottom: 27px;
+      font-size: 1.21rem; font-weight: 600;
+      letter-spacing: 1px; margin-bottom: 29px;
       user-select: none; text-shadow: 0 0 6px #00ffcc66;
     }
     .dice-wrapper {
@@ -79,14 +77,15 @@
       box-shadow: 0 0 18px #00ffcc44, 0 0 11px #ff00cc33;
       cursor: pointer;
       border-radius: 15px;
+      background: transparent;
     }
     .dice.user-control {
       transition: transform 0.28s cubic-bezier(.27,.7,.55,1.34);
       border: 2.5px solid #ff007a;
+      background: transparent;
     }
     .face {
-      position: absolute;
-      width: 120px; height: 120px;
+      position: absolute; width: 120px; height: 120px;
       background: linear-gradient(135deg, #00ffcc99 50%, #110e24 130%);
       border-radius: 15px; border: 2.7px solid #00ffcc;
       box-shadow: 0 0 24px #00ffcc44, 0 0 11px #ff00cc33; color: #fff;
@@ -102,14 +101,14 @@
     .face6 { transform: rotateX(-90deg) translateZ(60px);}
     .sci-fi-button {
       background: linear-gradient(45deg, #00ffcc, #ff007a);
-      border: none; padding: 16px 38px; font-size: 1.08rem;
+      border: none; padding: 18px 40px; font-size: 1.08rem;
       color: #fff; border-radius: 25px; cursor: pointer;
-      text-transform: uppercase; margin: 12px 0 8px 0;
+      text-transform: uppercase; margin: 23px 0 10px 0;
       box-shadow: 0 8px 15px #00ffcccc, 0 0 24px rgba(0,255,204,0.6);
       transition: transform 0.12s, box-shadow 0.12s;
       letter-spacing: 2px; font-family: 'Orbitron', 'Montserrat', sans-serif;
       font-weight: 700; user-select: none; outline: none;
-      min-width: 150px;
+      min-width: 160px;
     }
     .sci-fi-button:hover {
       box-shadow: 0 12px 32px #ff007ab3, 0 0 42px rgba(255, 0, 122, 0.7);
@@ -117,26 +116,28 @@
     }
     .sci-fi-button:active { transform: scale(0.95);}
     .opposite-label {
-      font-size: 1.10rem; color: #80ffd0;
-      text-align: center; margin-top: 15px;
+      font-size: 1.12rem; color: #80ffd0;
+      text-align: center; margin-top: 22px;
       font-family: 'Poppins', sans-serif; user-select: none;
       text-shadow: 0 0 10px #00ffcc33;
       background: rgba(0,255,204,0.14);
-      border-radius: 8px; padding: 6px 0 3px;
-      max-width: 130px;
-      min-height: 27px;
+      border-radius: 8px; padding: 8px 0 4px;
+      max-width: 150px;
+      min-height: 25px;
       letter-spacing: .5px;
     }
-    @media (max-width: 500px) {
-      h1 { font-size: 1.28rem; }
-      p.tagline { font-size: .94rem; margin-bottom: 17px;}
-      .dice-card { max-width: 99vw; padding: 17px 3px 14px; border-radius: 15px;}
-      .dice-label { font-size: 1rem; margin-bottom: 15px;}
+
+    @media (max-width: 600px) {
+      body { padding-top: 18px; padding-bottom: 14px;}
+      h1 { font-size: 1.32rem; margin-top: 18px; margin-bottom: 10px;}
+      p.tagline { font-size: .95rem; margin-bottom: 18px;}
+      .dice-card { max-width: 99vw; padding: 22px 5px 15px 5px; border-radius: 11px; margin-bottom: 25px;}
+      .dice-label { font-size: .98rem; margin-bottom: 12px;}
       .dice-wrapper { width: 68px; height: 68px; margin-bottom: 12px;}
       .dice { width: 68px; height: 68px; }
       .face { width: 68px; height: 68px; font-size: 1.5rem; border-radius: 7px;}
-      .opposite-label { font-size: .88rem; margin-top: 6px; min-height: 18px;}
-      .sci-fi-button { font-size: .96rem; padding: 10px 10px; min-width: 98px;}
+      .opposite-label { font-size: .89rem; margin-top: 7px; min-height: 15px;}
+      .sci-fi-button { font-size: .97rem; padding: 12px 13px; min-width: 96px;}
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Montserrat:wght@600;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
@@ -180,7 +181,7 @@
       </div>
     </div>
     <button class="sci-fi-button" type="button" aria-label="Rotate the dice" style="pointer-events: none; opacity: 0.58;">Free Rotate</button>
-    <!-- NO opposite face label here as requested -->
+    <!-- NO opposite face label -->
   </div>
 
   <script>
@@ -215,16 +216,6 @@
     // --- Dice 2: Interactive orientation cube ---
     const dice2 = document.getElementById('dice2');
     let rotX = 0, rotY = 0;
-    function getUserDiceFace(rx, ry) {
-      rx = ((rx % 360) + 360) % 360; ry = ((ry % 360) + 360) % 360;
-      if ((rx > 315 || rx < 45) && (ry > 315 || ry < 45)) return 1;
-      if ((rx > 315 || rx < 45) && (ry > 45 && ry < 135)) return 2;
-      if ((rx > 315 || rx < 45) && (ry > 135 && ry < 225)) return 3;
-      if ((rx > 315 || rx < 45) && (ry > 225 && ry < 315)) return 4;
-      if (rx > 45 && rx < 135) return 5;
-      if (rx > 225 && rx < 315) return 6;
-      return 1;
-    }
     dice2.style.transform = 'rotateX(0deg) rotateY(0deg)';
     // Touch/drag controls for Dice 2
     let isDragging = false, startX, startY, startRotX, startRotY;
