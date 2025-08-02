@@ -1,132 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>3D Dice Roller</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpinWheel</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0;}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Orbitron', 'Montserrat', 'Poppins', sans-serif;
+      font-family: 'Orbitron', sans-serif;
       background: linear-gradient(135deg, #0d1b2a, #1b263b);
       color: #e0e0e0;
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      min-height: 100vh;
       overflow-x: hidden;
     }
-    .sci-fi-bg {
-      position: fixed; inset: 0;
-      z-index: -1;
-      background: radial-gradient(circle at 55% 40%, #001f3f55 40%, #000 90%);
-      animation: stars 14s linear infinite;
-    }
-    @keyframes stars {
-      0% { background-position: 0 0; }
-      100% { background-position: 800px 800px; }
-    }
-
-    /* Main Container (matches .wheel-container) */
-    .dice-container {
+    .wheel-container {
       text-align: center;
       padding: 50px 20px;
       max-width: 800px;
       margin: 0 auto;
-      background: rgba(5,32,65,0.07);
-      border-radius: 25px;
-      box-shadow: 0 0 28px 0 #00ffcc22, 0 0 0 #ff00cc22;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
-
-    .dice-container h1 {
+    .wheel-container h1 {
       font-size: 48px;
       color: #00ffcc;
-      font-family: 'Orbitron', 'Montserrat', sans-serif;
       text-shadow: 0 0 10px #00ffcc;
       margin-bottom: 10px;
     }
-    .dice-container p {
+    .wheel-container p {
       font-size: 24px;
       color: #e0e0e0;
       text-shadow: 0 0 5px #00ffcc;
-      margin-bottom: 30px;
-      font-family: 'Orbitron', 'Montserrat', 'Poppins', sans-serif;
+      margin-bottom: 20px;
     }
-
-    .dice-wrapper {
-      perspective: 900px;
-      margin-bottom: 44px;
-      width: 120px;
-      height: 120px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .dice {
-      width: 120px;
-      height: 120px;
+    .wheel {
       position: relative;
-      transform-style: preserve-3d;
-      transition: transform 1.2s cubic-bezier(.19,.89,.61,1.09);
-      box-shadow: 0 0 18px #00ffcc44, 0 0 11px #ff00cc33;
-      user-select: none;
-      cursor: pointer;
+      width: 400px;
+      height: 400px;
+      margin: 0 auto;
     }
-
-    .face {
+    .wheel-canvas { width: 100%; height: 100%; }
+    .arrow {
       position: absolute;
-      width: 120px;
-      height: 120px;
-      background: linear-gradient(135deg, #00ffcc99 50%, #110e24 130%);
-      border-radius: 15px;
-      border: 2.7px solid #00ffcc;
-      box-shadow: 0 0 24px #00ffcc44, 0 0 11px #ff00cc33;
-      color: #fff;
-      font-family: 'Orbitron', 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 3.4rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-shadow: 0 0 19px #00ffff, 0 0 5px #fff;
-      user-select: none;
-      pointer-events: none;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 50px solid #ffffff;
+      z-index: 10;
     }
-    .face1 { transform: rotateY(0deg) translateZ(60px);}
-    .face2 { transform: rotateY(90deg) translateZ(60px);}
-    .face3 { transform: rotateY(180deg) translateZ(60px);}
-    .face4 { transform: rotateY(-90deg) translateZ(60px);}
-    .face5 { transform: rotateX(90deg) translateZ(60px);}
-    .face6 { transform: rotateX(-90deg) translateZ(60px);}
-
+    .magnifier-canvas {
+      position: absolute;
+      bottom: unset; /* Avoid bottom overlap */
+      left: calc(50% + 220px); /* Right of the wheel */
+      top: 50%;
+      transform: translateY(-50%); /* Center vertically */
+      width: 80px;
+      height: 80px;
+      border: 2px solid #00ffcc;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00ffcc;
+      z-index: 10;
+    }
     .button-wrapper {
       perspective: 1000px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
     }
-
     .sci-fi-button {
       background: linear-gradient(45deg, #00ffcc, #ff007a);
       border: none;
-      padding: 15px 38px;
-      font-size: 20px;
+      padding: 15px 30px;
+      font-size: 18px;
       color: #fff;
       border-radius: 25px;
       cursor: pointer;
-      margin: 48px 0 0 0;
+      margin: 80px 0 20px;
       text-transform: uppercase;
       box-shadow: 0 8px 15px #00ffcc, 0 0 20px rgba(0, 255, 204, 0.5);
       transition: transform 0.1s, box-shadow 0.1s;
       transform: translateZ(10px);
-      font-family: 'Orbitron', 'Montserrat', sans-serif;
-      font-weight: 700;
-      letter-spacing: 2px;
     }
     .sci-fi-button:hover {
       box-shadow: 0 10px 25px #ff007a, 0 0 30px rgba(255, 0, 122, 0.5);
@@ -136,38 +91,76 @@
       transform: translateZ(0) scale(0.95);
       box-shadow: 0 2px 5px #00ffcc, 0 0 10px rgba(0, 255, 204, 0.3);
     }
-
-    /* Responsive */
+    .input-container { margin-bottom: 20px; }
+    .input-container input {
+      padding: 10px;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid #00ffcc;
+      color: #fff;
+      border-radius: 5px;
+      width: 100px;
+      text-align: center;
+      -webkit-appearance: textfield;
+    }
+    .input-container input::-webkit-inner-spin-button,
+    .input-container input::-webkit-outer-spin-button {
+      -webkit-appearance: inner-spin-button;
+      opacity: 1;
+      margin: 0;
+      cursor: pointer;
+    }
+    .winner-message {
+      font-size: 36px;
+      color: #00ffcc;
+      text-shadow: 0 0 10px #00ffcc;
+      margin-top: 20px;
+      animation: pulse 1.5s infinite;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .winner-message.show { opacity: 1; }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
     @media (max-width: 768px) {
-      .dice-container h1 { font-size: 36px; }
-      .dice-container p { font-size: 18px; }
-      .dice-wrapper { width: 65px; height: 65px; margin-bottom: 28px;}
-      .dice { width: 65px; height: 65px;}
-      .face { width: 65px; height: 65px; font-size: 1.55rem; border-radius: 7px;}
-      .sci-fi-button { margin-top: 28px; padding: 12px 23px; font-size: 1.07rem;}
-      .dice-container { padding: 38px 7px; }
+      .wheel-container h1 { font-size: 36px; }
+      .wheel-container p { font-size: 18px; }
+      .wheel { width: 300px; height: 300px; }
+      .wheel-canvas { width: 300px; height: 300px; }
+      .magnifier-canvas {
+        width: 60px;
+        height: 60px;
+        left: calc(50% + 160px); /* Adjusted for smaller wheel */
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .sci-fi-button { margin: 60px 0 20px; }
+      .input-container input {
+        width: 120px;
+        padding: 8px;
+      }
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Montserrat:wght@600;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div class="sci-fi-bg"></div>
-  <section class="dice-container">
-    <h1>3D Dice Roller</h1>
-    <p>Enjoy a virtual dice roll in futuristic cosmic style!</p>
-    <div class="dice-wrapper" aria-live="polite">
-      <div class="dice" id="dice" aria-label="Dice shows 1">
-        <div class="face face1">1</div>
-        <div class="face face2">2</div>
-        <div class="face face3">3</div>
-        <div class="face face4">4</div>
-        <div class="face face5">5</div>
-        <div class="face face6">6</div>
-      </div>
+  <section class="wheel-container">
+    <h1>SpinWheel</h1>
+    <p>Unleash the Future: Spin to Discover Your Destiny</p>
+    <div class="input-container">
+      <input type="number" id="memberCount" min="1" max="100" value="8" placeholder="Members (1-100)">
+    </div>
+    <div class="wheel">
+      <canvas class="wheel-canvas" width="400" height="400"></canvas>
+      <div class="arrow"></div>
+      <canvas class="magnifier-canvas" width="80" height="80"></canvas>
     </div>
     <div class="button-wrapper">
-      <button class="sci-fi-button" onclick="rollDice()" aria-label="Roll the dice">Roll Dice</button>
+      <button class="sci-fi-button" onclick="spinWheel()">Spin the Wheel</button>
     </div>
+    <div class="winner-message" id="winnerMessage">0</div>
   </section>
   <script>
     const dice = document.getElementById('dice');
