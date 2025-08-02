@@ -16,7 +16,7 @@
       flex-direction: column;
       align-items: center;
       overflow-x: hidden;
-      padding: 15px;
+      padding: 20px;
     }
     .sci-fi-bg {
       position: fixed;
@@ -28,7 +28,7 @@
     @keyframes stars { 0% { background-position: 0 0; } 100% { background-position: 1000px 1000px; } }
     header {
       text-align: center;
-      padding: 15px 0;
+      padding: 20px 0;
     }
     h1 {
       font-family: 'Orbitron', sans-serif;
@@ -37,14 +37,14 @@
       text-transform: uppercase;
       letter-spacing: 2px;
       text-shadow: 0 0 10px #00ffccaa;
-      margin: 15px 0 10px;
+      margin: 20px 0 10px;
     }
     .tagline {
       font-family: 'Poppins', sans-serif;
       font-size: 1.1rem;
       color: #b0e9e4;
       opacity: 0.9;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
       max-width: 90%;
       text-align: center;
       line-height: 1.4;
@@ -53,21 +53,13 @@
       background: rgba(5, 32, 65, 0.9);
       border-radius: 12px;
       box-shadow: 0 0 15px #00ffcc22;
-      padding: 20px;
-      max-width: 350px;
+      padding: 25px;
       width: 100%;
-      margin: 15px auto;
+      max-width: 100vw;
+      margin: 20px 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-    .dice-label {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.3rem;
-      color: #00ffcc;
-      letter-spacing: 1px;
-      margin-bottom: 20px;
-      text-shadow: 0 0 6px #00ffcc66;
     }
     .dice-wrapper {
       perspective: 1000px;
@@ -76,7 +68,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
     .dice {
       width: 120px;
@@ -125,7 +117,7 @@
       box-shadow: 0 0 12px #00ffcc66;
       transition: transform 0.2s, box-shadow 0.2s;
       min-width: 130px;
-      margin-top: 20px; /* Added spacing above button */
+      margin: 25px 0;
     }
     .sci-fi-button:hover {
       transform: scale(1.05);
@@ -141,7 +133,7 @@
       font-size: 1rem;
       color: #80ffd0;
       text-align: center;
-      margin-top: 15px;
+      margin-top: 20px;
       background: rgba(0, 255, 204, 0.1);
       border-radius: 6px;
       padding: 5px;
@@ -149,31 +141,30 @@
     }
     footer {
       text-align: center;
-      padding: 15px 0;
+      padding: 20px 0;
       font-family: 'Poppins', sans-serif;
       font-size: 0.9rem;
       color: #b0e9e4;
     }
     @media (max-width: 600px) {
-      body { padding: 10px; }
-      h1 { font-size: 1.8rem; margin: 10px 0; }
-      .tagline { font-size: 1rem; margin-bottom: 15px; }
-      .dice-card { padding: 18px; max-width: 95vw; margin: 10px auto; }
-      .dice-label { font-size: 1.2rem; margin-bottom: 15px; }
-      .dice-wrapper { width: 100px; height: 100px; margin-bottom: 15px; }
+      body { padding: 15px; }
+      h1 { font-size: 1.8rem; margin: 15px 0 10px; }
+      .tagline { font-size: 1rem; margin-bottom: 20px; }
+      .dice-card { padding: 20px; margin: 15px 0; }
+      .dice-wrapper { width: 100px; height: 100px; margin-bottom: 25px; }
       .dice, .face { width: 100px; height: 100px; font-size: 2.5rem; border-radius: 8px; }
-      .sci-fi-button { padding: 10px 25px; font-size: 0.9rem; min-width: 120px; margin-top: 15px; }
-      .opposite-label { font-size: 0.9rem; margin-top: 10px; padding: 4px; }
-      footer { font-size: 0.8rem; padding: 10px 0; }
+      .sci-fi-button { padding: 10px 25px; font-size: 0.9rem; min-width: 120px; margin: 20px 0; }
+      .opposite-label { font-size: 0.9rem; margin-top: 15px; padding: 4px; }
+      footer { font-size: 0.8rem; padding: 15px 0; }
     }
     @media (max-width: 400px) {
       h1 { font-size: 1.6rem; }
       .tagline { font-size: 0.9rem; }
       .dice-card { padding: 15px; }
-      .dice-wrapper { width: 90px; height: 90px; }
+      .dice-wrapper { width: 90px; height: 90px; margin-bottom: 20px; }
       .dice, .face { width: 90px; height: 90px; font-size: 2.2rem; }
-      .sci-fi-button { padding: 8px 20px; font-size: 0.8rem; min-width: 110px; margin-top: 12px; }
-      .opposite-label { font-size: 0.8rem; }
+      .sci-fi-button { padding: 8px 20px; font-size: 0.8rem; min-width: 110px; margin: 15px 0; }
+      .opposite-label { font-size: 0.8rem; margin-top: 12px; }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Montserrat:wght@600;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
@@ -186,7 +177,6 @@
   </header>
   <main>
     <div class="dice-card">
-      <div class="dice-label">Roll Dice</div>
       <div class="dice-wrapper">
         <div class="dice" id="dice" tabindex="0" aria-label="Dice shows 1" role="img">
           <div class="face face1">1</div>
@@ -197,11 +187,10 @@
           <div class="face face6">6</div>
         </div>
       </div>
-      <button class="sci-fi-button" onclick="rollDice()" aria-label="Roll the dice">Roll Dice</button>
       <div class="opposite-label" id="opposite1">Opposite face: 6</div>
     </div>
+    <button class="sci-fi-button" onclick="rollDice()" aria-label="Roll the dice">Roll Dice</button>
     <div class="dice-card">
-      <div class="dice-label">Free Rotate</div>
       <div class="dice-wrapper">
         <div class="dice user-control" id="dice2" tabindex="0" aria-label="User-controlled dice shows 1" role="img">
           <div class="face face1">1</div>
@@ -212,8 +201,8 @@
           <div class="face face6">6</div>
         </div>
       </div>
-      <button class="sci-fi-button disabled" aria-label="Rotate the dice">Free Rotate</button>
     </div>
+    <button class="sci-fi-button disabled" aria-label="Rotate the dice">Free Rotate</button>
   </main>
   <footer>
     <p>© 2025 Rahulx.com. All rights reserved. | <a href="#privacy" style="color: #00ffcc;">Privacy Policy</a></p>
