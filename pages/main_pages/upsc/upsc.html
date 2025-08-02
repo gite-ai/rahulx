@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPSC Prep Hub - Civil Services Preparation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>🎓 UPSC Prep Hub</h1>
+                </div>
+                <nav class="nav-menu">
+                    <button class="nav-item active" data-section="dashboard">Dashboard</button>
+                    <button class="nav-item" data-section="constitution">Constitution</button>
+                    <button class="nav-item" data-section="current-affairs">Current Affairs</button>
+                    <button class="nav-item" data-section="general-studies">General Studies</button>
+                    <button class="nav-item" data-section="optional-subjects">Optional</button>
+                    <button class="nav-item" data-section="literature">Literature</button>
+                    <button class="nav-item" data-section="resources">Resources</button>
+                </nav>
+                <div class="header-actions">
+                    <button class="search-btn" onclick="toggleSearch()">🔍</button>
+                    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+                    <button class="settings-btn" onclick="openSettings()">⚙️</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="search-container hidden">
+        <div class="container">
+            <input type="text" class="search-input" placeholder="Search topics, subjects, or content..." id="searchInput">
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Section -->
+        <section class="section active" id="dashboard">
+            <div class="container">
+                <div class="welcome-section">
+                    <h2>Welcome to UPSC Prep Hub</h2>
+                    <p>Your comprehensive platform for civil services examination preparation</p>
+                </div>
+
+                <!-- Study Statistics -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">450</div>
+                        <div class="stat-label">Total Topics</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">180</div>
+                        <div class="stat-label">Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">240</div>
+                        <div class="stat-label">Study Hours</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">15</div>
+                        <div class="stat-label">Tests Taken</div>
+                    </div>
+                </div>
+
+                <!-- Quick Access Cards -->
+                <div class="sections-grid">
+                    <div class="section-card" data-section="constitution">
+                        <div class="section-icon">⚖️</div>
+                        <h3>Indian Constitution</h3>
+                        <p>Complete study of Indian Constitution with articles, amendments, and analysis</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <div class="section-card" data-section="current-affairs">
+                        <div class="section-icon">📰</div>
+                        <h3>Current Affairs</h3>
+                        <p>Latest developments in national and international affairs</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 45%"></div>
+                        </div>
+                    </div>
+                    <div class="section-card" data-section="general-studies">
+                        <div class="section-icon">📚</div>
+                        <h3>General Studies</h3>
+                        <p>Comprehensive coverage of all GS papers for UPSC Mains</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 30%"></div>
+                        </div>
+                    </div>
+                    <div class="section-card" data-section="optional-subjects">
+                        <div class="section-icon">🎯</div>
+                        <h3>Optional Subjects</h3>
+                        <p>Detailed study materials for UPSC optional subjects</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 20%"></div>
+                        </div>
+                    </div>
+                    <div class="section-card" data-section="literature">
+                        <div class="section-icon">✍️</div>
+                        <h3>Literature & Essays</h3>
+                        <p>Essay writing, comprehension, and literature study</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 55%"></div>
+                        </div>
+                    </div>
+                    <div class="section-card" data-section="resources">
+                        <div class="section-icon">📖</div>
+                        <h3>Study Resources</h3>
+                        <p>Additional study materials and examination resources</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 40%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Updates -->
+                <div class="recent-updates">
+                    <h3>Recent Updates</h3>
+                    <div class="updates-list">
+                        <div class="update-item">
+                            <div class="update-date">Feb 01, 2024</div>
+                            <div class="update-title">Union Budget 2024-25 Analysis</div>
+                            <div class="update-category">Current Affairs</div>
+                        </div>
+                        <div class="update-item">
+                            <div class="update-date">Jan 28, 2024</div>
+                            <div class="update-title">New Constitutional Amendment Bill</div>
+                            <div class="update-category">Constitution</div>
+                        </div>
+                        <div class="update-item">
+                            <div class="update-date">Jan 25, 2024</div>
+                            <div class="update-title">Climate Change Report 2024</div>
+                            <div class="update-category">Environment</div>
+                        </div>
+                        <div class="update-item">
+                            <div class="update-date">Jan 20, 2024</div>
+                            <div class="update-title">Foreign Policy Updates</div>
+                            <div class="update-category">International Relations</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Constitution Section -->
+        <section class="section" id="constitution">
+            <div class="container">
+                <div class="section-header">
+                    <h2>⚖️ Indian Constitution</h2>
+                    <p>Complete study of Indian Constitution with articles, amendments, and analysis</p>
+                </div>
+                <div class="categories-grid" id="constitution-categories">
+                    <!-- Categories will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Affairs Section -->
+        <section class="section" id="current-affairs">
+            <div class="container">
+                <div class="section-header">
+                    <h2>📰 Current Affairs</h2>
+                    <p>Latest developments in national and international affairs</p>
+                </div>
+                <div class="categories-grid" id="current-affairs-categories">
+                    <!-- Categories will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- General Studies Section -->
+        <section class="section" id="general-studies">
+            <div class="container">
+                <div class="section-header">
+                    <h2>📚 General Studies</h2>
+                    <p>Comprehensive coverage of all GS papers for UPSC Mains</p>
+                </div>
+                <div class="categories-grid" id="general-studies-categories">
+                    <!-- Categories will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Optional Subjects Section -->
+        <section class="section" id="optional-subjects">
+            <div class="container">
+                <div class="section-header">
+                    <h2>🎯 Optional Subjects</h2>
+                    <p>Detailed study materials for UPSC optional subjects</p>
+                </div>
+                <div class="categories-grid" id="optional-subjects-categories">
+                    <!-- Categories will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Literature Section -->
+        <section class="section" id="literature">
+            <div class="container">
+                <div class="section-header">
+                    <h2>✍️ Literature & Essays</h2>
+                    <p>Essay writing, comprehension, and literature study</p>
+                </div>
+                <div class="categories-grid" id="literature-categories">
+                    <!-- Categories will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section class="section" id="resources">
+            <div class="container">
+                <div class="section-header">
+                    <h2>📖 Study Resources</h2>
+                    <p>Additional study materials and examination resources</p>
+                </div>
+                <div class="categories-grid" id="resources-categories">
+                    <!-- Categories will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Study Timer -->
+    <div class="study-timer">
+        <div class="timer-display" id="timerDisplay">00:00:00</div>
+        <div class="timer-controls">
+            <button class="timer-btn" onclick="startTimer()">▶️</button>
+            <button class="timer-btn" onclick="pauseTimer()">⏸️</button>
+            <button class="timer-btn" onclick="resetTimer()">⏹️</button>
+        </div>
+    </div>
+
+    <!-- Modal for Content Details -->
+    <div class="modal hidden" id="contentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle"></h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--primary" onclick="bookmarkTopic()">📖 Bookmark</button>
+                <button class="btn btn--secondary" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal hidden" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Settings</h3>
+                <button class="modal-close" onclick="closeSettings()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h4>Appearance</h4>
+                    <div class="form-group">
+                        <label class="form-label">Theme</label>
+                        <select class="form-control" id="themeSelect">
+                            <option value="auto">Auto</option>
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <h4>Study Preferences</h4>
+                    <div class="form-group">
+                        <label class="form-label">Daily Study Goal (hours)</label>
+                        <input type="number" class="form-control" id="studyGoal" min="1" max="12" value="4">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Notification Reminders</label>
+                        <select class="form-control" id="notifications">
+                            <option value="enabled">Enabled</option>
+                            <option value="disabled">Disabled</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--primary" onclick="saveSettings()">Save Settings</button>
+                <button class="btn btn--secondary" onclick="closeSettings()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
