@@ -17,6 +17,7 @@
       align-items: center;
       overflow-x: hidden;
       padding: 20px;
+      touch-action: none; /* Prevents default touch actions like pinch-zoom */
     }
     .sci-fi-bg {
       position: fixed;
@@ -78,6 +79,7 @@
       transition: transform 1s cubic-bezier(0.25, 0.8, 0.5, 1);
       box-shadow: 0 0 12px #00ffcc44;
       border-radius: 10px;
+      touch-action: manipulation; /* Ensures touch events are handled */
     }
     .dice.user-control {
       transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.5, 1.2);
@@ -246,8 +248,8 @@
 
     function dragStart(e) {
       isDragging = true;
-      startX = e.touches ? e.touches[0].clientX : e.clientX;
-      startY = e.touches ? e.touches[0].clientY : e.clientY;
+      startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+      startY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
       startRotX = rotX;
       startRotY = rotY;
       e.preventDefault();
@@ -255,8 +257,8 @@
 
     function dragMove(e) {
       if (!isDragging) return;
-      let x = e.touches ? e.touches[0].clientX : e.clientX;
-      let y = e.touches ? e.touches[0].clientY : e.clientY;
+      let x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+      let y = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
       let dx = x - startX;
       let dy = y - startY;
       rotY = startRotY + dx / 2;
@@ -264,18 +266,20 @@
       rotX = ((rotX % 360) + 360) % 360;
       rotY = ((rotY % 360) + 360) % 360;
       dice2.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+      e.preventDefault(); // Prevent scrolling during touchmove
     }
 
-    function dragEnd() {
+    function dragEnd(e) {
       isDragging = false;
+      e.preventDefault();
     }
 
     dice2.addEventListener('mousedown', dragStart);
-    dice2.addEventListener('touchstart', dragStart);
-    window.addEventListener('mousemove', dragMove);
-    window.addEventListener('touchmove', dragMove);
-    window.addEventListener('mouseup', dragEnd);
-    window.addEventListener('touchend', dragEnd);
+    dice2.addEventListener('touchstart', dragStart, { passive: false });
+    document.addEventListener('mousemove', dragMove);
+    document.addEventListener('touchmove', dragMove, { passive: false });
+    document.addEventListener('mouseup', dragEnd);
+    document.addEventListener('touchend', dragEnd, { passive: false });
 
     dice2.addEventListener('keydown', function(e) {
       if (e.key === 'ArrowUp') rotX -= 90;
