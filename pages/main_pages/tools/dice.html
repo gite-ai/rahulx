@@ -3,246 +3,202 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>3D Dice Roller - Rahulx.com Theme</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <title>3D Sci-Fi Dice Roller</title>
   <style>
-    /* Base body style identical to your provided page */
+    * { box-sizing: border-box; margin: 0; padding: 0;}
     body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #0a0a0a;
-      color: #00ffcc;
-      overflow-x: hidden;
+      font-family: 'Orbitron', 'Montserrat', 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0d1b2a 30%, #1b263b);
+      color: #e0e0e0;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
+      overflow-x: hidden;
     }
-
-    /* Sci-Fi Background */
     .sci-fi-bg {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
+      position: fixed; inset: 0;
       z-index: -1;
-      background: radial-gradient(circle, #001f3f, #000);
-      animation: stars 10s infinite linear;
+      background: radial-gradient(circle at 55% 40%, #001f3f55 40%, #000 90%);
+      animation: stars 14s linear infinite;
     }
     @keyframes stars {
-      0%{background-position:0 0;}
-      100%{background-position:1000px 1000px;}
+      0% { background-position: 0 0; }
+      100% { background-position: 800px 800px; }
     }
-
-    /* Heading (matches your .header h1) */
-    h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 2.8rem;
-      color: #00ffcc;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-align: center;
-      margin: 0;
-      animation: glow 2s infinite alternate;
-      line-height: 1.1;
-    }
-
-    /* Subheading Paragraph */
-    p.subheading {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 300;
-      font-size: 1.22rem;
-      color: #00ffcc;
-      opacity: 0.8;
-      text-align: center;
-      margin: 0 0 30px 0;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    /* Dice Roller Container */
     .dice-roller-container {
-      max-width: 350px;
-      width: 100%;
+      margin-top: 5vh;
+      max-width: 400px;
+      width: 98vw;
+      text-align: center;
+      padding: 0 15px 55px 15px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 0 15px 50px 15px;
-      z-index: 1;
+      background: rgba(5,32,65,0.07);
+      border-radius: 25px;
+      box-shadow: 0 0 28px 0 #00ffcc22, 0 0 0 #ff00cc22;
     }
-
-    /* Dice Wrapper to center dice */
-    .dice-wrapper {
-      perspective: 900px;
-      margin-bottom: 42px;
-      width: 90px; height: 90px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* Dice Style */
-    .dice {
-      width: 90px;
-      height: 90px;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 1.2s cubic-bezier(.19,.86,.69,1.09);
-      cursor: default;
-      user-select: none;
-    }
-
-    /* Each face */
-    .face {
-      position: absolute;
-      width: 90px;
-      height: 90px;
-      background: linear-gradient(135deg, #00ffcc77, #110e24 60%);
-      border-radius: 13px;
-      border: 2px solid #ff00cc;
-      box-shadow: 0 0 18px #00ffcc55, 0 0 7px #ff00cc44;
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
+    h1 {
+      font-family: 'Orbitron', 'Montserrat', sans-serif;
+      font-size: 2.7rem;
       font-weight: 700;
-      font-size: 2.6rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-shadow: 0 0 13px #00ffd0, 0 0 4px #fff;
-      user-select: none;
-    }
-
-    /* Position faces */
-    .face1 { transform: rotateY(0deg) translateZ(45px);}
-    .face2 { transform: rotateY(90deg) translateZ(45px);}
-    .face3 { transform: rotateY(180deg) translateZ(45px);}
-    .face4 { transform: rotateY(-90deg) translateZ(45px);}
-    .face5 { transform: rotateX(90deg) translateZ(45px);}
-    .face6 { transform: rotateX(-90deg) translateZ(45px);}
-
-    /* Roll Button */
-    button.roll-btn {
-      background: linear-gradient(90deg, #ff00ccbb 20%, #00ffcc 100%);
-      color: #101026;
-      padding: 15px 36px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 1.23rem;
-      border: none;
-      border-radius: 3em;
-      box-shadow: 0 0 14px #00ffcc44;
-      letter-spacing: 2px;
-      cursor: pointer;
-      outline: none;
-      transition: background 0.23s, color 0.23s, transform 0.13s;
-      margin-top: 16px;
+      color: #00ffcc;
       text-transform: uppercase;
-      user-select: none;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+      margin-top: 18px;
+      text-shadow: 0 0 10px #00ffcc99;
+      animation: glow 2.2s alternate infinite;
+      line-height: 1.1;
     }
-    button.roll-btn:active {
-      background: #00ffcc;
-      color: #ff00cc;
-      transform: scale(0.96);
+    p.subheading {
+      font-size: 1.29rem;
+      color: #e0e0e0;
+      opacity: 0.9;
+      text-shadow: 0 0 6px #00ffcc88;
+      margin-bottom: 26px;
+      animation: float 3s ease-in-out infinite;
     }
-
-    /* Animations */
     @keyframes glow {
-      0%{ text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
-      100%{ text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
+      0%{ text-shadow: 0 0 7px #00ffcc44,0 0 10px #00ffcc; }
+      100%{ text-shadow: 0 0 18px #00fff866,0 0 28px #00ffcc; }
     }
     @keyframes float {
       0%, 100% { transform: translateY(0);}
       50% { transform: translateY(-10px);}
     }
-
-    /* Responsive Tweaks */
-    @media (max-width: 700px) {
-      h1 {
-        font-size: 1.55rem;
-      }
-      p.subheading {
-        font-size: 1.01rem;
-      }
-      .dice-wrapper {
-        width: 56px; height: 56px;
-        margin-bottom: 32px;
-      }
-      .dice {
-        width: 56px; height: 56px;
-      }
-      .face {
-        width: 56px; height: 56px;
-        font-size: 1.3rem;
-      }
-      .dice-roller-container {
-        max-width: 98vw;
-        padding-bottom: 40px;
-      }
-      button.roll-btn {
-        padding: 13px 30px;
-        font-size: 1.05rem;
-        border-radius: 2.7em;
-        margin-top: 12px;
+    .dice-wrapper {
+      perspective: 1000px;
+      margin-bottom: 48px;
+      width: 120px; height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .dice {
+      width: 120px;
+      height: 120px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1.2s cubic-bezier(.19,.89,.61,1.09);
+      box-shadow: 0 0 18px #00ffcc44, 0 0 11px #ff00cc33;
+      user-select: none;
+      cursor: pointer;
+    }
+    .face {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, #00ffcc99 50%, #110e24 130%);
+      border-radius: 15px;
+      border: 2.7px solid #00ffcc;
+      box-shadow: 0 0 24px #00ffcc44, 0 0 11px #ff00cc33;
+      color: #fff;
+      font-family: 'Orbitron', 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 3.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-shadow: 0 0 19px #00ffff, 0 0 5px #fff;
+      user-select: none;
+      pointer-events: none;
+    }
+    .face1 { transform: rotateY(0deg) translateZ(60px);}
+    .face2 { transform: rotateY(90deg) translateZ(60px);}
+    .face3 { transform: rotateY(180deg) translateZ(60px);}
+    .face4 { transform: rotateY(-90deg) translateZ(60px);}
+    .face5 { transform: rotateX(90deg) translateZ(60px);}
+    .face6 { transform: rotateX(-90deg) translateZ(60px);}
+    .roll-btn {
+      background: linear-gradient(90deg,#00ffcc 55%,#ff00cc 120%);
+      color: #11131b;
+      padding: 18px 38px;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 2px;
+      font-size: 1.08rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 20em;
+      text-transform: uppercase;
+      margin: 61px 0 7px 0;
+      box-shadow: 0 0 20px #00ffcc55;
+      cursor: pointer;
+      outline: none;
+      transition: background 0.18s, color 0.14s, transform 0.12s;
+    }
+    .roll-btn:hover {
+      background: linear-gradient(90deg,#ff00cc 35%,#00ffcc 80%);
+      color: #fff;
+      transform: scale(1.045);
+    }
+    .roll-btn:active {
+      background: #00ffcc;
+      color: #ff00cc;
+      transform: scale(0.96);
+    }
+    @media (max-width: 768px) {
+      h1 { font-size: 1.35rem; }
+      p.subheading { font-size: 1rem; }
+      .dice-wrapper { width: 65px; height: 65px; margin-bottom: 25px;}
+      .dice { width: 65px; height: 65px;}
+      .face { width: 65px; height: 65px; font-size: 1.55rem; border-radius: 7px;}
+      .dice-roller-container { max-width: 99vw;}
+      .roll-btn { 
+        padding: 11px 22px; 
+        font-size: 0.93rem;
+        border-radius: 17em;
+        margin-top: 25px;
       }
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Montserrat:wght@600;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
 </head>
-
 <body>
   <div class="sci-fi-bg"></div>
-
-  <main class="dice-roller-container" role="main" aria-label="3D Dice Roller">
+  <main class="dice-roller-container">
     <h1>3D Dice Roller</h1>
-    <p class="subheading">Enjoy a virtual cosmic dice roll in sci-fi style!</p>
-
-    <div class="dice-wrapper" aria-live="polite" aria-atomic="true" aria-relevant="additions">
-      <div class="dice" id="dice" aria-label="Dice showing number 1" role="img">
-        <div class="face face1" aria-hidden="true">1</div>
-        <div class="face face2" aria-hidden="true">2</div>
-        <div class="face face3" aria-hidden="true">3</div>
-        <div class="face face4" aria-hidden="true">4</div>
-        <div class="face face5" aria-hidden="true">5</div>
-        <div class="face face6" aria-hidden="true">6</div>
+    <p class="subheading">Enjoy a virtual dice roll in futuristic cosmic style!</p>
+    <div class="dice-wrapper" aria-live="polite">
+      <div class="dice" id="dice" aria-label="Dice shows 1">
+        <div class="face face1">1</div>
+        <div class="face face2">2</div>
+        <div class="face face3">3</div>
+        <div class="face face4">4</div>
+        <div class="face face5">5</div>
+        <div class="face face6">6</div>
       </div>
     </div>
-
-    <button class="roll-btn" type="button" onclick="rollDice()" aria-label="Roll the dice">Roll Dice</button>
+    <button class="roll-btn" onclick="rollDice()" aria-label="Roll the dice">Roll Dice</button>
   </main>
-
   <script>
     const dice = document.getElementById('dice');
-    const diceTransforms = [
-      'rotateY(0deg)',        // 1
-      'rotateY(-90deg)',      // 2
-      'rotateY(180deg)',      // 3
-      'rotateY(90deg)',       // 4
-      'rotateX(-90deg)',      // 5
-      'rotateX(90deg)',       // 6
+    const transforms = [
+      'rotateX(0deg) rotateY(0deg)',         // 1
+      'rotateX(0deg) rotateY(90deg)',        // 2
+      'rotateX(0deg) rotateY(180deg)',       // 3
+      'rotateX(0deg) rotateY(-90deg)',       // 4
+      'rotateX(-90deg) rotateY(0deg)',       // 5
+      'rotateX(90deg) rotateY(0deg)',        // 6
     ];
     let lastValue = 1;
-
     function rollDice() {
       let value;
       do {
         value = Math.floor(Math.random() * 6) + 1;
-      } while (value === lastValue);
+      } while (value === lastValue); // avoid direct repeat for more feel
       lastValue = value;
-
-      // Random extra spins for dynamic effect
-      const extraX = Math.floor(Math.random() * 4) * 90;
-      const extraY = Math.floor(Math.random() * 4) * 90;
-
-      dice.style.transform = `rotateX(${extraX}deg) rotateY(${extraY}deg) ${diceTransforms[value - 1]}`;
-      dice.setAttribute('aria-label', `Dice showing number ${value}`);
+      // randomize extra spins for drama
+      const extraX = Math.floor(Math.random() * 4 + 2) * 360;
+      const extraY = Math.floor(Math.random() * 4 + 2) * 360;
+      dice.style.transform = `rotateX(${extraX}deg) rotateY(${extraY}deg) ${transforms[value - 1]}`;
+      dice.setAttribute('aria-label', `Dice shows ${value}`);
     }
-
-    // Initialize dice face on load (show 1)
-    document.addEventListener('DOMContentLoaded', () => {
-      dice.style.transform = diceTransforms[0];
-      dice.setAttribute('aria-label', 'Dice showing number 1');
-    });
+    // Start facing 1 on load
+    dice.style.transform = transforms[0];
+    dice.setAttribute('aria-label', 'Dice shows 1');
   </script>
 </body>
 </html>
