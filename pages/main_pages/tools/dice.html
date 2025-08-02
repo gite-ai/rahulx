@@ -3,190 +3,222 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>3D Dice Roller – Student Visualization</title>
+  <title>3D Dice Roller – Rahulx.com</title>
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; width: 100%; }
     body {
       min-height: 100vh;
-      min-width: 100vw;
       font-family: 'Orbitron', 'Montserrat', 'Poppins', sans-serif;
       background: linear-gradient(135deg, #0d1b2a, #1b263b);
       color: #e0e0e0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
       overflow-x: hidden;
-      box-sizing: border-box;
-      padding: 0;
+      padding: 15px;
     }
     .sci-fi-bg {
-      pointer-events: none; position: fixed; inset: 0; z-index: -1;
-      background: radial-gradient(circle at 55% 40%, #001f3f55 40%, #000 90%);
-      animation: stars 14s linear infinite;
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(circle at 50% 50%, #001f3f55 30%, #000 80%);
+      animation: stars 20s linear infinite;
     }
-    @keyframes stars { 0%{background-position:0 0;} 100%{background-position:800px 800px;} }
+    @keyframes stars { 0% { background-position: 0 0; } 100% { background-position: 1000px 1000px; } }
+    header {
+      text-align: center;
+      padding: 15px 0;
+    }
     h1 {
-      font-family: 'Orbitron', 'Montserrat', sans-serif;
-      font-weight: 700; font-size: 2.3rem; color: #00ffcc; text-transform: uppercase;
-      letter-spacing: 2px; margin-bottom: 16px; margin-top: 38px;
-      text-shadow: 0 0 12px #00ffccaa; user-select: none; text-align: center;
-      line-height: 1.13;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      color: #00ffcc;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px #00ffccaa;
+      margin: 15px 0 5px;
     }
-    p.tagline {
-      font-family: 'Poppins', sans-serif; font-size: 1.13rem; color: #b0e9e4; opacity: 0.9;
-      margin-bottom: 50px; margin-top: 0; max-width: 600px; user-select: none; text-align: center; line-height: 1.45;
+    .tagline {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      color: #b0e9e4;
+      opacity: 0.9;
+      margin-bottom: 20px;
+      max-width: 90%;
+      text-align: center;
+      line-height: 1.4;
     }
     .dice-card {
-      background: rgba(5, 32, 65, 0.12);
-      border-radius: 26px;
-      box-shadow: 0 0 28px 0 #00ffcc22, 0 0 8px #ff00cc33;
-      padding: 68px 43px 58px 43px;
-      max-width: 400px;
+      background: rgba(5, 32, 65, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 0 15px #00ffcc22;
+      padding: 20px;
+      max-width: 320px;
       width: 100%;
-      margin: 0 auto 48px auto;
+      margin: 10px auto;
       display: flex;
       flex-direction: column;
       align-items: center;
-      user-select: none;
-      box-sizing: border-box;
     }
-    .dice-card:last-of-type { margin-bottom: 0; }
     .dice-label {
-      color: #a0ffea; text-align: center;
-      font-family: 'Orbitron', 'Montserrat', sans-serif;
-      font-size: 1.21rem; font-weight: 600;
-      letter-spacing: 1px; margin-bottom: 29px;
-      user-select: none; text-shadow: 0 0 6px #00ffcc66;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      color: #00ffcc;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+      text-shadow: 0 0 6px #00ffcc66;
     }
     .dice-wrapper {
-      perspective: 900px;
-      width: 120px;
-      height: 120px;
+      perspective: 1000px;
+      width: 100px;
+      height: 100px;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 100px;
+      margin-bottom: 15px;
     }
     .dice {
-      width: 120px;
-      height: 120px;
+      width: 100px;
+      height: 100px;
       position: relative;
       transform-style: preserve-3d;
-      transition: transform 1.2s cubic-bezier(.19, .89, .61, 1.09);
-      box-shadow: 0 0 18px #00ffcc44, 0 0 11px #ff00cc33;
-      cursor: pointer;
-      border-radius: 15px;
-      background: transparent;
+      transition: transform 1s cubic-bezier(0.25, 0.8, 0.5, 1);
+      box-shadow: 0 0 12px #00ffcc44;
+      border-radius: 10px;
     }
     .dice.user-control {
-      transition: transform 0.28s cubic-bezier(.27,.7,.55,1.34);
-      border: 2.5px solid #ff007a;
-      background: transparent;
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.5, 1.2);
+      border: 2px solid #ff007a;
     }
     .face {
-      position: absolute; width: 120px; height: 120px;
-      background: linear-gradient(135deg, #00ffcc99 50%, #110e24 130%);
-      border-radius: 15px; border: 2.7px solid #00ffcc;
-      box-shadow: 0 0 24px #00ffcc44, 0 0 11px #ff00cc33; color: #fff;
-      font-family: 'Orbitron', 'Montserrat', sans-serif; font-weight: 700;
-      font-size: 3.4rem; display: flex; align-items: center; justify-content: center;
-      text-shadow: 0 0 19px #00ffff, 0 0 5px #fff; pointer-events: none; user-select: none;
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, #00ffcc99, #110e24);
+      border: 2px solid #00ffcc;
+      border-radius: 10px;
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-shadow: 0 0 8px #00ffff;
     }
-    .face1 { transform: rotateY(0deg) translateZ(60px);}
-    .face2 { transform: rotateY(90deg) translateZ(60px);}
-    .face3 { transform: rotateY(180deg) translateZ(60px);}
-    .face4 { transform: rotateY(-90deg) translateZ(60px);}
-    .face5 { transform: rotateX(90deg) translateZ(60px);}
-    .face6 { transform: rotateX(-90deg) translateZ(60px);}
+    .face1 { transform: rotateY(0deg) translateZ(50px); }
+    .face2 { transform: rotateY(90deg) translateZ(50px); }
+    .face3 { transform: rotateY(180deg) translateZ(50px); }
+    .face4 { transform: rotateY(-90deg) translateZ(50px); }
+    .face5 { transform: rotateX(90deg) translateZ(50px); }
+    .face6 { transform: rotateX(-90deg) translateZ(50px); }
     .sci-fi-button {
       background: linear-gradient(45deg, #00ffcc, #ff007a);
-      border: none; padding: 18px 40px; font-size: 1.08rem;
-      color: #fff; border-radius: 25px; cursor: pointer;
-      text-transform: uppercase; margin: 23px 0 10px 0;
-      box-shadow: 0 8px 15px #00ffcccc, 0 0 24px rgba(0,255,204,0.6);
-      transition: transform 0.12s, box-shadow 0.12s;
-      letter-spacing: 2px; font-family: 'Orbitron', 'Montserrat', sans-serif;
-      font-weight: 700; user-select: none; outline: none;
-      min-width: 160px;
+      border: none;
+      padding: 10px 25px;
+      font-size: 0.9rem;
+      color: #fff;
+      border-radius: 15px;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      box-shadow: 0 0 12px #00ffcc66;
+      transition: transform 0.2s, box-shadow 0.2s;
+      min-width: 120px;
     }
     .sci-fi-button:hover {
-      box-shadow: 0 12px 32px #ff007ab3, 0 0 42px rgba(255, 0, 122, 0.7);
-      transform: translateZ(1px) scale(1.07);
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #ff007a66;
     }
-    .sci-fi-button:active { transform: scale(0.95);}
+    .sci-fi-button:active { transform: scale(0.95); }
+    .sci-fi-button.disabled {
+      pointer-events: none;
+      opacity: 0.6;
+    }
     .opposite-label {
-      font-size: 1.12rem; color: #80ffd0;
-      text-align: center; margin-top: 22px;
-      font-family: 'Poppins', sans-serif; user-select: none;
-      text-shadow: 0 0 10px #00ffcc33;
-      background: rgba(0,255,204,0.14);
-      border-radius: 8px; padding: 8px 0 4px;
-      max-width: 150px;
-      min-height: 25px;
-      letter-spacing: .5px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      color: #80ffd0;
+      text-align: center;
+      margin-top: 10px;
+      background: rgba(0, 255, 204, 0.1);
+      border-radius: 6px;
+      padding: 5px;
+      min-width: 100px;
     }
-
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8rem;
+      color: #b0e9e4;
+    }
     @media (max-width: 600px) {
-      body { padding-top: 18px; padding-bottom: 14px;}
-      h1 { font-size: 1.32rem; margin-top: 18px; margin-bottom: 10px;}
-      p.tagline { font-size: .95rem; margin-bottom: 18px;}
-      .dice-card { max-width: 99vw; padding: 22px 5px 15px 5px; border-radius: 11px; margin-bottom: 25px;}
-      .dice-label { font-size: .98rem; margin-bottom: 12px;}
-      .dice-wrapper { width: 68px; height: 68px; margin-bottom: 12px;}
-      .dice { width: 68px; height: 68px; }
-      .face { width: 68px; height: 68px; font-size: 1.5rem; border-radius: 7px;}
-      .opposite-label { font-size: .89rem; margin-top: 7px; min-height: 15px;}
-      .sci-fi-button { font-size: .97rem; padding: 12px 13px; min-width: 96px;}
+      body { padding: 10px; }
+      h1 { font-size: 1.5rem; margin: 10px 0; }
+      .tagline { font-size: 0.9rem; margin-bottom: 15px; }
+      .dice-card { padding: 15px; max-width: 95vw; margin: 8px auto; }
+      .dice-label { font-size: 1rem; margin-bottom: 10px; }
+      .dice-wrapper { width: 80px; height: 80px; margin-bottom: 10px; }
+      .dice, .face { width: 80px; height: 80px; font-size: 2rem; border-radius: 8px; }
+      .sci-fi-button { padding: 8px 20px; font-size: 0.8rem; min-width: 100px; }
+      .opposite-label { font-size: 0.8rem; margin-top: 8px; padding: 4px; }
+      footer { font-size: 0.7rem; padding: 10px 0; }
+    }
+    @media (max-width: 400px) {
+      h1 { font-size: 1.3rem; }
+      .tagline { font-size: 0.8rem; }
+      .dice-card { padding: 12px; }
+      .dice-wrapper { width: 70px; height: 70px; }
+      .dice, .face { width: 70px; height: 70px; font-size: 1.8rem; }
+      .sci-fi-button { padding: 7px 15px; font-size: 0.7rem; min-width: 90px; }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Montserrat:wght@600;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="sci-fi-bg"></div>
-  <h1>3D Dice Roller</h1>
-  <p class="tagline">
-    Visualize a real dice:<br>
-    Roll or freely rotate to understand orientation and opposite numbers!
-  </p>
-
-  <!-- Box 1: Rollable Dice -->
-  <div class="dice-card">
-    <div class="dice-label">Roll Dice</div>
-    <div class="dice-wrapper">
-      <div class="dice" id="dice" tabindex="0" aria-label="Dice shows 1" role="img">
-        <div class="face face1">1</div>
-        <div class="face face2">2</div>
-        <div class="face face3">3</div>
-        <div class="face face4">4</div>
-        <div class="face face5">5</div>
-        <div class="face face6">6</div>
+  <header>
+    <h1>3D Dice Roller</h1>
+    <p class="tagline">Roll or rotate to explore dice orientation and opposite faces!</p>
+  </header>
+  <main>
+    <div class="dice-card">
+      <div class="dice-label">Roll Dice</div>
+      <div class="dice-wrapper">
+        <div class="dice" id="dice" tabindex="0" aria-label="Dice shows 1" role="img">
+          <div class="face face1">1</div>
+          <div class="face face2">2</div>
+          <div class="face face3">3</div>
+          <div class="face face4">4</div>
+          <div class="face face5">5</div>
+          <div class="face face6">6</div>
+        </div>
       </div>
+      <button class="sci-fi-button" onclick="rollDice()" aria-label="Roll the dice">Roll Dice</button>
+      <div class="opposite-label" id="opposite1">Opposite face: 6</div>
     </div>
-    <button class="sci-fi-button" type="button" onclick="rollDice()" aria-label="Roll the dice">Roll Dice</button>
-    <div class="opposite-label" id="opposite1"></div>
-  </div>
-  <!-- Box 2: Free Rotate Dice -->
-  <div class="dice-card">
-    <div class="dice-label">Free Rotate</div>
-    <div class="dice-wrapper">
-      <div class="dice user-control" id="dice2" tabindex="0" aria-label="User-controlled dice shows 1" role="img"
-        style="border: 2.5px solid #ff007a;">
-        <div class="face face1">1</div>
-        <div class="face face2">2</div>
-        <div class="face face3">3</div>
-        <div class="face face4">4</div>
-        <div class="face face5">5</div>
-        <div class="face face6">6</div>
+    <div class="dice-card">
+      <div class="dice-label">Free Rotate</div>
+      <div class="dice-wrapper">
+        <div class="dice user-control" id="dice2" tabindex="0" aria-label="User-controlled dice shows 1" role="img">
+          <div class="face face1">1</div>
+          <div class="face face2">2</div>
+          <div class="face face3">3</div>
+          <div class="face face4">4</div>
+          <div class="face face5">5</div>
+          <div class="face face6">6</div>
+        </div>
       </div>
+      <button class="sci-fi-button disabled" aria-label="Rotate the dice">Free Rotate</button>
     </div>
-    <button class="sci-fi-button" type="button" aria-label="Rotate the dice" style="pointer-events: none; opacity: 0.58;">Free Rotate</button>
-    <!-- NO opposite face label -->
-  </div>
-
+  </main>
+  <footer>
+    <p>© 2025 Rahulx.com. All rights reserved. | <a href="#privacy" style="color: #00ffcc;">Privacy Policy</a></p>
+  </footer>
   <script>
-    // --- Dice 1 (Button roll) ---
     const dice = document.getElementById('dice');
+    const dice2 = document.getElementById('dice2');
     const transforms = [
       'rotateX(0deg) rotateY(0deg)',     // 1
       'rotateX(0deg) rotateY(90deg)',    // 2
@@ -195,11 +227,13 @@
       'rotateX(-90deg) rotateY(0deg)',   // 5
       'rotateX(90deg) rotateY(0deg)',    // 6
     ];
-    const opposites = { 1:6, 2:5, 3:4, 4:3, 5:2, 6:1 };
+    const opposites = { 1: 6, 2: 5, 3: 4, 4: 3, 5: 2, 6: 1 };
     let lastValue = 1;
+
     function showOpposite(id, value) {
       document.getElementById(id).textContent = `Opposite face: ${opposites[value]}`;
     }
+
     function rollDice() {
       let value;
       do { value = Math.floor(Math.random() * 6) + 1; } while (value === lastValue);
@@ -210,23 +244,24 @@
       dice.setAttribute('aria-label', `Dice shows ${value}`);
       showOpposite('opposite1', value);
     }
-    // Initialize dice face
-    dice.style.transform = transforms[0]; dice.setAttribute('aria-label', 'Dice shows 1'); showOpposite('opposite1', 1);
 
-    // --- Dice 2: Interactive orientation cube ---
-    const dice2 = document.getElementById('dice2');
+    dice.style.transform = transforms[0];
+    dice.setAttribute('aria-label', 'Dice shows 1');
+    showOpposite('opposite1', 1);
+
     let rotX = 0, rotY = 0;
     dice2.style.transform = 'rotateX(0deg) rotateY(0deg)';
-    // Touch/drag controls for Dice 2
     let isDragging = false, startX, startY, startRotX, startRotY;
+
     function dragStart(e) {
       isDragging = true;
       startX = e.touches ? e.touches[0].clientX : e.clientX;
       startY = e.touches ? e.touches[0].clientY : e.clientY;
-      startRotX = rotX; startRotY = rotY;
-      dice2.classList.add('dragging');
+      startRotX = rotX;
+      startRotY = rotY;
       e.preventDefault();
     }
+
     function dragMove(e) {
       if (!isDragging) return;
       let x = e.touches ? e.touches[0].clientX : e.clientX;
@@ -235,25 +270,29 @@
       let dy = y - startY;
       rotY = startRotY + dx / 2;
       rotX = startRotX - dy / 2;
-      if (rotX > 360) rotX -= 360; if (rotX < -360) rotX += 360;
-      if (rotY > 360) rotY -= 360; if (rotY < -360) rotY += 360;
+      rotX = ((rotX % 360) + 360) % 360;
+      rotY = ((rotY % 360) + 360) % 360;
       dice2.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
     }
+
     function dragEnd() {
       isDragging = false;
-      dice2.classList.remove('dragging');
     }
+
     dice2.addEventListener('mousedown', dragStart);
     dice2.addEventListener('touchstart', dragStart);
     window.addEventListener('mousemove', dragMove);
     window.addEventListener('touchmove', dragMove);
     window.addEventListener('mouseup', dragEnd);
     window.addEventListener('touchend', dragEnd);
+
     dice2.addEventListener('keydown', function(e) {
-      if (e.key==='ArrowUp') { rotX -= 90; }
-      if (e.key==='ArrowDown') { rotX += 90; }
-      if (e.key==='ArrowLeft') { rotY -= 90; }
-      if (e.key==='ArrowRight') { rotY += 90; }
+      if (e.key === 'ArrowUp') rotX -= 90;
+      if (e.key === 'ArrowDown') rotX += 90;
+      if (e.key === 'ArrowLeft') rotY -= 90;
+      if (e.key === 'ArrowRight') rotY += 90;
+      rotX = ((rotX % 360) + 360) % 360;
+      rotY = ((rotY % 360) + 360) % 360;
       dice2.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
     });
   </script>
