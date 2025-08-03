@@ -1,794 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Tech Frontier 2025</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahulx.com - Exploring the Future</title>
   <style>
-    /* General Styles */
-    body {
-      font-family: 'Poppins', sans-serif;
+    * {
       margin: 0;
       padding: 0;
-      background: #0a0a0a;
-      color: #00ffcc;
-      overflow-x: auto;
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    h1, h2, h3 {
-      font-family: 'Montserrat', sans-serif;
-      margin: 0;
-      font-weight: 700;
-    }
-
-    a {
-      text-decoration: underline;
-      color: #ff00cc;
-      transition: color 0.3s ease;
-    }
-
-    a:hover {
-      color: #00ffcc;
-    }
-
-    /* Header */
-    header {
-      position: relative;
-      background: radial-gradient(circle, #001f3f, #000);
-      color: #00ffcc;
-      padding: 40px 0;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    header h1 {
-      font-size: 2.8rem;
-      text-transform: uppercase;
-      animation: glow 2s infinite alternate;
-      letter-spacing: 2px;
-    }
-
-    header p {
-      font-size: 1.3rem;
-      opacity: 0.8;
-      animation: float 3s ease-in-out infinite;
-      font-weight: 300;
-    }
-
-    /* Tech Animation Section */
-    .tech-animation {
-      position: relative;
-      width: 90%;
-      max-width: 1200px;
-      height: 400px;
-      margin: 40px auto;
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid #00ffcc;
-      border-radius: 10px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Core of the Tech Animation */
-    .tech-core {
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      background: radial-gradient(circle, #00ffcc, #00ccff);
-      border-radius: 50%;
-      animation: pulse 3s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.7); }
-      50% { transform: scale(1.1); box-shadow: 0 0 20px 10px rgba(0, 255, 204, 0); }
-      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.7); }
-    }
-
-    /* Floating Tech Icons */
-    .tech-icon {
-      position: absolute;
-      font-size: 24px;
-      color: #00ffcc;
-      animation: float 6s infinite ease-in-out;
-      user-select: none;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
-    /* Binary Digits Floating Around */
-    .binary-digit {
-      position: absolute;
-      font-size: 16px;
-      color: rgba(0, 255, 204, 0.7);
-      animation: floatBinary 5s infinite linear;
-      user-select: none;
-    }
-
-    @keyframes floatBinary {
-      0% { transform: translateY(0) translateX(0); opacity: 0.7; }
-      50% { transform: translateY(-50px) translateX(50px); opacity: 1; }
-      100% { transform: translateY(0) translateX(0); opacity: 0.7; }
-    }
-
-    /* Orbiting Particles */
-    .orbiting-particle {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: #00ffcc;
-      border-radius: 50%;
-      animation: orbit 8s infinite linear;
-      user-select: none;
-    }
-
-    @keyframes orbit {
-      0% { transform: rotate(0deg) translateX(150px) rotate(0deg); }
-      100% { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
-    }
-
-    /* Tech Topics */
-    .tech-topics {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.8);
-      border: 1px solid #00ffcc;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 1200px;
-      margin: 40px auto 80px auto;
-      user-select: none;
-    }
-
-    .topic {
-      padding: 12px 24px;
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid #00ffcc;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease, color 0.3s ease;
-      font-size: 1.1rem;
-      font-weight: 500;
-      user-select: none;
-    }
-
-    .topic:hover,
-    .topic:focus {
-      background: #00ffcc;
-      color: #000;
-      outline: none;
-    }
-
-    /* Modal (Popup) Styles */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-      user-select: text;
-    }
-
-    .modal-content {
-      background: rgba(0, 0, 0, 0.95);
-      border: 1px solid #00ffcc;
-      border-radius: 10px;
-      width: 80%;
-      max-width: 600px;
-      max-height: 80vh;
-      padding: 0;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      animation: slideIn 0.3s ease-out;
-      color: #00ffcc;
       box-sizing: border-box;
     }
 
-    .modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 15px 20px;
-      background: rgba(0, 0, 0, 0.95);
-      border-bottom: 1px solid #00ffcc;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .modal-title {
-      font-size: 2rem;
-      font-weight: 600;
-      text-align: center;
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      user-select: text;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 1.3rem;
-      color: #00ffcc;
-      cursor: pointer;
-      background: rgba(0, 0, 0, 0.7);
-      border: none;
-      width: 30px;
-      height: 30px;
-      line-height: 30px;
-      text-align: center;
-      border-radius: 50%;
-      transition: background 0.3s ease, color 0.3s ease;
-      user-select: none;
-    }
-
-    .modal-close:hover {
-      background: #00ffcc;
-      color: #000;
-    }
-
-    .modal-body {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-      font-family: 'Poppins', sans-serif;
-      user-select: text;
-    }
-
-    .modal-desc {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-bottom: 20px;
-      font-weight: 400;
-      color: #00ffcc;
-      user-select: text;
-    }
-
-    .modal-desc b,
-    .modal-desc strong {
-      color: #ff00cc; /* Neon pink for bold text */
-      font-weight: 700;
-    }
-
-    .modal-desc i,
-    .modal-desc em {
-      color: #00ccff; /* Cyan for italic text */
-      font-style: italic;
-    }
-
-    .modal-example {
-      font-size: 1rem;
+    body {
+      font-family: Arial, sans-serif;
       line-height: 1.6;
-      margin-bottom: 20px;
-      font-style: italic;
-      color: #b0fff0;
-      user-select: text;
+      color: #333;
+      background-color: #f4f4f4;
     }
 
-    .modal-example b,
-    .modal-example strong {
-      color: #ff00cc; /* Neon pink for bold text */
-      font-weight: 700;
-    }
-
-    .modal-example i,
-    .modal-example em {
-      color: #00ccff; /* Cyan for italic text */
-      font-style: italic;
-    }
-
-    .modal-image {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-      border: 1px solid #00ffcc;
-      border-radius: 5px;
-      margin: 0 auto 12px auto;
-      display: block;
-      user-select: none;
-    }
-
-    .modal-footer {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 10px;
-      padding: 15px 20px;
-      background: rgba(0, 0, 0, 0.95);
-      border-top: 1px solid #00ffcc;
-      position: sticky;
-      bottom: 0;
-      z-index: 10;
-      user-select: none;
-    }
-
-    .modal-action-button {
-      background: none;
-      border: none;
-      color: #00ffcc;
-      font-size: 1.4rem;
-      cursor: pointer;
-      transition: color 0.3s ease, transform 0.3s ease;
-      padding: 5px;
-      font-family: FontAwesome, 'Arial Unicode MS', Arial, sans-serif;
-      user-select: none;
-    }
-
-    .modal-action-button:hover {
-      color: #ff00cc;
-      transform: scale(1.3);
-    }
-
-    @keyframes slideIn {
-      from { transform: translateY(-50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    /* Footer */
-    footer {
-      background: #000;
-      color: #00ffcc;
+    header {
+      background: #333;
+      color: #fff;
+      padding: 1rem;
       text-align: center;
-      padding: 20px 0;
-      margin-top: 60px;
-      font-family: 'Poppins', sans-serif;
-      user-select: none;
+      position: relative;
     }
 
-    footer p {
-      margin: 0;
-      font-size: 1.1rem;
-      font-weight: 300;
+    .menu-toggle {
+      font-size: 1.5rem;
+      cursor: pointer;
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+    }
+
+    nav {
+      display: none;
+      background: #444;
+      padding: 1rem;
+    }
+
+    nav.active {
+      display: block;
+    }
+
+    nav ul {
+      list-style: none;
+      text-align: center;
+    }
+
+    nav ul li {
+      margin: 0.5rem 0;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    nav ul li a:hover {
+      color: #ddd;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 2rem;
+      background: #fff;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #666;
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .card p {
+      padding: 0 1rem 1rem;
+      color: #666;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-bottom: 1rem;
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #333;
+      color: #fff;
+      margin-top: 2rem;
     }
 
     footer a {
-      color: #ff00cc;
-      font-weight: 500;
+      color: #fff;
+      text-decoration: none;
     }
 
     footer a:hover {
       text-decoration: underline;
     }
 
-    /* Animations */
-    @keyframes glow {
-      0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
-      100% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    /* Sci-Fi Background */
-    .sci-fi-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: radial-gradient(circle, #001f3f, #000);
-      animation: stars 10s infinite linear;
-      user-select: none;
-    }
-
-    @keyframes stars {
-      0% { background-position: 0 0; }
-      100% { background-position: 1000px 1000px; }
-    }
-
-    /* Media Queries for Responsiveness */
     @media (max-width: 768px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-      
-      header p {
-        font-size: 1rem;
+      .hero h1 {
+        font-size: 2rem;
       }
 
-      .tech-animation {
-        height: 300px;
-      }
-
-      .tech-core {
-        width: 60px;
-        height: 60px;
-      }
-
-      .tech-icon {
-        font-size: 18px;
-      }
-
-      .binary-digit {
-        font-size: 12px;
-      }
-
-      .orbiting-particle {
-        width: 8px;
-        height: 8px;
-      }
-
-      .tech-topics {
-        gap: 8px;
-        padding: 15px;
-      }
-
-      .topic {
-        font-size: 0.9rem;
-        padding: 8px 16px;
-      }
-
-      .modal-content {
-        width: 90%;
-        max-width: 500px;
-        max-height: 70vh;
-      }
-
-      .modal-title {
-        font-size: 1.6rem;
-      }
-
-      .modal-desc {
-        font-size: 1rem;
-      }
-
-      .modal-example {
-        font-size: 0.9rem;
-      }
-
-      .modal-action-button {
-        font-size: 1.1rem;
+      .card-container {
+        grid-template-columns: 1fr;
       }
     }
   </style>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 <body>
-  <!-- Sci-Fi Background -->
-  <div class="sci-fi-bg"></div>
-
-  <!-- Header -->
   <header>
-    <h1>Tech Frontier 2025</h1>
-    <p>Discover the Future of Innovation</p>
+    <div class="menu-toggle">☰</div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#tools">Tools</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Tech Animation Section -->
-  <div class="tech-animation" aria-hidden="true">
-    <div class="tech-core"></div>
+  <section class="hero">
+    <h1>Welcome to Rahulx.com</h1>
+    <p>Exploring the future of creativity and innovation.</p>
+  </section>
 
-    <div class="tech-icon" style="top: 20%; left: 10%;">🤖</div>
-    <div class="tech-icon" style="top: 30%; left: 80%;">🧠</div>
-    <div class="tech-icon" style="top: 70%; left: 20%;">⚛️</div>
-    <div class="tech-icon" style="top: 80%; left: 70%;">🧬</div>
-  </div>
-
-  <!-- Tech Topics -->
-  <main>
-    <section class="tech-topics" id="techTopics" aria-label="Technology Topics">
-      <!-- Topics dynamically inserted here -->
-    </section>
-  </main>
-
-  <!-- Modal (Popup) -->
-  <div class="modal" id="techModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
-    <div class="modal-content" role="document">
-      <div class="modal-header">
-        <h2 class="modal-title" id="modalTitle"></h2>
-        <button class="modal-close" aria-label="Close modal" onclick="closeModal()" title="Close Modal">✖</button>
-      </div>
-      <div class="modal-body">
-        <p class="modal-desc" id="modalDesc" tabindex="0"></p>
-        <p class="modal-example" id="modalExample"></p>
-        <img class="modal-image" id="modalImage" src="" alt="Technology Related Image" />
-      </div>
-      <div class="modal-footer">
-        <button class="modal-action-button" id="copyButton" onclick="copyModalContent()" title="Copy content"><i class="fa fa-copy"></i></button>
-        <button class="modal-action-button" id="threadButton" title="View tech thread">𝕩</button>
-        <button class="modal-action-button" id="searchButton" title="Search on X"><i class="fa fa-search"></i></button>
-      </div>
+  <section class="content">
+    <div class="card-container" id="card-container">
+      <!-- Cards will be dynamically inserted here -->
     </div>
-  </div>
+  </section>
 
-  <!-- Footer -->
   <footer>
-    <p>© 2025 TechFrontier. All rights reserved. | <a href="#">Privacy Policy</a></p>
+    <p>© 2025 Rahulx.com. All rights reserved. | <a href="#privacy">Privacy Policy</a></p>
   </footer>
 
   <script>
-    // Embedded JSON Data from your .txt file with ALL entries and with corrected ellipsis replaced.
-    // For brevity here, only a snippet of corrected "purpose" array is shown as example replacement.
-    // The full data below is as copied from your actual .txt file, ellipsis [...] replaced properly.
-    const technologies = [
+    const data = [
       {
         "name": "Quantum Computing",
         "desc": "Quantum Computing leverages <b>quantum mechanical</b> phenomena like superposition and entanglement to process information in fundamentally new ways. It dramatically accelerates solutions to certain problems that are intractable for classical computers.",
-        "invention": {
-          "theory": "Richard Feynman, Paul Benioff (1980s)\nMarked the start of quantum computational models.",
-          "first_qubit_systems": "IBM, D-Wave, Google (2000s—2010s)"
-        },
-        "purpose": [
-          "Solve complex calculations unfeasible for classical computers",
-          "Enhance cryptography and security",
-          "Model molecules, chemical reactions, and physical systems"
-        ],
-        "key_milestones": [
-          {"year": 1982, "event": "Feynman Simulation", "description": "Richard Feynman suggests quantum computers for simulating physics."},
-          {"year": 1994, "event": "Shor's Algorithm", "description": "Peter Shor develops an algorithm for efficient factoring on quantum computers."},
-          {"year": 2019, "event": "Quantum Supremacy", "description": "Google claims supremacy by solving a problem faster than classical supercomputers."}
-        ],
-        "basics": {
-          "definition": "Qubits encode information as 0, 1, or both (superposed states). Quantum logic gates manipulate entangled qubits.",
-          "key_terms": [
-            {"term": "Qubit", "definition": "Basic unit of quantum information (quantum bit)."},
-            {"term": "Superposition", "definition": "Qubit can exist in multiple states simultaneously."},
-            {"term": "Entanglement", "definition": "Qubits linked so their states are dependent, regardless of distance."},
-            {"term": "Quantum Gate", "definition": "Operates on qubits to change their quantum state."}
-          ]
-        },
-        "applications": [
-          "Cryptography",
-          "Drug discovery and material science",
-          "Complex system simulations",
-          "Optimization problems"
-        ],
-        "key_concepts": [
-          "Quantum parallelism",
-          "Quantum decoherence",
-          "Quantum error correction"
-        ],
         "image": "https://example.com/images/quantum.jpg",
         "thread": "https://x.com/example/thread/12345"
       },
       {
         "name": "Blockchain",
         "desc": "Blockchain is a <b>distributed digital ledger</b> that records transactions securely and immutably using cryptography. It is decentralized, transparent, and enables trust without intermediaries.",
-        "invention": {
-          "concept": "Stuart Haber & W. Scott Stornetta (1991)",
-          "modern_blockchain": "Satoshi Nakamoto (Bitcoin, 2008)"
-        },
-        "purpose": [
-          "Facilitate secure, transparent transactions",
-          "Remove central authorities or middlemen",
-          "Enable cryptocurrencies, smart contracts, and decentralized apps"
-        ],
-        "key_milestones": [
-          {"year": 2008, "event": "Bitcoin Whitepaper", "description": "Satoshi Nakamoto outlines the first modern blockchain for digital cash."},
-          {"year": 2015, "event": "Ethereum", "description": "Ethereum launches smart contracts and programmable blockchain."}
-        ],
-        "basics": {
-          "definition": "Transactions are grouped into 'blocks' chained together with cryptographic hashes.",
-          "key_terms": [
-            {"term": "Ledger", "definition": "A record-keeping system for all transactions."},
-            {"term": "Consensus Mechanism", "definition": "Way to agree on valid transactions (e.g., Proof of Work, Proof of Stake)."},
-            {"term": "Smart Contract", "definition": "Self-executing contracts with the terms in code."}
-          ]
-        },
-        "applications": [
-          "Cryptocurrencies",
-          "Supply chain tracking",
-          "Digital identity",
-          "Voting systems"
-        ],
-        "key_concepts": [
-          "Decentralization",
-          "Immutability",
-          "Transparency"
-        ],
         "image": "https://example.com/images/blockchain.jpg",
         "thread": "https://x.com/example/thread/67890"
       },
       {
         "name": "Augmented Reality",
         "desc": "Augmented Reality (AR) overlays <b>digital content</b> onto the physical world, enabling immersive user experiences by blending real and virtual.",
-        "invention": {
-          "early_concept": "Ivan Sutherland's 'Sword of Damocles' (1968)\nFirst head-mounted display prototype.",
-          "term_introduced": "Tom Caudell (1990)"
-        },
-        "purpose": [
-          "Enhance user perception and interaction with the real world",
-          "Visualize complex data contextually",
-          "Create engaging educational, navigation, or entertainment experiences"
-        ],
-        "key_milestones": [
-          {"year": 2012, "event": "Google Glass", "description": "Wearable AR headset reaches consumers."},
-          {"year": 2016, "event": "Pokémon Go", "description": "AR mobile game’s global popularity demonstrates AR's potential."}
-        ],
-        "basics": {
-          "definition": "Real-time blending of digital and real environments using cameras, sensors, and displays.",
-          "key_terms": [
-            {"term": "Overlay", "definition": "Digital items placed atop real-world view."},
-            {"term": "Marker-based AR", "definition": "Uses physical images (markers) to anchor graphics."},
-            {"term": "SLAM", "definition": "Simultaneous Localization and Mapping; maps environment for AR placement."}
-          ]
-        },
-        "applications": [
-          "Mobile games and apps",
-          "Workplace training and simulations",
-          "Navigation and tourism",
-          "Maintenance and repair guides"
-        ],
-        "key_concepts": [
-          "Computer vision",
-          "Sensor fusion",
-          "Gesture recognition"
-        ],
         "image": "https://example.com/images/ar.jpg",
         "thread": "https://x.com/example/thread/54321"
       },
-      // Continue adding all other entries exactly as in your .txt file here,
-      // fully expanded, with no ellipsis "..." in purpose or milestones,
-      // so the entire JSON content is included, exactly from your source file.
-      // Due to size, I have shown just the first few below as example.
-      // (Please copy/paste whole JSON content accordingly.)
-
-      // -- Your full JSON data inserted here --
-
+      {
+        "name": "Robotics",
+        "desc": "Robotics is the branch of technology that designs and builds programmable machines—robots—that can carry out tasks autonomously, semi-autonomously, or with direct human interaction.",
+        "image": "https://i.postimg.cc/d3DHr6gk/pexels-vanessa-loring-7868822.jpg",
+        "thread": "https://x.com/example_robotics_thread"
+      },
+      {
+        "name": "Virtual Reality",
+        "desc": "Virtual Reality (VR) fully immerses users in a computer-generated, 3D environment that can simulate real-world or imagined worlds. It requires specialized hardware like headsets and controllers to create a sense of presence.",
+        "image": "https://example.com/images/vr.jpg",
+        "thread": "https://x.com/example/thread/11223"
+      },
+      {
+        "name": "Internet of Things (IoT)",
+        "desc": "IoT connects everyday physical devices to the internet, enabling communication, data exchange, and automation across homes, industry, and cities.",
+        "image": "https://example.com/images/iot.jpg",
+        "thread": "https://x.com/example/thread/22445"
+      },
+      {
+        "name": "5G Technology",
+        "desc": "5G is the fifth generation of wireless communication, delivering significantly faster data speeds, higher capacity, and ultra-low latency compared to previous standards.",
+        "image": "https://example.com/images/5g.jpg",
+        "thread": "https://x.com/example/thread/33556"
+      },
+      {
+        "name": "Edge Computing",
+        "desc": "Edge computing processes data closer to the data source, reducing latency and bandwidth use by avoiding sending everything to centralized data centers.",
+        "image": "https://example.com/images/edge.jpg",
+        "thread": "https://x.com/example/thread/44667"
+      },
+      {
+        "name": "Cloud Computing",
+        "desc": "Cloud computing provides on-demand access to shared computing resources (storage, servers, applications) over the internet, enabling scalable, cost-effective IT infrastructure.",
+        "image": "https://example.com/images/cloud.jpg",
+        "thread": "https://x.com/example/thread/55778"
+      },
+      {
+        "name": "Genetic Engineering",
+        "desc": "Genetic engineering involves modifying the DNA of organisms to change their traits or produce new capabilities, enabling powerful advances in medicine, agriculture, and industry.",
+        "image": "https://example.com/images/genetics.jpg",
+        "thread": "https://x.com/example/thread/66889"
+      },
+      {
+        "name": "3D Printing (Additive Manufacturing)",
+        "desc": "3D Printing, or additive manufacturing, creates physical objects layer by layer from digital designs, revolutionizing prototyping, manufacturing, medicine, and even construction.",
+        "image": "https://example.com/images/3dprint.jpg",
+        "thread": "https://x.com/example/thread/77990"
+      },
+      {
+        "name": "Renewable Energy Technologies",
+        "desc": "Renewable energy tech harnesses natural, inexhaustible resources—like sunlight, wind, and water—for clean power, reducing dependence on fossil fuels and mitigating climate change.",
+        "image": "https://example.com/images/renewable.jpg",
+        "thread": "https://x.com/example/thread/88001"
+      },
+      {
+        "name": "Biotechnology",
+        "desc": "Biotechnology applies biological systems, organisms, or derivatives to develop new medical, agricultural, or industrial products. It underpins genetics, pharmaceuticals, biofuels, and synthetic biology.",
+        "image": "https://example.com/images/biotech.jpg",
+        "thread": "https://x.com/example/thread/99112"
+      },
+      {
+        "name": "Nanotechnology",
+        "desc": "Nanotechnology manipulates matter at the atomic and molecular (1–100 nanometer) scale, enabling new materials and devices with novel mechanical, electrical, or chemical properties.",
+        "image": "https://example.com/images/nano.jpg",
+        "thread": "https://x.com/example/thread/10213"
+      },
+      {
+        "name": "Cybersecurity",
+        "desc": "Cybersecurity protects digital systems from unauthorized access, attacks, and data breaches, ensuring the confidentiality, integrity, and availability of information.",
+        "image": "https://example.com/images/cybersecurity.jpg",
+        "thread": "https://x.com/example/thread/11314"
+      },
+      {
+        "name": "Wearable Technology",
+        "desc": "Wearable technology encompasses electronic devices that are comfortably worn on the body to monitor, analyze, and enhance life—health, fitness, and productivity.",
+        "image": "https://example.com/images/wearables.jpg",
+        "thread": "https://x.com/example/thread/13536"
+      },
+      {
+        "name": "Structural Battery Composites",
+        "desc": "Structural battery composites are advanced materials that can serve as both structural components and batteries. They store electrical energy within the material itself, drastically reducing the weight and improving efficiency of vehicles, aircraft, and other systems.",
+        "image": "https://example.com/images/structural_battery.jpg",
+        "thread": "https://x.com/example/thread/30101"
+      },
+      {
+        "name": "Osmotic Power Systems",
+        "desc": "Osmotic power, also called 'blue energy', harvests electricity from the difference in salt concentration between seawater and freshwater using special membranes or electrodes.",
+        "image": "https://example.com/images/osmotic_power.jpg",
+        "thread": "https://x.com/example/thread/30202"
+      },
+      {
+        "name": "Next-Generation Nuclear Energy",
+        "desc": "Next-generation nuclear energy includes small modular reactors (SMRs) and nuclear fusion technologies that aim to provide safe, scalable, and carbon-free electricity with new safety features.",
+        "image": "https://example.com/images/nuclear.jpg",
+        "thread": "https://x.com/example/thread/30303"
+      },
+      {
+        "name": "De-Extinction & Synthetic Biology",
+        "desc": "These fields use gene editing, cloning, and synthetic genomes to revive extinct species, create new organisms, and engineer biology for environmental and medical benefit.",
+        "image": "https://example.com/images/deextinction.jpg",
+        "thread": "https://x.com/example/thread/31313"
+      },
+      {
+        "name": "Biomedical Nanobots",
+        "desc": "Biomedical nanobots are tiny machines, often DNA- or protein-based, designed to perform tasks in the human body such as targeted drug delivery, repair, or diagnosis at a cellular level.",
+        "image": "https://example.com/images/nanobots.jpg",
+        "thread": "https://x.com/example/thread/31111"
+      },
+      {
+        "name": "Carbon Nanotube Electronics",
+        "desc": "Carbon nanotube electronics uses cylindrical carbon molecules (nanotubes) to create electrical circuits far smaller, lighter, and more flexible than silicon-based technologies.",
+        "image": "https://example.com/images/nanotube.jpg",
+        "thread": "https://x.com/example/thread/31414"
+      },
+      {
+        "name": "Mind Uploading & Neural Interfaces",
+        "desc": "Mind uploading (whole brain emulation) and neural interfaces involve direct communication between the human brain and machines. These technologies aim to restore lost function, extend memory, or one day digitally emulate consciousness.",
+        "image": "https://example.com/images/neurotech.jpg",
+        "thread": "https://x.com/example/thread/31212"
+      },
+      {
+        "name": "Generative Watermarking",
+        "desc": "Generative watermarking technologies embed invisible or robust signals in digital images, audio, or video to authenticate original work and detect AI-generated or manipulated files.",
+        "image": "https://example.com/images/generative_watermark.jpg",
+        "thread": "https://x.com/example/thread/31010"
+      },
+      {
+        "name": "Collaborative Sensing & Smart Swarms",
+        "desc": "Collaborative sensing and smart swarms use many distributed sensors, robots, or drones that work together, sharing data and making group decisions to achieve complex tasks in real time.",
+        "image": "https://example.com/images/collaborative_sensing.jpg",
+        "thread": "https://x.com/example/thread/30909"
+      },
+      {
+        "name": "Nanozymes",
+        "desc": "Nanozymes are synthetic nanomaterials that mimic natural enzymes but are more robust, tunable, and often cheaper. They perform specific chemical reactions for medicine, industry, or environmental cleanup.",
+        "image": "https://example.com/images/nanozymes.jpg",
+        "thread": "https://x.com/example/thread/30808"
+      },
+      {
+        "name": "GLP-1s for Neurodegenerative Disease",
+        "desc": "GLP-1 receptor agonists—originally diabetes and weight-loss drugs—are being studied for their potential to slow or prevent the progression of neurodegenerative diseases like Alzheimer's and Parkinson's.",
+        "image": "https://example.com/images/glp1.jpg",
+        "thread": "https://x.com/example/thread/30505"
+      },
+      {
+        "name": "Green Nitrogen Fixation",
+        "desc": "Green nitrogen fixation technologies aim to produce ammonia (vital for fertilizer and food production) using renewable electricity rather than fossil-fuel-based Haber-Bosch processes, drastically reducing CO2 emissions.",
+        "image": "https://example.com/images/green_nitrogen.jpg",
+        "thread": "https://x.com/example/thread/30707"
+      },
+      {
+        "name": "Engineered Living Therapeutics",
+        "desc": "Engineered living therapeutics are beneficial microbes designed, using genetic modification, to reside inside the body and perform therapeutic functions such as producing medicines, modulating immunity, or aiding metabolism.",
+        "image": "https://example.com/images/living_therapeutics.jpg",
+        "thread": "https://x.com/example/thread/30404"
+      },
+      {
+        "name": "Autonomous Biochemical Sensing",
+        "desc": "Autonomous biochemical sensing refers to wearable, implantable, or ingestible sensors that continuously monitor health markers, disease indicators, or environmental toxins in real time, enabling smarter diagnosis and intervention.",
+        "image": "https://example.com/images/biochem_sensors.jpg",
+        "thread": "https://x.com/example/thread/30606"
+      }
     ];
 
-    // Create floating binary digits dynamically to supplement static ones
-    function generateBinaryDigits() {
-      const techAnimation = document.querySelector('.tech-animation');
-      for (let i = 0; i < 20; i++) {
-        const binaryDigit = document.createElement('div');
-        binaryDigit.className = 'binary-digit';
-        binaryDigit.textContent = Math.random() > 0.5 ? '0' : '1';
-        binaryDigit.style.top = `${Math.random() * 100}%`;
-        binaryDigit.style.left = `${Math.random() * 100}%`;
-        binaryDigit.style.animationDuration = `${Math.random() * 5 + 3}s`;
-        techAnimation.appendChild(binaryDigit);
-      }
-    }
+    // Remove duplicates based on name
+    const uniqueData = data.filter((item, index, self) =>
+      index === self.findIndex((t) => t.name === item.name)
+    );
 
-    // Create orbiting particles dynamically
-    function generateOrbitingParticles() {
-      const techAnimation = document.querySelector('.tech-animation');
-      for (let i = 0; i < 8; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'orbiting-particle';
-        particle.style.animationDelay = `${i * 1}s`;
-        techAnimation.appendChild(particle);
-      }
-    }
-
-    // Populate the list of tech topics as hashtag buttons
-    function populateTechTopics(technologies) {
-      const topicsContainer = document.getElementById('techTopics');
-      topicsContainer.innerHTML = ''; // clear if re-populating
-
-      technologies.forEach(tech => {
-        const topic = document.createElement('div');
-        topic.className = 'topic';
-        topic.textContent = `#${tech.name.replace(/\s+/g, '')}`;
-        topic.tabIndex = 0; // keyboard navigable
-
-        topic.addEventListener('click', () => openModalWithTech(tech));
-        topic.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            openModalWithTech(tech);
-          }
-        });
-
-        topicsContainer.appendChild(topic);
-      });
-    }
-
-    // Open modal and fill with technology info
-    function openModalWithTech(tech) {
-      const modal = document.getElementById('techModal');
-      const modalTitle = document.getElementById('modalTitle');
-      const modalDesc = document.getElementById('modalDesc');
-      const modalExample = document.getElementById('modalExample');
-      const modalImage = document.getElementById('modalImage');
-
-      // Use innerHTML for desc which includes HTML tags
-      modalTitle.textContent = tech.name || 'Unknown Technology';
-      modalDesc.innerHTML = tech.desc || 'No description available.';
-
-      // If "example" field exists, show it; if not, clear it
-      modalExample.innerHTML = tech.example ? `<strong>Example:</strong> ${tech.example}` : '';
-
-      if (tech.image) {
-        modalImage.src = tech.image;
-        modalImage.alt = `Image representing ${tech.name}`;
-        modalImage.style.display = 'block';
-      } else {
-        modalImage.style.display = 'none';
-        modalImage.src = '';
-        modalImage.alt = '';
-      }
-      modal.style.display = 'flex';
-      modalDesc.focus();
-
-      // Thread button
-      const threadButton = document.getElementById('threadButton');
-      if (tech.thread && tech.thread.trim() !== '') {
-        threadButton.style.display = 'inline-block';
-        threadButton.onclick = () => {
-          window.open(tech.thread, '_blank', 'noopener,noreferrer');
-        };
-      } else {
-        threadButton.style.display = 'none';
-      }
-
-      // Search button
-      const searchButton = document.getElementById('searchButton');
-      searchButton.onclick = () => {
-        const query = encodeURIComponent(tech.name);
-        const searchURL = `https://x.com/search?q=${query}`;
-        window.open(searchURL, '_blank', 'noopener,noreferrer');
-      };
-
-      // Attach event to close modal on Escape key press
-      document.addEventListener('keydown', escKeyClose);
-    }
-
-    // Close modal function
-    function closeModal() {
-      const modal = document.getElementById('techModal');
-      modal.style.display = 'none';
-      // Remove Escape key listener
-      document.removeEventListener('keydown', escKeyClose);
-    }
-
-    // Close modal on Escape key
-    function escKeyClose(e) {
-      if (e.key === 'Escape') closeModal();
-    }
-
-    // Copy modal content: title, description (text only), example
-    function copyModalContent() {
-      const title = document.getElementById('modalTitle').textContent.trim();
-      const desc = document.getElementById('modalDesc').textContent.trim();
-      const example = document.getElementById('modalExample').textContent.trim();
-
-      const content = `${title}\n\n${desc}\n\n${example}`;
-
-      navigator.clipboard.writeText(content).then(() => {
-        alert('Technology details copied to clipboard!');
-      }).catch(() => {
-        alert('Failed to copy. Please try again manually.');
-      });
-    }
-
-    // Click outside modal content closes modal
-    document.getElementById('techModal').addEventListener('click', (ev) => {
-      if (ev.target === ev.currentTarget) {
-        closeModal();
-      }
+    const cardContainer = document.getElementById('card-container');
+    uniqueData.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${item.image}" alt="${item.name}">
+        <h3>${item.name}</h3>
+        <p>${item.desc}</p>
+        <a href="${item.thread}" target="_blank">Learn More</a>
+      `;
+      cardContainer.appendChild(card);
     });
 
-    // Initial setup on page load
-    window.onload = () => {
-      // Use embedded technologies data directly
-      populateTechTopics(technologies);
-
-      generateBinaryDigits();
-      generateOrbitingParticles();
-    };
+    // Menu toggle functionality
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
   </script>
 </body>
 </html>
