@@ -460,6 +460,14 @@
         font-size: 1.1rem;
       }
     }
+
+    /* Error Message */
+    .error-message {
+      color: #ff00cc;
+      text-align: center;
+      padding: 20px;
+      font-size: 1.2rem;
+    }
   </style>
   
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
@@ -518,11 +526,11 @@
   </footer>
 
   <script>
-    // Fetch JSON data from data.txt
+    // Fetch JSON data from texts/technology.txt
     async function fetchTechnologies() {
       try {
         const response = await fetch('texts/technology.txt');
-        if (!response.ok) throw new Error('Failed to fetch data.txt');
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         const data = await response.json();
         // Remove duplicates based on name
         return data.filter((item, index, self) =>
@@ -530,6 +538,8 @@
         );
       } catch (error) {
         console.error('Error fetching JSON:', error);
+        const topicsContainer = document.getElementById('techTopics');
+        topicsContainer.innerHTML = '<p class="error-message">Failed to load technology data. Please check if texts/technology.txt exists and contains valid JSON.</p>';
         return [];
       }
     }
@@ -563,6 +573,11 @@
     function populateTechTopics(technologies) {
       const topicsContainer = document.getElementById('techTopics');
       topicsContainer.innerHTML = ''; // clear if re-populating
+
+      if (technologies.length === 0) {
+        topicsContainer.innerHTML = '<p class="error-message">No technology data available.</p>';
+        return;
+      }
 
       technologies.forEach(tech => {
         const topic = document.createElement('div');
