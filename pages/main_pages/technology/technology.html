@@ -521,7 +521,7 @@
     // Fetch JSON data from data.txt
     async function fetchTechnologies() {
       try {
-        const response = await fetch('data.txt');
+        const response = await fetch('texts/technology.txt');
         if (!response.ok) throw new Error('Failed to fetch data.txt');
         const data = await response.json();
         // Remove duplicates based on name
