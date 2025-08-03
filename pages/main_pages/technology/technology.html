@@ -17,7 +17,7 @@
       line-height: 1.6;
     }
 
-    h1, h2, h3, h4 {
+    h1, h2, h3 {
       font-family: 'Montserrat', sans-serif;
       margin: 0;
       font-weight: 700;
@@ -29,10 +29,8 @@
       transition: color 0.3s ease;
     }
 
-    a:hover,
-    a:focus {
+    a:hover {
       color: #00ffcc;
-      outline: none;
     }
 
     /* Header */
@@ -164,11 +162,9 @@
       user-select: none;
     }
 
-    .topic:hover,
-    .topic:focus {
+    .topic:hover {
       background: #00ffcc;
       color: #000;
-      outline: none;
     }
 
     /* Modal (Popup) Styles */
@@ -191,8 +187,8 @@
       border: 1px solid #00ffcc;
       border-radius: 10px;
       width: 80%;
-      max-width: 700px;
-      max-height: 90vh;
+      max-width: 600px;
+      max-height: 80vh;
       padding: 0;
       position: relative;
       display: flex;
@@ -200,7 +196,6 @@
       animation: slideIn 0.3s ease-out;
       color: #00ffcc;
       box-sizing: border-box;
-      outline: none;
     }
 
     .modal-header {
@@ -228,7 +223,7 @@
       position: absolute;
       top: 10px;
       right: 10px;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       color: #00ffcc;
       cursor: pointer;
       background: rgba(0, 0, 0, 0.7);
@@ -242,11 +237,9 @@
       user-select: none;
     }
 
-    .modal-close:hover,
-    .modal-close:focus {
+    .modal-close:hover {
       background: #00ffcc;
       color: #000;
-      outline: none;
     }
 
     .modal-body {
@@ -257,59 +250,55 @@
       user-select: text;
     }
 
-    section.modal-section {
-      margin-bottom: 1.5em;
-    }
-
-    section.modal-section h3 {
-      border-bottom: 1px solid #00ffcc;
-      padding-bottom: 6px;
-      margin-bottom: 12px;
-      font-size: 1.4rem;
-      color: #ff00cc;
-    }
-
-    section.modal-section h4 {
-      margin-top: 0.8em;
-      margin-bottom: 6px;
-      font-weight: 600;
-      color: #ff33cc;
-    }
-
-    ul.modal-list {
-      list-style-type: disc;
-      margin-left: 20px;
+    .modal-desc {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      font-weight: 400;
       color: #00ffcc;
-      padding-left: 0;
+      user-select: text;
     }
 
-    ul.modal-list li {
-      margin-bottom: 0.3em;
-      font-weight: 400;
+    .modal-desc b,
+    .modal-desc strong {
+      color: #ff00cc; /* Neon pink for bold text */
+      font-weight: 700;
     }
 
-    .modal-desc-pre {
-      white-space: pre-wrap;
-      font-weight: 400;
-      color: #b0fff0;
-      margin: 0;
-      line-height: 1.6;
+    .modal-desc i,
+    .modal-desc em {
+      color: #00ccff; /* Cyan for italic text */
+      font-style: italic;
     }
 
     .modal-example {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
       font-style: italic;
-      margin-top: 0.8em;
-      margin-bottom: 0.8em;
-      color: #d0f8f1;
+      color: #b0fff0;
+      user-select: text;
+    }
+
+    .modal-example b,
+    .modal-example strong {
+      color: #ff00cc; /* Neon pink for bold text */
+      font-weight: 700;
+    }
+
+    .modal-example i,
+    .modal-example em {
+      color: #00ccff; /* Cyan for italic text */
+      font-style: italic;
     }
 
     .modal-image {
       width: 100%;
-      max-width: 480px;
+      max-width: 400px;
       height: auto;
       border: 1px solid #00ffcc;
       border-radius: 5px;
-      margin: 10px auto 0 auto;
+      margin: 0 auto 12px auto;
       display: block;
       user-select: none;
     }
@@ -340,11 +329,9 @@
       user-select: none;
     }
 
-    .modal-action-button:hover,
-    .modal-action-button:focus {
+    .modal-action-button:hover {
       color: #ff00cc;
       transform: scale(1.3);
-      outline: none;
     }
 
     @keyframes slideIn {
@@ -374,10 +361,8 @@
       font-weight: 500;
     }
 
-    footer a:hover,
-    footer a:focus {
+    footer a:hover {
       text-decoration: underline;
-      outline: none;
     }
 
     /* Animations */
@@ -409,12 +394,12 @@
       100% { background-position: 1000px 1000px; }
     }
 
-    /* Responsive */
+    /* Media Queries for Responsiveness */
     @media (max-width: 768px) {
       header h1 {
         font-size: 1.8rem;
       }
-
+      
       header p {
         font-size: 1rem;
       }
@@ -461,11 +446,7 @@
         font-size: 1.6rem;
       }
 
-      section.modal-section h3 {
-        font-size: 1.2rem;
-      }
-
-      .modal-desc-pre {
+      .modal-desc {
         font-size: 1rem;
       }
 
@@ -477,22 +458,14 @@
         font-size: 1.1rem;
       }
     }
-
-    /* Error Message */
-    .error-message {
-      color: #ff00cc;
-      text-align: center;
-      padding: 20px;
-      font-size: 1.2rem;
-    }
   </style>
-
+  
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 <body>
   <!-- Sci-Fi Background -->
-  <div class="sci-fi-bg" aria-hidden="true"></div>
+  <div class="sci-fi-bg"></div>
 
   <!-- Header -->
   <header>
@@ -512,60 +485,37 @@
 
   <!-- Tech Topics -->
   <main>
-    <section class="tech-topics" id="techTopics" aria-label="Technology Topics" role="list">
+    <section class="tech-topics" id="techTopics" aria-label="Technology Topics">
       <!-- Topics dynamically inserted here -->
     </section>
   </main>
 
   <!-- Modal (Popup) -->
   <div class="modal" id="techModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
-    <div class="modal-content" role="document" tabindex="-1">
+    <div class="modal-content" role="document">
       <div class="modal-header">
         <h2 class="modal-title" id="modalTitle"></h2>
-        <button class="modal-close" aria-label="Close modal" title="Close Modal" onclick="closeModal()">✖</button>
+        <button class="modal-close" aria-label="Close modal" onclick="closeModal()" title="Close Modal">✖</button>
       </div>
-      <div class="modal-body" id="modalBody" tabindex="0">
-        <!-- Dynamic content populated here -->
+      <div class="modal-body">
+        <p class="modal-desc" id="modalDesc" tabindex="0"></p>
+        <p class="modal-example" id="modalExample"></p>
+        <img class="modal-image" id="modalImage" src="" alt="Technology Related Image" />
       </div>
       <div class="modal-footer">
-        <button class="modal-action-button" id="copyButton" onclick="copyModalContent()" title="Copy content" aria-label="Copy content"><i class="fa fa-copy"></i></button>
-        <button class="modal-action-button" id="threadButton" title="View tech thread" aria-label="View thread on X" style="display:none;">𝕩</button>
-        <button class="modal-action-button" id="searchButton" title="Search on X" aria-label="Search on X"><i class="fa fa-search"></i></button>
+        <button class="modal-action-button" id="copyButton" onclick="copyModalContent()" title="Copy content"><i class="fa fa-copy"></i></button>
+        <button class="modal-action-button" id="threadButton" title="View tech thread">𝕩</button>
+        <button class="modal-action-button" id="searchButton" title="Search on X"><i class="fa fa-search"></i></button>
       </div>
     </div>
   </div>
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 TechFrontier. All rights reserved. | <a href="#" tabindex="0">Privacy Policy</a></p>
+    <p>© 2025 TechFrontier. All rights reserved. | <a href="#">Privacy Policy</a></p>
   </footer>
 
   <script>
-    // Helper to unescape HTML entities safely
-    function decodeEntities(encodedString) {
-      const textarea = document.createElement('textarea');
-      textarea.innerHTML = encodedString;
-      return textarea.value;
-    }
-
-    // Fetch JSON data from texts/technology.txt
-    async function fetchTechnologies() {
-      try {
-        const response = await fetch('texts/technology.txt');
-        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-        const data = await response.json();
-        // Remove duplicates based on name
-        return data.filter((item, index, self) =>
-          index === self.findIndex((t) => t.name === item.name)
-        );
-      } catch (error) {
-        console.error('Error fetching JSON:', error);
-        const topicsContainer = document.getElementById('techTopics');
-        topicsContainer.innerHTML = '<p class="error-message">Failed to load technology data. Please check if texts/technology.txt exists and contains valid JSON.</p>';
-        return [];
-      }
-    }
-
     // Create floating binary digits dynamically to supplement static ones
     function generateBinaryDigits() {
       const techAnimation = document.querySelector('.tech-animation');
@@ -596,16 +546,10 @@
       const topicsContainer = document.getElementById('techTopics');
       topicsContainer.innerHTML = ''; // clear if re-populating
 
-      if (technologies.length === 0) {
-        topicsContainer.innerHTML = '<p class="error-message">No technology data available.</p>';
-        return;
-      }
-
       technologies.forEach(tech => {
         const topic = document.createElement('div');
         topic.className = 'topic';
         topic.textContent = `#${tech.name.replace(/\s+/g, '')}`;
-        topic.setAttribute('role', 'listitem');
         topic.tabIndex = 0; // keyboard navigable
 
         topic.addEventListener('click', () => openModalWithTech(tech));
@@ -620,167 +564,32 @@
       });
     }
 
-    // Helper: create a section with a list if array present
-    function createListSection(title, items) {
-      if (!items || !items.length) return '';
-      let html = `<section class="modal-section"><h3>${title}</h3><ul class="modal-list">`;
-      items.forEach(item => {
-        if(typeof item === "string"){
-          html += `<li>${item}</li>`;
-        } else if(typeof item === "object" && item.term && item.definition) {
-          html += `<li><strong>${item.term}:</strong> ${item.definition}</li>`;
-        }
-      });
-      html += '</ul></section>';
-      return html;
-    }
-
-    // Helper: create milestones section if present
-    function createMilestonesSection(title, milestones) {
-      if(!milestones || !milestones.length) return '';
-      let html = `<section class="modal-section"><h3>${title}</h3><ul class="modal-list">`;
-      milestones.forEach(m => {
-        html += `<li><strong>${m.year} - ${m.event}:</strong> ${m.description}</li>`;
-      });
-      html += '</ul></section>';
-      return html;
-    }
-
-    // Helper: create invention section with multiple keys and possible array or string values
-    function createInventionSection(invention) {
-      if(!invention || typeof invention !== 'object') return '';
-      let html = `<section class="modal-section"><h3>Invention & Early Pioneers</h3>`;
-      for (const key in invention) {
-        let value = invention[key];
-        const prettyKey = key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-
-        if (Array.isArray(value)) {
-          html += `<h4>${prettyKey}</h4><ul class="modal-list">`;
-          value.forEach(item => html += `<li>${item}</li>`);
-          html += `</ul>`;
-        } else if (typeof value === 'string') {
-          html += `<p><strong>${prettyKey}:</strong> ${value.replace(/\n/g, '<br>')}</p>`;
-        } else if (typeof value === 'object') {
-          // nested object: list keys and values in paragraph form
-          html += `<h4>${prettyKey}</h4>`;
-          for (const subKey in value) {
-            html += `<p><strong>${subKey.replace(/_/g, ' ')}:</strong> ${value[subKey]}</p>`;
-          }
-        }
-      }
-      html += '</section>';
-      return html;
-    }
-
-    // Helper: create basics section with definition and lists
-    function createBasicsSection(basics) {
-      if(!basics || typeof basics !== 'object') return '';
-      let html = `<section class="modal-section"><h3>Basics</h3>`;
-
-      if(basics.definition){
-        html += `<p class="modal-desc-pre">${basics.definition}</p>`;
-      }
-
-      if(basics.fundamental_components){
-        html += createListSection('Fundamental Components', basics.fundamental_components);
-      }
-      if(basics.types_of_robots){
-        html += createListSection('Types of Robots', basics.types_of_robots);
-      }
-      if(basics.key_terms){
-        html += createListSection('Key Terms', basics.key_terms);
-      }
-
-      html += '</section>';
-      return html;
-    }
-
-    // Helper: create basic types and examples section
-    function createBasicTypesSection(types) {
-      if(!types || !Array.isArray(types) || types.length === 0) return '';
-      let html = `<section class="modal-section"><h3>Basic Types & Examples</h3>`;
-      types.forEach(type => {
-        html += `<h4>${type.name}</h4>`;
-        if(type.desc) html += `<p>${type.desc}</p>`;
-        if(type.example) html += `<p class="modal-example"><strong>Example:</strong> ${type.example}</p>`;
-        if(type.image){
-          html += `<img class="modal-image" src="${type.image}" alt="${type.name} illustration" />`;
-        }
-      });
-      html += `</section>`;
-      return html;
-    }
-
-    // Helper: create key concepts section (array of strings)
-    function createKeyConceptsSection(keyConcepts) {
-      if(!keyConcepts || !keyConcepts.length) return '';
-      return createListSection('Key Concepts', keyConcepts);
-    }
-
-    // Helper: create applications section (array)
-    function createApplicationsSection(applications) {
-      if(!applications || !applications.length) return '';
-      return createListSection('Applications', applications);
-    }
-
-    // Main modal open function
+    // Open modal and fill with technology info
     function openModalWithTech(tech) {
       const modal = document.getElementById('techModal');
-      const modalContent = modal.querySelector('.modal-content');
       const modalTitle = document.getElementById('modalTitle');
-      const modalBody = document.getElementById('modalBody');
-      const threadButton = document.getElementById('threadButton');
-      const searchButton = document.getElementById('searchButton');
+      const modalDesc = document.getElementById('modalDesc');
+      const modalExample = document.getElementById('modalExample');
+      const modalImage = document.getElementById('modalImage');
 
+      // Set content safely
       modalTitle.textContent = tech.name || 'Unknown Technology';
-
-      // Compose modal body sections
-      let bodyHTML = '';
-
-      // Description (decode HTML entities)
-      if (tech.desc) {
-        bodyHTML += `<section class="modal-section"><h3>Description</h3><p class="modal-desc-pre">${decodeEntities(tech.desc)}</p></section>`;
-      }
-
-      // Purpose
-      bodyHTML += createListSection('Purpose', tech.purpose);
-
-      // Applications
-      bodyHTML += createApplicationsSection(tech.applications);
-
-      // Key Concepts
-      bodyHTML += createKeyConceptsSection(tech.key_concepts);
-
-      // Basics (definition, fundamental_components, types_of_robots etc)
-      bodyHTML += createBasicsSection(tech.basics);
-
-      // Key Terms (separate key_terms field, fallback handled above)
-      if (tech.key_terms && tech.key_terms.length) {
-        bodyHTML += createListSection('Key Terms', tech.key_terms);
-      }
-
-      // Invention & Early Pioneers
-      bodyHTML += createInventionSection(tech.invention);
-
-      // Key Milestones
-      bodyHTML += createMilestonesSection('Key Milestones', tech.key_milestones);
-
-      // Basic Types & Examples
-      bodyHTML += createBasicTypesSection(tech.basic_types_and_examples);
-
-      // Example (if a simple example string)
-      if (tech.example && typeof tech.example === 'string') {
-        bodyHTML += `<section class="modal-section"><h3>Example</h3><p class="modal-example">${tech.example}</p></section>`;
-      }
-
-      // Image
+      modalDesc.innerHTML = tech.desc || 'No description available.';
+      modalExample.innerHTML = tech.example ? `<strong>Example:</strong> ${tech.example}` : '';
       if (tech.image) {
-        bodyHTML += `<section class="modal-section"><img class="modal-image" src="${tech.image}" alt="${tech.name} illustration" /></section>`;
+        modalImage.src = tech.image;
+        modalImage.alt = `Image representing ${tech.name}`;
+        modalImage.style.display = 'block';
+      } else {
+        modalImage.style.display = 'none';
+        modalImage.src = '';
+        modalImage.alt = '';
       }
-
-      modalBody.innerHTML = bodyHTML;
+      modal.style.display = 'flex';
+      modalDesc.focus();
 
       // Thread button
+      const threadButton = document.getElementById('threadButton');
       if (tech.thread && tech.thread.trim() !== '') {
         threadButton.style.display = 'inline-block';
         threadButton.onclick = () => {
@@ -788,23 +597,17 @@
         };
       } else {
         threadButton.style.display = 'none';
-        threadButton.onclick = null;
       }
 
       // Search button
+      const searchButton = document.getElementById('searchButton');
       searchButton.onclick = () => {
         const query = encodeURIComponent(tech.name);
         const searchURL = `https://x.com/search?q=${query}`;
         window.open(searchURL, '_blank', 'noopener,noreferrer');
       };
 
-      // Show modal
-      modal.style.display = 'flex';
-
-      // Focus modal content for accessibility
-      modalContent.focus();
-
-      // Setup Escape key event for closing modal
+      // Attach event to close modal on Escape key press
       document.addEventListener('keydown', escKeyClose);
     }
 
@@ -812,7 +615,6 @@
     function closeModal() {
       const modal = document.getElementById('techModal');
       modal.style.display = 'none';
-
       // Remove Escape key listener
       document.removeEventListener('keydown', escKeyClose);
     }
@@ -822,38 +624,15 @@
       if (e.key === 'Escape') closeModal();
     }
 
-    // Copy modal content: title, description text, and example text if present
+    // Copy modal content: title, description (text only), example
     function copyModalContent() {
-      const modalTitle = document.getElementById('modalTitle').textContent.trim();
-      const modalBody = document.getElementById('modalBody');
+      const title = document.getElementById('modalTitle').textContent.trim();
+      const desc = document.getElementById('modalDesc').textContent.trim();
+      const example = document.getElementById('modalExample').textContent.trim();
 
-      // Extract visible text only, preserving some formatting
-      let textContent = modalTitle + "\n\n";
+      const content = `${title}\n\n${desc}\n\n${example}`;
 
-      function extractText(node) {
-        let text = '';
-        node.childNodes.forEach(child => {
-          if(child.nodeType === Node.TEXT_NODE){
-            text += child.textContent;
-          } else if(child.nodeType === Node.ELEMENT_NODE) {
-            const tag = child.tagName.toLowerCase();
-            if(tag === 'li'){
-              text += "- " + extractText(child) + "\n";
-            } else if(['h3', 'h4'].includes(tag)){
-              text += child.textContent + "\n";
-            } else if(tag === 'p'){
-              text += extractText(child) + "\n";
-            } else {
-              text += extractText(child);
-            }
-          }
-        });
-        return text;
-      }
-
-      textContent += extractText(modalBody).trim();
-
-      navigator.clipboard.writeText(textContent).then(() => {
+      navigator.clipboard.writeText(content).then(() => {
         alert('Technology details copied to clipboard!');
       }).catch(() => {
         alert('Failed to copy. Please try again manually.');
@@ -868,9 +647,29 @@
     });
 
     // Initial setup on page load
-    window.onload = async () => {
-      const technologies = await fetchTechnologies();
-      populateTechTopics(technologies);
+    window.onload = () => {
+      // Fetch your JSON technology data from texts/technology.txt (adjust path as needed)
+      fetch('texts/technology.txt')
+        .then(response => {
+          if (!response.ok) throw new Error('Failed to fetch technology data.');
+          return response.text();
+        })
+        .then(text => {
+          let technologies = [];
+          try {
+            technologies = JSON.parse(text);
+          } catch (e) {
+            console.error('Error parsing JSON:', e);
+            alert('Failed to parse technologies JSON data.');
+            return;
+          }
+          populateTechTopics(technologies);
+        })
+        .catch(error => {
+          console.error('Loading error:', error);
+          document.getElementById('techTopics').innerHTML = '<p style="color:#ff00cc; text-align:center;">Failed to load technology data.</p>';
+        });
+
       generateBinaryDigits();
       generateOrbitingParticles();
     };
