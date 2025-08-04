@@ -378,6 +378,61 @@
       clip: rect(0, 0, 0, 0);
       border: 0;
     }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      header p {
+        font-size: 1rem;
+      }
+
+      .ai-animation {
+        height: 200px;
+      }
+
+      .tech-topics {
+        gap: 8px;
+        padding: 15px;
+      }
+
+      .topic {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+      }
+
+      .modal-content {
+        width: 90%;
+        max-width: 500px;
+        max-height: 70vh;
+      }
+
+      .modal-title {
+        font-size: 1.6rem;
+      }
+
+      .modal-desc {
+        font-size: 1rem;
+      }
+
+      .modal-section {
+        font-size: 0.9rem;
+      }
+
+      .modal-section h3 {
+        font-size: 1.1rem;
+      }
+
+      .modal-example {
+        font-size: 0.9rem;
+      }
+
+      .modal-action-button {
+        font-size: 1.1rem;
+      }
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -405,25 +460,27 @@
 
   <!-- Modal (Popup) -->
   <div class="modal" id="techModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
-    <div class="modal-content" tabindex="0">
-      <header class="modal-header">
+    <div class="modal-content" role="document">
+      <div class="modal-header">
         <h2 class="modal-title" id="modalTitle"></h2>
-        <button class="modal-close" onclick="closeModal()" aria-label="Close modal">✖</button>
-      </header>
-      <main class="modal-body" id="modalBody">
-        <!-- Content inserted dynamically -->
-      </main>
-      <footer class="modal-footer">
-        <button class="modal-action-button" id="copyButton" onclick="copyModalContent()" title="Copy Content" aria-label="Copy content to clipboard">
-          <i class="fa fa-copy"></i>
-        </button>
-        <button class="modal-action-button" id="threadButton" title="View Thread on X" aria-label="View thread on X" style="display:none;">
-          𝕩
-        </button>
-        <button class="modal-action-button" id="searchButton" title="Search on X" aria-label="Search on X">
-          <i class="fa fa-search"></i>
-        </button>
-      </footer>
+        <button class="modal-close" aria-label="Close modal" onclick="closeModal()" title="Close Modal">✖</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc" id="modalDesc" tabindex="0"></p>
+        <div class="modal-section" id="modalInvention"></div>
+        <div class="modal-section" id="modalPurpose"></div>
+        <div class="modal-section" id="modalMilestones"></div>
+        <div class="modal-section" id="modalBasics"></div>
+        <div class="modal-section" id="modalApplications"></div>
+        <div class="modal-section" id="modalKeyConcepts"></div>
+        <p class="modal-example" id="modalExample"></p>
+        <img class="modal-image" id="modalImage" src="" alt="Tech Related Image" />
+      </div>
+      <div class="modal-footer">
+        <button class="modal-action-button" id="copyButton" onclick="copyModalContent()" title="Copy content"><i class="fa fa-copy"></i></button>
+        <button class="modal-action-button" id="threadButton" title="View tech thread">𝕩</button>
+        <button class="modal-action-button" id="searchButton" title="Search on X"><i class="fa fa-search"></i></button>
+      </div>
     </div>
   </div>
 
@@ -589,7 +646,6 @@
     // Populate Tech Topics dynamically from array of tech objects
     function populateTechTopics(technologies) {
       const topicsContainer = document.getElementById('techTopics');
-      // Do not clear existing content here to allow adding from multiple files
       technologies.forEach(tech => {
         const topic = document.createElement('div');
         topic.className = 'topic';
@@ -598,12 +654,12 @@
         topic.textContent = `#${tech.name.replace(/\s+/g, '')}`;
 
         topic.addEventListener('click', () => {
-          openModal(tech);
+          openModalWithTech(tech);
         });
         topic.addEventListener('keydown', e => {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            openModal(tech);
+            openModalWithTech(tech);
           }
         });
 
@@ -611,212 +667,221 @@
       });
     }
 
-    // Helper to safely create list items from an array of strings
-    function createList(title, items) {
-      if (!items || !items.length) return '';
-      let html = `<section class="modal-section"><h3>${title}</h3><ul class="modal-list">`;
-      items.forEach(item => {
-        if(typeof item === "string"){
-          html += `<li>${item}</li>`;
-        } else if(typeof item === "object" && item.term && item.definition) {
-          // For key_terms array with term/definition objects
-          html += `<li><strong>${item.term}:</strong> ${item.definition}</li>`;
-        }
-      });
-      html += `</ul></section>`;
-      return html;
-    }
-
-    // Helper to render milestone/invention arrays
-    function createMilestones(title, array) {
-      if(!array || !array.length) return '';
-      let html = `<section class="modal-section"><h3>${title}</h3><ul class="modal-list">`;
-      array.forEach(item => {
-        if(item.year && item.event && item.description){
-          html += `<li><strong>${item.year} - ${item.event}:</strong> ${item.description}</li>`;
-        }
-      });
-      html += `</ul></section>`;
-      return html;
-    }
-
-    // Render invention object details
-    function createInventionSection(invention) {
-      if(!invention) return '';
-      let html = `<section class="modal-section"><h3>Invention & Early Pioneers</h3>`;
-
-      if(invention.term_coined_by){
-        html += `<p><strong>Term coined by:</strong> ${invention.term_coined_by}</p>`;
-      }
-
-      if(invention.year){
-        html += `<p><strong>Year:</strong> ${invention.year}</p>`;
-      }
-
-      if(invention.early_pioneers && invention.early_pioneers.length){
-        html += `<p><strong>Early Pioneers:</strong></p><ul class="modal-list">`;
-        invention.early_pioneers.forEach(pioneer => {
-          html += `<li>${pioneer}</li>`;
-        });
-        html += `</ul>`;
-      }
-
-      if(invention.official_birth){
-        html += `<p><strong>Official birth event:</strong> ${invention.official_birth.event} (${invention.official_birth.year})</p>`;
-        if(invention.official_birth.organizers && invention.official_birth.organizers.length){
-          html += `<p><strong>Organizers:</strong> ${invention.official_birth.organizers.join(', ')}</p>`;
-        }
-      }
-      html += `</section>`;
-      return html;
-    }
-
-    // Main modal open function
-    function openModal(tech) {
+    // Open modal and fill with tech info
+    function openModalWithTech(tech) {
       const modal = document.getElementById('techModal');
       const modalTitle = document.getElementById('modalTitle');
-      const modalBody = document.getElementById('modalBody');
-      const threadButton = document.getElementById('threadButton');
-      const searchButton = document.getElementById('searchButton');
+      const modalDesc = document.getElementById('modalDesc');
+      const modalInvention = document.getElementById('modalInvention');
+      const modalPurpose = document.getElementById('modalPurpose');
+      const modalMilestones = document.getElementById('modalMilestones');
+      const modalBasics = document.getElementById('modalBasics');
+      const modalApplications = document.getElementById('modalApplications');
+      const modalKeyConcepts = document.getElementById('modalKeyConcepts');
+      const modalExample = document.getElementById('modalExample');
+      const modalImage = document.getElementById('modalImage');
 
-      modalTitle.textContent = tech.name || 'Topic';
+      // Set content safely
+      modalTitle.textContent = tech.name || 'Unknown Tech Topic';
+      modalDesc.innerHTML = tech.desc || 'No description available.';
 
-      // Compose modal body content as HTML with sections
-      let bodyHTML = '';
-
-      // Description (desc) as paragraph
-      if(tech.desc){
-        bodyHTML += `<section class="modal-section"><h3>Description</h3><p class="modal-desc-pre">${tech.desc}</p></section>`;
+      // Invention
+      if (tech.invention) {
+        let inventionText = '<h3>Invention</h3><ul>';
+        if (tech.invention.term_coined_by) {
+          inventionText += `<li>Term coined by: ${tech.invention.term_coined_by}</li>`;
+        }
+        if (tech.invention.year) {
+          inventionText += `<li>Year: ${tech.invention.year}</li>`;
+        }
+        if (tech.invention.early_pioneers) {
+          inventionText += `<li>Early Pioneers: ${tech.invention.early_pioneers.join(', ')}</li>`;
+        }
+        if (tech.invention.early_developments) {
+          inventionText += `<li>Early Developments: ${tech.invention.early_developments.join(', ')}</li>`;
+        }
+        if (tech.invention.official_birth) {
+          inventionText += `<li>Official Birth: ${tech.invention.official_birth.event} (${tech.invention.official_birth.year})</li>`;
+          if (tech.invention.official_birth.organizers) {
+            inventionText += `<li>Organizers: ${tech.invention.official_birth.organizers.join(', ')}</li>`;
+          }
+        }
+        inventionText += '</ul>';
+        modalInvention.innerHTML = inventionText;
+      } else {
+        modalInvention.innerHTML = '';
       }
 
-      // Purpose - if array
-      bodyHTML += createList('Purpose / Importance', tech.purpose || tech.importance);
-
-      // Applications - if array
-      bodyHTML += createList('Applications', tech.applications);
-
-      // Key Concepts - if array
-      bodyHTML += createList('Key Concepts', tech.key_concepts);
-
-      // Basic Types and Examples if present (for AI basics)
-      if(tech.basic_types_and_examples && tech.basic_types_and_examples.length){
-        bodyHTML += `<section class="modal-section"><h3>Basic Types & Examples</h3>`;
-        tech.basic_types_and_examples.forEach(type => {
-          bodyHTML += `<h4 style="color:#ff33cc; margin-bottom:5px;">${type.name}</h4>`;
-          if(type.desc) bodyHTML += `<p>${type.desc}</p>`;
-          if(type.example) bodyHTML += `<p><em>Example:</em> ${type.example}</p>`;
+      // Purpose
+      if (tech.purpose || tech.importance) {
+        let purposeText = '<h3>Purpose / Importance</h3><ul>';
+        (tech.purpose || tech.importance || []).forEach(p => {
+          purposeText += `<li>${p}</li>`;
         });
-        bodyHTML += `</section>`;
+        purposeText += '</ul>';
+        modalPurpose.innerHTML = purposeText;
+      } else {
+        modalPurpose.innerHTML = '';
       }
 
-      // Invention & milestones details
-      if(tech.invention){
-        bodyHTML += createInventionSection(tech.invention);
-      }
-      if(tech.key_milestones){
-        bodyHTML += createMilestones('Key Milestones', tech.key_milestones);
+      // Key Milestones
+      if (tech.key_milestones && tech.key_milestones.length) {
+        let milestonesText = '<h3>Key Milestones</h3><ul>';
+        tech.key_milestones.forEach(m => {
+          milestonesText += `<li>${m.year}: ${m.event} - ${m.description}</li>`;
+        });
+        milestonesText += '</ul>';
+        modalMilestones.innerHTML = milestonesText;
+      } else {
+        modalMilestones.innerHTML = '';
       }
 
-      // Basics (for Robotics etc)
-      if(tech.basics){
-        if(tech.basics.definition){
-          bodyHTML += `<section class="modal-section"><h3>Basics</h3><p>${tech.basics.definition}</p></section>`;
+      // Basics
+      if (tech.basics) {
+        let basicsText = '<h3>Basics</h3><ul>';
+        if (tech.basics.definition) {
+          basicsText += `<li>Definition: ${tech.basics.definition}</li>`;
         }
-        if(tech.basics.fundamental_components){
-          bodyHTML += createList('Fundamental Components', tech.basics.fundamental_components);
+        if (tech.basics.key_terms && tech.basics.key_terms.length) {
+          basicsText += '<li>Key Terms:<ul>';
+          tech.basics.key_terms.forEach(term => {
+            basicsText += `<li>${term.term}: ${term.definition}</li>`;
+          });
+          basicsText += '</ul></li>';
         }
-        if(tech.basics.types_of_robots){
-          bodyHTML += createList('Types of Robots', tech.basics.types_of_robots);
+        if (tech.basics.fundamental_components) {
+          basicsText += `<li>Fundamental Components: ${tech.basics.fundamental_components.join(', ')}</li>`;
         }
+        if (tech.basics.types_of_robots) {
+          basicsText += '<li>Types of Robots:<ul>';
+          tech.basics.types_of_robots.forEach(type => {
+            basicsText += `<li>${type}</li>`;
+          });
+          basicsText += '</ul></li>';
+        }
+        basicsText += '</ul>';
+        modalBasics.innerHTML = basicsText;
+      } else {
+        modalBasics.innerHTML = '';
       }
 
-      // Key Terms (for Robotics, AI etc)
-      if(tech.key_terms){
-        bodyHTML += createList('Key Terms', tech.key_terms);
+      // Applications
+      if (tech.applications && tech.applications.length) {
+        let applicationsText = '<h3>Applications</h3><ul>';
+        tech.applications.forEach(app => {
+          applicationsText += `<li>${app}</li>`;
+        });
+        applicationsText += '</ul>';
+        modalApplications.innerHTML = applicationsText;
+      } else {
+        modalApplications.innerHTML = '';
       }
 
-      // Examples (if example string)
-      if(tech.example){
-        bodyHTML += `<section class="modal-section"><h3>Example</h3><p class="modal-example">${tech.example}</p></section>`;
+      // Key Concepts
+      if (tech.key_concepts && tech.key_concepts.length) {
+        let conceptsText = '<h3>Key Concepts</h3><ul>';
+        tech.key_concepts.forEach(concept => {
+          conceptsText += `<li>${concept}</li>`;
+        });
+        conceptsText += '</ul>';
+        modalKeyConcepts.innerHTML = conceptsText;
+      } else {
+        modalKeyConcepts.innerHTML = '';
       }
+
+      // Basic Types and Examples
+      if (tech.basic_types_and_examples && tech.basic_types_and_examples.length) {
+        let typesText = '<h3>Basic Types & Examples</h3><ul>';
+        tech.basic_types_and_examples.forEach(type => {
+          typesText += `<li><strong>${type.name}</strong>: ${type.desc || ''}`;
+          if (type.example) {
+            typesText += `<br><em>Example:</em> ${type.example}`;
+          }
+          typesText += '</li>';
+        });
+        typesText += '</ul>';
+        modalBasics.innerHTML = typesText + (modalBasics.innerHTML || '');
+      }
+
+      // Example
+      modalExample.innerHTML = tech.example ? `<strong>Example:</strong> ${tech.example}` : '';
 
       // Image
-      if(tech.image){
-        bodyHTML += `<img class="modal-image" src="${tech.image}" alt="${tech.name} illustration" />`;
-      }
-
-      modalBody.innerHTML = bodyHTML;
-
-      // Thread button show/hide and action
-      if(tech.thread){
-        threadButton.style.display = 'inline-block';
-        threadButton.onclick = () => window.open(tech.thread, '_blank', 'noopener');
+      if (tech.image) {
+        modalImage.src = tech.image;
+        modalImage.alt = `Image representing ${tech.name}`;
+        modalImage.style.display = 'block';
       } else {
-        threadButton.style.display = 'none';
-        threadButton.onclick = null;
+        modalImage.style.display = 'none';
+        modalImage.src = '';
+        modalImage.alt = '';
       }
-
-      // Search button action
-      searchButton.onclick = () => {
-        const query = encodeURIComponent(tech.name || '');
-        window.open(`https://x.com/search?q=${query}`, '_blank', 'noopener');
-      };
 
       modal.style.display = 'flex';
-      // Focus modal content for accessibility
-      modal.querySelector('.modal-content').focus();
+      modalDesc.focus();
+
+      // Thread button
+      const threadButton = document.getElementById('threadButton');
+      if (tech.thread && tech.thread.trim() !== '') {
+        threadButton.style.display = 'inline-block';
+        threadButton.onclick = () => {
+          window.open(tech.thread, '_blank', 'noopener,noreferrer');
+        };
+      } else {
+        threadButton.style.display = 'none';
+      }
+
+      // Search button
+      const searchButton = document.getElementById('searchButton');
+      searchButton.onclick = () => {
+        const query = encodeURIComponent(tech.name);
+        const searchURL = `https://x.com/search?q=${query}`;
+        window.open(searchURL, '_blank', 'noopener,noreferrer');
+      };
+
+      // Attach event to close modal on Escape key press
+      document.addEventListener('keydown', escKeyClose);
     }
 
+    // Close modal function
     function closeModal() {
       const modal = document.getElementById('techModal');
       modal.style.display = 'none';
+      // Remove Escape key listener
+      document.removeEventListener('keydown', escKeyClose);
     }
 
+    // Close modal on Escape key
+    function escKeyClose(e) {
+      if (e.key === 'Escape') closeModal();
+    }
+
+    // Copy modal content
     function copyModalContent() {
-      const modalTitle = document.getElementById('modalTitle').textContent;
-      const modalBody = document.getElementById('modalBody');
-      const clone = modalBody.cloneNode(true);
+      const title = document.getElementById('modalTitle').textContent.trim();
+      const desc = document.getElementById('modalDesc').textContent.trim();
+      const invention = document.getElementById('modalInvention').textContent.trim();
+      const purpose = document.getElementById('modalPurpose').textContent.trim();
+      const milestones = document.getElementById('modalMilestones').textContent.trim();
+      const basics = document.getElementById('modalBasics').textContent.trim();
+      const applications = document.getElementById('modalApplications').textContent.trim();
+      const keyConcepts = document.getElementById('modalKeyConcepts').textContent.trim();
+      const example = document.getElementById('modalExample').textContent.trim();
 
-      // Extract visible text only, including modalTitle
-      let textContent = modalTitle + "\n\n";
+      const content = `${title}\n\n${desc}\n\n${invention}\n\n${purpose}\n\n${milestones}\n\n${basics}\n\n${applications}\n\n${keyConcepts}\n\n${example}`;
 
-      function extractText(node) {
-        let text = '';
-        node.childNodes.forEach(child => {
-          if(child.nodeType === Node.TEXT_NODE){
-            text += child.textContent;
-          } else if(child.nodeType === Node.ELEMENT_NODE) {
-            const tag = child.tagName.toLowerCase();
-            if(tag === 'li'){
-              text += "- " + extractText(child) + "\n";
-            } else if(['h3', 'h4'].includes(tag)){
-              text += child.textContent + "\n";
-            } else if(tag === 'p'){
-              text += extractText(child) + "\n\n";
-            } else {
-              text += extractText(child);
-            }
-          }
-        });
-        return text;
-      }
-
-      textContent += extractText(clone).trim();
-
-      navigator.clipboard.writeText(textContent).then(() => {
-        alert('Content copied to clipboard!');
-      }).catch(err => {
-        console.error('Copy failed', err);
-        alert('Failed to copy content. Please try again.');
+      navigator.clipboard.writeText(content).then(() => {
+        alert('Tech details copied to clipboard!');
+      }).catch(() => {
+        alert('Failed to copy. Please try again manually.');
       });
     }
 
-    // Close modal on outside click or Escape key
-    document.getElementById('techModal').addEventListener('click', e => {
-      if(e.target === document.getElementById('techModal')) closeModal();
-    });
-    document.addEventListener('keydown', e => {
-      if(e.key === 'Escape') closeModal();
+    // Click outside modal content closes modal
+    document.getElementById('techModal').addEventListener('click', (ev) => {
+      if (ev.target === ev.currentTarget) {
+        closeModal();
+      }
     });
 
     // Load both ai.txt (main topics) and add_on.txt (additional terminologies)
@@ -827,7 +892,7 @@
       // Load main AI topics
       fetch('texts/ai.txt')
         .then(response => {
-          if(!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
           return response.text();
         })
         .then(text => {
@@ -838,7 +903,7 @@
           return fetch('texts/add_on.txt');
         })
         .then(response => {
-          if(!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
           return response.text();
         })
         .then(text => {
