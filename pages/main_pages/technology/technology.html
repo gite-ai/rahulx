@@ -545,6 +545,7 @@
         <div class="modal-section" id="modalMilestones"></div>
         <div class="modal-section" id="modalBasics"></div>
         <div class="modal-section" id="modalApplications"></div>
+        <div class="modal-section" id="modalKeyConcepts"></div>
         <p class="modal-example" id="modalExample"></p>
         <img class="modal-image" id="modalImage" src="" alt="Technology Related Image" />
       </div>
@@ -619,6 +620,7 @@
       const modalMilestones = document.getElementById('modalMilestones');
       const modalBasics = document.getElementById('modalBasics');
       const modalApplications = document.getElementById('modalApplications');
+      const modalKeyConcepts = document.getElementById('modalKeyConcepts');
       const modalExample = document.getElementById('modalExample');
       const modalImage = document.getElementById('modalImage');
 
@@ -708,6 +710,18 @@
         modalApplications.innerHTML = '';
       }
 
+      // Key Concepts
+      if (tech.key_concepts && tech.key_concepts.length) {
+        let conceptsText = '<h3>Key Concepts</h3><ul>';
+        tech.key_concepts.forEach(concept => {
+          conceptsText += `<li>${concept}</li>`;
+        });
+        conceptsText += '</ul>';
+        modalKeyConcepts.innerHTML = conceptsText;
+      } else {
+        modalKeyConcepts.innerHTML = '';
+      }
+
       // Example
       modalExample.innerHTML = tech.example ? `<strong>Example:</strong> ${tech.example}` : '';
 
@@ -761,7 +775,7 @@
       if (e.key === 'Escape') closeModal();
     }
 
-    // Copy modal content: title, description, invention, purpose, milestones, basics, applications, example
+    // Copy modal content: title, description, invention, purpose, milestones, basics, applications, key concepts, example
     function copyModalContent() {
       const title = document.getElementById('modalTitle').textContent.trim();
       const desc = document.getElementById('modalDesc').textContent.trim();
@@ -770,9 +784,10 @@
       const milestones = document.getElementById('modalMilestones').textContent.trim();
       const basics = document.getElementById('modalBasics').textContent.trim();
       const applications = document.getElementById('modalApplications').textContent.trim();
+      const keyConcepts = document.getElementById('modalKeyConcepts').textContent.trim();
       const example = document.getElementById('modalExample').textContent.trim();
 
-      const content = `${title}\n\n${desc}\n\n${invention}\n\n${purpose}\n\n${milestones}\n\n${basics}\n\n${applications}\n\n${example}`;
+      const content = `${title}\n\n${desc}\n\n${invention}\n\n${purpose}\n\n${milestones}\n\n${basics}\n\n${applications}\n\n${keyConcepts}\n\n${example}`;
 
       navigator.clipboard.writeText(content).then(() => {
         alert('Technology details copied to clipboard!');
