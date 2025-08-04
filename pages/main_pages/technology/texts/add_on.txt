@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Neuromorphic Computing",
+    "desc": "Neuromorphic computing mimics the human brain's neural architecture to create energy-efficient, adaptive systems for AI and machine learning tasks.",
+    "example": "IBM's TrueNorth chip processes sensory data like a human brain for real-time object recognition.",
+    "image": "https://example.com/images/neuromorphic.jpg",
+    "thread": "https://x.com/example/thread/neuromorphic"
+  },
+  {
+    "name": "Metaverse Platforms",
+    "desc": "Metaverse platforms are immersive digital environments blending augmented and virtual reality for social, work, and entertainment experiences.",
+    "example": "Decentraland allows users to create and trade virtual assets in a blockchain-based virtual world.",
+    "image": "https://example.com/images/metaverse.jpg",
+    "thread": "https://x.com/example/thread/metaverse"
+  },
+  {
+    "name": "Synthetic Data Generation",
+    "desc": "Synthetic data generation creates artificial datasets using AI to train models without compromising privacy or requiring real-world data.",
+    "example": "NVIDIA's Omniverse generates synthetic 3D datasets for autonomous vehicle training.",
+    "image": "https://example.com/images/synthetic_data.jpg",
+    "thread": "https://x.com/example/thread/syntheticdata"
+  },
+  {
+    "name": "Hyperledger Technologies",
+    "desc": "Hyperledger technologies are open-source blockchain frameworks designed for enterprise-grade, secure, and scalable applications.",
+    "example": "Hyperledger Fabric powers Walmart's supply chain tracking for food safety.",
+    "image": "https://example.com/images/hyperledger.jpg",
+    "thread": "https://x.com/example/thread/hyperledger"
+  },
+  {
+    "name": "Photonic Computing",
+    "desc": "Photonic computing uses light-based circuits to process data at unprecedented speeds, surpassing traditional electronic systems.",
+    "example": "Lightmatter's photonic chips accelerate AI computations with lower energy consumption.",
+    "image": "https://example.com/images/photonic.jpg",
+    "thread": "https://x.com/example/thread/photonic"
+  }
+]
