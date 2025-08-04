@@ -271,6 +271,39 @@
       font-style: italic;
     }
 
+    .modal-section {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: #b0fff0;
+      user-select: text;
+    }
+
+    .modal-section h3 {
+      font-size: 1.2rem;
+      color: #ff00cc;
+      margin-bottom: 10px;
+    }
+
+    .modal-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .modal-section li {
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .modal-section li:before {
+      content: '➜';
+      position: absolute;
+      left: 0;
+      color: #00ffcc;
+    }
+
     .modal-example {
       font-size: 1rem;
       line-height: 1.6;
@@ -450,6 +483,14 @@
         font-size: 1rem;
       }
 
+      .modal-section {
+        font-size: 0.9rem;
+      }
+
+      .modal-section h3 {
+        font-size: 1.1rem;
+      }
+
       .modal-example {
         font-size: 0.9rem;
       }
@@ -499,6 +540,9 @@
       </div>
       <div class="modal-body">
         <p class="modal-desc" id="modalDesc" tabindex="0"></p>
+        <div class="modal-section" id="modalInvention"></div>
+        <div class="modal-section" id="modalPurpose"></div>
+        <div class="modal-section" id="modalMilestones"></div>
         <p class="modal-example" id="modalExample"></p>
         <img class="modal-image" id="modalImage" src="" alt="Technology Related Image" />
       </div>
@@ -568,13 +612,65 @@
       const modal = document.getElementById('techModal');
       const modalTitle = document.getElementById('modalTitle');
       const modalDesc = document.getElementById('modalDesc');
+      const modalInvention = document.getElementById('modalInvention');
+      const modalPurpose = document.getElementById('modalPurpose');
+      const modalMilestones = document.getElementById('modalMilestones');
       const modalExample = document.getElementById('modalExample');
       const modalImage = document.getElementById('modalImage');
 
       // Set content safely
       modalTitle.textContent = tech.name || 'Unknown Technology';
       modalDesc.innerHTML = tech.desc || 'No description available.';
+
+      // Invention
+      if (tech.invention) {
+        let inventionText = '<h3>Invention</h3><ul>';
+        if (tech.invention.term_coined_by) {
+          inventionText += `<li>Term coined by: ${tech.invention.term_coined_by}</li>`;
+        }
+        if (tech.invention.year) {
+          inventionText += `<li>Year: ${tech.invention.year}</li>`;
+        }
+        if (tech.invention.early_pioneers) {
+          inventionText += `<li>Early Pioneers: ${tech.invention.early_pioneers.join(', ')}</li>`;
+        }
+        if (tech.invention.early_developments) {
+          inventionText += `<li>Early Developments: ${tech.invention.early_developments.join(', ')}</li>`;
+        }
+        inventionText += '</ul>';
+        modalInvention.innerHTML = inventionText;
+      } else {
+        modalInvention.innerHTML = '';
+      }
+
+      // Purpose
+      if (tech.purpose && tech.purpose.length) {
+        let purposeText = '<h3>Purpose</h3><ul>';
+        tech.purpose.forEach(p => {
+          purposeText += `<li>${p}</li>`;
+        });
+        purposeText += '</ul>';
+        modalPurpose.innerHTML = purposeText;
+      } else {
+        modalPurpose.innerHTML = '';
+      }
+
+      // Key Milestones
+      if (tech.key_milestones && tech.key_milestones.length) {
+        let milestonesText = '<h3>Key Milestones</h3><ul>';
+        tech.key_milestones.forEach(m => {
+          milestonesText += `<li>${m.year}: ${m.event} - ${m.description}</li>`;
+        });
+        milestonesText += '</ul>';
+        modalMilestones.innerHTML = milestonesText;
+      } else {
+        modalMilestones.innerHTML = '';
+      }
+
+      // Example
       modalExample.innerHTML = tech.example ? `<strong>Example:</strong> ${tech.example}` : '';
+
+      // Image
       if (tech.image) {
         modalImage.src = tech.image;
         modalImage.alt = `Image representing ${tech.name}`;
@@ -584,6 +680,7 @@
         modalImage.src = '';
         modalImage.alt = '';
       }
+
       modal.style.display = 'flex';
       modalDesc.focus();
 
@@ -623,13 +720,16 @@
       if (e.key === 'Escape') closeModal();
     }
 
-    // Copy modal content: title, description (text only), example
+    // Copy modal content: title, description, invention, purpose, milestones, example
     function copyModalContent() {
       const title = document.getElementById('modalTitle').textContent.trim();
       const desc = document.getElementById('modalDesc').textContent.trim();
+      const invention = document.getElementById('modalInvention').textContent.trim();
+      const purpose = document.getElementById('modalPurpose').textContent.trim();
+      const milestones = document.getElementById('modalMilestones').textContent.trim();
       const example = document.getElementById('modalExample').textContent.trim();
 
-      const content = `${title}\n\n${desc}\n\n${example}`;
+      const content = `${title}\n\n${desc}\n\n${invention}\n\n${purpose}\n\n${milestones}\n\n${example}`;
 
       navigator.clipboard.writeText(content).then(() => {
         alert('Technology details copied to clipboard!');
