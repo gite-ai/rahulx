@@ -544,8 +544,7 @@
     // Populate the list of tech topics as hashtag buttons
     function populateTechTopics(technologies) {
       const topicsContainer = document.getElementById('techTopics');
-      topicsContainer.innerHTML = ''; // clear if re-populating
-
+      // Do not clear existing content here to allow adding from multiple files
       technologies.forEach(tech => {
         const topic = document.createElement('div');
         topic.className = 'topic';
@@ -648,26 +647,45 @@
 
     // Initial setup on page load
     window.onload = () => {
-      // Fetch your JSON technology data from texts/technology.txt (adjust path as needed)
+      const topicsContainer = document.getElementById('techTopics');
+      topicsContainer.innerHTML = ''; // clear just once before loading
+
+      // Load main technology topics
       fetch('texts/technology.txt')
         .then(response => {
-          if (!response.ok) throw new Error('Failed to fetch technology data.');
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
           return response.text();
         })
         .then(text => {
-          let technologies = [];
+          let mainTopics = [];
           try {
-            technologies = JSON.parse(text);
+            mainTopics = JSON.parse(text);
           } catch (e) {
-            console.error('Error parsing JSON:', e);
-            alert('Failed to parse technologies JSON data.');
-            return;
+            console.error('Error parsing technology JSON:', e);
+            throw new Error('Failed to parse technology JSON data.');
           }
-          populateTechTopics(technologies);
+          populateTechTopics(mainTopics);
+
+          // Load addon topics AFTER main topics have loaded
+          return fetch('texts/add_on.txt');
+        })
+        .then(response => {
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+          return response.text();
+        })
+        .then(text => {
+          let addOnTopics = [];
+          try {
+            addOnTopics = JSON.parse(text);
+          } catch (e) {
+            console.error('Error parsing addon JSON:', e);
+            throw new Error('Failed to parse addon JSON data.');
+          }
+          populateTechTopics(addOnTopics);
         })
         .catch(error => {
           console.error('Loading error:', error);
-          document.getElementById('techTopics').innerHTML = '<p style="color:#ff00cc; text-align:center;">Failed to load technology data.</p>';
+          document.getElementById('techTopics').innerHTML = '<p style="color:#ff00cc; text-align:center;">Failed to load technology data. Check console for details.</p>';
         });
 
       generateBinaryDigits();
