@@ -606,4 +606,1115 @@
       "Elastic resource provisioning",
       "Security and compliance"
     ],
-    "image": "https://example
+    "image": "https://example.com/images/cloud.jpg",
+    "thread": "https://x.com/example/thread/55778"
+  },
+  {
+    "name": "Genetic Engineering",
+    "desc": "Genetic engineering involves modifying the DNA of organisms to change their traits or produce new capabilities, enabling powerful advances in medicine, agriculture, and industry.",
+    "invention": {
+      "early_pioneers": [
+        "Herbert Boyer",
+        "Stanley Cohen"
+      ],
+      "year": 1973,
+      "early_techniques": [
+        "Restriction enzymes for gene splicing"
+      ]
+    },
+    "purpose": [
+      "Develop disease-resistant crops",
+      "Create gene therapies for inherited diseases",
+      "Produce biologic medicines and vaccines"
+    ],
+    "key_milestones": [
+      {
+        "year": 1973,
+        "event": "First recombinant DNA",
+        "description": "Boyce and Cohen create recombinant plasmids"
+      },
+      {
+        "year": 1996,
+        "event": "Dolly the sheep",
+        "description": "First mammal cloned from adult cells"
+      },
+      {
+        "year": 2012,
+        "event": "CRISPR-Cas9",
+        "description": "Gene editing revolution with precision and ease"
+      }
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Transgenic Organisms",
+        "desc": "Organisms with foreign DNA inserted.",
+        "example": "Bt corn resistant to pests"
+      },
+      {
+        "name": "Gene Editing",
+        "desc": "Precise modification of DNA sequences.",
+        "example": "CRISPR-based correction of genetic mutations"
+      }
+    ],
+    "applications": [
+      "Agricultural biotechnology",
+      "Medical gene therapy",
+      "Industrial bio-production"
+    ],
+    "key_concepts": [
+      "DNA manipulation",
+      "Gene expression control",
+      "Off-target effects and ethics"
+    ],
+    "image": "https://example.com/images/genetics.jpg",
+    "thread": "https://x.com/example/thread/66889"
+  },
+  {
+    "name": "3D Printing",
+    "desc": "3D Printing, or additive manufacturing, creates physical objects layer by layer from digital designs, revolutionizing prototyping, manufacturing, medicine, and even construction.",
+    "invention": {
+      "term_coined_by": "Chuck Hull",
+      "year": 1984,
+      "early_concept": {
+        "event": "Stereolithography (SLA)",
+        "description": "First 3D printer prototype"
+      }
+    },
+    "purpose": [
+      "Allow rapid prototyping and iterative design with minimal waste",
+      "Enable custom or complex shapes impossible by traditional manufacturing",
+      "Personalize products, especially medical devices"
+    ],
+    "key_milestones": [
+      {
+        "year": 1984,
+        "event": "First 3D printer prototype",
+        "description": "Chuck Hull develops the first working 3D printer."
+      },
+      {
+        "year": 2005,
+        "event": "RepRap Project",
+        "description": "Low-cost open-source printers for home & school use."
+      }
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Fused Deposition Modeling (FDM)",
+        "desc": "Melts and extrudes plastic through a nozzle.",
+        "example": "Prints prototypes, hobby parts, tools."
+      },
+      {
+        "name": "Stereolithography (SLA)",
+        "desc": "Cures liquid resin using UV light.",
+        "example": "Detailed dental molds or jewelry prototypes."
+      },
+      {
+        "name": "Selective Laser Sintering (SLS)",
+        "desc": "Uses lasers to fuse powdered materials.",
+        "example": "Strong plastic or metal parts in aerospace/industry."
+      }
+    ],
+    "applications": [
+      "Prototype and part manufacturing",
+      "Custom prosthetics and implants",
+      "Aerospace and automotive lightweight parts",
+      "Rapid design iteration"
+    ],
+    "key_concepts": [
+      "Layer-by-layer fabrication",
+      "Digital-to-physical pipeline",
+      "Rapid customization"
+    ],
+    "image": "https://example.com/images/3dprint.jpg",
+    "thread": "https://x.com/example/thread/77990"
+  },
+  {
+    "name": "Renewable Energy Technologies",
+    "desc": "Renewable energy tech harnesses natural, inexhaustible resources—like sunlight, wind, and water—for clean power, reducing dependence on fossil fuels and mitigating climate change.",
+    "invention": {
+      "early_pioneers": [
+        "Bell Labs"
+      ],
+      "year": 1954,
+      "early_developments": [
+        "Ancient windmills (Persia, ~500 AD)",
+        "Water wheels",
+        "First photovoltaic cell"
+      ]
+    },
+    "purpose": [
+      "Sustainably generate power while reducing pollution",
+      "Diversify energy sources for security and resilience",
+      "Enable grid decentralization and access in remote areas"
+    ],
+    "key_milestones": [
+      {
+        "year": "1980s",
+        "event": "Utility-scale wind turbines",
+        "description": "Europe and US deploy wind farms."
+      },
+      {
+        "year": "2000s",
+        "event": "Solar cost declines",
+        "description": "Solar & wind become cost-competitive with coal/gas."
+      }
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Solar Photovoltaic (PV)",
+        "desc": "Panels convert sunlight directly to electricity.",
+        "example": "Rooftop solar powering homes."
+      },
+      {
+        "name": "Wind Turbines",
+        "desc": "Blades turn kinetic wind to electricity.",
+        "example": "Offshore wind farms powering grid."
+      },
+      {
+        "name": "Hydroelectric",
+        "desc": "Uses water flow to turn turbines.",
+        "example": "Large dams and micro-hydro for villages."
+      }
+    ],
+    "applications": [
+      "Residential, commercial, and industrial power",
+      "Grid-scale electricity supply",
+      "Rural electrification"
+    ],
+    "key_concepts": [
+      "Intermittency and storage (batteries, pumped hydro)",
+      "Grid integration and smart grids",
+      "Carbon neutrality"
+    ],
+    "image": "https://example.com/images/renewable.jpg",
+    "thread": "https://x.com/example/thread/88001"
+  },
+  {
+    "name": "Biotechnology",
+    "desc": "Biotechnology applies biological systems, organisms, or derivatives to develop new medical, agricultural, or industrial products. It underpins genetics, pharmaceuticals, biofuels, and synthetic biology.",
+    "invention": {
+      "early_pioneers": [
+        "Gregor Mendel",
+        "Louis Pasteur",
+        "Paul Berg",
+        "Herbert Boyer"
+      ],
+      "year": "1800s-1973",
+      "modern_biotech": [
+        {
+          "event": "Recombinant DNA",
+          "description": "Paul Berg and Herbert Boyer splice genes",
+          "year": 1973
+        },
+        {
+          "event": "Synthetic human insulin",
+          "description": "First drug made using genetically modified bacteria",
+          "year": 1978
+        }
+      ]
+    },
+    "purpose": [
+      "Enhance food production and health",
+      "Produce lifesaving medicines efficiently",
+      "Engineer new organisms for industry and the environment"
+    ],
+    "key_milestones": [
+      {
+        "year": 1973,
+        "event": "Recombinant DNA",
+        "description": "Paul Berg and Herbert Boyer splice genes."
+      },
+      {
+        "year": 1978,
+        "event": "Synthetic human insulin",
+        "description": "First drug made using genetically modified bacteria."
+      }
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Red Biotechnology",
+        "desc": "Medical and pharmaceutical uses.",
+        "example": "Insulin, vaccines, gene therapies."
+      },
+      {
+        "name": "Green Biotechnology",
+        "desc": "Agricultural innovation.",
+        "example": "Drought-resistant or pest-tolerant crops."
+      },
+      {
+        "name": "White Biotechnology",
+        "desc": "Industrial processes.",
+        "example": "Microbes synthesizing chemicals or biofuels."
+      }
+    ],
+    "applications": [
+      "Vaccine and drug development",
+      "Food crop improvement",
+      "Industrial enzyme and biofuel production",
+      "Bioremediation"
+    ],
+    "key_concepts": [
+      "Genetic modification",
+      "Cell culture and fermentation",
+      "Ethical and safety review"
+    ],
+    "image": "https://example.com/images/biotech.jpg",
+    "thread": "https://x.com/example/thread/99112"
+  },
+  {
+    "name": "Nanotechnology",
+    "desc": "Nanotechnology manipulates matter at the atomic and molecular (1–100 nanometer) scale, enabling new materials and devices with novel mechanical, electrical, or chemical properties.",
+    "invention": {
+      "term_coined_by": "Richard Feynman",
+      "year": 1959,
+      "early_concept": {
+        "event": "There's Plenty of Room at the Bottom",
+        "description": "Feynman's lecture introducing nanotechnology"
+      }
+    },
+    "purpose": [
+      "Create stronger, lighter, smarter materials",
+      "Enable targeted medical therapies",
+      "Develop next-gen electronics and sensors"
+    ],
+    "key_milestones": [
+      {
+        "year": 1981,
+        "event": "Scanning Tunneling Microscope",
+        "description": "First tool to visualize and move individual atoms."
+      },
+      {
+        "year": 1991,
+        "event": "Discovery of carbon nanotubes",
+        "description": "Materials much stronger and lighter than steel."
+      }
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Nanomaterials",
+        "desc": "Materials engineered at the nanoscale.",
+        "example": "Graphene, carbon nanotubes, quantum dots."
+      },
+      {
+        "name": "Nanomedicine",
+        "desc": "Medical uses of nanotech.",
+        "example": "Nanoparticles delivering drugs to cancer cells."
+      }
+    ],
+    "applications": [
+      "Medicine and drug delivery",
+      "Electronics and semiconductors",
+      "Coatings and composites for strength, lightness"
+    ],
+    "key_concepts": [
+      "Self-assembly",
+      "Surface area to volume ratio",
+      "Quantum effects at nanoscale"
+    ],
+    "image": "https://example.com/images/nano.jpg",
+    "thread": "https://x.com/example/thread/10213"
+  },
+  {
+    "name": "Cybersecurity",
+    "desc": "Cybersecurity protects digital systems from unauthorized access, attacks, and data breaches, ensuring the confidentiality, integrity, and availability of information.",
+    "invention": {
+      "early_developments": [
+        "Firewalls",
+        "Antivirus software",
+        "Encryption algorithms"
+      ],
+      "year": "1980s"
+    },
+    "purpose": [
+      "Protect sensitive information from theft or corruption",
+      "Maintain user safety and data privacy",
+      "Secure infrastructure (banks, energy, hospitals)"
+    ],
+    "key_milestones": [
+      {
+        "year": "1990s",
+        "event": "Public-key cryptography becomes standard",
+        "description": "Widespread use in banking and web."
+      },
+      {
+        "year": "2000s",
+        "event": "Rise of state-sponsored attacks and zero-days",
+        "description": "Security becomes a national priority."
+      }
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Network Security",
+        "desc": "Measures to protect data during transit.",
+        "example": "Firewalls, secure VPNs"
+      },
+      {
+        "name": "Information Security",
+        "desc": "Safeguarding data at rest and access control.",
+        "example": "Encryption, multi-factor authentication"
+      }
+    ],
+    "applications": [
+      "Online banking security",
+      "Health records protection",
+      "Election infrastructure",
+      "Business and home IT"
+    ],
+    "key_concepts": [
+      "Threat vectors (malware, phishing)",
+      "Encryption and decryption",
+      "Authentication and authorization",
+      "Incident response"
+    ],
+    "image": "https://example.com/images/cybersecurity.jpg",
+    "thread": "https://x.com/example/thread/11314"
+  },
+  {
+    "name": "Wearable Technology",
+    "desc": "Wearable technology encompasses electronic devices that are comfortably worn on the body to monitor, analyze, and enhance life—health, fitness, and productivity.",
+    "invention": {
+      "early_developments": [
+        "Pulsar calculator watch",
+        "Pedometers",
+        "Heart monitors"
+      ],
+      "year": "1975-1990s",
+      "modern_milestone": {
+        "event": "Fitness bands boom",
+        "description": "Fitbit, Jawbone, and Apple Watch popularize ubiquitous wearables",
+        "year": 2014
+      }
+    },
+    "purpose": [
+      "Track health and activity in real time",
+      "Assist with communication and productivity",
+      "Support medical monitoring and intervention"
+    ],
+    "key_milestones": [
+      {
+        "year": 1975,
+        "event": "Pulsar calculator watch",
+        "description": "First digital wearable."
+      },
+      {
+        "year": 2014,
+        "event": "Fitness bands boom",
+        "description": "Fitbit, Jawbone, and Apple Watch popularize ubiquitous wearables."
+      }
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Fitness Trackers",
+        "desc": "Monitor steps, heart rate, and sleep.",
+        "example": "Fitbit, Xiaomi Mi Band"
+      },
+      {
+        "name": "Smart Watches",
+        "desc": "Multi-purpose wearable computers.",
+        "example": "Apple Watch, Samsung Galaxy Watch"
+      },
+      {
+        "name": "Medical Wearables",
+        "desc": "Continuous health and therapy management.",
+        "example": "Continuous glucose monitors"
+      }
+    ],
+    "applications": [
+      "Personal fitness and health tracking",
+      "Real-time alerts for heart rhythm or glucose",
+      "Hands-free productivity tools"
+    ],
+    "key_concepts": [
+      "Sensor integration",
+      "Wireless device sync",
+      "Miniaturization and comfort"
+    ],
+    "image": "https://example.com/images/wearables.jpg",
+    "thread": "https://x.com/example/thread/13536"
+  },
+  {
+    "name": "Structural Battery Composites",
+    "desc": "Structural battery composites are advanced materials that serve as both structural components and batteries, storing electrical energy within the material itself, drastically reducing weight and improving efficiency of vehicles, aircraft, and other systems.",
+    "invention": {
+      "research_origins": "Chalmers University of Technology",
+      "year": "1990s-2020",
+      "early_developments": [
+        "Aerospace engineering concepts",
+        "Laminated carbon fiber with embedded lithium"
+      ]
+    },
+    "purpose": [
+      "Eliminate the need for traditional, bulky battery packs",
+      "Make electric vehicles and planes lighter and more efficient",
+      "Enable novel product designs where energy is stored throughout the structure"
+    ],
+    "key_milestones": [
+      {
+        "year": 2020,
+        "event": "First practical strong, lightweight battery composites",
+        "description": "Laminated carbon fiber with embedded lithium for power and structure."
+      }
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Carbon Fiber Battery Panels",
+        "desc": "Laminates of carbon fiber infused with battery materials.",
+        "example": "An electric car body that supplies power as well as structure."
+      }
+    ],
+    "applications": [
+      "Electric vehicles and drones",
+      "Aerospace structures",
+      "Lightweight consumer electronics"
+    ],
+    "key_concepts": [
+      "Multi-functional materials",
+      "Energy density vs. mechanical strength trade-off",
+      "Integrated manufacturing"
+    ],
+    "image": "https://example.com/images/structural_battery.jpg",
+    "thread": "https://x.com/example/thread/30101"
+  },
+  {
+    "name": "Osmotic Power Systems",
+    "desc": "Osmotic power, also called 'blue energy', harvests electricity from the difference in salt concentration between seawater and freshwater using special membranes or electrodes.",
+    "invention": {
+      "term_coined_by": "R.E. Pattle",
+      "year": "1950s",
+      "early_developments": [
+        "TNO (Netherlands, 2009): First proof-of-concept power plant at Afsluitdijk",
+        "Graphene and nanomaterial membranes"
+      ]
+    },
+    "purpose": [
+      "Provide clean, renewable electricity at river mouths with zero emissions",
+      "Use natural salinity gradients as a sustainable power source"
+    ],
+    "key_milestones": [
+      {
+        "year": 2009,
+        "event": "First proof-of-concept power plant",
+        "description": "TNO deploys osmotic power plant at Afsluitdijk."
+      }
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Pressure Retarded Osmosis (PRO)",
+        "desc": "Harnesses osmotic pressure with semi-permeable membranes.",
+        "example": "Pilot plants at estuaries generating power from river and sea meeting."
+      },
+      {
+        "name": "Reverse Electrodialysis (RED)",
+        "desc": "Uses ion exchange membranes to create electrical potential from salt ions.",
+        "example": "Lab experiments producing hundreds of watts per square meter."
+      }
+    ],
+    "applications": [
+      "Coastal power stations",
+      "Off-grid sustainable energy sources"
+    ],
+    "key_concepts": [
+      "Salinity gradient energy",
+      "Membrane science and nanotechnology",
+      "Zero-emission power"
+    ],
+    "image": "https://example.com/images/osmotic_power.jpg",
+    "thread": "https://x.com/example/thread/30202"
+  },
+  {
+    "name": "Next-Generation Nuclear Energy",
+    "desc": "Next-generation nuclear energy includes small modular reactors (SMRs) and nuclear fusion technologies that aim to provide safe, scalable, and carbon-free electricity with new safety features.",
+    "invention": {
+      "early_developments": [
+        "NuScale",
+        "Rolls-Royce"
+      ],
+      "year": "2010s-2020s",
+      "fusion_milestone": {
+        "event": "Net energy gain in fusion at NIF",
+        "description": "First time a fusion reaction released more energy than input",
+        "year": 2022
+      }
+    },
+    "purpose": [
+      "Deliver reliable, 24/7 low-carbon power",
+      "Overcome cost, safety, and waste issues of traditional reactors",
+      "Enable clean power for remote sites and grid balancing"
+    ],
+    "key_milestones": [
+      {
+        "year": 2022,
+        "event": "Net energy gain in fusion at NIF, USA",
+        "description": "First time a fusion reaction released more energy than input."
+      }
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Small Modular Reactors (SMR)",
+        "desc": "Factory-built reactors deployable in diverse locations.",
+        "example": "NuScale reactor powering a small city."
+      },
+      {
+        "name": "Fusion Reactors",
+        "desc": "Fuse isotopes for almost limitless, non-carbon energy.",
+        "example": "Experimental reactors like ITER, NIF."
+      }
+    ],
+    "applications": [
+      "Grid-scale electricity",
+      "Clean hydrogen production",
+      "Desalination and industrial heat"
+    ],
+    "key_concepts": [
+      "Nuclear fission vs. fusion",
+      "Modular reactor construction",
+      "Passive safety"
+    ],
+    "image": "https://example.com/images/nuclear.jpg",
+    "thread": "https://x.com/example/thread/30303"
+  },
+  {
+    "name": "De-Extinction & Synthetic Biology",
+    "desc": "These fields use gene editing, cloning, and synthetic genomes to revive extinct species, create new organisms, and engineer biology for environmental and medical benefit.",
+    "invention": {
+      "early_pioneers": [
+        "Revive & Restore"
+      ],
+      "early_developments": [
+        "First cloned animal: Dolly the sheep (1996)",
+        "CRISPR/Cas9 gene editing (2012)"
+      ]
+    },
+    "purpose": [
+      "Undo damage to ecosystems by restoring lost species",
+      "Design new organisms for medical, energy, and remediation goals"
+    ],
+    "key_milestones": [
+      {
+        "year": 1996,
+        "event": "First cloned animal: Dolly the sheep",
+        "description": "First mammal cloned from adult cells."
+      },
+      {
+        "year": 2012,
+        "event": "CRISPR/Cas9",
+        "description": "Gene editing revolution with precision and ease."
+      }
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Gene Editing",
+        "desc": "Directly altering DNA to add, remove, or repair genes.",
+        "example": "Editing elephant DNA to revive cold-resistant mammoths."
+      },
+      {
+        "name": "Synthetic Genomes",
+        "desc": "Building entire chromosomes or genetic 'code' from scratch.",
+        "example": "Synthetic yeast and engineered bacteria for biotech."
+      }
+    ],
+    "applications": [
+      "Wildlife restoration",
+      "Environmental clean-up",
+      "Medical bioengineering"
+    ],
+    "key_concepts": [
+      "Cloning",
+      "CRISPR gene editing",
+      "Bioethics"
+    ],
+    "image": "https://example.com/images/deextinction.jpg",
+    "thread": "https://x.com/example/thread/31313"
+  },
+  {
+    "name": "Biomedical Nanobots",
+    "desc": "Biomedical nanobots are tiny machines, often DNA- or protein-based, designed to perform tasks in the human body such as targeted drug delivery, repair, or diagnosis at a cellular level.",
+    "invention": {
+      "early_pioneers": [
+        "Paul Rothemund"
+      ],
+      "year": 2006,
+      "early_developments": [
+        "DNA origami structures",
+        "Nanomotors and synthetic DNA walkers"
+      ]
+    },
+    "purpose": [
+      "Treat diseases at their source with high precision",
+      "Minimize side effects and improve therapy outcomes",
+      "Enable new diagnostics and cell repair"
+    ],
+    "key_milestones": [
+      {
+        "year": 2006,
+        "event": "DNA origami structures",
+        "description": "Paul Rothemund develops DNA-based nanotechnology."
+      }
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Targeted Drug Delivery Nanobots",
+        "desc": "Deliver drugs directly to diseased cells or tumors.",
+        "example": "DNA nanobots for delivering chemotherapy to cancer cells."
+      },
+      {
+        "name": "Repair and Diagnostic Nanobots",
+        "desc": "Monitor body chemistry or repair tissues.",
+        "example": "Nanorobots detecting cancer or unclogging arteries."
+      }
+    ],
+    "applications": [
+      "Cancer treatment",
+      "Gene therapy and diagnostics",
+      "Tissue engineering and repair"
+    ],
+    "key_concepts": [
+      "Biocompatibility",
+      "Controlled navigation (e.g., via magnets or chemical signals)",
+      "Nanofabrication"
+    ],
+    "image": "https://example.com/images/nanobots.jpg",
+    "thread": "https://x.com/example/thread/31111"
+  },
+  {
+    "name": "Carbon Nanotube Electronics",
+    "desc": "Carbon nanotube electronics uses cylindrical carbon molecules (nanotubes) to create electrical circuits far smaller, lighter, and more flexible than silicon-based technologies.",
+    "invention": {
+      "term_coined_by": "Sumio Iijima",
+      "year": 1991,
+      "early_developments": [
+        "First transistors and circuits built from nanotubes"
+      ]
+    },
+    "purpose": [
+      "Enable ultra-thin, flexible displays and solar panels",
+      "Build high-speed, high-efficiency microchips",
+      "Develop sensors and devices embedded in fabrics and skins"
+    ],
+    "key_milestones": [
+      {
+        "year": 1991,
+        "event": "Discovery of carbon nanotubes",
+        "description": "Sumio Iijima discovers carbon nanotubes."
+      },
+      {
+        "year": "1990s-2000s",
+        "event": "First nanotube transistors",
+        "description": "Development of transistors and circuits using nanotubes."
+      }
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Flexible Circuits",
+        "desc": "Printed on plastic, fabrics, or paper.",
+        "example": "Roll-up smartphones and bendable TV screens."
+      },
+      {
+        "name": "High-Performance Batteries",
+        "desc": "Electrodes made from nanotubes.",
+        "example": "Fast-charging, lightweight battery packs."
+      }
+    ],
+    "applications": [
+      "Wearable electronics",
+      "Flexible medical sensors",
+      "Next-gen computers"
+    ],
+    "key_concepts": [
+      "Molecular electronics",
+      "Nano-scale conductors",
+      "Mechanical strength and flexibility"
+    ],
+    "image": "https://example.com/images/nanotube.jpg",
+    "thread": "https://x.com/example/thread/31414"
+  },
+  {
+    "name": "Mind Uploading & Neural Interfaces",
+    "desc": "Mind uploading (whole brain emulation) and neural interfaces involve direct communication between the human brain and machines, aiming to restore lost function, extend memory, or one day digitally emulate consciousness.",
+    "invention": {
+      "early_pioneers": [
+        "Jacques Vidal",
+        "Elon Musk (Neuralink)",
+        "DARPA"
+      ],
+      "year": "1970s-2020s"
+    },
+    "purpose": [
+      "Restore movement, sensation, or speech for people with paralysis",
+      "Enable direct communication with computers through thought",
+      "Lay groundwork for advanced prosthetics and possibly digital emulation of the mind"
+    ],
+    "key_milestones": [
+      {
+        "year": 2006,
+        "event": "Monkey controls robotic arm via BCI",
+        "description": "Duke University team enables primate to control robotic device purely with thought."
+      },
+      {
+        "year": 2020,
+        "event": "Neuralink human demos",
+        "description": "Live demonstrations of high-bandwidth brain signal recording."
+      }
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Non-invasive BCIs",
+        "desc": "Use EEG (brainwave) caps or similar sensors on scalp.",
+        "example": "Controlling a cursor or wheelchair with thought."
+      },
+      {
+        "name": "Implantable Neural Interfaces",
+        "desc": "Electrodes surgically inserted into the brain for higher-resolution signals.",
+        "example": "Restoring limb movement to paralyzed patients."
+      }
+    ],
+    "applications": [
+      "Medical neuroprosthetics",
+      "Restoring communication to locked-in patients",
+      "Future memory/skill prosthetics"
+    ],
+    "key_concepts": [
+      "Neural decoding and encoding",
+      "Brain plasticity",
+      "Electrophysiology"
+    ],
+    "image": "https://example.com/images/neurotech.jpg",
+    "thread": "https://x.com/example/thread/31212"
+  },
+  {
+    "name": "Generative Watermarking",
+    "desc": "Generative watermarking technologies embed invisible or robust signals in digital images, audio, or video to authenticate original work and detect AI-generated or manipulated files.",
+    "invention": {
+      "early_pioneers": [
+        "M. Cox",
+        "OpenAI",
+        "DeepMind",
+        "Adobe"
+      ],
+      "year": "1990s-2020s"
+    },
+    "purpose": [
+      "Ensure authenticity and provenance in digital content",
+      "Combat misinformation and malicious deepfakes",
+      "Enable fair attribution in creative industries"
+    ],
+    "key_milestones": [
+      {
+        "year": "1990s",
+        "event": "Early digital watermarking standards",
+        "description": "M. Cox and others develop initial watermarking techniques."
+      },
+      {
+        "year": "2020s",
+        "event": "AI-specific invisible watermarking",
+        "description": "OpenAI, DeepMind, and Adobe advance watermarking for AI content."
+      }
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Invisible Watermarks",
+        "desc": "Subtle changes to pixels or frequencies undetectable to human eyes or ears.",
+        "example": "News organizations authenticating original photographs."
+      },
+      {
+        "name": "Robust Content Provenance",
+        "desc": "Watermarks that survive cropping, compression, or recompression.",
+        "example": "Social platforms labeling AI-generated videos."
+      }
+    ],
+    "applications": [
+      "Verification of images, memes, audio, and video online",
+      "Digital rights management",
+      "Combating disinformation"
+    ],
+    "key_concepts": [
+      "Steganography",
+      "Signal processing",
+      "Hashing and digital fingerprinting"
+    ],
+    "image": "https://example.com/images/generative_watermark.jpg",
+    "thread": "https://x.com/example/thread/31010"
+  },
+  {
+    "name": "Collaborative Sensing & Smart Swarms",
+    "desc": "Collaborative sensing and smart swarms use many distributed sensors, robots, or drones that work together, sharing data and making group decisions to achieve complex tasks in real time.",
+    "invention": {
+      "early_developments": [
+        "Swarm robotics modeled after social insects",
+        "Modern drone and sensor networks"
+      ],
+      "year": "1990s-2020s"
+    },
+    "purpose": [
+      "Enable real-time monitoring, search, and environmental mapping",
+      "Coordinate large-scale response to disasters (wildfires, floods, accidents)",
+      "Increase reliability through redundancy and distributed intelligence"
+    ],
+    "key_milestones": [
+      {
+        "year": "1990s",
+        "event": "Swarm robotics research",
+        "description": "Modeling after social insects for collaborative systems."
+      },
+      {
+        "year": "2010s",
+        "event": "Drone and sensor networks",
+        "description": "Military and civilian applications of smart swarms."
+      }
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Drone Swarms",
+        "desc": "Many small flying robots coordinate mapping or delivery.",
+        "example": "100+ drones mapping wildfire progression in real-time."
+      },
+      {
+        "name": "Sensor Mesh Networks",
+        "desc": "Fixed or mobile sensors gather large-scale data collaboratively.",
+        "example": "City-wide sensor grids for pollution or noise monitoring."
+      }
+    ],
+    "applications": [
+      "Disaster recovery and search & rescue",
+      "Agriculture and precision farming",
+      "Urban and environmental monitoring"
+    ],
+    "key_concepts": [
+      "Decentralized decision making",
+      "Real-time data fusion",
+      "Self-organization"
+    ],
+    "image": "https://example.com/images/collaborative_sensing.jpg",
+    "thread": "https://x.com/example/thread/30909"
+  },
+  {
+    "name": "Nanozymes",
+    "desc": "Nanozymes are synthetic nanomaterials that mimic natural enzymes but are more robust, tunable, and often cheaper, performing specific chemical reactions for medicine, industry, or environmental cleanup.",
+    "invention": {
+      "term_coined_by": "Yan et al",
+      "year": 2007,
+      "early_developments": [
+        "First reported artificial nanomaterial enzymes"
+      ]
+    },
+    "purpose": [
+      "Substitute for or enhance natural enzymes in harsh conditions",
+      "Detoxify pollutants or pathogens in environments",
+      "Enable biosensors, bioimaging, and on-demand drug delivery"
+    ],
+    "key_milestones": [
+      {
+        "year": 2007,
+        "event": "First reported nanozymes",
+        "description": "Yan et al publish in Science about artificial nanomaterial enzymes."
+      }
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Peroxidase-mimetic Nanozymes",
+        "desc": "Nanoparticles catalyzing oxidation reactions (like the natural peroxidase enzyme).",
+        "example": "Color-change test strips detecting toxins in water."
+      },
+      {
+        "name": "Antioxidant Nanozymes",
+        "desc": "Reduce cell damage from oxidative stress.",
+        "example": "Potential therapies for neurodegenerative diseases."
+      }
+    ],
+    "applications": [
+      "Environmental remediation",
+      "Medical diagnostics and therapy",
+      "Industrial catalysis"
+    ],
+    "key_concepts": [
+      "Catalysis at the nanoscale",
+      "Stability vs. biological specificity",
+      "Bio-inorganic hybrid systems"
+    ],
+    "image": "https://example.com/images/nanozymes.jpg",
+    "thread": "https://x.com/example/thread/30808"
+  },
+  {
+    "name": "GLP-1s for Neurodegenerative Disease",
+    "desc": "GLP-1 receptor agonists—originally diabetes and weight-loss drugs—are being studied for their potential to slow or prevent the progression of neurodegenerative diseases like Alzheimer's and Parkinson's.",
+    "invention": {
+      "early_developments": [
+        "GLP-1 hormone identified",
+        "Early diabetes drugs: exenatide, liraglutide",
+        "Off-label trials for Alzheimer's and Parkinson's"
+      ],
+      "year": "1980s-2020s"
+    },
+    "purpose": [
+      "Repurpose metabolic drugs to slow cognitive decline",
+      "Offer new hope for currently untreatable neurodegenerative diseases"
+    ],
+    "key_milestones": [
+      {
+        "year": "2000s",
+        "event": "Diabetes drugs developed",
+        "description": "Exenatide and liraglutide introduced for diabetes."
+      },
+      {
+        "year": "2020s",
+        "event": "Neurodegenerative trials",
+        "description": "Off-label trials for Alzheimer's and Parkinson's."
+      }
+    ],
+    "applications": [
+      "Clinical trials in Alzheimer's and Parkinson's treatment",
+      "Research into wider neuroprotective applications"
+    ],
+    "key_concepts": [
+      "Neuroprotection",
+      "Blood-brain barrier crossing",
+      "Repurposing of pharmaceuticals"
+    ],
+    "image": "https://example.com/images/glp1.jpg",
+    "thread": "https://x.com/example/thread/30505"
+  },
+  {
+    "name": "Green Nitrogen Fixation",
+    "desc": "Green nitrogen fixation technologies aim to produce ammonia (vital for fertilizer and food production) using renewable electricity rather than fossil-fuel-based Haber-Bosch processes, drastically reducing CO2 emissions.",
+    "invention": {
+      "early_pioneers": [
+        "Fritz Haber",
+        "Carl Bosch"
+      ],
+      "year": "1909-1910",
+      "modern_developments": [
+        "Electrochemical and plasma-assisted ammonia synthesis"
+      ]
+    },
+    "purpose": [
+      "Decarbonize agricultural fertilizer production",
+      "Enable distributed, on-demand ammonia for farming and industry"
+    ],
+    "key_milestones": [
+      {
+        "year": "2010s",
+        "event": "Electrochemical ammonia synthesis",
+        "description": "University and startup labs develop green synthesis methods."
+      }
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Electrochemical Ammonia Synthesis",
+        "desc": "Uses electricity and catalysts to combine nitrogen and hydrogen.",
+        "example": "Pilot plants running on solar or wind power."
+      }
+    ],
+    "applications": [
+      "Sustainable fertilizer",
+      "Green hydrogen and ammonia as fuel",
+      "Grid energy storage (ammonia as a carrier)"
+    ],
+    "key_concepts": [
+      "Catalysis and reaction engineering",
+      "Distributed chemical manufacture",
+      "Agricultural sustainability"
+    ],
+    "image": "https://example.com/images/green_nitrogen.jpg",
+    "thread": "https://x.com/example/thread/30707"
+  },
+  {
+    "name": "Engineered Living Therapeutics",
+    "desc": "Engineered living therapeutics are beneficial microbes designed, using genetic modification, to reside inside the body and perform therapeutic functions such as producing medicines, modulating immunity, or aiding metabolism.",
+    "invention": {
+      "early_developments": [
+        "Synthetic probiotic FDA approvals",
+        "Lab breakthroughs in gut-microbe engineering (Harvard, MIT)"
+      ],
+      "year": "2010s"
+    },
+    "purpose": [
+      "Treat chronic and metabolic diseases at the source",
+      "Create safer and more sustainable drug delivery methods",
+      "Personalize medicine by tuning patient's microbiome"
+    ],
+    "key_milestones": [
+      {
+        "year": "2010s",
+        "event": "Synthetic probiotic FDA approvals",
+        "description": "First approvals for engineered microbes."
+      }
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Insulin-secreting Gut Bacteria",
+        "desc": "Modified for type 1 diabetes therapy.",
+        "example": "Mice and early clinical human trials—a biological alternative to injections."
+      },
+      {
+        "name": "Microbiome Modulators",
+        "desc": "Custom bacteria for immune modulation.",
+        "example": "Live biotherapeutic drugs for inflammatory bowel disease."
+      }
+    ],
+    "applications": [
+      "Diabetes management",
+      "Cancer and auto-immune therapies",
+      "Obesity and metabolism support"
+    ],
+    "key_concepts": [
+      "Microbiome engineering",
+      "Synthetic biology",
+      "In-vivo drug delivery"
+    ],
+    "image": "https://example.com/images/living_therapeutics.jpg",
+    "thread": "https://x.com/example/thread/30404"
+  },
+  {
+    "name": "Autonomous Biochemical Sensing",
+    "desc": "Autonomous biochemical sensing refers to wearable, implantable, or ingestible sensors that continuously monitor health markers, disease indicators, or environmental toxins in real time, enabling smarter diagnosis and intervention.",
+    "invention": {
+      "early_developments": [
+        "Pacemakers",
+        "Glucose monitors",
+        "Nanosensor tattoos, implantables, ingestibles"
+      ],
+      "year": "1960s-2010s"
+    },
+    "purpose": [
+      "Provide continuous, real-time health and safety monitoring",
+      "Detect illness earlier and personalize treatments",
+      "Track pollutants, allergens, or chemical exposures in various environments"
+    ],
+    "key_milestones": [
+      {
+        "year": "1960s-1980s",
+        "event": "First pacemakers and glucose monitors",
+        "description": "Early medical sensing devices."
+      },
+      {
+        "year": "2010s",
+        "event": "Modern nanosensor advancements",
+        "description": "Development of tattoos, implantables, and ingestibles."
+      }
+    ],
+    "basic_types_and_examples": [
+      {
+        "name": "Smart Tattoos",
+        "desc": "Flexible, skin-mounted electronics for noninvasive measurement.",
+        "example": "Measuring blood oxygen, dehydration, or pH continuously."
+      },
+      {
+        "name": "Ingestible Sensors",
+        "desc": "Pills containing sensors for GI-tract measurements.",
+        "example": "Tracking gut acidity for ulcer/GERD diagnosis."
+      }
+    ],
+    "applications": [
+      "Continuous glucose monitoring for diabetes",
+      "Real-time cardiac and respiratory health alerts",
+      "Environmental chemical and toxin detection"
+    ],
+    "key_concepts": [
+      "Biocompatible sensor design",
+      "Wireless and remote data transmission",
+      "Lab-on-a-chip"
+    ],
+    "image": "https://example.com/images/biochem_sensors.jpg",
+    "thread": "https://x.com/example/thread/30606"
+  }
+]
