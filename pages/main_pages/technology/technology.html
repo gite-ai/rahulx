@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tech Frontier 2025</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <style>
     body { font-family: 'Poppins', sans-serif; margin:0; padding:0; background:#0a0a0a; color:#00ffcc; }
@@ -14,15 +14,10 @@
     .tech-core { position:absolute; left:50%; top:50%; width:60px; height:60px; margin-left:-30px; margin-top:-30px; border-radius:50%; background:rgba(0,255,204,.2); box-shadow: 0 0 40px #00ffcc, 0 0 80px #006a56; }
     .tech-icon { position:absolute; font-size:2rem; user-select:none; opacity:.82;}
     .orbiting-particle { position:absolute; left:50%; top:50%; width:6px; height:6px; margin:-3px 0 0 -3px; border-radius:50%; background:#00ffcc; animation:orbit 8s linear infinite; }
-    @keyframes orbit {
-       0%   { transform:rotate(0deg) translateX(90px) rotate(0deg);}
-      100% { transform:rotate(360deg) translateX(90px) rotate(-360deg);}
-    }
+    @keyframes orbit { 0%{transform:rotate(0deg) translateX(90px) rotate(0deg);} 100%{transform:rotate(360deg) translateX(90px) rotate(-360deg);} }
     @media (max-width:600px) { .tech-core { width:38px; height:38px; margin-left:-19px; margin-top:-19px; } }
     .binary-digit { position:absolute; color:#00ffcc; font-size:1.1em; font-family:monospace; opacity:.2; animation:fadeDown linear infinite; }
-    @keyframes fadeDown {
-      to { top:110%; opacity:0.07; }
-    }
+    @keyframes fadeDown { to { top:110%; opacity:0.07; } }
     .tech-topics { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin:2rem 2vw 1rem 2vw;}
     .topic { background:rgba(0,255,204,0.16); border:1.5px solid #00ffcc37; color:#00ffcc; padding:.7em 1.4em; border-radius:1.2em; font-weight:500; font-size:1.1rem; cursor:pointer; transition:all .18s; outline:0 }
     .topic:focus, .topic:hover { background:#00ffcc32; box-shadow:0 0 8px #00ffcc; color:#111e2a; }
@@ -80,21 +75,14 @@
     <p>© 2025 TechFrontier. All rights reserved. | <a href="#">Privacy Policy</a></p>
   </footer>
   <script>
-    // --- PASTE YOUR ENTIRE JSON FROM paste.txt BELOW ---
+    // PASTE your entire array from paste.txt below - keep everything else unchanged!
     const technologies = [
-      // For demonstration, **PASTE THE ENTIRE ARRAY from your paste.txt file here**
-      // The list is truncated here for brevity. In your real file, include ALL objects.
-      {
-        "name": "Quantum Computing",
-        "desc": "Quantum Computing leverages &lt;b&gt;quantum mechanical&lt;/b&gt; phenomena like superposition and entanglement to process information in fundamentally new ways. It dramatically accelerates solutions to certain problems that are intractable for classical computers.",
-        // ... rest of entry ...
-      }
-      // ... (all other tech objects in the array) ...
+      // ... <<<<< START OF YOUR FULL ARRAY FROM paste.txt  >>>>> ...
+      // (Paste all technology objects here)
+      // ... <<<<< END OF YOUR FULL ARRAY FROM paste.txt   >>>>> ...
     ];
-    // --- END OF JSON ARRAY INSERT ---
 
     function htmlDecode(input) {
-      // Decode HTML entities (&lt;, &gt;, etc) so HTML tags render in modal:
       let e = document.createElement('textarea');
       e.innerHTML = input;
       return e.value;
@@ -137,26 +125,22 @@
       });
     }
 
-    // --- MODAL LOGIC ---
     function openModalWithTech(tech) {
       const modal = document.getElementById('techModal');
       const modalTitle = document.getElementById('modalTitle');
       const modalDesc = document.getElementById('modalDesc');
       const modalExample = document.getElementById('modalExample');
       const modalImage = document.getElementById('modalImage');
-      // Tech name
+
       modalTitle.textContent = tech.name || 'Unknown Technology';
 
-      // Handle description (may include <b> etc, decode HTML entities)
       if (tech.desc) {
         const cleanHTML = htmlDecode(tech.desc);
-        // Sanitize: remove <script> tags, basic safety
         modalDesc.innerHTML = cleanHTML.replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, "");
       } else {
         modalDesc.textContent = 'No description available.';
       }
 
-      // Purpose or short example, fallback to applications, etc.
       if (Array.isArray(tech.purpose) && tech.purpose.length > 0) {
         modalExample.innerHTML = `<strong>Purpose:</strong> ${tech.purpose.join(', ')}`;
       } else if (Array.isArray(tech.applications) && tech.applications.length > 0) {
@@ -165,7 +149,6 @@
         modalExample.textContent = '';
       }
 
-      // Image
       if (tech.image) {
         modalImage.src = tech.image;
         modalImage.alt = `Image representing ${tech.name}`;
@@ -178,7 +161,6 @@
       modal.style.display = 'flex';
       modalDesc.focus();
 
-      // Thread button visibility & link, if provided
       const threadButton = document.getElementById('threadButton');
       if (tech.thread && tech.thread.trim() !== '') {
         threadButton.style.display = 'inline-block';
@@ -188,7 +170,6 @@
         threadButton.onclick = null;
       }
 
-      // "Search on X" button
       const searchButton = document.getElementById('searchButton');
       searchButton.onclick = () => {
         const query = encodeURIComponent(tech.name);
