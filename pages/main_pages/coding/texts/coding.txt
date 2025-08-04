@@ -227,9 +227,8 @@
       "Memory management",
       "Generic programming"
     ],
-   {
-  "example": "Writing <b>Hello, World!</b>: <i>#include ‹iostream›<br>int main() {<br>&nbsp;&nbsp;std::cout ‹‹ &quot;Hello, World!&quot; ‹‹ std::endl;<br>&nbsp;&nbsp;return 0;<br>}</i>.<br>A <b>classic</b> example."
- "image": "https://example.com/images/cpp.jpg",
+    "example": "Writing <b>Hello, World!</b>: <i>#include <iostream>; int main() { std::cout << 'Hello, World!' << std::endl; return 0; }</i>.<br>A <b>classic</b> example.",
+    "image": "https://example.com/images/cpp.jpg",
     "thread": "https://x.com/example/thread/cpp123"
   },
   {
