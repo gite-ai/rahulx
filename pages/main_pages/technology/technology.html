@@ -2,57 +2,495 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Tech Frontier 2025</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      color: #00ffcc;
+      overflow-x: auto;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    a {
+      text-decoration: underline;
+      color: #ff00cc;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #00ffcc;
+    }
+
+    /* Header */
+    header {
+      position: relative;
+      background: radial-gradient(circle, #001f3f, #000);
+      color: #00ffcc;
+      padding: 40px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      text-transform: uppercase;
+      animation: glow 2s infinite alternate;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      opacity: 0.8;
+      animation: float 3s ease-in-out infinite;
+      font-weight: 300;
+    }
+
+    /* Tech Animation Section */
+    .tech-animation {
+      position: relative;
+      width: 90%;
+      max-width: 1200px;
+      height: 400px;
+      margin: 40px auto;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Core of the Tech Animation */
+    .tech-core {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, #00ffcc, #00ccff);
+      border-radius: 50%;
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.7); }
+      50% { transform: scale(1.1); box-shadow: 0 0 20px 10px rgba(0, 255, 204, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.7); }
+    }
+
+    /* Floating Tech Icons */
+    .tech-icon {
+      position: absolute;
+      font-size: 24px;
+      color: #00ffcc;
+      animation: float 6s infinite ease-in-out;
+      user-select: none;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Binary Digits Floating Around */
+    .binary-digit {
+      position: absolute;
+      font-size: 16px;
+      color: rgba(0, 255, 204, 0.7);
+      animation: floatBinary 5s infinite linear;
+      user-select: none;
+    }
+
+    @keyframes floatBinary {
+      0% { transform: translateY(0) translateX(0); opacity: 0.7; }
+      50% { transform: translateY(-50px) translateX(50px); opacity: 1; }
+      100% { transform: translateY(0) translateX(0); opacity: 0.7; }
+    }
+
+    /* Orbiting Particles */
+    .orbiting-particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #00ffcc;
+      border-radius: 50%;
+      animation: orbit 8s infinite linear;
+      user-select: none;
+    }
+
+    @keyframes orbit {
+      0% { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+    }
+
+    /* Tech Topics */
+    .tech-topics {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto 80px auto;
+      user-select: none;
+    }
+
+    .topic {
+      padding: 12px 24px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+      font-size: 1.1rem;
+      font-weight: 500;
+      user-select: none;
+    }
+
+    .topic:hover {
+      background: #00ffcc;
+      color: #000;
+    }
+
+    /* Modal (Popup) Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      user-select: text;
+    }
+
+    .modal-content {
+      background: rgba(0, 0, 0, 0.95);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 600px;
+      max-height: 80vh;
+      padding: 0;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      animation: slideIn 0.3s ease-out;
+      color: #00ffcc;
+      box-sizing: border-box;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 20px;
+      background: rgba(0, 0, 0, 0.95);
+      border-bottom: 1px solid #00ffcc;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .modal-title {
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: center;
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      user-select: text;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.3rem;
+      color: #00ffcc;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.7);
+      border: none;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border-radius: 50%;
+      transition: background 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+
+    .modal-close:hover {
+      background: #00ffcc;
+      color: #000;
+    }
+
+    .modal-body {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      font-family: 'Poppins', sans-serif;
+      user-select: text;
+    }
+
+    .modal-desc {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      font-weight: 400;
+      color: #00ffcc;
+      user-select: text;
+    }
+
+    .modal-desc b,
+    .modal-desc strong {
+      color: #ff00cc; /* Neon pink for bold text */
+      font-weight: 700;
+    }
+
+    .modal-desc i,
+    .modal-desc em {
+      color: #00ccff; /* Cyan for italic text */
+      font-style: italic;
+    }
+
+    .modal-example {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      font-style: italic;
+      color: #b0fff0;
+      user-select: text;
+    }
+
+    .modal-example b,
+    .modal-example strong {
+      color: #ff00cc; /* Neon pink for bold text */
+      font-weight: 700;
+    }
+
+    .modal-example i,
+    .modal-example em {
+      color: #00ccff; /* Cyan for italic text */
+      font-style: italic;
+    }
+
+    .modal-image {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      margin: 0 auto 12px auto;
+      display: block;
+      user-select: none;
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 20px;
+      background: rgba(0, 0, 0, 0.95);
+      border-top: 1px solid #00ffcc;
+      position: sticky;
+      bottom: 0;
+      z-index: 10;
+      user-select: none;
+    }
+
+    .modal-action-button {
+      background: none;
+      border: none;
+      color: #00ffcc;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.3s ease;
+      padding: 5px;
+      font-family: FontAwesome, 'Arial Unicode MS', Arial, sans-serif;
+      user-select: none;
+    }
+
+    .modal-action-button:hover {
+      color: #ff00cc;
+      transform: scale(1.3);
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: #00ffcc;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+      font-family: 'Poppins', sans-serif;
+      user-select: none;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 300;
+    }
+
+    footer a {
+      color: #ff00cc;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
+      100% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Sci-Fi Background */
+    .sci-fi-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle, #001f3f, #000);
+      animation: stars 10s infinite linear;
+      user-select: none;
+    }
+
+    @keyframes stars {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
+    }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      header p {
+        font-size: 1rem;
+      }
+
+      .tech-animation {
+        height: 300px;
+      }
+
+      .tech-core {
+        width: 60px;
+        height: 60px;
+      }
+
+      .tech-icon {
+        font-size: 18px;
+      }
+
+      .binary-digit {
+        font-size: 12px;
+      }
+
+      .orbiting-particle {
+        width: 8px;
+        height: 8px;
+      }
+
+      .tech-topics {
+        gap: 8px;
+        padding: 15px;
+      }
+
+      .topic {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+      }
+
+      .modal-content {
+        width: 90%;
+        max-width: 500px;
+        max-height: 70vh;
+      }
+
+      .modal-title {
+        font-size: 1.6rem;
+      }
+
+      .modal-desc {
+        font-size: 1rem;
+      }
+
+      .modal-example {
+        font-size: 0.9rem;
+      }
+
+      .modal-action-button {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+  
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <style>
-    body { font-family: 'Poppins', sans-serif; margin:0; padding:0; background:#0a0a0a; color:#00ffcc; }
-    header { text-align:center; padding:2rem 0 1rem 0; }
-    .sci-fi-bg { position:fixed; z-index:-2; inset:0; background:radial-gradient(ellipse at bottom,#023839 0%,#111 100%); }
-    .tech-animation { position:fixed; width:100vw; height:100vh; left:0; top:0; z-index:-1; pointer-events:none; }
-    .tech-core { position:absolute; left:50%; top:50%; width:60px; height:60px; margin-left:-30px; margin-top:-30px; border-radius:50%; background:rgba(0,255,204,.2); box-shadow: 0 0 40px #00ffcc, 0 0 80px #006a56; }
-    .tech-icon { position:absolute; font-size:2rem; user-select:none; opacity:.82;}
-    .orbiting-particle { position:absolute; left:50%; top:50%; width:6px; height:6px; margin:-3px 0 0 -3px; border-radius:50%; background:#00ffcc; animation:orbit 8s linear infinite; }
-    @keyframes orbit { 0%{transform:rotate(0deg) translateX(90px) rotate(0deg);} 100%{transform:rotate(360deg) translateX(90px) rotate(-360deg);} }
-    @media (max-width:600px) { .tech-core { width:38px; height:38px; margin-left:-19px; margin-top:-19px; } }
-    .binary-digit { position:absolute; color:#00ffcc; font-size:1.1em; font-family:monospace; opacity:.2; animation:fadeDown linear infinite; }
-    @keyframes fadeDown { to { top:110%; opacity:0.07; } }
-    .tech-topics { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin:2rem 2vw 1rem 2vw;}
-    .topic { background:rgba(0,255,204,0.16); border:1.5px solid #00ffcc37; color:#00ffcc; padding:.7em 1.4em; border-radius:1.2em; font-weight:500; font-size:1.1rem; cursor:pointer; transition:all .18s; outline:0 }
-    .topic:focus, .topic:hover { background:#00ffcc32; box-shadow:0 0 8px #00ffcc; color:#111e2a; }
-    .modal { display:none; position:fixed; inset:0; background:rgba(8,30,36,0.73); justify-content:center; align-items:center; z-index:200; }
-    .modal-content { background:#0a111a; border-radius:12px; max-width:95vw; width:430px; color:#00ffcc; box-shadow:0 8px 36px #001930AA; outline:0; }
-    .modal-header { padding:1rem 1.1rem 0 1.2rem; display:flex; flex-direction:row; align-items:center; justify-content:space-between;}
-    .modal-title { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.4rem; letter-spacing:1px;margin:0; }
-    .modal-close { background:none; border:none; color:#00ffcc; font-size:1.4rem; cursor:pointer; outline:0; margin-left:10px;}
-    .modal-body { padding:1rem 1.1rem 0.2rem 1.18rem; }
-    .modal-desc { margin:8px 0 7px 0; font-weight:400; font-size:1.08rem; }
-    .modal-example { color:#77ffcc; margin-top:7px; font-size:1.01rem;}
-    .modal-image { width:100%; max-width:320px; border-radius:7px; margin:17px 0 1px 0; box-shadow:0 1px 13px #00ffcc55; display:block; }
-    .modal-footer { display:flex; justify-content:flex-end; align-items:center; padding:0.4rem 1.13rem 1.17rem 1.13rem; gap:9px;}
-    .modal-action-button { background:#003d33; border:none; color:#00ffcc; font-size:1.15rem; padding:9px 13px; border-radius:9px; cursor:pointer; transition:all .13s; outline:0;}
-    .modal-action-button:hover { background:#00ffcc; color:#003d33; }
-    footer { margin:3em 0 1em 0; text-align:center; color:#00ffcccc; font-size:.97rem;}
-    footer a {color:#00ffcc; text-decoration:underline;}
-  </style>
 </head>
 <body>
+  <!-- Sci-Fi Background -->
   <div class="sci-fi-bg"></div>
+
+  <!-- Header -->
   <header>
     <h1>Tech Frontier 2025</h1>
     <p>Discover the Future of Innovation</p>
   </header>
+
+  <!-- Tech Animation Section -->
   <div class="tech-animation" aria-hidden="true">
     <div class="tech-core"></div>
+
     <div class="tech-icon" style="top: 20%; left: 10%;">🤖</div>
     <div class="tech-icon" style="top: 30%; left: 80%;">🧠</div>
     <div class="tech-icon" style="top: 70%; left: 20%;">⚛️</div>
     <div class="tech-icon" style="top: 80%; left: 70%;">🧬</div>
   </div>
+
+  <!-- Tech Topics -->
   <main>
-    <section class="tech-topics" id="techTopics" aria-label="Technology Topics"></section>
+    <section class="tech-topics" id="techTopics" aria-label="Technology Topics">
+      <!-- Topics dynamically inserted here -->
+    </section>
   </main>
+
+  <!-- Modal (Popup) -->
   <div class="modal" id="techModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
     <div class="modal-content" role="document">
       <div class="modal-header">
@@ -62,32 +500,23 @@
       <div class="modal-body">
         <p class="modal-desc" id="modalDesc" tabindex="0"></p>
         <p class="modal-example" id="modalExample"></p>
-        <img class="modal-image" id="modalImage" src="" alt="Technology Related Image" style="display:none;" />
+        <img class="modal-image" id="modalImage" src="" alt="Technology Related Image" />
       </div>
       <div class="modal-footer">
         <button class="modal-action-button" id="copyButton" onclick="copyModalContent()" title="Copy content"><i class="fa fa-copy"></i></button>
-        <button class="modal-action-button" id="threadButton" title="View tech thread" style="display:none;">𝕩</button>
+        <button class="modal-action-button" id="threadButton" title="View tech thread">𝕩</button>
         <button class="modal-action-button" id="searchButton" title="Search on X"><i class="fa fa-search"></i></button>
       </div>
     </div>
   </div>
+
+  <!-- Footer -->
   <footer>
     <p>© 2025 TechFrontier. All rights reserved. | <a href="#">Privacy Policy</a></p>
   </footer>
+
   <script>
-    // PASTE your entire array from paste.txt below - keep everything else unchanged!
-    const technologies = [
-      // ... <<<<< START OF YOUR FULL ARRAY FROM paste.txt  >>>>> ...
-      // (Paste all technology objects here)
-      // ... <<<<< END OF YOUR FULL ARRAY FROM paste.txt   >>>>> ...
-    ];
-
-    function htmlDecode(input) {
-      let e = document.createElement('textarea');
-      e.innerHTML = input;
-      return e.value;
-    }
-
+    // Create floating binary digits dynamically to supplement static ones
     function generateBinaryDigits() {
       const techAnimation = document.querySelector('.tech-animation');
       for (let i = 0; i < 20; i++) {
@@ -100,6 +529,8 @@
         techAnimation.appendChild(binaryDigit);
       }
     }
+
+    // Create orbiting particles dynamically
     function generateOrbitingParticles() {
       const techAnimation = document.querySelector('.tech-animation');
       for (let i = 0; i < 8; i++) {
@@ -109,22 +540,31 @@
         techAnimation.appendChild(particle);
       }
     }
+
+    // Populate the list of tech topics as hashtag buttons
     function populateTechTopics(technologies) {
       const topicsContainer = document.getElementById('techTopics');
-      topicsContainer.innerHTML = '';
+      topicsContainer.innerHTML = ''; // clear if re-populating
+
       technologies.forEach(tech => {
         const topic = document.createElement('div');
         topic.className = 'topic';
-        topic.textContent = `#${(tech.name||"").replace(/\s+/g,'')}`;
-        topic.tabIndex = 0;
+        topic.textContent = `#${tech.name.replace(/\s+/g, '')}`;
+        topic.tabIndex = 0; // keyboard navigable
+
         topic.addEventListener('click', () => openModalWithTech(tech));
         topic.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModalWithTech(tech); }
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openModalWithTech(tech);
+          }
         });
+
         topicsContainer.appendChild(topic);
       });
     }
 
+    // Open modal and fill with technology info
     function openModalWithTech(tech) {
       const modal = document.getElementById('techModal');
       const modalTitle = document.getElementById('modalTitle');
@@ -132,23 +572,10 @@
       const modalExample = document.getElementById('modalExample');
       const modalImage = document.getElementById('modalImage');
 
+      // Set content safely
       modalTitle.textContent = tech.name || 'Unknown Technology';
-
-      if (tech.desc) {
-        const cleanHTML = htmlDecode(tech.desc);
-        modalDesc.innerHTML = cleanHTML.replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, "");
-      } else {
-        modalDesc.textContent = 'No description available.';
-      }
-
-      if (Array.isArray(tech.purpose) && tech.purpose.length > 0) {
-        modalExample.innerHTML = `<strong>Purpose:</strong> ${tech.purpose.join(', ')}`;
-      } else if (Array.isArray(tech.applications) && tech.applications.length > 0) {
-        modalExample.innerHTML = `<strong>Applications:</strong> ${tech.applications.join(', ')}`;
-      } else {
-        modalExample.textContent = '';
-      }
-
+      modalDesc.innerHTML = tech.desc || 'No description available.';
+      modalExample.innerHTML = tech.example ? `<strong>Example:</strong> ${tech.example}` : '';
       if (tech.image) {
         modalImage.src = tech.image;
         modalImage.alt = `Image representing ${tech.name}`;
@@ -161,15 +588,18 @@
       modal.style.display = 'flex';
       modalDesc.focus();
 
+      // Thread button
       const threadButton = document.getElementById('threadButton');
       if (tech.thread && tech.thread.trim() !== '') {
         threadButton.style.display = 'inline-block';
-        threadButton.onclick = () => { window.open(tech.thread, '_blank', 'noopener,noreferrer'); };
+        threadButton.onclick = () => {
+          window.open(tech.thread, '_blank', 'noopener,noreferrer');
+        };
       } else {
         threadButton.style.display = 'none';
-        threadButton.onclick = null;
       }
 
+      // Search button
       const searchButton = document.getElementById('searchButton');
       searchButton.onclick = () => {
         const query = encodeURIComponent(tech.name);
@@ -177,30 +607,69 @@
         window.open(searchURL, '_blank', 'noopener,noreferrer');
       };
 
+      // Attach event to close modal on Escape key press
       document.addEventListener('keydown', escKeyClose);
     }
 
+    // Close modal function
     function closeModal() {
-      document.getElementById('techModal').style.display = 'none';
+      const modal = document.getElementById('techModal');
+      modal.style.display = 'none';
+      // Remove Escape key listener
       document.removeEventListener('keydown', escKeyClose);
     }
+
+    // Close modal on Escape key
     function escKeyClose(e) {
       if (e.key === 'Escape') closeModal();
     }
+
+    // Copy modal content: title, description (text only), example
     function copyModalContent() {
       const title = document.getElementById('modalTitle').textContent.trim();
       const desc = document.getElementById('modalDesc').textContent.trim();
       const example = document.getElementById('modalExample').textContent.trim();
+
       const content = `${title}\n\n${desc}\n\n${example}`;
-      navigator.clipboard.writeText(content).then(() => { alert('Technology details copied to clipboard!'); })
-        .catch(() => { alert('Failed to copy. Please try again manually.'); });
+
+      navigator.clipboard.writeText(content).then(() => {
+        alert('Technology details copied to clipboard!');
+      }).catch(() => {
+        alert('Failed to copy. Please try again manually.');
+      });
     }
+
+    // Click outside modal content closes modal
     document.getElementById('techModal').addEventListener('click', (ev) => {
-      if (ev.target === ev.currentTarget) { closeModal(); }
+      if (ev.target === ev.currentTarget) {
+        closeModal();
+      }
     });
 
+    // Initial setup on page load
     window.onload = () => {
-      populateTechTopics(technologies);
+      // Fetch your JSON technology data from texts/technology.txt (adjust path as needed)
+      fetch('texts/technology.txt')
+        .then(response => {
+          if (!response.ok) throw new Error('Failed to fetch technology data.');
+          return response.text();
+        })
+        .then(text => {
+          let technologies = [];
+          try {
+            technologies = JSON.parse(text);
+          } catch (e) {
+            console.error('Error parsing JSON:', e);
+            alert('Failed to parse technologies JSON data.');
+            return;
+          }
+          populateTechTopics(technologies);
+        })
+        .catch(error => {
+          console.error('Loading error:', error);
+          document.getElementById('techTopics').innerHTML = '<p style="color:#ff00cc; text-align:center;">Failed to load technology data.</p>';
+        });
+
       generateBinaryDigits();
       generateOrbitingParticles();
     };
