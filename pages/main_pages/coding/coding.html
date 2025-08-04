@@ -110,6 +110,7 @@
       width: 90%;
       max-width: 1200px;
       margin: 40px auto;
+      user-select: none;
     }
 
     .hashtag {
@@ -121,6 +122,7 @@
       transition: background 0.3s ease, color 0.3s ease;
       font-size: 1.1rem;
       font-weight: 500;
+      user-select: none;
     }
 
     .hashtag:hover {
@@ -140,10 +142,11 @@
       z-index: 1000;
       justify-content: center;
       align-items: center;
+      user-select: text;
     }
 
     .modal-content {
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0, 0, 0, 0.95);
       border: 1px solid #00ffcc;
       border-radius: 10px;
       width: 80%;
@@ -154,6 +157,8 @@
       display: flex;
       flex-direction: column;
       animation: slideIn 0.3s ease-out;
+      color: #00ffcc;
+      box-sizing: border-box;
     }
 
     .modal-header {
@@ -173,23 +178,26 @@
       font-weight: 600;
       text-align: center;
       margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      user-select: text;
     }
 
     .modal-close {
       position: absolute;
       top: 10px;
       right: 10px;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: #00ffcc;
       cursor: pointer;
       background: rgba(0, 0, 0, 0.7);
       border: none;
-      width: 24px;
-      height: 24px;
-      line-height: 24px;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
       text-align: center;
       border-radius: 50%;
       transition: background 0.3s ease, color 0.3s ease;
+      user-select: none;
     }
 
     .modal-close:hover {
@@ -201,6 +209,8 @@
       flex: 1;
       padding: 20px;
       overflow-y: auto;
+      font-family: 'Poppins', sans-serif;
+      user-select: text;
     }
 
     .modal-desc {
@@ -208,6 +218,8 @@
       line-height: 1.8;
       margin-bottom: 20px;
       font-weight: 400;
+      color: #00ffcc;
+      user-select: text;
     }
 
     .modal-desc b,
@@ -222,12 +234,46 @@
       font-style: italic;
     }
 
+    .modal-section {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: #b0fff0;
+      user-select: text;
+    }
+
+    .modal-section h3 {
+      font-size: 1.2rem;
+      color: #ff00cc;
+      margin-bottom: 10px;
+    }
+
+    .modal-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .modal-section li {
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .modal-section li:before {
+      content: '➜';
+      position: absolute;
+      left: 0;
+      color: #00ffcc;
+    }
+
     .modal-example {
       font-size: 1rem;
       line-height: 1.6;
       margin-bottom: 20px;
       font-style: italic;
       color: #b0fff0;
+      user-select: text;
     }
 
     .modal-example b,
@@ -248,8 +294,9 @@
       height: auto;
       border: 1px solid #00ffcc;
       border-radius: 5px;
-      margin: 10px auto;
+      margin: 0 auto 12px auto;
       display: block;
+      user-select: none;
     }
 
     .modal-footer {
@@ -263,21 +310,29 @@
       position: sticky;
       bottom: 0;
       z-index: 10;
+      user-select: none;
     }
 
     .modal-action-button {
       background: none;
       border: none;
       color: #00ffcc;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       cursor: pointer;
       transition: color 0.3s ease, transform 0.3s ease;
       padding: 5px;
+      font-family: FontAwesome, 'Arial Unicode MS', Arial, sans-serif;
+      user-select: none;
     }
 
     .modal-action-button:hover {
       color: #ff00cc;
-      transform: scale(1.2);
+      transform: scale(1.3);
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     /* Footer */
@@ -287,6 +342,8 @@
       text-align: center;
       padding: 20px 0;
       margin-top: 60px;
+      font-family: 'Poppins', sans-serif;
+      user-select: none;
     }
 
     footer p {
@@ -315,11 +372,6 @@
       50% { transform: translateY(-10px); }
     }
 
-    @keyframes slideIn {
-      from { transform: translateY(-50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
     /* Sci-Fi Background */
     .sci-fi-bg {
       position: fixed;
@@ -335,6 +387,65 @@
     @keyframes stars {
       0% { background-position: 0 0; }
       100% { background-position: 1000px 1000px; }
+    }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      header p {
+        font-size: 1rem;
+      }
+
+      .typing-animation {
+        height: 200px;
+      }
+
+      .typing-animation pre {
+        font-size: 0.9rem;
+      }
+
+      .hashtags {
+        gap: 8px;
+        padding: 15px;
+      }
+
+      .hashtag {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+      }
+
+      .modal-content {
+        width: 90%;
+        max-width: 500px;
+        max-height: 70vh;
+      }
+
+      .modal-title {
+        font-size: 1.6rem;
+      }
+
+      .modal-desc {
+        font-size: 1rem;
+      }
+
+      .modal-section {
+        font-size: 0.9rem;
+      }
+
+      .modal-section h3 {
+        font-size: 1.1rem;
+      }
+
+      .modal-example {
+        font-size: 0.9rem;
+      }
+
+      .modal-action-button {
+        font-size: 1.1rem;
+      }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
@@ -356,32 +467,34 @@
   </div>
 
   <!-- Trending Hashtags -->
-  <div class="hashtags" id="hashtags">
-    <!-- Hashtags will be added dynamically -->
-  </div>
+  <main>
+    <section class="hashtags" id="hashtags" aria-label="Coding Topics">
+      <!-- Hashtags will be added dynamically -->
+    </section>
+  </main>
 
   <!-- Modal (Popup) -->
-  <div class="modal" id="codeModal">
-    <div class="modal-content">
+  <div class="modal" id="codeModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+    <div class="modal-content" role="document">
       <div class="modal-header">
         <h2 class="modal-title" id="modalTitle"></h2>
-        <button class="modal-close" onclick="closeModal()">✖</button>
+        <button class="modal-close" aria-label="Close modal" onclick="closeModal()" title="Close Modal">✖</button>
       </div>
       <div class="modal-body">
-        <p class="modal-desc" id="modalDesc"></p>
+        <p class="modal-desc" id="modalDesc" tabindex="0"></p>
+        <div class="modal-section" id="modalInvention"></div>
+        <div class="modal-section" id="modalPurpose"></div>
+        <div class="modal-section" id="modalMilestones"></div>
+        <div class="modal-section" id="modalBasics"></div>
+        <div class="modal-section" id="modalApplications"></div>
+        <div class="modal-section" id="modalKeyConcepts"></div>
         <p class="modal-example" id="modalExample"></p>
-        <img class="modal-image" id="modalImage" src="" alt="Code Image">
+        <img class="modal-image" id="modalImage" src="" alt="Code Related Image" />
       </div>
       <div class="modal-footer">
-        <button class="modal-action-button" id="copyButton" onclick="copyModalContent()" title="Copy Content">
-          <i class="fa fa-copy"></i>
-        </button>
-        <button class="modal-action-button" id="threadButton" title="View Thread">
-          𝕩
-        </button>
-        <button class="modal-action-button" id="searchButton" title="Search on X">
-          <i class="fa fa-search"></i>
-        </button>
+        <button class="modal-action-button" id="copyButton" onclick="copyModalContent()" title="Copy content"><i class="fa fa-copy"></i></button>
+        <button class="modal-action-button" id="threadButton" title="View code thread">𝕩</button>
+        <button class="modal-action-button" id="searchButton" title="Search on X"><i class="fa fa-search"></i></button>
       </div>
     </div>
   </div>
@@ -420,93 +533,243 @@
       }
     }
 
-    // Start typing animation
-    typeCode();
-
-    // Modal Functions
-    function populateHashtags(hashtags) {
+    // Populate the list of coding topics as hashtag buttons
+    function populateHashtags(codes) {
       const hashtagsContainer = document.getElementById('hashtags');
-      hashtags.forEach(hashtag => {
-        const tag = document.createElement('div');
-        tag.className = 'hashtag';
-        tag.textContent = `#${hashtag.name.replace(/\s+/g, '')}`;
-        
-        tag.addEventListener('click', () => {
-          openModal(hashtag.name, hashtag.desc, hashtag.example, hashtag.image, hashtag.thread);
+      hashtagsContainer.innerHTML = ''; // Clear before loading
+      codes.forEach(code => {
+        const hashtag = document.createElement('div');
+        hashtag.className = 'hashtag';
+        hashtag.textContent = `#${code.name.replace(/\s+/g, '')}`;
+        hashtag.tabIndex = 0; // Keyboard navigable
+
+        hashtag.addEventListener('click', () => openModalWithCode(code));
+        hashtag.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openModalWithCode(code);
+          }
         });
-        
-        hashtagsContainer.appendChild(tag);
+
+        hashtagsContainer.appendChild(hashtag);
       });
     }
 
-    function openModal(title, desc, example, image, thread) {
+    // Open modal and fill with coding info
+    function openModalWithCode(code) {
       const modal = document.getElementById('codeModal');
       const modalTitle = document.getElementById('modalTitle');
       const modalDesc = document.getElementById('modalDesc');
+      const modalInvention = document.getElementById('modalInvention');
+      const modalPurpose = document.getElementById('modalPurpose');
+      const modalMilestones = document.getElementById('modalMilestones');
+      const modalBasics = document.getElementById('modalBasics');
+      const modalApplications = document.getElementById('modalApplications');
+      const modalKeyConcepts = document.getElementById('modalKeyConcepts');
       const modalExample = document.getElementById('modalExample');
       const modalImage = document.getElementById('modalImage');
 
-      modalTitle.textContent = title;
-      modalDesc.innerHTML = desc;
-      modalExample.innerHTML = `Example: ${example}`; // Changed to innerHTML
-      modalImage.src = image;
+      // Set content safely
+      modalTitle.textContent = code.name || 'Unknown Coding Topic';
+      modalDesc.innerHTML = code.desc || 'No description available.';
+
+      // Invention
+      if (code.invention) {
+        let inventionText = '<h3>Invention</h3><ul>';
+        if (code.invention.term_coined_by) {
+          inventionText += `<li>Term coined by: ${code.invention.term_coined_by}</li>`;
+        }
+        if (code.invention.year) {
+          inventionText += `<li>Year: ${code.invention.year}</li>`;
+        }
+        if (code.invention.early_pioneers) {
+          inventionText += `<li>Early Pioneers: ${code.invention.early_pioneers.join(', ')}</li>`;
+        }
+        if (code.invention.early_developments) {
+          inventionText += `<li>Early Developments: ${code.invention.early_developments.join(', ')}</li>`;
+        }
+        inventionText += '</ul>';
+        modalInvention.innerHTML = inventionText;
+      } else {
+        modalInvention.innerHTML = '';
+      }
+
+      // Purpose
+      if (code.purpose && code.purpose.length) {
+        let purposeText = '<h3>Purpose</h3><ul>';
+        code.purpose.forEach(p => {
+          purposeText += `<li>${p}</li>`;
+        });
+        purposeText += '</ul>';
+        modalPurpose.innerHTML = purposeText;
+      } else {
+        modalPurpose.innerHTML = '';
+      }
+
+      // Key Milestones
+      if (code.key_milestones && code.key_milestones.length) {
+        let milestonesText = '<h3>Key Milestones</h3><ul>';
+        code.key_milestones.forEach(m => {
+          milestonesText += `<li>${m.year}: ${m.event} - ${m.description}</li>`;
+        });
+        milestonesText += '</ul>';
+        modalMilestones.innerHTML = milestonesText;
+      } else {
+        modalMilestones.innerHTML = '';
+      }
+
+      // Basics
+      if (code.basics) {
+        let basicsText = '<h3>Basics</h3><ul>';
+        if (code.basics.definition) {
+          basicsText += `<li>Definition: ${code.basics.definition}</li>`;
+        }
+        if (code.basics.key_terms && code.basics.key_terms.length) {
+          basicsText += '<li>Key Terms:<ul>';
+          code.basics.key_terms.forEach(term => {
+            basicsText += `<li>${term.term}: ${term.definition}</li>`;
+          });
+          basicsText += '</ul></li>';
+        }
+        if (code.basics.fundamental_components) {
+          basicsText += `<li>Fundamental Components: ${code.basics.fundamental_components.join(', ')}</li>`;
+        }
+        basicsText += '</ul>';
+        modalBasics.innerHTML = basicsText;
+      } else {
+        modalBasics.innerHTML = '';
+      }
+
+      // Applications
+      if (code.applications && code.applications.length) {
+        let applicationsText = '<h3>Applications</h3><ul>';
+        code.applications.forEach(app => {
+          applicationsText += `<li>${app}</li>`;
+        });
+        applicationsText += '</ul>';
+        modalApplications.innerHTML = applicationsText;
+      } else {
+        modalApplications.innerHTML = '';
+      }
+
+      // Key Concepts
+      if (code.key_concepts && code.key_concepts.length) {
+        let conceptsText = '<h3>Key Concepts</h3><ul>';
+        code.key_concepts.forEach(concept => {
+          conceptsText += `<li>${concept}</li>`;
+        });
+        conceptsText += '</ul>';
+        modalKeyConcepts.innerHTML = conceptsText;
+      } else {
+        modalKeyConcepts.innerHTML = '';
+      }
+
+      // Example
+      modalExample.innerHTML = code.example ? `<strong>Example:</strong> ${code.example}` : '';
+
+      // Image
+      if (code.image) {
+        modalImage.src = code.image;
+        modalImage.alt = `Image representing ${code.name}`;
+        modalImage.style.display = 'block';
+      } else {
+        modalImage.style.display = 'none';
+        modalImage.src = '';
+        modalImage.alt = '';
+      }
+
       modal.style.display = 'flex';
+      modalDesc.focus();
 
+      // Thread button
       const threadButton = document.getElementById('threadButton');
-      threadButton.onclick = function() {
-        window.open(thread, '_blank');
+      if (code.thread && code.thread.trim() !== '') {
+        threadButton.style.display = 'inline-block';
+        threadButton.onclick = () => {
+          window.open(code.thread, '_blank', 'noopener,noreferrer');
+        };
+      } else {
+        threadButton.style.display = 'none';
+      }
+
+      // Search button
+      const searchButton = document.getElementById('searchButton');
+      searchButton.onclick = () => {
+        const query = encodeURIComponent(code.name);
+        const searchURL = `https://x.com/search?q=${query}`;
+        window.open(searchURL, '_blank', 'noopener,noreferrer');
       };
 
-      const searchButton = document.getElementById('searchButton');
-      searchButton.onclick = function() {
-        const searchQuery = encodeURIComponent(title);
-        const xSearchUrl = `https://x.com/search?q=${searchQuery}`;
-        window.open(xSearchUrl, '_blank');
-      };
+      // Attach event to close modal on Escape key press
+      document.addEventListener('keydown', escKeyClose);
     }
 
+    // Close modal function
     function closeModal() {
       const modal = document.getElementById('codeModal');
       modal.style.display = 'none';
+      // Remove Escape key listener
+      document.removeEventListener('keydown', escKeyClose);
     }
 
+    // Close modal on Escape key
+    function escKeyClose(e) {
+      if (e.key === 'Escape') closeModal();
+    }
+
+    // Copy modal content
     function copyModalContent() {
-      const title = document.getElementById('modalTitle').textContent;
-      const desc = document.getElementById('modalDesc').textContent;
-      const example = document.getElementById('modalExample').textContent;
-      const content = `${title}\n\n${desc}\n\n${example}`;
-      
+      const title = document.getElementById('modalTitle').textContent.trim();
+      const desc = document.getElementById('modalDesc').textContent.trim();
+      const invention = document.getElementById('modalInvention').textContent.trim();
+      const purpose = document.getElementById('modalPurpose').textContent.trim();
+      const milestones = document.getElementById('modalMilestones').textContent.trim();
+      const basics = document.getElementById('modalBasics').textContent.trim();
+      const applications = document.getElementById('modalApplications').textContent.trim();
+      const keyConcepts = document.getElementById('modalKeyConcepts').textContent.trim();
+      const example = document.getElementById('modalExample').textContent.trim();
+
+      const content = `${title}\n\n${desc}\n\n${invention}\n\n${purpose}\n\n${milestones}\n\n${basics}\n\n${applications}\n\n${keyConcepts}\n\n${example}`;
+
       navigator.clipboard.writeText(content).then(() => {
-        alert('Content copied to clipboard!');
-      }).catch(err => {
-        console.error('Failed to copy content:', err);
-        alert('Failed to copy content. Please try again.');
+        alert('Coding details copied to clipboard!');
+      }).catch(() => {
+        alert('Failed to copy. Please try again manually.');
       });
     }
 
-    document.getElementById('codeModal').addEventListener('click', (e) => {
-      if (e.target === document.getElementById('codeModal')) {
+    // Click outside modal content closes modal
+    document.getElementById('codeModal').addEventListener('click', (ev) => {
+      if (ev.target === ev.currentTarget) {
         closeModal();
       }
     });
 
-    // Fetch data from texts/coding.txt
-    window.onload = function() {
+    // Initial setup on page load
+    window.onload = () => {
       typeCode(); // Start typing animation
+      const hashtagsContainer = document.getElementById('hashtags');
+      hashtagsContainer.innerHTML = ''; // Clear before loading
+
+      // Load coding topics
       fetch('texts/coding.txt')
         .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
           return response.text();
         })
-        .then(data => {
-          const hashtags = JSON.parse(data);
-          populateHashtags(hashtags);
+        .then(text => {
+          let codes = [];
+          try {
+            codes = JSON.parse(text);
+          } catch (e) {
+            console.error('Error parsing coding JSON:', e);
+            throw new Error('Failed to parse coding JSON data.');
+          }
+          populateHashtags(codes);
         })
         .catch(error => {
-          console.error('Error loading texts/coding.txt:', error);
-          alert('Failed to load hashtag data. Please check the console for details.');
+          console.error('Loading error:', error);
+          document.getElementById('hashtags').innerHTML = '<p style="color:#ff00cc; text-align:center;">Failed to load coding data. Check console for details.</p>';
         });
     };
   </script>

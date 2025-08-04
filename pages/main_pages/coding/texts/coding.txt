@@ -2,6 +2,57 @@
   {
     "name": "Python Basics",
     "desc": "Python is a <b>high-level</b> programming language known for its <i>simplicity</i> and readability.<br>It’s widely used in <b>web development</b> and data science.",
+    "invention": {
+      "term_coined_by": "Guido van Rossum",
+      "year": "1991",
+      "early_pioneers": ["Guido van Rossum"],
+      "early_developments": ["Python 1.0", "Python 2.0"]
+    },
+    "purpose": [
+      "Simplify software development with readable syntax",
+      "Support rapid prototyping and scripting",
+      "Enable data analysis and machine learning"
+    ],
+    "key_milestones": [
+      {
+        "year": 1991,
+        "event": "Python 1.0 Release",
+        "description": "Guido van Rossum releases Python, emphasizing simplicity."
+      },
+      {
+        "year": 2000,
+        "event": "Python 2.0",
+        "description": "Introduces list comprehensions and garbage collection."
+      },
+      {
+        "year": 2008,
+        "event": "Python 3.0",
+        "description": "Major overhaul with improved Unicode support."
+      }
+    ],
+    "basics": {
+      "definition": "A high-level, interpreted programming language focused on code readability and versatility.",
+      "key_terms": [
+        {
+          "term": "Interpreted",
+          "definition": "Code is executed line-by-line without compilation."
+        },
+        {
+          "term": "Dynamic Typing",
+          "definition": "Variable types are determined at runtime."
+        }
+      ]
+    },
+    "applications": [
+      "Web development (e.g., Django, Flask)",
+      "Data science and machine learning (e.g., Pandas, TensorFlow)",
+      "Automation and scripting"
+    ],
+    "key_concepts": [
+      "Readable syntax",
+      "Extensive standard library",
+      "Cross-platform compatibility"
+    ],
     "example": "Printing <b>Hello, World!</b> with a single line: <i>print('Hello, World!')</i>.<br>A <b>beginner-friendly</b> start.",
     "image": "https://example.com/images/python.jpg",
     "thread": "https://x.com/example/thread/12345"
@@ -9,6 +60,57 @@
   {
     "name": "JavaScript Essentials",
     "desc": "JavaScript powers <b>interactive web pages</b>.<br>It’s a <i>versatile</i> language for front-end and back-end development.",
+    "invention": {
+      "term_coined_by": "Brendan Eich",
+      "year": "1995",
+      "early_pioneers": ["Brendan Eich", "Netscape"],
+      "early_developments": ["Mocha", "LiveScript"]
+    },
+    "purpose": [
+      "Enable dynamic and interactive web applications",
+      "Support server-side development",
+      "Facilitate cross-platform app development"
+    ],
+    "key_milestones": [
+      {
+        "year": 1995,
+        "event": "JavaScript Introduced",
+        "description": "Brendan Eich creates JavaScript for Netscape Navigator."
+      },
+      {
+        "year": 2009,
+        "event": "Node.js Release",
+        "description": "Ryan Dahl introduces Node.js for server-side JavaScript."
+      },
+      {
+        "year": 2015,
+        "event": "ES6 Standard",
+        "description": "ECMAScript 6 adds modern features like arrow functions."
+      }
+    ],
+    "basics": {
+      "definition": "A client-side scripting language for dynamic web content and server-side applications.",
+      "key_terms": [
+        {
+          "term": "Event-Driven",
+          "definition": "Code responds to user actions like clicks or keypresses."
+        },
+        {
+          "term": "Asynchronous",
+          "definition": "Handles tasks like API calls without blocking execution."
+        }
+      ]
+    },
+    "applications": [
+      "Front-end development (e.g., React, Vue)",
+      "Back-end development (e.g., Node.js)",
+      "Mobile app development (e.g., React Native)"
+    ],
+    "key_concepts": [
+      "DOM manipulation",
+      "Asynchronous programming",
+      "Event-driven architecture"
+    ],
     "example": "Adding a <b>click event</b>: <i>button.addEventListener('click', () => alert('Clicked!'))</i>.<br>Simple yet <b>powerful</b>.",
     "image": "https://example.com/images/js.jpg",
     "thread": "https://x.com/example/thread/67890"
@@ -16,8 +118,233 @@
   {
     "name": "Java Fundamentals",
     "desc": "Java is a <b>robust</b> and <i>platform-independent</i> language.<br>Used in <b>enterprise software</b> and Android apps.",
+    "invention": {
+      "term_coined_by": "James Gosling",
+      "year": "1995",
+      "early_pioneers": ["James Gosling", "Sun Microsystems"],
+      "early_developments": ["Oak", "Java 1.0"]
+    },
+    "purpose": [
+      "Build scalable enterprise applications",
+      "Enable cross-platform development",
+      "Support mobile and embedded systems"
+    ],
+    "key_milestones": [
+      {
+        "year": 1995,
+        "event": "Java 1.0 Release",
+        "description": "Sun Microsystems releases Java with 'write once, run anywhere'."
+      },
+      {
+        "year": 2006,
+        "event": "Java Open Source",
+        "description": "Sun releases Java under an open-source license."
+      },
+      {
+        "year": 2014,
+        "event": "Java 8",
+        "description": "Introduces lambda expressions and streams API."
+      }
+    ],
+    "basics": {
+      "definition": "A platform-independent, object-oriented programming language for enterprise and mobile applications.",
+      "key_terms": [
+        {
+          "term": "JVM",
+          "definition": "Java Virtual Machine executes Java bytecode across platforms."
+        },
+        {
+          "term": "OOP",
+          "definition": "Object-oriented programming with classes and objects."
+        }
+      ]
+    },
+    "applications": [
+      "Enterprise software (e.g., Spring)",
+      "Android app development",
+      "Big data processing (e.g., Apache Hadoop)"
+    ],
+    "key_concepts": [
+      "Platform independence",
+      "Object-oriented programming",
+      "Robust memory management"
+    ],
     "example": "Writing <b>Hello, World!</b>: <i>public class Main { public static void main(String[] args) { System.out.println('Hello, World!'); }}</i>.<br>A <b>classic</b> example.",
     "image": "https://example.com/images/java.jpg",
     "thread": "https://x.com/example/thread/54321"
+  },
+  {
+    "name": "C++ Fundamentals",
+    "desc": "C++ is a <b>high-performance</b> programming language with <i>low-level</i> control.<br>It’s used in <b>system programming</b> and game development.",
+    "invention": {
+      "term_coined_by": "Bjarne Stroustrup",
+      "year": "1985",
+      "early_pioneers": ["Bjarne Stroustrup"],
+      "early_developments": ["C with Classes", "C++ 1.0"]
+    },
+    "purpose": [
+      "Enable high-performance system programming",
+      "Support game and graphics development",
+      "Facilitate low-level memory management"
+    ],
+    "key_milestones": [
+      {
+        "year": 1985,
+        "event": "C++ Release",
+        "description": "Bjarne Stroustrup releases C++ as an extension of C."
+      },
+      {
+        "year": 1998,
+        "event": "C++98 Standard",
+        "description": "First standardized version of C++."
+      },
+      {
+        "year": 2011,
+        "event": "C++11",
+        "description": "Major update with modern features like auto and lambda."
+      }
+    ],
+    "basics": {
+      "definition": "A general-purpose programming language combining high-level abstraction with low-level control.",
+      "key_terms": [
+        {
+          "term": "Pointers",
+          "definition": "Variables storing memory addresses for direct manipulation."
+        },
+        {
+          "term": "Templates",
+          "definition": "Enable generic programming for reusable code."
+        }
+      ]
+    },
+    "applications": [
+      "Game development (e.g., Unreal Engine)",
+      "System software (e.g., operating systems)",
+      "High-performance applications (e.g., financial systems)"
+    ],
+    "key_concepts": [
+      "Performance optimization",
+      "Memory management",
+      "Generic programming"
+    ],
+    "example": "Writing <b>Hello, World!</b>: <i>#include &lt;iostream&gt; int main() { std::cout << 'Hello, World!' << std::endl; return 0; }</i>.<br>A <b>classic</b> example.",
+    "image": "https://example.com/images/cpp.jpg",
+    "thread": "https://x.com/example/thread/cpp123"
+  },
+  {
+    "name": "Go Basics",
+    "desc": "Go is a <b>simple</b> and <i>concurrent</i> programming language.<br>It’s designed for <b>cloud computing</b> and scalable systems.",
+    "invention": {
+      "term_coined_by": "Google",
+      "year": "2009",
+      "early_pioneers": ["Rob Pike", "Robert Griesemer", "Ken Thompson"],
+      "early_developments": ["Go 1.0"]
+    },
+    "purpose": [
+      "Simplify scalable system development",
+      "Support concurrent programming",
+      "Enable efficient cloud-based applications"
+    ],
+    "key_milestones": [
+      {
+        "year": 2009,
+        "event": "Go Announced",
+        "description": "Google introduces Go for simplicity and performance."
+      },
+      {
+        "year": 2012,
+        "event": "Go 1.0 Release",
+        "description": "First stable version of Go released."
+      },
+      {
+        "year": 2019,
+        "event": "Go Modules",
+        "description": "Introduction of dependency management with modules."
+      }
+    ],
+    "basics": {
+      "definition": "A statically typed, compiled language optimized for concurrency and simplicity.",
+      "key_terms": [
+        {
+          "term": "Goroutines",
+          "definition": "Lightweight threads for concurrent execution."
+        },
+        {
+          "term": "Channels",
+          "definition": "Communication mechanism for goroutines."
+        }
+      ]
+    },
+    "applications": [
+      "Cloud infrastructure (e.g., Kubernetes, Docker)",
+      "Web servers (e.g., Gin, Echo)",
+      "Distributed systems"
+    ],
+    "key_concepts": [
+      "Concurrency model",
+      "Minimalist syntax",
+      "Fast compilation"
+    ],
+    "example": "Writing <b>Hello, World!</b>: <i>package main; import 'fmt'; func main() { fmt.Println('Hello, World!') }</i>.<br>A <b>minimal</b> example.",
+    "image": "https://example.com/images/go.jpg",
+    "thread": "https://x.com/example/thread/go456"
+  },
+  {
+    "name": "Rust Essentials",
+    "desc": "Rust is a <b>safe</b> and <i>performant</i> programming language.<br>It’s used for <b>systems programming</b> with memory safety guarantees.",
+    "invention": {
+      "term_coined_by": "Mozilla",
+      "year": "2010",
+      "early_pioneers": ["Graydon Hoare"],
+      "early_developments": ["Rust 0.1", "Rust 1.0"]
+    },
+    "purpose": [
+      "Ensure memory safety without a garbage collector",
+      "Support high-performance systems programming",
+      "Enable safe concurrent applications"
+    ],
+    "key_milestones": [
+      {
+        "year": 2010,
+        "event": "Rust Announced",
+        "description": "Mozilla introduces Rust for safe systems programming."
+      },
+      {
+        "year": 2015,
+        "event": "Rust 1.0",
+        "description": "First stable release of Rust."
+      },
+      {
+        "year": 2021,
+        "event": "Rust in Linux Kernel",
+        "description": "Rust adopted for Linux kernel development."
+      }
+    ],
+    "basics": {
+      "definition": "A systems programming language prioritizing safety and performance.",
+      "key_terms": [
+        {
+          "term": "Ownership",
+          "definition": "Memory management model ensuring safety."
+        },
+        {
+          "term": "Borrow Checker",
+          "definition": "Enforces rules for safe memory access."
+        }
+      ]
+    },
+    "applications": [
+      "Systems programming (e.g., Linux kernel)",
+      "WebAssembly development",
+      "High-performance networking (e.g., Actix)"
+    ],
+    "key_concepts": [
+      "Memory safety",
+      "Zero-cost abstractions",
+      "Concurrency without data races"
+    ],
+    "example": "Writing <b>Hello, World!</b>: <i>fn main() { println!('Hello, World!'); }</i>.<br>A <b>safe</b> example.",
+    "image": "https://example.com/images/rust.jpg",
+    "thread": "https://x.com/example/thread/rust789"
   }
 ]
