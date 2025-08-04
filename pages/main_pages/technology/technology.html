@@ -823,6 +823,23 @@
             throw new Error('Failed to parse technology JSON data.');
           }
           populateTechTopics(mainTopics);
+
+          // Load addon topics AFTER main topics have loaded
+          return fetch('texts/add_on.txt');
+        })
+        .then(response => {
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+          return response.text();
+        })
+        .then(text => {
+          let addOnTopics = [];
+          try {
+            addOnTopics = JSON.parse(text);
+          } catch (e) {
+            console.error('Error parsing addon JSON:', e);
+            throw new Error('Failed to parse addon JSON data.');
+          }
+          populateTechTopics(addOnTopics);
         })
         .catch(error => {
           console.error('Loading error:', error);
