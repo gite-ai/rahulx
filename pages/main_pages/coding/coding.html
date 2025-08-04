@@ -267,6 +267,25 @@
       color: #00ffcc;
     }
 
+    .modal-code-box {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #00ffcc;
+      white-space: pre-wrap;
+      overflow-x: auto;
+      user-select: text;
+    }
+
+    .modal-code-box code {
+      display: block;
+    }
+
     .modal-example {
       font-size: 1rem;
       line-height: 1.6;
@@ -439,6 +458,10 @@
         font-size: 1.1rem;
       }
 
+      .modal-code-box {
+        font-size: 0.8rem;
+      }
+
       .modal-example {
         font-size: 0.9rem;
       }
@@ -488,7 +511,8 @@
         <div class="modal-section" id="modalBasics"></div>
         <div class="modal-section" id="modalApplications"></div>
         <div class="modal-section" id="modalKeyConcepts"></div>
-        <p class="modal-example" id="modalExample"></p>
+        <pre class="modal-code-box"><code id="modalExample"></code></pre>
+        <p class="modal-example" id="modalExampleText"></p>
         <img class="modal-image" id="modalImage" src="" alt="Code Related Image" />
       </div>
       <div class="modal-footer">
@@ -567,6 +591,7 @@
       const modalApplications = document.getElementById('modalApplications');
       const modalKeyConcepts = document.getElementById('modalKeyConcepts');
       const modalExample = document.getElementById('modalExample');
+      const modalExampleText = document.getElementById('modalExampleText');
       const modalImage = document.getElementById('modalImage');
 
       // Set content safely
@@ -665,7 +690,22 @@
       }
 
       // Example
-      modalExample.innerHTML = code.example ? `<strong>Example:</strong> ${code.example}` : '';
+      if (code.example) {
+        // Extract code snippet between <i> tags
+        const codeMatch = code.example.match(/<i>(.*?)<\/i>/);
+        const codeSnippet = codeMatch ? codeMatch[1] : '';
+        // Extract non-code text by removing the <i>...</i> part
+        const nonCodeText = code.example.replace(/<i>.*?<\/i>/, '').replace(/<br>/g, '');
+        modalExample.textContent = codeSnippet || code.example; // Fallback to full example if no <i> tags
+        modalExample.parentElement.style.display = codeSnippet ? 'block' : 'none';
+        modalExampleText.innerHTML = nonCodeText || '';
+        modalExampleText.style.display = nonCodeText ? 'block' : 'none';
+      } else {
+        modalExample.textContent = '';
+        modalExample.parentElement.style.display = 'none';
+        modalExampleText.innerHTML = '';
+        modalExampleText.style.display = 'none';
+      }
 
       // Image
       if (code.image) {
@@ -728,8 +768,9 @@
       const applications = document.getElementById('modalApplications').textContent.trim();
       const keyConcepts = document.getElementById('modalKeyConcepts').textContent.trim();
       const example = document.getElementById('modalExample').textContent.trim();
+      const exampleText = document.getElementById('modalExampleText').textContent.trim();
 
-      const content = `${title}\n\n${desc}\n\n${invention}\n\n${purpose}\n\n${milestones}\n\n${basics}\n\n${applications}\n\n${keyConcepts}\n\n${example}`;
+      const content = `${title}\n\n${desc}\n\n${invention}\n\n${purpose}\n\n${milestones}\n\n${basics}\n\n${applications}\n\n${keyConcepts}\n\n${example}\n\n${exampleText}`;
 
       navigator.clipboard.writeText(content).then(() => {
         alert('Coding details copied to clipboard!');
