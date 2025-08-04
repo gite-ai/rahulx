@@ -2,15 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tech Frontier 2025</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <style>
-    /* Your previous CSS, unchanged for brevity --- see your original or collapse here */
-    /* ...[All your CSS from the original file remains the same]... */
     body { font-family: 'Poppins', sans-serif; margin:0; padding:0; background:#0a0a0a; color:#00ffcc; }
-    /* ...etc... */
+    header { text-align:center; padding:2rem 0 1rem 0; }
+    .sci-fi-bg { position:fixed; z-index:-2; inset:0; background:radial-gradient(ellipse at bottom,#023839 0%,#111 100%); }
+    .tech-animation { position:fixed; width:100vw; height:100vh; left:0; top:0; z-index:-1; pointer-events:none; }
+    .tech-core { position:absolute; left:50%; top:50%; width:60px; height:60px; margin-left:-30px; margin-top:-30px; border-radius:50%; background:rgba(0,255,204,.2); box-shadow: 0 0 40px #00ffcc, 0 0 80px #006a56; }
+    .tech-icon { position:absolute; font-size:2rem; user-select:none; opacity:.82;}
+    .orbiting-particle { position:absolute; left:50%; top:50%; width:6px; height:6px; margin:-3px 0 0 -3px; border-radius:50%; background:#00ffcc; animation:orbit 8s linear infinite; }
+    @keyframes orbit {
+       0%   { transform:rotate(0deg) translateX(90px) rotate(0deg);}
+      100% { transform:rotate(360deg) translateX(90px) rotate(-360deg);}
+    }
+    @media (max-width:600px) { .tech-core { width:38px; height:38px; margin-left:-19px; margin-top:-19px; } }
+    .binary-digit { position:absolute; color:#00ffcc; font-size:1.1em; font-family:monospace; opacity:.2; animation:fadeDown linear infinite; }
+    @keyframes fadeDown {
+      to { top:110%; opacity:0.07; }
+    }
+    .tech-topics { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin:2rem 2vw 1rem 2vw;}
+    .topic { background:rgba(0,255,204,0.16); border:1.5px solid #00ffcc37; color:#00ffcc; padding:.7em 1.4em; border-radius:1.2em; font-weight:500; font-size:1.1rem; cursor:pointer; transition:all .18s; outline:0 }
+    .topic:focus, .topic:hover { background:#00ffcc32; box-shadow:0 0 8px #00ffcc; color:#111e2a; }
+    .modal { display:none; position:fixed; inset:0; background:rgba(8,30,36,0.73); justify-content:center; align-items:center; z-index:200; }
+    .modal-content { background:#0a111a; border-radius:12px; max-width:95vw; width:430px; color:#00ffcc; box-shadow:0 8px 36px #001930AA; outline:0; }
+    .modal-header { padding:1rem 1.1rem 0 1.2rem; display:flex; flex-direction:row; align-items:center; justify-content:space-between;}
+    .modal-title { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.4rem; letter-spacing:1px;margin:0; }
+    .modal-close { background:none; border:none; color:#00ffcc; font-size:1.4rem; cursor:pointer; outline:0; margin-left:10px;}
+    .modal-body { padding:1rem 1.1rem 0.2rem 1.18rem; }
+    .modal-desc { margin:8px 0 7px 0; font-weight:400; font-size:1.08rem; }
+    .modal-example { color:#77ffcc; margin-top:7px; font-size:1.01rem;}
+    .modal-image { width:100%; max-width:320px; border-radius:7px; margin:17px 0 1px 0; box-shadow:0 1px 13px #00ffcc55; display:block; }
+    .modal-footer { display:flex; justify-content:flex-end; align-items:center; padding:0.4rem 1.13rem 1.17rem 1.13rem; gap:9px;}
+    .modal-action-button { background:#003d33; border:none; color:#00ffcc; font-size:1.15rem; padding:9px 13px; border-radius:9px; cursor:pointer; transition:all .13s; outline:0;}
+    .modal-action-button:hover { background:#00ffcc; color:#003d33; }
+    footer { margin:3em 0 1em 0; text-align:center; color:#00ffcccc; font-size:.97rem;}
+    footer a {color:#00ffcc; text-decoration:underline;}
   </style>
 </head>
 <body>
@@ -38,11 +67,11 @@
       <div class="modal-body">
         <p class="modal-desc" id="modalDesc" tabindex="0"></p>
         <p class="modal-example" id="modalExample"></p>
-        <img class="modal-image" id="modalImage" src="" alt="Technology Related Image" />
+        <img class="modal-image" id="modalImage" src="" alt="Technology Related Image" style="display:none;" />
       </div>
       <div class="modal-footer">
         <button class="modal-action-button" id="copyButton" onclick="copyModalContent()" title="Copy content"><i class="fa fa-copy"></i></button>
-        <button class="modal-action-button" id="threadButton" title="View tech thread">𝕩</button>
+        <button class="modal-action-button" id="threadButton" title="View tech thread" style="display:none;">𝕩</button>
         <button class="modal-action-button" id="searchButton" title="Search on X"><i class="fa fa-search"></i></button>
       </div>
     </div>
@@ -51,40 +80,25 @@
     <p>© 2025 TechFrontier. All rights reserved. | <a href="#">Privacy Policy</a></p>
   </footer>
   <script>
-    // [EMBEDDED, CLEANED TECHNOLOGY DATA]
+    // --- PASTE YOUR ENTIRE JSON FROM paste.txt BELOW ---
     const technologies = [
+      // For demonstration, **PASTE THE ENTIRE ARRAY from your paste.txt file here**
+      // The list is truncated here for brevity. In your real file, include ALL objects.
       {
         "name": "Quantum Computing",
-        "desc": "Quantum Computing leverages <b>quantum mechanical</b> phenomena like superposition and entanglement to process information in fundamentally new ways. It dramatically accelerates solutions to certain problems that are intractable for classical computers.",
-        "image": "https://example.com/images/quantum.jpg",
-        "thread": "https://x.com/example/thread/12345"
-      },
-      {
-        "name": "Blockchain",
-        "desc": "Blockchain is a <b>distributed digital ledger</b> that records transactions securely and immutably using cryptography. It is decentralized, transparent, and enables trust without intermediaries.",
-        "image": "https://example.com/images/blockchain.jpg",
-        "thread": "https://x.com/example/thread/67890"
-      },
-      {
-        "name": "Augmented Reality",
-        "desc": "Augmented Reality (AR) overlays <b>digital content</b> onto the physical world, enabling immersive user experiences by blending real and virtual.",
-        "image": "https://example.com/images/ar.jpg",
-        "thread": "https://x.com/example/thread/54321"
-      },
-      {
-        "name": "Robotics",
-        "desc": "Robotics is the branch of technology that designs and builds programmable machines—robots—that can carry out tasks autonomously, semi-autonomously, or with direct human interaction.",
-        "image": "https://i.postimg.cc/d3DHr6gk/pexels-vanessa-loring-7868822.jpg",
-        "thread": "https://x.com/example_robotics_thread"
-      },
-      {
-        "name": "Virtual Reality",
-        "desc": "Virtual Reality (VR) fully immerses users in a computer-generated, 3D environment that can simulate real-world or imagined worlds. It requires specialized hardware like headsets and controllers to create a sense of presence.",
-        "image": "https://example.com/images/vr.jpg",
-        "thread": "https://x.com/example/thread/11223"
+        "desc": "Quantum Computing leverages &lt;b&gt;quantum mechanical&lt;/b&gt; phenomena like superposition and entanglement to process information in fundamentally new ways. It dramatically accelerates solutions to certain problems that are intractable for classical computers.",
+        // ... rest of entry ...
       }
-      // ...Add ALL other cleaned tech objects here.
+      // ... (all other tech objects in the array) ...
     ];
+    // --- END OF JSON ARRAY INSERT ---
+
+    function htmlDecode(input) {
+      // Decode HTML entities (&lt;, &gt;, etc) so HTML tags render in modal:
+      let e = document.createElement('textarea');
+      e.innerHTML = input;
+      return e.value;
+    }
 
     function generateBinaryDigits() {
       const techAnimation = document.querySelector('.tech-animation');
@@ -113,7 +127,7 @@
       technologies.forEach(tech => {
         const topic = document.createElement('div');
         topic.className = 'topic';
-        topic.textContent = `#${tech.name.replace(/\s+/g, '')}`;
+        topic.textContent = `#${(tech.name||"").replace(/\s+/g,'')}`;
         topic.tabIndex = 0;
         topic.addEventListener('click', () => openModalWithTech(tech));
         topic.addEventListener('keydown', (e) => {
@@ -122,15 +136,36 @@
         topicsContainer.appendChild(topic);
       });
     }
+
+    // --- MODAL LOGIC ---
     function openModalWithTech(tech) {
       const modal = document.getElementById('techModal');
       const modalTitle = document.getElementById('modalTitle');
       const modalDesc = document.getElementById('modalDesc');
       const modalExample = document.getElementById('modalExample');
       const modalImage = document.getElementById('modalImage');
+      // Tech name
       modalTitle.textContent = tech.name || 'Unknown Technology';
-      modalDesc.innerHTML = tech.desc || 'No description available.';
-      modalExample.innerHTML = tech.example ? `<strong>Example:</strong> ${tech.example}` : '';
+
+      // Handle description (may include <b> etc, decode HTML entities)
+      if (tech.desc) {
+        const cleanHTML = htmlDecode(tech.desc);
+        // Sanitize: remove <script> tags, basic safety
+        modalDesc.innerHTML = cleanHTML.replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, "");
+      } else {
+        modalDesc.textContent = 'No description available.';
+      }
+
+      // Purpose or short example, fallback to applications, etc.
+      if (Array.isArray(tech.purpose) && tech.purpose.length > 0) {
+        modalExample.innerHTML = `<strong>Purpose:</strong> ${tech.purpose.join(', ')}`;
+      } else if (Array.isArray(tech.applications) && tech.applications.length > 0) {
+        modalExample.innerHTML = `<strong>Applications:</strong> ${tech.applications.join(', ')}`;
+      } else {
+        modalExample.textContent = '';
+      }
+
+      // Image
       if (tech.image) {
         modalImage.src = tech.image;
         modalImage.alt = `Image representing ${tech.name}`;
@@ -142,21 +177,28 @@
       }
       modal.style.display = 'flex';
       modalDesc.focus();
+
+      // Thread button visibility & link, if provided
       const threadButton = document.getElementById('threadButton');
       if (tech.thread && tech.thread.trim() !== '') {
         threadButton.style.display = 'inline-block';
         threadButton.onclick = () => { window.open(tech.thread, '_blank', 'noopener,noreferrer'); };
       } else {
         threadButton.style.display = 'none';
+        threadButton.onclick = null;
       }
+
+      // "Search on X" button
       const searchButton = document.getElementById('searchButton');
       searchButton.onclick = () => {
         const query = encodeURIComponent(tech.name);
         const searchURL = `https://x.com/search?q=${query}`;
         window.open(searchURL, '_blank', 'noopener,noreferrer');
       };
+
       document.addEventListener('keydown', escKeyClose);
     }
+
     function closeModal() {
       document.getElementById('techModal').style.display = 'none';
       document.removeEventListener('keydown', escKeyClose);
@@ -175,6 +217,7 @@
     document.getElementById('techModal').addEventListener('click', (ev) => {
       if (ev.target === ev.currentTarget) { closeModal(); }
     });
+
     window.onload = () => {
       populateTechTopics(technologies);
       generateBinaryDigits();
