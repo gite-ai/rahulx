@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahulx.com - Sci-Fi Homepage</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      color: #00ffcc;
+      overflow-x: hidden;
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+    }
+
+    /* Header */
+    header {
+      position: relative;
+      background: radial-gradient(circle, #001f3f, #000);
+      color: #00ffcc;
+      padding: 40px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      text-transform: uppercase;
+      animation: glow 2s infinite alternate;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      opacity: 0.8;
+      animation: float 3s ease-in-out infinite;
+      font-weight: 300;
+    }
+
+    /* Date and Time Box */
+    .datetime-box {
+      margin: 20px auto;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      width: 200px;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    .datetime-box .datetime {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    /* Popup Window */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 600px;
+      background: rgba(0, 0, 0, 0.9);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+      z-index: 1000;
+    }
+
+    .popup .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ff00cc;
+      color: #000;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .popup .close-btn:hover {
+      background: #00ffcc;
+      color: #000;
+    }
+
+    /* Tool Tabs */
+    .tool-tabs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+
+    .tool-tabs button {
+      background: none;
+      border: none;
+      color: #00ffcc;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 10px;
+      transition: color 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+    }
+
+    .tool-tabs button.active {
+      color: #ff00cc;
+      border-bottom: 2px solid #ff00cc;
+    }
+
+    .tool-tabs button:hover {
+      color: #ff00cc;
+    }
+
+    /* Tool Content */
+    .tool-content {
+      display: none;
+    }
+
+    .tool-content.active {
+      display: block;
+    }
+
+    /* Tax Calculator Styles */
+    .calculator {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+    }
+
+    .calculator label {
+      display: block;
+      margin: 10px 0 5px;
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+
+    .calculator input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #00ffcc;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+    }
+
+    .calculator button {
+      background: #00ffcc;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+    }
+
+    .calculator button:hover {
+      background: #ff00cc;
+    }
+
+    .calculator .result {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+
+    .calculator #details {
+      margin-top: 20px;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .calculator #details ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .calculator .slab {
+      margin-bottom: 5px;
+    }
+
+    /* Overlay */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 999;
+    }
+
+    /* Hamburger Menu */
+    .menu-icon {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      color: #00ffcc;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 0;
+      backdrop-filter: blur(10px);
+    }
+
+    nav a {
+      color: #00ffcc;
+      margin: 0 20px;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #ff00cc;
+    }
+
+    /* Mobile Navigation */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 250px;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(10px);
+        transition: right 0.3s ease;
+        z-index: 999;
+      }
+
+      nav.active {
+        right: 0;
+      }
+
+      nav a {
+        margin: 15px 0;
+        padding: 10px 20px;
+        border-bottom: 1px solid rgba(0, 255, 204, 0.2);
+      }
+
+      .datetime-box {
+        width: 90%;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Main Content */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .category-card {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .category-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .category-card h3 {
+      padding: 15px;
+      font-size: 1.5rem;
+      text-align: center;
+      background: linear-gradient(135deg, #00ffcc, #0099cc);
+      color: #000;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .category-card p {
+      padding: 15px;
+      text-align: center;
+      color: #00ffcc;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: #00ffcc;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 300;
+    }
+
+    footer a {
+      color: #ff00cc;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+      }
+      100% {
+        text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Sci-Fi Background */
+    .sci-fi-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle, #001f3f, #000);
+      animation: stars 10s infinite linear;
+    }
+
+    @keyframes stars {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 1000px 1000px;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Sci-Fi Background -->
+  <div class="sci-fi-bg"></div>
+
+  <!-- Hamburger Menu Icon -->
+  <div class="menu-icon" id="menu-icon">☰</div>
+
+  <!-- Header -->
+  <header>
+    <h1>Welcome to Rahulx.com</h1>
+    <p>Exploring the future of creativity and innovation.</p>
+    <!-- Date and Time Box -->
+    <div class="datetime-box">
+      <div class="datetime">
+        <span id="date"></span>
+        <span id="time"></span>
+      </div>
+    </header>
+
+    <!-- Popup Window -->
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+      <button class="close-btn" id="close-btn">×</button>
+      <div class="tool-tabs">
+        <button class="tab-btn active" data-tool="tax">Tax Calculator</button>
+        <a href="https://www.rahulx.com/debt_matrix" target="_blank">
+          <button class="tab-btn" data-tool="debt">Debt Calculator</button>
+        </a>
+      </div>
+      <div class="tool-content active" id="tax">
+        <div class="calculator">
+          <label for="income">Enter your annual income (in INR):</label>
+          <input type="number" id="income" placeholder="Enter income" required>
+          <button onclick="calculateTax()">Calculate Tax</button>
+          <div id="details"></div>
+          <div class="result" id="tax-result"></div>
+        </div>
+      </div>
+      <div class="tool-content" id="debt">
+        <div class="calculator">
+          <div class="debt-matrix-header">
+            <h3 class="cyber-glow">DEBT MATRIX ANALYZER</h3>
+            <div class="holographic-line"></div>
+          </div>
+          <div id="creditor-list">
+            <div class="creditor-item">
+              <div class="cyber-form">
+                <div class="input-group">
+                  <label class="neon-label">Creditor Name:</label>
+                  <input type="text" class="cyber-input" placeholder="Enter name">
+                </div>
+                <div class="cyber-grid">
+                  <div class="input-group">
+                    <label class="neon-label">Monthly EMI (₹):</label>
+                    <input type="number" class="cyber-input" placeholder="EMI Amount">
+                  </div>
+                  <div class="input-group">
+                    <label class="neon-label">Total EMIs:</label>
+                    <input type="number" class="cyber-input" placeholder="Total Months">
+                  </div>
+                  <div class="input-group">
+                    <label class="neon-label">EMIs Paid:</label>
+                    <input type="number" class="cyber-input" placeholder="Paid Months">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="matrix-controls">
+            <div style="text-align: center;">
+              <button class="cyber-button" onclick="calculateDebt()">INITIATE ANALYSIS</button>
+            </div>
+          </div>
+          <div class="matrix-results">
+            <div class="holographic-display">
+              <div class="result-row">
+                <span class="neon-text">Total Remaining Debt:</span>
+                <span class="glowing-amount" id="total-debt">₹0.00</span>
+              </div>
+              <div class="result-row">
+                <span class="neon-text">Total Payable:</span>
+                <span class="glowing-amount" id="total-payable">₹0.00</span>
+              </div>
+            </div>
+            <div class="debt-table-container">
+              <table class="matrix-table">
+                <thead>
+                  <tr>
+                    <th class="cyber-th">Creditor</th>
+                    <th class="cyber-th">EMI</th>
+                    <th class="cyber-th">Paid</th>
+                    <th class="cyber-th">Left</th>
+                    <th class="cyber-th">Remaining</th>
+                    <th class="cyber-th">Total</th>
+                  </tr>
+                </thead>
+                <tbody id="debt-details">
+                  <!-- Results will be populated here -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="nav">
+      <a href="https://www.rahulx.com/about">About</a>
+      <a href="https://www.x.com/gite_ai">Contact</a>
+      <a href="#" id="tools-link">Tools</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+      <!-- Categories Section -->
+      <section>
+        <div class="categories">
+		
+		
+		 <!-- Category 1 -->
+          <a href="https://www.rahulx.com/pages/main_pages/ai-robotics/ai-robotics" class="category-card">
+            <img src="https://th.bing.com/th/id/OIP.fz0A6p1CQ49T6pAK4tGbxgAAAA?w=247&h=180&c=7&r=0&o=5&dpr=1.4&pid=1.7" alt="AI & Robotics">
+            <h3>Artificial intelligence</h3>
+            <p>Delve into all aspects of artificial intelligence. .</p>
+          </a>
+		
+          <!-- Category 2 -->
+          <a href="https://www.rahulx.com/pages/main_pages/technology/technology" class="category-card">
+            <img src="https://th.bing.com/th/id/OIP.NrYbs9hurY9_2X3bSyAaZgAAAA?rs=1&pid=ImgDetMain" alt="Technology">
+            <h3>Technology</h3>
+            <p>Discover the latest in tech innovation other than AI.</p>
+          </a>
+		  <!-- Category 3 -->
+          <a href="https://www.rahulx.com/pages/main_pages/coding/coding" class="category-card">
+            <img src="https://c1.wallpaperflare.com/preview/183/501/299/code-coding-programming-css.jpg" alt="Coding">
+            <h3>Coding</h3>
+            <p>Dive into the art and science of programming.</p>
+          </a>
+		  
+
+          <!-- Category 4 -->
+          <a href="https://www.rahulx.com/pages/main_pages/space/space" class="category-card">
+            <img src="https://th.bing.com/th/id/OIP.OzIU63vh40vLhZQi76XjsQHaHa?rs=1&pid=ImgDetMain" alt="Space">
+            <h3>Space</h3>
+            <p>Explore the mysteries of the universe.</p>
+          </a>
+
+         
+
+          <!-- Category 5 -->
+          <a href="https://www.rahulx.com/pages/main_pages/gaming/gaming" class="category-card">
+            <img src="https://th.bing.com/th/id/OIP.CHnQNmfOWK5QfMBEGQZNTAHaE8?rs=1&pid=ImgDetMain" alt="Gaming">
+            <h3>Gaming</h3>
+            <p>Dive into the world of sci-fi gaming.</p>
+          </a>
+
+        
+
+          <!-- Category 6 -->
+          <a href="https://www.rahulx.com/pages/main_pages/trading/trading" class="category-card">
+            <img src="https://www.quantifiedstrategies.com/wp-content/uploads/2022/10/image-31.png" alt="Trading">
+            <h3>Trading</h3>
+            <p>Learn about the world of trading and investments.</p>
+          </a>
+
+          
+          <!-- Category 7 -->
+          <a href="https://www.rahulx.com/pages/main_pages/netflix/netflix" class="category-card">
+            <img src="https://th.bing.com/th/id/OIP.rRpx98P6up5JkHNfnWMyLwHaDt?rs=1&pid=ImgDetMain" alt="Netflix">
+            <h3>Netflix</h3>
+            <p>Discover the best Sci-fi shows and movies to watch.</p>
+          </a>
+
+          <!-- Category 8 -->
+          <a href="https://www.rahulx.com/pages/main_pages/f1/f1" class="category-card">
+            <img src="https://th.bing.com/th/id/OIP.tfdvlJCaBk3XryBKaNF1VwAAAA?rs=1&pid=ImgDetMain" alt="Sports">
+            <h3>Formula 1</h3>
+            <p>"Where Speed Meets Precision. The Ultimate Race."</p>
+          </a>
+		  
+		    <!-- Category 9 -->
+        <a href="https://www.rahulx.com/pages/ethics" class="category-card">
+          <img src="https://i0.wp.com/manypossibilities.net/wp-content/uploads/2014/03/paradox-300x175.jpg?resize=300%2C175" alt="Ethics">
+          <h3>Ethics</h3>
+          <p>Explore the moral principles that guide our actions.</p>
+        </a>
+
+         <!-- Category 10 -->
+        <a href="https://www.rahulx.com/pages/body_hacks" class="category-card">
+          <img src=" https://i0.wp.com/personalityspirituality.net/wp-content/uploads/2009/07/image.jpg" alt="Body Hacks">
+          <h3>Body Hacks</h3>
+          <p>"Simple Hacks for a Stronger, Healthier You."</p>
+        </a>
+			 <!-- Category 11-->
+        <a href="https://www.rahulx.com/pages/how_to_succeed" class="category-card">
+          <img src="https://www.mciinstitute.edu.au/hubfs/The%20Four%20D%E2%80%99s%20of%20Success%20-%20sucess.png " alt="How to Succeed">
+          <h3>How to Succeed</h3>
+          <p>Unlock Your Potential. Redefine Success</p>
+        </a>
+			 <!-- Category 12 -->
+        <a href="https://www.rahulx.com/pages/deep_oceans" class="category-card">
+          <img src=" https://img.buzzfeed.com/buzzfeed-static/static/2021-07/27/16/asset/afa87cd093b8/sub-buzz-669-1627403352-9.jpg " alt="Oceans">
+          <h3>Deep Oceans</h3>
+          <p>Dive into the Unknown. Discover the Depths of Wonder</p>
+        </a>
+			 <!-- Category 13-->
+        <a href="https://www.rahulx.com/pages/political_ideologies" class="category-card">
+          <img src="https://newamericangovernment.org/wp-content/uploads/2022/07/5caa71b4811434f717e7b2d8079cf1ce.webp" alt="">
+          <h3>Political Ideologies</h3>
+          <p>"From Left to Right and Beyond: Navigating the Ideas That Define Our World."  </p>
+        </a>
+		
+			 <!-- Category 13-->
+        <a href="https://www.rahulx.com/pages/paranormal" class="category-card">
+          <img src="https://traviswhitecommunications.com/wp-content/uploads/2013/11/creepy.jpg" alt="">
+          <h3>Paranormal</h3>
+          <p>"Where Reality Meets the Unseen: Unraveling the Mysteries of the Paranormal"  </p>
+        </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
+    </footer>
+
+    <!-- JavaScript for Hamburger Menu, Interactive Effects, Date/Time, and Popup -->
+    <script>
+      // Hamburger Menu Toggle
+      const menuIcon = document.getElementById('menu-icon');
+      const nav = document.getElementById('nav');
+
+      menuIcon.addEventListener('click', () => {
+        nav.classList.toggle('active');
+      });
+
+      // Close Hamburger Menu on Outside Click (Mobile)
+      document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && nav.classList.contains('active')) {
+          const isClickInsideNav = nav.contains(e.target);
+          const isClickOnMenuIcon = menuIcon.contains(e.target);
+          if (!isClickInsideNav && !isClickOnMenuIcon) {
+            nav.classList.remove('active');
+          }
+        }
+      });
+
+      // Add glowing effect to category cards on hover
+      const cards = document.querySelectorAll('.category-card');
+      cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          card.style.boxShadow = '0 0 30px rgba(0, 255, 204, 0.8)';
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.boxShadow = '0 0 20px rgba(0, 255, 204, 0.6)';
+        });
+      });
+
+      // Date and Time Function
+      function updateDateTime() {
+        const now = new Date();
+        const date = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        const time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        document.getElementById('date').textContent = date;
+        document.getElementById('time').textContent = time;
+      }
+
+      // Update date and time every second
+      setInterval(updateDateTime, 1000);
+      updateDateTime(); // Initial call to display date and time immediately
+
+      // Popup Window Functionality
+      const toolsLink = document.getElementById('tools-link');
+      const popup = document.getElementById('popup');
+      const overlay = document.getElementById('overlay');
+      const closeBtn = document.getElementById('close-btn');
+
+      toolsLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        popup.style.display = 'block';
+        overlay.style.display = 'block';
+      });
+
+      closeBtn.addEventListener('click', () => {
+        popup.style.display = 'none';
+        overlay.style.display = 'none';
+      });
+
+      overlay.addEventListener('click', () => {
+        popup.style.display = 'none';
+        overlay.style.display = 'none';
+      });
+
+      // Tool Tabs Functionality
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const toolContents = document.querySelectorAll('.tool-content');
+
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          toolContents.forEach(content => content.classList.remove('active'));
+
+          button.classList.add('active');
+          const toolId = button.getAttribute('data-tool');
+          document.getElementById(toolId).classList.add('active');
+        });
+      });
+
+      // Tax Calculator Logic
+      function calculateTax() {
+        const income = Number(document.getElementById('income').value);
+        let taxableIncome = income - 75000; // Standard Deduction
+        let tax = 0;
+        let slabDetails = [];
+
+        function addSlab(description, amount, rate) {
+          let slabTax = Math.max(0, amount) * rate;
+          slabDetails.push(`<li class="slab">${description}: ₹${slabTax.toFixed(2)}</li>`);
+          tax += slabTax;
+        }
+
+        if (taxableIncome <= 400000) {
+          slabDetails.push("<li class='slab'>No tax up to ₹4,00,000</li>");
+        } else {
+          if (taxableIncome > 400000) {
+            addSlab("5% on income from ₹4,00,001 to ₹8,00,000", Math.min(taxableIncome, 800000) - 400000, 0.05);
+          }
+          if (taxableIncome > 800000) {
+            addSlab("10% on income from ₹8,00,001 to ₹12,00,000", Math.min(taxableIncome, 1200000) - 800000, 0.10);
+          }
+          if (taxableIncome > 1200000) {
+            addSlab("15% on income from ₹12,00,001 to ₹16,00,000", Math.min(taxableIncome, 1600000) - 1200000, 0.15);
+          }
+          if (taxableIncome > 1600000) {
+            addSlab("20% on income from ₹16,00,001 to ₹20,00,000", Math.min(taxableIncome, 2000000) - 1600000, 0.20);
+          }
+          if (taxableIncome > 2000000) {
+            addSlab("25% on income from ₹20,00,001 to ₹24,00,000", Math.min(taxableIncome, 2400000) - 2000000, 0.25);
+          }
+          if (taxableIncome > 2400000) {
+            addSlab("30% on income above ₹24,00,000", taxableIncome - 2400000, 0.30);
+          }
+        }
+
+        // Health and Education Cess at 4%
+        let cess = tax * 0.04;
+        slabDetails.push(`<li class="slab">Health and Education Cess (4%): ₹${cess.toFixed(2)}</li>`);
+        tax += cess;
+
+        // Apply Section 87A Rebate
+        if (taxableIncome <= 1200000) {
+          slabDetails.push("<li class='slab'>Section 87A rebate applied: No tax payable</li>");
+          tax = 0;
+        }
+
+        document.getElementById('details').innerHTML = "<h3>Tax Calculation Details:</h3><ul>" + slabDetails.join('') + "</ul>";
+        document.getElementById('tax-result').innerText = `Total tax payable: ₹${tax.toFixed(2)}`;
+      }
+
+      // Debt Matrix Functions
+      let creditorCount = 1;
+
+      function addCreditor() {
+        const creditorList = document.getElementById('creditor-list');
+        const newCreditor = creditorList.firstElementChild.cloneNode(true);
+        creditorCount++;
+        newCreditor.querySelectorAll('input').forEach(input => input.value = '');
+        creditorList.appendChild(newCreditor);
+      }
+
+      function removeCreditor(btn) {
+        const creditors = document.querySelectorAll('.creditor-item');
+        if(creditors.length > 1) {
+          btn.closest('.creditor-item').remove();
+          creditorCount--;
+        }
+      }
+
+      function calculateDebt() {
+        const creditors = document.querySelectorAll('.creditor-item');
+        let totalDebt = 0;
+        let totalPayable = 0;
+        let detailsHTML = '';
+
+        creditors.forEach(creditor => {
+          const inputs = creditor.querySelectorAll('input');
+          const [name, monthlyEMI, totalEmis, emisPaid] = Array.from(inputs).map(i => i.value);
+          
+          const emi = parseFloat(monthlyEMI) || 0;
+          const total = parseInt(totalEmis) || 0;
+          const paid = parseInt(emisPaid) || 0;
+          const left = total - paid;
+          const remaining = emi * left;
+          const totalPay = emi * total;
+
+          totalDebt += remaining;
+          totalPayable += totalPay;
+
+          detailsHTML += `
+            <tr>
+              <td>${name || 'Unknown'}</td>
+              <td>₹${emi.toFixed(2)}</td>
+              <td>${paid}</td>
+              <td>${left}</td>
+              <td class="glowing-amount">₹${remaining.toFixed(2)}</td>
+              <td>₹${totalPay.toFixed(2)}</td>
+            </tr>
+          `;
+        });
+
+        document.getElementById('total-debt').textContent = `₹${totalDebt.toFixed(2)}`;
+        document.getElementById('total-payable').textContent = `₹${totalPayable.toFixed(2)}`;
+        document.getElementById('debt-details').innerHTML = detailsHTML;
+      }
+    </script>
+  </body>
+</html> 
