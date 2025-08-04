@@ -543,6 +543,8 @@
         <div class="modal-section" id="modalInvention"></div>
         <div class="modal-section" id="modalPurpose"></div>
         <div class="modal-section" id="modalMilestones"></div>
+        <div class="modal-section" id="modalBasics"></div>
+        <div class="modal-section" id="modalApplications"></div>
         <p class="modal-example" id="modalExample"></p>
         <img class="modal-image" id="modalImage" src="" alt="Technology Related Image" />
       </div>
@@ -615,6 +617,8 @@
       const modalInvention = document.getElementById('modalInvention');
       const modalPurpose = document.getElementById('modalPurpose');
       const modalMilestones = document.getElementById('modalMilestones');
+      const modalBasics = document.getElementById('modalBasics');
+      const modalApplications = document.getElementById('modalApplications');
       const modalExample = document.getElementById('modalExample');
       const modalImage = document.getElementById('modalImage');
 
@@ -665,6 +669,43 @@
         modalMilestones.innerHTML = milestonesText;
       } else {
         modalMilestones.innerHTML = '';
+      }
+
+      // Basics
+      if (tech.basics) {
+        let basicsText = '<h3>Basics</h3><ul>';
+        if (tech.basics.definition) {
+          basicsText += `<li>Definition: ${tech.basics.definition}</li>`;
+        }
+        if (tech.basics.key_terms && tech.basics.key_terms.length) {
+          basicsText += '<li>Key Terms:<ul>';
+          tech.basics.key_terms.forEach(term => {
+            basicsText += `<li>${term.term}: ${term.definition}</li>`;
+          });
+          basicsText += '</ul></li>';
+        }
+        if (tech.basics.fundamental_components) {
+          basicsText += `<li>Fundamental Components: ${tech.basics.fundamental_components.join(', ')}</li>`;
+        }
+        if (tech.basics.types_of_robots) {
+          basicsText += `<li>Types of Robots: ${tech.basics.types_of_robots.join(', ')}</li>`;
+        }
+        basicsText += '</ul>';
+        modalBasics.innerHTML = basicsText;
+      } else {
+        modalBasics.innerHTML = '';
+      }
+
+      // Applications
+      if (tech.applications && tech.applications.length) {
+        let applicationsText = '<h3>Applications</h3><ul>';
+        tech.applications.forEach(app => {
+          applicationsText += `<li>${app}</li>`;
+        });
+        applicationsText += '</ul>';
+        modalApplications.innerHTML = applicationsText;
+      } else {
+        modalApplications.innerHTML = '';
       }
 
       // Example
@@ -720,16 +761,18 @@
       if (e.key === 'Escape') closeModal();
     }
 
-    // Copy modal content: title, description, invention, purpose, milestones, example
+    // Copy modal content: title, description, invention, purpose, milestones, basics, applications, example
     function copyModalContent() {
       const title = document.getElementById('modalTitle').textContent.trim();
       const desc = document.getElementById('modalDesc').textContent.trim();
       const invention = document.getElementById('modalInvention').textContent.trim();
       const purpose = document.getElementById('modalPurpose').textContent.trim();
       const milestones = document.getElementById('modalMilestones').textContent.trim();
+      const basics = document.getElementById('modalBasics').textContent.trim();
+      const applications = document.getElementById('modalApplications').textContent.trim();
       const example = document.getElementById('modalExample').textContent.trim();
 
-      const content = `${title}\n\n${desc}\n\n${invention}\n\n${purpose}\n\n${milestones}\n\n${example}`;
+      const content = `${title}\n\n${desc}\n\n${invention}\n\n${purpose}\n\n${milestones}\n\n${basics}\n\n${applications}\n\n${example}`;
 
       navigator.clipboard.writeText(content).then(() => {
         alert('Technology details copied to clipboard!');
