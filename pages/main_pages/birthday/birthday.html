@@ -86,7 +86,7 @@
       height: auto;
       border: 3px solid #ff00cc;
       border-radius: 50%;
-      margin: 25px auto;
+      margin:320px auto;
       display: block;
       box-shadow: 0 0 30px #ff00cc, 0 0 60px #00ffcc;
       animation: glow-pulse 3s infinite alternate;
@@ -121,7 +121,7 @@
       opacity: 0.95;
     }
     .balloon::after {
-      content: '';
+     ontol: '';
       position: absolute;
       bottom: -20px;
       left: 50%;
@@ -132,7 +132,7 @@
       box-shadow: 0 0 5px #fff;
     }
     .balloon::before {
-      content: '♥';
+      content: 'heart';
       position: absolute;
       top: 15px;
       left: 50%;
@@ -210,6 +210,7 @@
       width: fit-content;
       transition: all 0.3s ease;
       box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+      touch-action: manipulation;
     }
     .play-button:hover,
     .play-button:focus {
@@ -237,16 +238,16 @@
   <div class="surprise-container">
     <img src="https://www.rahulx.com/pages/main_pages/birthday/birthday_person.png" alt="Birthday Person" class="birthday-person" />
     <img src="cat.gif" alt="Dancing cat celebration" class="dancing-cat" />
-    <p class="message">We're a bit late, but the love and wishes are timeless! May your year ahead be epic! 🎉🥳</p>
-    <p class="late-note">Better late than never — still dancing for you! 😺</p>
-    <button class="play-button" id="playBtn">Play Birthday Song 🎵</button>
+    <p class="message">We're a bit late, but the love and wishes are timeless! May your year ahead be epic! party popper fire</p>
+    <p class="late-note">Better late than never — still dancing for you! cat</p>
+    <button class="play-button" id="playBtn">Play Birthday Song music</button>
   </div>
 
   <footer>
-    <p>Made with ❤️ by Rahulx.com</p>
+    <p>Made with heart by Rahulx.com</p>
   </footer>
 
-  <audio id="birthdaySong" src="https://www.rahulx.com/pages/main_pages/birthday/birthday.mp3" preload="auto" loop></audio>
+  <audio id="birthdaySong" src="https://www.rahulx.com/pages/main_pages/birthday/birthday.mp3" preload="auto" loop autoplay></audio>
 
   <script>
     const rainbow = [
@@ -281,44 +282,48 @@
     }
     setInterval(createBalloon, 800);
 
-    // Autoplay with user gesture fallback
+    // Force autoplay on page load + mobile unlock
     const audio = document.getElementById('birthdaySong');
     const playBtn = document.getElementById('playBtn');
+    let unlocked = false;
 
-    function attemptAutoplay() {
+    function unlockAndPlay() {
+      if (unlocked) return;
       audio.volume = 0.6;
       audio.loop = true;
       audio.play().then(() => {
-        playBtn.textContent = 'Pause Song ⏸';
+        unlocked = true;
+        playBtn.textContent = 'Pause Song pause';
         playBtn.classList.add('playing');
-      }).catch(() => {
-        playBtn.textContent = 'Play Birthday Song 🎵';
-      });
+      }).catch(() => {});
     }
 
-    window.addEventListener('load', attemptAutoplay);
+    // Attempt direct autoplay
+    window.addEventListener('load', () => {
+      unlockAndPlay();
+    });
 
-    document.body.addEventListener('click', function initPlay() {
-      if (audio.paused) attemptAutoplay();
-      document.body.removeEventListener('click', initPlay);
-    }, { once: true });
+    // Mobile: unlock on first touch/click
+    ['touchstart', 'click'].forEach(event => {
+      document.addEventListener(event, function handler() {
+        unlockAndPlay();
+        ['touchstart', 'click'].forEach(e => document.removeEventListener(e, handler));
+      }, { once: true, passive: true });
+    });
 
+    // Toggle button
     playBtn.addEventListener('click', () => {
+      unlockAndPlay();
       if (audio.paused) {
         audio.play();
-        playBtn.textContent = 'Pause Song ⏸';
+        playBtn.textContent = 'Pause Song pause';
         playBtn.classList.add('playing');
       } else {
         audio.pause();
-        playBtn.textContent = 'Play Birthday Song 🎵';
+        playBtn.textContent = 'Play Birthday Song music';
         playBtn.classList.remove('playing');
       }
-    });
-
-    audio.addEventListener('ended', () => {
-      playBtn.textContent = 'Play Birthday Song 🎵';
-      playBtn.classList.remove('playing');
-    });
+    }, { passive: true });
   </script>
 </body>
 </html>
