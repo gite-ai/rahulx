@@ -230,7 +230,7 @@
     <p>Made with ❤️ by Rahulx.com</p>
   </footer>
 
-  <audio id="birthdaySong" src="https://www.rahulx.com/pages/main_pages/birthday/birthday.mp3" preload="auto"></audio>
+  <audio id="birthdaySong" src="https://www.rahulx.com/pages/main_pages/birthday/birthday.mp3" preload="auto" loop></audio>
 
   <script>
     const rainbow = [
@@ -265,13 +265,35 @@
     }
     setInterval(createBalloon, 800);
 
-    // Play button logic
+    // Autoplay with user gesture fallback
     const audio = document.getElementById('birthdaySong');
     const playBtn = document.getElementById('playBtn');
 
+    function attemptAutoplay() {
+      audio.volume = 0.6;
+      audio.loop = true;
+      audio.play().then(() => {
+        playBtn.textContent = 'Pause Song ⏸';
+        playBtn.classList.add('playing');
+      }).catch(() => {
+        // Autoplay blocked; wait for user click
+        playBtn.textContent = 'Play Birthday Song 🎵';
+      });
+    }
+
+    // Try autoplay on load
+    window.addEventListener('load', attemptAutoplay);
+
+    // Fallback: play on first user interaction
+    document.body.addEventListener('click', function initPlay() {
+      if (audio.paused) attemptAutoplay();
+      document.body.removeEventListener('click', initPlay);
+    }, { once: true });
+
+    // Toggle button
     playBtn.addEventListener('click', () => {
       if (audio.paused) {
-        audio.play().catch(err => console.log('Play failed:', err));
+        audio.play();
         playBtn.textContent = 'Pause Song ⏸';
         playBtn.classList.add('playing');
       } else {
