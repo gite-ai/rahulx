@@ -180,6 +180,34 @@
       font-weight: 300;
       font-size: 1.1rem;
     }
+
+    /* Play Button */
+    .play-button {
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid #00ffcc;
+      color: #00ffcc;
+      font-size: 1.2rem;
+      padding: 12px 24px;
+      border-radius: 50px;
+      cursor: pointer;
+      margin: 20px auto;
+      display: block;
+      width: fit-content;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+    }
+    .play-button:hover,
+    .play-button:focus {
+      background: #00ffcc;
+      color: #000;
+      box-shadow: 0 0 25px rgba(0, 255, 204, 0.8);
+      transform: scale(1.05);
+    }
+    .play-button.playing {
+      background: #ff00cc;
+      border-color: #ff00cc;
+      color: #fff;
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
 </head>
@@ -195,32 +223,20 @@
     <img src="cat.gif" alt="Dancing cat celebration" class="dancing-cat" />
     <p class="message">We're a bit late, but the love and wishes are timeless! May your year ahead be epic! 🎉🥳</p>
     <p class="late-note">Better late than never — still dancing for you! 😺</p>
+    <button class="play-button" id="playBtn">Play Birthday Song 🎵</button>
   </div>
 
   <footer>
     <p>Made with ❤️ by Rahulx.com</p>
   </footer>
 
-  <audio id="birthdaySong" src="birthday.mp3" preload="auto" loop></audio>
+  <audio id="birthdaySong" src="https://www.rahulx.com/pages/main_pages/birthday/birthday.mp3" preload="auto"></audio>
 
   <script>
     const rainbow = [
-      '#ff0000', // Red
-      '#ff4500', // Orange-Red
-      '#ff8c00', // Orange
-      '#ffd700', // Gold
-      '#ffff00', // Yellow
-      '#adff2f', // Yellow-Green
-      '#32cd32', // Lime Green
-      '#00ff00', // Green
-      '#00fa9a', // Medium Spring Green
-      '#00ced1', // Dark Turquoise
-      '#1e90ff', // Dodger Blue
-      '#0000ff', // Blue
-      '#4169e1', // Royal Blue
-      '#4b0082', // Indigo
-      '#8a2be2', // Blue Violet
-      '#ee82ee'  // Violet
+      '#ff0000', '#ff4500', '#ff8c00', '#ffd700', '#ffff00', '#adff2f',
+      '#32cd32', '#00ff00', '#00fa9a', '#00ced1', '#1e90ff', '#0000ff',
+      '#4169e1', '#4b0082', '#8a2be2', '#ee82ee'
     ];
 
     // Confetti
@@ -249,14 +265,26 @@
     }
     setInterval(createBalloon, 800);
 
-    // Auto-play birthday.mp3 in loop on page load
-    window.addEventListener('load', () => {
-      const audio = document.getElementById('birthdaySong');
-      audio.volume = 0.6;
-      audio.play().catch(err => {
-        console.log('Autoplay prevented. User interaction required.');
-      });
+    // Play button logic
+    const audio = document.getElementById('birthdaySong');
+    const playBtn = document.getElementById('playBtn');
+
+    playBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play().catch(err => console.log('Play failed:', err));
+        playBtn.textContent = 'Pause Song ⏸';
+        playBtn.classList.add('playing');
+      } else {
+        audio.pause();
+        playBtn.textContent = 'Play Birthday Song 🎵';
+        playBtn.classList.remove('playing');
+      }
+    });
+
+    audio.addEventListener('ended', () => {
+      playBtn.textContent = 'Play Birthday Song 🎵';
+      playBtn.classList.remove('playing');
     });
   </script>
 </body>
-</html> 
+</html>
