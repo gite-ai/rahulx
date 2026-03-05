@@ -82,13 +82,13 @@
       border-radius: 8px;
       cursor: pointer;
       border: none;
-      min-width: 110px;
+      min-width: 80px;
       touch-action: manipulation;
     }
-    .main-btn { background: #238636; color: white; }
-    .main-btn:active { background: #2ea043; }
-    .reset { background: #c94d4d; color: white; }
-    .reset:active { background: #e06666; }
+    .add-btn { background: #238636; color: white; }
+    .add-btn:active { background: #2ea043; }
+    .reset-btn { background: #c94d4d; color: white; }
+    .reset-btn:active { background: #e06666; }
     .font-btn {
       background: #444d56;
       color: #e6edf3;
@@ -97,6 +97,14 @@
       font-weight: bold;
     }
     .font-btn:active { background: #586069; }
+    .copy-btn {
+      background: #444d56;
+      color: #e6edf3;
+      border: 1px solid #586069;
+      padding: 6px 12px;
+      font-size: 0.85rem;
+    }
+    .copy-btn:active { background: #586069; color: white; }
     #result-container {
       margin-top: 16px;
       position: relative;
@@ -112,22 +120,9 @@
       max-height: 50vh;
       overflow-y: auto;
       line-height: 1.45;
-      font-size: 0.88rem;
+      font-size: var(--checklist-font-size);
       word-break: break-all;
     }
-    #copy-all-btn {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      background: #444d56;
-      color: #e6edf3;
-      border: 1px solid #586069;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      cursor: pointer;
-    }
-    #copy-all-btn:active { background: #586069; color: white; }
     #toast {
       position: fixed;
       bottom: 16px;
@@ -174,7 +169,7 @@
       <option value="T19">T19</option><option value="T20">T20</option>
     </select>
 
-    <input type="text" id="timestampInput" placeholder="timestamp" />
+    <input type="text" id="timestampInput" placeholder="timestamp (req. for 1 & 2)" />
   </div>
 
   <div class="error-item"><input type="checkbox" id="e1" value="1"><label for="e1"><span class="number">1</span> Minor Error – Incorrect Transcription (meaning unchanged)</label></div>
@@ -186,20 +181,20 @@
   <div class="error-item"><input type="checkbox" id="e7" value="7"><label for="e7"><span class="number">7</span> Objective Issue with UI Question</label></div>
 
   <div class="btn-row">
-    <button class="main-btn" onclick="addErrorsForTurn()">Add </button>
-    <button class="reset" onclick="resetAll()">Reset</button>
-    <button class="font-btn" onclick="changeFontSize(1)">A+</button>
-    <button class="font-btn" onclick="changeFontSize(-1)">A–</button>
+    <button class="add-btn" onclick="addErrorsForTurn()">Add</button>
+    <button class="reset-btn" onclick="resetAll()">Reset</button>
+    <button class="font-btn" onclick="changeFontSize(-2)">−</button>
+    <button class="font-btn" onclick="changeFontSize(2)">+</button>
   </div>
 
   <div id="result-container">
-    <button id="copy-all-btn" onclick="copyAll()">Copy All</button>
+    <button id="copy-all-btn" class="copy-btn" onclick="copyAll()">Copy</button>
     <div id="result"></div>
   </div>
 
 </div>
 
-<div id="toast">All errors copied</div>
+<div id="toast">Copied</div>
 
 <script>
 const shortNames = {
@@ -226,14 +221,16 @@ function addErrorsForTurn() {
   const ts   = document.getElementById('timestampInput').value.trim();
 
   if (!turn) return alert("Select turn");
-  if (!ts)   return alert("Enter timestamp");
 
   const checked = document.querySelectorAll('input[type="checkbox"]:checked');
-  if (checked.length === 0) return alert("Tick ≥1 error");
+  if (checked.length === 0) return alert("Tick at least one error");
+
+  const needsTs = Array.from(checked).some(cb => cb.value === '1' || cb.value === '2');
+  if (needsTs && !ts) return alert("Timestamp required for errors 1 & 2");
 
   checked.forEach(cb => {
     const name = shortNames[cb.value];
-    allErrors.push(`${turn} : Minor error: [${ts}]`);
+    allErrors.push(`${turn} : Minor error: [${ts || '—'}]`);
     allErrors.push(`"${name}"`);
     allErrors.push(`corrected "INCORRECT" as "CORRECT"`);
     allErrors.push('');
@@ -266,7 +263,7 @@ function copyAll() {
 }
 </script>
 
-<footer>Edge sidebar ready • only checklist text size adjustable</footer>
+<footer>Errors 3–7 no timestamp needed • font size affects checklist & final list</footer>
 
 </body>
 </html>
