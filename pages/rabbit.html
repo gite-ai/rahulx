@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>QA Error Checklist - 20 Turns</title>
   <style>
+    :root {
+      --checklist-font-size: 15px;
+    }
     body {
       font-family: system-ui, -apple-system, sans-serif;
       background: #0d1117;
@@ -13,12 +16,12 @@
       padding: 12px;
       min-height: 100vh;
       line-height: 1.45;
-      font-size: 15px;
+      font-size: var(--checklist-font-size);
     }
     h1 {
       color: #58a6ff;
       text-align: center;
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       margin: 0 0 12px;
     }
     .container {
@@ -57,7 +60,6 @@
     }
     .error-item label {
       flex: 1;
-      font-size: 0.92rem;
       cursor: pointer;
       word-wrap: break-word;
       hyphens: auto;
@@ -80,19 +82,21 @@
       border-radius: 8px;
       cursor: pointer;
       border: none;
-      min-width: 120px;
+      min-width: 110px;
       touch-action: manipulation;
     }
-    .main-btn {
-      background: #238636;
-      color: white;
-    }
+    .main-btn { background: #238636; color: white; }
     .main-btn:active { background: #2ea043; }
-    .reset {
-      background: #c94d4d;
-      color: white;
-    }
+    .reset { background: #c94d4d; color: white; }
     .reset:active { background: #e06666; }
+    .font-btn {
+      background: #444d56;
+      color: #e6edf3;
+      min-width: 40px;
+      padding: 10px;
+      font-weight: bold;
+    }
+    .font-btn:active { background: #586069; }
     #result-container {
       margin-top: 16px;
       position: relative;
@@ -123,10 +127,7 @@
       font-size: 0.85rem;
       cursor: pointer;
     }
-    #copy-all-btn:active {
-      background: #586069;
-      color: white;
-    }
+    #copy-all-btn:active { background: #586069; color: white; }
     #toast {
       position: fixed;
       bottom: 16px;
@@ -149,11 +150,9 @@
       font-size: 0.8rem;
     }
     @media (min-width: 420px) {
+      .top-row { flex-direction: row; }
       body { padding: 16px; }
       h1 { font-size: 1.6rem; }
-      .top-row { flex-direction: row; }
-      .error-item label { font-size: 0.95rem; }
-      #result { font-size: 0.92rem; }
     }
   </style>
 </head>
@@ -187,8 +186,10 @@
   <div class="error-item"><input type="checkbox" id="e7" value="7"><label for="e7"><span class="number">7</span> Objective Issue with UI Question</label></div>
 
   <div class="btn-row">
-    <button class="main-btn" onclick="addErrorsForTurn()">Add Errors for this Turn</button>
-    <button class="reset" onclick="resetAll()">Clear All / Reset</button>
+    <button class="main-btn" onclick="addErrorsForTurn()">Add </button>
+    <button class="reset" onclick="resetAll()">Reset</button>
+    <button class="font-btn" onclick="changeFontSize(1)">A+</button>
+    <button class="font-btn" onclick="changeFontSize(-1)">A–</button>
   </div>
 
   <div id="result-container">
@@ -212,6 +213,13 @@ const shortNames = {
 };
 
 let allErrors = [];
+
+// Only checklist text size (no limit)
+function changeFontSize(delta) {
+  let size = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--checklist-font-size')) || 15;
+  size += delta;
+  document.documentElement.style.setProperty('--checklist-font-size', size + 'px');
+}
 
 function addErrorsForTurn() {
   const turn = document.getElementById('turnSelect').value.trim();
@@ -258,7 +266,7 @@ function copyAll() {
 }
 </script>
 
-<footer>Sidebar optimized • text wraps automatically</footer>
+<footer>Edge sidebar ready • only checklist text size adjustable</footer>
 
 </body>
 </html>
