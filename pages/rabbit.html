@@ -227,16 +227,16 @@
   <div class="error-item"><input type="checkbox" id="s11" value="s11"><label for="s11"><span class="number">11</span> Model echo not transcribed</label></div>
   <div class="error-item"><input type="checkbox" id="s12" value="s12"><label for="s12"><span class="number">12</span> Audio Quality rated based on recording clarity</label></div>
   <div class="error-item"><input type="checkbox" id="s13" value="s13"><label for="s13"><span class="number">13</span> Turn 1 interruption question = N/A</label></div>
+  <div class="error-item"><input type="checkbox" id="s14" value="s14"><label for="s14"><span class="number">14</span> Missing (1)</label></div>
+  <div class="error-item"><input type="checkbox" id="s15" value="s15"><label for="s15"><span class="number">15</span> Wrong language selection</label></div>
+  <div class="error-item"><input type="checkbox" id="s16" value="s16"><label for="s16"><span class="number">16</span> Ellipsis used in middle</label></div>
+  <div class="error-item"><input type="checkbox" id="s17" value="s17"><label for="s17"><span class="number">17</span> Consecutive [unclear] [unclear]</label></div>
 
   <div class="divider"></div>
 
   <h2>Major Errors - Instant QA Red Flags (Reject Immediately)</h2>
   <div class="error-item"><input type="checkbox" id="rf1" value="rf1" class="major"><label for="rf1">[noise] with speech</label></div>
   <div class="error-item"><input type="checkbox" id="rf2" value="rf2" class="major"><label for="rf2">AI voice transcribed</label></div>
-  <div class="error-item"><input type="checkbox" id="rf3" value="rf3" class="major"><label for="rf3">Missing (1)</label></div>
-  <div class="error-item"><input type="checkbox" id="rf4" value="rf4" class="major"><label for="rf4">Ellipsis used in middle</label></div>
-  <div class="error-item"><input type="checkbox" id="rf5" value="rf5" class="major"><label for="rf5">Wrong language selection</label></div>
-  <div class="error-item"><input type="checkbox" id="rf6" value="rf6" class="major"><label for="rf6">Consecutive [unclear] [unclear]</label></div>
 
   <div class="divider"></div>
 
@@ -297,16 +297,16 @@ const minorNames = {
   's10': 'Language selection based on spoken language',
   's11': 'Model echo not transcribed',
   's12': 'Audio Quality rated based on recording clarity',
-  's13': 'Turn 1 interruption question = N/A'
+  's13': 'Turn 1 interruption question = N/A',
+  's14': 'Missing (1)',
+  's15': 'Wrong language selection',
+  's16': 'Ellipsis used in middle',
+  's17': 'Consecutive [unclear] [unclear]'
 };
 
 const majorNames = {
   'rf1': '[noise] with speech',
-  'rf2': 'AI voice transcribed',
-  'rf3': 'Missing (1)',
-  'rf4': 'Ellipsis used in middle',
-  'rf5': 'Wrong language selection',
-  'rf6': 'Consecutive [unclear] [unclear]'
+  'rf2': 'AI voice transcribed'
 };
 
 const goldenName = 'Transcribe exactly what is heard, not what makes sense';
@@ -326,11 +326,7 @@ const tips = {
   s12: "- Rate only clarity - ignore accent/speed.",
   s13: "- Turn 1 interruption question must be N/A.",
   rf1: "- Reject if [noise] mixed with any speech.",
-  rf2: "- Reject if any AI voice is transcribed.",
-  rf3: "- Reject if transcript does not start with (1).",
-  rf4: "- Reject if ellipsis appears mid-sentence.",
-  rf5: "- Reject if language selection is wrong.",
-  rf6: "- Reject if consecutive [unclear] tags."
+  rf2: "- Reject if any AI voice is transcribed."
 };
 
 let allErrors = [];
@@ -420,7 +416,7 @@ function updateFeedback() {
 
   fb += "Audio 4: Dominant language changed from en to other\n\n";
   fb += "**Error Count:**\n";
-  fb += "- Minor Errors: " + selectedErrors.size + "\n"; // simplified count; adjust if needed
+  fb += "- Minor Errors: " + selectedErrors.size + "\n";
   fb += "- Major Errors: 0";
 
   fbEl.textContent = fb;
