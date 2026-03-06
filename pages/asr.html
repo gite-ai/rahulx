@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QA Error Checklist + L0 Tips</title>
+  <style>
+    :root {
+      --checklist-font-size: 15px;
+    }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+      margin: 0;
+      padding: 12px;
+      min-height: 100vh;
+      line-height: 1.45;
+      font-size: var(--checklist-font-size);
+    }
+    h1 { color: #58a6ff; text-align: center; font-size: 1.4rem; margin: 0 0 12px; }
+    h2 { color: #ff8787; text-align: center; font-size: 1.2rem; margin: 24px 0 12px; }
+    .divider { height: 1px; background: #30363d; margin: 24px 0; }
+    .container {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 14px;
+      max-width: 100%;
+    }
+    .top-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    #turnSelect, #timestampInput {
+      padding: 10px 12px;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      color: #c9d1d9;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+    .error-item {
+      margin: 8px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .error-item input[type="checkbox"] {
+      margin-top: 4px;
+      width: 18px;
+      height: 18px;
+      accent-color: #f78166;
+      flex-shrink: 0;
+    }
+    .error-item.major input[type="checkbox"] { accent-color: #ff6b6b; }
+    .error-item label { flex: 1; cursor: pointer; word-wrap: break-word; hyphens: auto; }
+    .number { font-weight: bold; min-width: 20px; }
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin: 16px 0;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      cursor: pointer;
+      border: none;
+      min-width: 80px;
+      touch-action: manipulation;
+    }
+    .add-btn { background: #238636; color: white; }
+    .add-btn:active { background: #2ea043; }
+    .reset-btn { background: #c94d4d; color: white; }
+    .reset-btn:active { background: #e06666; }
+    .font-btn {
+      background: #444d56;
+      color: #e6edf3;
+      min-width: 40px;
+      padding: 10px;
+      font-weight: bold;
+    }
+    .font-btn:active { background: #586069; }
+    .copy-btn {
+      background: #444d56;
+      color: #e6edf3;
+      border: 1px solid #586069;
+      padding: 6px 12px;
+      font-size: 0.85rem;
+    }
+    .copy-btn:active { background: #586069; color: white; }
+    #result-container {
+      margin-top: 16px;
+      position: relative;
+      display: none;
+    }
+    #result {
+      padding: 12px;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      font-family: 'Consolas', monospace;
+      max-height: 50vh;
+      overflow-y: auto;
+      line-height: 1.45;
+      font-size: var(--checklist-font-size);
+      word-break: break-all;
+    }
+    #tips-section {
+      margin-top: 24px;
+      padding: 16px;
+      background: #1f2937;
+      border-radius: 8px;
+      border: 1px solid #374151;
+      display: none;
+    }
+    #tips-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    #tips-content {
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+    #tips-content p {
+      margin: 8px 0;
+    }
+    #toast {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #238636;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 8px;
+      opacity: 0;
+      transition: opacity 0.4s;
+      z-index: 1000;
+      font-size: 0.9rem;
+    }
+    #toast.show { opacity: 1; }
+    footer { text-align: center; margin-top: 24px; color: #8b949e; font-size: 0.8rem; }
+    @media (min-width: 420px) {
+      .top-row { flex-direction: row; }
+      body { padding: 16px; }
+      h1 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>QA Error Checklist + L0 Tips</h1>
+
+<div class="container">
+
+  <div class="top-row">
+    <select id="turnSelect">
+      <option value="">Select Turn</option>
+      <option value="T1">T1</option><option value="T2">T2</option><option value="T3">T3</option>
+      <option value="T4">T4</option><option value="T5">T5</option><option value="T6">T6</option>
+      <option value="T7">T7</option><option value="T8">T8</option><option value="T9">T9</option>
+      <option value="T10">T10</option><option value="T11">T11</option><option value="T12">T12</option>
+      <option value="T13">T13</option><option value="T14">T14</option><option value="T15">T15</option>
+      <option value="T16">T16</option><option value="T17">T17</option><option value="T18">T18</option>
+      <option value="T19">T19</option><option value="T20">T20</option>
+    </select>
+
+    <input type="text" id="timestampInput" placeholder="timestamp (req. only for Minor 1&2 & Major 1)" />
+  </div>
+
+  <h2>Minor Errors</h2>
+  <div class="error-item"><input type="checkbox" id="m1" value="m1"><label for="m1"><span class="number">1</span> Minor Error – Incorrect Transcription (meaning unchanged)</label></div>
+  <div class="error-item"><input type="checkbox" id="m2" value="m2"><label for="m2"><span class="number">2</span> Failure to separate multiple speakers properly</label></div>
+  <div class="error-item"><input type="checkbox" id="m3" value="m3"><label for="m3"><span class="number">3</span> Consecutive [unclear] tags or mistyped tagging</label></div>
+  <div class="error-item"><input type="checkbox" id="m4" value="m4"><label for="m4"><span class="number">4</span> Punctuation Issues</label></div>
+  <div class="error-item"><input type="checkbox" id="m5" value="m5"><label for="m5"><span class="number">5</span> Incorrect Language Selection</label></div>
+  <div class="error-item"><input type="checkbox" id="m6" value="m6"><label for="m6"><span class="number">6</span> Spacing Issues</label></div>
+  <div class="error-item"><input type="checkbox" id="m7" value="m7"><label for="m7"><span class="number">7</span> Objective Issue with UI Question</label></div>
+
+  <div class="divider"></div>
+
+  <h2>Major Errors</h2>
+  <div class="error-item"><input type="checkbox" id="M1" value="M1" class="major"><label for="M1"><span class="number">1</span> Incorrect Transcription (meaning changed)</label></div>
+  <div class="error-item"><input type="checkbox" id="M2" value="M2" class="major"><label for="M2"><span class="number">2</span> Missing or incorrect use of square bracket tags</label></div>
+  <div class="error-item"><input type="checkbox" id="M3" value="M3" class="major"><label for="M3"><span class="number">3</span> Transcribing any AI/assistant speech (e.g. echos)</label></div>
+
+  <div class="btn-row">
+    <button class="add-btn" onclick="addErrorsForTurn()">Add</button>
+    <button class="reset-btn" onclick="resetAll()">Reset</button>
+    <button class="font-btn" onclick="changeFontSize(-2)">−</button>
+    <button class="font-btn" onclick="changeFontSize(2)">+</button>
+  </div>
+
+  <div id="result-container">
+    <button id="copy-all-btn" class="copy-btn" onclick="copyAll()">Copy</button>
+    <div id="result"></div>
+  </div>
+
+  <div id="tips-section">
+    <div id="tips-header">
+      <h2>Note for L0:</h2>
+      <button class="copy-btn" onclick="copyTips()">Copy Note</button>
+    </div>
+    <div id="tips-content"></div>
+  </div>
+
+</div>
+
+<div id="toast">Copied</div>
+
+<script>
+const minorNames = {
+  'm1': 'Minor transcription error (meaning unchanged)',
+  'm2': 'Multiple speakers not separated properly',
+  'm3': 'Consecutive/mistyped [unclear] tags',
+  'm4': 'Punctuation issues',
+  'm5': 'Incorrect language selection',
+  'm6': 'Spacing issues',
+  'm7': 'Objective UI question issue'
+};
+
+const majorNames = {
+  'M1': 'Incorrect Transcription (meaning changed)',
+  'M2': 'Missing or incorrect use of square bracket tags',
+  'M3': 'Transcribing any AI/assistant speech (e.g. echos)'
+};
+
+const tips = {
+  m1: "- Re-listen carefully to each word - avoid substituting colloquial/formal versions unless meaning is identical.",
+  m2: "- Always mark speaker changes with consistent numbering (Speaker 1, Speaker 2, etc.) - never skip or mix them.",
+  m3: "- Use only approved tags ([unclear], [noise], [pause]) - never stack consecutive [unclear] or invent tags.",
+  m4: "- Start every sentence with capital letter, end with correct punctuation - avoid double commas, triple question marks, etc.",
+  m5: "- Confirm main language matches majority of speech - if ~50/50, defer to previous level's selection.",
+  m6: "- Maintain consistent spacing around words and ellipses - no extra/missing spaces.",
+  m7: "- Match UI selections strictly to actual audio (quality, interruption intent) - no guessing.",
+  M1: "- Never alter meaning - re-listen multiple times if a word sounds unclear.",
+  M2: "- Use square brackets only for approved non-speech tags - never mix tags with words or create new ones.",
+  M3: "- Transcribe only human speech - ignore all AI/assistant voice, echoes, or model responses completely."
+};
+
+let allErrors = [];
+let selectedErrors = new Set();
+
+function changeFontSize(delta) {
+  let size = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--checklist-font-size')) || 15;
+  size += delta;
+  document.documentElement.style.setProperty('--checklist-font-size', size + 'px');
+}
+
+function addErrorsForTurn() {
+  const turn = document.getElementById('turnSelect').value.trim();
+  const ts   = document.getElementById('timestampInput').value.trim();
+
+  if (!turn) return alert("Select turn");
+
+  const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+  if (checked.length === 0) return alert("Tick at least one error");
+
+  const needsTs = Array.from(checked).some(cb => 
+    cb.value === 'm1' || cb.value === 'm2' || cb.value === 'M1'
+  );
+  if (needsTs && !ts) return alert("Timestamp required for Minor 1&2 & Major 1");
+
+  checked.forEach(cb => {
+    const code = cb.value;
+    selectedErrors.add(code);
+    let name, type;
+    if (code.startsWith('m')) {
+      name = minorNames[code];
+      type = 'Minor';
+    } else {
+      name = majorNames[code];
+      type = 'Major';
+    }
+    allErrors.push(`${turn} : ${type} error: [${ts || '-'}]`);
+    allErrors.push(`"${name}"`);
+    allErrors.push(`corrected "INCORRECT" as "CORRECT"`);
+    allErrors.push('');
+  });
+
+  const resultEl = document.getElementById('result');
+  resultEl.textContent = allErrors.join('\n').trim();
+  document.getElementById('result-container').style.display = 'block';
+  resultEl.scrollTop = resultEl.scrollHeight;
+
+  updateTips();
+
+  document.querySelectorAll('input[type="checkbox"]').forEach(el => el.checked = false);
+}
+
+function updateTips() {
+  const tipsEl = document.getElementById('tips-content');
+  const section = document.getElementById('tips-section');
+  tipsEl.innerHTML = '';
+
+  if (selectedErrors.size === 0) {
+    section.style.display = 'none';
+    return;
+  }
+
+  let hasTips = false;
+  selectedErrors.forEach(code => {
+    if (tips[code]) {
+      hasTips = true;
+      const p = document.createElement('p');
+      p.innerHTML = tips[code];
+      tipsEl.appendChild(p);
+    }
+  });
+
+  section.style.display = hasTips ? 'block' : 'none';
+}
+
+function copyTips() {
+  const tipsEl = document.getElementById('tips-content');
+  if (!tipsEl.innerHTML.trim()) return;
+
+  const tipsText = "Note for L0:\n\n" + Array.from(tipsEl.children).map(p => p.textContent).join('\n\n');
+
+  navigator.clipboard.writeText(tipsText).then(() => {
+    document.getElementById('toast').textContent = "Note copied";
+    document.getElementById('toast').classList.add('show');
+    setTimeout(() => {
+      document.getElementById('toast').classList.remove('show');
+      document.getElementById('toast').textContent = "Copied";
+    }, 2000);
+  }).catch(() => alert('Copy failed'));
+}
+
+function resetAll() {
+  allErrors = [];
+  selectedErrors.clear();
+  document.getElementById('result').textContent = '';
+  document.getElementById('result-container').style.display = 'none';
+  document.getElementById('tips-section').style.display = 'none';
+  document.querySelectorAll('input[type="checkbox"]').forEach(el => el.checked = false);
+  document.getElementById('turnSelect').value = '';
+  document.getElementById('timestampInput').value = '';
+}
+
+function copyAll() {
+  const text = allErrors.join('\n').trim();
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    document.getElementById('toast').textContent = "Errors copied";
+    document.getElementById('toast').classList.add('show');
+    setTimeout(() => {
+      document.getElementById('toast').classList.remove('show');
+      document.getElementById('toast').textContent = "Copied";
+    }, 2000);
+  }).catch(() => alert('Copy failed'));
+}
+</script>
+
+<footer>Dynamic tips based on selected errors • timestamp req. only for Minor 1&2 & Major 1</footer>
+
+</body>
+</html>
