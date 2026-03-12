@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Error & UI Templates - Quick Copy</title>
   <style>
+    :root {
+      --font-size: 16px;
+    }
     body {
       font-family: system-ui, sans-serif;
       background: #0d1117;
@@ -13,10 +16,9 @@
       padding: 20px;
       min-height: 100vh;
       line-height: 1.6;
+      font-size: var(--font-size);
     }
     h1 { color: #58a6ff; text-align: center; margin-bottom: 1.5em; }
-    h2 { color: #ff8787; text-align: center; margin: 2em 0 1em; }
-    .divider { height: 2px; background: #30363d; margin: 2.5em 0 1.5em; }
     .container {
       background: #161b22;
       border: 1px solid #30363d;
@@ -24,6 +26,7 @@
       padding: 24px;
       max-width: 800px;
       margin: 0 auto;
+      position: relative;
     }
     .item {
       margin: 1.2em 0;
@@ -45,17 +48,39 @@
     .major label { color: #ff6b6b; font-weight: 600; }
     .minor label { color: #f78166; font-weight: 500; }
     .ui label { color: #79c0ff; }
-    .copy-btn {
+    .zoom-row {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      display: flex;
+      gap: 8px;
+    }
+    .zoom-btn {
       background: #444d56;
       color: #e6edf3;
       border: none;
-      padding: 6px 12px;
+      width: 36px;
+      height: 36px;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 0.9rem;
-      min-width: 60px;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .copy-btn:hover { background: #586069; }
+    .zoom-btn:hover { background: #586069; }
+    .copy-all-btn {
+      display: block;
+      margin: 2em auto 0;
+      padding: 12px 32px;
+      background: #238636;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .copy-all-btn:hover { background: #2ea043; }
     #toast {
       position: fixed;
       bottom: 20px;
@@ -78,18 +103,23 @@
 
 <div class="container">
 
+  <div class="zoom-row">
+    <button class="zoom-btn" onclick="zoom(-2)">−</button>
+    <button class="zoom-btn" onclick="zoom(2)">+</button>
+  </div>
+
   <h2>Major Errors</h2>
   <div class="item">
     <input type="checkbox" id="maj1">
-    <label for="maj1" onclick="copyText('Major error: Incorrect transcription - meaning changed')">Major error: Incorrect transcription - meaning changed</label>
+    <label for="maj1">Major error: Incorrect transcription - meaning changed</label>
   </div>
   <div class="item">
     <input type="checkbox" id="maj2">
-    <label for="maj2" onclick="copyText('Major error: Missing or incorrect use of square bracket tags')">Major error: Missing or incorrect use of square bracket tags</label>
+    <label for="maj2">Major error: Missing or incorrect use of square bracket tags</label>
   </div>
   <div class="item">
     <input type="checkbox" id="maj3">
-    <label for="maj3" onclick="copyText('Major error: Transcribing any AI/assistant speech')">Major error: Transcribing any AI/assistant speech</label>
+    <label for="maj3">Major error: Transcribing any AI/assistant speech</label>
   </div>
 
   <div class="divider"></div>
@@ -97,31 +127,31 @@
   <h2>Minor Errors</h2>
   <div class="item">
     <input type="checkbox" id="min1">
-    <label for="min1" onclick="copyText('Minor Error: Incorrect Transcription - (meaning unchanged)')">Minor Error: Incorrect Transcription - (meaning unchanged)</label>
+    <label for="min1">Minor Error: Incorrect Transcription - (meaning unchanged)</label>
   </div>
   <div class="item">
     <input type="checkbox" id="min2">
-    <label for="min2" onclick="copyText('Minor Error: Failure to separate multiple speakers properly')">Minor Error: Failure to separate multiple speakers properly</label>
+    <label for="min2">Minor Error: Failure to separate multiple speakers properly</label>
   </div>
   <div class="item">
     <input type="checkbox" id="min3">
-    <label for="min3" onclick="copyText('Minor Error: Consecutive [unclear] tags or mistyped tagging')">Minor Error: Consecutive [unclear] tags or mistyped tagging</label>
+    <label for="min3">Minor Error: Consecutive [unclear] tags or mistyped tagging</label>
   </div>
   <div class="item">
     <input type="checkbox" id="min4">
-    <label for="min4" onclick="copyText('Minor Error: Punctuation Issues')">Minor Error: Punctuation Issues</label>
+    <label for="min4">Minor Error: Punctuation Issues</label>
   </div>
   <div class="item">
     <input type="checkbox" id="min5">
-    <label for="min5" onclick="copyText('Minor Error: Incorrect Language Selection')">Minor Error: Incorrect Language Selection</label>
+    <label for="min5">Minor Error: Incorrect Language Selection</label>
   </div>
   <div class="item">
     <input type="checkbox" id="min6">
-    <label for="min6" onclick="copyText('Minor Error: Spacing Issues')">Minor Error: Spacing Issues</label>
+    <label for="min6">Minor Error: Spacing Issues</label>
   </div>
   <div class="item">
     <input type="checkbox" id="min7">
-    <label for="min7" onclick="copyText('Minor Error: Objective Issue with UI Question')">Minor Error: Objective Issue with UI Question</label>
+    <label for="min7">Minor Error: Objective Issue with UI Question</label>
   </div>
 
   <div class="divider"></div>
@@ -129,71 +159,75 @@
   <h2>UI Correction Templates</h2>
   <div class="item">
     <input type="checkbox" id="ui1">
-    <label for="ui1" onclick="copyText('dominant language changed to primary from another')">dominant language changed to primary from another</label>
+    <label for="ui1">dominant language changed to primary from another</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui2">
-    <label for="ui2" onclick="copyText('dominant language changed to en from another')">dominant language changed to en from another</label>
+    <label for="ui2">dominant language changed to en from another</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui3">
-    <label for="ui3" onclick="copyText('dominant language changed to en from primary')">dominant language changed to en from primary</label>
+    <label for="ui3">dominant language changed to en from primary</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui4">
-    <label for="ui4" onclick="copyText('changed to \"not interrupted\" from N/A')">changed to "not interrupted" from N/A</label>
+    <label for="ui4">changed to "not interrupted" from N/A</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui5">
-    <label for="ui5" onclick="copyText('changed to \"not interrupted\" from not sure')">changed to "not interrupted" from not sure</label>
+    <label for="ui5">changed to "not interrupted" from not sure</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui6">
-    <label for="ui6" onclick="copyText('changed to N/A from \"not interrupted\"')">changed to N/A from "not interrupted"</label>
+    <label for="ui6">changed to N/A from "not interrupted"</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui7">
-    <label for="ui7" onclick="copyText('changed model interruption to \"not sure\" from “not interrupted”')">changed model interruption to "not sure" from “not interrupted”</label>
+    <label for="ui7">changed model interruption to "not sure" from “not interrupted”</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui8">
-    <label for="ui8" onclick="copyText('changed model interruption to \"interrupted\" - intentional')">changed model interruption to "interrupted" - intentional</label>
+    <label for="ui8">changed model interruption to "interrupted intentional"</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui9">
-    <label for="ui9" onclick="copyText('changed model interruption from \"not interrupted\" to \"interrupted\" - not intentional')">changed model interruption from "not interrupted" to "interrupted - not intentional"</label>
+    <label for="ui9">changed model interruption from "not interrupted" to "interrupted - not intentional"</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui10">
-    <label for="ui10" onclick="copyText('DDA changed to \"Yes\"')">DDA changed to "Yes"</label>
+    <label for="ui10">DDA changed to "Yes"</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui11">
-    <label for="ui11" onclick="copyText('DDT updated')">DDT updated</label>
+    <label for="ui11">DDT updated</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui12">
-    <label for="ui12" onclick="copyText('DDA changed to \"No\"')">DDA changed to "No"</label>
+    <label for="ui12">DDA changed to "No"</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui13">
-    <label for="ui13" onclick="copyText('changed user done talking to “Not sure” from \"No\"')">changed user done talking to “Not sure” from "No"</label>
+    <label for="ui13">changed user done talking to “Not sure” from "No"</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui14">
-    <label for="ui14" onclick="copyText('changed user done talking to “Yes” from \"no\"')">changed user done talking to “Yes” from "no"</label>
+    <label for="ui14">changed user done talking to “Yes” from "no"</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui15">
-    <label for="ui15" onclick="copyText('changed user done talking to “not sure” from \"interrupted- user intended\"')">changed user done talking to “not sure” from "interrupted- user intended"</label>
+    <label for="ui15">changed user done talking to “not sure” from "interrupted- user intended"</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui16">
-    <label for="ui16" onclick="copyText('changed - model interruption - \"N/A\" - first turn')">changed - model interruption - "N/A" - first turn</label>
+    <label for="ui16">changed - model interruption - "N/A" - first turn</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui17">
-    <label for="ui17" onclick="copyText('changed - model interruption from \"N/A\" to \"not interrupted\" as a response of model available for turn prior to first turn')">changed - model interruption from "N/A" to "not interrupted" as a response of model available for turn prior to first turn</label>
+    <label for="ui17">changed - model interruption from "N/A" to "not interrupted" as a response of model available for turn prior to first turn</label>
+  </div>
+
+  <div class="btn-row">
+    <button class="copy-all-btn" onclick="copyChecked()">Copy Checked Templates</button>
   </div>
 
 </div>
@@ -201,6 +235,12 @@
 <div id="toast">Copied to clipboard</div>
 
 <script>
+function zoom(delta) {
+  let size = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--font-size')) || 15;
+  size += delta;
+  document.documentElement.style.setProperty('--font-size', size + 'px');
+}
+
 function copyText(text) {
   navigator.clipboard.writeText(text).then(() => {
     const toast = document.getElementById('toast');
@@ -210,6 +250,24 @@ function copyText(text) {
   }).catch(() => {
     alert('Failed to copy');
   });
+}
+
+function copyChecked() {
+  const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+  if (checked.length === 0) return alert("No templates checked");
+
+  let text = "";
+  checked.forEach(cb => {
+    const label = cb.nextElementSibling.textContent.trim();
+    text += label + "\n";
+  });
+
+  navigator.clipboard.writeText(text.trim()).then(() => {
+    const toast = document.getElementById('toast');
+    toast.textContent = "All checked copied!";
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
+  }).catch(() => alert('Copy failed'));
 }
 </script>
 
