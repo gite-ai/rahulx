@@ -3,485 +3,215 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rabbit 10s QA Checklist</title>
+  <title>Error & UI Templates - Quick Copy</title>
   <style>
-    :root {
-      --checklist-font-size: 15px;
-    }
     body {
-      font-family: system-ui, -apple-system, sans-serif;
+      font-family: system-ui, sans-serif;
       background: #0d1117;
       color: #c9d1d9;
       margin: 0;
-      padding: 12px;
+      padding: 20px;
       min-height: 100vh;
-      line-height: 1.45;
-      font-size: var(--checklist-font-size);
+      line-height: 1.6;
     }
-    h1 { color: #58a6ff; text-align: center; font-size: 1.4rem; margin: 0 0 12px; }
-    h2 { color: #ff8787; text-align: center; font-size: 1.2rem; margin: 24px 0 12px; }
-    .divider { height: 1px; background: #30363d; margin: 32px 0 16px; }
+    h1 { color: #58a6ff; text-align: center; margin-bottom: 1.5em; }
+    h2 { color: #ff8787; text-align: center; margin: 2em 0 1em; }
+    .divider { height: 2px; background: #30363d; margin: 2.5em 0 1.5em; }
     .container {
       background: #161b22;
       border: 1px solid #30363d;
       border-radius: 10px;
-      padding: 14px;
-      max-width: 100%;
+      padding: 24px;
+      max-width: 800px;
+      margin: 0 auto;
     }
-    .top-row {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-    #turnSelect, #timestampInput {
-      padding: 10px 12px;
-      background: #0d1117;
-      border: 1px solid #30363d;
-      color: #c9d1d9;
-      border-radius: 8px;
-      font-size: 0.95rem;
-    }
-    .error-item {
-      margin: 8px 0;
+    .item {
+      margin: 1.2em 0;
       display: flex;
       align-items: flex-start;
-      gap: 10px;
+      gap: 12px;
     }
-    .error-item input[type="checkbox"] {
+    input[type="checkbox"] {
       margin-top: 4px;
       width: 18px;
       height: 18px;
       accent-color: #f78166;
-      flex-shrink: 0;
     }
-    .error-item.major input[type="checkbox"] { accent-color: #ff6b6b; }
-    .error-item label { flex: 1; cursor: pointer; word-wrap: break-word; hyphens: auto; }
-    .number { font-weight: bold; min-width: 20px; }
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      margin: 16px 0;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 0.95rem;
-      border-radius: 8px;
+    label {
+      flex: 1;
       cursor: pointer;
-      border: none;
-      min-width: 80px;
-      touch-action: manipulation;
+      user-select: none;
     }
-    .add-btn { background: #238636; color: white; }
-    .add-btn:active { background: #2ea043; }
-    .reset-btn { background: #c94d4d; color: white; }
-    .reset-btn:active { background: #e06666; }
-    .font-btn {
-      background: #444d56;
-      color: #e6edf3;
-      min-width: 40px;
-      padding: 10px;
-      font-weight: bold;
-    }
-    .font-btn:active { background: #586069; }
+    .major label { color: #ff6b6b; font-weight: 600; }
+    .minor label { color: #f78166; font-weight: 500; }
+    .ui label { color: #79c0ff; }
     .copy-btn {
       background: #444d56;
       color: #e6edf3;
-      border: 1px solid #586069;
+      border: none;
       padding: 6px 12px;
-      font-size: 0.85rem;
-    }
-    .copy-btn:active { background: #586069; color: white; }
-    #result-container {
-      margin-top: 16px;
-      position: relative;
-      display: none;
-    }
-    #result {
-      padding: 12px;
-      background: #0d1117;
-      border: 1px solid #30363d;
-      border-radius: 8px;
-      white-space: pre-wrap;
-      font-family: 'Consolas', monospace;
-      max-height: 50vh;
-      overflow-y: auto;
-      line-height: 1.45;
-      font-size: var(--checklist-font-size);
-      word-break: break-all;
-    }
-    .transcript-box {
-      margin: 24px 0;
-    }
-    .transcript-box label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-    .transcript-box textarea {
-      width: 100%;
-      min-height: 120px;
-      padding: 10px;
-      background: #111827;
-      border: 1px solid #374151;
-      color: #c9d1d9;
       border-radius: 6px;
-      font-family: 'Consolas', monospace;
+      cursor: pointer;
       font-size: 0.9rem;
-      resize: vertical;
+      min-width: 60px;
     }
-    #feedback-section {
-      margin-top: 32px;
-      padding: 16px;
-      background: #1a1f2e;
-      border-radius: 8px;
-      border: 1px solid #374151;
-    }
-    #feedback-content {
-      white-space: pre-wrap;
-      font-family: 'Consolas', monospace;
-      font-size: 0.9rem;
-      background: #111827;
-      padding: 12px;
-      border-radius: 6px;
-      min-height: 160px;
-    }
-    #tips-section {
-      margin-top: 24px;
-      padding: 16px;
-      background: #1f2937;
-      border-radius: 8px;
-      border: 1px solid #374151;
-      display: none;
-    }
-    #tips-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-    #tips-content {
-      font-size: 0.92rem;
-      line-height: 1.6;
-    }
-    #tips-content p {
-      margin: 8px 0;
-    }
+    .copy-btn:hover { background: #586069; }
     #toast {
       position: fixed;
-      bottom: 16px;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
       background: #238636;
       color: white;
-      padding: 8px 20px;
+      padding: 10px 24px;
       border-radius: 8px;
       opacity: 0;
       transition: opacity 0.4s;
       z-index: 1000;
-      font-size: 0.9rem;
     }
     #toast.show { opacity: 1; }
-    footer { text-align: center; margin-top: 24px; color: #8b949e; font-size: 0.8rem; }
-    @media (min-width: 420px) {
-      .top-row { flex-direction: row; }
-      body { padding: 16px; }
-      h1 { font-size: 1.6rem; }
-    }
   </style>
 </head>
 <body>
 
-<h1>Rabbit 10s QA Checklist</h1>
+<h1>Error & UI Templates - Click to Copy</h1>
 
 <div class="container">
 
-  <div class="top-row">
-    <select id="turnSelect">
-      <option value="">Select Turn</option>
-      <option value="T1">T1</option><option value="T2">T2</option><option value="T3">T3</option>
-      <option value="T4">T4</option><option value="T5">T5</option><option value="T6">T6</option>
-      <option value="T7">T7</option><option value="T8">T8</option><option value="T9">T9</option>
-      <option value="T10">T10</option><option value="T11">T11</option><option value="T12">T12</option>
-      <option value="T13">T13</option><option value="T14">T14</option><option value="T15">T15</option>
-      <option value="T16">T16</option><option value="T17">T17</option><option value="T18">T18</option>
-      <option value="T19">T19</option><option value="T20">T20</option>
-    </select>
-
-    <input type="text" id="timestampInput" placeholder="timestamp (optional)" />
+  <h2>Major Errors</h2>
+  <div class="item">
+    <input type="checkbox" id="maj1">
+    <label for="maj1" onclick="copyText('Major error: Incorrect transcription - meaning changed')">Major error: Incorrect transcription - meaning changed</label>
   </div>
-
-  <h2>Minor Errors - 10-Second QA Checklist</h2>
-  <div class="error-item"><input type="checkbox" id="s1" value="s1"><label for="s1"><span class="number">1</span> Transcript starts with (1)</label></div>
-  <div class="error-item"><input type="checkbox" id="s2" value="s2"><label for="s2"><span class="number">2</span> No AI voice, TV, or music transcribed</label></div>
-  <div class="error-item"><input type="checkbox" id="s3" value="s3"><label for="s3"><span class="number">3</span> Repetitions, fillers, stutters not removed</label></div>
-  <div class="error-item"><input type="checkbox" id="s4" value="s4"><label for="s4"><span class="number">4</span> Stutters written with hyphen (-)</label></div>
-  <div class="error-item"><input type="checkbox" id="s5" value="s5"><label for="s5"><span class="number">5</span> Correct tag usage ([unclear], [noise], [pause], [unknown])</label></div>
-  <div class="error-item"><input type="checkbox" id="s6" value="s6"><label for="s6"><span class="number">6</span> [noise] appears alone</label></div>
-  <div class="error-item"><input type="checkbox" id="s7" value="s7"><label for="s7"><span class="number">7</span> [unclear] placed exactly where needed</label></div>
-  <div class="error-item"><input type="checkbox" id="s8" value="s8"><label for="s8"><span class="number">8</span> Ellipsis used only if audio starts/ends mid-sentence</label></div>
-  <div class="error-item"><input type="checkbox" id="s9" value="s9"><label for="s9"><span class="number">9</span> Device Directed Transcript matches Full Transcript</label></div>
-  <div class="error-item"><input type="checkbox" id="s10" value="s10"><label for="s10"><span class="number">10</span> Language selection based on spoken language</label></div>
-  <div class="error-item"><input type="checkbox" id="s11" value="s11"><label for="s11"><span class="number">11</span> Model echo not transcribed</label></div>
-  <div class="error-item"><input type="checkbox" id="s12" value="s12"><label for="s12"><span class="number">12</span> Audio Quality rated based on recording clarity</label></div>
-  <div class="error-item"><input type="checkbox" id="s13" value="s13"><label for="s13"><span class="number">13</span> Turn 1 interruption question = N/A</label></div>
-  <div class="error-item"><input type="checkbox" id="s14" value="s14"><label for="s14"><span class="number">14</span> Missing (1)</label></div>
-  <div class="error-item"><input type="checkbox" id="s15" value="s15"><label for="s15"><span class="number">15</span> Wrong language selection</label></div>
-  <div class="error-item"><input type="checkbox" id="s16" value="s16"><label for="s16"><span class="number">16</span> Ellipsis used in middle</label></div>
-  <div class="error-item"><input type="checkbox" id="s17" value="s17"><label for="s17"><span class="number">17</span> Consecutive [unclear] [unclear]</label></div>
+  <div class="item">
+    <input type="checkbox" id="maj2">
+    <label for="maj2" onclick="copyText('Major error: Missing or incorrect use of square bracket tags')">Major error: Missing or incorrect use of square bracket tags</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="maj3">
+    <label for="maj3" onclick="copyText('Major error: Transcribing any AI/assistant speech')">Major error: Transcribing any AI/assistant speech</label>
+  </div>
 
   <div class="divider"></div>
 
-  <h2>Major Errors - Instant QA Red Flags (Reject Immediately)</h2>
-  <div class="error-item"><input type="checkbox" id="rf1" value="rf1" class="major"><label for="rf1">[noise] with speech</label></div>
-  <div class="error-item"><input type="checkbox" id="rf2" value="rf2" class="major"><label for="rf2">AI voice transcribed</label></div>
+  <h2>Minor Errors</h2>
+  <div class="item">
+    <input type="checkbox" id="min1">
+    <label for="min1" onclick="copyText('Minor Error: Incorrect Transcription - (meaning unchanged)')">Minor Error: Incorrect Transcription - (meaning unchanged)</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="min2">
+    <label for="min2" onclick="copyText('Minor Error: Failure to separate multiple speakers properly')">Minor Error: Failure to separate multiple speakers properly</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="min3">
+    <label for="min3" onclick="copyText('Minor Error: Consecutive [unclear] tags or mistyped tagging')">Minor Error: Consecutive [unclear] tags or mistyped tagging</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="min4">
+    <label for="min4" onclick="copyText('Minor Error: Punctuation Issues')">Minor Error: Punctuation Issues</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="min5">
+    <label for="min5" onclick="copyText('Minor Error: Incorrect Language Selection')">Minor Error: Incorrect Language Selection</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="min6">
+    <label for="min6" onclick="copyText('Minor Error: Spacing Issues')">Minor Error: Spacing Issues</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="min7">
+    <label for="min7" onclick="copyText('Minor Error: Objective Issue with UI Question')">Minor Error: Objective Issue with UI Question</label>
+  </div>
 
   <div class="divider"></div>
 
-  <h2>Golden QA Principle</h2>
-  <div class="error-item"><input type="checkbox" id="golden" value="golden"><label for="golden">Transcribe exactly what is heard, not what makes sense</label></div>
-
-  <div class="transcript-box">
-    <label for="l0Transcript">Paste L0 Transcription here:</label>
-    <textarea id="l0Transcript" placeholder="Full L0 multi-turn transcription..."></textarea>
+  <h2>UI Correction Templates</h2>
+  <div class="item">
+    <input type="checkbox" id="ui1">
+    <label for="ui1" onclick="copyText('dominant language changed to primary from another')">dominant language changed to primary from another</label>
   </div>
-
-  <div class="transcript-box">
-    <label for="l1Transcript">Paste your L1 Corrected Transcription here:</label>
-    <textarea id="l1Transcript" placeholder="Your corrected multi-turn transcription..."></textarea>
+  <div class="item">
+    <input type="checkbox" id="ui2">
+    <label for="ui2" onclick="copyText('dominant language changed to en from another')">dominant language changed to en from another</label>
   </div>
-
-  <div class="btn-row">
-    <button class="add-btn" onclick="addErrorsForTurn()">Add</button>
-    <button class="reset-btn" onclick="resetAll()">Reset</button>
-    <button class="font-btn" onclick="changeFontSize(-2)">−</button>
-    <button class="font-btn" onclick="changeFontSize(2)">+</button>
+  <div class="item">
+    <input type="checkbox" id="ui3">
+    <label for="ui3" onclick="copyText('dominant language changed to en from primary')">dominant language changed to en from primary</label>
   </div>
-
-  <div id="result-container">
-    <button id="copy-all-btn" class="copy-btn" onclick="copyAll()">Copy</button>
-    <div id="result"></div>
+  <div class="item">
+    <input type="checkbox" id="ui4">
+    <label for="ui4" onclick="copyText('changed to \"not interrupted\" from N/A')">changed to "not interrupted" from N/A</label>
   </div>
-
-  <div id="feedback-section">
-    <h2>L1 Feedback Box</h2>
-    <button class="copy-btn" onclick="copyFeedback()">Copy Feedback</button>
-    <pre id="feedback-content"></pre>
+  <div class="item">
+    <input type="checkbox" id="ui5">
+    <label for="ui5" onclick="copyText('changed to \"not interrupted\" from not sure')">changed to "not interrupted" from not sure</label>
   </div>
-
-  <div id="tips-section">
-    <div id="tips-header">
-      <h2>Note for L0:</h2>
-      <button class="copy-btn" onclick="copyTips()">Copy Note</button>
-    </div>
-    <div id="tips-content"></div>
+  <div class="item">
+    <input type="checkbox" id="ui6">
+    <label for="ui6" onclick="copyText('changed to N/A from \"not interrupted\"')">changed to N/A from "not interrupted"</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="ui7">
+    <label for="ui7" onclick="copyText('changed model interruption to \"not sure\" from “not interrupted”')">changed model interruption to "not sure" from “not interrupted”</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="ui8">
+    <label for="ui8" onclick="copyText('changed model interruption to \"interrupted\" - intentional')">changed model interruption to "interrupted" - intentional</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="ui9">
+    <label for="ui9" onclick="copyText('changed model interruption from \"not interrupted\" to \"interrupted\" - not intentional')">changed model interruption from "not interrupted" to "interrupted - not intentional"</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="ui10">
+    <label for="ui10" onclick="copyText('DDA changed to \"Yes\"')">DDA changed to "Yes"</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="ui11">
+    <label for="ui11" onclick="copyText('DDT updated')">DDT updated</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="ui12">
+    <label for="ui12" onclick="copyText('DDA changed to \"No\"')">DDA changed to "No"</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="ui13">
+    <label for="ui13" onclick="copyText('changed user done talking to “Not sure” from \"No\"')">changed user done talking to “Not sure” from "No"</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="ui14">
+    <label for="ui14" onclick="copyText('changed user done talking to “Yes” from \"no\"')">changed user done talking to “Yes” from "no"</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="ui15">
+    <label for="ui15" onclick="copyText('changed user done talking to “not sure” from \"interrupted- user intended\"')">changed user done talking to “not sure” from "interrupted- user intended"</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="ui16">
+    <label for="ui16" onclick="copyText('changed - model interruption - \"N/A\" - first turn')">changed - model interruption - "N/A" - first turn</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="ui17">
+    <label for="ui17" onclick="copyText('changed - model interruption from \"N/A\" to \"not interrupted\" as a response of model available for turn prior to first turn')">changed - model interruption from "N/A" to "not interrupted" as a response of model available for turn prior to first turn</label>
   </div>
 
 </div>
 
-<div id="toast">Copied</div>
+<div id="toast">Copied to clipboard</div>
 
 <script>
-const minorNames = {
-  's1': 'Transcript starts with (1)',
-  's2': 'No AI voice, TV, or music transcribed',
-  's3': 'Repetitions, fillers, stutters not removed',
-  's4': 'Stutters written with hyphen (-)',
-  's5': 'Correct tag usage ([unclear], [noise], [pause], [unknown])',
-  's6': '[noise] appears alone',
-  's7': '[unclear] placed exactly where needed',
-  's8': 'Ellipsis used only if audio starts/ends mid-sentence',
-  's9': 'Device Directed Transcript matches Full Transcript',
-  's10': 'Language selection based on spoken language',
-  's11': 'Model echo not transcribed',
-  's12': 'Audio Quality rated based on recording clarity',
-  's13': 'Turn 1 interruption question = N/A',
-  's14': 'Missing (1)',
-  's15': 'Wrong language selection',
-  's16': 'Ellipsis used in middle',
-  's17': 'Consecutive [unclear] [unclear]'
-};
-
-const majorNames = {
-  'rf1': '[noise] with speech',
-  'rf2': 'AI voice transcribed'
-};
-
-const goldenName = 'Transcribe exactly what is heard, not what makes sense';
-
-const tips = {
-  s1: "- Always start with (1) even for single speaker.",
-  s2: "- Ignore and do not transcribe AI voice, TV, music.",
-  s3: "- Keep all repetitions, um/uh, stutters as spoken.",
-  s4: "- Write stutters like I-I-I, n-n-no with hyphens.",
-  s5: "- Use only [unclear], [noise], [pause], [unknown] - lowercase.",
-  s6: "- [noise] must be alone - never next to words.",
-  s7: "- Place [unclear] exactly where speech is unclear.",
-  s8: "- Ellipsis (…) only at beginning or end of audio.",
-  s9: "- Copy device-directed part exactly same in both transcripts.",
-  s10: "- Select based on spoken language, not script.",
-  s11: "- Never write model echo or assistant responses.",
-  s12: "- Rate only clarity - ignore accent/speed.",
-  s13: "- Turn 1 interruption question must be N/A.",
-  rf1: "- Reject if [noise] mixed with any speech.",
-  rf2: "- Reject if any AI voice is transcribed."
-};
-
-let allErrors = [];
-let selectedErrors = new Set();
-
-function changeFontSize(delta) {
-  let size = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--checklist-font-size')) || 15;
-  size += delta;
-  document.documentElement.style.setProperty('--checklist-font-size', size + 'px');
-}
-
-function addErrorsForTurn() {
-  const turn = document.getElementById('turnSelect').value.trim();
-  const ts   = document.getElementById('timestampInput').value.trim();
-
-  if (!turn) return alert("Select turn");
-
-  const checked = document.querySelectorAll('input[type="checkbox"]:checked');
-  if (checked.length === 0) return alert("Tick at least one item");
-
-  checked.forEach(cb => {
-    const code = cb.value;
-    selectedErrors.add(code);
-    let name, type, prefix;
-    if (code.startsWith('s')) {
-      name = minorNames[code];
-      type = 'Minor';
-      prefix = 'Minor';
-    } else if (code.startsWith('rf')) {
-      name = majorNames[code];
-      type = 'Major';
-      prefix = 'Major';
-    } else if (code === 'golden') {
-      name = goldenName;
-      type = 'Golden';
-      prefix = 'Golden';
-    }
-    allErrors.push(`${turn} : ${prefix} - ${name}: [${ts || '-'}]`);
-    allErrors.push(`"${name}"`);
-    allErrors.push('');
-  });
-
-  const resultEl = document.getElementById('result');
-  resultEl.textContent = allErrors.join('\n').trim();
-  document.getElementById('result-container').style.display = 'block';
-  resultEl.scrollTop = resultEl.scrollHeight;
-
-  updateTips();
-  updateFeedback();
-
-  document.querySelectorAll('input[type="checkbox"]').forEach(el => el.checked = false);
-}
-
-function updateTips() {
-  const tipsEl = document.getElementById('tips-content');
-  const section = document.getElementById('tips-section');
-  tipsEl.innerHTML = '';
-
-  if (selectedErrors.size === 0) {
-    section.style.display = 'none';
-    return;
-  }
-
-  let hasTips = false;
-  selectedErrors.forEach(code => {
-    if (tips[code]) {
-      hasTips = true;
-      const p = document.createElement('p');
-      p.innerHTML = tips[code];
-      tipsEl.appendChild(p);
-    }
-  });
-
-  section.style.display = hasTips ? 'block' : 'none';
-}
-
-function updateFeedback() {
-  const fbEl = document.getElementById('feedback-content');
-  const l0Text = document.getElementById('l0Transcript').value.trim();
-  const l1Text = document.getElementById('l1Transcript').value.trim();
-
-  let fb = "## L1 Feedback Box Format (Recommended)\nNote any changes you make to the task by noting the changes.\n\n";
-
-  fb += "Audio 1: Incorrect transcription\n";
-  fb += "**L0 Transcription:**\n" + (l0Text || "[copy and paste full L0 multi-turn transcription here]") + "\n\n";
-  fb += "**L1 Transcription:**\n" + (l1Text || "[copy and paste corrected multi-turn transcription here]") + "\n\n";
-
-  fb += "Audio 4: Dominant language changed from en to other\n\n";
-  fb += "**Error Count:**\n";
-  fb += "- Minor Errors: " + selectedErrors.size + "\n";
-  fb += "- Major Errors: 0";
-
-  fbEl.textContent = fb;
-}
-
-function copyTips() {
-  const tipsEl = document.getElementById('tips-content');
-  if (!tipsEl.innerHTML.trim()) return;
-
-  const tipsText = "Note for L0:\n\n" + Array.from(tipsEl.children).map(p => p.textContent).join('\n\n');
-
-  navigator.clipboard.writeText(tipsText).then(() => {
-    document.getElementById('toast').textContent = "Note copied";
-    document.getElementById('toast').classList.add('show');
-    setTimeout(() => {
-      document.getElementById('toast').classList.remove('show');
-      document.getElementById('toast').textContent = "Copied";
-    }, 2000);
-  }).catch(() => alert('Copy failed'));
-}
-
-function copyFeedback() {
-  const fbEl = document.getElementById('feedback-content');
-  const text = fbEl.textContent.trim();
-  if (!text) return;
-
+function copyText(text) {
   navigator.clipboard.writeText(text).then(() => {
-    document.getElementById('toast').textContent = "Feedback copied";
-    document.getElementById('toast').classList.add('show');
-    setTimeout(() => {
-      document.getElementById('toast').classList.remove('show');
-      document.getElementById('toast').textContent = "Copied";
-    }, 2000);
-  }).catch(() => alert('Copy failed'));
-}
-
-function resetAll() {
-  allErrors = [];
-  selectedErrors.clear();
-  document.getElementById('result').textContent = '';
-  document.getElementById('result-container').style.display = 'none';
-  document.getElementById('tips-section').style.display = 'none';
-  document.getElementById('feedback-content').textContent = '';
-  document.getElementById('l0Transcript').value = '';
-  document.getElementById('l1Transcript').value = '';
-  document.querySelectorAll('input[type="checkbox"]').forEach(el => el.checked = false);
-  document.getElementById('turnSelect').value = '';
-  document.getElementById('timestampInput').value = '';
-}
-
-function copyAll() {
-  const text = allErrors.join('\n').trim();
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    document.getElementById('toast').textContent = "Checklist copied";
-    document.getElementById('toast').classList.add('show');
-    setTimeout(() => {
-      document.getElementById('toast').classList.remove('show');
-      document.getElementById('toast').textContent = "Copied";
-    }, 2000);
-  }).catch(() => alert('Copy failed'));
+    const toast = document.getElementById('toast');
+    toast.textContent = "Copied!";
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1800);
+  }).catch(() => {
+    alert('Failed to copy');
+  });
 }
 </script>
-
-<footer>10s Checklist (Minor) + Red Flags (Major) + Golden Rule • timestamp optional</footer>
 
 </body>
 </html>
