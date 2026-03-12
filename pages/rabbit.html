@@ -19,6 +19,16 @@
       font-size: var(--font-size);
     }
     h1 { color: #58a6ff; text-align: center; margin-bottom: 1.5em; }
+    h2 { 
+      text-align: center; 
+      margin: 2em 0 1em; 
+      padding: 8px 16px; 
+      border-radius: 8px; 
+    }
+    h2.major { background: #2d1a1a; color: #ff6b6b; }
+    h2.minor { background: #2d251a; color: #f78166; }
+    h2.ui { background: #1a2d3a; color: #79c0ff; }
+    h2.note { background: #1a2d1f; color: #7ed957; }
     .container {
       background: #161b22;
       border: 1px solid #30363d;
@@ -29,14 +39,15 @@
       position: relative;
     }
     .top-bar {
-      position: absolute;
+      position: fixed;
       top: 16px;
       right: 16px;
+      z-index: 10;
       display: flex;
       gap: 12px;
       align-items: center;
     }
-    .zoom-btn {
+    .action-btn {
       background: #444d56;
       color: #e6edf3;
       border: none;
@@ -49,17 +60,9 @@
       align-items: center;
       justify-content: center;
     }
-    .zoom-btn:hover { background: #586069; }
-    .copy-all-btn {
-      background: #238636;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.95rem;
-    }
-    .copy-all-btn:hover { background: #2ea043; }
+    .action-btn:hover { background: #586069; }
+    .reload-btn { background: #586069; }
+    .reload-btn:hover { background: #6b7280; }
     .item {
       margin: 1.2em 0;
       display: flex;
@@ -103,12 +106,13 @@
 <div class="container">
 
   <div class="top-bar">
+    <button class="action-btn reload-btn" onclick="resetAll()" title="Reset checkboxes">↻</button>
     <button class="zoom-btn" onclick="zoom(-2)">−</button>
     <button class="zoom-btn" onclick="zoom(2)">+</button>
-    <button class="copy-all-btn" onclick="copyChecked()">Copy Checked</button>
+    <button class="action-btn" onclick="copyChecked()" title="Copy checked">📋</button>
   </div>
 
-  <h2>Major Errors</h2>
+  <h2 class="major">Major Errors</h2>
   <div class="item">
     <input type="checkbox" id="maj1">
     <label for="maj1">Major error: Incorrect transcription - meaning changed</label>
@@ -124,7 +128,7 @@
 
   <div class="divider"></div>
 
-  <h2>Minor Errors</h2>
+  <h2 class="minor">Minor Errors</h2>
   <div class="item">
     <input type="checkbox" id="min1">
     <label for="min1">Minor Error: Incorrect Transcription - (meaning unchanged)</label>
@@ -156,7 +160,7 @@
 
   <div class="divider"></div>
 
-  <h2>UI Correction Templates</h2>
+  <h2 class="ui">UI Correction Templates</h2>
   <div class="item">
     <input type="checkbox" id="ui1">
     <label for="ui1">dominant language changed to primary from another</label>
@@ -225,6 +229,50 @@
     <input type="checkbox" id="ui17">
     <label for="ui17">changed - model interruption from "N/A" to "not interrupted" as a response of model available for turn prior to first turn</label>
   </div>
+  <div class="item">
+    <input type="checkbox" id="ui18">
+    <label for="ui18">changed speakers from 1 to 2</label>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2>Note for L0</h2>
+  <div class="item">
+    <input type="checkbox" id="n1">
+    <label for="n1">listen carefully and capture the exact words spoken by the user without changing the meaning.</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="n2">
+    <label for="n2">use square bracket tags correctly like [unclear], [noise], [laughter] when required.</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="n3">
+    <label for="n3">do not transcribe any AI or assistant speech, only the user should be transcribed.</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="n4">
+    <label for="n4">ensure clear separation of multiple speakers using proper speaker numbering like (1), (2).</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="n5">
+    <label for="n5">avoid repeating or mistyping tags such as consecutive [unclear] tags.</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="n6">
+    <label for="n6">ensure each segment ends with proper punctuation.</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="n7">
+    <label for="n7">select the correct language based on the speech in the audio.</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="n8">
+    <label for="n8">maintain proper spacing between words and punctuation.</label>
+  </div>
+  <div class="item">
+    <input type="checkbox" id="n9">
+    <label for="n9">carefully review UI selections and answer objective questions accurately.</label>
+  </div>
 
 </div>
 
@@ -232,7 +280,7 @@
 
 <script>
 function zoom(delta) {
-  let size = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--font-size')) || 15;
+  let size = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--font-size')) || 16;
   size += delta;
   document.documentElement.style.setProperty('--font-size', size + 'px');
 }
@@ -264,6 +312,10 @@ function copyChecked() {
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 2000);
   }).catch(() => alert('Copy failed'));
+}
+
+function resetAll() {
+  document.querySelectorAll('input[type="checkbox"]').forEach(el => el.checked = false);
 }
 </script>
 
