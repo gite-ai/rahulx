@@ -136,6 +136,7 @@
   <div class="top-bar">
     <div class="timer-display" id="timer">00:00:00.00</div>
     <button class="timer-btn" id="startPauseBtn" onclick="toggleTimer()">▶️</button>
+    <button class="timer-btn" onclick="resetTimer()" title="Reset timer">↺</button>
     <button class="action-btn reload-btn" onclick="resetAll()" title="Reset checkboxes">↻</button>
     <button class="zoom-btn" onclick="zoom(-2)">−</button>
     <button class="zoom-btn" onclick="zoom(2)">+</button>
@@ -193,23 +194,23 @@
   <h2 class="ui">UI Correction Templates</h2>
   <div class="item">
     <input type="checkbox" id="ui1">
-    <label for="ui1">-changed user done talking to “no” from "not sure"</label>
+    <label for="ui1">changed user done talking to “no” from "not sure"</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui2">
-    <label for="ui2">-changed to yes</label>
+    <label for="ui2">changed to yes</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui3">
-    <label for="ui3">-changed to no</label>
+    <label for="ui3">changed to no</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui4">
-    <label for="ui4">-corrected "" as ""</label>
+    <label for="ui4">corrected "" as ""</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui5">
-    <label for="ui5">-added [unclear] for "WORD" as audio is not clear</label>
+    <label for="ui5">added [unclear] for "WORD" as audio is not clear</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui6">
@@ -293,7 +294,7 @@
   </div>
   <div class="item">
     <input type="checkbox" id="ui26">
-    <label for="ui26">-changed - model interruption - "N/A" from "Not interrupted" - first turn </label>
+    <label for="ui26">-changed - model interruption - "N/A" - first turn</label>
   </div>
   <div class="item">
     <input type="checkbox" id="ui27">
@@ -313,7 +314,7 @@
   </div>
   <div class="item">
     <input type="checkbox" id="n2">
-    <label for="n2">-use square bracket tags correctly like [unclear], [noise], [unknown] when required.</label>
+    <label for="n2">-use square bracket tags correctly like [unclear], [noise], [laughter] when required.</label>
   </div>
   <div class="item">
     <input type="checkbox" id="n3">
@@ -375,6 +376,14 @@ function toggleTimer() {
     btn.textContent = '⏸️';
   }
   isRunning = !isRunning;
+}
+
+function resetTimer() {
+  clearInterval(timerInterval);
+  seconds = 0;
+  isRunning = false;
+  document.getElementById('startPauseBtn').textContent = '▶️';
+  updateTimer();
 }
 
 function zoom(delta) {
