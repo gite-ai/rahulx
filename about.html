@@ -1,215 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About - Rahulx.com</title>
-  <style>
-    /* General Styles */
-    body {
-      font-family: 'Orbitron', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #0a0a0a;
-      color: #00ffcc;
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3 {
-      margin: 0;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* Header */
-    header {
-      position: relative;
-      background: radial-gradient(circle, #001f3f, #000);
-      color: #00ffcc;
-      padding: 40px 0;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      text-transform: uppercase;
-      animation: glow 2s infinite alternate;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.8;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    /* Navigation */
-    nav {
-      display: flex;
-      justify-content: center;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 15px 0;
-      backdrop-filter: blur(10px);
-    }
-
-    nav a {
-      color: #00ffcc;
-      margin: 0 20px;
-      font-size: 1.1rem;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: #ff00cc;
-    }
-
-    /* Main Content */
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 40px auto;
-      position: relative;
-      z-index: 1; /* Ensure content is below the nav */
-    }
-
-    .about-content {
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid #00ffcc;
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .about-content h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #00ffcc;
-    }
-
-    .about-content p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #00ffcc;
-      margin-bottom: 20px;
-    }
-
-    .about-content a {
-      color: #ff00cc;
-      font-weight: bold;
-    }
-
-    .about-content a:hover {
-      text-decoration: underline;
-    }
-
-    /* Footer */
-    footer {
-      background: #000;
-      color: #00ffcc;
-      text-align: center;
-      padding: 20px 0;
-      margin-top: 60px;
-      position: relative;
-      z-index: 1; /* Ensure footer is below the nav */
-    }
-
-    footer p {
-      margin: 0;
-    }
-
-    footer a {
-      color: #ff00cc;
-      font-weight: bold;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Animations */
-    @keyframes glow {
-      0% {
-        text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc;
-      }
-      100% {
-        text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc;
-      }
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-
-    /* Sci-Fi Background */
-    .sci-fi-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: radial-gradient(circle, #001f3f, #000);	
-      animation: stars 10s infinite linear;
-    }
-
-    @keyframes stars {
-      0% {
-        background-position: 0 0;
-      }
-      100% {
-        background-position: 1000px 1000px;
-      }
-    }
-  </style>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Rahulx.com — Signals From the Near Future</title>
+<meta name="description" content="Rahulx.com is an independent publication and toolkit exploring AI, technology, coding, space, and more — built around one idea: the future is easier to navigate once you understand it.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.rahulx.com/about.html">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theme.css">
 </head>
-<body>
-  <!-- Sci-Fi Background -->
-  <div class="sci-fi-bg"></div>
-
-  <!-- Header -->
-  <header>
-    <h1>About Rahulx.com</h1>
-    <p>Discover the story behind the future.</p>
-  </header>
-
-  <!-- Navigation -->
-  <nav>
-    <a href="https://www.rahulx.com">Home</a>
-    <a href="https://www.rahulx.com/about">About</a>
-    <a href="https://www.x.com/gite_ai">Contact</a>
+<body class="hud">
+<header class="hud-topbar">
+  <a href="index.html" class="hud-brand"><span class="dot"></span> RAHULX.COM</a>
+  <button class="hud-menu-toggle" data-hud-toggle aria-label="Toggle navigation">MENU</button>
+  <nav class="hud-nav" data-hud-nav>
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="index.html#topics">Topics</a>
+    <a href="pages/main_pages/tools/tools.html">Tools</a>
+    <a href="contact.html">Contact</a>
   </nav>
+</header>
 
-  <!-- Main Content -->
-  <div class="container">
-    <div class="about-content">
-      <h2>Who Am I?</h2>
-      <p>
-        Hi, I'm Rahul, the creator of Rahulx.com. I'm passionate about technology, innovation, and exploring the future. 
-        This website is my space to share my thoughts, projects, and discoveries with the world.
-      </p>
-      <p>
-        From coding and trading to ethics and entertainment, I believe in the power of knowledge and creativity to shape a better tomorrow. 
-        Join me on this journey as we explore the endless possibilities of the future.
-      </p>
-      <p>
-        Feel free to explore the website and discover more about my work. If you have any questions or just want to connect, 
-        don't hesitate to <a href="https://www.x.com/gite_ai">reach out</a>!
-      </p>
-    </div>
+<section class="hud-hero">
+  <span class="tag">Mission Log · Entry 01</span>
+  <h1>About Rahulx.com</h1>
+  <p class="lede">A one-person publication built on a simple bet: the future stops being intimidating the moment someone explains it plainly.</p>
+</section>
+
+<main class="hud-wrap">
+
+  <div class="hud-panel">
+    <h2>Who's behind this</h2>
+    <p>I'm Rahul, an independent writer and developer, and Rahulx.com is my personal project — part magazine, part workshop. I research and write everything here myself, and I build the tools myself, which is why the site has the slightly obsessive, tinkerer's-lab feel it does: mismatched topics, working code, and a running curiosity about where technology and culture are headed next.</p>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Rahulx.com. All rights reserved. | <a href="https://www.rahulx.com/privacy-policy">Privacy Policy</a></p>
-  </footer>
+  <div class="hud-panel">
+    <h2>What you'll find here</h2>
+    <p>Rahulx.com is organized into topic hubs rather than a single blog feed, because the subjects don't really belong on the same shelf:</p>
+    <ul>
+      <li><strong>AI &amp; Robotics</strong> — how modern AI systems actually work, where robotics is heading, and the tools reshaping both fields.</li>
+      <li><strong>Technology</strong> — everything in consumer and infrastructure tech that isn't strictly AI: hardware, software trends, the web, and how it all fits together.</li>
+      <li><strong>Coding</strong> — practical programming knowledge, languages, and the craft of building software.</li>
+      <li><strong>Space</strong> — missions, discoveries, and the physics of getting off this planet.</li>
+      <li><strong>Oceans</strong> — the least-explored 71% of Earth, and why it matters as much as space does.</li>
+      <li><strong>Ethics</strong> — the harder questions technology keeps raising, examined from multiple angles rather than one.</li>
+      <li><strong>Political Ideologies</strong> — neutral, comparative explainers of the belief systems that shape policy debates worldwide.</li>
+      <li><strong>Gaming, Formula 1, and Netflix &amp; Streaming</strong> — the entertainment side, covered with the same curiosity.</li>
+      <li><strong>Trading &amp; Markets</strong> and <strong>How to Succeed</strong> — practical frameworks for money and personal growth, written as education, not advice.</li>
+      <li><strong>Body Hacks</strong> and <strong>Paranormal</strong> — evidence-based self-improvement science, and a skeptical, curious look at unexplained phenomena.</li>
+      <li><strong>UPSC CSE</strong> — a dedicated hub for India's Civil Services Examination aspirants.</li>
+      <li><strong>Tools</strong> — a growing set of free, no-signup calculators and generators: tax and interest calculators, a BMI tool, a debt payoff planner, character counters, logo and dice generators, and more, all built to run instantly in your browser.</li>
+    </ul>
+  </div>
+
+  <div class="hud-panel">
+    <h2>Why the sci-fi aesthetic</h2>
+    <p>The visual style — dark interfaces, HUD panels, glowing telemetry — isn't decoration for its own sake. It's a running theme: most of what we cover here (AI, space, robotics, even the future of money) would have sounded like science fiction a generation ago. The design is a small reminder that we're already living in someone's "future," and it's worth understanding rather than just scrolling past.</p>
+  </div>
+
+  <div class="hud-panel">
+    <h2>How this site is built and funded</h2>
+    <p>Rahulx.com is hand-built with plain HTML, CSS, and JavaScript — no ad-heavy templates, no autoplay, no dark patterns. It's supported by display advertising (via Google AdSense) and, eventually, reader support, which keeps the articles and every tool completely free to use. Advertising never influences the opinions or rankings published here — see the <a href="disclaimer.html">Disclaimer</a> and <a href="privacy-policy.html">Privacy Policy</a> for the specifics of how ads and data are handled.</p>
+  </div>
+
+  <div class="hud-panel">
+    <h2>Editorial approach</h2>
+    <p>Articles here are written to be understandable on a first read, sourced from primary material and reputable reporting where possible, and updated when facts change — especially on fast-moving topics like AI tools and market conditions. On genuinely contested subjects (ethics, political ideologies), the goal is to lay out the strongest version of each position rather than pick a side for you.</p>
+  </div>
+
+  <div class="hud-panel">
+    <h2>Get in touch</h2>
+    <p>Found an error, have a topic request, or just want to say hello? Visit the <a href="contact.html">Contact page</a> — every message gets read.</p>
+  </div>
+
+</main>
+
+<footer class="hud-footer">
+  <div class="legal-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="terms-of-service.html">Terms of Service</a>
+    <a href="disclaimer.html">Disclaimer</a>
+    <a href="sitemap.xml">Sitemap</a>
+  </div>
+  <p>&copy; 2026 Rahulx.com. All rights reserved.</p>
+</footer>
+
+<script src="assets/js/site.js"></script>
 </body>
 </html>

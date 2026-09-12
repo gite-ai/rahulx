@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Love Match Calculator — Rahulx.com</title>
+<meta name="description" content="A fun, lighthearted name-compatibility calculator. For entertainment only.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.rahulx.com/pages/main_pages/tools/love-match.html">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { min-height: 100%; }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1b0d2a, #26173b);
+    color: #f0e0f5;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 15px;
+  }
+  .sci-fi-bg { position: fixed; inset: 0; z-index: -1; background: radial-gradient(circle at 50% 50%, #3f001f55 30%, #000 80%); }
+  header { text-align: center; padding: 20px 0 10px; }
+  h1 { font-family: 'Orbitron', sans-serif; font-size: 2rem; color: #ff5fd0; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px #ff5fd0aa; }
+  .tagline { color: #e6b8ec; margin: 8px 0 20px; text-align: center; max-width: 90%; }
+  .card {
+    background: rgba(32, 5, 40, 0.9); border-radius: 12px; box-shadow: 0 0 15px #ff5fd022;
+    padding: 24px; max-width: 420px; width: 100%; margin: 10px auto;
+  }
+  .row { display: flex; gap: 10px; margin-bottom: 14px; }
+  input {
+    flex: 1; padding: 10px; border-radius: 8px; border: 1px solid #ff5fd055;
+    background: #1a0a22; color: #fff; font-size: 1rem;
+  }
+  button {
+    width: 100%; padding: 12px; border: none; border-radius: 10px; cursor: pointer;
+    background: linear-gradient(45deg, #ff5fd0, #00ffcc); color: #1a0a22; font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase; font-weight: 700; font-size: 0.9rem;
+  }
+  .result { margin-top: 18px; text-align: center; display: none; }
+  .score { font-family: 'Orbitron', sans-serif; font-size: 3rem; color: #ff5fd0; text-shadow: 0 0 12px #ff5fd0aa; }
+  .verdict { margin-top: 6px; font-size: 1.05rem; color: #e6b8ec; }
+  footer { text-align: center; padding: 20px 0 10px; font-size: 0.8rem; color: #d8a8de; }
+  footer a { color: #ffb3ec; text-decoration: none; }
+  a.back { display:inline-block; margin-top:14px; color:#8fffe0; text-decoration:none; font-size:0.9rem; }
+  .fine { font-size: 0.75rem; color: #b696bd; text-align:center; margin-top: 16px; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+<div class="sci-fi-bg"></div>
+<header>
+  <h1>Love Match</h1>
+  <p class="tagline">Enter two names to calculate your interstellar compatibility score.</p>
+</header>
+<main>
+  <div class="card">
+    <div class="row">
+      <input type="text" id="name1" placeholder="Your name" maxlength="40">
+    </div>
+    <div class="row">
+      <input type="text" id="name2" placeholder="Their name" maxlength="40">
+    </div>
+    <button onclick="calculate()">Calculate Match</button>
+    <div class="result" id="result">
+      <div class="score" id="score"></div>
+      <div class="verdict" id="verdict"></div>
+    </div>
+    <p class="fine">Just for fun — a deterministic name-based calculation, not a real predictor of compatibility.</p>
+  </div>
+  <div style="text-align:center;"><a class="back" href="tools.html">← Back to all tools</a></div>
+</main>
+<footer>
+  <p>&copy; 2026 Rahulx.com. All rights reserved. |
+    <a href="/about.html">About</a> |
+    <a href="/contact.html">Contact</a> |
+    <a href="/privacy-policy.html">Privacy Policy</a> |
+    <a href="/terms-of-service.html">Terms of Service</a> |
+    <a href="/disclaimer.html">Disclaimer</a> |
+    <a href="/sitemap.xml">Sitemap</a>
+  </p>
+</footer>
+<script>
+  function hashNames(a, b) {
+    const combined = a.toLowerCase().replace(/\s+/g,'') + '|' + b.toLowerCase().replace(/\s+/g,'');
+    let hash = 0;
+    for (let i = 0; i < combined.length; i++) {
+      hash = (hash * 31 + combined.charCodeAt(i)) >>> 0;
+    }
+    return hash;
+  }
+
+  function verdictFor(score) {
+    if (score >= 90) return "Off-the-charts cosmic synergy. 🚀";
+    if (score >= 75) return "Strong signal alignment — a great match.";
+    if (score >= 55) return "Promising orbit — worth exploring further.";
+    if (score >= 35) return "Mixed signals — could go either way.";
+    return "Different galaxies entirely, but opposites do attract.";
+  }
+
+  function calculate() {
+    const n1 = document.getElementById('name1').value.trim();
+    const n2 = document.getElementById('name2').value.trim();
+    if (!n1 || !n2) {
+      alert('Enter both names first!');
+      return;
+    }
+    const h = hashNames(n1, n2);
+    const score = h % 101; // 0-100
+    document.getElementById('score').textContent = score + '%';
+    document.getElementById('verdict').textContent = verdictFor(score);
+    document.getElementById('result').style.display = 'block';
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+/* =========================================================================
+   RAHULX.COM — SHARED "REALISTIC SCI-FI / HUD" THEME
+   Used by: home, about, contact, privacy, terms, disclaimer, and the
+   rebuilt topic hubs. Legacy pages keep their own inline styles and are
+   untouched by this file.
+   ========================================================================= */
+
+:root {
+  --bg-void: #05070a;
+  --bg-panel: rgba(10, 16, 22, 0.72);
+  --bg-panel-solid: #0b1117;
+  --line: rgba(0, 255, 204, 0.25);
+  --line-strong: rgba(0, 255, 204, 0.55);
+  --cyan: #00ffcc;
+  --cyan-dim: #0aa88a;
+  --amber: #ffb347;
+  --magenta: #ff2fb4;
+  --text: #d9f7f0;
+  --text-dim: #8fa8a3;
+  --danger: #ff5c5c;
+  --radius: 10px;
+  --mono: 'Share Tech Mono', 'JetBrains Mono', ui-monospace, monospace;
+  --head: 'Orbitron', sans-serif;
+  --body: 'Rajdhani', 'Segoe UI', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body.hud {
+  margin: 0;
+  background:
+    radial-gradient(ellipse at top, #0d1a22 0%, #05070a 55%, #030405 100%);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.7;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* subtle scanline + grid texture for a "grounded instrument panel" feel */
+body.hud::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(0, 255, 204, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 204, 0.035) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
+}
+
+body.hud::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.12) 3px
+  );
+  opacity: 0.35;
+}
+
+.hud h1, .hud h2, .hud h3, .hud h4 {
+  font-family: var(--head);
+  color: var(--cyan);
+  letter-spacing: 0.03em;
+  margin: 0 0 0.6em;
+  text-shadow: 0 0 12px rgba(0, 255, 204, 0.25);
+}
+
+.hud a { color: var(--amber); }
+.hud a:hover { color: var(--cyan); }
+
+.hud .tag {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cyan-dim);
+}
+
+/* ---------- Top bar ---------- */
+.hud-topbar {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 5%;
+  background: rgba(3, 6, 8, 0.85);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+}
+
+.hud-brand {
+  font-family: var(--head);
+  color: var(--cyan);
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hud-brand .dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 8px 2px var(--cyan);
+  animation: pulse 2.2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.75); }
+}
+
+.hud-nav { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+.hud-nav a {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--text);
+  text-transform: uppercase;
+  padding: 6px 2px;
+  border-bottom: 1px solid transparent;
+}
+.hud-nav a:hover, .hud-nav a.active {
+  color: var(--cyan);
+  border-bottom-color: var(--cyan);
+}
+
+.hud-menu-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--line-strong);
+  color: var(--cyan);
+  font-family: var(--mono);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+@media (max-width: 860px) {
+  .hud-menu-toggle { display: inline-block; }
+  .hud-nav {
+    position: fixed;
+    inset: 62px 0 auto auto;
+    right: -100%;
+    width: min(80vw, 320px);
+    height: calc(100vh - 62px);
+    background: rgba(3, 6, 8, 0.97);
+    border-left: 1px solid var(--line);
+    flex-direction: column;
+    padding: 24px;
+    transition: right 0.25s ease;
+    z-index: 20;
+  }
+  .hud-nav.open { right: 0; }
+}
+
+/* ---------- Hero ---------- */
+.hud-hero {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 70px 6% 50px;
+}
+
+.hud-hero h1 {
+  font-size: clamp(1.9rem, 4.5vw, 3.2rem);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.hud-hero p.lede {
+  max-width: 720px;
+  margin: 0 auto;
+  color: var(--text-dim);
+  font-size: 1.15rem;
+}
+
+/* ---------- Layout helpers ---------- */
+.hud-wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 6% 80px;
+}
+
+.hud-panel {
+  position: relative;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 30px 32px;
+  margin-bottom: 28px;
+  backdrop-filter: blur(6px);
+}
+
+/* corner-bracket HUD decoration */
+.hud-panel::before, .hud-panel::after,
+.hud-card::before, .hud-card::after {
+  content: "";
+  position: absolute;
+  width: 14px; height: 14px;
+  border-color: var(--cyan-dim);
+  border-style: solid;
+  opacity: 0.8;
+}
+.hud-panel::before, .hud-card::before {
+  top: -1px; left: -1px;
+  border-width: 2px 0 0 2px;
+}
+.hud-panel::after, .hud-card::after {
+  bottom: -1px; right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+.hud-panel h2 { font-size: 1.5rem; }
+.hud-panel h3 { font-size: 1.15rem; color: var(--amber); text-shadow: none; }
+.hud-panel p, .hud-panel li { color: var(--text); }
+.hud-panel ul, .hud-panel ol { padding-left: 1.3em; }
+.hud-panel li { margin-bottom: 0.5em; }
+
+.hud-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+}
+
+.hud-card {
+  position: relative;
+  display: block;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px 22px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+a.hud-card { color: inherit; }
+
+.hud-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--line-strong);
+  box-shadow: 0 10px 34px rgba(0, 255, 204, 0.18);
+}
+
+.hud-card .tag { display: block; margin-bottom: 10px; }
+.hud-card h3 { margin-bottom: 8px; font-size: 1.2rem; color: var(--cyan); text-shadow: none; }
+.hud-card p { color: var(--text-dim); font-size: 0.98rem; margin: 0; }
+
+.hud-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bg-void);
+  background: var(--cyan);
+  border-radius: 4px;
+  padding: 3px 8px;
+  margin-bottom: 10px;
+}
+
+.hud-btn {
+  display: inline-block;
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  color: var(--cyan);
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  padding: 10px 20px;
+  background: rgba(0, 255, 204, 0.05);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.hud-btn:hover { background: var(--cyan); color: #001b16; }
+
+/* ---------- Footer ---------- */
+.hud-footer {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid var(--line);
+  padding: 34px 6% 40px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  background: rgba(3, 6, 8, 0.6);
+}
+
+.hud-footer .legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.hud-footer a { color: var(--text-dim); }
+.hud-footer a:hover { color: var(--cyan); }
+
+.hud-footer .fine {
+  max-width: 760px;
+  margin: 14px auto 0;
+  opacity: 0.75;
+  line-height: 1.6;
+}
+
+hr.hud-rule {
+  border: none;
+  border-top: 1px dashed var(--line);
+  margin: 26px 0;
+}
+
+.hud-callout {
+  border-left: 3px solid var(--amber);
+  background: rgba(255, 179, 71, 0.06);
+  padding: 14px 18px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.hud-callout strong { color: var(--amber); }
+
+table.hud-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+table.hud-table th, table.hud-table td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  text-align: left;
+}
+table.hud-table th {
+  font-family: var(--mono);
+  color: var(--cyan);
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+}

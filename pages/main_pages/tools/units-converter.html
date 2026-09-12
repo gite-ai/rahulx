@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Units Converter — Rahulx.com</title>
+<meta name="description" content="Free online units converter for length, weight, temperature, and data storage — instant, accurate, and runs entirely in your browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.rahulx.com/pages/main_pages/tools/units-converter.html">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { min-height: 100%; }
+  body {
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #0d1b2a, #1b263b);
+    color: #e0e0e0;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 15px;
+  }
+  .sci-fi-bg { position: fixed; inset: 0; z-index: -1; background: radial-gradient(circle at 50% 50%, #001f3f55 30%, #000 80%); }
+  header { text-align: center; padding: 20px 0 10px; }
+  h1 { font-family: 'Orbitron', sans-serif; font-size: 2rem; color: #00ffcc; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px #00ffccaa; }
+  .tagline { color: #b0e9e4; margin: 8px 0 20px; text-align: center; max-width: 90%; }
+  .card {
+    background: rgba(5, 32, 65, 0.9); border-radius: 12px; box-shadow: 0 0 15px #00ffcc22;
+    padding: 24px; max-width: 460px; width: 100%; margin: 10px auto;
+  }
+  .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; justify-content: center; }
+  .tab-btn {
+    background: rgba(0,255,204,0.08); border: 1px solid #00ffcc55; color: #00ffcc;
+    padding: 8px 14px; border-radius: 8px; cursor: pointer; font-family: 'Orbitron', sans-serif; font-size: 0.75rem; text-transform: uppercase;
+  }
+  .tab-btn.active { background: #00ffcc; color: #06131b; }
+  .row { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; }
+  select, input {
+    flex: 1; padding: 10px; border-radius: 8px; border: 1px solid #00ffcc55;
+    background: #0a1622; color: #fff; font-size: 1rem;
+  }
+  .result {
+    margin-top: 10px; text-align: center; font-family: 'Orbitron', sans-serif; font-size: 1.3rem;
+    color: #00ffcc; text-shadow: 0 0 8px #00ffcc66; min-height: 1.6em;
+  }
+  footer { text-align: center; padding: 20px 0 10px; font-size: 0.8rem; color: #b0e9e4; }
+  footer a { color: #80ffd0; text-decoration: none; }
+  a.back { display:inline-block; margin-top:14px; color:#ff9fd6; text-decoration:none; font-size:0.9rem; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+<div class="sci-fi-bg"></div>
+<header>
+  <h1>Units Converter</h1>
+  <p class="tagline">Convert length, weight, temperature, and data storage — instantly, offline, in your browser.</p>
+</header>
+<main>
+  <div class="card">
+    <div class="tabs" id="tabs">
+      <button class="tab-btn active" data-type="length">Length</button>
+      <button class="tab-btn" data-type="weight">Weight</button>
+      <button class="tab-btn" data-type="temperature">Temperature</button>
+      <button class="tab-btn" data-type="data">Data</button>
+    </div>
+    <div class="row">
+      <input type="number" id="inputValue" value="1" step="any" aria-label="Value to convert">
+      <select id="fromUnit" aria-label="Convert from"></select>
+    </div>
+    <div class="row">
+      <span style="text-align:center;width:100%;color:#00ffcc;font-family:'Orbitron',sans-serif;">↓ equals ↓</span>
+    </div>
+    <div class="row">
+      <select id="toUnit" aria-label="Convert to"></select>
+    </div>
+    <div class="result" id="result"></div>
+  </div>
+  <div style="text-align:center;"><a class="back" href="tools.html">← Back to all tools</a></div>
+</main>
+<footer>
+  <p>&copy; 2026 Rahulx.com. All rights reserved. |
+    <a href="/about.html">About</a> |
+    <a href="/contact.html">Contact</a> |
+    <a href="/privacy-policy.html">Privacy Policy</a> |
+    <a href="/terms-of-service.html">Terms of Service</a> |
+    <a href="/disclaimer.html">Disclaimer</a> |
+    <a href="/sitemap.xml">Sitemap</a>
+  </p>
+</footer>
+<script>
+  const UNITS = {
+    length: {
+      base: 'm',
+      units: { m: 1, km: 1000, cm: 0.01, mm: 0.001, mi: 1609.344, yd: 0.9144, ft: 0.3048, in: 0.0254, nmi: 1852 },
+      labels: { m:'Meters', km:'Kilometers', cm:'Centimeters', mm:'Millimeters', mi:'Miles', yd:'Yards', ft:'Feet', in:'Inches', nmi:'Nautical miles' }
+    },
+    weight: {
+      base: 'kg',
+      units: { kg: 1, g: 0.001, mg: 0.000001, lb: 0.45359237, oz: 0.028349523125, t: 1000, st: 6.35029318 },
+      labels: { kg:'Kilograms', g:'Grams', mg:'Milligrams', lb:'Pounds', oz:'Ounces', t:'Metric tons', st:'Stone' }
+    },
+    data: {
+      base: 'MB',
+      units: { B: 1/1048576, KB: 1/1024, MB: 1, GB: 1024, TB: 1048576 },
+      labels: { B:'Bytes', KB:'Kilobytes', MB:'Megabytes', GB:'Gigabytes', TB:'Terabytes' }
+    },
+    temperature: { special: true, labels: { C:'Celsius', F:'Fahrenheit', K:'Kelvin' } }
+  };
+
+  const tabs = document.querySelectorAll('.tab-btn');
+  const fromSel = document.getElementById('fromUnit');
+  const toSel = document.getElementById('toUnit');
+  const input = document.getElementById('inputValue');
+  const resultEl = document.getElementById('result');
+  let currentType = 'length';
+
+  function populateSelects(type) {
+    const labels = UNITS[type].labels;
+    fromSel.innerHTML = '';
+    toSel.innerHTML = '';
+    Object.keys(labels).forEach((key, i) => {
+      const opt1 = new Option(labels[key], key);
+      const opt2 = new Option(labels[key], key);
+      fromSel.add(opt1);
+      toSel.add(opt2);
+      if (i === 1) toSel.selectedIndex = 1;
+    });
+  }
+
+  function convert() {
+    const val = parseFloat(input.value);
+    const from = fromSel.value;
+    const to = toSel.value;
+    if (isNaN(val)) { resultEl.textContent = ''; return; }
+
+    let out;
+    if (currentType === 'temperature') {
+      let celsius;
+      if (from === 'C') celsius = val;
+      else if (from === 'F') celsius = (val - 32) * 5/9;
+      else celsius = val - 273.15;
+
+      if (to === 'C') out = celsius;
+      else if (to === 'F') out = celsius * 9/5 + 32;
+      else out = celsius + 273.15;
+    } else {
+      const def = UNITS[currentType];
+      const baseVal = val * def.units[from];
+      out = baseVal / def.units[to];
+    }
+    resultEl.textContent = `${val} ${from} = ${Number(out.toFixed(6)).toString()} ${to}`;
+  }
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabs.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentType = btn.dataset.type;
+      populateSelects(currentType);
+      convert();
+    });
+  });
+
+  [input, fromSel, toSel].forEach(el => el.addEventListener('input', convert));
+
+  populateSelects(currentType);
+  convert();
+</script>
+</body>
+</html>
