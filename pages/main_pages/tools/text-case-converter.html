@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Text Case Converter — Rahulx.com</title>
+<meta name="description" content="Convert text between UPPERCASE, lowercase, Title Case, Sentence case, camelCase, snake_case, and kebab-case — instantly, free, in your browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.rahulx.com/pages/main_pages/tools/text-case-converter.html">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { min-height: 100%; }
+  body {
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #0d1b2a, #1b263b);
+    color: #e0e0e0;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 15px;
+  }
+  .sci-fi-bg { position: fixed; inset: 0; z-index: -1; background: radial-gradient(circle at 50% 50%, #001f3f55 30%, #000 80%); }
+  header { text-align: center; padding: 20px 0 10px; }
+  h1 { font-family: 'Orbitron', sans-serif; font-size: 2rem; color: #00ffcc; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px #00ffccaa; }
+  .tagline { color: #b0e9e4; margin: 8px 0 20px; text-align: center; max-width: 90%; }
+  .card {
+    background: rgba(5, 32, 65, 0.9); border-radius: 12px; box-shadow: 0 0 15px #00ffcc22;
+    padding: 24px; max-width: 700px; width: 100%; margin: 10px auto;
+  }
+  textarea {
+    width: 100%; min-height: 140px; padding: 14px; border-radius: 8px; border: 1px solid #00ffcc55;
+    background: #0a1622; color: #cfeff0; font-family: 'Share Tech Mono', monospace; font-size: 0.95rem;
+    resize: vertical; line-height: 1.5; margin-bottom: 16px;
+  }
+  .grid-btns { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 16px; }
+  .case-btn {
+    padding: 12px 8px; border: 1px solid #00ffcc55; border-radius: 8px; background: rgba(0,255,204,0.08);
+    color: #00ffcc; font-family: 'Orbitron', sans-serif; font-size: 0.75rem; cursor: pointer; text-align: center;
+  }
+  .case-btn:hover { background: #00ffcc; color: #06131b; }
+  .btn-row { display: flex; gap: 10px; margin-bottom: 16px; }
+  .action-btn {
+    flex: 1; padding: 12px; border: none; border-radius: 8px; background: rgba(0,255,204,0.1);
+    color: #00ffcc; border: 1px solid #00ffcc55; font-family: 'Orbitron', sans-serif; font-weight: 700;
+    cursor: pointer; font-size: 0.8rem;
+  }
+  .action-btn:hover { background: rgba(0,255,204,0.2); }
+  .stats { font-size: 0.85rem; color: #8fb0ad; margin-bottom: 10px; }
+  label.field-label { display: block; color: #00ffcc; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; margin-bottom: 8px; letter-spacing: 0.5px; }
+  footer { text-align: center; padding: 20px 0 10px; font-size: 0.8rem; color: #b0e9e4; }
+  footer a { color: #80ffd0; text-decoration: none; }
+  a.back { display:inline-block; margin-top:14px; color:#ff9fd6; text-decoration:none; font-size:0.9rem; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+</head>
+<body>
+<div class="sci-fi-bg"></div>
+<header>
+  <h1>Text Case Converter</h1>
+  <p class="tagline">Switch between UPPERCASE, lowercase, Title Case, camelCase, snake_case and more — instantly.</p>
+</header>
+<main>
+  <div class="card">
+    <label class="field-label">YOUR TEXT</label>
+    <textarea id="textInput" placeholder="Type or paste text here..." oninput="updateStats()"></textarea>
+    <div class="stats" id="stats">Characters: 0 | Words: 0</div>
+    <div class="grid-btns">
+      <button class="case-btn" onclick="applyCase('upper')">UPPERCASE</button>
+      <button class="case-btn" onclick="applyCase('lower')">lowercase</button>
+      <button class="case-btn" onclick="applyCase('title')">Title Case</button>
+      <button class="case-btn" onclick="applyCase('sentence')">Sentence case</button>
+      <button class="case-btn" onclick="applyCase('camel')">camelCase</button>
+      <button class="case-btn" onclick="applyCase('pascal')">PascalCase</button>
+      <button class="case-btn" onclick="applyCase('snake')">snake_case</button>
+      <button class="case-btn" onclick="applyCase('kebab')">kebab-case</button>
+      <button class="case-btn" onclick="applyCase('alternating')">aLtErNaTiNg</button>
+    </div>
+    <div class="btn-row">
+      <button class="action-btn" onclick="copyText()">COPY TEXT</button>
+      <button class="action-btn" onclick="clearText()">CLEAR</button>
+    </div>
+  </div>
+  <div style="text-align:center;"><a class="back" href="tools.html">&larr; Back to all tools</a></div>
+</main>
+<footer>
+  <p>&copy; 2026 Rahulx.com. All rights reserved. |
+    <a href="/about.html">About</a> |
+    <a href="/contact.html">Contact</a> |
+    <a href="/privacy-policy.html">Privacy Policy</a> |
+    <a href="/terms-of-service.html">Terms of Service</a> |
+    <a href="/disclaimer.html">Disclaimer</a> |
+    <a href="/sitemap.xml">Sitemap</a>
+  </p>
+</footer>
+<script>
+  const textInput = document.getElementById('textInput');
+
+  function updateStats() {
+    const val = textInput.value;
+    const words = val.trim() ? val.trim().split(/\s+/).length : 0;
+    document.getElementById('stats').textContent = `Characters: ${val.length} | Words: ${words}`;
+  }
+
+  function toWords(str) {
+    return str
+      .replace(/([a-z])([A-Z])/g, '$1 $2')
+      .replace(/[_\-]+/g, ' ')
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+  }
+
+  function applyCase(type) {
+    const val = textInput.value;
+    if (!val) return;
+    let result = val;
+    const words = toWords(val).map(w => w.toLowerCase());
+
+    switch (type) {
+      case 'upper':
+        result = val.toUpperCase();
+        break;
+      case 'lower':
+        result = val.toLowerCase();
+        break;
+      case 'title':
+        result = val.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+        break;
+      case 'sentence':
+        result = val.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, c => c.toUpperCase());
+        break;
+      case 'camel':
+        result = words.map((w, i) => i === 0 ? w : w[0].toUpperCase() + w.slice(1)).join('');
+        break;
+      case 'pascal':
+        result = words.map(w => w[0].toUpperCase() + w.slice(1)).join('');
+        break;
+      case 'snake':
+        result = words.join('_');
+        break;
+      case 'kebab':
+        result = words.join('-');
+        break;
+      case 'alternating':
+        result = val.split('').map((c, i) => i % 2 === 0 ? c.toLowerCase() : c.toUpperCase()).join('');
+        break;
+    }
+    textInput.value = result;
+    updateStats();
+  }
+
+  function copyText() {
+    if (!textInput.value) return;
+    navigator.clipboard.writeText(textInput.value);
+  }
+
+  function clearText() {
+    textInput.value = '';
+    updateStats();
+  }
+</script>
+</body>
+</html>

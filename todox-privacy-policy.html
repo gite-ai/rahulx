@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - ToDoX Android App</title>
+    <meta name="description" content="Privacy Policy for ToDoX, the Android to-do list and task management app by Rahulx.com. Explains data collection, permissions, and cloud sync.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.rahulx.com/todox-privacy-policy.html">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --primary-dark: #1557b0;
+            --text: #202124;
+            --text-secondary: #5f6368;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --border: #dadce0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #8ab4f8;
+                --primary-dark: #aecbfa;
+                --text: #e8eaed;
+                --text-secondary: #9aa0a6;
+                --bg: #121212;
+                --card-bg: #1e1e1e;
+                --border: #3c4043;
+            }
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-bar {
+            text-align: center;
+            padding: 14px 20px;
+            font-size: 14px;
+        }
+
+        .top-bar a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .top-bar a:hover { text-decoration: underline; }
+
+        .container {
+            max-width: 800px;
+            margin: 10px auto 40px;
+            padding: 0 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 18px;
+            margin-top: 28px;
+            margin-bottom: 12px;
+        }
+
+        p, li {
+            font-size: 15px;
+            color: var(--text);
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        code {
+            background: rgba(127,127,127,0.15);
+            padding: 1px 5px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(26, 115, 232, 0.12);
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+        }
+
+        .footer {
+            margin-top: 32px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar"><a href="/index.html">&larr; Rahulx.com</a></div>
+    <div class="container">
+        <div class="card">
+            <span class="badge">Official Policy</span>
+            <h1>Privacy Policy for ToDoX</h1>
+            <div class="subtitle">Effective Date: May 20, 2026 | Last Updated: May 20, 2026</div>
+
+            <p>Welcome to <strong>ToDoX</strong> ("we," "our," or "us"). We are committed to protecting your personal privacy. This Privacy Policy explains how our Android mobile application (<code>com.rx.todox</code>) handles your information, data collection, permissions, and cloud synchronization features.</p>
+
+            <h2>1. Information We Collect</h2>
+            <p>ToDoX is designed with a privacy-first approach. Depending on how you use the app, we process the following data:</p>
+            <ul>
+                <li><strong>Local Task Data:</strong> Tasks, sub-step checklists, project categories, deadlines, repeat frequencies, and tags created in Offline Guest Mode are stored strictly on your device's local internal storage.</li>
+                <li><strong>Account Information:</strong> If you voluntarily sign in with Google, we collect basic profile information (Google ID, name, email address, and profile picture URL) to authenticate your account.</li>
+                <li><strong>Cloud Synchronization Data:</strong> When logged into Google, your task items, project categories, and attached file metadata are synchronized to Google Firebase Firestore &amp; Realtime Database tied exclusively to your authenticated Google account.</li>
+                <li><strong>Google Drive AppData Backups:</strong> If you perform a Google Drive backup, encrypted <code>.tdx</code> backup files are saved in your personal Google Drive AppData container, inaccessible to other users or apps.</li>
+            </ul>
+
+            <h2>2. Device Permissions Used &amp; Purpose</h2>
+            <p>ToDoX requests only essential Android permissions necessary to provide core productivity features:</p>
+            <ul>
+                <li><code>INTERNET</code> &amp; <code>ACCESS_NETWORK_STATE</code>: Required to perform real-time cloud synchronization with Firebase and Google Drive backup/restore services when signed in.</li>
+                <li><code>POST_NOTIFICATIONS</code>: Required on Android 13+ to send timely reminder alerts and deadline countdown notifications for your scheduled tasks.</li>
+                <li><code>READ_EXTERNAL_STORAGE</code> / <code>READ_MEDIA_DOCUMENTS</code>: Required to allow you to select and attach local document files, PDFs, images, or notes to your tasks.</li>
+                <li><code>REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</code> (Optional): Used solely to allow you to exempt ToDoX from aggressive battery savers, ensuring background task countdown alarms trigger on time.</li>
+            </ul>
+
+            <h2>3. Offline Guest Mode &amp; Data Ownership</h2>
+            <p>You can use ToDoX completely offline without creating an account or signing in. In Offline Mode, 100% of your data remains isolated locally inside your device storage (<code>Documents/ToDoX/</code>). We do not collect, track, or transmit your offline task data to any remote server.</p>
+
+            <h2>4. Third-Party Services</h2>
+            <p>When cloud features are enabled, ToDoX uses trusted Google infrastructure services. You can review their privacy policies below:</p>
+            <ul>
+                <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Play Services &amp; Google Sign-In</a></li>
+                <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Google Firebase Authentication &amp; Firestore</a></li>
+                <li><a href="https://developers.google.com/drive/api/terms" target="_blank" rel="noopener">Google Drive API</a></li>
+            </ul>
+            <p><strong>No Advertising or Third-Party Tracking:</strong> ToDoX does <em>not</em> contain any third-party advertising SDKs, ad networks, or user tracking analytics.</p>
+
+            <h2>5. Data Retention &amp; Deletion</h2>
+            <ul>
+                <li><strong>Deleting Tasks:</strong> Permanently deleting tasks or clearing the Bin in ToDoX immediately removes those items from both your device local storage and Firebase cloud storage.</li>
+                <li><strong>Account Disconnection:</strong> Signing out removes cached account profile credentials from the app. You may request complete account data deletion by contacting us at the support email below.</li>
+            </ul>
+
+            <h2>6. Security</h2>
+            <p>We enforce industry-standard security practices. Cloud network transfers are protected via HTTPS/SSL encryption, and Firebase security rules restrict database access exclusively to your authenticated account ID.</p>
+
+            <h2>7. Children's Privacy</h2>
+            <p>ToDoX does not knowingly collect or solicit personal information from children under the age of 13. If you believe a child has provided us with personal information, please contact us to have it removed.</p>
+
+            <h2>8. Changes to This Privacy Policy</h2>
+            <p>We may update our Privacy Policy periodically. Any updates will be reflected on this page with an updated Effective Date.</p>
+
+            <h2>9. Contact Us</h2>
+            <p>If you have any questions or suggestions regarding this Privacy Policy, please contact us at:</p>
+            <p><strong>Email:</strong> <a href="mailto:developer@rahulx.com">developer@rahulx.com</a><br>
+            <strong>X (Twitter):</strong> <a href="https://x.com/gite_ai" target="_blank" rel="noopener">@gite_ai</a><br>
+            <strong>Developer:</strong> Rahulx.com<br>
+            <strong>App ID:</strong> com.rx.todox</p>
+        </div>
+
+        <div class="footer">
+            &copy; 2026 ToDoX &middot; A Rahulx.com app &middot; <a href="/index.html">rahulx.com</a> &middot; <a href="/contact.html">Contact</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -357,3 +357,46 @@ table.hud-table th {
   font-size: 0.78rem;
   letter-spacing: 0.06em;
 }
+
+.hud-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 20px;
+}
+
+/* =========================================================================
+   MOBILE / SMALL-SCREEN REFINEMENTS
+   Applies across every hud-themed page (home, hubs, legal, glossary, tools
+   links). Keeps touch targets comfortable and avoids horizontal scroll on
+   phones down to ~340px wide.
+   ========================================================================= */
+@media (max-width: 600px) {
+  body.hud { font-size: 15.5px; }
+
+  .hud-topbar { padding: 12px 4%; gap: 10px; }
+  .hud-brand { font-size: 1.05rem; }
+
+  .hud-hero { padding: 46px 5% 34px; }
+  .hud-hero h1 { font-size: clamp(1.5rem, 7vw, 2.1rem); }
+  .hud-hero p.lede { font-size: 1rem; }
+
+  .hud-wrap { padding: 0 5% 56px; }
+  .hud-panel { padding: 20px 18px; margin-bottom: 20px; }
+  .hud-panel h2 { font-size: 1.25rem; }
+
+  .hud-grid { grid-template-columns: 1fr; gap: 16px; }
+  .hud-card { padding: 20px 18px; }
+
+  .hud-btn { width: 100%; text-align: center; padding: 12px 16px; }
+
+  .hud-footer { padding: 26px 5% 32px; }
+  .hud-footer .legal-links { gap: 8px 14px; }
+
+  table.hud-table { display: block; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+}
+
+/* Ensure nothing (embedded widgets, long words, wide tables) can force the
+   page itself to scroll sideways. */
+body.hud { max-width: 100vw; }
+img, video, iframe, canvas, svg { max-width: 100%; height: auto; }

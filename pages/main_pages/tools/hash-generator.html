@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hash Generator (MD5, SHA-1, SHA-256, SHA-512) — Rahulx.com</title>
+<meta name="description" content="Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from text instantly, free, and entirely in your browser — nothing is ever uploaded.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.rahulx.com/pages/main_pages/tools/hash-generator.html">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { min-height: 100%; }
+  body {
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #0d1b2a, #1b263b);
+    color: #e0e0e0;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 15px;
+  }
+  .sci-fi-bg { position: fixed; inset: 0; z-index: -1; background: radial-gradient(circle at 50% 50%, #001f3f55 30%, #000 80%); }
+  header { text-align: center; padding: 20px 0 10px; }
+  h1 { font-family: 'Orbitron', sans-serif; font-size: 2rem; color: #00ffcc; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px #00ffccaa; }
+  .tagline { color: #b0e9e4; margin: 8px 0 20px; text-align: center; max-width: 90%; }
+  .card {
+    background: rgba(5, 32, 65, 0.9); border-radius: 12px; box-shadow: 0 0 15px #00ffcc22;
+    padding: 24px; max-width: 700px; width: 100%; margin: 10px auto;
+  }
+  textarea {
+    width: 100%; min-height: 120px; padding: 14px; border-radius: 8px; border: 1px solid #00ffcc55;
+    background: #0a1622; color: #cfeff0; font-family: 'Share Tech Mono', monospace; font-size: 0.95rem;
+    resize: vertical; line-height: 1.5; margin-bottom: 16px;
+  }
+  .hash-row { margin-bottom: 14px; }
+  .hash-row .lbl { font-family: 'Orbitron', sans-serif; color: #00ffcc; font-size: 0.8rem; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; }
+  .copy-mini { background: rgba(0,255,204,0.1); border: 1px solid #00ffcc55; color: #00ffcc; padding: 3px 10px; border-radius: 6px; cursor: pointer; font-size: 0.7rem; }
+  .copy-mini:hover { background: #00ffcc; color: #06131b; }
+  .hash-val {
+    background: #0a1622; border: 1px solid #00ffcc33; border-radius: 8px; padding: 10px 12px;
+    font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; color: #7cffb0; word-break: break-all; min-height: 1.4em;
+  }
+  footer { text-align: center; padding: 20px 0 10px; font-size: 0.8rem; color: #b0e9e4; }
+  footer a { color: #80ffd0; text-decoration: none; }
+  a.back { display:inline-block; margin-top:14px; color:#ff9fd6; text-decoration:none; font-size:0.9rem; }
+  .note { font-size: 0.8rem; color: #8fb0ad; margin-top: 14px; text-align: center; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+</head>
+<body>
+<div class="sci-fi-bg"></div>
+<header>
+  <h1>Hash Generator</h1>
+  <p class="tagline">Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from any text, instantly and offline.</p>
+</header>
+<main>
+  <div class="card">
+    <textarea id="hashInput" placeholder="Type or paste text to hash..." oninput="computeAll()"></textarea>
+
+    <div class="hash-row">
+      <div class="lbl">MD5 <button class="copy-mini" onclick="copyHash('md5')">Copy</button></div>
+      <div class="hash-val" id="md5">—</div>
+    </div>
+    <div class="hash-row">
+      <div class="lbl">SHA-1 <button class="copy-mini" onclick="copyHash('sha1')">Copy</button></div>
+      <div class="hash-val" id="sha1">—</div>
+    </div>
+    <div class="hash-row">
+      <div class="lbl">SHA-256 <button class="copy-mini" onclick="copyHash('sha256')">Copy</button></div>
+      <div class="hash-val" id="sha256">—</div>
+    </div>
+    <div class="hash-row">
+      <div class="lbl">SHA-512 <button class="copy-mini" onclick="copyHash('sha512')">Copy</button></div>
+      <div class="hash-val" id="sha512">—</div>
+    </div>
+    <p class="note">All hashing happens locally via your browser's Web Crypto API (and a local MD5 implementation for legacy compatibility). Nothing is sent to any server. MD5 and SHA-1 are not considered secure for passwords — use SHA-256 or SHA-512 for anything sensitive.</p>
+  </div>
+  <div style="text-align:center;"><a class="back" href="tools.html">&larr; Back to all tools</a></div>
+</main>
+<footer>
+  <p>&copy; 2026 Rahulx.com. All rights reserved. |
+    <a href="/about.html">About</a> |
+    <a href="/contact.html">Contact</a> |
+    <a href="/privacy-policy.html">Privacy Policy</a> |
+    <a href="/terms-of-service.html">Terms of Service</a> |
+    <a href="/disclaimer.html">Disclaimer</a> |
+    <a href="/sitemap.xml">Sitemap</a>
+  </p>
+</footer>
+<script>
+  // Minimal, dependency-free MD5 implementation (public-domain style, widely used pattern).
+  function md5(inputString) {
+    function rotateLeft(x, c) { return (x << c) | (x >>> (32 - c)); }
+    function toHex(n) {
+      let s = '', v;
+      for (let i = 0; i <= 3; i++) {
+        v = (n >>> (i * 8)) & 255;
+        s += ('0' + v.toString(16)).slice(-2);
+      }
+      return s;
+    }
+    function utf8Encode(str) { return unescape(encodeURIComponent(str)); }
+
+    const str = utf8Encode(inputString);
+    const x = [];
+    const len = str.length;
+    for (let i = 0; i < len * 8; i += 8) x[i >> 5] |= (str.charCodeAt(i / 8) & 255) << (i % 32);
+    x[len * 8 >> 5] |= 0x80 << ((len * 8) % 32);
+    x[(((len * 8 + 64) >>> 9) << 4) + 14] = len * 8;
+
+    let a = 1732584193, b = -271733879, c = -1732584194, d = 271733878;
+
+    function cmn(q, a, b, x, s, t) {
+      a = (((a + q) | 0) + ((x + t) | 0)) | 0;
+      return (((a << s) | (a >>> (32 - s))) + b) | 0;
+    }
+    function ff(a, b, c, d, x, s, t) { return cmn((b & c) | (~b & d), a, b, x, s, t); }
+    function gg(a, b, c, d, x, s, t) { return cmn((b & d) | (c & ~d), a, b, x, s, t); }
+    function hh(a, b, c, d, x, s, t) { return cmn(b ^ c ^ d, a, b, x, s, t); }
+    function ii(a, b, c, d, x, s, t) { return cmn(c ^ (b | ~d), a, b, x, s, t); }
+
+    for (let i = 0; i < x.length; i += 16) {
+      const olda = a, oldb = b, oldc = c, oldd = d;
+      a = ff(a, b, c, d, x[i + 0] || 0, 7, -680876936);
+      d = ff(d, a, b, c, x[i + 1] || 0, 12, -389564586);
+      c = ff(c, d, a, b, x[i + 2] || 0, 17, 606105819);
+      b = ff(b, c, d, a, x[i + 3] || 0, 22, -1044525330);
+      a = ff(a, b, c, d, x[i + 4] || 0, 7, -176418897);
+      d = ff(d, a, b, c, x[i + 5] || 0, 12, 1200080426);
+      c = ff(c, d, a, b, x[i + 6] || 0, 17, -1473231341);
+      b = ff(b, c, d, a, x[i + 7] || 0, 22, -45705983);
+      a = ff(a, b, c, d, x[i + 8] || 0, 7, 1770035416);
+      d = ff(d, a, b, c, x[i + 9] || 0, 12, -1958414417);
+      c = ff(c, d, a, b, x[i + 10] || 0, 17, -42063);
+      b = ff(b, c, d, a, x[i + 11] || 0, 22, -1990404162);
+      a = ff(a, b, c, d, x[i + 12] || 0, 7, 1804603682);
+      d = ff(d, a, b, c, x[i + 13] || 0, 12, -40341101);
+      c = ff(c, d, a, b, x[i + 14] || 0, 17, -1502002290);
+      b = ff(b, c, d, a, x[i + 15] || 0, 22, 1236535329);
+
+      a = gg(a, b, c, d, x[i + 1] || 0, 5, -165796510);
+      d = gg(d, a, b, c, x[i + 6] || 0, 9, -1069501632);
+      c = gg(c, d, a, b, x[i + 11] || 0, 14, 643717713);
+      b = gg(b, c, d, a, x[i + 0] || 0, 20, -373897302);
+      a = gg(a, b, c, d, x[i + 5] || 0, 5, -701558691);
+      d = gg(d, a, b, c, x[i + 10] || 0, 9, 38016083);
+      c = gg(c, d, a, b, x[i + 15] || 0, 14, -660478335);
+      b = gg(b, c, d, a, x[i + 4] || 0, 20, -405537848);
+      a = gg(a, b, c, d, x[i + 9] || 0, 5, 568446438);
+      d = gg(d, a, b, c, x[i + 14] || 0, 9, -1019803690);
+      c = gg(c, d, a, b, x[i + 3] || 0, 14, -187363961);
+      b = gg(b, c, d, a, x[i + 8] || 0, 20, 1163531501);
+      a = gg(a, b, c, d, x[i + 13] || 0, 5, -1444681467);
+      d = gg(d, a, b, c, x[i + 2] || 0, 9, -51403784);
+      c = gg(c, d, a, b, x[i + 7] || 0, 14, 1735328473);
+      b = gg(b, c, d, a, x[i + 12] || 0, 20, -1926607734);
+
+      a = hh(a, b, c, d, x[i + 5] || 0, 4, -378558);
+      d = hh(d, a, b, c, x[i + 8] || 0, 11, -2022574463);
+      c = hh(c, d, a, b, x[i + 11] || 0, 16, 1839030562);
+      b = hh(b, c, d, a, x[i + 14] || 0, 23, -35309556);
+      a = hh(a, b, c, d, x[i + 1] || 0, 4, -1530992060);
+      d = hh(d, a, b, c, x[i + 4] || 0, 11, 1272893353);
+      c = hh(c, d, a, b, x[i + 7] || 0, 16, -155497632);
+      b = hh(b, c, d, a, x[i + 10] || 0, 23, -1094730640);
+      a = hh(a, b, c, d, x[i + 13] || 0, 4, 681279174);
+      d = hh(d, a, b, c, x[i + 0] || 0, 11, -358537222);
+      c = hh(c, d, a, b, x[i + 3] || 0, 16, -722521979);
+      b = hh(b, c, d, a, x[i + 6] || 0, 23, 76029189);
+      a = hh(a, b, c, d, x[i + 9] || 0, 4, -640364487);
+      d = hh(d, a, b, c, x[i + 12] || 0, 11, -421815835);
+      c = hh(c, d, a, b, x[i + 15] || 0, 16, 530742520);
+      b = hh(b, c, d, a, x[i + 2] || 0, 23, -995338651);
+
+      a = ii(a, b, c, d, x[i + 0] || 0, 6, -198630844);
+      d = ii(d, a, b, c, x[i + 7] || 0, 10, 1126891415);
+      c = ii(c, d, a, b, x[i + 14] || 0, 15, -1416354905);
+      b = ii(b, c, d, a, x[i + 5] || 0, 21, -57434055);
+      a = ii(a, b, c, d, x[i + 12] || 0, 6, 1700485571);
+      d = ii(d, a, b, c, x[i + 3] || 0, 10, -1894986606);
+      c = ii(c, d, a, b, x[i + 10] || 0, 15, -1051523);
+      b = ii(b, c, d, a, x[i + 1] || 0, 21, -2054922799);
+      a = ii(a, b, c, d, x[i + 8] || 0, 6, 1873313359);
+      d = ii(d, a, b, c, x[i + 15] || 0, 10, -30611744);
+      c = ii(c, d, a, b, x[i + 6] || 0, 15, -1560198380);
+      b = ii(b, c, d, a, x[i + 13] || 0, 21, 1309151649);
+      a = ii(a, b, c, d, x[i + 4] || 0, 6, -145523070);
+      d = ii(d, a, b, c, x[i + 11] || 0, 10, -1120210379);
+      c = ii(c, d, a, b, x[i + 2] || 0, 15, 718787259);
+      b = ii(b, c, d, a, x[i + 9] || 0, 21, -343485551);
+
+      a = (a + olda) | 0; b = (b + oldb) | 0; c = (c + oldc) | 0; d = (d + oldd) | 0;
+    }
+    return toHex(a) + toHex(b) + toHex(c) + toHex(d);
+  }
+
+  async function subtleHash(algo, text) {
+    const enc = new TextEncoder().encode(text);
+    const buf = await crypto.subtle.digest(algo, enc);
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  async function computeAll() {
+    const text = document.getElementById('hashInput').value;
+    if (!text) {
+      ['md5', 'sha1', 'sha256', 'sha512'].forEach(id => document.getElementById(id).textContent = '—');
+      return;
+    }
+    document.getElementById('md5').textContent = md5(text);
+    document.getElementById('sha1').textContent = await subtleHash('SHA-1', text);
+    document.getElementById('sha256').textContent = await subtleHash('SHA-256', text);
+    document.getElementById('sha512').textContent = await subtleHash('SHA-512', text);
+  }
+
+  function copyHash(id) {
+    const val = document.getElementById(id).textContent;
+    if (val && val !== '—') navigator.clipboard.writeText(val);
+  }
+</script>
+</body>
+</html>

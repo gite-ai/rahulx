@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>QR Code Generator — Rahulx.com</title>
+<meta name="description" content="Generate a free QR code from any text, URL, or Wi-Fi info instantly. Download as PNG. Runs in your browser, no sign-up required.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.rahulx.com/pages/main_pages/tools/qr-code-generator.html">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { min-height: 100%; }
+  body {
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #0d1b2a, #1b263b);
+    color: #e0e0e0;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 15px;
+  }
+  .sci-fi-bg { position: fixed; inset: 0; z-index: -1; background: radial-gradient(circle at 50% 50%, #001f3f55 30%, #000 80%); }
+  header { text-align: center; padding: 20px 0 10px; }
+  h1 { font-family: 'Orbitron', sans-serif; font-size: 2rem; color: #00ffcc; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px #00ffccaa; }
+  .tagline { color: #b0e9e4; margin: 8px 0 20px; text-align: center; max-width: 90%; }
+  .card {
+    background: rgba(5, 32, 65, 0.9); border-radius: 12px; box-shadow: 0 0 15px #00ffcc22;
+    padding: 24px; max-width: 480px; width: 100%; margin: 10px auto; text-align: center;
+  }
+  .tabs { display: flex; gap: 8px; margin-bottom: 18px; }
+  .tab-btn {
+    background: rgba(0,255,204,0.08); border: 1px solid #00ffcc55; color: #00ffcc;
+    padding: 9px 12px; border-radius: 8px; cursor: pointer; font-family: 'Orbitron', sans-serif; font-size: 0.7rem; text-transform: uppercase; flex: 1;
+  }
+  .tab-btn.active { background: #00ffcc; color: #06131b; }
+  textarea, input[type="text"], input[type="password"] {
+    width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #00ffcc55;
+    background: #0a1622; color: #fff; font-size: 1rem; margin-bottom: 12px; font-family: 'Share Tech Mono', monospace;
+    text-align: left;
+  }
+  textarea { min-height: 80px; resize: vertical; }
+  select {
+    width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #00ffcc55;
+    background: #0a1622; color: #fff; margin-bottom: 12px;
+  }
+  .field-label { display: block; text-align: left; color: #00ffcc; font-family: 'Orbitron', sans-serif; font-size: 0.75rem; margin-bottom: 6px; }
+  .action-btn {
+    width: 100%; padding: 13px; border: none; border-radius: 8px; background: #00ffcc;
+    color: #06131b; font-family: 'Orbitron', sans-serif; font-weight: 700; letter-spacing: 1px;
+    cursor: pointer; font-size: 0.9rem; margin-bottom: 16px;
+  }
+  .action-btn:hover { background: #7cffe8; }
+  #qrResult { background: #fff; padding: 16px; border-radius: 10px; display: inline-block; min-height: 200px; min-width: 200px; }
+  #qrResult img, #qrResult canvas { display: block; margin: 0 auto; }
+  #downloadLink { display: none; margin-top: 14px; }
+  .download-btn {
+    display: inline-block; padding: 10px 20px; background: rgba(0,255,204,0.1); border: 1px solid #00ffcc55;
+    color: #00ffcc; border-radius: 8px; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; text-decoration: none;
+  }
+  .download-btn:hover { background: rgba(0,255,204,0.2); }
+  footer { text-align: center; padding: 20px 0 10px; font-size: 0.8rem; color: #b0e9e4; }
+  footer a { color: #80ffd0; text-decoration: none; }
+  a.back { display:inline-block; margin-top:14px; color:#ff9fd6; text-decoration:none; font-size:0.9rem; }
+  .note { font-size: 0.8rem; color: #8fb0ad; margin-top: 14px; }
+  .hidden-panel { display: none; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+<div class="sci-fi-bg"></div>
+<header>
+  <h1>QR Code Generator</h1>
+  <p class="tagline">Turn any link, text, or Wi-Fi network into a scannable QR code — free, instant, downloadable.</p>
+</header>
+<main>
+  <div class="card">
+    <div class="tabs">
+      <button class="tab-btn active" data-mode="text" onclick="setMode('text')">Text / URL</button>
+      <button class="tab-btn" data-mode="wifi" onclick="setMode('wifi')">Wi-Fi</button>
+    </div>
+
+    <div id="panel-text">
+      <label class="field-label">TEXT OR URL</label>
+      <textarea id="textValue" placeholder="https://example.com or any text"></textarea>
+    </div>
+
+    <div id="panel-wifi" class="hidden-panel">
+      <label class="field-label">NETWORK NAME (SSID)</label>
+      <input type="text" id="wifiSsid" placeholder="My Wi-Fi Network">
+      <label class="field-label">PASSWORD</label>
+      <input type="text" id="wifiPass" placeholder="password">
+      <label class="field-label">SECURITY TYPE</label>
+      <select id="wifiSecurity">
+        <option value="WPA">WPA/WPA2</option>
+        <option value="WEP">WEP</option>
+        <option value="nopass">None (open network)</option>
+      </select>
+    </div>
+
+    <button class="action-btn" onclick="generateQr()">GENERATE QR CODE</button>
+
+    <div id="qrResult"></div>
+    <div id="downloadLink"><a class="download-btn" id="downloadA" download="qrcode.png">Download PNG</a></div>
+    <p class="note">Generated entirely in your browser. Nothing you type is sent to any server.</p>
+  </div>
+  <div style="text-align:center;"><a class="back" href="tools.html">&larr; Back to all tools</a></div>
+</main>
+<footer>
+  <p>&copy; 2026 Rahulx.com. All rights reserved. |
+    <a href="/about.html">About</a> |
+    <a href="/contact.html">Contact</a> |
+    <a href="/privacy-policy.html">Privacy Policy</a> |
+    <a href="/terms-of-service.html">Terms of Service</a> |
+    <a href="/disclaimer.html">Disclaimer</a> |
+    <a href="/sitemap.xml">Sitemap</a>
+  </p>
+</footer>
+<script>
+  let mode = 'text';
+
+  function setMode(newMode) {
+    mode = newMode;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+    document.getElementById('panel-text').classList.toggle('hidden-panel', mode !== 'text');
+    document.getElementById('panel-wifi').classList.toggle('hidden-panel', mode !== 'wifi');
+  }
+
+  function buildPayload() {
+    if (mode === 'wifi') {
+      const ssid = document.getElementById('wifiSsid').value.trim();
+      const pass = document.getElementById('wifiPass').value;
+      const sec = document.getElementById('wifiSecurity').value;
+      if (!ssid) return null;
+      return `WIFI:T:${sec};S:${ssid};P:${sec === 'nopass' ? '' : pass};;`;
+    }
+    return document.getElementById('textValue').value.trim();
+  }
+
+  function generateQr() {
+    const payload = buildPayload();
+    const resultEl = document.getElementById('qrResult');
+    const downloadWrap = document.getElementById('downloadLink');
+    resultEl.innerHTML = '';
+    downloadWrap.style.display = 'none';
+
+    if (!payload) {
+      resultEl.innerHTML = '<p style="color:#c0392b;padding:20px;">Enter some content first.</p>';
+      return;
+    }
+
+    if (typeof QRCode === 'undefined') {
+      resultEl.innerHTML = '<p style="color:#c0392b;padding:20px;">QR library failed to load. Check your connection and try again.</p>';
+      return;
+    }
+
+    new QRCode(resultEl, {
+      text: payload,
+      width: 220,
+      height: 220,
+      correctLevel: QRCode.CorrectLevel.M
+    });
+
+    setTimeout(() => {
+      const img = resultEl.querySelector('img');
+      const canvas = resultEl.querySelector('canvas');
+      let dataUrl = null;
+      if (canvas) dataUrl = canvas.toDataURL('image/png');
+      else if (img && img.src) dataUrl = img.src;
+      if (dataUrl) {
+        document.getElementById('downloadA').href = dataUrl;
+        downloadWrap.style.display = 'block';
+      }
+    }, 150);
+  }
+</script>
+</body>
+</html>

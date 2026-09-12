@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coding Glossary: Programming Terms Explained Simply — Rahulx.com</title>
+<meta name="description" content="A beginner-friendly glossary of core programming and software development terms — APIs, Git, functions, recursion, and more — explained without assuming prior experience.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.rahulx.com/pages/main_pages/glossary/coding-glossary.html">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/theme.css">
+<style>
+  .glossary-search {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 16px;
+    margin-bottom: 24px;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid var(--cyan, #2ee6d6);
+    color: var(--text, #dfeff0);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1rem;
+    border-radius: 2px;
+  }
+  .glossary-search::placeholder { color: rgba(223,239,240,0.45); }
+  .glossary-letter {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--amber, #ffb84d);
+    font-size: 1.1rem;
+    margin: 30px 0 10px;
+    border-bottom: 1px solid rgba(255,184,77,0.3);
+    padding-bottom: 6px;
+  }
+  .glossary-letter:first-of-type { margin-top: 0; }
+  dl.glossary-list { margin: 0; }
+  dl.glossary-list dt {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--cyan, #2ee6d6);
+    margin-top: 16px;
+  }
+  dl.glossary-list dd {
+    margin: 4px 0 0 0;
+    color: var(--text, #dfeff0);
+    line-height: 1.55;
+  }
+  .glossary-term { display: block; }
+  .glossary-term.hidden { display: none; }
+  .glossary-count { color: var(--text-dim, #8fa3a6); font-size: 0.9rem; margin-bottom: 10px; }
+  .glossary-crosslinks a { margin-right: 14px; }
+</style>
+</head>
+<body class="hud">
+<header class="hud-topbar">
+  <a href="/index.html" class="hud-brand"><span class="dot"></span> RAHULX.COM</a>
+  <button class="hud-menu-toggle" data-hud-toggle aria-label="Toggle navigation">MENU</button>
+  <nav class="hud-nav" data-hud-nav>
+    <a href="/index.html">Home</a>
+    <a href="glossary.html" class="">Glossary</a>
+    <a href="/index.html#topics">Topics</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hud-hero">
+  <span class="tag">Glossary · File GLS-002</span>
+  <h1>Coding Glossary</h1>
+  <p class="lede">Core programming and software development terms explained in plain language, for anyone learning to code or just trying to follow a technical conversation.</p>
+</section>
+
+<main class="hud-wrap">
+
+  <div class="hud-panel">
+    <p class="glossary-crosslinks">
+      <a class="hud-btn" href="glossary.html">&larr; All Glossaries</a>
+      <a class="hud-btn" href="tech-ai-glossary.html">Tech &amp; AI</a> <a class="hud-btn" href="coding-glossary.html">Coding</a> <a class="hud-btn" href="trading-glossary.html">Trading &amp; Finance</a>
+    </p>
+    <input type="text" class="glossary-search" id="glossary-search" placeholder="Search terms... (e.g. type a word to filter instantly)" oninput="filterGlossary()" aria-label="Search glossary terms">
+    <p class="glossary-count" id="glossary-count"></p>
+    <div id="glossary-body">
+      <h3 class="glossary-letter">A</h3>
+      <dl class="glossary-list">
+        <div class="glossary-term" id="api-endpoint" data-term="api endpoint">
+          <dt>API Endpoint</dt>
+          <dd>A specific URL or address at which a web service exposes one particular piece of functionality, such as /users or /login, for other programs to call.</dd>
+        </div>
+        <div class="glossary-term" id="array" data-term="array">
+          <dt>Array</dt>
+          <dd>An ordered collection of values stored under a single variable name, accessed by numeric position (index), typically starting at 0.</dd>
+        </div>
+      </dl>
+      <h3 class="glossary-letter">B</h3>
+      <dl class="glossary-list">
+        <div class="glossary-term" id="boolean" data-term="boolean">
+          <dt>Boolean</dt>
+          <dd>A data type that can only hold one of two values: true or false, used constantly in conditional logic.</dd>
+        </div>
+        <div class="glossary-term" id="branch-git" data-term="branch (git)">
+          <dt>Branch (Git)</dt>
+          <dd>An independent line of development within a version-controlled project, allowing changes to be made without affecting the main codebase until they're merged.</dd>
+        </div>
+        <div class="glossary-term" id="bug" data-term="bug">
+          <dt>Bug</dt>
+          <dd>An error or flaw in a program that causes it to behave in an unintended way, ranging from a cosmetic glitch to a critical crash.</dd>
+        </div>
+      </dl>
+      <h3 class="glossary-letter">C</h3>
+      <dl class="glossary-list">
+        <div class="glossary-term" id="class" data-term="class">
+          <dt>Class</dt>
+          <dd>A blueprint in object-oriented programming that defines the properties (data) and methods (behavior) that its instances (objects) will have.</dd>
+        </div>
+        <div class="glossary-term" id="compiler" data-term="compiler">
+          <dt>Compiler</dt>
+          <dd>A program that translates source code written in a human-readable language into machine code (or another lower-level form) before the program runs.</dd>
+        </div>
+      </dl>
+      <h3 class="glossary-letter">D</h3>
+      <dl class="glossary-list">
+        <div class="glossary-term" id="debugging" data-term="debugging">
+          <dt>Debugging</dt>
+          <dd>The process of finding and fixing bugs in software, often using tools like breakpoints, logging, or step-through execution.</dd>
+        </div>
+        <div class="glossary-term" id="dependency" data-term="dependency">
+          <dt>Dependency</dt>
+          <dd>An external library, package, or piece of code that a project relies on to function, typically managed through a package manager.</dd>
+        </div>
+      </dl>
+      <h3 class="glossary-letter">F</h3>
+      <dl class="glossary-list">
+        <div class="glossary-term" id="framework" data-term="framework">
+          <dt>Framework</dt>
+          <dd>A pre-built structure of reusable code and conventions that developers build applications on top of, handling common tasks so they don't have to be solved from scratch.</dd>
+        </div>
+        <div class="glossary-term" id="front-end-vs-back-end" data-term="front end vs. back end">
+          <dt>Front End vs. Back End</dt>
+          <dd>The front end is the part of an application users directly see and interact with (UI); the back end is the server-side logic, database, and infrastructure that powers it behind the scenes.</dd>
+        </div>
+        <div class="glossary-term" id="function" data-term="function">
+          <dt>Function</dt>
+          <dd>A named, reusable block of code that performs a specific task and can be called repeatedly, optionally accepting inputs and returning a result.</dd>
+        </div>
+      </dl>
+      <h3 class="glossary-letter">G</h3>
+      <dl class="glossary-list">
+        <div class="glossary-term" id="git" data-term="git">
+          <dt>Git</dt>
+          <dd>A distributed version control system that tracks changes to files over time, letting multiple people collaborate on the same codebase without overwriting each other's work.</dd>
+        </div>
+      </dl>
+      <h3 class="glossary-letter">I</h3>
+      <dl class="glossary-list">
+        <div class="glossary-term" id="ide-integrated-development-environment" data-term="ide (integrated development environment)">
+          <dt>IDE (Integrated Development Environment)</dt>
+          <dd>A software application that bundles a code editor, debugger, and other developer tools together, such as Visual Studio Code or JetBrains IDEs.</dd>
+        </div>
+      </dl>
+      <h3 class="glossary-letter">J</h3>
+      <dl class="glossary-list">
+        <div class="glossary-term" id="json-javascript-object-notation" data-term="json (javascript object notation)">
+          <dt>JSON (JavaScript Object Notation)</dt>
+          <dd>A lightweight, human-readable text format for structuring data as key-value pairs, widely used for exchanging data between a server and a web application.</dd>
+        </div>
+      </dl>
+      <h3 class="glossary-letter">L</h3>
+      <dl class="glossary-list">
+        <div class="glossary-term" id="library" data-term="library">
+          <dt>Library</dt>
+          <dd>A collection of pre-written code that developers can call into their own programs to perform common tasks, without dictating the overall structure of the application (unlike a framework).</dd>
+        </div>
+        <div class="glossary-term" id="loop" data-term="loop">
+          <dt>Loop</dt>
+          <dd>A programming construct that repeats a block of code multiple times, either a fixed number of times or until a condition is met.</dd>
+        </div>
+      </dl>
+      <h3 class="glossary-letter">M</h3>
+      <dl class="glossary-list">
+        <div class="glossary-term" id="merge-conflict" data-term="merge conflict">
+          <dt>Merge Conflict</dt>
+          <dd>A situation in version control where two sets of changes to the same lines of a file can't be automatically combined, requiring a human to manually resolve the difference.</dd>
+        </div>
+      </dl>
+      <h3 class="glossary-letter">N</h3>
+      <dl class="glossary-list">
+        <div class="glossary-term" id="null" data-term="null">
+          <dt>Null</dt>
+          <dd>A special value indicating the deliberate absence of any value or object, distinct from zero, an empty string, or false.</dd>
+        </div>
+      </dl>
+      <h3 class="glossary-letter">O</h3>
+      <dl class="glossary-list">
+        <div class="glossary-term" id="object-oriented-programming-oop" data-term="object-oriented programming (oop)">
+          <dt>Object-Oriented Programming (OOP)</dt>
+          <dd>A programming paradigm that organizes code around 'objects' bundling data and behavior together, built from templates called classes.</dd>
+        </div>
+        <div class="glossary-term" id="open-source-license" data-term="open-source license">
+          <dt>Open-Source License</dt>
+          <dd>A legal document (such as MIT, Apache 2.0, or GPL) that specifies how open-source code can be used, modified, and redistributed.</dd>
+        </div>
+      </dl>
+      <h3 class="glossary-letter">P</h3>
+      <dl class="glossary-list">
+        <div class="glossary-term" id="pull-request-pr" data-term="pull request (pr)">
+          <dt>Pull Request (PR)</dt>
+          <dd>A request to merge a set of code changes from one branch into another, typically reviewed and discussed by other developers before being accepted.</dd>
+        </div>
+      </dl>
+      <h3 class="glossary-letter">R</h3>
+      <dl class="glossary-list">
+        <div class="glossary-term" id="recursion" data-term="recursion">
+          <dt>Recursion</dt>
+          <dd>A technique where a function solves a problem by calling itself on a smaller version of the same problem, until it reaches a base case that stops the chain.</dd>
+        </div>
+        <div class="glossary-term" id="refactoring" data-term="refactoring">
+          <dt>Refactoring</dt>
+          <dd>Restructuring existing code to improve its readability, structure, or performance without changing its external behavior.</dd>
+        </div>
+        <div class="glossary-term" id="regex-regular-expression" data-term="regex (regular expression)">
+          <dt>Regex (Regular Expression)</dt>
+          <dd>A sequence of characters that defines a search pattern, used to find, match, or replace specific text within strings.</dd>
+        </div>
+        <div class="glossary-term" id="repository-repo" data-term="repository (repo)">
+          <dt>Repository (Repo)</dt>
+          <dd>A storage location, typically managed by Git, that holds a project's files along with the full history of changes made to them.</dd>
+        </div>
+        <div class="glossary-term" id="rest-api" data-term="rest api">
+          <dt>REST API</dt>
+          <dd>An architectural style for web APIs that uses standard HTTP methods (GET, POST, PUT, DELETE) to let applications communicate over the internet in a predictable, stateless way.</dd>
+        </div>
+        <div class="glossary-term" id="runtime" data-term="runtime">
+          <dt>Runtime</dt>
+          <dd>The environment in which a program actually executes, as opposed to compile time (when source code is translated) — errors that only appear while the program is running are called runtime errors.</dd>
+        </div>
+      </dl>
+      <h3 class="glossary-letter">S</h3>
+      <dl class="glossary-list">
+        <div class="glossary-term" id="sql-structured-query-language" data-term="sql (structured query language)">
+          <dt>SQL (Structured Query Language)</dt>
+          <dd>The standard language used to create, query, update, and manage data stored in relational databases.</dd>
+        </div>
+        <div class="glossary-term" id="syntax-error" data-term="syntax error">
+          <dt>Syntax Error</dt>
+          <dd>A mistake in code that violates the grammatical rules of the programming language, preventing it from running at all until fixed.</dd>
+        </div>
+      </dl>
+      <h3 class="glossary-letter">V</h3>
+      <dl class="glossary-list">
+        <div class="glossary-term" id="variable" data-term="variable">
+          <dt>Variable</dt>
+          <dd>A named container that holds a value which can be read or changed while a program runs.</dd>
+        </div>
+        <div class="glossary-term" id="version-control" data-term="version control">
+          <dt>Version Control</dt>
+          <dd>A system for tracking and managing changes to code over time, enabling collaboration, rollback to earlier states, and parallel development via branches.</dd>
+        </div>
+      </dl>
+    </div>
+    <p class="glossary-count" id="glossary-empty" style="display:none;">No terms match your search.</p>
+  </div>
+
+  
+
+</main>
+
+<footer class="hud-footer">
+  <div class="legal-links">
+    <a href="/index.html">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/terms-of-service.html">Terms of Service</a>
+    <a href="/disclaimer.html">Disclaimer</a>
+    <a href="/sitemap.xml">Sitemap</a>
+  </div>
+  <p>&copy; 2026 Rahulx.com. All rights reserved.</p>
+</footer>
+
+<script src="/assets/js/site.js"></script>
+<script>
+function filterGlossary() {
+  var q = document.getElementById('glossary-search').value.trim().toLowerCase();
+  var terms = document.querySelectorAll('.glossary-term');
+  var letters = document.querySelectorAll('.glossary-letter');
+  var shown = 0;
+  terms.forEach(function(el) {
+    var text = el.getAttribute('data-term') + ' ' + el.textContent.toLowerCase();
+    if (q === '' || text.toLowerCase().indexOf(q) !== -1) {
+      el.classList.remove('hidden');
+      shown++;
+    } else {
+      el.classList.add('hidden');
+    }
+  });
+  letters.forEach(function(letterEl) {
+    var next = letterEl.nextElementSibling;
+    var hasVisible = false;
+    while (next && !next.classList.contains('glossary-letter')) {
+      if (next.classList.contains('glossary-term') && !next.classList.contains('hidden')) { hasVisible = true; }
+      next = next.nextElementSibling;
+    }
+    letterEl.style.display = hasVisible ? '' : 'none';
+  });
+  document.getElementById('glossary-count').textContent = shown + ' term' + (shown === 1 ? '' : 's') + (q ? ' matching "' + q + '"' : ' total');
+  document.getElementById('glossary-empty').style.display = shown === 0 ? 'block' : 'none';
+}
+document.addEventListener('DOMContentLoaded', filterGlossary);
+</script>
+</body>
+</html>

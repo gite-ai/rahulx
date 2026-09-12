@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Unix Timestamp Converter — Rahulx.com</title>
+<meta name="description" content="Convert Unix timestamps to human-readable dates and back, and see the current timestamp update live — free, instant, runs in your browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.rahulx.com/pages/main_pages/tools/timestamp-converter.html">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { min-height: 100%; }
+  body {
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #0d1b2a, #1b263b);
+    color: #e0e0e0;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 15px;
+  }
+  .sci-fi-bg { position: fixed; inset: 0; z-index: -1; background: radial-gradient(circle at 50% 50%, #001f3f55 30%, #000 80%); }
+  header { text-align: center; padding: 20px 0 10px; }
+  h1 { font-family: 'Orbitron', sans-serif; font-size: 2rem; color: #00ffcc; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px #00ffccaa; }
+  .tagline { color: #b0e9e4; margin: 8px 0 20px; text-align: center; max-width: 90%; }
+  .card {
+    background: rgba(5, 32, 65, 0.9); border-radius: 12px; box-shadow: 0 0 15px #00ffcc22;
+    padding: 24px; max-width: 560px; width: 100%; margin: 10px auto;
+  }
+  .live-box { text-align: center; margin-bottom: 20px; padding: 16px; background: #0a1622; border-radius: 8px; border: 1px solid #00ffcc33; }
+  .live-box .val { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; color: #00ffcc; text-shadow: 0 0 8px #00ffcc66; }
+  .live-box .lbl { font-size: 0.8rem; color: #8fb0ad; margin-top: 6px; }
+  .section-label { font-family: 'Orbitron', sans-serif; color: #00ffcc; font-size: 0.9rem; margin: 20px 0 10px; letter-spacing: 0.5px; }
+  .row { display: flex; gap: 10px; margin-bottom: 10px; }
+  input[type="text"], input[type="datetime-local"] {
+    flex: 1; padding: 12px; border-radius: 8px; border: 1px solid #00ffcc55;
+    background: #0a1622; color: #fff; font-size: 1rem; font-family: 'Share Tech Mono', monospace;
+  }
+  .action-btn {
+    padding: 12px 16px; border: none; border-radius: 8px; background: #00ffcc;
+    color: #06131b; font-family: 'Orbitron', sans-serif; font-weight: 700; cursor: pointer; font-size: 0.8rem; white-space: nowrap;
+  }
+  .action-btn:hover { background: #7cffe8; }
+  .result-box {
+    margin-top: 8px; padding: 12px 14px; background: #0a1622; border: 1px solid #00ffcc33; border-radius: 8px;
+    color: #7cffb0; font-family: 'Share Tech Mono', monospace; font-size: 0.95rem; min-height: 1.4em; word-break: break-word;
+  }
+  .divider { border: none; border-top: 1px solid #00ffcc33; margin: 22px 0; }
+  footer { text-align: center; padding: 20px 0 10px; font-size: 0.8rem; color: #b0e9e4; }
+  footer a { color: #80ffd0; text-decoration: none; }
+  a.back { display:inline-block; margin-top:14px; color:#ff9fd6; text-decoration:none; font-size:0.9rem; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+</head>
+<body>
+<div class="sci-fi-bg"></div>
+<header>
+  <h1>Timestamp Converter</h1>
+  <p class="tagline">Convert Unix timestamps to readable dates and back, and track the current epoch time live.</p>
+</header>
+<main>
+  <div class="card">
+    <div class="live-box">
+      <div class="val" id="liveTimestamp">--</div>
+      <div class="lbl">Current Unix Timestamp (seconds) &middot; <span id="liveDate">--</span></div>
+    </div>
+
+    <div class="section-label">TIMESTAMP &rarr; HUMAN DATE</div>
+    <div class="row">
+      <input type="text" id="tsInput" placeholder="e.g. 1893456000 (seconds or milliseconds)">
+      <button class="action-btn" onclick="convertToDate()">CONVERT</button>
+    </div>
+    <div class="result-box" id="dateResult">Result will appear here</div>
+
+    <hr class="divider">
+
+    <div class="section-label">HUMAN DATE &rarr; TIMESTAMP</div>
+    <div class="row">
+      <input type="datetime-local" id="dateInput">
+      <button class="action-btn" onclick="convertToTimestamp()">CONVERT</button>
+    </div>
+    <div class="result-box" id="tsResult">Result will appear here</div>
+  </div>
+  <div style="text-align:center;"><a class="back" href="tools.html">&larr; Back to all tools</a></div>
+</main>
+<footer>
+  <p>&copy; 2026 Rahulx.com. All rights reserved. |
+    <a href="/about.html">About</a> |
+    <a href="/contact.html">Contact</a> |
+    <a href="/privacy-policy.html">Privacy Policy</a> |
+    <a href="/terms-of-service.html">Terms of Service</a> |
+    <a href="/disclaimer.html">Disclaimer</a> |
+    <a href="/sitemap.xml">Sitemap</a>
+  </p>
+</footer>
+<script>
+  function updateLive() {
+    const now = Date.now();
+    document.getElementById('liveTimestamp').textContent = Math.floor(now / 1000);
+    document.getElementById('liveDate').textContent = new Date(now).toUTCString();
+  }
+  setInterval(updateLive, 1000);
+  updateLive();
+
+  function convertToDate() {
+    const raw = document.getElementById('tsInput').value.trim();
+    const resultEl = document.getElementById('dateResult');
+    if (!raw || isNaN(raw)) { resultEl.textContent = 'Enter a valid numeric timestamp.'; return; }
+    let num = parseInt(raw, 10);
+    if (raw.length <= 10) num *= 1000;
+    const d = new Date(num);
+    if (isNaN(d.getTime())) { resultEl.textContent = 'That number does not map to a valid date.'; return; }
+    resultEl.innerHTML = `UTC: ${d.toUTCString()}<br>Local: ${d.toString()}<br>ISO 8601: ${d.toISOString()}`;
+  }
+
+  function convertToTimestamp() {
+    const raw = document.getElementById('dateInput').value;
+    const resultEl = document.getElementById('tsResult');
+    if (!raw) { resultEl.textContent = 'Pick a date and time first.'; return; }
+    const d = new Date(raw);
+    if (isNaN(d.getTime())) { resultEl.textContent = 'Invalid date.'; return; }
+    const seconds = Math.floor(d.getTime() / 1000);
+    resultEl.innerHTML = `Seconds: ${seconds}<br>Milliseconds: ${d.getTime()}`;
+  }
+</script>
+</body>
+</html>

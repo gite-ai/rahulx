@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Base64 Encoder & Decoder — Rahulx.com</title>
+<meta name="description" content="Free online Base64 encoder and decoder for text — instant, accurate, and runs entirely in your browser with no data ever sent to a server.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.rahulx.com/pages/main_pages/tools/base64-tool.html">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { min-height: 100%; }
+  body {
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #0d1b2a, #1b263b);
+    color: #e0e0e0;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 15px;
+  }
+  .sci-fi-bg { position: fixed; inset: 0; z-index: -1; background: radial-gradient(circle at 50% 50%, #001f3f55 30%, #000 80%); }
+  header { text-align: center; padding: 20px 0 10px; }
+  h1 { font-family: 'Orbitron', sans-serif; font-size: 2rem; color: #00ffcc; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px #00ffccaa; }
+  .tagline { color: #b0e9e4; margin: 8px 0 20px; text-align: center; max-width: 90%; }
+  .card {
+    background: rgba(5, 32, 65, 0.9); border-radius: 12px; box-shadow: 0 0 15px #00ffcc22;
+    padding: 24px; max-width: 700px; width: 100%; margin: 10px auto;
+  }
+  .tabs { display: flex; gap: 8px; margin-bottom: 18px; justify-content: center; }
+  .tab-btn {
+    background: rgba(0,255,204,0.08); border: 1px solid #00ffcc55; color: #00ffcc;
+    padding: 10px 20px; border-radius: 8px; cursor: pointer; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; text-transform: uppercase; flex: 1;
+  }
+  .tab-btn.active { background: #00ffcc; color: #06131b; }
+  textarea {
+    width: 100%; min-height: 160px; padding: 14px; border-radius: 8px; border: 1px solid #00ffcc55;
+    background: #0a1622; color: #cfeff0; font-family: 'Share Tech Mono', monospace; font-size: 0.92rem;
+    resize: vertical; line-height: 1.5; margin-bottom: 14px;
+  }
+  label.field-label { display: block; color: #00ffcc; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; margin-bottom: 8px; letter-spacing: 0.5px; }
+  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 4px 0 16px; }
+  .action-btn {
+    flex: 1; min-width: 120px; padding: 12px; border: none; border-radius: 8px; background: #00ffcc;
+    color: #06131b; font-family: 'Orbitron', sans-serif; font-weight: 700; letter-spacing: 0.5px;
+    cursor: pointer; font-size: 0.85rem;
+  }
+  .action-btn.secondary { background: rgba(0,255,204,0.1); color: #00ffcc; border: 1px solid #00ffcc55; }
+  .action-btn:hover { background: #7cffe8; }
+  .action-btn.secondary:hover { background: rgba(0,255,204,0.2); }
+  .status { margin-top: 4px; margin-bottom: 14px; padding: 10px 14px; border-radius: 8px; font-family: 'Share Tech Mono', monospace; font-size: 0.9rem; display: none; }
+  .status.ok { display: block; background: rgba(124,255,176,0.1); border: 1px solid #7cffb055; color: #7cffb0; }
+  .status.err { display: block; background: rgba(255,77,109,0.1); border: 1px solid #ff4d6d55; color: #ff9daa; }
+  footer { text-align: center; padding: 20px 0 10px; font-size: 0.8rem; color: #b0e9e4; }
+  footer a { color: #80ffd0; text-decoration: none; }
+  a.back { display:inline-block; margin-top:14px; color:#ff9fd6; text-decoration:none; font-size:0.9rem; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+</head>
+<body>
+<div class="sci-fi-bg"></div>
+<header>
+  <h1>Base64 Encode / Decode</h1>
+  <p class="tagline">Convert text to and from Base64 instantly — runs fully offline in your browser.</p>
+</header>
+<main>
+  <div class="card">
+    <div class="tabs">
+      <button class="tab-btn active" id="encodeTab" onclick="setMode('encode')">Encode</button>
+      <button class="tab-btn" id="decodeTab" onclick="setMode('decode')">Decode</button>
+    </div>
+    <label class="field-label" id="inputLabel">TEXT TO ENCODE</label>
+    <textarea id="b64Input" placeholder="Type or paste text here"></textarea>
+    <div class="btn-row">
+      <button class="action-btn" id="convertBtn" onclick="convert()">ENCODE</button>
+      <button class="action-btn secondary" onclick="swapValues()">SWAP</button>
+      <button class="action-btn secondary" onclick="copyResult()">COPY RESULT</button>
+      <button class="action-btn secondary" onclick="clearAll()">CLEAR</button>
+    </div>
+    <div class="status" id="status"></div>
+    <label class="field-label" id="outputLabel">BASE64 OUTPUT</label>
+    <textarea id="b64Output" readonly></textarea>
+  </div>
+  <div style="text-align:center;"><a class="back" href="tools.html">&larr; Back to all tools</a></div>
+</main>
+<footer>
+  <p>&copy; 2026 Rahulx.com. All rights reserved. |
+    <a href="/about.html">About</a> |
+    <a href="/contact.html">Contact</a> |
+    <a href="/privacy-policy.html">Privacy Policy</a> |
+    <a href="/terms-of-service.html">Terms of Service</a> |
+    <a href="/disclaimer.html">Disclaimer</a> |
+    <a href="/sitemap.xml">Sitemap</a>
+  </p>
+</footer>
+<script>
+  let mode = 'encode';
+  const input = document.getElementById('b64Input');
+  const output = document.getElementById('b64Output');
+  const status = document.getElementById('status');
+
+  function showStatus(ok, message) {
+    status.className = 'status ' + (ok ? 'ok' : 'err');
+    status.textContent = message;
+  }
+
+  function setMode(newMode) {
+    mode = newMode;
+    document.getElementById('encodeTab').classList.toggle('active', mode === 'encode');
+    document.getElementById('decodeTab').classList.toggle('active', mode === 'decode');
+    document.getElementById('inputLabel').textContent = mode === 'encode' ? 'TEXT TO ENCODE' : 'BASE64 TO DECODE';
+    document.getElementById('outputLabel').textContent = mode === 'encode' ? 'BASE64 OUTPUT' : 'DECODED TEXT';
+    document.getElementById('convertBtn').textContent = mode === 'encode' ? 'ENCODE' : 'DECODE';
+    input.placeholder = mode === 'encode' ? 'Type or paste text here' : 'Paste Base64 string here';
+    status.className = 'status';
+  }
+
+  function utf8ToBase64(str) {
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+
+  function base64ToUtf8(str) {
+    return decodeURIComponent(escape(atob(str)));
+  }
+
+  function convert() {
+    const val = input.value;
+    if (!val) { showStatus(false, 'Nothing to convert — type something first.'); return; }
+    try {
+      if (mode === 'encode') {
+        output.value = utf8ToBase64(val);
+        showStatus(true, 'Encoded successfully.');
+      } else {
+        output.value = base64ToUtf8(val.trim());
+        showStatus(true, 'Decoded successfully.');
+      }
+    } catch (e) {
+      output.value = '';
+      showStatus(false, mode === 'decode' ? 'Invalid Base64 string — cannot decode.' : 'Could not encode this input.');
+    }
+  }
+
+  function swapValues() {
+    const temp = input.value;
+    input.value = output.value;
+    output.value = temp;
+    setMode(mode === 'encode' ? 'decode' : 'encode');
+  }
+
+  function copyResult() {
+    if (!output.value) return;
+    navigator.clipboard.writeText(output.value);
+    showStatus(true, 'Result copied to clipboard.');
+  }
+
+  function clearAll() {
+    input.value = '';
+    output.value = '';
+    status.className = 'status';
+  }
+</script>
+</body>
+</html>
