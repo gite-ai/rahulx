@@ -54,8 +54,8 @@
       "Cross-platform compatibility"
     ],
     "example": "Printing <b>Hello, World!</b> with a single line: <i>print('Hello, World!')</i>.<br>A <b>beginner-friendly</b> start.",
-    "image": "https://example.com/images/python.jpg",
-    "thread": "https://x.com/example/thread/12345"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "JavaScript Essentials",
@@ -112,8 +112,8 @@
       "Event-driven architecture"
     ],
     "example": "Adding a <b>click event</b>: <i>button.addEventListener('click', () => alert('Clicked!'))</i>.<br>Simple yet <b>powerful</b>.",
-    "image": "https://example.com/images/js.jpg",
-    "thread": "https://x.com/example/thread/67890"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Java Fundamentals",
@@ -170,8 +170,8 @@
       "Robust memory management"
     ],
     "example": "Writing <b>Hello, World!</b>: <i>public class Main { public static void main(String[] args) { System.out.println('Hello, World!'); }}</i>.<br>A <b>classic</b> example.",
-    "image": "https://example.com/images/java.jpg",
-    "thread": "https://x.com/example/thread/54321"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "C++ Fundamentals",
@@ -228,8 +228,8 @@
       "Generic programming"
     ],
     "example": "Writing <b>Hello, World!</b>: <i>#include <iostream> int main() <br>{ std::cout << 'Hello, World!' << std::endl; return 0; }</i>.<br>A <b>classic</b> example.",
-    "image": "https://example.com/images/cpp.jpg",
-    "thread": "https://x.com/example/thread/cpp123"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Go Basics",
@@ -286,8 +286,8 @@
       "Fast compilation"
     ],
     "example": "Writing <b>Hello, World!</b>: <i>package main; import 'fmt'; func main() { fmt.Println('Hello, World!') }</i>.<br>A <b>minimal</b> example.",
-    "image": "https://example.com/images/go.jpg",
-    "thread": "https://x.com/example/thread/go456"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Rust Essentials",
@@ -344,7 +344,931 @@
       "Concurrency without data races"
     ],
     "example": "Writing <b>Hello, World!</b>: <i>fn main() { println!('Hello, World!'); }</i>.<br>A <b>safe</b> example.",
-    "image": "https://example.com/images/rust.jpg",
-    "thread": "https://x.com/example/thread/rust789"
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "TypeScript",
+    "desc": "TypeScript is a <b>typed superset</b> of JavaScript that compiles to plain JavaScript.<br>Built by <i>Microsoft</i>, it brings static typing to large-scale <b>web applications</b>.",
+    "invention": {
+      "term_coined_by": "Anders Hejlsberg",
+      "year": "2012",
+      "early_pioneers": ["Anders Hejlsberg", "Microsoft"],
+      "early_developments": ["TypeScript 0.8", "TypeScript 0.9"]
+    },
+    "purpose": [
+      "Add static typing to JavaScript for safer large codebases",
+      "Improve tooling with autocompletion and refactoring support",
+      "Catch errors at compile time before code runs"
+    ],
+    "key_milestones": [
+      {
+        "year": 2012,
+        "event": "TypeScript Public Preview",
+        "description": "Microsoft publicly announces TypeScript 0.8, adding optional static types to JavaScript."
+      },
+      {
+        "year": 2014,
+        "event": "TypeScript 1.0",
+        "description": "Microsoft releases the first stable version of TypeScript at its Build conference."
+      },
+      {
+        "year": 2016,
+        "event": "TypeScript 2.0",
+        "description": "Introduces non-nullable types and control flow analysis, boosting adoption."
+      }
+    ],
+    "basics": {
+      "definition": "A strongly typed programming language that builds on JavaScript by adding static type definitions.",
+      "key_terms": [
+        {
+          "term": "Type Annotation",
+          "definition": "Syntax that explicitly declares the type of a variable, parameter, or return value."
+        },
+        {
+          "term": "Interface",
+          "definition": "A structure that defines the shape of an object, used for type checking."
+        },
+        {
+          "term": "Transpilation",
+          "definition": "The process of compiling TypeScript code down into plain JavaScript."
+        },
+        {
+          "term": "Generics",
+          "definition": "Allow components to work with multiple types while preserving type safety."
+        }
+      ]
+    },
+    "applications": [
+      "Large-scale front-end frameworks (e.g., Angular, React with TSX)",
+      "Enterprise back-end development (e.g., NestJS)",
+      "Cross-platform apps (e.g., Ionic, React Native)"
+    ],
+    "key_concepts": [
+      "Static typing",
+      "Type inference",
+      "Structural typing"
+    ],
+    "example": "Typing a function: <i>function add(a: number, b: number): number { return a + b; }</i>.<br>Passing a string is caught <b>before runtime</b>.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "SQL & Relational Databases",
+    "desc": "SQL (<b>Structured Query Language</b>) is the standard language for managing and querying <i>relational databases</i>.<br>It underpins nearly every <b>data-driven application</b>.",
+    "invention": {
+      "term_coined_by": "Donald D. Chamberlin and Raymond F. Boyce",
+      "year": "1974",
+      "early_pioneers": ["Donald D. Chamberlin", "Raymond F. Boyce", "Edgar F. Codd"],
+      "early_developments": ["SEQUEL", "IBM System R"]
+    },
+    "purpose": [
+      "Store and organize structured data in tables",
+      "Query and manipulate data using a declarative language",
+      "Enforce data integrity through relationships and constraints"
+    ],
+    "key_milestones": [
+      {
+        "year": 1970,
+        "event": "Relational Model Proposed",
+        "description": "Edgar F. Codd publishes 'A Relational Model of Data for Large Shared Data Banks' at IBM."
+      },
+      {
+        "year": 1974,
+        "event": "SEQUEL Developed",
+        "description": "Chamberlin and Boyce create SEQUEL (later SQL) at IBM to query the System R database."
+      },
+      {
+        "year": 1986,
+        "event": "SQL Standardized",
+        "description": "ANSI publishes the first official SQL standard, later adopted by ISO."
+      }
+    ],
+    "basics": {
+      "definition": "A domain-specific language used to store, retrieve, and manage data held in relational database management systems.",
+      "key_terms": [
+        {
+          "term": "Table",
+          "definition": "A structured collection of rows and columns representing an entity."
+        },
+        {
+          "term": "Primary Key",
+          "definition": "A column or set of columns that uniquely identifies each row in a table."
+        },
+        {
+          "term": "Join",
+          "definition": "An operation that combines rows from two or more tables based on a related column."
+        },
+        {
+          "term": "Normalization",
+          "definition": "The process of organizing data to reduce redundancy and improve integrity."
+        }
+      ]
+    },
+    "applications": [
+      "Business applications (e.g., MySQL, PostgreSQL, SQL Server)",
+      "Data analytics and reporting",
+      "Backend storage for web and mobile apps"
+    ],
+    "key_concepts": [
+      "Declarative querying",
+      "ACID transactions",
+      "Schema design"
+    ],
+    "example": "Selecting data: <i>SELECT name, age FROM users WHERE age > 18;</i>.<br>A <b>simple</b> query returning matching rows.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Data Structures & Algorithms",
+    "desc": "Data Structures and Algorithms (<b>DSA</b>) form the theoretical foundation of <i>computer science</i>.<br>They define how data is organized and how problems are solved <b>efficiently</b>.",
+    "invention": {
+      "term_coined_by": "Donald Knuth",
+      "year": "1968",
+      "early_pioneers": ["Donald Knuth", "Alan Turing", "John von Neumann"],
+      "early_developments": ["The Art of Computer Programming", "Turing Machine model"]
+    },
+    "purpose": [
+      "Organize data for efficient storage and retrieval",
+      "Provide systematic methods for solving computational problems",
+      "Enable analysis of time and space efficiency"
+    ],
+    "key_milestones": [
+      {
+        "year": 1945,
+        "event": "Stored-Program Concept",
+        "description": "John von Neumann outlines the architecture underlying modern computing and algorithm execution."
+      },
+      {
+        "year": 1968,
+        "event": "The Art of Computer Programming",
+        "description": "Donald Knuth publishes Volume 1, formalizing the study of algorithms and data structures."
+      },
+      {
+        "year": 1971,
+        "event": "NP-Completeness Defined",
+        "description": "Stephen Cook introduces the theory of NP-completeness, shaping algorithm complexity analysis."
+      }
+    ],
+    "basics": {
+      "definition": "The study of organizing data (data structures) and the step-by-step procedures (algorithms) used to process it efficiently.",
+      "key_terms": [
+        {
+          "term": "Big O Notation",
+          "definition": "A mathematical notation describing the upper bound of an algorithm's time or space complexity."
+        },
+        {
+          "term": "Array",
+          "definition": "A fixed-size, indexed collection of elements stored in contiguous memory."
+        },
+        {
+          "term": "Linked List",
+          "definition": "A linear data structure where elements point to the next node rather than sitting contiguously."
+        },
+        {
+          "term": "Recursion",
+          "definition": "A technique where a function calls itself to solve smaller instances of a problem."
+        }
+      ]
+    },
+    "applications": [
+      "Search engines and indexing",
+      "Route planning and navigation systems",
+      "Compilers, databases, and operating systems"
+    ],
+    "key_concepts": [
+      "Time and space complexity",
+      "Sorting and searching",
+      "Graph and tree traversal"
+    ],
+    "example": "Binary search on a sorted array runs in <i>O(log n)</i> time by repeatedly halving the search range.<br>Far faster than a <b>linear scan</b>.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Git & Version Control",
+    "desc": "Git is a <b>distributed version control system</b> that tracks changes in source code.<br>Created for <i>Linux kernel development</i>, it now powers <b>collaborative software projects</b> worldwide.",
+    "invention": {
+      "term_coined_by": "Linus Torvalds",
+      "year": "2005",
+      "early_pioneers": ["Linus Torvalds", "Junio Hamano"],
+      "early_developments": ["Git 0.99", "BitKeeper transition"]
+    },
+    "purpose": [
+      "Track changes to source code over time",
+      "Enable distributed collaboration among developers",
+      "Support branching and merging workflows"
+    ],
+    "key_milestones": [
+      {
+        "year": 2005,
+        "event": "Git Created",
+        "description": "Linus Torvalds develops Git in days after Linux kernel development loses access to BitKeeper."
+      },
+      {
+        "year": 2008,
+        "event": "GitHub Launches",
+        "description": "GitHub is founded, providing web-based hosting and collaboration for Git repositories."
+      },
+      {
+        "year": 2014,
+        "event": "Git 2.0 Released",
+        "description": "Major release refining push and merge defaults for large-scale collaboration."
+      }
+    ],
+    "basics": {
+      "definition": "A distributed version control system that lets multiple developers track, branch, and merge changes to a codebase over time.",
+      "key_terms": [
+        {
+          "term": "Commit",
+          "definition": "A snapshot of changes saved to the repository's history."
+        },
+        {
+          "term": "Branch",
+          "definition": "An independent line of development that can be merged back into the main codebase."
+        },
+        {
+          "term": "Merge",
+          "definition": "The process of combining changes from different branches."
+        },
+        {
+          "term": "Repository",
+          "definition": "A storage location containing a project's files and its full version history."
+        }
+      ]
+    },
+    "applications": [
+      "Collaborative software development (e.g., GitHub, GitLab, Bitbucket)",
+      "Open-source project management",
+      "Continuous integration pipelines"
+    ],
+    "key_concepts": [
+      "Distributed history",
+      "Branching and merging",
+      "Commit-based snapshots"
+    ],
+    "example": "Saving work: <i>git add . && git commit -m 'Fix bug'</i>.<br>Each commit creates a <b>traceable</b> checkpoint in history.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "REST APIs & Web Services",
+    "desc": "REST (<b>Representational State Transfer</b>) is an architectural style for designing networked <i>web services</i>.<br>It defines how systems communicate over <b>HTTP</b> using simple, stateless requests.",
+    "invention": {
+      "term_coined_by": "Roy Fielding",
+      "year": "2000",
+      "early_pioneers": ["Roy Fielding"],
+      "early_developments": ["HTTP/1.1 specification", "Fielding's doctoral dissertation"]
+    },
+    "purpose": [
+      "Standardize communication between distributed systems",
+      "Enable stateless, scalable client-server interactions",
+      "Expose resources through predictable URLs and HTTP verbs"
+    ],
+    "key_milestones": [
+      {
+        "year": 2000,
+        "event": "REST Defined",
+        "description": "Roy Fielding introduces REST in his PhD dissertation 'Architectural Styles and the Design of Network-based Software Architectures'."
+      },
+      {
+        "year": 2006,
+        "event": "Rise of Public Web APIs",
+        "description": "Companies like Amazon and Flickr popularize public REST-based web APIs."
+      },
+      {
+        "year": 2011,
+        "event": "Swagger Introduced",
+        "description": "Swagger (later the OpenAPI Specification) provides a standard way to describe REST APIs."
+      }
+    ],
+    "basics": {
+      "definition": "An architectural style for designing web services that use standard HTTP methods to operate on stateless resources identified by URLs.",
+      "key_terms": [
+        {
+          "term": "Endpoint",
+          "definition": "A specific URL where an API resource can be accessed."
+        },
+        {
+          "term": "HTTP Verb",
+          "definition": "Methods like GET, POST, PUT, and DELETE that define the action performed on a resource."
+        },
+        {
+          "term": "Statelessness",
+          "definition": "A principle where each request contains all information needed, with no session stored on the server."
+        },
+        {
+          "term": "JSON",
+          "definition": "A lightweight data format commonly used to exchange data in REST APIs."
+        }
+      ]
+    },
+    "applications": [
+      "Public APIs (e.g., Twitter, Stripe, Google Maps)",
+      "Microservices communication",
+      "Mobile and web app backends"
+    ],
+    "key_concepts": [
+      "Statelessness",
+      "Resource-based URLs",
+      "Client-server separation"
+    ],
+    "example": "Fetching data: <i>GET /api/users/42</i> returns a JSON object for user 42.<br>Simple, <b>predictable</b> HTTP semantics.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "DevOps & CI/CD",
+    "desc": "DevOps unites <b>software development</b> and <i>IT operations</i> to deliver software faster and more reliably.<br>CI/CD pipelines automate <b>building, testing, and deploying</b> code.",
+    "invention": {
+      "term_coined_by": "Patrick Debois",
+      "year": "2009",
+      "early_pioneers": ["Patrick Debois", "Grady Booch", "Jez Humble"],
+      "early_developments": ["DevOpsDays Conference", "Continuous Integration practice"]
+    },
+    "purpose": [
+      "Break down silos between development and operations teams",
+      "Automate build, test, and deployment pipelines",
+      "Enable faster, more reliable software releases"
+    ],
+    "key_milestones": [
+      {
+        "year": 1991,
+        "event": "Continuous Integration Coined",
+        "description": "Grady Booch first uses the term 'continuous integration' in software engineering practice."
+      },
+      {
+        "year": 2009,
+        "event": "Term 'DevOps' Coined",
+        "description": "Patrick Debois organizes the first DevOpsDays conference in Ghent, Belgium, popularizing the term."
+      },
+      {
+        "year": 2010,
+        "event": "Continuous Delivery Book",
+        "description": "Jez Humble and David Farley publish 'Continuous Delivery', formalizing CI/CD practices."
+      }
+    ],
+    "basics": {
+      "definition": "A set of cultural practices and tools (DevOps) combined with automated pipelines (CI/CD) that build, test, and deploy code continuously.",
+      "key_terms": [
+        {
+          "term": "Continuous Integration (CI)",
+          "definition": "Automatically building and testing code every time changes are merged."
+        },
+        {
+          "term": "Continuous Deployment (CD)",
+          "definition": "Automatically releasing every passing build to production."
+        },
+        {
+          "term": "Pipeline",
+          "definition": "A defined sequence of automated steps that code passes through from commit to release."
+        },
+        {
+          "term": "Infrastructure as Code",
+          "definition": "Managing servers and environments through version-controlled configuration files."
+        }
+      ]
+    },
+    "applications": [
+      "Automated software delivery (e.g., Jenkins, GitHub Actions, GitLab CI)",
+      "Cloud infrastructure management (e.g., Terraform, Ansible)",
+      "Container orchestration (e.g., Docker, Kubernetes)"
+    ],
+    "key_concepts": [
+      "Automation",
+      "Continuous feedback",
+      "Infrastructure as code"
+    ],
+    "example": "A pipeline runs tests on every <i>git push</i>, then automatically deploys if they pass.<br>This shortens the path from <b>code to production</b>.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Kotlin",
+    "desc": "Kotlin is a <b>modern, statically typed</b> language that runs on the JVM.<br>It's the <i>preferred language</i> for native <b>Android development</b>.",
+    "invention": {
+      "term_coined_by": "JetBrains",
+      "year": "2011",
+      "early_pioneers": ["Andrey Breslav", "JetBrains"],
+      "early_developments": ["Project Kotlin announcement", "Kotlin M1"]
+    },
+    "purpose": [
+      "Provide a safer, more concise alternative to Java on the JVM",
+      "Reduce boilerplate code and eliminate null pointer exceptions",
+      "Enable modern Android app development"
+    ],
+    "key_milestones": [
+      {
+        "year": 2011,
+        "event": "Kotlin Announced",
+        "description": "JetBrains publicly unveils Kotlin, named after an island near St. Petersburg."
+      },
+      {
+        "year": 2016,
+        "event": "Kotlin 1.0 Release",
+        "description": "JetBrains releases the first stable, production-ready version of Kotlin."
+      },
+      {
+        "year": 2017,
+        "event": "Official Android Support",
+        "description": "Google announces first-class support for Kotlin on Android at Google I/O."
+      }
+    ],
+    "basics": {
+      "definition": "A statically typed programming language that runs on the JVM and interoperates fully with Java, designed for conciseness and safety.",
+      "key_terms": [
+        {
+          "term": "Null Safety",
+          "definition": "Type system features that prevent null pointer exceptions at compile time."
+        },
+        {
+          "term": "Data Class",
+          "definition": "A concise class declaration that automatically generates equals, hashCode, and toString methods."
+        },
+        {
+          "term": "Coroutines",
+          "definition": "Lightweight constructs for writing asynchronous, non-blocking code sequentially."
+        },
+        {
+          "term": "Extension Function",
+          "definition": "A way to add new functions to existing classes without inheriting from them."
+        }
+      ]
+    },
+    "applications": [
+      "Android app development",
+      "Server-side development (e.g., Ktor, Spring)",
+      "Multiplatform mobile apps (Kotlin Multiplatform)"
+    ],
+    "key_concepts": [
+      "Null safety",
+      "Interoperability with Java",
+      "Conciseness"
+    ],
+    "example": "Declaring a data class: <i>data class User(val name: String, val age: Int)</i>.<br>Getters, equals, and toString are <b>generated automatically</b>.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Swift",
+    "desc": "Swift is a <b>fast and safe</b> programming language created by Apple.<br>It's the primary language for building <i>iOS, macOS, and watchOS</i> apps.",
+    "invention": {
+      "term_coined_by": "Chris Lattner",
+      "year": "2014",
+      "early_pioneers": ["Chris Lattner", "Apple Inc."],
+      "early_developments": ["Swift 1.0", "LLVM compiler project"]
+    },
+    "purpose": [
+      "Replace Objective-C with a safer, more modern language",
+      "Improve developer productivity with expressive syntax",
+      "Provide fast performance for Apple platform apps"
+    ],
+    "key_milestones": [
+      {
+        "year": 2014,
+        "event": "Swift Introduced",
+        "description": "Apple unveils Swift at WWDC as a new language for iOS and OS X development."
+      },
+      {
+        "year": 2015,
+        "event": "Swift Goes Open Source",
+        "description": "Apple releases Swift's compiler and standard library as open source."
+      },
+      {
+        "year": 2019,
+        "event": "SwiftUI Announced",
+        "description": "Apple introduces SwiftUI, a declarative framework for building user interfaces in Swift."
+      }
+    ],
+    "basics": {
+      "definition": "A general-purpose, compiled programming language developed by Apple for building safe and performant applications across its platforms.",
+      "key_terms": [
+        {
+          "term": "Optionals",
+          "definition": "A type system feature that explicitly represents the absence of a value, reducing crashes."
+        },
+        {
+          "term": "Protocol",
+          "definition": "A blueprint of methods and properties that types can conform to, similar to an interface."
+        },
+        {
+          "term": "ARC",
+          "definition": "Automatic Reference Counting, Swift's system for managing memory automatically."
+        },
+        {
+          "term": "Closures",
+          "definition": "Self-contained blocks of functionality that can be passed around and executed later."
+        }
+      ]
+    },
+    "applications": [
+      "iOS and iPadOS app development",
+      "macOS and watchOS applications",
+      "Server-side Swift (e.g., Vapor)"
+    ],
+    "key_concepts": [
+      "Type safety",
+      "Memory safety via ARC",
+      "Protocol-oriented programming"
+    ],
+    "example": "Unwrapping an optional safely: <i>if let name = user.name { print(name) }</i>.<br>Prevents <b>crashes</b> from missing values.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "PHP",
+    "desc": "PHP is a widely used <b>server-side scripting language</b> designed for web development.<br>It powers a large share of the <i>web's backend</i>, including WordPress.",
+    "invention": {
+      "term_coined_by": "Rasmus Lerdorf",
+      "year": "1994",
+      "early_pioneers": ["Rasmus Lerdorf"],
+      "early_developments": ["Personal Home Page Tools", "PHP/FI"]
+    },
+    "purpose": [
+      "Generate dynamic web page content on the server",
+      "Simplify database-driven website development",
+      "Provide an easy entry point into web programming"
+    ],
+    "key_milestones": [
+      {
+        "year": 1994,
+        "event": "PHP Created",
+        "description": "Rasmus Lerdorf writes Personal Home Page Tools to track visits to his online resume."
+      },
+      {
+        "year": 1998,
+        "event": "PHP 3 Released",
+        "description": "A rewrite led by Zeev Suraski and Andi Gutmans turns PHP into a full scripting language."
+      },
+      {
+        "year": 2004,
+        "event": "PHP 5 Released",
+        "description": "Introduces a rebuilt object-oriented model, powering the rise of PHP frameworks."
+      }
+    ],
+    "basics": {
+      "definition": "An open-source, server-side scripting language embedded in HTML and designed for building dynamic websites and web applications.",
+      "key_terms": [
+        {
+          "term": "Server-Side Scripting",
+          "definition": "Code that runs on the web server to generate HTML before it reaches the browser."
+        },
+        {
+          "term": "Superglobals",
+          "definition": "Built-in variables like $_GET and $_POST that are always accessible across scopes."
+        },
+        {
+          "term": "Composer",
+          "definition": "PHP's dependency manager for installing and autoloading libraries."
+        },
+        {
+          "term": "MVC",
+          "definition": "Model-View-Controller, an architecture pattern common in PHP frameworks."
+        }
+      ]
+    },
+    "applications": [
+      "Content management systems (e.g., WordPress, Drupal)",
+      "Web frameworks (e.g., Laravel, Symfony)",
+      "E-commerce platforms (e.g., Magento)"
+    ],
+    "key_concepts": [
+      "Embedded scripting",
+      "Dynamic content generation",
+      "Wide hosting compatibility"
+    ],
+    "example": "Embedding logic in HTML: <i><?php echo 'Hello, World!'; ?></i>.<br>Runs on the server and outputs <b>plain HTML</b> to the browser.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Ruby",
+    "desc": "Ruby is a <b>dynamic, object-oriented</b> language designed for programmer happiness.<br>It became famous through the <i>Ruby on Rails</i> web framework.",
+    "invention": {
+      "term_coined_by": "Yukihiro Matsumoto",
+      "year": "1995",
+      "early_pioneers": ["Yukihiro Matsumoto (Matz)"],
+      "early_developments": ["Ruby 0.95", "Ruby 1.0"]
+    },
+    "purpose": [
+      "Prioritize developer happiness and readable syntax",
+      "Blend functional and object-oriented programming elegantly",
+      "Simplify rapid web application development"
+    ],
+    "key_milestones": [
+      {
+        "year": 1995,
+        "event": "Ruby Publicly Released",
+        "description": "Yukihiro Matsumoto releases Ruby 0.95 in Japan, blending features from Perl, Smalltalk, and Lisp."
+      },
+      {
+        "year": 2005,
+        "event": "Ruby on Rails Released",
+        "description": "David Heinemeier Hansson releases Rails, dramatically boosting Ruby's popularity worldwide."
+      },
+      {
+        "year": 2013,
+        "event": "Ruby 2.0 Release",
+        "description": "Adds keyword arguments and performance improvements for production use."
+      }
+    ],
+    "basics": {
+      "definition": "A dynamic, interpreted, object-oriented programming language designed for simplicity and productivity.",
+      "key_terms": [
+        {
+          "term": "Everything is an Object",
+          "definition": "In Ruby, even primitive values like numbers respond to methods as objects."
+        },
+        {
+          "term": "Blocks",
+          "definition": "Chunks of code that can be passed to methods, similar to anonymous functions."
+        },
+        {
+          "term": "Gem",
+          "definition": "A packaged Ruby library or application distributed via RubyGems."
+        },
+        {
+          "term": "Mixin",
+          "definition": "A module included in a class to share reusable behavior without multiple inheritance."
+        }
+      ]
+    },
+    "applications": [
+      "Web applications (e.g., Ruby on Rails)",
+      "Automation and scripting",
+      "Static site generation (e.g., Jekyll)"
+    ],
+    "key_concepts": [
+      "Object-oriented purity",
+      "Convention over configuration",
+      "Metaprogramming"
+    ],
+    "example": "Iterating with a block: <i>3.times { |i| puts i }</i>.<br>Concise and <b>expressive</b> by design.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Functional Programming",
+    "desc": "Functional Programming is a <b>paradigm</b> that treats computation as the evaluation of mathematical functions.<br>It emphasizes <i>immutability</i> and avoiding side effects.",
+    "invention": {
+      "term_coined_by": "Alonzo Church",
+      "year": "1936",
+      "early_pioneers": ["Alonzo Church", "John McCarthy"],
+      "early_developments": ["Lambda Calculus", "Lisp"]
+    },
+    "purpose": [
+      "Build predictable programs through pure functions",
+      "Avoid shared state and mutable data",
+      "Simplify reasoning about and testing code"
+    ],
+    "key_milestones": [
+      {
+        "year": 1936,
+        "event": "Lambda Calculus Introduced",
+        "description": "Alonzo Church develops lambda calculus, the mathematical foundation of functional programming."
+      },
+      {
+        "year": 1958,
+        "event": "Lisp Created",
+        "description": "John McCarthy designs Lisp, the first widely used functional programming language."
+      },
+      {
+        "year": 1990,
+        "event": "Haskell 1.0 Defined",
+        "description": "A committee publishes the Haskell report, establishing a standard pure functional language."
+      }
+    ],
+    "basics": {
+      "definition": "A programming paradigm where programs are built by composing pure functions, avoiding mutable state and side effects.",
+      "key_terms": [
+        {
+          "term": "Pure Function",
+          "definition": "A function whose output depends only on its inputs and produces no side effects."
+        },
+        {
+          "term": "Immutability",
+          "definition": "Data that cannot be changed after it is created."
+        },
+        {
+          "term": "Higher-Order Function",
+          "definition": "A function that takes other functions as arguments or returns a function."
+        },
+        {
+          "term": "Recursion",
+          "definition": "A technique often used in place of loops to iterate in functional code."
+        }
+      ]
+    },
+    "applications": [
+      "Data processing pipelines (e.g., Apache Spark)",
+      "Concurrent and parallel systems",
+      "Languages like Haskell, Elixir, and Clojure"
+    ],
+    "key_concepts": [
+      "Pure functions",
+      "Immutability",
+      "Function composition"
+    ],
+    "example": "Mapping over a list: <i>[1, 2, 3].map(x => x * 2)</i> returns <i>[2, 4, 6]</i>.<br>No <b>mutation</b> of the original list occurs.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Common Design Patterns",
+    "desc": "Design Patterns are <b>reusable solutions</b> to common problems in software design.<br>They provide a shared <i>vocabulary</i> for structuring object-oriented code.",
+    "invention": {
+      "term_coined_by": "Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides",
+      "year": "1994",
+      "early_pioneers": ["Christopher Alexander", "Erich Gamma", "Richard Helm", "Ralph Johnson", "John Vlissides"],
+      "early_developments": ["A Pattern Language (architecture)", "Design Patterns: Elements of Reusable Object-Oriented Software"]
+    },
+    "purpose": [
+      "Provide proven solutions to recurring design problems",
+      "Establish a common vocabulary among developers",
+      "Improve code flexibility and maintainability"
+    ],
+    "key_milestones": [
+      {
+        "year": 1977,
+        "event": "Pattern Language in Architecture",
+        "description": "Christopher Alexander publishes 'A Pattern Language', inspiring the software patterns movement."
+      },
+      {
+        "year": 1994,
+        "event": "Gang of Four Book Published",
+        "description": "Gamma, Helm, Johnson, and Vlissides publish 'Design Patterns', cataloging 23 classic patterns."
+      },
+      {
+        "year": 2004,
+        "event": "Head First Design Patterns",
+        "description": "A widely read, accessible book brings design patterns to a broader developer audience."
+      }
+    ],
+    "basics": {
+      "definition": "General, reusable solutions to commonly occurring problems in software design, categorized into creational, structural, and behavioral patterns.",
+      "key_terms": [
+        {
+          "term": "Singleton",
+          "definition": "A creational pattern ensuring a class has only one instance with a global access point."
+        },
+        {
+          "term": "Observer",
+          "definition": "A behavioral pattern where objects subscribe to and react to events from another object."
+        },
+        {
+          "term": "Factory Method",
+          "definition": "A creational pattern that delegates object creation to subclasses."
+        },
+        {
+          "term": "Decorator",
+          "definition": "A structural pattern that adds behavior to objects dynamically without altering their class."
+        }
+      ]
+    },
+    "applications": [
+      "Object-oriented software architecture",
+      "Framework and library design",
+      "Enterprise application development"
+    ],
+    "key_concepts": [
+      "Creational, structural, and behavioral patterns",
+      "Encapsulation of change",
+      "Program to an interface, not an implementation"
+    ],
+    "example": "The Observer pattern: a <i>Subject</i> notifies all registered <i>Observers</i> when its state changes.<br>Used in <b>event-driven</b> UI systems.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Testing & Test-Driven Development",
+    "desc": "Software Testing verifies that code behaves as expected.<br>Test-Driven Development (<b>TDD</b>) flips the process by writing <i>tests before</i> the code itself.",
+    "invention": {
+      "term_coined_by": "Kent Beck",
+      "year": "1999",
+      "early_pioneers": ["Kent Beck", "Erich Gamma"],
+      "early_developments": ["JUnit", "Extreme Programming"]
+    },
+    "purpose": [
+      "Catch defects early in the development process",
+      "Guide software design through incremental tests",
+      "Provide a safety net for refactoring code"
+    ],
+    "key_milestones": [
+      {
+        "year": 1997,
+        "event": "JUnit Created",
+        "description": "Kent Beck and Erich Gamma build JUnit, popularizing automated unit testing in Java."
+      },
+      {
+        "year": 1999,
+        "event": "Extreme Programming Explained",
+        "description": "Kent Beck publishes his book formalizing practices including test-first development."
+      },
+      {
+        "year": 2002,
+        "event": "TDD by Example Published",
+        "description": "Kent Beck publishes 'Test-Driven Development: By Example', codifying the red-green-refactor cycle."
+      }
+    ],
+    "basics": {
+      "definition": "A software development approach where automated tests are written before the code, and testing practices ensure code correctness over time.",
+      "key_terms": [
+        {
+          "term": "Unit Test",
+          "definition": "A test that verifies a single, isolated piece of code such as a function or method."
+        },
+        {
+          "term": "Red-Green-Refactor",
+          "definition": "The TDD cycle: write a failing test, make it pass, then improve the code."
+        },
+        {
+          "term": "Mock Object",
+          "definition": "A simulated object used to isolate the code under test from its dependencies."
+        },
+        {
+          "term": "Test Coverage",
+          "definition": "A metric describing how much of the codebase is exercised by tests."
+        }
+      ]
+    },
+    "applications": [
+      "Automated testing frameworks (e.g., JUnit, pytest, Jest)",
+      "Continuous integration pipelines",
+      "Agile and Extreme Programming workflows"
+    ],
+    "key_concepts": [
+      "Red-green-refactor cycle",
+      "Regression testing",
+      "Test isolation"
+    ],
+    "example": "In TDD, a developer writes a failing test <i>assertEqual(add(2,3), 5)</i> before writing the <b>add</b> function that satisfies it.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Web Accessibility (a11y) for Developers",
+    "desc": "Web Accessibility (<b>a11y</b>) ensures websites and apps are usable by people with <i>disabilities</i>.<br>It's guided by standards that make the web work for <b>everyone</b>.",
+    "invention": {
+      "term_coined_by": "W3C Web Accessibility Initiative",
+      "year": "1997",
+      "early_pioneers": ["Tim Berners-Lee", "Judy Brewer"],
+      "early_developments": ["Web Accessibility Initiative (WAI)", "WCAG 1.0"]
+    },
+    "purpose": [
+      "Make digital content usable by people with visual, auditory, motor, or cognitive disabilities",
+      "Provide standardized guidelines for accessible design",
+      "Ensure legal and ethical compliance for public-facing websites"
+    ],
+    "key_milestones": [
+      {
+        "year": 1997,
+        "event": "WAI Launched",
+        "description": "The W3C launches the Web Accessibility Initiative to develop accessibility standards."
+      },
+      {
+        "year": 1999,
+        "event": "WCAG 1.0 Published",
+        "description": "The first Web Content Accessibility Guidelines are released by the W3C."
+      },
+      {
+        "year": 2008,
+        "event": "WCAG 2.0 Published",
+        "description": "A technology-agnostic update introduces the POUR principles: Perceivable, Operable, Understandable, Robust."
+      }
+    ],
+    "basics": {
+      "definition": "The practice of designing and developing websites and applications so they can be used by people of all abilities, following standards like WCAG.",
+      "key_terms": [
+        {
+          "term": "ARIA",
+          "definition": "Accessible Rich Internet Applications attributes that add semantic meaning for assistive technologies."
+        },
+        {
+          "term": "Screen Reader",
+          "definition": "Software that reads on-screen content aloud or converts it to braille for visually impaired users."
+        },
+        {
+          "term": "Semantic HTML",
+          "definition": "Using HTML elements according to their meaning so assistive tools can interpret content correctly."
+        },
+        {
+          "term": "Alt Text",
+          "definition": "A text alternative for images that conveys their meaning to non-visual users."
+        }
+      ]
+    },
+    "applications": [
+      "Accessible web and mobile interfaces",
+      "Government and enterprise compliance (e.g., ADA, Section 508)",
+      "Assistive technology integration"
+    ],
+    "key_concepts": [
+      "POUR principles (Perceivable, Operable, Understandable, Robust)",
+      "Keyboard navigability",
+      "Assistive technology compatibility"
+    ],
+    "example": "Adding alt text: <i><img src='chart.png' alt='Sales grew 20% in Q2'></i>.<br>Screen readers announce this to <b>visually impaired</b> users.",
+    "image": "",
+    "thread": ""
   }
 ]

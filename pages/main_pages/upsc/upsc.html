@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPSC Prep Hub - Civil Services Preparation</title>
+    <title>UPSC Prep Dashboard: Full Syllabus Rapid Revision — Rahulx.com</title>
+    <meta name="description" content="A complete UPSC Civil Services rapid-revision dashboard: Prelims GS &amp; CSAT, all four Mains GS papers, every one of the 48 optional subjects, Essay, and Interview — each topic with a real revision note you can track.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.rahulx.com/pages/main_pages/upsc/upsc.html">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,11 +20,12 @@
                 </div>
                 <nav class="nav-menu">
                     <button class="nav-item active" data-section="dashboard">Dashboard</button>
+                    <button class="nav-item" data-section="prelims">Prelims</button>
                     <button class="nav-item" data-section="constitution">Constitution</button>
-                    <button class="nav-item" data-section="current-affairs">Current Affairs</button>
-                    <button class="nav-item" data-section="general-studies">General Studies</button>
+                    <button class="nav-item" data-section="general-studies">Mains GS</button>
                     <button class="nav-item" data-section="optional-subjects">Optional</button>
-                    <button class="nav-item" data-section="literature">Literature</button>
+                    <button class="nav-item" data-section="essay-interview">Essay &amp; Interview</button>
+                    <button class="nav-item" data-section="current-affairs">Current Affairs</button>
                     <button class="nav-item" data-section="resources">Resources</button>
                 </nav>
                 <div class="header-actions">
@@ -46,108 +51,103 @@
         <section class="section active" id="dashboard">
             <div class="container">
                 <div class="welcome-section">
-                    <h2>Welcome to UPSC Prep Hub</h2>
-                    <p>Your comprehensive platform for civil services examination preparation</p>
+                    <h2>Welcome to the UPSC Prep Dashboard</h2>
+                    <p>Every Prelims, Mains, Optional, Essay, and Interview topic — each with a real rapid-revision note, not a placeholder. Tap any topic's checkbox to track your own revision pass; it's saved right in this browser.</p>
                 </div>
 
-                <!-- Study Statistics -->
+                <!-- Study Statistics (all computed live from real data — see app.js) -->
                 <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-number">450</div>
+                    <div class="stat-card" id="stat-total-topics">
+                        <div class="stat-number">0</div>
                         <div class="stat-label">Total Topics</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">180</div>
-                        <div class="stat-label">Completed</div>
+                    <div class="stat-card" id="stat-revised">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Marked Revised</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">240</div>
-                        <div class="stat-label">Study Hours</div>
+                    <div class="stat-card" id="stat-study-hours">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Study Hours (this browser)</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">15</div>
-                        <div class="stat-label">Tests Taken</div>
+                    <div class="stat-card" id="stat-optionals">
+                        <div class="stat-number">48</div>
+                        <div class="stat-label">Optional Subjects</div>
                     </div>
                 </div>
 
-                <!-- Quick Access Cards -->
+                <!-- Quick Access Cards — progress bars reflect your real revision state -->
                 <div class="sections-grid">
+                    <div class="section-card" data-section="prelims">
+                        <div class="section-icon">📝</div>
+                        <h3>Prelims: GS Paper I &amp; CSAT</h3>
+                        <p>The screening stage — every core Prelims area and CSAT skill, with revision notes.</p>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                        <div class="progress-label" style="font-size:12px;opacity:0.75;margin-top:4px;">0/0 topics revised</div>
+                    </div>
                     <div class="section-card" data-section="constitution">
                         <div class="section-icon">⚖️</div>
                         <h3>Indian Constitution</h3>
-                        <p>Complete study of Indian Constitution with articles, amendments, and analysis</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 65%"></div>
-                        </div>
-                    </div>
-                    <div class="section-card" data-section="current-affairs">
-                        <div class="section-icon">📰</div>
-                        <h3>Current Affairs</h3>
-                        <p>Latest developments in national and international affairs</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 45%"></div>
-                        </div>
+                        <p>Articles, amendments, parts, and schedules — the highest-yield static topic in the exam.</p>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                        <div class="progress-label" style="font-size:12px;opacity:0.75;margin-top:4px;">0/0 topics revised</div>
                     </div>
                     <div class="section-card" data-section="general-studies">
                         <div class="section-icon">📚</div>
-                        <h3>General Studies</h3>
-                        <p>Comprehensive coverage of all GS papers for UPSC Mains</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 30%"></div>
-                        </div>
+                        <h3>Mains: General Studies I–IV</h3>
+                        <p>Every official topic across all four GS papers, broken into revisable nodes.</p>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                        <div class="progress-label" style="font-size:12px;opacity:0.75;margin-top:4px;">0/0 topics revised</div>
                     </div>
                     <div class="section-card" data-section="optional-subjects">
                         <div class="section-icon">🎯</div>
                         <h3>Optional Subjects</h3>
-                        <p>Detailed study materials for UPSC optional subjects</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 20%"></div>
-                        </div>
+                        <p>All 48 optionals — humanities, sciences, engineering, and every literature language.</p>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                        <div class="progress-label" style="font-size:12px;opacity:0.75;margin-top:4px;">0/0 topics revised</div>
                     </div>
-                    <div class="section-card" data-section="literature">
+                    <div class="section-card" data-section="essay-interview">
                         <div class="section-icon">✍️</div>
-                        <h3>Literature & Essays</h3>
-                        <p>Essay writing, comprehension, and literature study</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 55%"></div>
-                        </div>
+                        <h3>Essay, Language &amp; Interview</h3>
+                        <p>Essay approach, qualifying language papers, and the Personality Test.</p>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                        <div class="progress-label" style="font-size:12px;opacity:0.75;margin-top:4px;">0/0 topics revised</div>
+                    </div>
+                    <div class="section-card" data-section="current-affairs">
+                        <div class="section-icon">📰</div>
+                        <h3>Current Affairs Method</h3>
+                        <p>An evergreen system for staying current, and for linking it back to the static syllabus.</p>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                        <div class="progress-label" style="font-size:12px;opacity:0.75;margin-top:4px;">0/0 topics revised</div>
                     </div>
                     <div class="section-card" data-section="resources">
                         <div class="section-icon">📖</div>
                         <h3>Study Resources</h3>
-                        <p>Additional study materials and examination resources</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 40%"></div>
-                        </div>
+                        <p>Widely-used NCERTs, standard reference texts, and official primary sources.</p>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                        <div class="progress-label" style="font-size:12px;opacity:0.75;margin-top:4px;">0/0 topics revised</div>
                     </div>
                 </div>
 
-                <!-- Sample Study Log -->
+                <!-- Recently Revised — real data from this browser's localStorage, not a sample -->
                 <div class="recent-updates">
-                    <h3>Sample Study Log</h3>
-                    <p style="opacity:0.8;font-size:0.9rem;margin-bottom:10px;">Illustrative example of how a tracked prep schedule looks — swap in your own topics as you study.</p>
-                    <div class="updates-list">
-                        <div class="update-item">
-                            <div class="update-date">Week 1</div>
-                            <div class="update-title">Union Budget analysis &amp; economic survey highlights</div>
-                            <div class="update-category">Current Affairs</div>
-                        </div>
-                        <div class="update-item">
-                            <div class="update-date">Week 2</div>
-                            <div class="update-title">Fundamental Rights &amp; Directive Principles review</div>
-                            <div class="update-category">Constitution</div>
-                        </div>
-                        <div class="update-item">
-                            <div class="update-date">Week 3</div>
-                            <div class="update-title">Climate policy &amp; environmental governance</div>
-                            <div class="update-category">Environment</div>
-                        </div>
-                        <div class="update-item">
-                            <div class="update-date">Week 4</div>
-                            <div class="update-title">India's foreign policy &amp; key bilateral relations</div>
-                            <div class="update-category">International Relations</div>
-                        </div>
+                    <h3>Recently Revised</h3>
+                    <p style="opacity:0.8;font-size:0.9rem;margin-bottom:10px;">The last topics you personally marked as revised, most recent first.</p>
+                    <div class="updates-list" id="recentlyRevisedList">
+                        <!-- Populated by app.js -->
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prelims Section -->
+        <section class="section" id="prelims">
+            <div class="container">
+                <div class="section-header">
+                    <h2>📝 Prelims: GS Paper I &amp; CSAT</h2>
+                    <p>The screening stage — 2 objective papers, only Paper I marks count toward the cut-off.</p>
+                </div>
+                <div class="categories-grid" id="prelims-categories">
+                    <!-- Categories will be populated by JavaScript -->
                 </div>
             </div>
         </section>
@@ -165,25 +165,12 @@
             </div>
         </section>
 
-        <!-- Current Affairs Section -->
-        <section class="section" id="current-affairs">
-            <div class="container">
-                <div class="section-header">
-                    <h2>📰 Current Affairs</h2>
-                    <p>Latest developments in national and international affairs</p>
-                </div>
-                <div class="categories-grid" id="current-affairs-categories">
-                    <!-- Categories will be populated by JavaScript -->
-                </div>
-            </div>
-        </section>
-
         <!-- General Studies Section -->
         <section class="section" id="general-studies">
             <div class="container">
                 <div class="section-header">
-                    <h2>📚 General Studies</h2>
-                    <p>Comprehensive coverage of all GS papers for UPSC Mains</p>
+                    <h2>📚 Mains: General Studies I–IV</h2>
+                    <p>Four papers, 250 marks each — the descriptive-answer core of the exam, fully broken down.</p>
                 </div>
                 <div class="categories-grid" id="general-studies-categories">
                     <!-- Categories will be populated by JavaScript -->
@@ -195,8 +182,8 @@
         <section class="section" id="optional-subjects">
             <div class="container">
                 <div class="section-header">
-                    <h2>🎯 Optional Subjects</h2>
-                    <p>Detailed study materials for UPSC optional subjects</p>
+                    <h2>🎯 Optional Subjects (All 48)</h2>
+                    <p>Every candidate picks exactly one. High-level orientation — verify the live official syllabus for your chosen subject.</p>
                 </div>
                 <div class="categories-grid" id="optional-subjects-categories">
                     <!-- Categories will be populated by JavaScript -->
@@ -204,14 +191,27 @@
             </div>
         </section>
 
-        <!-- Literature Section -->
-        <section class="section" id="literature">
+        <!-- Essay, Language Papers & Interview Section -->
+        <section class="section" id="essay-interview">
             <div class="container">
                 <div class="section-header">
-                    <h2>✍️ Literature & Essays</h2>
-                    <p>Essay writing, comprehension, and literature study</p>
+                    <h2>✍️ Essay, Language Papers &amp; Interview</h2>
+                    <p>250 (Essay) + 275 (Interview) merit marks, plus two qualifying-only language papers.</p>
                 </div>
-                <div class="categories-grid" id="literature-categories">
+                <div class="categories-grid" id="essay-interview-categories">
+                    <!-- Categories will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Affairs Method Section -->
+        <section class="section" id="current-affairs">
+            <div class="container">
+                <div class="section-header">
+                    <h2>📰 Current Affairs Method</h2>
+                    <p>An evergreen system for staying current — swap in whatever month/year it is when you use this.</p>
+                </div>
+                <div class="categories-grid" id="current-affairs-categories">
                     <!-- Categories will be populated by JavaScript -->
                 </div>
             </div>
@@ -222,7 +222,7 @@
             <div class="container">
                 <div class="section-header">
                     <h2>📖 Study Resources</h2>
-                    <p>Additional study materials and examination resources</p>
+                    <p>Widely-used foundational texts — verify current editions and always cross-check against the official syllabus.</p>
                 </div>
                 <div class="categories-grid" id="resources-categories">
                     <!-- Categories will be populated by JavaScript -->
@@ -252,7 +252,7 @@
                 <!-- Content will be populated by JavaScript -->
             </div>
             <div class="modal-footer">
-                <button class="btn btn--primary" onclick="bookmarkTopic()">📖 Bookmark</button>
+                <button class="btn btn--primary" id="modalRevisedBtn" onclick="toggleRevisedFromModal()">📌 Mark as Revised</button>
                 <button class="btn btn--secondary" onclick="closeModal()">Close</button>
             </div>
         </div>

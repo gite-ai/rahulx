@@ -645,7 +645,13 @@
       modalGettingStarted.textContent = gettingStarted;
       modalExample.innerHTML = example ? `<strong>Example:</strong> ${example}` : '';
       modalTopGames.textContent = topGames;
-      modalImage.src = image || '';
+      if (image) {
+        modalImage.src = image;
+        modalImage.style.display = 'block';
+      } else {
+        modalImage.style.display = 'none';
+      }
+      modalImage.onerror = () => { modalImage.style.display = 'none'; };
       modalImage.alt = `${title} image` || 'Gaming image';
 
       // Populate official website links safely

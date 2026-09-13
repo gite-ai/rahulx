@@ -1068,6 +1068,47 @@ select.form-control {
   font-size: var(--font-size-sm);
 }
 
+.topic-check {
+  font-size: var(--font-size-lg);
+  margin-right: var(--space-10);
+  cursor: pointer;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.topic-item.revised {
+  background: rgba(var(--color-success-rgb), var(--status-bg-opacity));
+}
+
+.topic-item.revised .topic-text {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.category-progress-tag {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  background: var(--color-secondary);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.btn--revised {
+  background: var(--color-success) !important;
+  border-color: var(--color-success) !important;
+  color: var(--color-btn-primary-text) !important;
+}
+
 /* Recent Updates */
 .recent-updates {
   background: var(--color-surface);

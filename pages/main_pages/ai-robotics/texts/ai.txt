@@ -80,7 +80,7 @@
         "desc": "Computing systems inspired by brains; foundational for deep learning.",
         "example": "Image/speech recognition, self-driving cars",
         "image": "images/neural_networks.png",
-        "thread": "https://x.com/example_thread1",
+        "thread": "",
         "importance": [
           "Enable machines to learn from data",
           "Form the basis of deep learning architectures",
@@ -103,7 +103,7 @@
         "desc": "Computers interpret and generate human language.",
         "example": "ChatGPT, Google Translate",
         "image": "images/nlp.png",
-        "thread": "https://x.com/example_thread2",
+        "thread": "",
         "importance": [
           "Allows interaction with machines in human languages",
           "Transforms unstructured text/speech data into structured information",
@@ -126,7 +126,7 @@
         "desc": "Machines learn optimal actions via trial and error with rewards or penalties.",
         "example": "AlphaGo, robotic navigation",
         "image": "images/reinforcement_learning.png",
-        "thread": "https://x.com/example_thread3",
+        "thread": "",
         "importance": [
           "Ideal for problems with delayed consequences",
           "Enables autonomous agents to learn complex behaviors",
@@ -149,7 +149,7 @@
         "desc": "AI generates new content—text, images, music—using models like GANs and transformers.",
         "example": "AI art, LLM chatbots, music generators",
         "image": "images/generative_ai.png",
-        "thread": "https://x.com/example_thread4",
+        "thread": "",
         "importance": [
           "Enables creative synthesis of content",
           "Automates content generation for various media",
@@ -172,7 +172,7 @@
         "desc": "Runs AI on devices (phones, sensors) for real-time, privacy-focused applications.",
         "example": "Voice assistants, smart devices",
         "image": "images/edge_ai.png",
-        "thread": "https://x.com/example_thread5",
+        "thread": "",
         "importance": [
           "Facilitates AI applications in low connectivity or latency-sensitive scenarios",
           "Enhances user privacy by limiting data transmission to cloud",
@@ -195,7 +195,7 @@
         "desc": "Improves AI transparency and trust by explaining decisions.",
         "example": "Medical diagnostics, financial analysis",
         "image": "images/xai.png",
-        "thread": "https://x.com/example_thread6",
+        "thread": "",
         "importance": [
           "Helps users trust and effectively use AI tools",
           "Facilitates regulatory compliance",
@@ -324,6 +324,6 @@
       "Robot ethics and safety"
     ],
     "image": "https://i.postimg.cc/d3DHr6gk/pexels-vanessa-loring-7868822.jpg",
-    "thread": "https://x.com/example_robotics_thread"
+    "thread": ""
   }
 ]

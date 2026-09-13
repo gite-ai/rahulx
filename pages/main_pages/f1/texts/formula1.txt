@@ -1,23 +1,128 @@
 [
   {
     "name": "Grand Prix",
-    "desc": "The pinnacle of <b>F1 racing</b>.<br>Features <i>iconic circuits</i> worldwide.",
-    "example": "Monaco GP’s <b>tight corners</b> test <i>driver skill</i>.<br>A <b>legendary</b> race.",
-    "image": "https://example.com/images/monaco_gp.jpg",
-    "thread": "https://x.com/example/thread/12345"
+    "desc": "A <b>Grand Prix</b> is a single race weekend in the FIA Formula One World Championship, traditionally named after the host country or circuit, such as the Italian or British Grand Prix.<br>A standard weekend runs practice sessions, qualifying, and the race itself, though sprint weekends alter that structure.<br>Points go to the top ten finishers (25-18-15-12-10-8-6-4-2-1), plus one bonus point for the fastest race lap if that driver finishes in the top ten.<br>The term comes from the French phrase for <i>great prize</i>, borrowed from early 20th-century French racing before Formula One existed.",
+    "example": "The first world championship Grand Prix was held at Silverstone in 1950, won by <b>Giuseppe Farina</b> driving for <i>Alfa Romeo</i>.",
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Pit Stops",
-    "desc": "Fast tire changes by <b>expert crews</b>.<br>Critical for <i>race strategy</i>.",
-    "example": "A <b>2-second stop</b> in <i>Singapore GP</i>.<br>A <b>game-changer</b>.",
-    "image": "https://example.com/images/pit_stop.jpg",
-    "thread": "https://x.com/example/thread/67890"
+    "desc": "A <b>pit stop</b> happens when a car enters the pit lane during a race for tire changes or repairs, carried out by a crew of over a dozen mechanics working in a few seconds.<br>Modern crews use pneumatic wheel guns and a hydraulic jack to lift the car, swapping all four wheels almost simultaneously.<br>Cars must obey a strict pit lane speed limit to protect the crew, and refuelling during races has been banned since 2010, so a modern stop is almost always about tires alone.<br>Because a stationary pit stop costs real time versus staying on track, its timing is one of the biggest strategic levers a team controls.",
+    "example": "In 2019, <b>Red Bull</b>'s crew changed all four tires on Max Verstappen's car in <i>1.82 seconds</i>, among the fastest pit stops ever recorded.",
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Drivers Championship",
-    "desc": "The battle for the <b>top driver</b> title.<br>Defined by <i>consistency</i> and speed.",
-    "example": "Hamilton’s <b>epic comeback</b> in <i>Brazil 2021</i>.<br>A <b>historic</b> win.",
-    "image": "https://example.com/images/hamilton.jpg",
-    "thread": "https://x.com/example/thread/54321"
+    "desc": "The <b>Drivers' World Championship</b> is awarded each year to the driver who scores the most points across the season's races and sprints.<br>First contested in 1950, it is the oldest championship organized this way in motorsport.<br>Ties in points are broken first by number of race wins, then by second-place finishes, and so on down the results.<br>A driver can win the title through consistency and smart racecraft rather than outright car speed, though a competitive car still matters enormously, and the title is entirely separate from the Constructors' Championship awarded to the team.",
+    "example": "<b>Michael Schumacher</b> and <i>Lewis Hamilton</i> share the record for most Drivers' Championships, with seven titles each.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Constructors Championship",
+    "desc": "The <b>Constructors' Championship</b> is awarded to the team, not an individual, based on the combined points scored by both of its cars across a season.<br>It was introduced in 1958, eight years after the Drivers' Championship began.<br>Because both drivers' results count toward the same total, a team benefits more from two consistently strong cars than from a single standout driver carrying a weaker teammate.<br>Championship position also drives a large share of a team's prize money from the sport's commercial revenue, making it financially critical, not just a prestige title.",
+    "example": "<b>Ferrari</b> holds the record for most Constructors' Championships, with <i>sixteen</i> titles won across its long history in the sport.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "F1 Aerodynamics",
+    "desc": "F1 cars generate <b>downforce</b> through front and rear wings, the underbody floor, and a rear diffuser, pressing the car onto the track to allow much higher cornering speeds than grip alone would permit.<br>Downforce always comes with a trade-off in <i>aerodynamic drag</i>, which slows straight-line speed, so teams run different wing levels for high-downforce circuits like Monaco versus low-drag circuits like Monza.<br>Ground-effect underfloor tunnels, brought back under the 2022 regulations, generate much of a modern car's downforce by accelerating airflow beneath the floor into a low-pressure zone.<br>Turbulent <i>dirty air</i> shed by a leading car reduces the downforce available to a car following closely behind, which is a major reason overtaking has historically been difficult in F1.",
+    "example": "Teams fit low-downforce, low-drag wings for <b>Monza</b>'s long straights, then switch to maximum-downforce wings for a tight, high-grip track like <i>Monaco</i>.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "DRS & Overtaking",
+    "desc": "The <b>Drag Reduction System</b> (DRS) is a driver-activated flap in the rear wing that opens to cut drag on straights, introduced in 2011 specifically to make overtaking easier.<br>A driver may only use it inside a designated DRS zone, and only when within one second of the car ahead at a measurement point earlier on the lap; it is disabled during the opening laps and whenever the track is wet.<br>Opening the flap reduces drag and adds extra top speed, letting the trailing car close the gap or complete a pass under braking into the next corner.<br>Overtaking difficulty is closely linked to the <i>dirty air</i> problem described in F1's aerodynamics rules, which is why both DRS and periodic aerodynamic regulation changes exist to keep racing competitive.",
+    "example": "A classic DRS pass happens on a long straight, where the trailing driver opens the flap, draws alongside, and completes the move under braking at the following corner.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Tire Strategy & Compounds",
+    "desc": "<b>Pirelli</b>, F1's sole tire supplier, produces a range of dry-weather slick compounds from harder, more durable options to softer compounds with more grip but faster wear; only three of these are nominated as the hard, medium, and soft tires for a given race weekend.<br>Green-banded intermediate and blue-banded full wet tires are used in damp or rainy conditions instead of slicks.<br>Regulations normally require each driver to use at least two different dry compounds during a race, forcing a minimum of one pit stop and creating room for strategic variation.<br>Tire degradation, the gradual loss of grip and pace as a compound heats and wears, is central to race strategy, since teams must judge exactly when pitting for fresh tires outweighs the time lost in the pits.",
+    "example": "A driver starting on soft tires may pit earlier than a rival for the medium compound, a strategy known as the <b>undercut</b> when it gains track position on fresher rubber.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "F1 History & Eras",
+    "desc": "The FIA Formula One World Championship began in 1950 and has passed through distinct technical eras, including the shift from front-engined to rear-engined cars around 1960, the arrival of aerodynamic wings in the late 1960s, the turbocharged engines of the 1980s, and the current turbo-hybrid V6 power unit era that started in 2014.<br>Engine rules have changed repeatedly, moving from naturally aspirated V8s and V12s to today's hybrid turbocharged six-cylinder units.<br>Famous rivalries, such as <i>Alain Prost</i> against <i>Ayrton Senna</i> in the late 1980s and early 1990s, shaped the sport's popularity and public image.<br>Safety regulations tightened dramatically after fatal accidents, most notably the deaths of Roland Ratzenberger and Ayrton Senna during the 1994 San Marino Grand Prix weekend, which triggered sweeping changes to circuit design, car structures, and medical response.",
+    "example": "The 1994 San Marino Grand Prix weekend at Imola is widely regarded as the turning point that launched the sport's modern era of safety reform.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Safety Car & Red Flags",
+    "desc": "The <b>Safety Car</b> is deployed after an on-track incident, debris, or dangerous conditions to bunch the field together behind it at reduced speed while marshals clear the hazard; overtaking is forbidden during this period except in specific permitted situations.<br>A <i>Virtual Safety Car</i> achieves a similar slowdown without a physical car on track, requiring every driver to stay within a set delta time.<br>A <b>red flag</b> stops the session entirely and is used for serious incidents, extreme weather, or a blocked track that a rolling safety car period cannot resolve safely, with cars returning to the pits or grid before a restart.<br>These interruptions often reshape race strategy, since teams can pit for fresh tires while the whole field is running slowly or stationary, minimizing the time normally lost in a green-flag stop.",
+    "example": "During a red flag stoppage, every team can change tires for free in terms of time lost, since the entire field is stopped regardless of who pits.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Power Units & Hybrid Engines",
+    "desc": "Since 2014, F1 cars have run hybrid <b>power units</b> combining a 1.6-litre turbocharged V6 engine with two electric motor-generator units: the MGU-K, which harvests energy under braking, and the MGU-H, which recovers energy from the turbocharger's exhaust heat.<br>Energy from both units is stored in a battery pack and can later be deployed to boost the combustion engine's output for extra performance.<br>Strict fuel-flow limits and a fixed fuel allowance per race push manufacturers toward very high thermal efficiency compared with older naturally aspirated engines.<br>Each driver is allowed only a limited number of engines, turbochargers, and batteries across a season, and using extra components beyond that limit results in grid-place penalties.",
+    "example": "Because the MGU-H is exceptionally complex to engineer, only a handful of manufacturers have ever built a complete power unit in-house, with other teams buying units as customers.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Qualifying Format",
+    "desc": "Standard F1 qualifying uses a three-part knockout format known as Q1, Q2, and Q3: every car runs in Q1, the slowest cars are eliminated, the remainder continue into Q2 with further eliminations, and the fastest survivors contest Q3 to decide pole position.<br>Each segment runs for a fixed time, and drivers typically get several attempts on low-fuel qualifying tires to post their fastest lap.<br>The resulting lap times set the race grid, with the quickest driver starting from pole position, generally considered a meaningful advantage.<br>Separate grid penalties for technical infringements or exceeding component allocations can drop a driver down the grid regardless of how fast they qualified.",
+    "example": "A driver eliminated in <b>Q1</b> is guaranteed to start no higher than 16th on the grid, no matter how competitive their car proves later in the race.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Team Strategy & the Pit Wall",
+    "desc": "The <b>pit wall</b> is the trackside station where a team's race engineers and strategists watch live timing, tire data, and weather information to make real-time calls such as when a driver should pit.<br>Strategists run simulations before and during the race that weigh tire degradation, track position, traffic, and the chance of a safety car to estimate the best pit window.<br>Instructions reach the driver over <i>team radio</i>, covering pit timing, tire management, and engine mode changes.<br>Common tactics include the <b>undercut</b>, pitting earlier than a rival to gain track position on fresher tires, and the <b>overcut</b>, staying out longer to benefit from clear air or a rival's own pit stop delay; teams can also split strategies between their two cars to hedge against uncertainty.",
+    "example": "During a safety car period, a team might pit only one of its two cars, keeping the other out on older tires to preserve track position, a tactic called a <b>split strategy</b>.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Sprint Race Weekends",
+    "desc": "Introduced in 2021, the <b>sprint</b> format adds a short standalone race, roughly a third of a normal Grand Prix distance, held on the Saturday of a race weekend.<br>Sprint weekends use their own qualifying-style session to set the sprint grid, separate from the session that sets Sunday's main race grid in most formats used since the format's introduction.<br>The sprint awards championship points to a smaller number of top finishers than a full Grand Prix does.<br>Because an extra competitive session replaces some free practice time, teams and drivers get less traditional practice to fine-tune the car before racing begins.",
+    "example": "A driver can gain or lose significant track position for Sunday's Grand Prix based purely on how they finish in Saturday's shorter <b>sprint race</b>.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Cost Cap & Technical Regulations",
+    "desc": "F1 introduced a <b>budget cap</b> in 2021 limiting how much each team may spend annually on car development and operations, excluding certain items such as driver salaries, marketing, and the pay of the team's top earners, in order to level competition between larger and smaller teams.<br><i>Technical regulations</i> separately govern car dimensions, weight, aerodynamic surfaces, power unit specifications, and safety structures, and are periodically overhauled, as with the major 2022 rules package that reintroduced ground-effect underfloors to improve close racing.<br>A team found to have breached the cost cap can face financial penalties or sporting sanctions, including restricted wind-tunnel or simulation time.<br>The FIA sets these rules in consultation with the teams, adjusting them over time to balance safety, cost control, and competitive fairness.",
+    "example": "A team that materially exceeds the cost cap can be handed reduced aerodynamic testing time the following season, sometimes referred to as an <b>aero handicap</b>.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Iconic Circuits (Monaco & Spa-Francorchamps)",
+    "desc": "The <b>Circuit de Monaco</b>, run through the streets of Monte Carlo, is one of the oldest and most prestigious races on the calendar, first held in 1929 and part of the world championship since 1950, famous for its narrow, barrier-lined layout and slow corners that make overtaking notoriously difficult.<br><i>Circuit de Spa-Francorchamps</i> in Belgium is known for its length, elevation changes, and the legendary Eau Rouge-Raidillon corner sequence, a fast uphill compression taken close to flat-out in modern cars.<br>The two tracks demand almost opposite car setups: Monaco rewards maximum downforce and precision at low speed, while Spa rewards a balance of downforce and straight-line speed across its long straights.<br>Weather at Spa is famously changeable, with rain sometimes falling on only part of the long lap, which regularly complicates tire strategy.",
+    "example": "Monaco's <b>Fairmont Hairpin</b> is one of the slowest corners on the entire calendar, a striking contrast to Spa's high-speed <i>Eau Rouge-Raidillon</i> complex.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "F1 Simulators & Sim Racing",
+    "desc": "Teams operate sophisticated engineering <b>simulators</b>, combining real car data, motion platforms, and curved projection screens, to develop setups and prepare drivers for upcoming circuits, which matters more because in-season on-track testing is heavily restricted.<br>Development and reserve drivers use these simulators to build mileage on virtual versions of upcoming races, refining car balance and tire management plans before a car ever reaches the track.<br>Separately, consumer <i>sim racing</i> titles, including the officially licensed F1 game, let fans race digital recreations of real cars and circuits and have become a genuine pathway into motorsport for some competitors.<br>F1 also runs an official esports championship in which sim racers compete on the console or PC game in a structured competitive series.",
+    "example": "Because in-season track testing is tightly limited by regulation, teams rely heavily on their factory simulators to try setup and aerodynamic changes between race weekends.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "The Halo Device & Driver Safety",
+    "desc": "The <b>Halo</b> is a curved titanium structure fitted around the cockpit, made mandatory in 2018, designed to protect a driver's head from large flying debris, a loose wheel, or contact with another car or a barrier.<br>It is engineered to withstand extremely high static loads without deforming, redirecting impact forces away from the driver's head.<br>Though initially controversial for its appearance and feared effect on cockpit visibility, the Halo has since been credited with preventing serious injury in several high-profile crashes.<br>It sits alongside other post-1994 safety advances, including stronger survival cells, wheel tethers that keep wheels attached to the car in a crash, and energy-absorbing barriers used at many circuits.",
+    "example": "The Halo has been credited with protecting drivers in incidents where another car's wheel or bodywork struck the cockpit area directly.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Team Radio & Race Engineering",
+    "desc": "Each driver has a dedicated <b>race engineer</b> who communicates over team radio throughout a session, relaying strategy calls, tire and gap information, and instructions such as engine mode or brake bias adjustments.<br>Drivers use the same radio channel to report car problems, changing track conditions, or incidents to the pit wall in real time, directly shaping the team's next decision.<br>FIA regulations limit the kind of information teams may radio to drivers during a race, banning most direct coaching on how to drive faster so that the core skill remains with the driver.<br>Broadcast team radio, aired live during races, has become a popular part of the TV coverage, giving fans direct insight into strategy calls and driver emotions.",
+    "example": "A short radio exchange of <b>box, box</b> confirms a pit stop call between engineer and driver moments before the car turns into the pit lane.",
+    "image": "",
+    "thread": ""
   }
 ]

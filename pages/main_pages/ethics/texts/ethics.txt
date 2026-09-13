@@ -1,23 +1,114 @@
 [
   {
     "name": "AI Ethics",
-    "desc": "The moral implications of <b>artificial intelligence</b>.<br>Focuses on <i>fairness</i> and accountability.",
-    "example": "Ensuring <b>AI hiring tools</b> avoid <i>bias</i>.<br>A <b>critical</b> challenge.",
-    "image": "https://example.com/images/ai_ethics.jpg",
-    "thread": "https://x.com/example/thread/12345"
+    "desc": "Artificial intelligence ethics examines the moral questions raised as machine-learning systems make decisions that once required human judgment, including issues of <b>fairness</b>, <b>accountability</b>, and <b>transparency</b>. The field draws on decades of work in computer science and philosophy, but gained urgency after high-profile cases of biased facial-recognition and hiring algorithms in the 2010s. A central tension is between a system's accuracy and its explainability: the most powerful models are often the hardest to audit for how they reached a decision. Because AI systems can scale a single flawed assumption to millions of people at once, even small design choices carry outsized consequences. Debates continue over who bears responsibility when an autonomous system causes harm — the developer, the deployer, or the user.",
+    "example": "A bank's loan-approval algorithm trained on historical data may replicate past discriminatory lending patterns even without explicitly using race as an input, since correlated proxies like zip code can encode the same bias.",
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Bioethics",
-    "desc": "Ethical issues in <b>biology</b> and medicine.<br>Includes debates on <i>gene editing</i>.",
-    "example": "CRISPR’s use in <b>human embryos</b> raises <i>moral questions</i>.<br>A <b>complex</b> dilemma.",
-    "image": "https://example.com/images/bioethics.jpg",
-    "thread": "https://x.com/example/thread/67890"
+    "desc": "Bioethics is the study of moral questions arising from advances in medicine, biology, and the life sciences, spanning issues from end-of-life care to genetic research. It emerged as a formal discipline in the 1960s and 70s alongside developments like organ transplantation, ventilator technology, and in-vitro fertilization, which forced new questions about when life begins, ends, or should be sustained. Four principles commonly guide the field: <i>autonomy</i>, <i>beneficence</i>, <i>non-maleficence</i>, and <i>justice</i>, though these can conflict in practice. A recurring tension is between individual patient choice and broader social or medical consequences, such as when a patient's refusal of treatment affects public health. Bioethics committees now sit within most major hospitals and research institutions to review difficult cases and experimental protocols.",
+    "example": "A terminally ill patient requests to stop life-sustaining treatment against family wishes, raising the question of whether patient autonomy should override loved ones' objections.",
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Environmental Ethics",
-    "desc": "Moral principles guiding <b>environmental care</b>.<br>Emphasizes <i>sustainability</i>.",
-    "example": "Reducing <b>carbon footprints</b> for <i>future generations</i>.<br>A <b>noble</b> goal.",
-    "image": "https://example.com/images/env_ethics.jpg",
-    "thread": "https://x.com/example/thread/54321"
+    "desc": "Environmental ethics considers the moral relationship between humans and the natural world, asking whether nature has value only for human use (an <i>anthropocentric</i> view) or intrinsic worth of its own (an <i>ecocentric</i> view). The field grew prominently from the 1970s, influenced by thinkers like Aldo Leopold's 'land ethic' and later deep ecology movements. A key debate concerns intergenerational justice: how much current generations owe to people who are not yet born and cannot advocate for their own interests. Another tension exists between conservation for human benefit, meaning sustainable resource use, and preservation of ecosystems regardless of utility. These questions increasingly intersect with economics and policy as climate change and biodiversity loss raise the stakes of environmental decisions.",
+    "example": "A government must decide whether to approve a mining project that would boost local jobs and tax revenue but destroy a wetland habitat that cannot be restored.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Medical Ethics",
+    "desc": "Medical ethics governs the conduct of healthcare professionals and the moral dilemmas that arise in clinical practice, distinct from the broader field of bioethics in its focus on the doctor-patient relationship and professional duty. Its roots trace to the Hippocratic Oath and were formalized further after the Nuremberg Code of 1947 and the Belmont Report of 1979, both written in response to unethical research practices. Core principles include <b>informed consent</b>, <b>confidentiality</b>, and the duty to do no harm, which can conflict when, for example, honesty about a poor prognosis might cause psychological distress. Modern medical ethics also addresses resource allocation, such as how to fairly ration scarce treatments like organs or intensive-care beds. The rise of telemedicine and AI-assisted diagnosis has introduced new questions about liability and the limits of algorithmic recommendations in patient care.",
+    "example": "During a pandemic surge, a hospital with only one remaining ventilator must choose between two critically ill patients, forcing an explicit triage policy on who receives care first.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Business Ethics",
+    "desc": "Business ethics examines the moral principles that should guide commercial conduct, covering issues like fair dealing, honest advertising, employee treatment, and corporate governance. It became a distinct academic field in the 1970s partly in response to corporate scandals and growing public scrutiny of business power. A persistent tension is between a firm's fiduciary duty to maximize shareholder value, as famously argued by economist Milton Friedman, and broader stakeholder obligations to employees, customers, and communities. Ethical lapses in areas like accounting fraud or unsafe working conditions have historically led to major regulatory reforms. As global supply chains have grown more complex, business ethics increasingly grapples with how much responsibility a company bears for practices at its suppliers and contractors overseas.",
+    "example": "A clothing brand discovers that a subcontracted factory is underpaying workers and violating safety codes, but cutting ties abruptly would disrupt production and could still leave those same workers without income.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Data Privacy Ethics",
+    "desc": "Data privacy ethics addresses the moral limits on collecting, storing, and using personal information in an era where digital data has become a core economic asset. The field expanded rapidly alongside the growth of social media and targeted advertising in the 2000s and 2010s, and gained legal weight with regulations like the European Union's General Data Protection Regulation, which took effect in 2018. A central question is what counts as meaningful consent when users rarely read lengthy terms-of-service agreements before granting access to their data. There is also tension between individual privacy rights and legitimate uses of aggregated data, such as for medical research or public safety. As data brokers and predictive analytics grow more sophisticated, debates continue over whether personal data should be treated as something the individual owns or as an asset belonging to the platform that collects it.",
+    "example": "A fitness app quietly shares 'anonymized' location data with third parties, which researchers later show can be re-identified to trace individual users' daily movements.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Animal Ethics",
+    "desc": "Animal ethics considers what moral status non-human animals hold and what obligations, if any, humans have toward them. Philosopher Peter Singer's 1975 book <i>Animal Liberation</i> was pivotal in framing the issue around animals' capacity to suffer, while others such as Tom Regan argued animals hold inherent rights independent of their usefulness to humans. A major point of contention is where to draw lines of moral consideration, whether by species, sentience, or cognitive capacity, and how this should affect practices like factory farming, animal testing, and hunting. The field also intersects with environmental ethics on questions of wildlife conservation versus individual animal welfare. Industrial agriculture's scale has made this a matter of significant practical consequence, since billions of animals are raised for food annually under varying welfare standards.",
+    "example": "A pharmaceutical company must decide whether to continue testing a potentially life-saving drug on primates when alternative testing methods exist but are considered less reliable by regulators.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Utilitarianism",
+    "desc": "Utilitarianism is a consequentialist ethical framework holding that the morally right action is the one that produces the greatest overall good, typically measured as happiness or well-being, for the greatest number of people. It was developed by Jeremy Bentham in the late 18th century and refined by John Stuart Mill, who distinguished between higher and lower pleasures to address criticisms of crude hedonism. Its main strength is offering a clear, outcome-focused way to weigh competing interests impartially. Critics argue it can justify harming a minority if doing so benefits a larger majority, and that measuring and comparing subjective well-being across different people is inherently difficult. Variants like rule utilitarianism attempt to address this by asking which general rules, if consistently followed, would maximize good outcomes rather than judging each individual act in isolation.",
+    "example": "The classic 'trolley problem' asks whether it is right to divert a runaway trolley onto a track where it will kill one person instead of five, testing whether outcomes alone can justify an action.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Deontology",
+    "desc": "Deontology is an ethical framework that judges actions as right or wrong based on adherence to moral rules or duties, rather than on the consequences those actions produce. Its most influential formulation comes from Immanuel Kant, who argued that a moral rule must be one that could be willed as a universal law, and that people should never be treated merely as a means to an end. This makes deontology attractive for protecting individual rights, since it resists the utilitarian logic that sacrificing one person could ever be justified purely by benefits to others. Critics counter that rigid rule-following can produce troubling results in edge cases, such as when telling the truth might get an innocent person harmed. Deontological reasoning nonetheless underlies much of modern human rights law and professional codes of ethics, which set firm rules regardless of situational outcomes.",
+    "example": "A person hiding a refugee from persecutors is asked directly whether the refugee is inside; a strict deontological reading of 'never lie' would require an honest answer even though it could lead to the refugee's capture.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Virtue Ethics",
+    "desc": "Virtue ethics evaluates morality not by rules or outcomes but by the character of the person acting, asking what a genuinely virtuous person would do in a given situation. It originates with Aristotle's <i>Nicomachean Ethics</i>, which framed virtues like courage, honesty, and temperance as habits cultivated through practice, each representing a balanced 'mean' between excess and deficiency. Unlike utilitarianism or deontology, it does not offer a single decision procedure, which supporters see as a strength reflecting real moral complexity but critics see as a weakness that leaves genuine dilemmas unresolved. The framework saw a notable revival in the mid-20th century, prompted partly by philosopher Elizabeth Anscombe's critique of rule-based moral theories. Virtue ethics is often applied in professional contexts such as medicine and law, where character and judgment matter as much as compliance with formal rules.",
+    "example": "A doctor faces a patient requesting an unnecessary but harmless treatment; rather than following a rigid rule, a virtue ethics approach asks what a genuinely honest and compassionate physician would say in that specific relationship.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Genetic Engineering Ethics",
+    "desc": "Genetic engineering ethics examines the moral implications of directly modifying an organism's DNA, a capability that expanded dramatically after the discovery of the CRISPR-Cas9 gene-editing tool in 2012. A key distinction is drawn between somatic gene editing, which affects only the treated individual, and germline editing, which is heritable and passed to future generations. The 2018 case of a Chinese scientist who edited the genomes of human embryos, resulting in international condemnation and a prison sentence, illustrates how far practice can outrun ethical and legal consensus. Debates center on the risk of unintended genetic consequences, the possibility of unequal access creating new social inequalities, and where the line falls between treating disease and enhancing human traits. Agricultural genetic engineering raises parallel concerns about ecological effects and corporate control over the food supply.",
+    "example": "Parents could theoretically edit an embryo's genes to prevent a severe inherited disease, but the same underlying technology could later be used to select for traits like height, raising the question of where medical treatment ends and enhancement begins.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Just War Theory & Military Ethics",
+    "desc": "Just war theory sets out the conditions under which resorting to war can be morally justified, known as <i>jus ad bellum</i>, and how it must be conducted once underway, known as <i>jus in bello</i>. Its roots trace to Augustine and Thomas Aquinas, and it was later secularized by thinkers like Hugo Grotius and, more recently, Michael Walzer. Jus ad bellum criteria typically include just cause, legitimate authority, and last resort, while jus in bello principles require proportionality and discrimination between combatants and civilians. A persistent tension is that a war can satisfy the conditions for justly beginning while still involving conduct that violates the rules for how it is fought, or the reverse. Modern military ethics extends these classical questions to issues like drone warfare, cyber conflict, and the treatment of prisoners, where traditional battlefield assumptions no longer clearly apply.",
+    "example": "A military strike on a legitimate enemy target is planned, but intelligence indicates it will also kill a significant number of nearby civilians, forcing commanders to weigh military necessity against the principle of proportionality.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Journalism Ethics",
+    "desc": "Journalism ethics concerns the professional standards that guide reporters and news organizations in gathering and publishing information, centering on values like accuracy, fairness, independence, and minimizing harm. These norms were formalized through codes such as the Society of Professional Journalists' Code of Ethics, developed over the 20th century as the press grew into a mass institution. A recurring tension is between the public's right to know and an individual's right to privacy, especially when reporting on private citizens caught up in newsworthy events. The rise of social media and round-the-clock news cycles has intensified pressure to publish quickly, sometimes at the expense of verification, while declining advertising revenue has raised concerns about sensationalism driving coverage decisions. Questions of source protection, conflicts of interest, and the boundary between reporting and opinion remain central to the field.",
+    "example": "A reporter obtains leaked documents revealing government wrongdoing but must decide whether publishing them immediately would also endanger confidential sources or compromise an ongoing investigation.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Climate Justice",
+    "desc": "Climate justice frames climate change not only as an environmental or scientific problem but as a matter of fairness, focusing on how its causes and harms are unevenly distributed across nations, generations, and income groups. The concept gained prominence through international negotiations like the 1997 Kyoto Protocol and the 2015 Paris Agreement, which recognized 'common but differentiated responsibilities' between industrialized and developing nations. A central argument is that wealthy countries, historically responsible for most cumulative greenhouse gas emissions, bear a larger share of responsibility for mitigation and for financing adaptation in lower-income countries that contributed comparatively little to the problem but face some of its worst effects. This raises difficult questions about how to calculate fair compensation or 'loss and damage' funding without stalling international cooperation. Domestically, climate justice also examines how pollution and climate impacts disproportionately affect low-income and marginalized communities within the same country.",
+    "example": "A low-lying island nation that emits a negligible share of global greenhouse gases faces existential flooding risk from sea-level rise driven largely by emissions from industrialized countries, raising the question of what obligations wealthier nations owe.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Autonomous Weapons Ethics",
+    "desc": "Autonomous weapons ethics examines the moral and legal questions raised by weapons systems capable of selecting and engaging targets with little or no human intervention, often called <b>lethal autonomous weapons systems</b>. The debate intensified through the 2010s as drone warfare matured and militaries began investing in AI-driven targeting systems, prompting United Nations discussions on regulating or restricting such weapons. Supporters argue autonomous systems could reduce risk to soldiers and potentially make more consistent targeting decisions than fatigued or emotional humans. Critics, including many AI researchers who have signed open letters calling for restrictions, argue that removing meaningful human control from lethal decisions raises unresolved questions of accountability when such a system errs, and risks lowering the threshold for entering conflict. International humanitarian law's principles of distinction and proportionality were written with human judgment in mind, and it remains contested whether current AI systems can reliably apply them.",
+    "example": "An autonomous drone is programmed to strike any vehicle matching a target's heat signature, but a civilian vehicle with a similar profile enters the area, raising the question of who is accountable if the system fires without human confirmation.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Corporate Social Responsibility",
+    "desc": "Corporate social responsibility, often abbreviated CSR, refers to the idea that businesses have obligations to society beyond generating profit for shareholders, encompassing environmental stewardship, fair labor practices, and community engagement. The concept grew out of early 20th-century debates about corporate power and expanded significantly after high-profile environmental disasters and labor scandals in the late 20th century pushed companies toward voluntary reporting standards. A central tension is between CSR as a genuine ethical commitment and its use as a public relations tool, a criticism often labeled 'greenwashing' when environmental claims outpace actual practice. Economist Milton Friedman's 1970 argument that a corporation's only social responsibility is to increase its profits within the law remains a touchstone for critics who see CSR initiatives as a distraction from core business obligations. Modern frameworks like ESG, short for environmental, social, and governance investing, attempt to formalize CSR into measurable criteria, though standardization across industries remains inconsistent.",
+    "example": "An oil company launches a widely advertised renewable-energy initiative while the vast majority of its revenue and investment continues to come from fossil fuel extraction, prompting critics to question whether the initiative reflects genuine strategic change or public-image management.",
+    "image": "",
+    "thread": ""
   }
 ]

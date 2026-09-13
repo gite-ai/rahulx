@@ -20,7 +20,7 @@
     ],
     "example": "Image and speech recognition, recommendation systems, self-driving cars.",
     "image": "https://i.postimg.cc/gk56ssLy/pexels-googledeepmind-17484975.jpg",
-    "thread": "https://x.com/example_thread1"
+    "thread": ""
   },
   {
     "name": "Natural Language Processing",
@@ -43,7 +43,7 @@
     ],
     "example": "Chatbots like ChatGPT, Google Translate, sentiment analysis tools.",
     "image": "https://i.postimg.cc/Yqyyx5xX/pexels-markus-winkler-1430818-30869073.jpg",
-    "thread": "https://x.com/example_thread2"
+    "thread": ""
   },
   {
     "name": "Reinforcement Learning",
@@ -66,7 +66,7 @@
     ],
     "example": "AlphaGo's Go mastery, robotic navigation, game AI.",
     "image": "https://i.postimg.cc/43tfGbdg/pexels-davidmcbee-388846.jpg",
-    "thread": "https://x.com/example_thread3"
+    "thread": ""
   },
   {
     "name": "Generative AI",
@@ -89,7 +89,7 @@
     ],
     "example": "AI art generators, LLM chatbots, music composition tools.",
     "image": "https://i.postimg.cc/mZ1052tv/pexels-sahilsharma-32845478.jpg",
-    "thread": "https://x.com/example_thread4"
+    "thread": ""
   },
   {
     "name": "Edge AI",
@@ -112,7 +112,7 @@
     ],
     "example": "On-device voice assistants, smart cameras, industrial IoT analytics.",
     "image": "https://i.postimg.cc/VNbVHKNj/pexels-zeleboba-33079302.jpg",
-    "thread": "https://x.com/example_thread5"
+    "thread": ""
   },
   {
     "name": "Explainable AI (XAI)",
@@ -135,6 +135,213 @@
     ],
     "example": "Interpretable models in medical diagnostics, financial risk analysis.",
     "image": "https://i.postimg.cc/HxnVg8f4/pexels-thisisengineering-3912992-1.jpg",
-    "thread": "https://x.com/example_thread6"
+    "thread": ""
+  },
+  {
+    "name": "Machine Learning",
+    "desc": "Machine Learning (ML) is the branch of artificial intelligence that gives computers the ability to learn patterns from data and improve at a task without being explicitly programmed with fixed rules. Instead of hard-coding logic, engineers train statistical models on examples so the system can generalize to new, unseen inputs.",
+    "importance": [
+      "Underpins nearly every modern AI application, from search ranking to fraud detection",
+      "Allows systems to improve automatically as more data becomes available",
+      "Replaces brittle rule-based programming with adaptable, data-driven models"
+    ],
+    "applications": [
+      "Spam and fraud detection in email and banking",
+      "Product recommendations on e-commerce platforms",
+      "Predictive maintenance in manufacturing equipment"
+    ],
+    "key_concepts": [
+      "Supervised, unsupervised, and semi-supervised learning",
+      "Training, validation, and test datasets",
+      "Overfitting, underfitting, and regularization",
+      "Feature engineering and model evaluation metrics"
+    ],
+    "example": "Email spam filters, e-commerce recommendation engines, credit card fraud detection systems.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Deep Learning",
+    "desc": "Deep Learning is a subfield of machine learning built on artificial neural networks with many stacked layers, which allow models to automatically learn hierarchical representations of data. Rather than relying on hand-crafted features, deep networks learn increasingly abstract patterns directly from raw pixels, audio, or text.",
+    "importance": [
+      "Drives most breakthroughs in vision, speech, and language over the past decade",
+      "Automatically extracts hierarchical features, reducing manual feature engineering",
+      "Scales effectively with large datasets and specialized hardware like GPUs and TPUs"
+    ],
+    "applications": [
+      "Facial recognition and biometric authentication",
+      "Real-time speech-to-text transcription services",
+      "Medical image analysis for detecting tumors and anomalies"
+    ],
+    "key_concepts": [
+      "Convolutional neural networks (CNNs) and recurrent neural networks (RNNs)",
+      "Deep vs. shallow network architectures",
+      "GPU/TPU-accelerated training",
+      "Transfer learning and pretrained models"
+    ],
+    "example": "Facial recognition unlocking smartphones, automated medical image screening, voice-to-text dictation apps.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Computer Vision",
+    "desc": "Computer Vision is the field of AI that enables machines to interpret and understand visual information from the world, such as images and video. It combines image processing, pattern recognition, and deep learning to detect objects, track motion, and extract meaning from visual data.",
+    "importance": [
+      "Gives machines a sense of 'sight' to perceive and react to their surroundings",
+      "Enables automation of visual inspection tasks that once required humans",
+      "Foundational for robotics, autonomous vehicles, and augmented reality"
+    ],
+    "applications": [
+      "Quality control inspection on manufacturing lines",
+      "Facial recognition for security and device unlocking",
+      "Object detection in autonomous vehicles and drones"
+    ],
+    "key_concepts": [
+      "Image classification, object detection, and semantic segmentation",
+      "Convolutional neural networks (CNNs)",
+      "Optical character recognition (OCR)",
+      "Feature extraction and image preprocessing"
+    ],
+    "example": "Automated defect detection on assembly lines, security camera facial recognition, self-checkout scanning systems.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Large Language Models (LLMs)",
+    "desc": "Large Language Models are deep learning models, typically based on the transformer architecture, trained on massive text corpora to predict and generate human-like language. Scaling up parameters and training data has given LLMs broad capabilities in reasoning, writing, coding, and conversation.",
+    "importance": [
+      "Enable natural, flexible interaction between humans and machines through language",
+      "Generalize across many tasks (writing, coding, summarizing) without task-specific training",
+      "Serve as the foundation for modern AI assistants and chatbots"
+    ],
+    "applications": [
+      "Conversational AI assistants like ChatGPT and Claude",
+      "Automated code generation and debugging tools",
+      "Document summarization and drafting assistance"
+    ],
+    "key_concepts": [
+      "Transformer architecture and self-attention mechanism",
+      "Pretraining on large text corpora, followed by fine-tuning",
+      "Tokens, context windows, and embeddings",
+      "Reinforcement learning from human feedback (RLHF)"
+    ],
+    "example": "AI chatbots like ChatGPT and Claude, GitHub Copilot for code suggestions, AI-powered writing assistants.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "AI Alignment & Safety",
+    "desc": "AI Alignment and Safety is the field concerned with ensuring that AI systems behave in ways consistent with human values and intentions, and that they remain reliable, controllable, and beneficial as they grow more capable. It addresses both near-term risks like bias and misuse, and long-term risks from highly capable autonomous systems.",
+    "importance": [
+      "Prevents AI systems from pursuing goals that conflict with human intentions",
+      "Reduces risks of bias, misinformation, and unsafe autonomous behavior",
+      "Builds public and regulatory trust needed for responsible AI adoption"
+    ],
+    "applications": [
+      "Content moderation systems that filter harmful AI-generated outputs",
+      "Red-teaming and stress-testing of AI models before deployment",
+      "Safety guardrails and usage policies built into commercial AI assistants"
+    ],
+    "key_concepts": [
+      "Reinforcement learning from human feedback (RLHF)",
+      "Robustness, interpretability, and controllability",
+      "Value alignment and specification gaming",
+      "AI governance, auditing, and red-teaming"
+    ],
+    "example": "Safety filters in AI chatbots, red-team testing of new models before public release, AI governance frameworks adopted by companies.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Humanoid Robotics",
+    "desc": "Humanoid robotics is the design and engineering of robots with a human-like form, including a head, torso, arms, and legs, intended to operate in environments and use tools built for people. It combines mechanical engineering, sensors, and AI-driven control to achieve balance, locomotion, and manipulation.",
+    "importance": [
+      "Allows robots to work within existing human-designed spaces without redesigning infrastructure",
+      "Advances research in bipedal balance, dexterous manipulation, and human-robot interaction",
+      "Opens paths toward general-purpose labor automation in warehouses and homes"
+    ],
+    "applications": [
+      "Warehouse and logistics automation using bipedal robots",
+      "Research platforms for studying human-robot interaction",
+      "Assistive robots for elderly care and household tasks"
+    ],
+    "key_concepts": [
+      "Bipedal locomotion and dynamic balance control",
+      "Actuators, joints, and degrees of freedom",
+      "Sensor fusion (vision, force, and inertial sensors)",
+      "Human-robot interaction and safety"
+    ],
+    "example": "Boston Dynamics' Atlas performing dynamic movements, Tesla's Optimus prototype for factory tasks, humanoid research robots used in universities.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Autonomous Vehicles",
+    "desc": "Autonomous vehicles use a combination of sensors (cameras, radar, LiDAR), AI perception models, and control systems to sense their environment, plan routes, and drive with little or no human input. Autonomy is commonly categorized using the SAE scale from Level 0 (no automation) to Level 5 (full automation).",
+    "importance": [
+      "Has the potential to reduce accidents caused by human error",
+      "Could reshape transportation, logistics, and urban planning",
+      "Drives major advances in real-time sensor fusion and decision-making AI"
+    ],
+    "applications": [
+      "Robotaxi services operating in select cities",
+      "Advanced driver-assistance systems (ADAS) like lane-keeping and adaptive cruise control",
+      "Autonomous trucking for long-haul freight"
+    ],
+    "key_concepts": [
+      "SAE levels of driving automation (Level 0 to Level 5)",
+      "Sensor fusion (cameras, radar, LiDAR)",
+      "Path planning and real-time obstacle avoidance",
+      "Simulation-based training and safety validation"
+    ],
+    "example": "Waymo's robotaxi service, Tesla's Autopilot and Full Self-Driving features, autonomous freight trucks on highways.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Drones & Unmanned Aerial Vehicles (UAVs)",
+    "desc": "Drones, or unmanned aerial vehicles (UAVs), are aircraft that operate without an onboard human pilot, controlled remotely or by onboard autonomous systems. Modern drones combine GPS navigation, computer vision, and flight control algorithms to perform tasks ranging from aerial photography to package delivery.",
+    "importance": [
+      "Provides low-cost access to aerial data collection and monitoring",
+      "Enables tasks in hazardous or hard-to-reach locations without risking human pilots",
+      "Improves efficiency in agriculture, delivery, and infrastructure inspection"
+    ],
+    "applications": [
+      "Aerial photography and cinematography",
+      "Precision agriculture for crop monitoring and spraying",
+      "Package delivery services and infrastructure inspection"
+    ],
+    "key_concepts": [
+      "Flight controllers and stabilization systems",
+      "GPS navigation and obstacle avoidance",
+      "Swarm coordination for multi-drone operations",
+      "Battery, payload, and airspace regulation considerations"
+    ],
+    "example": "DJI drones used for aerial photography, agricultural drones spraying and monitoring crops, delivery drone pilots like Wing and Zipline.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "AI Agents",
+    "desc": "AI agents are systems built on top of models like LLMs that can autonomously plan, use tools, and take multi-step actions to accomplish a goal with minimal human supervision. Unlike a single-turn chatbot response, an agent can break a task into steps, call external tools or APIs, observe results, and adjust its plan.",
+    "importance": [
+      "Extends AI from answering questions to actually completing multi-step tasks",
+      "Enables automation of complex workflows that require tool use and planning",
+      "Represents a major shift toward more autonomous, goal-directed AI systems"
+    ],
+    "applications": [
+      "AI coding agents that write, test, and debug software autonomously",
+      "Customer support agents that resolve tickets end-to-end",
+      "Research and browsing agents that gather and synthesize information from the web"
+    ],
+    "key_concepts": [
+      "Planning and task decomposition",
+      "Tool use and function calling",
+      "Memory and context management across steps",
+      "Feedback loops and self-correction"
+    ],
+    "example": "AI coding assistants that autonomously write and test code, browsing agents that research topics online, customer service agents that handle support tickets end-to-end.",
+    "image": "",
+    "thread": ""
   }
 ]

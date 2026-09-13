@@ -1,23 +1,128 @@
 [
   {
     "name": "Technical Analysis",
-    "desc": "A method to predict <b>price movements</b> using <i>charts</i> and indicators.<br>Popular among <b>traders</b> for decision-making.",
-    "example": "Using <b>Moving Averages</b> to spot <i>trends</i>.<br>A <b>key</b> strategy.",
-    "image": "https://example.com/images/technical_analysis.jpg",
-    "thread": "https://x.com/example/thread/12345"
+    "desc": "Technical analysis is the study of historical price and volume data to identify patterns that may indicate future price behavior. It relies on charts, trendlines, and indicators such as <b>Moving Averages</b>, the <b>Relative Strength Index (RSI)</b>, and <b>MACD</b> to gauge momentum, trend direction, and potential reversal points. The core assumption is that market prices reflect all available information and tend to move in identifiable trends that repeat due to collective trader psychology.<br>It is widely used for timing entries and exits rather than for judging whether an asset is fundamentally cheap or expensive. A key limitation is that patterns are probabilistic, not guaranteed, and can produce false signals in choppy or low-volume markets.",
+    "example": "A trader watching a stock notices its 50-day moving average crossing above its 200-day moving average, a pattern known as a <b>golden cross</b>, which many technical traders interpret as a signal that upward momentum may be building.<br>They combine this with RSI readings to avoid entering when the stock already looks <i>overbought</i>.",
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Risk Management",
-    "desc": "Strategies to <b>minimize losses</b> in trading.<br>Essential for <i>long-term success</i>.",
-    "example": "Setting a <b>stop-loss</b> at <i>2% below entry</i>.<br>Protects your <b>capital</b>.",
-    "image": "https://example.com/images/risk_management.jpg",
-    "thread": "https://x.com/example/thread/67890"
+    "desc": "Risk management is the discipline of controlling how much capital can be lost on any single trade or across a portfolio, rather than focusing only on potential gains. Core techniques include <b>position sizing</b> (limiting each trade to a small percentage of total capital), setting <b>stop-loss</b> orders to cap downside automatically, and diversifying across uncorrelated assets. Many professional traders follow a rule of risking only 1-2% of total capital on any single position so that a string of losses does not wipe out the account.<br>Because markets are inherently uncertain, effective risk management assumes some trades will lose money and focuses on ensuring that no single loss is catastrophic, which is often what separates traders who survive long-term from those who do not.",
+    "example": "A trader with a $10,000 account decides to risk no more than 1% ($100) per trade, so when buying a stock at $50 they set a stop-loss at $48 and size the position so a 2-point drop equals roughly $100 in loss.<br>This way, even several consecutive losing trades leave most of the account intact.",
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Crypto Trading",
-    "desc": "Trading <b>digital currencies</b> like Bitcoin.<br>Known for <i>high volatility</i> and opportunity.",
-    "example": "Buying <b>BTC</b> at a <i>dip</i>.<br>A <b>profitable</b> move.",
-    "image": "https://example.com/images/crypto_trading.jpg",
-    "thread": "https://x.com/example/thread/54321"
+    "desc": "Crypto trading involves buying and selling digital assets like <b>Bitcoin</b> and <b>Ethereum</b> on exchanges that operate globally, 24 hours a day, 7 days a week, unlike traditional stock markets with fixed hours. These assets are built on blockchain technology, decentralized ledgers that record transactions without a central authority, which is part of their appeal but also means less regulatory oversight than traditional securities in many jurisdictions. Crypto markets are known for extreme <i>volatility</i>, with prices capable of moving double-digit percentages within a single day driven by news, regulation, and shifting sentiment.<br>Traders should also weigh custody risk (who actually controls the private keys to the assets) and exchange counterparty risk, since exchange failures have historically led to significant investor losses.",
+    "example": "During a period of positive regulatory news, a crypto asset might rally sharply within hours as trading volume spikes, while a security breach at a major exchange could trigger a broad sell-off across many coins simultaneously, illustrating how interconnected and sentiment-driven the space is.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Fundamental Analysis",
+    "desc": "Fundamental analysis evaluates a company's intrinsic value by examining financial statements, industry conditions, and macroeconomic factors, rather than price charts. Analysts study metrics like <b>revenue growth</b>, <b>earnings per share (EPS)</b>, <b>price-to-earnings (P/E) ratio</b>, debt levels, and free cash flow to judge whether a stock is undervalued or overvalued relative to its business quality. It also considers qualitative factors such as management competence, competitive advantages (sometimes called a <i>moat</i>), and broader economic conditions like interest rates.<br>This approach is generally used for longer-term investment decisions rather than short-term trades, since a company's true value can take months or years to be reflected in its stock price.",
+    "example": "An investor comparing two companies in the same industry might favor the one with steadily growing revenue, a lower debt-to-equity ratio, and a P/E ratio below the industry average, reasoning that the market may be underpricing its earnings potential relative to peers.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Options Trading",
+    "desc": "An option is a derivative contract that gives the buyer the right, but not the obligation, to buy (<b>call option</b>) or sell (<b>put option</b>) an underlying asset at a set <b>strike price</b> before or on an expiration date. Options are used for speculation, income generation (such as selling covered calls), or hedging existing positions against adverse price moves. Their price, called the <i>premium</i>, is influenced by the underlying asset's price, time remaining until expiration, and <b>implied volatility</b>.<br>Because options can expire worthless, buyers risk losing the entire premium paid, while certain option-selling strategies can expose the seller to theoretically unlimited losses, making options considerably riskier and more complex than simply owning the underlying stock.",
+    "example": "An investor holding 100 shares of a stock might sell a covered call against those shares to collect premium income; if the stock stays below the strike price by expiration, they keep both the shares and the premium, but if it rises above the strike, they may be obligated to sell their shares at that price.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Futures Trading",
+    "desc": "A futures contract is a standardized agreement to buy or sell an asset, such as oil, gold, or a stock index, at a predetermined price on a specific future date, traded on regulated exchanges. Futures are commonly used by producers and businesses to <b>hedge</b> against price fluctuations (for example, an airline locking in future fuel costs) and by speculators seeking to profit from price movements. Trading futures typically involves significant <b>leverage</b>, meaning traders control a large contract value with a relatively small amount of margin, which magnifies both potential gains and losses.<br>Unlike options, most futures contracts obligate both parties to complete the transaction unless the position is closed or offset before expiration.",
+    "example": "A wheat farmer might sell wheat futures months before harvest to lock in a selling price and protect against the risk that market prices fall by the time the crop is ready, while a speculator on the other side of that trade is betting on where prices will actually move.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Forex Trading",
+    "desc": "Forex (foreign exchange) trading is the buying and selling of currency pairs, such as <b>EUR/USD</b>, with the goal of profiting from changes in relative currency values. It is the largest and most liquid financial market in the world, operating nearly 24 hours a day across global financial centers as trading shifts between time zones. Currency prices are influenced by factors like central bank interest rate decisions, inflation data, geopolitical events, and trade balances.<br>Forex trading is frequently conducted with high leverage offered by brokers, which can amplify both profits and losses substantially, and unlike stocks, currencies are always traded in pairs since a trader is simultaneously buying one currency and selling another.",
+    "example": "If a trader expects a central bank to raise interest rates, making that country's currency more attractive to yield-seeking investors, they might buy that currency against another, anticipating its value will rise relative to the currency they sold.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Value Investing",
+    "desc": "Value investing is an investment strategy focused on buying stocks that appear undervalued relative to their intrinsic worth, often identified through low <b>price-to-earnings</b> or <b>price-to-book</b> ratios compared to historical averages or industry peers. The approach was popularized by investors like Benjamin Graham and later Warren Buffett, and centers on the idea of a <i>margin of safety</i>, buying at a meaningful discount to estimated true value to cushion against analytical errors. Value investors typically hold positions for years, waiting for the broader market to recognize the company's actual worth.<br>A key risk is the <i>value trap</i>, where a stock looks cheap because the underlying business is genuinely deteriorating, not because the market is mispricing it.",
+    "example": "A value investor might buy shares of an established company trading at a historically low valuation during a temporary industry downturn, betting that once conditions normalize, the market will re-rate the stock closer to its historical average valuation.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Growth Investing",
+    "desc": "Growth investing targets companies expected to grow revenue and earnings faster than the overall market, even if their current valuations, such as P/E ratios, appear high relative to established companies. These are often younger or innovation-driven companies in sectors like technology or biotechnology that reinvest profits into expansion rather than paying dividends. Growth investors prioritize a company's future earnings potential and market opportunity over its current profitability or asset value.<br>Because growth stocks are often priced for high expectations, they can experience sharp declines if growth slows or fails to meet projections, making this style generally more volatile than value-oriented approaches.",
+    "example": "A growth investor might buy shares in a fast-expanding technology company with rapidly rising revenue but minimal current profit, believing that as the company scales, profitability will eventually catch up and justify today's premium valuation.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Dividend Investing",
+    "desc": "Dividend investing focuses on buying shares of companies that regularly distribute a portion of their profits to shareholders as cash payments, known as <b>dividends</b>. Investors often evaluate a stock's <b>dividend yield</b> (annual dividend divided by share price) and its history of dividend growth, since companies with long records of consistent or increasing dividends, sometimes called <i>Dividend Aristocrats</i>, are often viewed as financially stable. This strategy can provide a steady income stream in addition to potential share price appreciation, making it popular among income-focused and retirement investors.<br>However, a high dividend yield can sometimes signal financial distress, as it may reflect a falling share price rather than a generous payout, and companies can cut or suspend dividends during downturns.",
+    "example": "An investor building a retirement income portfolio might favor a company that has increased its dividend annually for over 20 consecutive years over a higher-yielding company with an inconsistent payout history, prioritizing reliability over the highest possible current yield.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Day Trading",
+    "desc": "Day trading involves buying and selling securities within the same trading day, closing all positions before the market closes to avoid overnight price risk. Day traders rely heavily on technical analysis, real-time news, and short-term price momentum, often making multiple trades per day to profit from small price movements. In the United States, traders who execute four or more day trades within five business days in a margin account are classified as <b>Pattern Day Traders</b> and are required to maintain a minimum account equity, currently set by FINRA rules.<br>Day trading demands significant time, discipline, and fast decision-making, and transaction costs plus the difficulty of consistently predicting short-term moves mean a large proportion of active day traders underperform simple buy-and-hold approaches over time.",
+    "example": "A day trader might buy a stock at market open after spotting a surge in early volume and news catalysts, then sell that same position within the hour once the price reaches a predefined profit target, never holding it overnight.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Swing Trading",
+    "desc": "Swing trading aims to capture price moves, or <i>swings</i>, that play out over several days to a few weeks, positioning it between the fast pace of day trading and the long horizon of buy-and-hold investing. Swing traders typically use a mix of technical analysis, such as chart patterns and support/resistance levels, along with some fundamental context, to identify entry and exit points. Because positions are held overnight and over weekends, swing traders are exposed to <b>gap risk</b>, where a stock's price jumps sharply between one day's close and the next day's open due to after-hours news.<br>This style generally requires less constant screen time than day trading but still demands regular monitoring and a clear exit plan for both profits and losses.",
+    "example": "A swing trader might identify a stock bouncing off a well-established support level on the chart and buy in, planning to hold for one to two weeks until it approaches a prior resistance level where they intend to sell.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Algorithmic Trading",
+    "desc": "Algorithmic trading uses computer programs to execute trades automatically based on predefined rules involving price, timing, volume, or other quantitative signals, removing manual decision-making from execution. These systems can react to market data and place orders in milliseconds, far faster than any human, and are used for strategies ranging from simple rule-based trend following to complex <b>high-frequency trading</b> that profits from tiny price discrepancies. Institutional investors use algorithms extensively to execute large orders gradually, minimizing market impact and reducing the price movement that a single large trade could cause.<br>A key risk is that algorithms can behave unexpectedly in extreme or unforeseen market conditions, sometimes contributing to rapid, self-reinforcing price moves known as <i>flash crashes</i>.",
+    "example": "A firm might deploy an algorithm programmed to automatically buy a stock whenever its 20-day moving average crosses above its 50-day moving average and sell when the reverse occurs, executing the same rule consistently without emotional interference.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Portfolio Diversification",
+    "desc": "Diversification is the practice of spreading investments across different asset classes, industries, and geographic regions so that poor performance in one area does not disproportionately harm the entire portfolio. It works because different assets often respond differently to the same economic event; when stocks fall, bonds or certain commodities may hold steady or rise, reducing overall portfolio volatility. This principle is often summarized as not putting all of one's eggs in one basket, and is a foundational concept in <b>Modern Portfolio Theory</b>.<br>Diversification reduces company-specific and sector-specific risk, but it cannot eliminate broader market-wide (<i>systematic</i>) risk that affects nearly all assets during major downturns.",
+    "example": "An investor holding only technology stocks faces heavy losses if that sector declines, whereas a portfolio spread across technology, healthcare, government bonds, and international stocks would likely experience a smaller overall decline during the same event.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Candlestick Patterns",
+    "desc": "Candlestick charts display an asset's open, high, low, and close prices for a given time period using a visual <i>candle</i> shape, originating from 18th-century Japanese rice trading. Each candle's body shows the range between the opening and closing price, colored differently depending on whether the price rose or fell, while thin lines called <b>wicks</b> or <i>shadows</i> show the full high-low range. Traders study recurring patterns, such as a <b>Doji</b> (indicating indecision) or an <b>Engulfing Pattern</b> (suggesting a potential reversal), to infer shifts in buying or selling pressure.<br>These patterns are more reliable when combined with other indicators or context like volume and trend direction, since a single candlestick pattern in isolation can produce misleading signals.",
+    "example": "A <b>Bullish Engulfing</b> pattern occurs when a small red (down) candle is immediately followed by a larger green (up) candle that completely covers the previous candle's body, which some traders interpret as a sign that buyers have overwhelmed sellers and a reversal higher may follow.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Behavioral Finance & Trading Psychology",
+    "desc": "Behavioral finance studies how psychological biases and emotions cause investors to make decisions that deviate from purely rational, profit-maximizing behavior. Common biases include <b>loss aversion</b> (feeling losses more intensely than equivalent gains), <b>confirmation bias</b> (favoring information that supports an existing belief), and <b>herd behavior</b> (following the crowd into or out of an asset). Trading psychology specifically examines how emotions like fear and greed influence real-time decisions, often leading traders to hold losing positions too long hoping for a reversal, or to sell winning positions too early out of fear of giving back gains.<br>Recognizing these patterns is considered essential to disciplined trading, since even a sound strategy can fail if emotional decision-making overrides it.",
+    "example": "A trader whose stock drops 10% below their purchase price might refuse to sell, rationalizing that it will surely recover, even as further evidence suggests the decline will continue, an example of loss aversion overriding a predetermined risk plan.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Margin Trading & Leverage",
+    "desc": "Margin trading allows an investor to borrow money from a broker to purchase more securities than their own cash would otherwise allow, using existing holdings or cash as collateral. This creates <b>leverage</b>, which amplifies both potential gains and potential losses relative to the amount of the investor's own capital invested. Brokers require a <b>maintenance margin</b>, a minimum account equity level, and if the account value falls below it, the investor faces a <b>margin call</b> demanding additional funds or triggering a forced sale of assets to cover the shortfall.<br>Because losses can exceed the initial investment and interest accrues on borrowed funds, margin trading carries meaningfully higher risk than trading with cash alone.",
+    "example": "An investor with $5,000 in cash who borrows an additional $5,000 on margin to buy $10,000 worth of stock has effectively doubled their exposure; a 10% price decline would result in a $1,000 loss, representing a 20% loss relative to their original $5,000 in equity.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Exchange-Traded Funds (ETFs)",
+    "desc": "An <b>ETF</b> is an investment fund that holds a basket of assets, such as stocks, bonds, or commodities, and trades on stock exchanges throughout the day just like an individual stock, unlike traditional mutual funds which are priced only once daily. ETFs often track a specific index, such as a broad stock market index, sector, or bond index, providing instant diversification in a single trade. They are generally known for lower expense ratios compared to actively managed mutual funds, and their structure typically offers greater tax efficiency in many markets due to how shares are created and redeemed.<br>While ETFs reduce single-company risk through diversification, sector-specific or thematic ETFs can still carry significant volatility if that sector underperforms.",
+    "example": "Rather than researching and buying dozens of individual companies to build a diversified stock portfolio, an investor might buy shares of a single broad-market index ETF, gaining exposure to hundreds of companies across many industries in one transaction.",
+    "image": "",
+    "thread": ""
   }
 ]

@@ -529,12 +529,18 @@
       modalTitle.textContent = title;
       modalDesc.innerHTML = desc;
       modalExample.innerHTML = `Example: ${example}`; // Changed to innerHTML
-      modalImage.src = image;
+      if (image) {
+        modalImage.src = image;
+        modalImage.style.display = 'block';
+      } else {
+        modalImage.style.display = 'none';
+      }
+      modalImage.onerror = () => { modalImage.style.display = 'none'; };
       modal.style.display = 'flex';
 
       const threadButton = document.getElementById('threadButton');
       threadButton.onclick = function() {
-        window.open(thread, '_blank');
+        window.open(thread || `https://x.com/search?q=%23${encodeURIComponent(title.replace(/\s+/g,''))}`, '_blank', 'noopener,noreferrer');
       };
 
       const searchButton = document.getElementById('searchButton');

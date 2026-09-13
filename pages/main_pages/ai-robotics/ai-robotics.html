@@ -835,6 +835,7 @@
       // Image
       if (tech.image) {
         modalImage.src = tech.image;
+        modalImage.onerror = () => { modalImage.style.display = 'none'; };
         modalImage.alt = `Image representing ${tech.name}`;
         modalImage.style.display = 'block';
       } else {

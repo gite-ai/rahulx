@@ -154,5 +154,139 @@
       "https://www.snes9x.com/"
     ],
     "image": "https://i.postimg.cc/T2r5hQWh/how-to-use-rpcs3-emulator-to-play-ps3-games.jpg"
+  },
+  {
+    "name": "Cloud Gaming",
+    "type": "Streaming Platform",
+    "categories": ["Game Streaming", "Subscription Services", "Low-Latency Streaming"],
+    "desc": "Play high-end games streamed from remote servers to almost any device, without needing powerful local hardware to run them.",
+    "getting_started": "Sign up for a service like Xbox Cloud Gaming or GeForce NOW, make sure you have a stable 15+ Mbps connection, and stream directly from a browser, phone, or smart TV.",
+    "example": "Playing Cyberpunk 2077 on a low-power Chromebook by streaming it from GeForce NOW's cloud servers.",
+    "top_games": ["Cyberpunk 2077", "Fortnite", "Control", "Death Stranding", "Diablo IV", "Halo Infinite", "Forza Horizon 5", "Elden Ring", "Genshin Impact", "Red Dead Redemption 2"],
+    "official_websites": [
+      "https://www.nvidia.com/en-us/geforce-now/",
+      "https://www.xbox.com/en-US/cloud-gaming",
+      "https://www.playstation.com/en-us/ps-plus/games/cloud-streaming/"
+    ],
+    "image": ""
+  },
+  {
+    "name": "Game Engines (Unreal Engine & Unity)",
+    "type": "Development Software",
+    "categories": ["3D Engines", "2D Engines", "Game Middleware"],
+    "desc": "Software frameworks that provide rendering, physics, and editor tools so developers can build games without writing every system from scratch.",
+    "getting_started": "Download Unreal Engine or Unity for free, work through the official beginner tutorial, and build a small prototype like a first-person walking scene or a 2D platformer.",
+    "example": "Building a photorealistic third-person environment using Unreal Engine's Lumen lighting and Nanite geometry systems.",
+    "top_games": ["Fortnite", "Hogwarts Legacy", "Genshin Impact", "Hollow Knight", "Cuphead", "Ori and the Blind Forest", "Valorant", "Pokémon GO", "Among Us", "Cities: Skylines II"],
+    "official_websites": [
+      "https://www.unrealengine.com/",
+      "https://unity.com/",
+      "https://www.godotengine.org/"
+    ],
+    "image": ""
+  },
+  {
+    "name": "Speedrunning",
+    "type": "Competitive Skill Play",
+    "categories": ["Any%", "100%", "Glitchless", "Tool-Assisted (TAS)"],
+    "desc": "Completing games as fast as possible using optimized routes, frame-perfect tricks, and sometimes glitches, then verifying the run against community timing rules.",
+    "getting_started": "Pick a game with an active leaderboard on speedrun.com, watch a current world-record run, and practice individual segments before attempting a full run.",
+    "example": "Finishing Super Mario 64 in under seven minutes using a well-documented wrong warp glitch.",
+    "top_games": ["Super Mario 64", "Ocarina of Time", "Celeste", "Minecraft", "Hollow Knight", "Portal", "Dark Souls", "Super Metroid", "Elden Ring", "Getting Over It"],
+    "official_websites": [
+      "https://www.speedrun.com/",
+      "https://gamesdonequick.com/"
+    ],
+    "image": ""
+  },
+  {
+    "name": "Modding Communities",
+    "type": "User-Generated Content",
+    "categories": ["Total Conversion Mods", "Texture/Graphics Mods", "Gameplay Mods", "Mod Tools"],
+    "desc": "Communities that create custom content, from small tweaks to total conversions, extending a game's life well past its original release.",
+    "getting_started": "Install Nexus Mods' Vortex manager, pick a heavily-modded game like Skyrim, and start with a small, well-rated mod before layering in more complex ones.",
+    "example": "Turning Skyrim into a visually overhauled, near-unrecognizable game using hundreds of community mods.",
+    "top_games": ["Skyrim", "Minecraft", "Garry's Mod", "The Sims 4", "Cities: Skylines", "Fallout 4", "Stardew Valley", "Half-Life", "Counter-Strike", "Warcraft III"],
+    "official_websites": [
+      "https://www.nexusmods.com/",
+      "https://steamcommunity.com/workshop/",
+      "https://www.moddb.com/"
+    ],
+    "image": ""
+  },
+  {
+    "name": "Live Service Games",
+    "type": "Ongoing Content Model",
+    "categories": ["Seasonal Content", "Battle Passes", "Live Events"],
+    "desc": "Games designed to be played continuously for years, with regular seasons, updates, and monetization built around ongoing engagement rather than a single story.",
+    "getting_started": "Download a free-to-play live service title, work through the current season's battle pass, and read patch notes each update to see what changed.",
+    "example": "Grinding a Fortnite Battle Pass across a season to unlock every cosmetic reward before it rotates out.",
+    "top_games": ["Fortnite", "Destiny 2", "Genshin Impact", "Apex Legends", "Warframe", "Path of Exile", "Overwatch 2", "Call of Duty: Warzone", "Diablo IV", "Rainbow Six Siege"],
+    "official_websites": [
+      "https://www.fortnite.com/",
+      "https://www.bungie.net/7/en/Destiny",
+      "https://genshin.hoyoverse.com/"
+    ],
+    "image": ""
+  },
+  {
+    "name": "Battle Royale Games",
+    "type": "Last-Player-Standing Shooter",
+    "categories": ["Solo", "Duos", "Squads", "Shrinking Zone"],
+    "desc": "Large numbers of players drop into a shrinking map and fight until only one player or team survives.",
+    "getting_started": "Install a free title like Fortnite or Apex Legends, play a few rounds to learn looting and rotation basics, then focus on positioning before chasing kills.",
+    "example": "Landing safely, looting fast, and out-rotating the closing storm circle to reach the final squads in Fortnite.",
+    "top_games": ["Fortnite", "PUBG: Battlegrounds", "Apex Legends", "Call of Duty: Warzone", "Fall Guys", "Naraka: Bladepoint", "PUBG Mobile", "Free Fire", "Super People", "The Finals"],
+    "official_websites": [
+      "https://www.fortnite.com/",
+      "https://pubg.com/",
+      "https://www.ea.com/games/apex-legends"
+    ],
+    "image": ""
+  },
+  {
+    "name": "MOBA Games (Multiplayer Online Battle Arena)",
+    "type": "Multiplayer Online Battle Arena",
+    "categories": ["Lane-Based", "5v5", "Hero Shooter Hybrid"],
+    "desc": "Two teams each control unique heroes, fighting across lanes to destroy the opposing base while managing farming, item builds, and objectives.",
+    "getting_started": "Pick League of Legends or Dota 2, play through the tutorial and bot matches, learn two or three beginner-friendly heroes, and study lane roles before trying ranked play.",
+    "example": "Coordinating a five-person team fight around Baron Nashor to secure the game-winning push in League of Legends.",
+    "top_games": ["League of Legends", "Dota 2", "Smite", "Heroes of the Storm", "Mobile Legends: Bang Bang", "Arena of Valor", "Pokémon Unite", "Predecessor", "League of Legends: Wild Rift", "Vainglory"],
+    "official_websites": [
+      "https://www.leagueoflegends.com/",
+      "https://www.dota2.com/",
+      "https://www.smitegame.com/"
+    ],
+    "image": ""
+  },
+  {
+    "name": "Game Development as a Career",
+    "type": "Career Path",
+    "categories": ["Programming", "Game Design", "Art & Animation", "Production & QA"],
+    "desc": "Building a professional career in the games industry across disciplines like programming, design, art, audio, and production, at studios ranging from small indie teams to major publishers.",
+    "getting_started": "Learn a game engine like Unity or Unreal, build two or three small finished projects for a portfolio, and share your progress on itch.io or LinkedIn while applying to junior or QA roles for industry experience.",
+    "example": "Shipping a small solo puzzle game on itch.io as a portfolio piece that leads to a junior gameplay programmer interview.",
+    "top_games": ["Stardew Valley", "Undertale", "Celeste", "Papers, Please", "Return of the Obra Dinn", "Braid", "Minecraft", "Among Us", "Vampire Survivors", "Inside"],
+    "official_websites": [
+      "https://www.gdconf.com/",
+      "https://itch.io/",
+      "https://www.gamedeveloper.com/"
+    ],
+    "image": ""
+  },
+  {
+    "name": "Accessibility in Gaming",
+    "type": "Inclusive Design",
+    "categories": ["Adaptive Controllers", "Visual Accessibility", "Audio Accessibility", "Cognitive Accessibility"],
+    "desc": "Design features and hardware that let players with disabilities enjoy games, including remappable controls, colorblind modes, full subtitles, and adaptive controllers.",
+    "getting_started": "Check a game's accessibility menu for options like difficulty toggles, colorblind filters, and full control remapping, or look into hardware like the Xbox Adaptive Controller for physical accessibility needs.",
+    "example": "Using The Last of Us Part II's audio-description and high-contrast modes to complete the game without relying on fine visual detail.",
+    "top_games": ["The Last of Us Part II", "Forza Motorsport", "God of War Ragnarök", "Spider-Man: Miles Morales", "Celeste", "Uncharted 4", "Grounded", "Diablo IV", "Halo Infinite", "Assassin's Creed Valhalla"],
+    "official_websites": [
+      "https://www.xbox.com/en-US/accessories/controllers/xbox-adaptive-controller",
+      "https://accessible.games/",
+      "https://caniplaythat.com/"
+    ],
+    "image": ""
   }
 ]

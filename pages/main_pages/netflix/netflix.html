@@ -540,13 +540,19 @@
       modalTitle.textContent = title;
       modalDesc.innerHTML = desc;
       modalExample.innerHTML = `Example: ${example}`; // Changed to innerHTML
-      modalImage.src = image || "https://via.placeholder.com/400x300?text=No+Image+Available";
+      if (image) {
+        modalImage.src = image;
+        modalImage.style.display = 'block';
+      } else {
+        modalImage.style.display = 'none';
+      }
+      modalImage.onerror = () => { modalImage.style.display = 'none'; };
       modalImage.alt = title;
       modal.style.display = 'flex';
 
       const threadButton = document.getElementById('threadButton');
       threadButton.onclick = function() {
-        window.open(thread, '_blank');
+        window.open(thread || `https://x.com/search?q=%23${encodeURIComponent(title.replace(/\s+/g,''))}`, '_blank', 'noopener,noreferrer');
       };
 
       const searchButton = document.getElementById('searchButton');

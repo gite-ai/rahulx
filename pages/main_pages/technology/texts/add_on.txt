@@ -54,8 +54,8 @@
       "Low-power architecture"
     ],
     "example": "IBM's TrueNorth chip processes sensory data like a human brain for real-time object recognition.",
-    "image": "https://example.com/images/neuromorphic.jpg",
-    "thread": "https://x.com/example/thread/neuromorphic"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Metaverse Platforms",
@@ -112,8 +112,8 @@
       "Cross-platform connectivity"
     ],
     "example": "Decentraland allows users to create and trade virtual assets in a blockchain-based virtual world.",
-    "image": "https://example.com/images/metaverse.jpg",
-    "thread": "https://x.com/example/thread/metaverse"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Synthetic Data Generation",
@@ -170,8 +170,8 @@
       "Generative modeling"
     ],
     "example": "NVIDIA's Omniverse generates synthetic 3D datasets for autonomous vehicle training.",
-    "image": "https://example.com/images/synthetic_data.jpg",
-    "thread": "https://x.com/example/thread/syntheticdata"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Hyperledger Technologies",
@@ -228,8 +228,8 @@
       "Data confidentiality"
     ],
     "example": "Hyperledger Fabric powers Walmart's supply chain tracking for food safety.",
-    "image": "https://example.com/images/hyperledger.jpg",
-    "thread": "https://x.com/example/thread/hyperledger"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Photonic Computing",
@@ -285,8 +285,8 @@
       "Energy efficiency"
     ],
     "example": "Lightmatter's photonic chips accelerate AI computations with lower energy consumption.",
-    "image": "https://example.com/images/photonic.jpg",
-    "thread": "https://x.com/example/thread/photonic"
+    "image": "",
+    "thread": ""
   }
 
 ]

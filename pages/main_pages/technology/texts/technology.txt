@@ -69,8 +69,8 @@
       "Quantum decoherence",
       "Quantum error correction"
     ],
-    "image": "https://example.com/images/quantum.jpg",
-    "thread": "https://x.com/example/thread/12345"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Blockchain",
@@ -129,8 +129,8 @@
       "Immutability",
       "Transparency"
     ],
-    "image": "https://example.com/images/blockchain.jpg",
-    "thread": "https://x.com/example/thread/67890"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Augmented Reality",
@@ -193,8 +193,8 @@
       "Sensor fusion",
       "Gesture recognition"
     ],
-    "image": "https://example.com/images/ar.jpg",
-    "thread": "https://x.com/example/thread/54321"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Robotics",
@@ -297,7 +297,7 @@
       "Human-robot interaction"
     ],
     "image": "https://i.postimg.cc/d3DHr6gk/pexels-vanessa-loring-7868822.jpg",
-    "thread": "https://x.com/example_robotics_thread"
+    "thread": ""
   },
   {
     "name": "Virtual Reality",
@@ -342,15 +342,15 @@
         "name": "Tethered VR",
         "desc": "High-fidelity VR systems connected to powerful PCs (e.g., Oculus Rift, HTC Vive).",
         "example": "Professional flight simulators, detailed gaming experiences",
-        "image": "https://example.com/images/vr_tethered.jpg",
-        "thread": "https://x.com/example/thread/vr_tethered"
+        "image": "",
+        "thread": ""
       },
       {
         "name": "Standalone VR",
         "desc": "All-in-one wireless systems with integrated computing (e.g., Oculus Quest).",
         "example": "Portable VR gaming and social apps",
-        "image": "https://example.com/images/vr_standalone.jpg",
-        "thread": "https://x.com/example/thread/vr_standalone"
+        "image": "",
+        "thread": ""
       }
     ],
     "applications": [
@@ -365,8 +365,8 @@
       "Motion sickness reduction techniques",
       "Haptics and sensory feedback"
     ],
-    "image": "https://example.com/images/vr.jpg",
-    "thread": "https://x.com/example/thread/11223"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Internet of Things (IoT)",
@@ -396,15 +396,15 @@
         "name": "Consumer IoT",
         "desc": "Smart home devices like thermostats, lights, and locks connected to apps.",
         "example": "Nest learning thermostat adjusting temperature automatically",
-        "image": "https://example.com/images/iot_consumer.jpg",
-        "thread": "https://x.com/example/thread/iot_consumer"
+        "image": "",
+        "thread": ""
       },
       {
         "name": "Industrial IoT (IIoT)",
         "desc": "Sensors and machines linked in factories, energy grids, and logistics.",
         "example": "Sensors detecting machinery faults to enable predictive maintenance",
-        "image": "https://example.com/images/iot_industrial.jpg",
-        "thread": "https://x.com/example/thread/iot_industrial"
+        "image": "",
+        "thread": ""
       }
     ],
     "applications": [
@@ -419,8 +419,8 @@
       "Data security and privacy",
       "Interoperability and standards"
     ],
-    "image": "https://example.com/images/iot.jpg",
-    "thread": "https://x.com/example/thread/22445"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "5G Technology",
@@ -481,8 +481,8 @@
       "Network slicing",
       "Massive MIMO antenna systems"
     ],
-    "image": "https://example.com/images/5g.jpg",
-    "thread": "https://x.com/example/thread/33556"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Edge Computing",
@@ -538,8 +538,8 @@
       "Data sovereignty",
       "Hybrid cloud-edge architectures"
     ],
-    "image": "https://example.com/images/edge.jpg",
-    "thread": "https://x.com/example/thread/44667"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Cloud Computing",
@@ -606,8 +606,8 @@
       "Elastic resource provisioning",
       "Security and compliance"
     ],
-    "image": "https://example.com/images/cloud.jpg",
-    "thread": "https://x.com/example/thread/55778"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Genetic Engineering",
@@ -666,8 +666,8 @@
       "Gene expression control",
       "Off-target effects and ethics"
     ],
-    "image": "https://example.com/images/genetics.jpg",
-    "thread": "https://x.com/example/thread/66889"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "3D Printing",
@@ -725,8 +725,8 @@
       "Digital-to-physical pipeline",
       "Rapid customization"
     ],
-    "image": "https://example.com/images/3dprint.jpg",
-    "thread": "https://x.com/example/thread/77990"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Renewable Energy Technologies",
@@ -786,8 +786,8 @@
       "Grid integration and smart grids",
       "Carbon neutrality"
     ],
-    "image": "https://example.com/images/renewable.jpg",
-    "thread": "https://x.com/example/thread/88001"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Biotechnology",
@@ -858,8 +858,8 @@
       "Cell culture and fermentation",
       "Ethical and safety review"
     ],
-    "image": "https://example.com/images/biotech.jpg",
-    "thread": "https://x.com/example/thread/99112"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Nanotechnology",
@@ -911,8 +911,8 @@
       "Surface area to volume ratio",
       "Quantum effects at nanoscale"
     ],
-    "image": "https://example.com/images/nano.jpg",
-    "thread": "https://x.com/example/thread/10213"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Cybersecurity",
@@ -966,8 +966,8 @@
       "Authentication and authorization",
       "Incident response"
     ],
-    "image": "https://example.com/images/cybersecurity.jpg",
-    "thread": "https://x.com/example/thread/11314"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Wearable Technology",
@@ -1029,8 +1029,8 @@
       "Wireless device sync",
       "Miniaturization and comfort"
     ],
-    "image": "https://example.com/images/wearables.jpg",
-    "thread": "https://x.com/example/thread/13536"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Structural Battery Composites",
@@ -1072,8 +1072,8 @@
       "Energy density vs. mechanical strength trade-off",
       "Integrated manufacturing"
     ],
-    "image": "https://example.com/images/structural_battery.jpg",
-    "thread": "https://x.com/example/thread/30101"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Osmotic Power Systems",
@@ -1118,8 +1118,8 @@
       "Membrane science and nanotechnology",
       "Zero-emission power"
     ],
-    "image": "https://example.com/images/osmotic_power.jpg",
-    "thread": "https://x.com/example/thread/30202"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Next-Generation Nuclear Energy",
@@ -1170,8 +1170,8 @@
       "Modular reactor construction",
       "Passive safety"
     ],
-    "image": "https://example.com/images/nuclear.jpg",
-    "thread": "https://x.com/example/thread/30303"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "De-Extinction & Synthetic Biology",
@@ -1223,8 +1223,8 @@
       "CRISPR gene editing",
       "Bioethics"
     ],
-    "image": "https://example.com/images/deextinction.jpg",
-    "thread": "https://x.com/example/thread/31313"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Biomedical Nanobots",
@@ -1273,8 +1273,8 @@
       "Controlled navigation (e.g., via magnets or chemical signals)",
       "Nanofabrication"
     ],
-    "image": "https://example.com/images/nanobots.jpg",
-    "thread": "https://x.com/example/thread/31111"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Carbon Nanotube Electronics",
@@ -1325,8 +1325,8 @@
       "Nano-scale conductors",
       "Mechanical strength and flexibility"
     ],
-    "image": "https://example.com/images/nanotube.jpg",
-    "thread": "https://x.com/example/thread/31414"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Mind Uploading & Neural Interfaces",
@@ -1378,8 +1378,8 @@
       "Brain plasticity",
       "Electrophysiology"
     ],
-    "image": "https://example.com/images/neurotech.jpg",
-    "thread": "https://x.com/example/thread/31212"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Generative Watermarking",
@@ -1432,8 +1432,8 @@
       "Signal processing",
       "Hashing and digital fingerprinting"
     ],
-    "image": "https://example.com/images/generative_watermark.jpg",
-    "thread": "https://x.com/example/thread/31010"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Collaborative Sensing & Smart Swarms",
@@ -1484,8 +1484,8 @@
       "Real-time data fusion",
       "Self-organization"
     ],
-    "image": "https://example.com/images/collaborative_sensing.jpg",
-    "thread": "https://x.com/example/thread/30909"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Nanozymes",
@@ -1531,8 +1531,8 @@
       "Stability vs. biological specificity",
       "Bio-inorganic hybrid systems"
     ],
-    "image": "https://example.com/images/nanozymes.jpg",
-    "thread": "https://x.com/example/thread/30808"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "GLP-1s for Neurodegenerative Disease",
@@ -1570,8 +1570,8 @@
       "Blood-brain barrier crossing",
       "Repurposing of pharmaceuticals"
     ],
-    "image": "https://example.com/images/glp1.jpg",
-    "thread": "https://x.com/example/thread/30505"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Green Nitrogen Fixation",
@@ -1614,8 +1614,8 @@
       "Distributed chemical manufacture",
       "Agricultural sustainability"
     ],
-    "image": "https://example.com/images/green_nitrogen.jpg",
-    "thread": "https://x.com/example/thread/30707"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Engineered Living Therapeutics",
@@ -1661,8 +1661,8 @@
       "Synthetic biology",
       "In-vivo drug delivery"
     ],
-    "image": "https://example.com/images/living_therapeutics.jpg",
-    "thread": "https://x.com/example/thread/30404"
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Autonomous Biochemical Sensing",
@@ -1714,8 +1714,8 @@
       "Wireless and remote data transmission",
       "Lab-on-a-chip"
     ],
-    "image": "https://example.com/images/biochem_sensors.jpg",
-    "thread": "https://x.com/example/thread/30606"
+    "image": "",
+    "thread": ""
   },
     {
     "name": "Neural Networks",
@@ -1738,7 +1738,7 @@
     ],
     "example": "Image and speech recognition, recommendation systems, self-driving cars.",
     "image": "https://i.postimg.cc/gk56ssLy/pexels-googledeepmind-17484975.jpg",
-    "thread": "https://x.com/example_thread1"
+    "thread": ""
   },
   {
     "name": "Natural Language Processing",
@@ -1761,7 +1761,7 @@
     ],
     "example": "Chatbots like ChatGPT, Google Translate, sentiment analysis tools.",
     "image": "https://i.postimg.cc/Yqyyx5xX/pexels-markus-winkler-1430818-30869073.jpg",
-    "thread": "https://x.com/example_thread2"
+    "thread": ""
   },
   {
     "name": "Reinforcement Learning",
@@ -1784,7 +1784,7 @@
     ],
     "example": "AlphaGo's Go mastery, robotic navigation, game AI.",
     "image": "https://i.postimg.cc/43tfGbdg/pexels-davidmcbee-388846.jpg",
-    "thread": "https://x.com/example_thread3"
+    "thread": ""
   },
   {
     "name": "Generative AI",
@@ -1807,7 +1807,7 @@
     ],
     "example": "AI art generators, LLM chatbots, music composition tools.",
     "image": "https://i.postimg.cc/mZ1052tv/pexels-sahilsharma-32845478.jpg",
-    "thread": "https://x.com/example_thread4"
+    "thread": ""
   },
   {
     "name": "Edge AI",
@@ -1830,7 +1830,7 @@
     ],
     "example": "On-device voice assistants, smart cameras, industrial IoT analytics.",
     "image": "https://i.postimg.cc/VNbVHKNj/pexels-zeleboba-33079302.jpg",
-    "thread": "https://x.com/example_thread5"
+    "thread": ""
   },
   {
     "name": "Explainable AI (XAI)",
@@ -1853,7 +1853,7 @@
     ],
     "example": "Interpretable models in medical diagnostics, financial risk analysis.",
     "image": "https://i.postimg.cc/HxnVg8f4/pexels-thisisengineering-3912992-1.jpg",
-    "thread": "https://x.com/example_thread6"
+    "thread": ""
   }
   
 ]

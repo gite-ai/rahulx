@@ -1,23 +1,114 @@
 [
   {
     "name": "Sci-Fi Series",
-    "desc": "Shows set in <b>futuristic worlds</b>.<br>Often feature <i>space travel</i> and advanced tech.",
-    "example": "Binging <b>Stranger Things</b> for its <i>retro sci-fi</i> vibes.<br>A <b>must-watch</b> classic.",
-    "image": "https://example.com/images/stranger_things.jpg",
-    "thread": "https://x.com/example/thread/12345"
+    "desc": "Science-fiction series build entire worlds around a single <b>speculative premise</b> — time travel, alien contact, artificial intelligence, or a future society reshaped by technology — and then follow the human consequences of that idea across many episodes.<br>The format rewards patient world-building: showrunners can seed mysteries in season one that only pay off two or three seasons later, something a two-hour film rarely has room for.<br>Streaming turned the genre into a prestige category because binge-friendly release patterns let dense, mythology-heavy plots be absorbed in a weekend rather than stretched across a broadcast season.<br>Audiences return for the mix of big philosophical questions — what makes us human, what happens if we tamper with time — wrapped in cliffhangers and visual spectacle.<br>The genre has also become a proving ground for socially resonant allegory, using futuristic settings to comment on present-day anxieties about technology and control.",
+    "example": "<b>Stranger Things</b> helped popularize the genre on streaming by pairing 1980s nostalgia with a classic alternate-dimension mystery.<br><b>Black Mirror</b> is often cited as the defining anthology take on the genre, using standalone episodes to explore how new technology could go wrong.",
+    "image": "",
+    "thread": ""
   },
   {
     "name": "True Crime",
-    "desc": "Documentaries about <b>real crimes</b>.<br>Known for <i> gripping storytelling</i>.",
-    "example": "Watching <b>Making a Murderer</b> with <i>edge-of-seat</i> tension.<br>A <b>chilling</b> tale.",
-    "image": "https://example.com/images/true_crime.jpg",
-    "thread": "https://x.com/example/thread/67890"
+    "desc": "True crime documentaries and docuseries reconstruct real investigations, trials, or unsolved cases using interviews, archival footage, court records, and sometimes dramatized re-enactments.<br>The genre's structure typically mirrors a mystery: evidence is revealed piece by piece, and the pacing is built around doubt, twists, and a slow reassessment of who is telling the truth.<br>Its popularity on streaming stems partly from serialized formats that let a single case unfold over six or eight episodes instead of a one-hour TV special, giving room for legal nuance and multiple perspectives.<br>Viewers are often drawn in by genuine curiosity about the justice system, forensic science, or the psychology of why people commit crimes, alongside the simple pull of an unresolved puzzle.<br>The format has also drawn scrutiny for how it balances entertainment value against the privacy and dignity of real victims and their families, a tension that serious entries in the genre try to address directly.",
+    "example": "<b>Making a Murderer</b> was a breakout streaming hit that questioned a real conviction and sparked widespread public debate about the case.<br><b>The Jinx</b> is frequently referenced for how its investigative approach uncovered new information during production itself.",
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Comedy Specials",
-    "desc": "Stand-up performances by <b>top comedians</b>.<br>Perfect for <i>light-hearted</i> binges.",
-    "example": "Laughing through <b>Dave Chappelle’s</b> <i>latest special</i>.<br>A <b>hilarious</b> night.",
-    "image": "https://example.com/images/comedy_special.jpg",
-    "thread": "https://x.com/example/thread/54321"
+    "desc": "A comedy special is a filmed, standalone stand-up performance, usually 45 to 90 minutes, built from a comedian's most polished material after months or years of touring and refining jokes in front of live crowds.<br>Unlike a sitcom, there is no plot or cast — the entire show rests on one performer's timing, persona, and ability to sustain an audience's attention through a single continuous set.<br>Streaming platforms turned specials into a major content category by giving established comedians global distribution and letting newer comics reach audiences without needing a broadcast network deal.<br>Specials often blend personal storytelling with observational or topical material, and many use a single loose theme — aging, parenthood, current events — to tie disparate jokes together.<br>Because they are self-contained, they are easy to sample and rewatch, which has made short clips from specials a major driver of social media discovery.",
+    "example": "<b>Dave Chappelle's</b> Netflix specials are frequently cited as a turning point in how streaming platforms invested in stand-up.<br><b>Hannah Gadsby's Nanette</b> is often discussed as an example of the special format being used to break from traditional joke-telling structure.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Documentaries",
+    "desc": "Documentaries use real footage, interviews, and narration to examine actual people, events, or subjects, ranging from nature and science to history, sports, and biography.<br>The format depends on research and access — filmmakers often spend years gathering interviews and archival material before a story can be told with authority.<br>Streaming has expanded the genre well beyond the theatrical or PBS-style documentary, supporting everything from feature-length single films to multi-part docuseries that can devote hours to a single subject.<br>Viewers are drawn to documentaries for the promise of learning something concrete and verifiable, which sets the genre apart from scripted drama even when the storytelling techniques overlap.<br>The best entries balance factual rigor with narrative craft, using pacing, structure, and a clear point of view to make real information feel as engaging as fiction.",
+    "example": "<b>Free Solo</b> is a widely cited example of a documentary that used the medium's access to real events to build genuine suspense around an actual climb.<br>Nature docuseries like <b>Planet Earth</b> are often referenced for setting the technical benchmark for the format.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Anime",
+    "desc": "Anime refers to animated series and films originating from Japan, spanning an enormous range of tones and audiences, from children's adventure shows to dense, adult-oriented dramas.<br>The format has distinct visual and storytelling conventions — expressive character art, serialized story arcs adapted from manga or light novels, and genre blending that mixes action, romance, comedy, and science fiction within a single show.<br>Many anime series run for dozens or even hundreds of episodes, allowing character development and world-building on a scale uncommon in Western television.<br>Streaming platforms have driven a major global surge in anime's popularity by offering subtitled and dubbed versions simultaneously with Japanese broadcast, closing a gap that once left international fans waiting months or years.<br>The medium is also known for tackling mature themes — mortality, identity, war — inside an animated format often assumed elsewhere to be for children.",
+    "example": "<b>Death Note</b> is frequently cited as an entry point for newcomers due to its psychological cat-and-mouse structure.<br><b>Attack on Titan</b> is often referenced for how it built a sprawling, high-stakes narrative that drew mainstream attention to the medium.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Korean Dramas (K-Dramas)",
+    "desc": "Korean dramas are scripted television series from South Korea, traditionally told over a fixed, relatively short run of episodes — often 16 to 20 — that gives each story a clear beginning and end rather than an open-ended, multi-season format.<br>The genre spans romance, historical epics, workplace drama, and thriller, but is especially known for slow-burn romantic storylines with strong emotional payoffs and high production polish.<br>Because each series is largely self-contained, viewers can commit to a complete story without the uncertainty of renewal, which has made the format especially binge-friendly on streaming.<br>Global streaming distribution, subtitling, and social media buzz have driven K-dramas from a regional television tradition into a genuinely international viewing habit over the past decade.<br>The genre is also known for its careful blend of melodrama, comedy, and cinematic visuals, giving it a distinct tone compared to Western television drama.",
+    "example": "<b>Crash Landing on You</b> is widely cited as a series that introduced many international viewers to the format's romantic drama style.<br><b>Squid Game</b> became a global phenomenon and drew massive new attention to Korean scripted television generally.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Reality TV",
+    "desc": "Reality TV follows unscripted (or loosely scripted) situations involving real people rather than actors, ranging from competition formats to observational shows about everyday or extraordinary lives.<br>The genre relies on structured scenarios — a competition, a shared living space, a dating pool — that are designed to reliably generate drama, conflict, or emotional moments even without a written script.<br>Editing plays an outsized role in shaping the final story, since producers assemble narratives from many hours of raw footage to create arcs, rivalries, and cliffhangers.<br>Streaming has broadened the genre beyond traditional network competition shows, supporting niche formats built around very specific premises or subcultures.<br>Its appeal lies in the sense of authenticity and unpredictability, even when audiences are aware of how much is shaped in the editing room.",
+    "example": "<b>Love Island</b> is often cited as a format that popularized the dating-competition subgenre internationally.<br><b>Queer Eye</b> is frequently referenced as reality television built around uplift and personal transformation rather than conflict.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Thriller & Mystery Series",
+    "desc": "Thriller and mystery series are built around suspense and the gradual uncovering of hidden information — a crime, a conspiracy, or a secret — with the audience assembling clues alongside or ahead of the characters.<br>Structurally, these shows lean on cliffhangers, red herrings, and carefully paced reveals, often withholding a key piece of information until deep into the season.<br>The multi-episode format lets writers plant a much wider web of suspects and subplots than a two-hour film could sustain, rewarding attentive viewers who track small details across episodes.<br>Streaming's binge model suits the genre particularly well, since momentum and tension are easier to sustain when episodes are watched back-to-back rather than a week apart.<br>The genre draws viewers who enjoy active engagement with a story — theorizing about outcomes, noticing foreshadowing, and being surprised by a well-constructed twist.",
+    "example": "<b>Big Little Lies</b> is often cited for combining a central mystery with layered character drama.<br><b>Broadchurch</b> is frequently referenced as a benchmark for slow-burn, small-town mystery storytelling.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Animated Series",
+    "desc": "Animated series use drawn, computer-generated, or stop-motion animation to tell ongoing stories, and the format spans everything from children's programming to satire aimed squarely at adults.<br>Animation frees storytellers from the physical and budgetary constraints of live action, making it easier to depict fantastical settings, exaggerated humor, or visually stylized worlds.<br>Adult animated comedy in particular has become a durable streaming staple, often using the format's remove from realism to tackle satire, absurdist humor, or long-running serialized stories that a live-action sitcom might handle differently.<br>Many animated series are also produced with dual audiences in mind, layering jokes or references for adults into shows primarily marketed to children.<br>The genre's flexibility in tone and visual style is part of why it has remained a consistent category across streaming platforms rather than a niche.",
+    "example": "<b>BoJack Horseman</b> is frequently cited for pairing absurdist animated comedy with serious explorations of depression and addiction.<br><b>Arcane</b> is often referenced as a benchmark for cinematic visual ambition in the format.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Teen Drama",
+    "desc": "Teen dramas center on adolescent or young-adult characters navigating school, friendship, identity, and first relationships, typically set in a high school or early college environment.<br>The genre often uses heightened, soapy plotting — dramatic reveals, shifting friend groups, romantic entanglements — to dramatize emotions that feel enormous during adolescence, even when the situations are exaggerated.<br>Ensemble casts are common, allowing the show to rotate focus between multiple characters' storylines across a season.<br>Streaming has allowed teen dramas to address more serious or mature subject matter than earlier broadcast-era shows in the genre typically did, including mental health, sexuality, and substance use.<br>The genre's core appeal is emotional intensity and relatability, offering both nostalgia for older viewers and a mirror for younger ones going through similar experiences.",
+    "example": "<b>Euphoria</b> is widely cited for its stylized visuals and unusually frank treatment of serious teen issues.<br><b>Riverdale</b> is often referenced for blending teen drama with mystery and heightened soap opera plotting.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Fantasy Series",
+    "desc": "Fantasy series are set in worlds governed by magic, myth, or invented rules of nature, often featuring elaborate lore, invented languages, maps, and multi-generational histories built out well beyond what appears on screen.<br>The format tends to favor long, multi-season arcs because fantasy world-building rewards depth — political systems, magical rules, and sprawling casts of characters take time to establish and pay off.<br>Many fantasy series are adapted from novels or novel series, which gives showrunners a dense source of pre-built mythology to draw from across multiple seasons.<br>Streaming budgets have allowed the genre's visual ambitions — large-scale battles, elaborate costuming, practical and digital effects — to approach a cinematic scale previously reserved for feature films.<br>Audiences are drawn to the genre's sense of escapism and scale, along with the appeal of intricate political intrigue that often runs alongside the magical elements.",
+    "example": "<b>Game of Thrones</b> is broadly credited with proving that television could sustain feature-film-scale fantasy production values.<br><b>The Witcher</b> is often cited as an example of a fantasy novel series successfully adapted into an ongoing streaming show.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Crime Drama",
+    "desc": "Crime dramas are scripted series centered on law enforcement, criminal organizations, or the justice system, following investigators, criminals, or lawyers as they navigate cases that unfold across a season or more.<br>Unlike true crime, everything is fictional, which gives writers freedom to build long-running character arcs, moral ambiguity, and slow-burn plots that a real-case documentary cannot invent.<br>The genre often blends procedural elements — solving an individual case per episode — with a larger serialized story about the characters' personal lives or a season-long criminal plot.<br>Streaming has supported darker, more morally complex entries in the genre than traditional network crime procedurals, since there is less pressure to resolve everything neatly episode to episode.<br>Viewers are drawn to the genre's tension between order and lawlessness, and to character studies of people operating in ethically gray areas.",
+    "example": "<b>Breaking Bad</b> is frequently cited as reshaping the genre around a slow moral descent rather than a traditional cops-and-robbers structure.<br><b>Narcos</b> is often referenced for dramatizing real criminal history within a fictionalized crime drama format.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Romantic Comedies",
+    "desc": "Romantic comedies follow the development of a romantic relationship using humor, charm, and familiar structural beats — a meet-cute, obstacles keeping the couple apart, and a resolution that brings them together.<br>The genre's appeal comes largely from its reliability: audiences generally know the emotional shape of the story in advance and watch for the chemistry between leads and the specific charm of the writing rather than plot suspense.<br>Streaming has expanded the format from mostly feature films into limited series and full seasons, giving relationships more time to develop across multiple episodes.<br>Many entries in the genre use a specific setting or premise — a workplace, a holiday, a culture clash — to freshen up the familiar structure.<br>The genre remains a comfort-viewing staple because it offers warmth, humor, and a predictable emotional payoff.",
+    "example": "<b>To All the Boys I've Loved Before</b> is often cited as a streaming-era hit that revived interest in the teen rom-com format.<br><b>Emily in Paris</b> is frequently referenced as a series-length take on romantic comedy conventions.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Superhero Shows",
+    "desc": "Superhero shows adapt comic book characters and universes into ongoing television, following costumed heroes, their secret identities, and the larger threats they face across a season or franchise.<br>The genre blends action spectacle with serialized character drama, often exploring the personal cost of a double life alongside large-scale conflicts against villains or organizations.<br>Many superhero shows exist within shared universes, referencing or connecting to films and other series, which has made continuity and prior knowledge part of the genre's appeal for dedicated fans.<br>Streaming has allowed the genre to branch into tones very different from blockbuster films, including darker, more grounded, or satirical takes on the superhero premise.<br>Audiences are drawn to a mix of spectacle, mythology, and the enduring appeal of morally clear (or deliberately subverted) hero stories.",
+    "example": "<b>The Boys</b> is often cited for using the superhero format to deliver dark satire about celebrity and corporate power.<br><b>Daredevil</b> is frequently referenced as an example of a grounded, street-level take on the genre.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Limited Series",
+    "desc": "A limited series tells a complete story in a single season, with no intention of continuing into further seasons, which sets it apart from ongoing dramas built to run indefinitely.<br>This format gives writers a novel-like structure: every episode serves one finite arc, so pacing, character development, and resolution can all be planned from the very first episode.<br>Limited series have become a popular home for prestige storytelling, often attracting film actors and directors drawn to a fixed, contained commitment rather than an open-ended series.<br>The format also suits stories adapted from a single book, historical event, or true story that has a natural beginning and end.<br>Streaming platforms favor limited series because they deliver a complete, self-contained viewing experience that can be marketed and consumed as a single event.",
+    "example": "<b>Chernobyl</b> is widely cited as a benchmark for how a limited series can dramatize a real historical event with a definitive endpoint.<br><b>The Queen's Gambit</b> is often referenced as an example of a single, complete story told across one season.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "International Cinema",
+    "desc": "International cinema, in a streaming context, refers to film and television produced outside the viewer's own country, often in another language with subtitles or dubbing.<br>The category spans every genre — drama, comedy, horror, thriller — but is grouped separately because it reflects distinct national film industries, storytelling traditions, and cultural perspectives.<br>Streaming platforms have significantly expanded access to international titles, removing distribution barriers that once limited most viewers to domestically produced content.<br>Subtitling and dubbing technology, along with algorithmic recommendation, have helped foreign-language hits cross over into mainstream global audiences in a way that was rare before streaming.<br>Viewers are drawn to the category for fresh storytelling approaches, different pacing and visual styles, and exposure to cultures and perspectives underrepresented in domestic film industries.",
+    "example": "<b>Parasite</b> is frequently cited as a landmark moment for international cinema reaching a massive global mainstream audience.<br><b>Money Heist</b> is often referenced as a foreign-language series that became a major worldwide streaming hit.",
+    "image": "",
+    "thread": ""
   }
 ]

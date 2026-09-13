@@ -749,6 +749,7 @@
         modalImage.src = tech.image;
         modalImage.alt = `Image representing ${tech.name}`;
         modalImage.style.display = 'block';
+        modalImage.onerror = () => { modalImage.style.display = 'none'; };
       } else {
         modalImage.style.display = 'none';
         modalImage.src = '';

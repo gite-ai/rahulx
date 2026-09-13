@@ -1,23 +1,128 @@
 [
   {
     "name": "Black Holes",
-    "desc": "Regions with <b>extreme gravity</b> where light cannot escape.<br>Formed by <i>collapsing stars</i>.",
-    "example": "The <b>Event Horizon Telescope</b> imaging a <i>supermassive black hole</i>.<br>A <b>historic</b> achievement.",
-    "image": "https://example.com/images/black_hole.jpg",
-    "thread": "https://x.com/example/thread/12345"
+    "desc": "A black hole is a region of spacetime where gravity is so intense that nothing, not even light, can escape once it crosses the <b>event horizon</b>. Most form when a massive star (typically more than 20 times the Sun's mass) runs out of fuel and its core collapses under its own gravity in a supernova; supermassive versions, millions to billions of solar masses, sit at the centers of nearly every large galaxy. General relativity predicts a <i>singularity</i> at the core where our known laws of physics break down.<br>In 2015, the LIGO detectors made the first direct observation of gravitational waves, produced by two black holes spiraling together and merging about 1.3 billion light-years away.",
+    "example": "In 2019, the Event Horizon Telescope collaboration released the first-ever image of a black hole's silhouette, capturing the supermassive black hole at the center of galaxy <b>M87</b>, about 6.5 billion times the Sun's mass. In 2022 the same team imaged <i>Sagittarius A*</i>, the roughly 4-million-solar-mass black hole at the center of our own Milky Way.",
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Exoplanets",
-    "desc": "Planets orbiting <b>other stars</b>.<br>Discovered using <i>transit methods</i> and more.",
-    "example": "Finding <b>Kepler-22b</b>, a potentially <i>habitable exoplanet</i>.<br>A <b>cosmic</b> discovery.",
-    "image": "https://example.com/images/exoplanet.jpg",
-    "thread": "https://x.com/example/thread/67890"
+    "desc": "Exoplanets are planets that orbit stars other than the Sun. The first exoplanet confirmed around a Sun-like star, <b>51 Pegasi b</b>, was discovered in 1995 by Michel Mayor and Didier Queloz, work that earned them the 2019 Nobel Prize in Physics. Astronomers find them mainly through the <i>transit method</i> (measuring the tiny dip in a star's brightness as a planet passes in front of it) and the <i>radial velocity method</i> (detecting the star's wobble caused by a planet's gravity).<br>NASA's Kepler space telescope alone confirmed more than 2,600 exoplanets between 2009 and 2018, revealing that planets are extremely common throughout the galaxy.",
+    "example": "The <b>TRAPPIST-1</b> system, about 40 light-years away, contains seven roughly Earth-sized planets orbiting an ultra-cool dwarf star, with several sitting in the star's habitable zone; JWST has since analyzed the atmospheres of some of these worlds, including TRAPPIST-1e.",
+    "image": "",
+    "thread": ""
   },
   {
     "name": "Space Travel",
-    "desc": "Human exploration beyond Earth using <b>rockets</b>.<br>A <i>new era</i> with private companies.",
-    "example": "SpaceX launching <b>Starship</b> for <i>Mars missions</i>.<br>A <b>bold</b> step forward.",
-    "image": "https://example.com/images/space_travel.jpg",
-    "thread": "https://x.com/example/thread/54321"
+    "desc": "Space travel is the use of rockets to carry humans and cargo beyond Earth's atmosphere, overcoming Earth's roughly 11.2 km/s escape velocity through the rapid expulsion of propellant. The era began with the Soviet Union's <b>Sputnik 1</b> satellite in 1957 and Yuri Gagarin's first human orbital flight in 1961, followed by NASA's Apollo 11 Moon landing in 1969. Modern spaceflight has been transformed by <i>reusable rockets</i>: SpaceX's Falcon 9 first landed and later reflew an orbital-class booster starting in 2015-2017, sharply cutting launch costs.<br>Commercial crew capsules like SpaceX's Crew Dragon now routinely ferry astronauts to the International Space Station, and companies such as Blue Origin and Virgin Galactic have opened short suborbital flights to private passengers.",
+    "example": "SpaceX's <b>Demo-2</b> mission in May 2020 carried NASA astronauts to the ISS aboard Crew Dragon, the first crewed orbital launch from U.S. soil since the Space Shuttle retired in 2011.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "The Big Bang & Cosmic Origins",
+    "desc": "The Big Bang theory holds that the observable universe expanded from an extremely hot, dense state roughly <b>13.8 billion years ago</b> and has been cooling and expanding ever since. Key evidence includes the <i>cosmic microwave background</i> (CMB), a faint afterglow of radiation discovered accidentally by Arno Penzias and Robert Wilson in 1965, and the observed redshift of distant galaxies first quantified by Edwin Hubble in 1929, showing the universe is expanding. A very early period called <i>cosmic inflation</i> is thought to have expanded the universe exponentially within a fraction of a second of its birth, smoothing out its large-scale structure.<br>Precision maps of the CMB from missions like ESA's Planck satellite have pinned down the universe's composition: about 5% ordinary matter, 27% dark matter, and 68% dark energy.",
+    "example": "The Planck satellite's all-sky maps of the cosmic microwave background, released between 2013 and 2018, refined the universe's age to 13.8 billion years with remarkable precision.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Galaxies",
+    "desc": "A galaxy is a vast, gravitationally bound system of stars, gas, dust, and dark matter, ranging from small irregular galaxies to giant spirals and ellipticals. Our own <b>Milky Way</b> is a barred spiral galaxy roughly 100,000 light-years across containing an estimated 100-400 billion stars, with a supermassive black hole at its center. Galaxies rarely exist in isolation; the Milky Way and its neighbor the <i>Andromeda Galaxy</i> are approaching each other and are expected to merge in a few billion years.<br>Deep-sky surveys have shown that galaxies formed remarkably early in cosmic history, with some observed as they appeared only a few hundred million years after the Big Bang.",
+    "example": "The Hubble Deep Field, a 1995 image built from ten days of exposures of a seemingly empty patch of sky, revealed roughly 3,000 previously unseen galaxies stretching back billions of years.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Neutron Stars & Pulsars",
+    "desc": "A neutron star is the collapsed core left behind after a massive star explodes as a supernova, packing more mass than the Sun into a sphere only about 20 km across, so dense that a teaspoonful would weigh billions of tons. A <b>pulsar</b> is a rapidly spinning, highly magnetized neutron star that beams radiation from its magnetic poles; as the star rotates, the beam sweeps past Earth like a lighthouse, producing extremely regular pulses. The first pulsar was discovered in 1967 by Jocelyn Bell Burnell, and some \"millisecond pulsars\" spin hundreds of times per second.<br>When two neutron stars collide and merge, the resulting explosion can forge heavy elements such as gold and platinum through rapid neutron capture.",
+    "example": "In 2017, the merger of two neutron stars known as <b>GW170817</b>, about 130 million light-years away, was detected in both gravitational waves and light, directly confirming that such mergers produce heavy elements.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Dark Matter",
+    "desc": "Dark matter is an invisible form of matter that does not emit, absorb, or reflect light but reveals itself through its gravitational pull. Astronomer <b>Vera Rubin</b>'s studies of galaxy rotation in the 1970s found that stars at galaxies' outer edges orbit far faster than the visible matter alone could explain, implying large amounts of unseen mass. Dark matter is estimated to make up about 27% of the universe's total mass-energy, compared to roughly 5% for the ordinary matter that makes up stars, planets, and people; its exact nature (candidates include WIMPs and axions) remains unknown.<br>Gravitational lensing, the bending of light by mass predicted by general relativity, gives astronomers a way to map where dark matter is concentrated even though it can't be seen directly.",
+    "example": "The <b>Bullet Cluster</b>, formed from a collision of two galaxy clusters, shows gravitational lensing maps of dark matter clearly separated from the hot visible gas, considered one of the strongest direct pieces of evidence for dark matter's existence.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Dark Energy",
+    "desc": "Dark energy is the name given to the mysterious force driving the accelerating expansion of the universe, discovered in 1998 when two independent teams studying distant <b>Type Ia supernovae</b> found the universe expanding faster over time rather than slowing under gravity as expected. The discovery earned Saul Perlmutter, Brian Schmidt, and Adam Riess the 2011 Nobel Prize in Physics. Dark energy is estimated to make up about 68% of the universe's total energy content, and the leading explanation treats it as a <i>cosmological constant</i>, a form of energy inherent to space itself.<br>Its true nature remains one of the biggest open questions in physics, motivating missions like ESA's Euclid space telescope, launched in 2023, which maps how dark energy shapes the large-scale structure of the cosmos.",
+    "example": "The 1998 observations of dozens of distant Type Ia supernovae, used as \"standard candles\" to measure cosmic distances, revealed the universe's expansion is speeding up, leading directly to the discovery of dark energy.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Mars Exploration",
+    "desc": "Mars has been a primary target of planetary exploration since the 1960s because of its evidence for ancient liquid water and potential to have once hosted microbial life. NASA's <b>Curiosity</b> rover, which landed in 2012, found evidence of an ancient lakebed and organic molecules in Gale Crater, while the <b>Perseverance</b> rover, which landed in February 2021, is caching rock samples for eventual return to Earth. Perseverance carried the <i>Ingenuity</i> helicopter, which made the first powered, controlled flight on another planet in April 2021.<br>Mars has a thin, mostly carbon-dioxide atmosphere, polar ice caps of water and dry ice, and dust storms that can occasionally engulf the entire planet; NASA and ESA are jointly planning a Mars Sample Return mission to bring Perseverance's collected samples back to Earth for detailed lab analysis.",
+    "example": "Ingenuity's first flight on April 19, 2021 lasted only about 39 seconds and rose roughly 3 meters off the Martian surface, but it proved that powered flight is possible in Mars's thin atmosphere.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "The International Space Station",
+    "desc": "The International Space Station (ISS) is a habitable satellite that has hosted a continuous human presence since <b>November 2000</b>, built and operated jointly by the space agencies of the United States, Russia, Europe, Japan, and Canada. It orbits Earth at an altitude of roughly 400 km, completing a full orbit about every 90 minutes, or roughly 16 times a day. About the size of a football field, the station serves as a microgravity laboratory for research in biology, materials science, and human physiology that cannot be done on Earth.<br>Astronauts regularly perform spacewalks to maintain and upgrade the station, and after more than three decades of service the ISS is planned to be deliberately deorbited around 2030-2031, with commercial space stations expected to take over in low Earth orbit.",
+    "example": "NASA astronaut Scott Kelly spent nearly a year aboard the ISS (2015-2016) as part of the Twins Study, which compared his health to that of his identical twin brother, astronaut Mark Kelly, who remained on Earth.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Space Telescopes (Hubble & JWST)",
+    "desc": "Space telescopes orbit above Earth's distorting atmosphere, allowing far sharper images and access to wavelengths of light the atmosphere blocks. The <b>Hubble Space Telescope</b>, launched in 1990, transformed astronomy with deep-field images of thousands of distant galaxies and helped pin down the rate of the universe's expansion. The <b>James Webb Space Telescope (JWST)</b>, launched in December 2021, is the largest space telescope ever built, with a 6.5-meter gold-coated mirror, and observes mainly in infrared light, letting it peer through cosmic dust to see some of the earliest galaxies ever formed.<br>JWST orbits not Earth directly but the Sun-Earth <i>L2 Lagrange point</i>, about 1.5 million km from Earth, where its sunshield can keep its instruments extremely cold.",
+    "example": "JWST's first deep-field image, released in July 2022 and known as <b>SMACS 0723</b>, showed thousands of galaxies, including some of the faintest and most distant ever observed, in a patch of sky roughly the size of a grain of sand held at arm's length.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Asteroids & Comets",
+    "desc": "Asteroids are rocky, metallic leftovers from the solar system's formation, most orbiting in the <b>asteroid belt</b> between Mars and Jupiter, while comets are icy bodies from the colder outer solar system (the Kuiper Belt and the more distant Oort Cloud) that grow glowing comas and tails as their ices vaporize near the Sun. Studying both offers a window into the raw materials from which the planets formed 4.6 billion years ago. In September 2022, NASA's <b>DART</b> mission deliberately crashed a spacecraft into the asteroid moonlet Dimorphos, the first real-world test of deflecting a hazardous asteroid by kinetic impact.<br>NASA's OSIRIS-REx mission successfully returned physical samples from the asteroid Bennu to Earth in September 2023 for laboratory study.",
+    "example": "DART's impact on Dimorphos in September 2022 shortened the moonlet's orbital period around its parent asteroid Didymos by about 32 minutes, proving that a spacecraft impact can meaningfully change an asteroid's path.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "The Moon & Artemis Program",
+    "desc": "The Moon is thought to have formed about 4.5 billion years ago when a Mars-sized body, often called <b>Theia</b>, collided with the young Earth, flinging debris that coalesced into the Moon. Between 1969 and 1972, NASA's <i>Apollo program</i> landed twelve astronauts on the lunar surface across six missions, the only human visits to another world to date. NASA's <b>Artemis program</b> aims to return astronauts to the Moon, including the first woman and first person of color to walk on it, using the Space Launch System rocket and Orion crew capsule, and eventually to establish a sustained lunar presence and a small orbiting outpost called the Gateway.<br>Lunar exploration is also seen as a proving ground for the technologies and experience needed for eventual crewed missions to Mars.",
+    "example": "Artemis I, launched in November 2022, sent an uncrewed Orion spacecraft around the Moon and safely back to Earth, successfully testing the systems that will carry astronauts on future Artemis missions.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Our Solar System",
+    "desc": "Our solar system consists of the Sun and everything bound to it by gravity: eight planets (Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune), dwarf planets such as Pluto, Ceres, and Eris, dozens of moons, the asteroid belt, and the far more distant Kuiper Belt and Oort Cloud. It formed about 4.6 billion years ago from a collapsing cloud of gas and dust, with the Sun alone holding about <b>99.8%</b> of the system's total mass. <b>Jupiter</b> is by far the largest planet, more massive than all the other planets combined, while the rocky inner worlds and icy/gaseous outer worlds reflect very different formation conditions.<br>Launched in 1977, NASA's twin Voyager probes are the only spacecraft to have reached interstellar space and continue to send back data from beyond the influence of the Sun.",
+    "example": "Voyager 1 crossed into interstellar space in August 2012 and remains the most distant human-made object, now more than 24 billion kilometers from Earth and still transmitting data after nearly 50 years of flight.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Satellites & Orbits",
+    "desc": "Artificial satellites are human-made objects placed in orbit around Earth for communication, navigation, weather forecasting, and scientific research, starting with the Soviet Union's <b>Sputnik 1</b> in 1957. Where a satellite is placed depends on its job: <i>Low Earth Orbit</i> (roughly 160-2,000 km up) is used by the ISS and mega-constellations like Starlink, <i>Medium Earth Orbit</i> (around 20,200 km) hosts GPS navigation satellites, and <i>Geostationary Orbit</i> (about 35,786 km) lets a satellite match Earth's rotation so it appears to hover over a fixed point.<br>Thousands of active satellites now circle the planet, with SpaceX's Starlink constellation alone comprising several thousand satellites aimed at providing global broadband internet.",
+    "example": "Geostationary weather satellites such as NOAA's <b>GOES-16</b> orbit at about 35,786 km altitude with a 24-hour period, letting them continuously watch the same stretch of Earth's weather around the clock.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Rocket Propulsion",
+    "desc": "Rockets generate thrust by <b>Newton's third law</b>: burning propellant and expelling the resulting gas at high speed pushes the rocket in the opposite direction, and because rockets carry their own oxidizer, they can operate in the vacuum of space unlike air-breathing jet engines. The <i>Tsiolkovsky rocket equation</i>, formulated in 1903, governs how much velocity change a rocket can achieve based on its exhaust speed and the ratio of its fueled to empty mass, which is why rockets are built in stages that shed weight as fuel burns off. Most launch vehicles use chemical propulsion, burning liquid or solid fuel with an oxidizer to produce extremely high-temperature exhaust.<br>Reusable rocket technology, pioneered at scale by SpaceX's Falcon 9, lands its first-stage booster vertically after launch so it can fly again, and by the mid-2020s individual boosters had been reflown more than 20 times each.",
+    "example": "SpaceX first successfully landed and later reflew an orbital-class Falcon 9 booster between 2015 and 2017, a breakthrough that has since cut the cost of reaching orbit dramatically.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "The Search for Extraterrestrial Life (SETI)",
+    "desc": "SETI, the Search for Extraterrestrial Intelligence, is the scientific effort to detect signals or other evidence of intelligent life beyond Earth, mainly by scanning radio and optical wavelengths for signals that could not arise naturally. The field began formally with astronomer <b>Frank Drake</b>'s Project Ozma in 1960, and Drake later devised the famous <i>Drake Equation</i> to estimate how many detectable civilizations might exist in our galaxy. In 1977, Ohio State University's Big Ear radio telescope picked up the unexplained <b>\"Wow! signal\"</b>, a brief, strong narrowband burst that has never been detected again or fully explained.<br>Modern efforts include Breakthrough Listen, a roughly $100 million initiative launched in 2015 to scan a million nearby stars and dozens of nearby galaxies for artificial signals; to date, no confirmed extraterrestrial signal has been found.",
+    "example": "The \"Wow! signal,\" detected on August 15, 1977, was a 72-second-long radio burst so much stronger than background noise that the astronomer reviewing the printout circled it and wrote \"Wow!\" next to it, a name that stuck.",
+    "image": "",
+    "thread": ""
+  },
+  {
+    "name": "Space Debris",
+    "desc": "Space debris consists of defunct satellites, spent rocket stages, and fragments from collisions or explosions that remain in orbit around Earth long after their missions end. Tracking networks currently monitor tens of thousands of objects larger than 10 cm, while estimates put the number of untracked fragments larger than 1 mm at over <b>100 million</b>. Because objects in low Earth orbit travel at roughly 7-8 km/s, even a paint fleck or bolt-sized fragment can seriously damage a spacecraft on impact.<br>Scientist Donald Kessler warned in 1978 of a scenario now called the <i>Kessler Syndrome</i>, in which collisions between debris generate more debris in a runaway cascade that could eventually make parts of low Earth orbit hazardous to use.",
+    "example": "In February 2009, the defunct Russian satellite Cosmos 2251 collided with the active U.S. communications satellite Iridium 33, the first accidental hypervelocity collision between two intact satellites, creating more than 2,000 pieces of trackable debris.",
+    "image": "",
+    "thread": ""
   }
 ]
