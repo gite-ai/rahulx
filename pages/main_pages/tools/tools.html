@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rahulx.com - Tools</title>
+  <title>Free Tools — Calculators, Generators &amp; Developer Utilities | Rahulx.com</title>
+  <meta name="description" content="Free browser tools organized by what they do: calculators, generators, visualizers, developer tools, productivity tools, learning tools, and AI tools — no signup required.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.rahulx.com/pages/main_pages/tools/tools.html">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -84,6 +88,7 @@
     nav {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       background: rgba(0, 0, 0, 0.8);
       padding: 15px 0;
       backdrop-filter: blur(10px);
@@ -97,7 +102,8 @@
       font-weight: 500;
     }
 
-    nav a:hover {
+    nav a:hover,
+    nav a.active {
       color: #ff00cc;
     }
 
@@ -109,20 +115,56 @@
       z-index: 1;
     }
 
+    .category-intro {
+      max-width: 720px;
+      margin: 0 auto 36px;
+      text-align: center;
+      opacity: 0.75;
+      font-size: 0.98rem;
+    }
+
+    .toc {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 0 auto 46px;
+      max-width: 900px;
+    }
+
+    .toc a {
+      border: 1px solid rgba(0, 255, 204, 0.4);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 0.85rem;
+      letter-spacing: 0.03em;
+    }
+
+    .toc a:hover { background: rgba(0, 255, 204, 0.1); }
+
     .category-section {
-      margin-bottom: 40px;
+      margin-bottom: 50px;
+      scroll-margin-top: 20px;
     }
 
     .category-title {
       font-size: 2rem;
       color: #00ffcc;
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 6px;
       text-transform: uppercase;
       letter-spacing: 1px;
       border-bottom: 2px solid #00ffcc;
       padding-bottom: 10px;
       animation: glow 2s infinite alternate;
+    }
+
+    .category-sub {
+      text-align: center;
+      opacity: 0.6;
+      font-size: 0.9rem;
+      margin: 10px 0 20px;
+      font-weight: 300;
     }
 
     .tools-grid {
@@ -163,6 +205,19 @@
       font-size: 1.1rem;
       line-height: 1.8;
       font-weight: 400;
+    }
+
+    .tool-card.placeholder {
+      cursor: default;
+      opacity: 0.55;
+    }
+    .tool-card.placeholder:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    .tool-card.placeholder h3 {
+      background: linear-gradient(135deg, #333, #111);
+      color: #00ffcc;
     }
 
     /* Mobile-specific styles for Android app icon look */
@@ -313,28 +368,46 @@
 
   <!-- Header -->
   <header>
-    <h1>Tools - Rahulx.com</h1>
-    <p>Your futuristic toolkit for everyday solutions.</p>
+    <h1>Tools</h1>
+    <p>Free, no-signup tools — organized by what they actually do.</p>
     <div class="datetime-box">
       <div class="datetime">
         <span id="date"></span>
         <span id="time"></span>
       </div>
-    </header>
+    </div>
+  </header>
 
     <!-- Navigation -->
     <nav id="nav">
-      <a href="https://www.rahulx.com">Home</a>
-      <a href="https://www.rahulx.com/about">About</a>
+      <a href="/index.html">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/pages/main_pages/projects/projects.html">Projects</a>
+      <a href="/pages/main_pages/tools/tools.html" class="active">Tools</a>
       <a href="/contact.html">Contact</a>
     </nav>
 
     <!-- Main Content -->
     <div class="container">
       <section>
-        <!-- Finance Category -->
-        <div class="category-section">
-          <h2 class="category-title">Finance</h2>
+
+        <p class="category-intro">Every tool on Rahulx.com, grouped by category instead of a flat list. Jump straight to the kind of tool you need, or scroll through all of it.</p>
+
+        <nav class="toc" aria-label="Tool categories">
+          <a href="#calculators">Calculators</a>
+          <a href="#generators">Generators</a>
+          <a href="#visualizers">Visualizers</a>
+          <a href="#developer-tools">Developer Tools</a>
+          <a href="#productivity-tools">Productivity Tools</a>
+          <a href="#learning-tools">Learning Tools</a>
+          <a href="#ai-tools">AI Tools</a>
+          <a href="#wellbeing">Wellbeing Support</a>
+        </nav>
+
+        <!-- Calculators -->
+        <div class="category-section" id="calculators">
+          <h2 class="category-title">Calculators</h2>
+          <p class="category-sub">Numbers in, answers out — money, health, and a couple of just-for-fun ones.</p>
           <div class="tools-grid">
             <div class="tool-card">
               <a href="debt-matrix.html">
@@ -345,7 +418,7 @@
             <div class="tool-card">
               <a href="income-tax-calculator.html">
                 <h3>Tax Calculator</h3>
-                <p>Estimate your taxes in a futuristic way.</p>
+                <p>Estimate your income tax across the slabs.</p>
               </a>
             </div>
             <div class="tool-card">
@@ -354,13 +427,6 @@
                 <p>Compute interest for loans or savings.</p>
               </a>
             </div>
-          </div>
-        </div>
-
-        <!-- Health Category -->
-        <div class="category-section">
-          <h2 class="category-title">Health</h2>
-          <div class="tools-grid">
             <div class="tool-card">
               <a href="bmi-calculator.html">
                 <h3>BMI Calculator</h3>
@@ -370,94 +436,57 @@
             <div class="tool-card">
               <a href="age-calculator.html">
                 <h3>Age Calculator</h3>
-                <p>Find your age in cosmic years.</p>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- X Tools Category (Social Media/Text Utilities) -->
-        <div class="category-section">
-          <h2 class="category-title"> 𝕩 Tools</h2>
-          <div class="tools-grid">
-            <div class="tool-card">
-              <a href="thread-splitter.html">
-                <h3>Thread Splitter</h3>
-                <p>Split long posts for social media.</p>
+                <p>Find your exact age down to the day.</p>
               </a>
             </div>
             <div class="tool-card">
-              <a href="character-counter.html">
-                <h3>Character Counter</h3>
-                <p>Count characters in your text effortlessly.</p>
+              <a href="units-converter.html">
+                <h3>Units Converter</h3>
+                <p>Convert units across space and time.</p>
               </a>
             </div>
-            
-            <div class="tool-card">
-              <a href="copy-special-signs.html">
-                <h3>Emojis Finder</h3>
-                <p>Search, know meaning and emojis</p>
-              </a>
-            </div>
-
-  <div class="tool-card">
-              <a href="logo-maker.html">
-                <h3>Logo Maker</h3>
-                <p>Create logos and edit images faster</p>
-              </a>
-            </div>
-
-			<div class="tool-card">
-              <a href="math_symbols.html">
-                <h3>Math Symbols</h3>
-                <p>Get special math symbols for your projects.</p>
-              </a>
-            </div>
-			
-            <div class="tool-card">
-              <a href="html-preview.html">
-                <h3>HTML Viewer</h3>
-                <p>Preview your HTML code instantly.</p>
-              </a>
-            </div>
-			
-			<div class="tool-card">
-              <a href="quotes/topics.html">
-                <h3>Quotes </h3>
-                <p>Find most popular quotes for your X posts.</p>
-              </a>
-            </div>
-			
-			
-          </div>
-        </div>
-
-        <!-- Fun & Games Category -->
-        <div class="category-section">
-          <h2 class="category-title">Fun & Games</h2>
-          <div class="tools-grid">
             <div class="tool-card">
               <a href="zodiac-sign.html">
                 <h3>Zodiac Sign</h3>
-                <p>Discover your cosmic zodiac sign.</p>
+                <p>Work out your zodiac sign from your birth date.</p>
               </a>
             </div>
             <div class="tool-card">
               <a href="love-match.html">
                 <h3>Love Match</h3>
-                <p>Find your interstellar compatibility.</p>
+                <p>A lighthearted compatibility calculator.</p>
               </a>
             </div>
-			<div class="tool-card">
-              <a href="dice.html">
-                <h3>Dice Roller</h3>
-				<p>Quick. Easy. Random.</p>
+          </div>
+        </div>
+
+        <!-- Generators -->
+        <div class="category-section" id="generators">
+          <h2 class="category-title">Generators</h2>
+          <p class="category-sub">Things that create something for you — passwords, codes, randomness, images.</p>
+          <div class="tools-grid">
+            <div class="tool-card">
+              <a href="password-generator.html">
+                <h3>Password Generator</h3>
+                <p>Create and check strong passwords.</p>
               </a>
             </div>
-			<div class="tool-card">
-              <a href="cards.html">
-                <h3>Deck of Cards</h3>
-				<p>Practice Probability the Smart Way.</p>
+            <div class="tool-card">
+              <a href="qr-code-generator.html">
+                <h3>QR Code Generator</h3>
+                <p>Text, links, or Wi-Fi into a scannable code.</p>
+              </a>
+            </div>
+            <div class="tool-card">
+              <a href="hash-generator.html">
+                <h3>Hash Generator</h3>
+                <p>MD5, SHA-1, SHA-256 &amp; SHA-512 hashes.</p>
+              </a>
+            </div>
+            <div class="tool-card">
+              <a href="logo-maker.html">
+                <h3>Logo Maker</h3>
+                <p>Create logos and edit images faster.</p>
               </a>
             </div>
             <div class="tool-card">
@@ -472,36 +501,30 @@
                 <p>Spin a wheel of futuristic fate.</p>
               </a>
             </div>
-          </div>
-        </div>
-
-        <!-- Depression Help Category (Placeholder) -->
-        <div class="category-section">
-          <h2 class="category-title">Depression Help</h2>
-          <div class="tools-grid">
             <div class="tool-card">
-              <a href="depression-help.html">
-                <h3>Find Help Online</h3>
-                <p>Tools to support your mental well-being.</p>
+              <a href="dice.html">
+                <h3>Dice Roller</h3>
+                <p>Quick. Easy. Random.</p>
+              </a>
+            </div>
+            <div class="tool-card">
+              <a href="cards.html">
+                <h3>Deck of Cards</h3>
+                <p>Practice probability the smart way.</p>
               </a>
             </div>
           </div>
         </div>
 
-        <!-- Utility Category -->
-        <div class="category-section">
-          <h2 class="category-title">Utilities</h2>
+        <!-- Visualizers -->
+        <div class="category-section" id="visualizers">
+          <h2 class="category-title">Visualizers</h2>
+          <p class="category-sub">See your data or code rendered, not just as raw text.</p>
           <div class="tools-grid">
             <div class="tool-card">
-              <a href="units-converter.html">
-                <h3>Units Converter</h3>
-                <p>Convert units across space and time.</p>
-              </a>
-            </div>
-            <div class="tool-card">
-              <a href="password-generator.html">
-                <h3>Password Generator</h3>
-                <p>Create and check strong passwords.</p>
+              <a href="html-preview.html">
+                <h3>HTML Viewer</h3>
+                <p>Preview your HTML code instantly.</p>
               </a>
             </div>
             <div class="tool-card">
@@ -510,16 +533,18 @@
                 <p>Format, validate, and minify JSON.</p>
               </a>
             </div>
+          </div>
+        </div>
+
+        <!-- Developer Tools -->
+        <div class="category-section" id="developer-tools">
+          <h2 class="category-title">Developer Tools</h2>
+          <p class="category-sub">Small utilities for everyday coding tasks.</p>
+          <div class="tools-grid">
             <div class="tool-card">
               <a href="base64-tool.html">
                 <h3>Base64 Encode/Decode</h3>
                 <p>Convert text to and from Base64.</p>
-              </a>
-            </div>
-            <div class="tool-card">
-              <a href="text-case-converter.html">
-                <h3>Text Case Converter</h3>
-                <p>UPPERCASE, camelCase, snake_case &amp; more.</p>
               </a>
             </div>
             <div class="tool-card">
@@ -529,23 +554,56 @@
               </a>
             </div>
             <div class="tool-card">
-              <a href="hash-generator.html">
-                <h3>Hash Generator</h3>
-                <p>MD5, SHA-1, SHA-256 &amp; SHA-512 hashes.</p>
+              <a href="text-case-converter.html">
+                <h3>Text Case Converter</h3>
+                <p>UPPERCASE, camelCase, snake_case &amp; more.</p>
               </a>
             </div>
             <div class="tool-card">
-              <a href="qr-code-generator.html">
-                <h3>QR Code Generator</h3>
-                <p>Text, links, or Wi-Fi into a scannable code.</p>
+              <a href="math_symbols.html">
+                <h3>Math Symbols</h3>
+                <p>Copyable special characters &amp; symbols for code.</p>
               </a>
             </div>
           </div>
         </div>
 
-        <!-- Reference Category -->
-        <div class="category-section">
-          <h2 class="category-title">Reference</h2>
+        <!-- Productivity Tools -->
+        <div class="category-section" id="productivity-tools">
+          <h2 class="category-title">Productivity Tools</h2>
+          <p class="category-sub">For writing, posting, and everyday text work.</p>
+          <div class="tools-grid">
+            <div class="tool-card">
+              <a href="thread-splitter.html">
+                <h3>Thread Splitter</h3>
+                <p>Split long posts for social media.</p>
+              </a>
+            </div>
+            <div class="tool-card">
+              <a href="character-counter.html">
+                <h3>Character Counter</h3>
+                <p>Count characters in your text effortlessly.</p>
+              </a>
+            </div>
+            <div class="tool-card">
+              <a href="copy-special-signs.html">
+                <h3>Emojis Finder</h3>
+                <p>Search, know meaning, and copy emojis.</p>
+              </a>
+            </div>
+            <div class="tool-card">
+              <a href="quotes/topics.html">
+                <h3>Quotes</h3>
+                <p>Find popular quotes for your posts.</p>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Learning Tools -->
+        <div class="category-section" id="learning-tools">
+          <h2 class="category-title">Learning Tools</h2>
+          <p class="category-sub">Reference material to look things up, fast.</p>
           <div class="tools-grid">
             <div class="tool-card">
               <a href="/pages/main_pages/glossary/glossary.html">
@@ -553,8 +611,41 @@
                 <p>Plain-English tech, coding &amp; finance terms.</p>
               </a>
             </div>
+            <div class="tool-card">
+              <a href="/pages/main_pages/upsc/upsc.html">
+                <h3>UPSC Prep Hub</h3>
+                <p>Rapid-revision notes for the full syllabus.</p>
+              </a>
+            </div>
           </div>
         </div>
+
+        <!-- AI Tools -->
+        <div class="category-section" id="ai-tools">
+          <h2 class="category-title">AI Tools</h2>
+          <p class="category-sub">Coming soon — this is where AI-powered tools will live.</p>
+          <div class="tools-grid">
+            <div class="tool-card placeholder">
+              <h3>Coming Soon</h3>
+              <p>AI-assisted tools are being built. Check back here as they ship.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wellbeing Support -->
+        <div class="category-section" id="wellbeing">
+          <h2 class="category-title">Wellbeing Support</h2>
+          <p class="category-sub">Not a calculator or a generator — just a page worth having.</p>
+          <div class="tools-grid">
+            <div class="tool-card">
+              <a href="depression-help.html">
+                <h3>Find Help Online</h3>
+                <p>Resources to support your mental wellbeing.</p>
+              </a>
+            </div>
+          </div>
+        </div>
+
       </section>
     </div>
 
@@ -591,16 +682,16 @@
       });
 
       // Glowing effect on hover
-      const cards = document.querySelectorAll('.tool-card');
+      const cards = document.querySelectorAll('.tool-card:not(.placeholder)');
       cards.forEach(card => {
         card.addEventListener('mouseenter', () => {
-          card.style.boxShadow = window.innerWidth <= 768 
-            ? '0 6px 12px rgba(0, 255, 204, 0.4)' 
+          card.style.boxShadow = window.innerWidth <= 768
+            ? '0 6px 12px rgba(0, 255, 204, 0.4)'
             : '0 0 30px rgba(0, 255, 204, 0.8)';
         });
         card.addEventListener('mouseleave', () => {
-          card.style.boxShadow = window.innerWidth <= 768 
-            ? '0 4px 8px rgba(0, 0, 0, 0.3)' 
+          card.style.boxShadow = window.innerWidth <= 768
+            ? '0 4px 8px rgba(0, 0, 0, 0.3)'
             : '0 0 20px rgba(0, 255, 204, 0.6)';
         });
       });

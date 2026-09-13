@@ -1278,6 +1278,63 @@ select.form-control {
   border-top: 1px solid var(--color-border);
 }
 
+/* Rich Rapid-Revision topic content */
+.topic-meta {
+  display: flex;
+  gap: var(--space-12);
+  align-items: center;
+  margin-bottom: var(--space-16);
+  flex-wrap: wrap;
+}
+
+.topic-section {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.topic-block {
+  margin-bottom: var(--space-20);
+}
+
+.topic-block h4 {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-teal-500);
+  margin-bottom: var(--space-8);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.topic-block p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.topic-block ul {
+  margin: 0;
+  padding-left: var(--space-20);
+}
+
+.topic-block ul li {
+  margin-bottom: var(--space-4);
+  line-height: 1.5;
+}
+
+.topic-block--refs h4 {
+  color: var(--color-brown-600);
+}
+
+.topic-block--cram {
+  background: rgba(33, 128, 141, 0.08);
+  border: 1px solid var(--color-teal-500);
+  border-radius: var(--radius-base, 8px);
+  padding: var(--space-16);
+}
+
+.topic-block--cram h4 {
+  margin-bottom: var(--space-8);
+}
+
 /* Settings Modal Specific */
 .settings-section {
   margin-bottom: var(--space-24);

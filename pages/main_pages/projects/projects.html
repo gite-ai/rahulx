@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects: Apps &amp; Experiments by Rahul — Rahulx.com</title>
+<meta name="description" content="Android apps, experiments, and tools built by Rahul — starting with ToDoX, a privacy-first task manager. More projects are added as they ship.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.rahulx.com/pages/main_pages/projects/projects.html">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/theme.css">
+<style>
+  .project-card {
+    display: block;
+    border: 1px solid var(--line-strong);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 24px;
+    background: rgba(255,255,255,0.02);
+  }
+  .project-card h3 { margin-bottom: 4px; }
+  .project-status {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    margin-bottom: 12px;
+  }
+  .project-meta { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0; }
+  .project-meta span {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 3px 8px;
+  }
+  .project-links a {
+    display: inline-block;
+    margin-right: 14px;
+    margin-top: 8px;
+  }
+  .project-placeholder {
+    text-align: center;
+    padding: 40px 20px;
+    border: 1px dashed var(--line-strong);
+    border-radius: 10px;
+    color: var(--cyan-dim);
+    font-family: var(--mono);
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body class="hud">
+<header class="hud-topbar">
+  <a href="/index.html" class="hud-brand"><span class="dot"></span> RAHULX.COM</a>
+  <button class="hud-menu-toggle" data-hud-toggle aria-label="Toggle navigation">MENU</button>
+  <nav class="hud-nav" data-hud-nav>
+    <a href="/index.html">Home</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="/index.html#topics">Topics</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hud-hero">
+  <span class="tag">Build Log · File PRJ-001</span>
+  <h1>Projects</h1>
+  <p class="lede">Things I've actually built — Android apps, tools, and experiments — not just written about. This page grows as new projects ship.</p>
+</section>
+
+<main class="hud-wrap">
+
+  <div class="project-card">
+    <span class="project-status">🟢 Live &amp; maintained</span>
+    <h3>ToDoX</h3>
+    <p>A privacy-first to-do list and task manager for Android. Tasks, sub-step checklists, project categories, deadlines, and repeat schedules all work fully offline in Guest Mode — nothing leaves your device unless you choose to sign in. Signing in with Google adds real-time sync across devices via Firebase, plus encrypted backup to your own Google Drive.</p>
+    <div class="project-meta">
+      <span>Platform: Android</span>
+      <span>Package: com.rx.todox</span>
+      <span>No ads, no third-party tracking</span>
+    </div>
+    <p>Built to answer a simple frustration: most task apps either lock features behind a paywall or quietly harvest data. ToDoX keeps the core experience fully offline-capable, and the moment cloud sync is not something you want, it stays entirely out of the picture.</p>
+    <div class="project-links">
+      <a class="hud-btn" href="/todox-privacy-policy.html">Privacy Policy →</a>
+      <a class="hud-btn" href="/contact.html">Get in touch about it →</a>
+    </div>
+  </div>
+
+  <div class="project-placeholder">
+    More projects — websites, AI experiments, and open-source tools — get added here as they ship.
+  </div>
+
+  <div class="hud-panel">
+    <h2>Why this page exists</h2>
+    <p>Most of Rahulx.com is writing and reference material — explainers, definitions, and a UPSC prep dashboard. This page is different: it's the "build" side of the site, a running record of software I've actually shipped rather than just covered. If you use ToDoX and hit a bug, or have an idea for what should exist here next, the <a href="/contact.html">Contact page</a> reaches me directly.</p>
+  </div>
+
+</main>
+
+<footer class="hud-footer">
+  <div class="legal-links">
+    <a href="/index.html">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/terms-of-service.html">Terms of Service</a>
+    <a href="/disclaimer.html">Disclaimer</a>
+    <a href="/sitemap.xml">Sitemap</a>
+  </div>
+  <p>&copy; 2026 Rahulx.com. All rights reserved.</p>
+</footer>
+
+<script src="/assets/js/site.js"></script>
+</body>
+</html>

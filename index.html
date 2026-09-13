@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rahulx.com - Exploring the Future of Creativity and Innovation</title>
-  <meta name="description" content="Rahulx.com covers AI, technology, coding, space, gaming, trading, and more sci-fi flavored topics, plus free browser tools like a tax calculator and debt matrix analyzer.">
+  <title>Rahul X — Technology, Knowledge &amp; Curiosity, in One Place</title>
+  <meta name="description" content="Rahul X is a personal knowledge and project hub: deep-dive explainers on AI and technology, a UPSC prep dashboard, real Android apps, free browser tools, and a search box that ties it all together.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.rahulx.com/">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -411,6 +411,116 @@
       }
     }
 
+    /* Homepage identity + search */
+    .site-title {
+      font-size: 3.2rem;
+      letter-spacing: 6px;
+    }
+
+    .site-tagline {
+      font-size: 1.25rem;
+      opacity: 0.85;
+      margin-top: 6px;
+      font-weight: 300;
+      animation: none;
+    }
+
+    .site-subtagline {
+      font-size: 0.95rem;
+      opacity: 0.6;
+      margin-top: 4px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .home-search-wrap {
+      position: relative;
+      max-width: 480px;
+      margin: 28px auto 0;
+    }
+
+    .home-search-input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px 18px;
+      font-size: 1.05rem;
+      border-radius: 30px;
+      border: 1px solid #00ffcc;
+      background: rgba(0, 0, 0, 0.7);
+      color: #00ffcc;
+      font-family: 'Poppins', sans-serif;
+      outline: none;
+    }
+
+    .home-search-input::placeholder { color: rgba(0, 255, 204, 0.55); }
+
+    .home-search-input:focus {
+      box-shadow: 0 0 18px rgba(0, 255, 204, 0.5);
+    }
+
+    .home-search-results {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      max-height: 60vh;
+      overflow-y: auto;
+      background: rgba(0, 0, 0, 0.95);
+      border: 1px solid #00ffcc;
+      border-radius: 14px;
+      text-align: left;
+      z-index: 60;
+    }
+
+    .site-search-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(0, 255, 204, 0.15);
+      color: #00ffcc;
+      text-decoration: none;
+    }
+    .site-search-item:last-child { border-bottom: none; }
+    .site-search-item:hover { background: rgba(0, 255, 204, 0.08); }
+    .site-search-kind {
+      flex: 0 0 auto;
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border: 1px solid rgba(0,255,204,0.5);
+      border-radius: 4px;
+      padding: 2px 6px;
+      margin-top: 2px;
+    }
+    .site-search-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .site-search-text strong { font-size: 0.92rem; }
+    .site-search-text small { font-size: 0.76rem; opacity: 0.65; line-height: 1.3; font-weight: 300; }
+
+    /* Grouped category sections */
+    .category-group { margin-bottom: 50px; }
+    .group-header {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+    .group-title {
+      display: inline-block;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #00ffcc;
+      border-bottom: 2px solid #ff00cc;
+      padding-bottom: 6px;
+    }
+    .group-lede {
+      max-width: 640px;
+      margin: 10px auto 0;
+      font-size: 0.95rem;
+      opacity: 0.7;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
     /* Sci-Fi Background */
     .sci-fi-bg {
       position: fixed;
@@ -443,8 +553,15 @@
 
   <!-- Header -->
   <header>
-    <h1>Welcome to Rahulx.com</h1>
-    <p>Exploring the future of creativity and innovation.</p>
+    <h1 class="site-title">RAHUL X</h1>
+    <p class="site-tagline">Technology, Knowledge &amp; Curiosity — in one place.</p>
+    <p class="site-subtagline">Explore. Learn. Build.</p>
+
+    <div class="home-search-wrap">
+      <input type="text" id="homeSearchInput" class="home-search-input" placeholder="🔎 Search RahulX... articles, tools, UPSC topics, concepts" autocomplete="off">
+      <div class="home-search-results" id="homeSearchResults" hidden></div>
+    </div>
+
     <!-- Date and Time Box -->
     <div class="datetime-box">
       <div class="datetime">
@@ -481,129 +598,142 @@
     <nav id="nav">
       <a href="/index.html">Home</a>
       <a href="/about.html">About</a>
-      <a href="https://www.x.com/gite_ai" target="_blank" rel="noopener">Contact</a>
+      <a href="/pages/main_pages/projects/projects.html">Projects</a>
       <a href="#" id="tools-link">Tools</a>
+      <a href="/contact.html">Contact</a>
     </nav>
 
     <!-- Main Content -->
     <div class="container">
       <!-- Categories Section -->
       <section id="topics">
-        <div class="categories">
 
-         <!-- Category 1 -->
-          <a href="/pages/main_pages/ai-robotics/ai-robotics.html" class="category-card">
-            <img src="https://th.bing.com/th/id/OIP.fz0A6p1CQ49T6pAK4tGbxgAAAA?w=247&h=180&c=7&r=0&o=5&dpr=1.4&pid=1.7" alt="AI & Robotics" loading="lazy">
-            <h3>Artificial Intelligence</h3>
-            <p>Delve into all aspects of artificial intelligence.</p>
-          </a>
-
-          <!-- Category 2 -->
-          <a href="/pages/main_pages/technology/technology.html" class="category-card">
-            <img src="https://th.bing.com/th/id/OIP.NrYbs9hurY9_2X3bSyAaZgAAAA?rs=1&pid=ImgDetMain" alt="Technology" loading="lazy">
-            <h3>Technology</h3>
-            <p>Discover the latest in tech innovation other than AI.</p>
-          </a>
-
-          <!-- Category 3 -->
-          <a href="/pages/main_pages/coding/coding.html" class="category-card">
-            <img src="https://c1.wallpaperflare.com/preview/183/501/299/code-coding-programming-css.jpg" alt="Coding" loading="lazy">
-            <h3>Coding</h3>
-            <p>Dive into the art and science of programming.</p>
-          </a>
-
-          <!-- Category 4 -->
-          <a href="/pages/main_pages/space/space.html" class="category-card">
-            <img src="https://th.bing.com/th/id/OIP.OzIU63vh40vLhZQi76XjsQHaHa?rs=1&pid=ImgDetMain" alt="Space" loading="lazy">
-            <h3>Space</h3>
-            <p>Explore the mysteries of the universe.</p>
-          </a>
-
-          <!-- Category 5 -->
-          <a href="/pages/main_pages/gaming/gaming.html" class="category-card">
-            <img src="https://th.bing.com/th/id/OIP.CHnQNmfOWK5QfMBEGQZNTAHaE8?rs=1&pid=ImgDetMain" alt="Gaming" loading="lazy">
-            <h3>Gaming</h3>
-            <p>Dive into the world of sci-fi gaming.</p>
-          </a>
-
-          <!-- Category 6 -->
-          <a href="/pages/main_pages/trading/trading.html" class="category-card">
-            <img src="https://www.quantifiedstrategies.com/wp-content/uploads/2022/10/image-31.png" alt="Trading" loading="lazy">
-            <h3>Trading</h3>
-            <p>Learn about the world of trading and investments.</p>
-          </a>
-
-          <!-- Category 7 -->
-          <a href="/pages/main_pages/netflix/netflix.html" class="category-card">
-            <img src="https://th.bing.com/th/id/OIP.rRpx98P6up5JkHNfnWMyLwHaDt?rs=1&pid=ImgDetMain" alt="Netflix" loading="lazy">
-            <h3>Netflix</h3>
-            <p>Discover the best sci-fi shows and movies to watch.</p>
-          </a>
-
-          <!-- Category 8 -->
-          <a href="/pages/main_pages/f1/f1.html" class="category-card">
-            <img src="https://th.bing.com/th/id/OIP.tfdvlJCaBk3XryBKaNF1VwAAAA?rs=1&pid=ImgDetMain" alt="Formula 1" loading="lazy">
-            <h3>Formula 1</h3>
-            <p>"Where Speed Meets Precision. The Ultimate Race."</p>
-          </a>
-
-          <!-- Category 9 -->
-          <a href="/pages/main_pages/ethics/ethics.html" class="category-card">
-            <img src="https://i0.wp.com/manypossibilities.net/wp-content/uploads/2014/03/paradox-300x175.jpg?resize=300%2C175" alt="Ethics" loading="lazy">
-            <h3>Ethics</h3>
-            <p>Explore the moral principles that guide our actions.</p>
-          </a>
-
-          <!-- Category 10 -->
-          <a href="/pages/main_pages/body_hacks/body_hacks.html" class="category-card">
-            <img src="https://i0.wp.com/personalityspirituality.net/wp-content/uploads/2009/07/image.jpg" alt="Body Hacks" loading="lazy">
-            <h3>Body Hacks</h3>
-            <p>"Simple Hacks for a Stronger, Healthier You."</p>
-          </a>
-
-          <!-- Category 11 -->
-          <a href="/pages/main_pages/how_to_succeed/how_to_succeed.html" class="category-card">
-            <img src="https://www.mciinstitute.edu.au/hubfs/The%20Four%20D%E2%80%99s%20of%20Success%20-%20sucess.png" alt="How to Succeed" loading="lazy">
-            <h3>How to Succeed</h3>
-            <p>Unlock Your Potential. Redefine Success</p>
-          </a>
-
-          <!-- Category 12 -->
-          <a href="/pages/main_pages/oceans/oceans.html" class="category-card">
-            <img src="https://img.buzzfeed.com/buzzfeed-static/static/2021-07/27/16/asset/afa87cd093b8/sub-buzz-669-1627403352-9.jpg" alt="Oceans" loading="lazy">
-            <h3>Deep Oceans</h3>
-            <p>Dive into the Unknown. Discover the Depths of Wonder</p>
-          </a>
-
-          <!-- Category 13 -->
-          <a href="/pages/main_pages/political_ideologies/political_ideologies.html" class="category-card">
-            <img src="https://newamericangovernment.org/wp-content/uploads/2022/07/5caa71b4811434f717e7b2d8079cf1ce.webp" alt="Political Ideologies" loading="lazy">
-            <h3>Political Ideologies</h3>
-            <p>"From Left to Right and Beyond: Navigating the Ideas That Define Our World."</p>
-          </a>
-
-          <!-- Category 14 -->
-          <a href="/pages/main_pages/paranormal/paranormal.html" class="category-card">
-            <img src="https://traviswhitecommunications.com/wp-content/uploads/2013/11/creepy.jpg" alt="Paranormal" loading="lazy">
-            <h3>Paranormal</h3>
-            <p>"Where Reality Meets the Unseen: Unraveling the Mysteries of the Paranormal"</p>
-          </a>
-
-          <!-- Category 15 -->
-          <a href="/pages/main_pages/glossary/glossary.html" class="category-card">
-            <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=400&q=60" alt="Glossary" loading="lazy">
-            <h3>Glossary</h3>
-            <p>Plain-English definitions for tech, coding, and finance terms.</p>
-          </a>
-
-          <!-- Category 16 -->
-          <a href="/pages/main_pages/tools/tools.html" class="category-card">
-            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=60" alt="Tools" loading="lazy">
-            <h3>Free Tools</h3>
-            <p>Password generators, converters, calculators, and more — all free.</p>
-          </a>
-
+        <div class="category-group">
+          <div class="group-header">
+            <span class="group-title">Explore</span>
+            <p class="group-lede">Deep-dive explainers on the fields shaping what comes next.</p>
+          </div>
+          <div class="categories">
+            <a href="/pages/main_pages/ai-robotics/ai-robotics.html" class="category-card">
+              <img src="https://th.bing.com/th/id/OIP.fz0A6p1CQ49T6pAK4tGbxgAAAA?w=247&h=180&c=7&r=0&o=5&dpr=1.4&pid=1.7" alt="AI & Robotics" loading="lazy">
+              <h3>Artificial Intelligence</h3>
+              <p>Delve into all aspects of artificial intelligence.</p>
+            </a>
+            <a href="/pages/main_pages/technology/technology.html" class="category-card">
+              <img src="https://th.bing.com/th/id/OIP.NrYbs9hurY9_2X3bSyAaZgAAAA?rs=1&pid=ImgDetMain" alt="Technology" loading="lazy">
+              <h3>Technology</h3>
+              <p>Discover the latest in tech innovation other than AI.</p>
+            </a>
+            <a href="/pages/main_pages/space/space.html" class="category-card">
+              <img src="https://th.bing.com/th/id/OIP.OzIU63vh40vLhZQi76XjsQHaHa?rs=1&pid=ImgDetMain" alt="Space" loading="lazy">
+              <h3>Space</h3>
+              <p>Explore the mysteries of the universe.</p>
+            </a>
+            <a href="/pages/main_pages/oceans/oceans.html" class="category-card">
+              <img src="https://img.buzzfeed.com/buzzfeed-static/static/2021-07/27/16/asset/afa87cd093b8/sub-buzz-669-1627403352-9.jpg" alt="Oceans" loading="lazy">
+              <h3>Deep Oceans</h3>
+              <p>Dive into the Unknown. Discover the Depths of Wonder</p>
+            </a>
+            <a href="/pages/main_pages/ethics/ethics.html" class="category-card">
+              <img src="https://i0.wp.com/manypossibilities.net/wp-content/uploads/2014/03/paradox-300x175.jpg?resize=300%2C175" alt="Ethics" loading="lazy">
+              <h3>Ethics</h3>
+              <p>Explore the moral principles that guide our actions.</p>
+            </a>
+            <a href="/pages/main_pages/political_ideologies/political_ideologies.html" class="category-card">
+              <img src="https://newamericangovernment.org/wp-content/uploads/2022/07/5caa71b4811434f717e7b2d8079cf1ce.webp" alt="Political Ideologies" loading="lazy">
+              <h3>Political Ideologies</h3>
+              <p>"From Left to Right and Beyond: Navigating the Ideas That Define Our World."</p>
+            </a>
+          </div>
         </div>
+
+        <div class="category-group">
+          <div class="group-header">
+            <span class="group-title">Learn</span>
+            <p class="group-lede">A full UPSC prep dashboard with rapid-revision notes, plus plain-English reference material.</p>
+          </div>
+          <div class="categories">
+            <a href="/pages/main_pages/upsc/upsc.html" class="category-card">
+              <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400&q=60" alt="UPSC Hub" loading="lazy">
+              <h3>UPSC Prep Hub</h3>
+              <p>Full syllabus, rapid-revision notes, and a real progress dashboard for CSE aspirants.</p>
+            </a>
+            <a href="/pages/main_pages/glossary/glossary.html" class="category-card">
+              <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=400&q=60" alt="Glossary" loading="lazy">
+              <h3>Glossary</h3>
+              <p>Plain-English definitions for tech, coding, and finance terms.</p>
+            </a>
+          </div>
+        </div>
+
+        <div class="category-group">
+          <div class="group-header">
+            <span class="group-title">Build</span>
+            <p class="group-lede">The practical side: programming knowledge, real shipped apps, and free browser tools.</p>
+          </div>
+          <div class="categories">
+            <a href="/pages/main_pages/coding/coding.html" class="category-card">
+              <img src="https://c1.wallpaperflare.com/preview/183/501/299/code-coding-programming-css.jpg" alt="Coding" loading="lazy">
+              <h3>Coding</h3>
+              <p>Dive into the art and science of programming.</p>
+            </a>
+            <a href="/pages/main_pages/projects/projects.html" class="category-card">
+              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=400&q=60" alt="Projects" loading="lazy">
+              <h3>Projects</h3>
+              <p>Real apps I've built and shipped — starting with ToDoX for Android.</p>
+            </a>
+            <a href="/pages/main_pages/tools/tools.html" class="category-card">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=60" alt="Tools" loading="lazy">
+              <h3>Free Tools</h3>
+              <p>Calculators, generators, developer tools, and more — all free, no signup.</p>
+            </a>
+          </div>
+        </div>
+
+        <div class="category-group">
+          <div class="group-header">
+            <span class="group-title">Interests</span>
+            <p class="group-lede">The rest of it — money, games, motorsport, streaming, and the stuff at the edges.</p>
+          </div>
+          <div class="categories">
+            <a href="/pages/main_pages/gaming/gaming.html" class="category-card">
+              <img src="https://th.bing.com/th/id/OIP.CHnQNmfOWK5QfMBEGQZNTAHaE8?rs=1&pid=ImgDetMain" alt="Gaming" loading="lazy">
+              <h3>Gaming</h3>
+              <p>Dive into the world of sci-fi gaming.</p>
+            </a>
+            <a href="/pages/main_pages/trading/trading.html" class="category-card">
+              <img src="https://www.quantifiedstrategies.com/wp-content/uploads/2022/10/image-31.png" alt="Trading" loading="lazy">
+              <h3>Trading</h3>
+              <p>Learn about the world of trading and investments.</p>
+            </a>
+            <a href="/pages/main_pages/netflix/netflix.html" class="category-card">
+              <img src="https://th.bing.com/th/id/OIP.rRpx98P6up5JkHNfnWMyLwHaDt?rs=1&pid=ImgDetMain" alt="Netflix" loading="lazy">
+              <h3>Netflix</h3>
+              <p>Discover the best sci-fi shows and movies to watch.</p>
+            </a>
+            <a href="/pages/main_pages/f1/f1.html" class="category-card">
+              <img src="https://th.bing.com/th/id/OIP.tfdvlJCaBk3XryBKaNF1VwAAAA?rs=1&pid=ImgDetMain" alt="Formula 1" loading="lazy">
+              <h3>Formula 1</h3>
+              <p>"Where Speed Meets Precision. The Ultimate Race."</p>
+            </a>
+            <a href="/pages/main_pages/how_to_succeed/how_to_succeed.html" class="category-card">
+              <img src="https://www.mciinstitute.edu.au/hubfs/The%20Four%20D%E2%80%99s%20of%20Success%20-%20sucess.png" alt="How to Succeed" loading="lazy">
+              <h3>How to Succeed</h3>
+              <p>Unlock Your Potential. Redefine Success</p>
+            </a>
+            <a href="/pages/main_pages/body_hacks/body_hacks.html" class="category-card">
+              <img src="https://i0.wp.com/personalityspirituality.net/wp-content/uploads/2009/07/image.jpg" alt="Body Hacks" loading="lazy">
+              <h3>Body Hacks</h3>
+              <p>"Simple Hacks for a Stronger, Healthier You."</p>
+            </a>
+            <a href="/pages/main_pages/paranormal/paranormal.html" class="category-card">
+              <img src="https://traviswhitecommunications.com/wp-content/uploads/2013/11/creepy.jpg" alt="Paranormal" loading="lazy">
+              <h3>Paranormal</h3>
+              <p>"Where Reality Meets the Unseen: Unraveling the Mysteries of the Paranormal"</p>
+            </a>
+          </div>
+        </div>
+
       </section>
     </div>
 
@@ -736,6 +866,24 @@
         document.getElementById('details').innerHTML = "<h3>Tax Calculation Details:</h3><ul>" + slabDetails.join('') + "</ul>";
         document.getElementById('tax-result').innerText = `Total tax payable: ₹${tax.toFixed(2)}`;
       }
+
+      // Universal search (homepage search box)
+      (function () {
+        function wireHomeSearch() {
+          var input = document.getElementById('homeSearchInput');
+          var dd = document.getElementById('homeSearchResults');
+          if (!input || !dd || !window.RahulXSearch) return;
+          window.RahulXSearch.wireSearchBox(input, dd);
+        }
+        if (window.RahulXSearch) {
+          wireHomeSearch();
+        } else {
+          var s = document.createElement('script');
+          s.src = '/assets/js/search.js';
+          s.onload = wireHomeSearch;
+          document.head.appendChild(s);
+        }
+      })();
     </script>
   </body>
 </html>

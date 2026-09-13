@@ -1,4 +1,14 @@
 // Shared site behavior: mobile nav toggle + live UTC/local clock (optional targets)
+// Also loads the site-wide search widget (assets/js/search.js) on any page
+// that has the hud nav, so every page gets search without editing each file.
+(function loadSearchWidget() {
+  if (document.querySelector('script[data-rahulx-search]')) return;
+  var s = document.createElement('script');
+  s.src = '/assets/js/search.js';
+  s.setAttribute('data-rahulx-search', '1');
+  document.head.appendChild(s);
+})();
+
 document.addEventListener('DOMContentLoaded', function () {
   var toggle = document.querySelector('[data-hud-toggle]');
   var nav = document.querySelector('[data-hud-nav]');
