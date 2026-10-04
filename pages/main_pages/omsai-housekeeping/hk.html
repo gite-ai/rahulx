@@ -134,7 +134,9 @@
     .card span { color: var(--dim); font-size: 14px; font-weight: 300; }
     .photos { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 12px; margin-top: 12px; }
     .photos img { height: 180px; width: 100%; object-fit: cover; border-radius: 10px; border: 1px solid var(--neon); }
-    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .flow article { position: relative; min-height: 150px; }
+    .flow b { font-size: 1.05rem; margin-bottom: 6px; }
     .book { display: grid; grid-template-columns: 1fr; gap: 12px; }
     .who { display: flex; justify-content: space-between; gap: 8px; align-items: center; border-top: 1px solid rgba(0,255,204,.35); padding: 10px 0; }
     label { display: block; font-size: 13px; margin: 10px 0 4px; }
@@ -145,15 +147,16 @@
     textarea { min-height: 90px; }
     .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .socials { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+    #share-note { font-size: 13px; color: var(--dim); min-height: 1.2em; }
     footer { border-top: 1px solid rgba(0,255,204,.35); padding: 16px 0 88px; color: var(--dim); font-size: 13px; position: relative; z-index: 1; }
     .foot { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
     .dock { display: none; position: fixed; left: 10px; right: 10px; bottom: 10px; z-index: 30; gap: 8px; }
-    .dock a { flex: 1; text-align: center; }
+    .dock a, .dock button { flex: 1; text-align: center; }
     @media (max-width: 800px) {
       .navline nav { display: none; }
       .navline nav.open { display: flex; flex-direction: column; align-items: flex-start; position: absolute; right: 14px; top: 58px; background: rgba(0,0,0,.92); border: 1px solid var(--neon); padding: 12px; border-radius: 8px; z-index: 5; }
       .menu { display: inline-flex; }
-      .hero, .grid, .photos, .steps, .book, .row { grid-template-columns: 1fr; }
+      .hero, .grid, .photos, .flow, .book, .row { grid-template-columns: 1fr; }
       .photos img { height: 200px; }
       .frame, .frame iframe { min-height: 420px; height: 480px; }
       .map iframe { height: 280px; }
@@ -168,6 +171,7 @@
       <a class="brand" href="https://rahulx.com/">Rahulx</a>
       <nav id="nav">
         <a href="#services">Services</a>
+        <a href="#flow">How it works</a>
         <a href="#contact">Contact</a>
         <a href="#map">Map</a>
         <a href="#book">Book</a>
@@ -186,13 +190,17 @@
     <section class="hero">
       <div>
         <h2>Deep clean. Clear signal.</h2>
-        <p class="lead">1–3 BHK homes, shops, sofas, glass, solar panels, water tanks, farm houses, hospitals and societies.</p>
+        <p class="lead">Ping us, lock a slot, we clean, you check. Four steps. No app.</p>
         <div class="cta">
           <a class="btn wa" href="https://wa.me/919689468354?text=Hello%20Om%20Sai%20Housekeeping%2C%20I%20need%20a%20quote.">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3zm5.2 12.7c-.2.6-1.2 1.1-1.7 1.1-.4.1-.9.2-3-.6-2.5-.9-4.1-3.3-4.2-3.4-.1-.2-1-1.3-1-2.5s.6-1.8.9-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 2 .8 2.1.1.1 0 .3-.1.5l-.4.5c-.1.1-.2.3-.1.5.2.3.7 1.2 1.6 1.9 1.1.9 2 1.1 2.3 1.2.3.1.4 0 .6-.2l.7-.8c.2-.2.3-.2.6-.1l1.8.8c.2.1.4.2.5.3.1.3 0 .8-.2 1.3z"/></svg>
             WhatsApp quote
           </a>
           <a class="btn ghost" href="tel:+919689468354">Call Somnath</a>
+          <button class="btn ghost" id="share" type="button">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 16.1a2.9 2.9 0 0 0-2.3 1.1l-6.1-3.5a3.2 3.2 0 0 0 0-1.4l6-3.5A3 3 0 1 0 15 6a3 3 0 0 0 .1.7L9 10.2a3 3 0 1 0 0 3.6l6.2 3.6a3 3 0 1 0 2.8-1.3z"/></svg>
+            Share
+          </button>
           <a class="btn ghost" href="https://www.instagram.com/om_sai_hk_service/" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm10 2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm-5 3.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2zm0 1.6A2.2 2.2 0 1 0 14.2 12 2.2 2.2 0 0 0 12 9.8zM17.4 6.7a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/></svg>
             Instagram
@@ -205,9 +213,20 @@
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5z"/></svg>
           </a>
         </div>
+        <p id="share-note"></p>
       </div>
       <div class="frame" id="posts">
         <iframe src="https://www.instagram.com/om_sai_hk_service/embed" title="Om Sai Housekeeping Instagram posts" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <section id="flow">
+      <h2 style="margin-bottom:12px;letter-spacing:1px;text-transform:uppercase">How booking works</h2>
+      <div class="flow">
+        <article class="card"><b>01 Signal</b><span>WhatsApp or call. Send the job type, area, and a day that works. A photo helps if it is a sofa, tank, or solar roof.</span></article>
+        <article class="card"><b>02 Lock</b><span>We reply with scope, price, and a time slot. You confirm. That locks the crew for Chakan and nearby.</span></article>
+        <article class="card"><b>03 Sweep</b><span>The team arrives, runs the clean, and keeps you posted if something extra turns up on site.</span></article>
+        <article class="card"><b>04 Sign-off</b><span>Walk the rooms with us before we leave. If a corner is missed, it gets done before the crew exits.</span></article>
       </div>
     </section>
 
@@ -276,15 +295,6 @@
       </div>
     </section>
 
-    <section>
-      <div class="steps">
-        <article class="card"><b>01 Message</b><span>Size, shop, or tank count.</span></article>
-        <article class="card"><b>02 Quote</b><span>Scope and a time on the call.</span></article>
-        <article class="card"><b>03 Clean</b><span>Team arrives for that job.</span></article>
-        <article class="card"><b>04 Check</b><span>Walk the rooms before we leave.</span></article>
-      </div>
-    </section>
-
     <section class="book" id="book">
       <form class="card" id="quote">
         <h2 style="text-transform:uppercase;letter-spacing:1px">Transmit a quote</h2>
@@ -323,10 +333,8 @@
   </footer>
   <div class="dock">
     <a class="btn" href="tel:+919689468354">Call</a>
-    <a class="btn wa" href="https://wa.me/919689468354?text=Hello%20Om%20Sai%20Housekeeping%2C%20I%20need%20a%20quote.">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3zm5.2 12.7c-.2.6-1.2 1.1-1.7 1.1-.4.1-.9.2-3-.6-2.5-.9-4.1-3.3-4.2-3.4-.1-.2-1-1.3-1-2.5s.6-1.8.9-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 2 .8 2.1.1.1 0 .3-.1.5l-.4.5c-.1.1-.2.3-.1.5.2.3.7 1.2 1.6 1.9 1.1.9 2 1.1 2.3 1.2.3.1.4 0 .6-.2l.7-.8c.2-.2.3-.2.6-.1l1.8.8c.2.1.4.2.5.3.1.3 0 .8-.2 1.3z"/></svg>
-      WhatsApp
-    </a>
+    <a class="btn wa" href="https://wa.me/919689468354?text=Hello%20Om%20Sai%20Housekeeping%2C%20I%20need%20a%20quote.">WhatsApp</a>
+    <button class="btn ghost" id="share-dock" type="button">Share</button>
   </div>
   <script>
     function tick() {
@@ -345,6 +353,19 @@
         "%0ADetails: " + encodeURIComponent(document.getElementById("note").value.trim() || "-");
       window.open("https://wa.me/919689468354?text=" + text, "_blank");
     });
+    function sharePage() {
+      var data = { title: "Om Sai Housekeeping", text: "Book cleaning in Chakan. Balaji Nagar office.", url: location.href };
+      var note = document.getElementById("share-note");
+      if (navigator.share) {
+        navigator.share(data).catch(function () {});
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(location.href).then(function () { note.textContent = "Link copied."; });
+      } else {
+        note.textContent = location.href;
+      }
+    }
+    document.getElementById("share").addEventListener("click", sharePage);
+    document.getElementById("share-dock").addEventListener("click", sharePage);
   </script>
 </body>
 </html>
