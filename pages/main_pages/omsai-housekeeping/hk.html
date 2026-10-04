@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Om Sai Housekeeping · Rahulx</title>
-  <meta name="description" content="Om Sai Housekeeping Service in Chakan, Tal. Khed, Pune. Deep cleaning for homes, shops, sofas, cars, solar panels, water tanks, farm houses, hospitals and societies." />
+  <meta name="description" content="Om Sai Housekeeping Service in Chakan, Tal. Khed, Pune." />
   <meta name="theme-color" content="#0a0a0a" />
   <link rel="canonical" href="https://rahulx.com/" />
   <meta property="og:title" content="Om Sai Housekeeping · Rahulx" />
@@ -19,149 +19,75 @@
   {"@context":"https://schema.org","@type":"LocalBusiness","name":"Om Sai Housekeeping Service","email":"omsaihousekeepingservice@gmail.com","telephone":"+919689468354","url":"https://rahulx.com/","hasMap":"https://maps.app.goo.gl/T6nnSpyPfk15wXYy5","sameAs":["https://www.instagram.com/om_sai_hk_service/","https://www.facebook.com/om.sai.housekeeping.service"],"address":{"@type":"PostalAddress","streetAddress":"Balaji Nagar, Chakan","addressLocality":"Khed","addressRegion":"Maharashtra","postalCode":"410501","addressCountry":"IN"},"areaServed":["Chakan","Khed","Pune"]}
   </script>
   <style>
-    :root { --neon:#00ffcc; --bg:#0a0a0a; --navy:#001f3f; --dim:rgba(0,255,204,.72); --wa:#25D366; }
+    :root { --neon:#00ffcc; --bg:#0a0a0a; --dim:rgba(0,255,204,.72); --wa:#25D366; }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--neon);
-      font-family: Poppins, sans-serif;
-      font-weight: 400;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+    body { margin: 0; background: var(--bg); color: var(--neon); font-family: Poppins, sans-serif; line-height: 1.5; overflow-x: hidden; }
     body::before {
-      content: "";
-      pointer-events: none;
-      position: fixed;
-      inset: 0;
-      background:
-        linear-gradient(rgba(0,255,204,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,255,204,.04) 1px, transparent 1px);
+      content: ""; pointer-events: none; position: fixed; inset: 0; z-index: 0;
+      background: linear-gradient(rgba(0,255,204,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,204,.04) 1px, transparent 1px);
       background-size: 42px 42px;
       mask-image: radial-gradient(circle at 50% 20%, #000 20%, transparent 75%);
-      z-index: 0;
     }
     a { color: inherit; text-decoration: none; font-weight: 500; }
     img { max-width: 100%; display: block; }
     h1, h2, h3 { font-family: Montserrat, sans-serif; font-weight: 700; margin: 0; }
-    .wrap { width: min(1080px, calc(100% - 28px)); margin: 0 auto; position: relative; z-index: 1; }
-    header.top {
-      position: relative;
-      background: radial-gradient(circle, #001f3f, #000);
-      text-align: center;
-      padding: 28px 16px 22px;
-      overflow: hidden;
-      border-bottom: 1px solid var(--neon);
-      box-shadow: 0 0 24px rgba(0,255,204,.25);
-    }
-    .navline { display: flex; justify-content: space-between; align-items: center; gap: 12px; width: min(1080px, 100%); margin: 0 auto 18px; text-align: left; }
-    .brand { letter-spacing: 2px; text-transform: uppercase; font-family: Montserrat, sans-serif; font-size: 14px; }
-    .navline nav { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-    .navline a { font-size: 14px; opacity: .9; }
-    .menu { display: none; background: transparent; color: var(--neon); border: 1px solid var(--neon); border-radius: 6px; padding: 6px 10px; font-family: Poppins, sans-serif; }
-    h1 {
-      font-size: clamp(1.7rem, 5vw, 2.8rem);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      animation: glow 2s infinite alternate;
-    }
-    @keyframes glow {
-      from { text-shadow: 0 0 6px rgba(0,255,204,.4); }
-      to { text-shadow: 0 0 18px rgba(0,255,204,.95); }
-    }
-    header p.tag {
-      font-size: clamp(0.85rem, 3.4vw, 1.2rem);
-      line-height: 1.35;
-      opacity: .9;
-      font-weight: 400;
-      margin: 10px auto 0;
-      max-width: 34rem;
-      padding: 0 8px;
-    }
-    .office {
-      margin: 12px auto 0;
-      padding: 10px 12px;
-      border: 1px solid var(--neon);
-      border-radius: 8px;
-      background: rgba(0,255,204,.08);
-      color: #eafff8;
-      font-family: Montserrat, sans-serif;
-      font-size: clamp(0.92rem, 3.6vw, 1.15rem);
-      letter-spacing: .3px;
-      text-shadow: 0 0 10px rgba(0,255,204,.7);
-      max-width: 36rem;
-    }
-    .clock {
-      margin: 16px auto 0;
-      padding: 8px 12px;
-      background: rgba(0,0,0,.6);
-      border: 1px solid var(--neon);
-      border-radius: 5px;
-      width: min(240px, 92%);
-      font-size: clamp(0.8rem, 3vw, .95rem);
-    }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      border: 1px solid var(--neon); color: #04140f; background: var(--neon);
-      border-radius: 6px; padding: 10px 14px; font-family: Poppins, sans-serif; font-weight: 600;
-      box-shadow: 0 0 14px rgba(0,255,204,.45); cursor: pointer;
-    }
-    .btn.ghost { background: transparent; color: var(--neon); }
-    .btn.wa { background: var(--wa); border-color: var(--wa); color: #fff; box-shadow: 0 0 14px rgba(37,211,102,.45); }
-    .btn.pin { width: 42px; height: 42px; padding: 0; }
+    .wrap { width: min(1080px, calc(100% - 20px)); margin: 0 auto; position: relative; z-index: 1; }
+    header.top { position: relative; background: radial-gradient(circle, #001f3f, #000); text-align: center; padding: 16px 12px 14px; border-bottom: 1px solid var(--neon); }
+    .navline { display: flex; justify-content: space-between; align-items: center; gap: 8px; width: min(1080px, 100%); margin: 0 auto 12px; }
+    .brand { letter-spacing: 1px; text-transform: uppercase; font-family: Montserrat, sans-serif; font-size: 13px; }
+    .navline nav { display: flex; gap: 14px; align-items: center; }
+    .navline a { font-size: 13px; }
+    .menu { display: none; background: transparent; color: var(--neon); border: 1px solid var(--neon); border-radius: 6px; padding: 6px 10px; }
+    h1 { font-size: clamp(1.35rem, 6.2vw, 2.4rem); text-transform: uppercase; letter-spacing: 1px; animation: glow 2s infinite alternate; }
+    @keyframes glow { from { text-shadow: 0 0 6px rgba(0,255,204,.4); } to { text-shadow: 0 0 18px rgba(0,255,204,.95); } }
+    header p.tag { font-size: clamp(11px, 3.15vw, 16px); line-height: 1.3; margin: 8px auto 0; max-width: 100%; padding: 0 4px; white-space: nowrap; }
+    .office { margin: 10px auto 0; padding: 8px 10px; border: 1px solid var(--neon); border-radius: 8px; background: rgba(0,255,204,.08); color: #eafff8; font-family: Montserrat, sans-serif; font-size: clamp(12px, 3.4vw, 16px); max-width: 36rem; }
+    .clock { margin: 10px auto 0; padding: 6px 10px; background: rgba(0,0,0,.6); border: 1px solid var(--neon); border-radius: 5px; width: min(220px, 92%); font-size: 12px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--neon); color: #04140f; background: var(--neon); border-radius: 6px; padding: 10px 12px; font: 600 14px Poppins, sans-serif; cursor: pointer; }
+    .btn.ghost, .btn.share { background: transparent; color: var(--neon); box-shadow: none; }
+    .btn.wa { background: var(--wa); border-color: var(--wa); color: #fff; }
+    .btn.pin { width: 42px; height: 42px; padding: 0; background: transparent; color: var(--neon); }
     .btn svg { width: 18px; height: 18px; flex: 0 0 18px; }
-    .hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 22px; padding: 36px 0 10px; align-items: center; }
-    .hero h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 0 12px rgba(0,255,204,.45); }
-    .lead { color: var(--dim); max-width: 520px; }
-    .cta { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0; align-items: center; }
-    .frame { border: 1px solid var(--neon); border-radius: 10px; overflow: hidden; box-shadow: 0 0 20px rgba(0,255,204,.45); background: #000; min-height: 420px; }
-    .frame iframe { width: 100%; height: 520px; border: 0; display: block; }
-    .map { border: 1px solid var(--neon); border-radius: 10px; overflow: hidden; box-shadow: 0 0 20px rgba(0,255,204,.45); background: #000; min-height: 320px; }
-    .map iframe { width: 100%; height: 360px; border: 0; display: block; }
-    section { padding: 28px 0; position: relative; z-index: 1; }
-    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .card {
-      background: rgba(0,0,0,.55);
-      border: 1px solid var(--neon);
-      border-radius: 10px;
-      padding: 14px 16px;
-      box-shadow: 0 0 16px rgba(0,255,204,.28);
-    }
-    .card:hover { box-shadow: 0 0 28px rgba(0,255,204,.7); }
-    .card b { display: block; font-family: Montserrat, sans-serif; letter-spacing: .4px; }
-    .card span { color: var(--dim); font-size: 14px; font-weight: 300; }
-    .photos { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 12px; margin-top: 12px; }
-    .photos img { height: 180px; width: 100%; object-fit: cover; border-radius: 10px; border: 1px solid var(--neon); }
-    .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-    .flow article { position: relative; min-height: 150px; }
-    .flow b { font-size: 1.05rem; margin-bottom: 6px; }
-    .book { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    .hero { display: grid; grid-template-columns: 1fr; gap: 14px; padding: 18px 0 6px; }
+    .hero h2 { font-size: clamp(1.25rem, 5vw, 2rem); text-transform: uppercase; }
+    .cta { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; align-items: center; }
+    .frame, .map { border: 1px solid var(--neon); border-radius: 10px; overflow: hidden; background: #000; }
+    .frame iframe { width: 100%; height: 420px; border: 0; display: block; }
+    .map iframe { width: 100%; height: 240px; border: 0; display: block; }
+    section { padding: 18px 0; position: relative; z-index: 1; }
+    .grid, .flow { display: grid; grid-template-columns: 1fr; gap: 8px; }
+    .card { background: rgba(0,0,0,.55); border: 1px solid var(--neon); border-radius: 10px; padding: 12px; }
+    .card b { display: block; font-family: Montserrat, sans-serif; }
+    .card span, .lead { color: var(--dim); font-size: 14px; }
+    .photos { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 10px; }
+    .photos img { height: 160px; width: 100%; object-fit: cover; border-radius: 10px; border: 1px solid var(--neon); }
     .who { display: flex; justify-content: space-between; gap: 8px; align-items: center; border-top: 1px solid rgba(0,255,204,.35); padding: 10px 0; }
     label { display: block; font-size: 13px; margin: 10px 0 4px; }
-    input, select, textarea {
-      width: 100%; background: #050505; color: var(--neon); border: 1px solid var(--neon);
-      border-radius: 6px; padding: 10px; font: inherit;
-    }
-    textarea { min-height: 90px; }
-    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .socials { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
-    #share-note { font-size: 13px; color: var(--dim); min-height: 1.2em; }
-    footer { border-top: 1px solid rgba(0,255,204,.35); padding: 16px 0 88px; color: var(--dim); font-size: 13px; position: relative; z-index: 1; }
+    input, select, textarea { width: 100%; background: #050505; color: var(--neon); border: 1px solid var(--neon); border-radius: 6px; padding: 10px; font: inherit; }
+    textarea { min-height: 80px; }
+    .row { display: grid; grid-template-columns: 1fr; gap: 8px; }
+    #share-note { font-size: 12px; color: var(--dim); min-height: 1em; margin: 0; }
+    footer { border-top: 1px solid rgba(0,255,204,.35); padding: 14px 0 78px; color: var(--dim); font-size: 12px; position: relative; z-index: 1; }
     .foot { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
-    .dock { display: none; position: fixed; left: 10px; right: 10px; bottom: 10px; z-index: 30; gap: 8px; }
-    .dock a, .dock button { flex: 1; text-align: center; }
-    @media (max-width: 800px) {
+    .dock { display: flex; position: fixed; left: 8px; right: 8px; bottom: 8px; z-index: 30; gap: 6px; }
+    .dock .btn { flex: 1; padding: 10px 6px; font-size: 12px; }
+    @media (min-width: 800px) {
+      header p.tag { white-space: normal; font-size: 1.05rem; }
+      .hero { grid-template-columns: 1.05fr .95fr; align-items: center; }
+      .grid { grid-template-columns: 1fr 1fr; }
+      .flow { grid-template-columns: repeat(4, 1fr); }
+      .photos { grid-template-columns: 1.3fr 1fr 1fr; }
+      .row { grid-template-columns: 1fr 1fr; }
+      .frame iframe { height: 520px; }
+      .map iframe { height: 360px; }
+      .dock { display: none; }
+      .navline nav { display: flex; }
+    }
+    @media (max-width: 799px) {
       .navline nav { display: none; }
-      .navline nav.open { display: flex; flex-direction: column; align-items: flex-start; position: absolute; right: 14px; top: 58px; background: rgba(0,0,0,.92); border: 1px solid var(--neon); padding: 12px; border-radius: 8px; z-index: 5; }
+      .navline nav.open { display: flex; flex-direction: column; align-items: flex-start; position: absolute; right: 12px; top: 52px; background: rgba(0,0,0,.94); border: 1px solid var(--neon); padding: 12px; border-radius: 8px; z-index: 5; }
       .menu { display: inline-flex; }
-      .hero, .grid, .photos, .flow, .book, .row { grid-template-columns: 1fr; }
-      .photos img { height: 200px; }
-      .frame, .frame iframe { min-height: 420px; height: 480px; }
-      .map iframe { height: 280px; }
-      .dock { display: flex; }
-      header p.tag { font-size: clamp(0.82rem, 3.8vw, 1rem); }
     }
   </style>
 </head>
@@ -170,18 +96,16 @@
     <div class="navline">
       <a class="brand" href="https://rahulx.com/">Rahulx</a>
       <nav id="nav">
-        <a href="#services">Services</a>
         <a href="#flow">How it works</a>
+        <a href="#services">Services</a>
         <a href="#contact">Contact</a>
         <a href="#map">Map</a>
         <a href="#book">Book</a>
-        <a href="#posts">Instagram</a>
-        <a href="https://rahulx.com/">Home</a>
       </nav>
       <button class="menu" id="menu">Menu</button>
     </div>
     <h1>Om Sai Housekeeping</h1>
-    <p class="tag">Industrial · residential · commercial cleaning · Chakan</p>
+    <p class="tag">Industrial · residential · commercial · Chakan</p>
     <p class="office">Office: Balaji Nagar, Chakan, Tal. Khed, Dist. Pune 410501</p>
     <div class="clock"><div id="date"></div><div id="time"></div></div>
   </header>
@@ -190,17 +114,15 @@
     <section class="hero">
       <div>
         <h2>Deep clean. Clear signal.</h2>
-        <p class="lead">Ping us, lock a slot, we clean, you check. Four steps. No app.</p>
         <div class="cta">
           <a class="btn wa" href="https://wa.me/919689468354?text=Hello%20Om%20Sai%20Housekeeping%2C%20I%20need%20a%20quote.">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3zm5.2 12.7c-.2.6-1.2 1.1-1.7 1.1-.4.1-.9.2-3-.6-2.5-.9-4.1-3.3-4.2-3.4-.1-.2-1-1.3-1-2.5s.6-1.8.9-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 2 .8 2.1.1.1 0 .3-.1.5l-.4.5c-.1.1-.2.3-.1.5.2.3.7 1.2 1.6 1.9 1.1.9 2 1.1 2.3 1.2.3.1.4 0 .6-.2l.7-.8c.2-.2.3-.2.6-.1l1.8.8c.2.1.4.2.5.3.1.3 0 .8-.2 1.3z"/></svg>
-            WhatsApp quote
+            WhatsApp
           </a>
-          <a class="btn ghost" href="tel:+919689468354">Call Somnath</a>
-          <button class="btn ghost" id="share" type="button">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 16.1a2.9 2.9 0 0 0-2.3 1.1l-6.1-3.5a3.2 3.2 0 0 0 0-1.4l6-3.5A3 3 0 1 0 15 6a3 3 0 0 0 .1.7L9 10.2a3 3 0 1 0 0 3.6l6.2 3.6a3 3 0 1 0 2.8-1.3z"/></svg>
-            Share
-          </button>
+          <a class="btn ghost" href="tel:+919689468354">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 3.8c.4-.4 1-.5 1.5-.3l2.2 1c.5.2.8.7.8 1.2l-.3 2.2a1.2 1.2 0 0 1-.7 1L8.6 9.6a12 12 0 0 0 5.8 5.8l.7-1.5c.2-.4.6-.7 1-.7l2.2-.3c.5 0 1 .3 1.2.8l1 2.2c.2.5.1 1.1-.3 1.5l-1.4 1.4c-.4.4-1 .6-1.6.5C10.8 18.4 5.6 13.2 4.7 6.8c-.1-.6.1-1.2.5-1.6z"/></svg>
+            Call Somnath
+          </a>
           <a class="btn ghost" href="https://www.instagram.com/om_sai_hk_service/" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm10 2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm-5 3.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2zm0 1.6A2.2 2.2 0 1 0 14.2 12 2.2 2.2 0 0 0 12 9.8zM17.4 6.7a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/></svg>
             Instagram
@@ -209,11 +131,10 @@
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.5 8.5V6.8c0-.7.5-1 1.2-1H17V3h-2.1C12.4 3 11 4.5 11 6.6v1.9H9v2.7h2V21h3.5v-9.8h2.3l.4-2.7h-2.7z"/></svg>
             Facebook
           </a>
-          <a class="btn ghost pin" href="https://maps.app.goo.gl/T6nnSpyPfk15wXYy5" target="_blank" rel="noopener" aria-label="Google Maps">
+          <a class="btn pin" href="https://maps.app.goo.gl/T6nnSpyPfk15wXYy5" target="_blank" rel="noopener" aria-label="Google Maps">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5z"/></svg>
           </a>
         </div>
-        <p id="share-note"></p>
       </div>
       <div class="frame" id="posts">
         <iframe src="https://www.instagram.com/om_sai_hk_service/embed" title="Om Sai Housekeeping Instagram posts" loading="lazy"></iframe>
@@ -221,72 +142,49 @@
     </section>
 
     <section id="flow">
-      <h2 style="margin-bottom:12px;letter-spacing:1px;text-transform:uppercase">How booking works</h2>
+      <h2 style="margin-bottom:10px;letter-spacing:1px;text-transform:uppercase">How booking works</h2>
       <div class="flow">
-        <article class="card"><b>01 Signal</b><span>WhatsApp or call. Send the job type, area, and a day that works. A photo helps if it is a sofa, tank, or solar roof.</span></article>
-        <article class="card"><b>02 Lock</b><span>We reply with scope, price, and a time slot. You confirm. That locks the crew for Chakan and nearby.</span></article>
-        <article class="card"><b>03 Sweep</b><span>The team arrives, runs the clean, and keeps you posted if something extra turns up on site.</span></article>
-        <article class="card"><b>04 Sign-off</b><span>Walk the rooms with us before we leave. If a corner is missed, it gets done before the crew exits.</span></article>
+        <article class="card"><b>01 Signal</b><span>WhatsApp or call. Job type, area, and a day. A photo helps for sofa, tank, or solar.</span></article>
+        <article class="card"><b>02 Lock</b><span>We send scope, price, and a slot. You confirm. Crew is booked.</span></article>
+        <article class="card"><b>03 Sweep</b><span>Team arrives and cleans. Extra work is flagged before it starts.</span></article>
+        <article class="card"><b>04 Sign-off</b><span>Walk the job with us. Missed spots are finished before we leave.</span></article>
       </div>
     </section>
 
     <section id="contact">
       <div class="card">
         <h2 style="text-transform:uppercase;letter-spacing:1px">Contact</h2>
-        <p class="office">Office: Balaji Nagar, Chakan, Tal. Khed, Dist. Pune 410501</p>
         <p class="lead">omsaihousekeepingservice@gmail.com</p>
-        <div class="who"><div><b>Somnath Kamble</b><div>+91 96894 68354</div></div><a class="btn" href="tel:+919689468354">Call</a></div>
-        <div class="who"><div><b>Sudhakar Kamble</b><div>+91 83172 00390</div></div><a class="btn ghost" href="tel:+918317200390">Call</a></div>
+        <div class="who"><div><b>Somnath Kamble</b><div>+91 96894 68354</div></div><a class="btn ghost" href="tel:+919689468354"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 3.8c.4-.4 1-.5 1.5-.3l2.2 1c.5.2.8.7.8 1.2l-.3 2.2a1.2 1.2 0 0 1-.7 1L8.6 9.6a12 12 0 0 0 5.8 5.8l.7-1.5c.2-.4.6-.7 1-.7l2.2-.3c.5 0 1 .3 1.2.8l1 2.2c.2.5.1 1.1-.3 1.5l-1.4 1.4c-.4.4-1 .6-1.6.5C10.8 18.4 5.6 13.2 4.7 6.8c-.1-.6.1-1.2.5-1.6z"/></svg>Call</a></div>
+        <div class="who"><div><b>Sudhakar Kamble</b><div>+91 83172 00390</div></div><a class="btn ghost" href="tel:+918317200390"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 3.8c.4-.4 1-.5 1.5-.3l2.2 1c.5.2.8.7.8 1.2l-.3 2.2a1.2 1.2 0 0 1-.7 1L8.6 9.6a12 12 0 0 0 5.8 5.8l.7-1.5c.2-.4.6-.7 1-.7l2.2-.3c.5 0 1 .3 1.2.8l1 2.2c.2.5.1 1.1-.3 1.5l-1.4 1.4c-.4.4-1 .6-1.6.5C10.8 18.4 5.6 13.2 4.7 6.8c-.1-.6.1-1.2.5-1.6z"/></svg>Call</a></div>
         <div class="cta">
-          <a class="btn wa" href="https://wa.me/919689468354?text=Hello%20Somnath%2C%20I%20need%20housekeeping%20in%20Chakan.">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3zm5.2 12.7c-.2.6-1.2 1.1-1.7 1.1-.4.1-.9.2-3-.6-2.5-.9-4.1-3.3-4.2-3.4-.1-.2-1-1.3-1-2.5s.6-1.8.9-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 2 .8 2.1.1.1 0 .3-.1.5l-.4.5c-.1.1-.2.3-.1.5.2.3.7 1.2 1.6 1.9 1.1.9 2 1.1 2.3 1.2.3.1.4 0 .6-.2l.7-.8c.2-.2.3-.2.6-.1l1.8.8c.2.1.4.2.5.3.1.3 0 .8-.2 1.3z"/></svg>
-            WhatsApp Somnath
-          </a>
-          <a class="btn wa" href="https://wa.me/918317200390?text=Hello%20Sudhakar%2C%20I%20need%20housekeeping%20in%20Chakan.">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3zm5.2 12.7c-.2.6-1.2 1.1-1.7 1.1-.4.1-.9.2-3-.6-2.5-.9-4.1-3.3-4.2-3.4-.1-.2-1-1.3-1-2.5s.6-1.8.9-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 2 .8 2.1.1.1 0 .3-.1.5l-.4.5c-.1.1-.2.3-.1.5.2.3.7 1.2 1.6 1.9 1.1.9 2 1.1 2.3 1.2.3.1.4 0 .6-.2l.7-.8c.2-.2.3-.2.6-.1l1.8.8c.2.1.4.2.5.3.1.3 0 .8-.2 1.3z"/></svg>
-            WhatsApp Sudhakar
-          </a>
-        </div>
-        <div class="socials">
-          <a class="btn ghost" href="https://www.instagram.com/om_sai_hk_service/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm10 2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm-5 3.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2zm0 1.6A2.2 2.2 0 1 0 14.2 12 2.2 2.2 0 0 0 12 9.8zM17.4 6.7a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/></svg>
-            @om_sai_hk_service
-          </a>
-          <a class="btn ghost" href="https://www.facebook.com/om.sai.housekeeping.service" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.5 8.5V6.8c0-.7.5-1 1.2-1H17V3h-2.1C12.4 3 11 4.5 11 6.6v1.9H9v2.7h2V21h3.5v-9.8h2.3l.4-2.7h-2.7z"/></svg>
-            Facebook
-          </a>
-          <a class="btn ghost pin" href="https://maps.app.goo.gl/T6nnSpyPfk15wXYy5" target="_blank" rel="noopener" aria-label="Google Maps">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5z"/></svg>
-          </a>
+          <a class="btn wa" href="https://wa.me/919689468354?text=Hello%20Somnath%2C%20I%20need%20housekeeping%20in%20Chakan."><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3zm5.2 12.7c-.2.6-1.2 1.1-1.7 1.1-.4.1-.9.2-3-.6-2.5-.9-4.1-3.3-4.2-3.4-.1-.2-1-1.3-1-2.5s.6-1.8.9-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 2 .8 2.1.1.1 0 .3-.1.5l-.4.5c-.1.1-.2.3-.1.5.2.3.7 1.2 1.6 1.9 1.1.9 2 1.1 2.3 1.2.3.1.4 0 .6-.2l.7-.8c.2-.2.3-.2.6-.1l1.8.8c.2.1.4.2.5.3.1.3 0 .8-.2 1.3z"/></svg>Somnath</a>
+          <a class="btn wa" href="https://wa.me/918317200390?text=Hello%20Sudhakar%2C%20I%20need%20housekeeping%20in%20Chakan."><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3zm5.2 12.7c-.2.6-1.2 1.1-1.7 1.1-.4.1-.9.2-3-.6-2.5-.9-4.1-3.3-4.2-3.4-.1-.2-1-1.3-1-2.5s.6-1.8.9-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 2 .8 2.1.1.1 0 .3-.1.5l-.4.5c-.1.1-.2.3-.1.5.2.3.7 1.2 1.6 1.9 1.1.9 2 1.1 2.3 1.2.3.1.4 0 .6-.2l.7-.8c.2-.2.3-.2.6-.1l1.8.8c.2.1.4.2.5.3.1.3 0 .8-.2 1.3z"/></svg>Sudhakar</a>
         </div>
       </div>
     </section>
 
     <section id="map">
-      <h2 style="margin-bottom:12px;letter-spacing:1px;text-transform:uppercase">Location</h2>
-      <p class="office">Office: Balaji Nagar, Chakan, Tal. Khed, Dist. Pune 410501</p>
+      <h2 style="margin-bottom:8px;letter-spacing:1px;text-transform:uppercase">Location</h2>
       <div class="map">
         <iframe src="https://maps.google.com/maps?q=Balaji%20Nagar%20Chakan%20Khed%20Pune%20410501&z=16&output=embed" title="Om Sai Housekeeping Google Map" loading="lazy"></iframe>
       </div>
-      <div class="cta">
-        <a class="btn" href="https://maps.app.goo.gl/T6nnSpyPfk15wXYy5" target="_blank" rel="noopener">Open exact pin</a>
-      </div>
+      <div class="cta"><a class="btn ghost" href="https://maps.app.goo.gl/T6nnSpyPfk15wXYy5" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5z"/></svg>Open pin</a></div>
     </section>
 
     <section id="services">
-      <h2 style="margin-bottom:12px;letter-spacing:1px;text-transform:uppercase">Services</h2>
+      <h2 style="margin-bottom:10px;letter-spacing:1px;text-transform:uppercase">Services</h2>
       <div class="grid">
-        <article class="card"><b>01 · 1, 2 & 3 BHK deep cleaning</b><span>Kitchen, baths, floors and missed corners.</span></article>
-        <article class="card"><b>02 · Toilet cleaning</b><span>Homes, shops and common blocks.</span></article>
-        <article class="card"><b>03 · 2-wheeler & car deep cleaning</b><span>Interior and exterior.</span></article>
-        <article class="card"><b>04 · Sofa cleaning</b><span>Living rooms and offices.</span></article>
-        <article class="card"><b>05 · Windows & glass</b><span>Home panes and shopfronts.</span></article>
-        <article class="card"><b>06 · Solar panel cleaning</b><span>Rooftop wash.</span></article>
-        <article class="card"><b>07 · Swimming & water tanks</b><span>Overhead, underground, swimming tanks.</span></article>
-        <article class="card"><b>08 · Farm house deep cleaning</b><span>Full reset before a stay.</span></article>
-        <article class="card"><b>09 · Hospital & society</b><span>Common areas and housing blocks.</span></article>
-        <article class="card"><b>10 · Industrial & shop cleaning</b><span>Commercial shops and workshops.</span></article>
+        <article class="card"><b>01 · 1, 2 & 3 BHK</b><span>Kitchen, baths, floors.</span></article>
+        <article class="card"><b>02 · Toilet cleaning</b><span>Homes, shops, common blocks.</span></article>
+        <article class="card"><b>03 · Bike & car</b><span>Interior and exterior.</span></article>
+        <article class="card"><b>04 · Sofa</b><span>Homes and offices.</span></article>
+        <article class="card"><b>05 · Glass</b><span>Windows and shopfronts.</span></article>
+        <article class="card"><b>06 · Solar panels</b><span>Rooftop wash.</span></article>
+        <article class="card"><b>07 · Tanks</b><span>Water and swimming tanks.</span></article>
+        <article class="card"><b>08 · Farm house</b><span>Full reset before a stay.</span></article>
+        <article class="card"><b>09 · Hospital & society</b><span>Common areas.</span></article>
+        <article class="card"><b>10 · Shops & industry</b><span>Commercial spaces.</span></article>
       </div>
       <div class="photos">
         <img src="images/home.jpg" alt="Clean living room" />
@@ -295,10 +193,9 @@
       </div>
     </section>
 
-    <section class="book" id="book">
+    <section id="book">
       <form class="card" id="quote">
-        <h2 style="text-transform:uppercase;letter-spacing:1px">Transmit a quote</h2>
-        <p class="lead">Opens WhatsApp. Nothing is stored on this page.</p>
+        <h2 style="text-transform:uppercase;letter-spacing:1px">Quote</h2>
         <div class="row">
           <div><label for="name">Name</label><input id="name" required /></div>
           <div><label for="phone">Phone</label><input id="phone" required inputmode="tel" /></div>
@@ -322,25 +219,35 @@
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3zm5.2 12.7c-.2.6-1.2 1.1-1.7 1.1-.4.1-.9.2-3-.6-2.5-.9-4.1-3.3-4.2-3.4-.1-.2-1-1.3-1-2.5s.6-1.8.9-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 2 .8 2.1.1.1 0 .3-.1.5l-.4.5c-.1.1-.2.3-.1.5.2.3.7 1.2 1.6 1.9 1.1.9 2 1.1 2.3 1.2.3.1.4 0 .6-.2l.7-.8c.2-.2.3-.2.6-.1l1.8.8c.2.1.4.2.5.3.1.3 0 .8-.2 1.3z"/></svg>
           Send on WhatsApp
         </button>
+        <p id="share-note"></p>
       </form>
     </section>
   </main>
   <footer>
     <div class="wrap foot">
-      <span>© <span id="year"></span> Om Sai Housekeeping Service · Chakan 410501</span>
+      <span>© <span id="year"></span> Om Sai Housekeeping · Chakan 410501</span>
       <a href="https://rahulx.com/">rahulx.com</a>
     </div>
   </footer>
   <div class="dock">
-    <a class="btn" href="tel:+919689468354">Call</a>
-    <a class="btn wa" href="https://wa.me/919689468354?text=Hello%20Om%20Sai%20Housekeeping%2C%20I%20need%20a%20quote.">WhatsApp</a>
-    <button class="btn ghost" id="share-dock" type="button">Share</button>
+    <a class="btn ghost" href="tel:+919689468354">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 3.8c.4-.4 1-.5 1.5-.3l2.2 1c.5.2.8.7.8 1.2l-.3 2.2a1.2 1.2 0 0 1-.7 1L8.6 9.6a12 12 0 0 0 5.8 5.8l.7-1.5c.2-.4.6-.7 1-.7l2.2-.3c.5 0 1 .3 1.2.8l1 2.2c.2.5.1 1.1-.3 1.5l-1.4 1.4c-.4.4-1 .6-1.6.5C10.8 18.4 5.6 13.2 4.7 6.8c-.1-.6.1-1.2.5-1.6z"/></svg>
+      Call
+    </a>
+    <a class="btn wa" href="https://wa.me/919689468354?text=Hello%20Om%20Sai%20Housekeeping%2C%20I%20need%20a%20quote.">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3zm5.2 12.7c-.2.6-1.2 1.1-1.7 1.1-.4.1-.9.2-3-.6-2.5-.9-4.1-3.3-4.2-3.4-.1-.2-1-1.3-1-2.5s.6-1.8.9-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 2 .8 2.1.1.1 0 .3-.1.5l-.4.5c-.1.1-.2.3-.1.5.2.3.7 1.2 1.6 1.9 1.1.9 2 1.1 2.3 1.2.3.1.4 0 .6-.2l.7-.8c.2-.2.3-.2.6-.1l1.8.8c.2.1.4.2.5.3.1.3 0 .8-.2 1.3z"/></svg>
+      WhatsApp
+    </a>
+    <button class="btn share" id="share" type="button">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 16.1a2.9 2.9 0 0 0-2.3 1.1l-6.1-3.5a3.2 3.2 0 0 0 0-1.4l6-3.5A3 3 0 1 0 15 6a3 3 0 0 0 .1.7L9 10.2a3 3 0 1 0 0 3.6l6.2 3.6a3 3 0 1 0 2.8-1.3z"/></svg>
+      Share
+    </button>
   </div>
   <script>
     function tick() {
       var now = new Date();
-      document.getElementById("date").textContent = now.toLocaleDateString("en-US", { weekday:"long", year:"numeric", month:"long", day:"numeric" });
-      document.getElementById("time").textContent = now.toLocaleTimeString("en-US", { hour:"2-digit", minute:"2-digit", second:"2-digit" });
+      document.getElementById("date").textContent = now.toLocaleDateString("en-IN", { weekday:"short", day:"numeric", month:"short" });
+      document.getElementById("time").textContent = now.toLocaleTimeString("en-IN", { hour:"2-digit", minute:"2-digit" });
     }
     tick(); setInterval(tick, 1000);
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -353,19 +260,13 @@
         "%0ADetails: " + encodeURIComponent(document.getElementById("note").value.trim() || "-");
       window.open("https://wa.me/919689468354?text=" + text, "_blank");
     });
-    function sharePage() {
-      var data = { title: "Om Sai Housekeeping", text: "Book cleaning in Chakan. Balaji Nagar office.", url: location.href };
+    document.getElementById("share").addEventListener("click", function () {
+      var data = { title: "Om Sai Housekeeping", text: "Cleaning in Chakan. Balaji Nagar.", url: location.href };
       var note = document.getElementById("share-note");
-      if (navigator.share) {
-        navigator.share(data).catch(function () {});
-      } else if (navigator.clipboard) {
-        navigator.clipboard.writeText(location.href).then(function () { note.textContent = "Link copied."; });
-      } else {
-        note.textContent = location.href;
-      }
-    }
-    document.getElementById("share").addEventListener("click", sharePage);
-    document.getElementById("share-dock").addEventListener("click", sharePage);
+      if (navigator.share) navigator.share(data).catch(function () {});
+      else if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(function () { note.textContent = "Link copied."; });
+      else note.textContent = location.href;
+    });
   </script>
 </body>
 </html>
