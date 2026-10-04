@@ -45,12 +45,13 @@
     .office { margin: 10px auto 0; padding: 8px 10px; border: 1px solid var(--neon); border-radius: 8px; background: rgba(0,255,204,.08); color: #eafff8; font-family: Montserrat, sans-serif; font-size: clamp(12px, 3.4vw, 16px); max-width: 36rem; }
     .clock { margin: 10px auto 0; padding: 6px 10px; background: rgba(0,0,0,.6); border: 1px solid var(--neon); border-radius: 5px; width: min(220px, 92%); font-size: 12px; }
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--neon); color: #04140f; background: var(--neon); border-radius: 6px; padding: 10px 12px; font: 600 14px Poppins, sans-serif; cursor: pointer; }
-    .btn.ghost, .btn.share { background: transparent; color: var(--neon); box-shadow: none; }
+    .btn.ghost { background: transparent; color: var(--neon); box-shadow: none; }
     .btn.wa { background: var(--wa); border-color: var(--wa); color: #fff; }
+    .btn.solid { background: var(--neon); border-color: var(--neon); color: #04140f; }
     .btn.pin { width: 42px; height: 42px; padding: 0; background: transparent; color: var(--neon); }
     .btn svg { width: 18px; height: 18px; flex: 0 0 18px; }
     .hero { display: grid; grid-template-columns: 1fr; gap: 14px; padding: 18px 0 6px; }
-    .hero h2 { font-size: clamp(1.25rem, 5vw, 2rem); text-transform: uppercase; }
+    .hero h2 { font-size: clamp(1.25rem, 5vw, 2rem); text-transform: uppercase; text-align: center; width: 100%; }
     .cta { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; align-items: center; }
     .frame, .map { border: 1px solid var(--neon); border-radius: 10px; overflow: hidden; background: #000; }
     .frame iframe { width: 100%; height: 420px; border: 0; display: block; }
@@ -119,7 +120,7 @@
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3zm5.2 12.7c-.2.6-1.2 1.1-1.7 1.1-.4.1-.9.2-3-.6-2.5-.9-4.1-3.3-4.2-3.4-.1-.2-1-1.3-1-2.5s.6-1.8.9-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 2 .8 2.1.1.1 0 .3-.1.5l-.4.5c-.1.1-.2.3-.1.5.2.3.7 1.2 1.6 1.9 1.1.9 2 1.1 2.3 1.2.3.1.4 0 .6-.2l.7-.8c.2-.2.3-.2.6-.1l1.8.8c.2.1.4.2.5.3.1.3 0 .8-.2 1.3z"/></svg>
             WhatsApp
           </a>
-          <a class="btn ghost" href="tel:+919689468354">
+          <a class="btn solid" href="tel:+919689468354">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 3.8c.4-.4 1-.5 1.5-.3l2.2 1c.5.2.8.7.8 1.2l-.3 2.2a1.2 1.2 0 0 1-.7 1L8.6 9.6a12 12 0 0 0 5.8 5.8l.7-1.5c.2-.4.6-.7 1-.7l2.2-.3c.5 0 1 .3 1.2.8l1 2.2c.2.5.1 1.1-.3 1.5l-1.4 1.4c-.4.4-1 .6-1.6.5C10.8 18.4 5.6 13.2 4.7 6.8c-.1-.6.1-1.2.5-1.6z"/></svg>
             Call Somnath
           </a>
@@ -155,8 +156,8 @@
       <div class="card">
         <h2 style="text-transform:uppercase;letter-spacing:1px">Contact</h2>
         <p class="lead">omsaihousekeepingservice@gmail.com</p>
-        <div class="who"><div><b>Somnath Kamble</b><div>+91 96894 68354</div></div><a class="btn ghost" href="tel:+919689468354"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 3.8c.4-.4 1-.5 1.5-.3l2.2 1c.5.2.8.7.8 1.2l-.3 2.2a1.2 1.2 0 0 1-.7 1L8.6 9.6a12 12 0 0 0 5.8 5.8l.7-1.5c.2-.4.6-.7 1-.7l2.2-.3c.5 0 1 .3 1.2.8l1 2.2c.2.5.1 1.1-.3 1.5l-1.4 1.4c-.4.4-1 .6-1.6.5C10.8 18.4 5.6 13.2 4.7 6.8c-.1-.6.1-1.2.5-1.6z"/></svg>Call</a></div>
-        <div class="who"><div><b>Sudhakar Kamble</b><div>+91 83172 00390</div></div><a class="btn ghost" href="tel:+918317200390"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 3.8c.4-.4 1-.5 1.5-.3l2.2 1c.5.2.8.7.8 1.2l-.3 2.2a1.2 1.2 0 0 1-.7 1L8.6 9.6a12 12 0 0 0 5.8 5.8l.7-1.5c.2-.4.6-.7 1-.7l2.2-.3c.5 0 1 .3 1.2.8l1 2.2c.2.5.1 1.1-.3 1.5l-1.4 1.4c-.4.4-1 .6-1.6.5C10.8 18.4 5.6 13.2 4.7 6.8c-.1-.6.1-1.2.5-1.6z"/></svg>Call</a></div>
+        <div class="who"><div><b>Somnath Kamble</b><div>+91 96894 68354</div></div><a class="btn solid" href="tel:+919689468354"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 3.8c.4-.4 1-.5 1.5-.3l2.2 1c.5.2.8.7.8 1.2l-.3 2.2a1.2 1.2 0 0 1-.7 1L8.6 9.6a12 12 0 0 0 5.8 5.8l.7-1.5c.2-.4.6-.7 1-.7l2.2-.3c.5 0 1 .3 1.2.8l1 2.2c.2.5.1 1.1-.3 1.5l-1.4 1.4c-.4.4-1 .6-1.6.5C10.8 18.4 5.6 13.2 4.7 6.8c-.1-.6.1-1.2.5-1.6z"/></svg>Call</a></div>
+        <div class="who"><div><b>Sudhakar Kamble</b><div>+91 83172 00390</div></div><a class="btn solid" href="tel:+918317200390"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 3.8c.4-.4 1-.5 1.5-.3l2.2 1c.5.2.8.7.8 1.2l-.3 2.2a1.2 1.2 0 0 1-.7 1L8.6 9.6a12 12 0 0 0 5.8 5.8l.7-1.5c.2-.4.6-.7 1-.7l2.2-.3c.5 0 1 .3 1.2.8l1 2.2c.2.5.1 1.1-.3 1.5l-1.4 1.4c-.4.4-1 .6-1.6.5C10.8 18.4 5.6 13.2 4.7 6.8c-.1-.6.1-1.2.5-1.6z"/></svg>Call</a></div>
         <div class="cta">
           <a class="btn wa" href="https://wa.me/919689468354?text=Hello%20Somnath%2C%20I%20need%20housekeeping%20in%20Chakan."><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3zm5.2 12.7c-.2.6-1.2 1.1-1.7 1.1-.4.1-.9.2-3-.6-2.5-.9-4.1-3.3-4.2-3.4-.1-.2-1-1.3-1-2.5s.6-1.8.9-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 2 .8 2.1.1.1 0 .3-.1.5l-.4.5c-.1.1-.2.3-.1.5.2.3.7 1.2 1.6 1.9 1.1.9 2 1.1 2.3 1.2.3.1.4 0 .6-.2l.7-.8c.2-.2.3-.2.6-.1l1.8.8c.2.1.4.2.5.3.1.3 0 .8-.2 1.3z"/></svg>Somnath</a>
           <a class="btn wa" href="https://wa.me/918317200390?text=Hello%20Sudhakar%2C%20I%20need%20housekeeping%20in%20Chakan."><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3zm5.2 12.7c-.2.6-1.2 1.1-1.7 1.1-.4.1-.9.2-3-.6-2.5-.9-4.1-3.3-4.2-3.4-.1-.2-1-1.3-1-2.5s.6-1.8.9-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 2 .8 2.1.1.1 0 .3-.1.5l-.4.5c-.1.1-.2.3-.1.5.2.3.7 1.2 1.6 1.9 1.1.9 2 1.1 2.3 1.2.3.1.4 0 .6-.2l.7-.8c.2-.2.3-.2.6-.1l1.8.8c.2.1.4.2.5.3.1.3 0 .8-.2 1.3z"/></svg>Sudhakar</a>
@@ -230,7 +231,7 @@
     </div>
   </footer>
   <div class="dock">
-    <a class="btn ghost" href="tel:+919689468354">
+    <a class="btn solid" href="tel:+919689468354">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 3.8c.4-.4 1-.5 1.5-.3l2.2 1c.5.2.8.7.8 1.2l-.3 2.2a1.2 1.2 0 0 1-.7 1L8.6 9.6a12 12 0 0 0 5.8 5.8l.7-1.5c.2-.4.6-.7 1-.7l2.2-.3c.5 0 1 .3 1.2.8l1 2.2c.2.5.1 1.1-.3 1.5l-1.4 1.4c-.4.4-1 .6-1.6.5C10.8 18.4 5.6 13.2 4.7 6.8c-.1-.6.1-1.2.5-1.6z"/></svg>
       Call
     </a>
@@ -238,7 +239,7 @@
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3zm5.2 12.7c-.2.6-1.2 1.1-1.7 1.1-.4.1-.9.2-3-.6-2.5-.9-4.1-3.3-4.2-3.4-.1-.2-1-1.3-1-2.5s.6-1.8.9-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 2 .8 2.1.1.1 0 .3-.1.5l-.4.5c-.1.1-.2.3-.1.5.2.3.7 1.2 1.6 1.9 1.1.9 2 1.1 2.3 1.2.3.1.4 0 .6-.2l.7-.8c.2-.2.3-.2.6-.1l1.8.8c.2.1.4.2.5.3.1.3 0 .8-.2 1.3z"/></svg>
       WhatsApp
     </a>
-    <button class="btn share" id="share" type="button">
+    <button class="btn solid" id="share" type="button">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 16.1a2.9 2.9 0 0 0-2.3 1.1l-6.1-3.5a3.2 3.2 0 0 0 0-1.4l6-3.5A3 3 0 1 0 15 6a3 3 0 0 0 .1.7L9 10.2a3 3 0 1 0 0 3.6l6.2 3.6a3 3 0 1 0 2.8-1.3z"/></svg>
       Share
     </button>
